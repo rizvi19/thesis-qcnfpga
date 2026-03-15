@@ -1,0 +1,3 @@
+.PHONY: timing_closure_all
+timing_closure_all:
+	./run_step9c_timing_closure.sh

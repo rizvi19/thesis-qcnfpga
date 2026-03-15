@@ -1,0 +1,12 @@
+quantity,module,math/formula role,frozen format,bits,notes
+exp(-x) LUT entry,FDPE,decay approximation,Q0.16 unsigned,16,"256 entries over x in [0,8)"
+stored fidelity F_ij,FDPE/SKAG/GA,bottleneck fidelity objective,Q0.16 unsigned,16,saturating 0..65535
+edge weight w_ij,SKAG/GA,composite minimisation weight,Q16.16 unsigned,32,0xFFFF_FFFF is infinity
+QBER q_ij input,FDPE input,initial fidelity derivation,Q0.8 unsigned,8,input-side packing from QKD interface
+QBER q_ij memory,SKAG,stored edge field,Q0.16 stored field,16,memory contract kept 16-bit wide
+arrival rate lambda_ij,SKAG,replenishment term,Q8.8 unsigned,16,stored per edge
+key count K_ij,SKAG,availability constraint,UINT16,16,edge unavailable when K_ij = 0
+timestamp,FDPE,elapsed-time computation,UINT32,32,free-running cycle counter
+node id,GA,path encoding,UINT8,8,supports 0..63
+alpha1..alpha4,SKAG,composite weight tuning,Q8.8 unsigned,16 each,"defaults 1.0,1.5,0.5,2.0"
+objective weights,GA,Tchebycheff decomposition,software float / RTL packed Q0.8,8 each in reg map,"defaults 0.4,0.4,0.2"

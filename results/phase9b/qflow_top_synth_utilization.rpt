@@ -1,0 +1,41 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
+| Date         : Sun Mar 15 07:58:24 2026
+| Host         : Shahriars-Unix running 64-bit Ubuntu 24.04.3 LTS
+| Command      : report_utilization -hierarchical -hierarchical_depth 3 -file results/phase9b/qflow_top_synth_utilization.rpt
+| Design       : qflow_top_synth
+| Device       : xc7a200tfbg484-1
+| Speed File   : -1
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++----------------------------+-------------------+------------+------------+---------+------+-----+--------+--------+------------+
+|          Instance          |       Module      | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | DSP Blocks |
++----------------------------+-------------------+------------+------------+---------+------+-----+--------+--------+------------+
+| qflow_top_synth            |             (top) |       2940 |       2940 |       0 |    0 | 699 |      8 |      0 |          5 |
+|   (qflow_top_synth)        |             (top) |          0 |          0 |       0 |    0 |  36 |      0 |      0 |          0 |
+|   u_fdpe                   |              fdpe |        428 |        428 |       0 |    0 | 118 |      0 |      0 |          4 |
+|   u_pmo_ga                 |   pmo_ga_multigen |        322 |        322 |       0 |    0 | 148 |      0 |      0 |          0 |
+|     (u_pmo_ga)             |   pmo_ga_multigen |         44 |         44 |       0 |    0 |  67 |      0 |      0 |          0 |
+|     u_global_elite         |        ga_elitism |        278 |        278 |       0 |    0 |  81 |      0 |      0 |          0 |
+|       (u_global_elite)     |        ga_elitism |         74 |         74 |       0 |    0 |  81 |      0 |      0 |          0 |
+|       u_select             |         ga_select |        204 |        204 |       0 |    0 |   0 |      0 |      0 |          0 |
+|   u_prng                   |   xorshift128plus |        313 |        313 |       0 |    0 | 194 |      0 |      0 |          0 |
+|   u_skag                   |     skag_mem_bram |       1877 |       1877 |       0 |    0 | 203 |      8 |      0 |          1 |
+|     (u_skag)               |     skag_mem_bram |       1876 |       1876 |       0 |    0 | 203 |      6 |      0 |          1 |
+|     fidelity_mem_xpm       | xpm_memory_tdpram |          1 |          1 |       0 |    0 |   0 |      2 |      0 |          0 |
+|       (fidelity_mem_xpm)   | xpm_memory_tdpram |          0 |          0 |       0 |    0 |   0 |      0 |      0 |          0 |
+|       xpm_memory_base_inst |   xpm_memory_base |          1 |          1 |       0 |    0 |   0 |      2 |      0 |          0 |
++----------------------------+-------------------+------------+------------+---------+------+-----+--------+--------+------------+
+
+

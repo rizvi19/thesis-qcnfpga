@@ -1,0 +1,12 @@
+{
+  "vector_count": 8,
+  "expected_best_id": 4,
+  "observed_best_id": 4,
+  "observed_latency": 327680,
+  "observed_fidelity": 60948,
+  "observed_util": 14418,
+  "observed_child_gene": 4728,
+  "observed_mutated_gene": 4732,
+  "fail_count": 0,
+  "overall_pass": true
+}

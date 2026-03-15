@@ -1,0 +1,4 @@
+.PHONY: lint_all
+
+lint_all:
+	bash run_step8a_lint.sh

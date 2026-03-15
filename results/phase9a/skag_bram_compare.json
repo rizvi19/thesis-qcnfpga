@@ -1,0 +1,43 @@
+{
+  "baseline_skag_mem": {
+    "BRAM_total_equiv18": 0,
+    "DSP": 2
+  },
+  "optimized_skag_mem_bram": {
+    "BRAM18": 0,
+    "BRAM36": 14,
+    "BRAM_total_equiv18": 28,
+    "DSP": 2,
+    "LUT": 3884,
+    "FF": 299,
+    "LUTRAM_prims": 0
+  },
+  "memory_mapping": {
+    "block": {
+      "R": {
+        "RAMB18": 0,
+        "RAMB36": 2
+      },
+      "16": {
+        "RAMB18": 0,
+        "RAMB36": 0
+      }
+    },
+    "distributed": {}
+  },
+  "delta": {
+    "BRAM_total_equiv18": 28,
+    "DSP": 0,
+    "LUT": 3884,
+    "FF": 299,
+    "LUTRAM_prims": 0
+  },
+  "bram_inference_improved": true,
+  "edge_memory_full_bram": false,
+  "notes": [
+    "Baseline values come from Step 8B OOC summary/report for skag_mem.",
+    "Optimized values come from Step 9A OOC synthesis of skag_mem_bram.",
+    "This revision removes the stored weight RAM and recomputes GA-read weight from raw field banks.",
+    "Full success requires qber, arrival, fidelity, and key banks to infer BRAM with no raw-field bank left in LUTRAM."
+  ]
+}

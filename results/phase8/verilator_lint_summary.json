@@ -1,0 +1,13 @@
+{
+  "tool": "verilator",
+  "overall_pass": true,
+  "error_count": 0,
+  "warning_count": 2,
+  "modules_mentioned": [
+    "rtl/skag_mem.v"
+  ],
+  "notes": [
+    "Warnings should be reviewed before synthesis even if lint passes.",
+    "Multiple alternate top modules are expected at this milestone; review MULTITOP warnings in context."
+  ]
+}

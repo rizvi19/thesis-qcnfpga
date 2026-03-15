@@ -1,0 +1,19 @@
+{
+  "generation_count": 3,
+  "population_size": 8,
+  "expected_global_best_id": 38,
+  "expected_global_best_latency_q16_16": 318000,
+  "expected_global_best_fidelity_q0_16": 61550,
+  "expected_global_best_util_q0_16": 14200,
+  "expected_last_generation_child_gene16": 8278,
+  "expected_last_generation_mutated_gene16": 8275,
+  "per_generation_best_ids": [
+    4,
+    20,
+    38
+  ],
+  "notes": [
+    "Step 6C validates multi-generation request sequencing and global elitism.",
+    "The final best candidate should come from generation 2 with improved latency/fidelity/util tradeoff."
+  ]
+}

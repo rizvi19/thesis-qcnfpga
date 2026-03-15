@@ -1,0 +1,3 @@
+.PHONY: synthprep_all
+synthprep_all:
+	bash run_step8b_synthprep.sh

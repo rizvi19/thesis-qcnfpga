@@ -1,0 +1,6 @@
+issue_id,severity,source,status,description,proposed_resolution,owner
+P0-01,high,reference_model.py,open,Default random seed not yet frozen,Create a single config file with seed and experiment defaults,student
+P0-02,high,cross-document,open,Alpha coefficients are not yet frozen across math/model/RTL,Freeze coefficients in design contract and config,student
+P0-03,medium,reference_model.py,open,Docstring wording for LUT path may not fully match implementation,Standardize on linear interpolation wording,student
+P0-04,high,scope plan,open,QP-TSN can expand scope too early,Keep QP-TSN as extension until core passes,student
+P0-05,medium,evaluation,open,Pareto output contains duplicates in default experiment,Deduplicate analysis outputs before figure generation,student

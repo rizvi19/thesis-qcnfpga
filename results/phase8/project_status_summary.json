@@ -1,0 +1,17 @@
+{
+  "overall_pass": true,
+  "checks": {
+    "phase0_freeze": true,
+    "fdpe_rtl": true,
+    "skag_rtl": true,
+    "prng_randomness": true,
+    "pmo_ga_reduced": true,
+    "pmo_ga_family": true,
+    "pmo_ga_multigen": true,
+    "top_smoke": true
+  },
+  "top_smoke_best_id": 38,
+  "top_smoke_fdpe_result": 23386,
+  "top_smoke_skag_weight": 280095,
+  "next_stage_recommendation": "Proceed to synthesis-prep and lint cleanup"
+}

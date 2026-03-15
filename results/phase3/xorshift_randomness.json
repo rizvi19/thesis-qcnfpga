@@ -1,0 +1,30 @@
+{
+  "sample_count": 10000,
+  "monobit": {
+    "ones": 320530,
+    "zeros": 319470,
+    "one_ratio": 0.500828125,
+    "chi_square_1bit": 1.755625,
+    "z_score": 1.325
+  },
+  "low8_bucket": {
+    "bucket_bits": 8,
+    "bucket_count": 256,
+    "expected_per_bucket": 39.0625,
+    "chi_square": 259.9168,
+    "max_abs_bucket_deviation": 18.9375,
+    "min_bucket_count": 22,
+    "max_bucket_count": 58
+  },
+  "serial_correlation": -0.014067993572802851,
+  "sanity_gates": {
+    "pass_monobit_z_lt_4": true,
+    "pass_one_ratio_within_1pct": true,
+    "pass_serial_corr_lt_0p05": true,
+    "overall_pass": true
+  },
+  "notes": [
+    "This is a basic statistical sanity check, not a substitute for a full randomness certification suite.",
+    "Use this as the primitive-level verification artifact required by the thesis plan before PMO-GA integration."
+  ]
+}

@@ -1,0 +1,31 @@
+PYTHON ?= python
+IVERILOG ?= iverilog
+VVP ?= vvp
+
+CSV      ?= results/phase1/fdpe_golden_vectors.csv
+MEMH     ?= tb/fdpe_vectors.memh
+SIM_BIN  ?= sim/fdpe_tb.out
+SIM_CSV  ?= results/phase1/fdpe_sim_results.csv
+SIM_TXT  ?= results/phase1/fdpe_sim_summary.txt
+SIM_JSON ?= results/phase1/fdpe_sim_summary.json
+
+.PHONY: fdpe_vectors fdpe_build fdpe_run fdpe_summary fdpe_all fdpe_clean
+
+fdpe_vectors:
+	$(PYTHON) tools/fdpe_csv_to_mem.py --csv $(CSV) --out $(MEMH)
+
+fdpe_build:
+	mkdir -p sim results/phase1 tb
+	$(IVERILOG) -g2012 -o $(SIM_BIN) rtl/fdpe.v tb/tb_fdpe.v
+
+fdpe_run:
+	mkdir -p results/phase1
+	$(VVP) $(SIM_BIN) +VECTORS=$(MEMH) +LOG=$(SIM_CSV) +SUMMARY=$(SIM_TXT)
+
+fdpe_summary:
+	$(PYTHON) tools/fdpe_log_to_json.py --csv $(SIM_CSV) --out $(SIM_JSON)
+
+fdpe_all: fdpe_vectors fdpe_build fdpe_run fdpe_summary
+
+fdpe_clean:
+	rm -f $(MEMH) $(SIM_BIN) $(SIM_CSV) $(SIM_TXT) $(SIM_JSON)

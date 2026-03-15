@@ -1,0 +1,12 @@
+{
+  "entries": 256,
+  "x_max": 8.0,
+  "step": 0.03125,
+  "first_entry": 65535,
+  "last_entry": 23,
+  "max_abs_error": 0.00012760635960840094,
+  "max_abs_error_x": 0.01559922003899805,
+  "max_rel_error": 0.04577120230921138,
+  "max_rel_error_x": 7.999600019999,
+  "passes_operational_rel_error_lt_0p1pct": true
+}

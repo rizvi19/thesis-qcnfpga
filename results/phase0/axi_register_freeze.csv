@@ -1,0 +1,29 @@
+tier,offset,name,rw,reset,notes
+global,0x000,VERSION,RO,0x0100_0001,"IP version: major[31:16], minor[15:0]"
+global,0x004,CONTROL,RW,0x0000_0000,"[0]=global_enable, [1]=soft_reset, [2]=ga_start"
+global,0x008,STATUS,RO,0x0000_0000,"[0]=fdpe_ready, [1]=ga_busy, [2]=ga_done, [3]=tsn_active"
+global,0x00C,IRQ_ENABLE,RW,0x0000_0000,"[0]=route_done_irq_en, [1]=key_expire_irq_en"
+global,0x010,IRQ_STATUS,RO/W1C,0x0000_0000,Write-1-to-clear interrupt status
+global,0x014,TIMESTAMP,RO,0x0000_0000,Free-running 32-bit cycle counter
+global,0x018,SCRATCH,RW,0x0000_0000,Scratch register
+global,0x01C,N_LINKS,RO,N_LINKS,Synthesised link count
+fdpe,0x020+4i,FDPE_TAU[i],RW,implementation-set,Coherence time tau_i in clock cycles
+fdpe,0x060+4i,FDPE_FMIN[i],RW,implementation-set,"Minimum fidelity threshold, Q0.16 in [15:0]"
+fdpe,0x0A0+4i,FDPE_FINIT[i],RW,implementation-set,"Initial fidelity F_initial, Q0.16 in [15:0]"
+skag,0x100,SKAG_ALPHA1,RW,0x0000_0100,"alpha1 key scarcity, Q8.8, default 1.0"
+skag,0x104,SKAG_ALPHA2,RW,0x0000_0180,"alpha2 fidelity, Q8.8, default 1.5"
+skag,0x108,SKAG_ALPHA3,RW,0x0000_0080,"alpha3 arrival-rate term, Q8.8, default 0.5"
+skag,0x10C,SKAG_ALPHA4,RW,0x0000_0200,"alpha4 qber term, Q8.8, default 2.0"
+skag,0x110,SKAG_TOPOLOGY_CFG,RW,0x0000_0000,Freeze topology mode and test-network selection
+pmo_ga,0x200,GA_SRC_DST,RW,0x0000_0300,"[5:0]=source, [13:8]=destination"
+pmo_ga,0x204,GA_CONFIG1,RW,0x0064_403F,"encodes pop_size=64, max_gen=100, crossover_rate=0.8 (document exact bit packing in RTL header)"
+pmo_ga,0x208,GA_CONFIG2,RW,0x0002_0A0D,"encodes mutation_rate=0.05, stall_gen=10, tournament_k=2"
+pmo_ga,0x20C,GA_WEIGHTS,RW,0x0033_6666,"w1=0.4, w2=0.4, w3=0.2 in Q0.8-style packing"
+pmo_ga,0x210,GA_FMIN,RW,0x0000_E666,0.9 in Q0.16
+pmo_ga,0x214,GA_SEED,RW,0x0000_002A,Default seed = 42
+pmo_ga,0x220,GA_STATUS,RO,0x0000_0000,"[0]=busy, [1]=done, [9:2]=gen_count, [16:10]=pareto_size"
+pmo_ga,0x224,GA_BEST_PATH_0,RO,0x0000_0000,Best path bytes [3:0]
+pmo_ga,0x228,GA_BEST_PATH_1,RO,0x0000_0000,Best path bytes [7:4]
+pmo_ga,0x22C,GA_BEST_PATH_2,RO,0x0000_0000,Best path bytes [11:8]
+pmo_ga,0x230,GA_BEST_PATH_3,RO,0x0000_0000,Best path bytes [15:12]
+qp_tsn_extension,0x400+4i,GCL_ENTRY[i],RW,implementation-set,Extension path only; do not block core thesis

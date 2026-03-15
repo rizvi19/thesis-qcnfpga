@@ -1,0 +1,2 @@
+observed_best_id,observed_latency,observed_fidelity,observed_util,observed_child_gene,observed_mutated_gene,expected_best_id,expected_latency,expected_fidelity,expected_util,expected_child_gene,expected_mutated_gene,pass
+38,318000,61550,14200,0x2056,0x2053,38,318000,61550,14200,0x2056,0x2053,1

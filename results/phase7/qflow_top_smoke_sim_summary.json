@@ -1,0 +1,13 @@
+{
+  "prng_last": 211106267148357,
+  "fdpe_result": 23386,
+  "skag_edge": 28156089138282796,
+  "skag_weight": 280095,
+  "best_id": 38,
+  "best_latency": 318000,
+  "best_fidelity": 61550,
+  "best_util": 14200,
+  "child_gene": 8278,
+  "mutated_gene": 8275,
+  "overall_pass": true
+}

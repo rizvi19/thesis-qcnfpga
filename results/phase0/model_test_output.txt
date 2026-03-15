@@ -1,0 +1,53 @@
+
+[stderr]
+test_lut_accuracy (__main__.TestExpLUT.test_lut_accuracy)
+Verify LUT approximation error across the QKD-relevant range. ... ok
+test_lut_boundary (__main__.TestExpLUT.test_lut_boundary) ... ok
+test_depolarising_model (__main__.TestFidelityDecay.test_depolarising_model)
+Depolarising channel at t=t₀ → F=1.0, as t→∞ → F=0.25. ... ok
+test_exact_at_8tau (__main__.TestFidelityDecay.test_exact_at_8tau)
+Fidelity at t = t₀ + 8τ is negligible. ... ok
+test_exact_at_t0 (__main__.TestFidelityDecay.test_exact_at_t0)
+Fidelity at generation time equals F_initial. ... ok
+test_exact_at_tau (__main__.TestFidelityDecay.test_exact_at_tau)
+Fidelity at t = t₀ + τ equals F_init · e⁻¹ ≈ 0.3679·F_init. ... ok
+test_lut_close_to_exact (__main__.TestFidelityDecay.test_lut_close_to_exact)
+LUT-based computation within 0.2 % of exact for practical range. ... ok
+test_q016_clamp (__main__.TestFixedPoint.test_q016_clamp) ... ok
+test_q016_roundtrip (__main__.TestFixedPoint.test_q016_roundtrip) ... ok
+test_full_pipeline (__main__.TestIntegration.test_full_pipeline)
+Ensure full pipeline runs without error and returns valid results. ... ok
+test_ga_convergence (__main__.TestMultiObjectiveGA.test_ga_convergence)
+Convergence curve is non-increasing. ... ok
+test_ga_finds_valid_path (__main__.TestMultiObjectiveGA.test_ga_finds_valid_path)
+GA must return at least one valid path 0 → 3. ... ok
+test_ga_paths_are_3_hops (__main__.TestMultiObjectiveGA.test_ga_paths_are_3_hops)
+In a 6-node ring, optimal path from 0→3 is exactly 3 hops ... ok
+test_nsga2_ranking (__main__.TestMultiObjectiveGA.test_nsga2_ranking)
+Non-dominated sort produces correct ranking. ... ok
+test_clear_dominance (__main__.TestParetoDominance.test_clear_dominance) ... ok
+test_identical (__main__.TestParetoDominance.test_identical) ... ok
+test_non_dominance (__main__.TestParetoDominance.test_non_dominance) ... ok
+test_edge_weight_finite_after_keys (__main__.TestSKAG.test_edge_weight_finite_after_keys)
+After key generation, composite weight is finite. ... ok
+test_edge_weight_infinity_on_empty (__main__.TestSKAG.test_edge_weight_infinity_on_empty)
+Empty key pool ⇒ composite weight = ∞. ... ok
+test_effective_key_rate (__main__.TestSKAG.test_effective_key_rate)
+Effective rate decreases with distance. ... ok
+test_key_generation (__main__.TestSKAG.test_key_generation)
+Keys accumulate after generation ticks. ... ok
+test_neighbours (__main__.TestSKAG.test_neighbours)
+Node 0 connects to nodes 1 and 5. ... ok
+test_topology (__main__.TestSKAG.test_topology)
+Ring-6 has 12 directed links (6 bidirectional pairs). ... ok
+test_gcl_hot_swap (__main__.TestTSNScheduler.test_gcl_hot_swap)
+Shadow → active GCL swap changes scheduling. ... ok
+test_guard_band (__main__.TestTSNScheduler.test_guard_band)
+Guard band prevents over-size frame in small slot. ... ok
+test_quantum_priority (__main__.TestTSNScheduler.test_quantum_priority)
+Quantum packets (pri=7) are emitted before classical. ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.490s
+
+OK

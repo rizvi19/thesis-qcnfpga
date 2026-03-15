@@ -1,0 +1,26 @@
+PYTHON ?= python
+IVERILOG ?= iverilog
+VVP ?= vvp
+
+PRNG_SIM = sim/xorshift_tb.out
+PRNG_DUMP = results/phase3/xorshift_dump.txt
+PRNG_SUMMARY = results/phase3/xorshift_tb_summary.txt
+PRNG_JSON = results/phase3/xorshift_randomness.json
+
+prng_dirs:
+	mkdir -p sim results/phase3
+
+prng_build: prng_dirs
+	$(IVERILOG) -g2012 -o $(PRNG_SIM) rtl/xorshift128plus.v tb/tb_xorshift.v
+
+prng_run: prng_build
+	$(VVP) $(PRNG_SIM) +DUMP=$(PRNG_DUMP) +SUMMARY=$(PRNG_SUMMARY)
+
+prng_verify: prng_run
+	$(PYTHON) tools/verify_randomness.py --dump $(PRNG_DUMP) --out $(PRNG_JSON)
+
+prng_all: prng_verify
+	@echo "Step 5 PRNG flow complete."
+	@echo " - $(PRNG_DUMP)"
+	@echo " - $(PRNG_SUMMARY)"
+	@echo " - $(PRNG_JSON)"

@@ -1,0 +1,8 @@
+PMO-GA reduced kernel summary
+vector_count=8
+expected_best_id=4
+observed_best_id=4
+observed_latency=327680
+observed_fidelity=60948
+observed_util=14418
+fail_count=0

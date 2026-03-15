@@ -1,0 +1,318 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Sun Mar 15 00:29:57 2026
+# Process ID         : 89234
+# Current directory  : /media/shahriar-rizvi/Data/CSE/Thesis/from13March/qflow_step1_phase0
+# Command line       : vivado -mode batch -source tcl/run_skag_bram_ooc.tcl -log results/phase9a/vivado_skag_bram_ooc.log -jou results/phase9a/vivado_skag_bram_ooc.jou
+# Log file           : /media/shahriar-rizvi/Data/CSE/Thesis/from13March/qflow_step1_phase0/results/phase9a/vivado_skag_bram_ooc.log
+# Journal file       : /media/shahriar-rizvi/Data/CSE/Thesis/from13March/qflow_step1_phase0/results/phase9a/vivado_skag_bram_ooc.jou
+# Running On         : Shahriars-Unix
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 24.04.3 LTS
+# Processor Detail   : 11th Gen Intel(R) Core(TM) i7-1195G7 @ 2.90GHz
+# CPU Frequency      : 4377.145 MHz
+# CPU Physical cores : 4
+# CPU Logical cores  : 8
+# Host memory        : 16509 MB
+# Swap memory        : 4294 MB
+# Total Virtual      : 20804 MB
+# Available Virtual  : 17239 MB
+#-----------------------------------------------------------
+source tcl/run_skag_bram_ooc.tcl
+# set outdir "results/phase9a"
+# file mkdir $outdir
+# set partname "xc7a200tfbg484-1"
+# create_project skag_mem_bram_ooc $outdir/skag_mem_bram_proj -part $partname -force
+# set_property target_language Verilog [current_project]
+# read_verilog -sv rtl/skag_mem_bram.v
+# synth_design -top skag_mem_bram -part $partname -mode out_of_context
+Command: synth_design -top skag_mem_bram -part xc7a200tfbg484-1 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 89368
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1740.160 ; gain = 295.859 ; free physical = 5704 ; free virtual = 15444
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'skag_mem_bram' [/media/shahriar-rizvi/Data/CSE/Thesis/from13March/qflow_step1_phase0/rtl/skag_mem_bram.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'skag_mem_bram' (0#1) [/media/shahriar-rizvi/Data/CSE/Thesis/from13March/qflow_step1_phase0/rtl/skag_mem_bram.v:3]
+WARNING: [Synth 8-6014] Unused sequential element a_weight_dout_reg was removed.  [/media/shahriar-rizvi/Data/CSE/Thesis/from13March/qflow_step1_phase0/rtl/skag_mem_bram.v:163]
+WARNING: [Synth 8-6014] Unused sequential element new_edge_v_reg was removed.  [/media/shahriar-rizvi/Data/CSE/Thesis/from13March/qflow_step1_phase0/rtl/skag_mem_bram.v:223]
+WARNING: [Synth 8-6014] Unused sequential element new_weight_v_reg was removed.  [/media/shahriar-rizvi/Data/CSE/Thesis/from13March/qflow_step1_phase0/rtl/skag_mem_bram.v:224]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1814.098 ; gain = 369.797 ; free physical = 5696 ; free virtual = 15450
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1831.910 ; gain = 387.609 ; free physical = 5704 ; free virtual = 15457
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a200tfbg484-1
+INFO: [Device 21-403] Loading part xc7a200tfbg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1839.914 ; gain = 395.613 ; free physical = 5704 ; free virtual = 15457
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1848.820 ; gain = 404.520 ; free physical = 5701 ; free virtual = 15458
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   4 Input   42 Bit       Adders := 2     
++---Registers : 
+	               64 Bit    Registers := 5     
+	               32 Bit    Registers := 5     
+	               16 Bit    Registers := 2     
+	               12 Bit    Registers := 3     
+	                1 Bit    Registers := 7     
++---RAMs : 
+	             256K Bit	(4096 X 64 bit)          RAMs := 1     
+	             128K Bit	(4096 X 32 bit)          RAMs := 1     
++---Muxes : 
+	   2 Input   64 Bit        Muxes := 3     
+	   2 Input   32 Bit        Muxes := 7     
+	   2 Input   16 Bit        Muxes := 1     
+	   2 Input   12 Bit        Muxes := 4     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 740 (col length:100)
+BRAMs: 730 (col length: RAMB18 100 RAMB36 50)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+DSP Report: Generating DSP p_0_out, operation Mode is: A*B.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP compute_weight4, operation Mode is: A*B2.
+DSP Report: register compute_weight4 is absorbed into DSP compute_weight4.
+DSP Report: operator compute_weight4 is absorbed into DSP compute_weight4.
+WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "skag_mem_bram/edge_mem_reg",trying to implement using LUTRAM
+WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "skag_mem_bram/edge_mem_reg",trying to implement using LUTRAM
+WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "skag_mem_bram/edge_mem_reg",trying to implement using LUTRAM
+WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "skag_mem_bram/edge_mem_reg",trying to implement using LUTRAM
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2079.859 ; gain = 635.559 ; free physical = 5458 ; free virtual = 15220
+---------------------------------------------------------------------------------
+ Sort Area is  compute_weight4_0 : 0 0 : 1962 1962 : Used 1 time 0
+ Sort Area is  p_0_out_2 : 0 0 : 1946 1946 : Used 1 time 0
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping Report (see note below)
++--------------+----------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name   | RTL Object     | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++--------------+----------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|skag_mem_bram | weight_mem_reg | 4 K x 32(READ_FIRST)   | W |   | 4 K x 32(WRITE_FIRST)  |   | R | Port A and B     | 0      | 4      | 
++--------------+----------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++--------------+--------------+-----------+----------------------+-------------------+
+|Module Name   | RTL Object   | Inference | Size (Depth x Width) | Primitives        | 
++--------------+--------------+-----------+----------------------+-------------------+
+|skag_mem_bram | edge_mem_reg | Implied   | 4 K x 64             | RAM128X1D x 2048  | 
++--------------+--------------+-----------+----------------------+-------------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++--------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name   | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++--------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|skag_mem_bram | A*B         | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|skag_mem_bram | A*B2        | 16     | 16     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 0    | 
++--------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2079.859 ; gain = 635.559 ; free physical = 5461 ; free virtual = 15232
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping Report
++--------------+----------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name   | RTL Object     | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++--------------+----------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|skag_mem_bram | weight_mem_reg | 4 K x 32(READ_FIRST)   | W |   | 4 K x 32(WRITE_FIRST)  |   | R | Port A and B     | 0      | 4      | 
++--------------+----------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+
+Distributed RAM: Final Mapping Report
++--------------+--------------+-----------+----------------------+-------------------+
+|Module Name   | RTL Object   | Inference | Size (Depth x Width) | Primitives        | 
++--------------+--------------+-----------+----------------------+-------------------+
+|skag_mem_bram | edge_mem_reg | Implied   | 4 K x 64             | RAM128X1D x 2048  | 
++--------------+--------------+-----------+----------------------+-------------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance weight_mem_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance weight_mem_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance weight_mem_reg_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance weight_mem_reg_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2079.859 ; gain = 635.559 ; free physical = 5485 ; free virtual = 15255
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2164.672 ; gain = 720.371 ; free physical = 5413 ; free virtual = 15174
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2164.672 ; gain = 720.371 ; free physical = 5412 ; free virtual = 15173
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2164.672 ; gain = 720.371 ; free physical = 5401 ; free virtual = 15171
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2164.672 ; gain = 720.371 ; free physical = 5401 ; free virtual = 15171
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2168.641 ; gain = 724.340 ; free physical = 5404 ; free virtual = 15174
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2168.641 ; gain = 724.340 ; free physical = 5404 ; free virtual = 15174
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++--------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name   | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++--------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|skag_mem_bram | A*B         | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|skag_mem_bram | A*B'        | 16     | 16     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 0    | 
++--------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+----------+------+
+|      |Cell      |Count |
++------+----------+------+
+|1     |CARRY4    |   986|
+|2     |DSP48E1   |     2|
+|3     |LUT1      |   181|
+|4     |LUT2      |   569|
+|5     |LUT3      |  2992|
+|6     |LUT4      |    33|
+|7     |LUT5      |   149|
+|8     |LUT6      |  1138|
+|9     |MUXF7     |   448|
+|10    |RAM128X1D |  2048|
+|11    |RAMB36E1  |     4|
+|12    |FDCE      |   251|
+|13    |FDPE      |   128|
+|14    |FDRE      |   112|
++------+----------+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |  9041|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2168.641 ; gain = 724.340 ; free physical = 5404 ; free virtual = 15174
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 8 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2168.641 ; gain = 724.340 ; free physical = 5403 ; free virtual = 15174
+Synthesis Optimization Complete : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2168.648 ; gain = 724.340 ; free physical = 5403 ; free virtual = 15174
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.06 . Memory (MB): peak = 2186.484 ; gain = 0.000 ; free physical = 5499 ; free virtual = 15269
+INFO: [Netlist 29-17] Analyzing 3488 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'skag_mem_bram' is not ideal for floorplanning, since the cellview 'skag_mem_bram' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2371.137 ; gain = 0.000 ; free physical = 5380 ; free virtual = 15156
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 2048 instances were transformed.
+  RAM128X1D => RAM128X1D (MUXF7(x2), RAMD64E(x4)): 2048 instances
+
+Synth Design complete | Checksum: 6a5df8b7
+INFO: [Common 17-83] Releasing license: Synthesis
+18 Infos, 9 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:21 ; elapsed = 00:00:19 . Memory (MB): peak = 2371.137 ; gain = 926.840 ; free physical = 5380 ; free virtual = 15156
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1838.063; main = 1838.063; forked = 324.985
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 2997.930; main = 2371.141; forked = 918.066
+# create_clock -name clk -period 10.000 [get_ports clk]
+# report_utilization   -file $outdir/skag_mem_bram_utilization.rpt
+# report_timing_summary -file $outdir/skag_mem_bram_timing_summary.rpt
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+WARNING: [Timing 38-242] The property HD.CLK_SRC of clock port "clk" is not set. In out-of-context mode, this prevents timing estimation for clock delay/skew
+Resolution: Set the HD.CLK_SRC property of the out-of-context port to the location of the clock buffer instance in the top-level design
+report_timing_summary: Time (s): cpu = 00:00:17 ; elapsed = 00:00:08 . Memory (MB): peak = 2727.316 ; gain = 356.180 ; free physical = 5149 ; free virtual = 14945
+# close_project
+# exit
+INFO: [Common 17-206] Exiting Vivado at Sun Mar 15 00:30:28 2026...

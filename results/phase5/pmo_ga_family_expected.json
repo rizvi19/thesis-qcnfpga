@@ -1,0 +1,19 @@
+{
+  "vector_count": 8,
+  "expected_best_id": 4,
+  "expected_best_path": [
+    0,
+    5,
+    4,
+    3
+  ],
+  "expected_latency_q16_16": 327680,
+  "expected_fidelity_q0_16": 60948,
+  "expected_util_q0_16": 14418,
+  "expected_child_gene16": 4728,
+  "expected_mutated_gene16": 4732,
+  "notes": [
+    "Step 6B exercises the PMO-GA family wiring with request/stream control.",
+    "This is still a smoke-integration milestone before a full multi-generation engine."
+  ]
+}

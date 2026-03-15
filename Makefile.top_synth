@@ -1,0 +1,2 @@
+top_synth_all:
+	bash run_step9b_top_synth.sh

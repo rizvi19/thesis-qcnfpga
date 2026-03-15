@@ -1,0 +1,13 @@
+prng_samples=4
+last_rand=0x0000c00002103045
+fdpe_result=23386
+skag_edge=0x006407d05b5a012c
+skag_weight=0x0004461f
+best_id=38
+best_latency=318000
+best_fidelity=61550
+best_util=14200
+child_gene=0x2056
+mutated_gene=0x2053
+fail_count=0
+overall_pass=true

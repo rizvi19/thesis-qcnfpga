@@ -1,0 +1,54 @@
+{
+  "overall_status": "PASS",
+  "checks": [
+    {
+      "name": "unit_tests_passed",
+      "pass": true
+    },
+    {
+      "name": "tests_ran_nonzero",
+      "pass": true
+    },
+    {
+      "name": "ring6_command_ok",
+      "pass": true
+    },
+    {
+      "name": "constant_FIDELITY_BITS",
+      "pass": true
+    },
+    {
+      "name": "constant_FIDELITY_SCALE",
+      "pass": true
+    },
+    {
+      "name": "constant_WEIGHT_FRAC_BITS",
+      "pass": true
+    },
+    {
+      "name": "constant_WEIGHT_SCALE",
+      "pass": true
+    },
+    {
+      "name": "constant_LUT_ENTRIES",
+      "pass": true
+    },
+    {
+      "name": "constant_LUT_X_MAX",
+      "pass": true
+    },
+    {
+      "name": "constant_INF_WEIGHT",
+      "pass": true
+    },
+    {
+      "name": "lut_rel_error_below_0p1pct",
+      "pass": true
+    },
+    {
+      "name": "lut_first_entry_full_scale",
+      "pass": true
+    }
+  ],
+  "next_step": "FDPE arithmetic artifacts and golden vector generation"
+}

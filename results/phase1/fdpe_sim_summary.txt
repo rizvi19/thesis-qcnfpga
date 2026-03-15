@@ -1,0 +1,6 @@
+FDPE simulation summary
+vector_count=69
+pass_count=69
+fail_count=0
+max_abs_diff_lsb=2
+tolerance_lsb=2

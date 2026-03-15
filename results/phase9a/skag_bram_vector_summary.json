@@ -1,0 +1,21 @@
+{
+  "vector_count": 26,
+  "alpha_q8_8": {
+    "alpha1": 256,
+    "alpha2": 384,
+    "alpha3": 128,
+    "alpha4": 512
+  },
+  "addresses_touched": [
+    3,
+    5,
+    7,
+    9,
+    11
+  ],
+  "notes": [
+    "Behavioral contract intentionally matches the validated baseline SKAG model.",
+    "Optimized module removes memory reset loops and adds block-RAM style attributes.",
+    "OOC synthesis uses the module defaults ADDR_W=12 DEPTH=4096 to encourage BRAM inference."
+  ]
+}

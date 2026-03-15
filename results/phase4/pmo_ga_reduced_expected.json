@@ -1,0 +1,17 @@
+{
+  "vector_count": 8,
+  "expected_best_id": 4,
+  "expected_best_path": [
+    0,
+    5,
+    4,
+    3
+  ],
+  "expected_latency_q16_16": 327680,
+  "expected_fidelity_q0_16": 60948,
+  "expected_util_q0_16": 14418,
+  "notes": [
+    "Reduced but correct PMO-GA comparator/elitism milestone.",
+    "This step validates the PMO-GA selection kernel before the larger pipelined engine."
+  ]
+}

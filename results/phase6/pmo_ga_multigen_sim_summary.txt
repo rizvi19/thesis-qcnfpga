@@ -1,0 +1,11 @@
+generation_count=3
+vector_count=24
+expected_best_id=38
+observed_best_id=38
+observed_latency=318000
+observed_fidelity=61550
+observed_util=14200
+observed_child_gene=0x2056
+observed_mutated_gene=0x2053
+fail_count=0
+overall_pass=true

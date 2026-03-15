@@ -1,0 +1,18 @@
+PYTHON ?= python
+IVERILOG ?= iverilog
+VVP ?= vvp
+
+RTL = rtl/ga_pareto_cmp.v rtl/ga_select.v rtl/ga_elitism.v rtl/ga_init.v rtl/ga_fitness.v rtl/ga_crossover.v rtl/ga_mutate.v rtl/ga_controller.v rtl/pmo_ga_family.v
+TB  = tb/tb_pmo_ga_family.v
+
+.PHONY: pmo_ga_family_all clean
+
+pmo_ga_family_all:
+	mkdir -p sim results/phase5 tb
+	$(PYTHON) tools/generate_pmo_ga_family_vectors.py --out-dir results/phase5 --tb-dir tb
+	$(IVERILOG) -g2012 -o sim/pmo_ga_family_tb.out $(RTL) $(TB)
+	$(VVP) sim/pmo_ga_family_tb.out +VECTORS=tb/pmo_ga_family_vectors.memh +LOG=results/phase5/pmo_ga_family_sim_results.csv +SUMMARY=results/phase5/pmo_ga_family_sim_summary.txt
+	$(PYTHON) tools/pmo_ga_family_log_to_json.py --summary results/phase5/pmo_ga_family_sim_summary.txt --out results/phase5/pmo_ga_family_sim_summary.json
+
+clean:
+	rm -f sim/pmo_ga_family_tb.out tb/pmo_ga_family_vectors.memh

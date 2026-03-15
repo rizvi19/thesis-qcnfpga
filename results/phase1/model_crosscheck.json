@@ -1,0 +1,8 @@
+{
+  "matches_model_lut_entries": true,
+  "max_entry_delta_vs_model": 0,
+  "fdpe_vector_crosscheck": {
+    "vector_count": 69,
+    "max_abs_error": 0.0003253987490654
+  }
+}

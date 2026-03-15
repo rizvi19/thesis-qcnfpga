@@ -1,0 +1,8 @@
+--- a/reference_model.py
++++ b/reference_model.py
+@@
+-        2. Compute index = floor(x * 256 / 8) = floor(x * 32).
+-        3. Return LUT[index] (nearest-neighbour; linear interp optional).
++        2. Compute index = floor(x * 256 / 8) = floor(x * 32).
++        3. Perform piecewise-linear interpolation between LUT[index]
++           and LUT[index+1] when index < LUT_ENTRIES - 1.

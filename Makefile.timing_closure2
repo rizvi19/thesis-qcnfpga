@@ -1,0 +1,2 @@
+tc2_all:
+	bash run_step9d_timing_closure2.sh

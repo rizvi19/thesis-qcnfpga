@@ -1,0 +1,2 @@
+skag_bram_all:
+	./run_step9a_skag_bram.sh

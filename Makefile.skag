@@ -1,0 +1,29 @@
+PYTHON ?= python
+IVERILOG ?= iverilog
+VVP ?= vvp
+
+SKAG_SIM = sim/skag_tb.out
+SKAG_VECTORS = tb/skag_vectors.memh
+SKAG_LOG = results/phase2/skag_sim_results.csv
+SKAG_SUMMARY_TXT = results/phase2/skag_sim_summary.txt
+SKAG_SUMMARY_JSON = results/phase2/skag_sim_summary.json
+
+.PHONY: skag_all skag_vectors skag_compile skag_run skag_clean
+
+skag_all: skag_vectors skag_compile skag_run
+
+skag_vectors:
+	mkdir -p results/phase2 tb sim
+	$(PYTHON) tools/generate_skag_vectors.py --out-dir results/phase2 --tb-dir tb
+
+skag_compile:
+	mkdir -p sim
+	$(IVERILOG) -g2012 -o $(SKAG_SIM) rtl/skag_mem.v tb/tb_skag.v
+
+skag_run:
+	mkdir -p results/phase2
+	$(VVP) $(SKAG_SIM) +VECTORS=$(SKAG_VECTORS) +LOG=$(SKAG_LOG) +SUMMARY=$(SKAG_SUMMARY_TXT)
+	$(PYTHON) tools/skag_log_to_json.py --csv $(SKAG_LOG) --out $(SKAG_SUMMARY_JSON)
+
+skag_clean:
+	rm -f $(SKAG_SIM) $(SKAG_VECTORS) $(SKAG_LOG) $(SKAG_SUMMARY_TXT) $(SKAG_SUMMARY_JSON)

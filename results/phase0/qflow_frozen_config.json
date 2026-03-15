@@ -1,0 +1,93 @@
+{
+  "project": "QFlow",
+  "freeze_version": "phase0_contract_v1",
+  "scope": {
+    "mandatory_core": [
+      "FDPE",
+      "SKAG",
+      "PMO-GA",
+      "top-level wrapper",
+      "software comparison",
+      "synthesis/error analysis"
+    ],
+    "recommended_extension": [
+      "QP-TSN"
+    ],
+    "stretch": [
+      "larger-node scaling",
+      "DRL baseline",
+      "on-board live demo",
+      "dynamic reconfiguration"
+    ]
+  },
+  "target_fpga": {
+    "family": "Xilinx Artix-7",
+    "device": "XC7A200T-1FBG484",
+    "target_fmax_mhz": 200,
+    "fallback_fmax_mhz": 100
+  },
+  "arithmetic": {
+    "fidelity_format": "Q0.16 unsigned with saturation 0..65535",
+    "weight_format": "Q16.16 unsigned",
+    "qber_input_format": "Q0.8 unsigned",
+    "arrival_rate_format": "Q8.8 unsigned",
+    "timestamp_format": "UINT32",
+    "node_id_format": "UINT8",
+    "alpha_format": "Q8.8 unsigned",
+    "infinity_sentinel_hex": "0xFFFF_FFFF"
+  },
+  "fdpe": {
+    "lut_entries": 256,
+    "lut_domain": "x in [0, 8) with step 1/32",
+    "lut_endpoint_behavior": "x >= 8 returns 0",
+    "lut_interpolation": "piecewise-linear",
+    "pipeline_cycles": 3,
+    "clock_period_ns_at_200mhz": 5.0
+  },
+  "skag": {
+    "edge_entry_packing": {
+      "63_48": "qber (Q0.16 in memory contract)",
+      "47_32": "arrival_rate (Q8.8 stored in 16 bits)",
+      "31_16": "avg_fidelity (Q0.16)",
+      "15_0": "key_count (UINT16)"
+    }
+  },
+  "ring6_default": {
+    "seed": 42,
+    "sim_duration_s": 0.5,
+    "tick_dt_s": 0.001,
+    "src": 0,
+    "dst": 3,
+    "f_min": 0.9,
+    "base_key_rate": 5000.0,
+    "coherence_time_s": 0.05,
+    "qber": 0.03,
+    "link_distance_km": 25.0,
+    "alpha_coefficients": {
+      "alpha1_key_scarcity": 1.0,
+      "alpha2_fidelity": 1.5,
+      "alpha3_arrival_rate": 0.5,
+      "alpha4_qber": 2.0
+    }
+  },
+  "ga_default": {
+    "pop_size": 64,
+    "max_generations": 100,
+    "crossover_rate": 0.8,
+    "mutation_rate": 0.05,
+    "tournament_k": 2,
+    "elite_count": 4,
+    "max_hops": 6,
+    "stall_gens": 10,
+    "stall_epsilon": 1e-06,
+    "obj_weights": {
+      "w1_latency": 0.4,
+      "w2_fidelity": 0.4,
+      "w3_balance": 0.2
+    }
+  },
+  "wording_fixes": {
+    "python_model_claim": "Use 'verification anchor' or 'timing-oriented golden reference model' instead of claiming proven cycle accuracy.",
+    "lut_docstring": "Document LUT behavior as piecewise-linear interpolation everywhere."
+  }
+}

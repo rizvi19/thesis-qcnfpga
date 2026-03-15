@@ -1,0 +1,22 @@
+{
+  "vector_count": 26,
+  "alpha_q8_8": {
+    "alpha1": 256,
+    "alpha2": 384,
+    "alpha3": 128,
+    "alpha4": 512
+  },
+  "addresses_touched": [
+    3,
+    5,
+    7,
+    9,
+    11
+  ],
+  "notes": [
+    "Port A FDPE update uses 3-cycle pipeline.",
+    "Port B GA read has 1-cycle latency.",
+    "Same-address GA read during active FDPE update is stalled/dropped (FDPE wins).",
+    "Weight contract: Q16.16 unsigned with global infinity sentinel 0xFFFFFFFF."
+  ]
+}

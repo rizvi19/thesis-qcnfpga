@@ -1,0 +1,9 @@
+{
+  "experiment_command_ok": true,
+  "best_path": "[0, 5, 4, 3]",
+  "best_latency": "5.460344",
+  "best_fidelity": "0.928396",
+  "best_balance": "0.000000",
+  "pareto_front_size": "64",
+  "convergence_steps": "11"
+}

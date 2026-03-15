@@ -1,0 +1,30 @@
+PYTHON ?= python
+IVERILOG ?= iverilog
+VVP ?= vvp
+
+TOP_OUT := sim/qflow_top_smoke_tb.out
+
+top_smoke_gen:
+	$(PYTHON) tools/generate_top_smoke_vectors.py --out-dir results/phase7 --tb-dir tb
+
+top_smoke_build:
+	$(IVERILOG) -g2012 -o $(TOP_OUT) \
+		rtl/fdpe.v \
+		rtl/skag_mem.v \
+		rtl/xorshift128plus.v \
+		rtl/ga_pareto_cmp.v \
+		rtl/ga_select.v \
+		rtl/ga_elitism.v \
+		rtl/ga_crossover.v \
+		rtl/ga_mutate.v \
+		rtl/pmo_ga_multigen.v \
+		rtl/qflow_top_smoke.v \
+		tb/tb_qflow_top_smoke.v
+
+top_smoke_run:
+	$(VVP) $(TOP_OUT) +VECTORS=tb/qflow_top_candidates.memh +LOG=results/phase7/qflow_top_smoke_sim_results.csv +SUMMARY=results/phase7/qflow_top_smoke_sim_summary.txt
+
+top_smoke_summary:
+	$(PYTHON) tools/qflow_top_log_to_json.py --csv results/phase7/qflow_top_smoke_sim_results.csv --out results/phase7/qflow_top_smoke_sim_summary.json
+
+top_smoke_all: top_smoke_gen top_smoke_build top_smoke_run top_smoke_summary

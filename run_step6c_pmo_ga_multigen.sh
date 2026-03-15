@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+mkdir -p results/phase6 sim tb
+python tools/generate_pmo_ga_multigen_vectors.py --out-dir results/phase6 --tb-dir tb
+iverilog -g2012 -o sim/pmo_ga_multigen_tb.out   rtl/ga_pareto_cmp.v rtl/ga_select.v rtl/ga_elitism.v rtl/ga_crossover.v rtl/ga_mutate.v rtl/pmo_ga_multigen.v tb/tb_pmo_ga_multigen.v
+vvp sim/pmo_ga_multigen_tb.out   +VECTORS=tb/pmo_ga_multigen_vectors.memh   +LOG=results/phase6/pmo_ga_multigen_sim_results.csv   +SUMMARY=results/phase6/pmo_ga_multigen_sim_summary.txt
+python tools/pmo_ga_multigen_log_to_json.py --summary results/phase6/pmo_ga_multigen_sim_summary.txt --out results/phase6/pmo_ga_multigen_sim_summary.json
+printf 'Step 6C PMO-GA multigen flow complete.
+'
+printf ' - results/phase6/pmo_ga_multigen_candidates.csv
+'
+printf ' - results/phase6/pmo_ga_multigen_expected.json
+'
+printf ' - results/phase6/pmo_ga_multigen_sim_results.csv
+'
+printf ' - results/phase6/pmo_ga_multigen_sim_summary.txt
+'
+printf ' - results/phase6/pmo_ga_multigen_sim_summary.json
+'

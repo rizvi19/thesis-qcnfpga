@@ -1,0 +1,11 @@
+%Warning-BLKSEQ: rtl/skag_mem.v:83:31: Blocking assignment '=' in sequential logic process
+                                     : ... Suggest using delayed assignment '<='
+   83 |                 edge_mem[i]   = 64'd0;
+      |                               ^
+                 ... For warning description see https://verilator.org/warn/BLKSEQ?v=5.020
+                 ... Use "/* verilator lint_off BLKSEQ */" and lint_on around source to disable this message.
+%Warning-BLKSEQ: rtl/skag_mem.v:84:31: Blocking assignment '=' in sequential logic process
+                                     : ... Suggest using delayed assignment '<='
+   84 |                 weight_mem[i] = INF_WEIGHT;
+      |                               ^
+%Error: Exiting due to 2 warning(s)

@@ -1,0 +1,28 @@
+{
+  "model_file": "/media/shahriar-rizvi/Data/CSE/Thesis/from13March/qflow_step1_phase0/reference_model.py",
+  "tests": {
+    "return_code": 0,
+    "passed": true,
+    "tests_ran": 26
+  },
+  "constants": {
+    "FIDELITY_BITS": 16,
+    "FIDELITY_SCALE": 65535,
+    "WEIGHT_FRAC_BITS": 16,
+    "WEIGHT_SCALE": 65536,
+    "LUT_ENTRIES": 256,
+    "LUT_X_MAX": 8.0,
+    "INF_WEIGHT": 4294967295
+  },
+  "lut_validation": {
+    "max_abs_error": 7.602303880457906e-06,
+    "max_rel_error": 0.00011526125605395905,
+    "max_error_x": 2.71875,
+    "first_entry": 65535,
+    "last_entry": 23
+  },
+  "notes": [
+    "This audit is intended for Phase 0 consistency freeze, not final publication reporting.",
+    "Use the saved outputs as the first reproducibility artifacts in the thesis repository."
+  ]
+}

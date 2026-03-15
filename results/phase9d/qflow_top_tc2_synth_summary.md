@@ -1,0 +1,16 @@
+# QFlow Top-Level Timing-Closure Summary
+
+## Utilization
+
+## Timing
+- WNS_ns: -71.939
+- TNS_ns: -2482.856
+- Requirement_ns: 10.0
+- Data_path_delay_ns: 81.788
+- Worst_source: u_skag/fdpe_s0_fidelity_reg[0]/C
+- Worst_destination: u_skag/fdpe_s1_new_weight_reg[0]/D
+- approx_Fmax_MHz: 12.227
+
+## Notes
+- Step 9D timing-closure build precomputes static weight terms and stores GA-read weight in BRAM.
+- Critical-path reduction is targeted at the u_skag FDPE-update weight generation path.
