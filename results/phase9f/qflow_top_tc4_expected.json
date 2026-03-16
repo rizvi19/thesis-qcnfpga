@@ -1,0 +1,34 @@
+{
+  "integration_stage": "step9e_top_tc4_smoke",
+  "seeds": {
+    "seed0": 1,
+    "seed1": 2
+  },
+  "fdpe_case": {
+    "x_q4_13": 8192,
+    "f_init_q0_16": 63569,
+    "expected_nominal_result_q0_16": 23385,
+    "allowed_abs_diff_lsb": 2
+  },
+  "skag_init_edge": {
+    "qber": 100,
+    "arrival_rate": 2000,
+    "fidelity": 63569,
+    "key_count": 300
+  },
+  "expected_best_id": 38,
+  "expected_best_latency_q16_16": 318000,
+  "expected_best_fidelity_q0_16": 61550,
+  "expected_best_util_q0_16": 14200,
+  "expected_child_gene16": 8278,
+  "expected_mutated_gene16": 8275,
+  "per_generation_best_ids": [
+    4,
+    20,
+    38
+  ],
+  "notes": [
+    "Step 9F smoke test validates the timing-closure-4 top using the iterative-divider SKAG FDPE update pipeline.",
+    "Candidate stream remains deterministic for controlled integration checking."
+  ]
+}

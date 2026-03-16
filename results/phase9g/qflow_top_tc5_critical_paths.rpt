@@ -1,0 +1,764 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
+| Date         : Sun Mar 15 22:41:44 2026
+| Host         : Shahriars-Unix running 64-bit Ubuntu 24.04.3 LTS
+| Command      : report_timing -delay_type max -max_paths 10 -sort_by group -file results/phase9g/qflow_top_tc5_critical_paths.rpt
+| Design       : qflow_top_tc5
+| Device       : 7a200t-fbg484
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (MET) :             0.033ns  (required time - arrival time)
+  Source:                 u_fdpe/s1_y0_reg[6]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            u_fdpe/s2_decay_reg[14]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        9.815ns  (logic 7.302ns (74.393%)  route 2.513ns (25.607%))
+  Logic Levels:           7  (CARRY4=4 DSP48E1=1 LUT4=2)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.100ns = ( 12.100 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.424ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.944     0.944 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.800     1.744    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.840 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.584     2.424    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s1_y0_reg[6]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.902 r  u_fdpe/s1_y0_reg[6]/Q
+                         net (fo=5, unplaced)         0.800     3.701    u_fdpe/s1_y0[6]
+                         DSP48E1 (Prop_dsp48e1_A[6]_P[9])
+                                                      5.376     9.077 r  u_fdpe/s2_interp_w2/P[9]
+                         net (fo=1, unplaced)         0.800     9.877    u_fdpe/s2_interp_w2_n_96
+                         LUT4 (Prop_lut4_I2_O)        0.124    10.001 r  u_fdpe/s2_decay[3]_i_5/O
+                         net (fo=1, unplaced)         0.000    10.001    u_fdpe/s2_decay[3]_i_5_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    10.534 r  u_fdpe/s2_decay_reg[3]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.009    10.543    u_fdpe/s2_decay_reg[3]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.660 r  u_fdpe/s2_decay_reg[7]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.660    u_fdpe/s2_decay_reg[7]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.777 r  u_fdpe/s2_decay_reg[11]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.777    u_fdpe/s2_decay_reg[11]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256    11.033 r  u_fdpe/s2_decay_reg[15]_i_3/O[2]
+                         net (fo=1, unplaced)         0.905    11.938    u_fdpe/s2_decay_reg[15]_i_3_n_5
+                         LUT4 (Prop_lut4_I2_O)        0.301    12.239 r  u_fdpe/s2_decay[14]_i_1/O
+                         net (fo=1, unplaced)         0.000    12.239    u_fdpe/s2_decay[14]_i_1_n_0
+                         FDCE                                         r  u_fdpe/s2_decay_reg[14]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                                                      0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.811    10.811 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    11.570    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.661 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.439    12.100    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s2_decay_reg[14]/C
+                         clock pessimism              0.178    12.279    
+                         clock uncertainty           -0.035    12.243    
+                         FDCE (Setup_fdce_C_D)        0.029    12.272    u_fdpe/s2_decay_reg[14]
+  -------------------------------------------------------------------
+                         required time                         12.272    
+                         arrival time                         -12.239    
+  -------------------------------------------------------------------
+                         slack                                  0.033    
+
+Slack (MET) :             0.044ns  (required time - arrival time)
+  Source:                 u_fdpe/s1_y0_reg[6]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            u_fdpe/s2_decay_reg[11]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        9.804ns  (logic 7.531ns (76.812%)  route 2.273ns (23.188%))
+  Logic Levels:           8  (CARRY4=5 DSP48E1=1 LUT4=2)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.100ns = ( 12.100 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.424ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.944     0.944 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.800     1.744    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.840 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.584     2.424    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s1_y0_reg[6]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.902 r  u_fdpe/s1_y0_reg[6]/Q
+                         net (fo=5, unplaced)         0.800     3.701    u_fdpe/s1_y0[6]
+                         DSP48E1 (Prop_dsp48e1_A[6]_P[9])
+                                                      5.376     9.077 r  u_fdpe/s2_interp_w2/P[9]
+                         net (fo=1, unplaced)         0.800     9.877    u_fdpe/s2_interp_w2_n_96
+                         LUT4 (Prop_lut4_I2_O)        0.124    10.001 r  u_fdpe/s2_decay[3]_i_5/O
+                         net (fo=1, unplaced)         0.000    10.001    u_fdpe/s2_decay[3]_i_5_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    10.534 r  u_fdpe/s2_decay_reg[3]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.009    10.543    u_fdpe/s2_decay_reg[3]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.660 r  u_fdpe/s2_decay_reg[7]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.660    u_fdpe/s2_decay_reg[7]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.777 r  u_fdpe/s2_decay_reg[11]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.777    u_fdpe/s2_decay_reg[11]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.894 r  u_fdpe/s2_decay_reg[15]_i_3/CO[3]
+                         net (fo=1, unplaced)         0.000    10.894    u_fdpe/s2_decay_reg[15]_i_3_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    11.231 f  u_fdpe/s2_decay_reg[15]_i_2/O[1]
+                         net (fo=16, unplaced)        0.665    11.896    u_fdpe/s2_decay_reg[15]_i_2_n_6
+                         LUT4 (Prop_lut4_I0_O)        0.332    12.228 r  u_fdpe/s2_decay[11]_i_1/O
+                         net (fo=1, unplaced)         0.000    12.228    u_fdpe/s2_decay[11]_i_1_n_0
+                         FDCE                                         r  u_fdpe/s2_decay_reg[11]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                                                      0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.811    10.811 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    11.570    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.661 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.439    12.100    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s2_decay_reg[11]/C
+                         clock pessimism              0.178    12.279    
+                         clock uncertainty           -0.035    12.243    
+                         FDCE (Setup_fdce_C_D)        0.029    12.272    u_fdpe/s2_decay_reg[11]
+  -------------------------------------------------------------------
+                         required time                         12.272    
+                         arrival time                         -12.228    
+  -------------------------------------------------------------------
+                         slack                                  0.044    
+
+Slack (MET) :             0.044ns  (required time - arrival time)
+  Source:                 u_fdpe/s1_y0_reg[6]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            u_fdpe/s2_decay_reg[13]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        9.804ns  (logic 7.531ns (76.812%)  route 2.273ns (23.188%))
+  Logic Levels:           8  (CARRY4=5 DSP48E1=1 LUT4=2)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.100ns = ( 12.100 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.424ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.944     0.944 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.800     1.744    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.840 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.584     2.424    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s1_y0_reg[6]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.902 r  u_fdpe/s1_y0_reg[6]/Q
+                         net (fo=5, unplaced)         0.800     3.701    u_fdpe/s1_y0[6]
+                         DSP48E1 (Prop_dsp48e1_A[6]_P[9])
+                                                      5.376     9.077 r  u_fdpe/s2_interp_w2/P[9]
+                         net (fo=1, unplaced)         0.800     9.877    u_fdpe/s2_interp_w2_n_96
+                         LUT4 (Prop_lut4_I2_O)        0.124    10.001 r  u_fdpe/s2_decay[3]_i_5/O
+                         net (fo=1, unplaced)         0.000    10.001    u_fdpe/s2_decay[3]_i_5_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    10.534 r  u_fdpe/s2_decay_reg[3]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.009    10.543    u_fdpe/s2_decay_reg[3]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.660 r  u_fdpe/s2_decay_reg[7]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.660    u_fdpe/s2_decay_reg[7]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.777 r  u_fdpe/s2_decay_reg[11]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.777    u_fdpe/s2_decay_reg[11]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.894 r  u_fdpe/s2_decay_reg[15]_i_3/CO[3]
+                         net (fo=1, unplaced)         0.000    10.894    u_fdpe/s2_decay_reg[15]_i_3_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    11.231 f  u_fdpe/s2_decay_reg[15]_i_2/O[1]
+                         net (fo=16, unplaced)        0.665    11.896    u_fdpe/s2_decay_reg[15]_i_2_n_6
+                         LUT4 (Prop_lut4_I0_O)        0.332    12.228 r  u_fdpe/s2_decay[13]_i_1/O
+                         net (fo=1, unplaced)         0.000    12.228    u_fdpe/s2_decay[13]_i_1_n_0
+                         FDCE                                         r  u_fdpe/s2_decay_reg[13]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                                                      0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.811    10.811 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    11.570    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.661 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.439    12.100    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s2_decay_reg[13]/C
+                         clock pessimism              0.178    12.279    
+                         clock uncertainty           -0.035    12.243    
+                         FDCE (Setup_fdce_C_D)        0.029    12.272    u_fdpe/s2_decay_reg[13]
+  -------------------------------------------------------------------
+                         required time                         12.272    
+                         arrival time                         -12.228    
+  -------------------------------------------------------------------
+                         slack                                  0.044    
+
+Slack (MET) :             0.044ns  (required time - arrival time)
+  Source:                 u_fdpe/s1_y0_reg[6]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            u_fdpe/s2_decay_reg[15]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        9.804ns  (logic 7.531ns (76.812%)  route 2.273ns (23.188%))
+  Logic Levels:           8  (CARRY4=5 DSP48E1=1 LUT4=2)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.100ns = ( 12.100 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.424ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.944     0.944 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.800     1.744    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.840 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.584     2.424    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s1_y0_reg[6]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.902 r  u_fdpe/s1_y0_reg[6]/Q
+                         net (fo=5, unplaced)         0.800     3.701    u_fdpe/s1_y0[6]
+                         DSP48E1 (Prop_dsp48e1_A[6]_P[9])
+                                                      5.376     9.077 r  u_fdpe/s2_interp_w2/P[9]
+                         net (fo=1, unplaced)         0.800     9.877    u_fdpe/s2_interp_w2_n_96
+                         LUT4 (Prop_lut4_I2_O)        0.124    10.001 r  u_fdpe/s2_decay[3]_i_5/O
+                         net (fo=1, unplaced)         0.000    10.001    u_fdpe/s2_decay[3]_i_5_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    10.534 r  u_fdpe/s2_decay_reg[3]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.009    10.543    u_fdpe/s2_decay_reg[3]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.660 r  u_fdpe/s2_decay_reg[7]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.660    u_fdpe/s2_decay_reg[7]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.777 r  u_fdpe/s2_decay_reg[11]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.777    u_fdpe/s2_decay_reg[11]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.894 r  u_fdpe/s2_decay_reg[15]_i_3/CO[3]
+                         net (fo=1, unplaced)         0.000    10.894    u_fdpe/s2_decay_reg[15]_i_3_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    11.231 f  u_fdpe/s2_decay_reg[15]_i_2/O[1]
+                         net (fo=16, unplaced)        0.665    11.896    u_fdpe/s2_decay_reg[15]_i_2_n_6
+                         LUT4 (Prop_lut4_I0_O)        0.332    12.228 r  u_fdpe/s2_decay[15]_i_1/O
+                         net (fo=1, unplaced)         0.000    12.228    u_fdpe/s2_decay[15]_i_1_n_0
+                         FDCE                                         r  u_fdpe/s2_decay_reg[15]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                                                      0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.811    10.811 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    11.570    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.661 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.439    12.100    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s2_decay_reg[15]/C
+                         clock pessimism              0.178    12.279    
+                         clock uncertainty           -0.035    12.243    
+                         FDCE (Setup_fdce_C_D)        0.029    12.272    u_fdpe/s2_decay_reg[15]
+  -------------------------------------------------------------------
+                         required time                         12.272    
+                         arrival time                         -12.228    
+  -------------------------------------------------------------------
+                         slack                                  0.044    
+
+Slack (MET) :             0.044ns  (required time - arrival time)
+  Source:                 u_fdpe/s1_y0_reg[6]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            u_fdpe/s2_decay_reg[1]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        9.804ns  (logic 7.531ns (76.812%)  route 2.273ns (23.188%))
+  Logic Levels:           8  (CARRY4=5 DSP48E1=1 LUT4=2)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.100ns = ( 12.100 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.424ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.944     0.944 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.800     1.744    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.840 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.584     2.424    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s1_y0_reg[6]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.902 r  u_fdpe/s1_y0_reg[6]/Q
+                         net (fo=5, unplaced)         0.800     3.701    u_fdpe/s1_y0[6]
+                         DSP48E1 (Prop_dsp48e1_A[6]_P[9])
+                                                      5.376     9.077 r  u_fdpe/s2_interp_w2/P[9]
+                         net (fo=1, unplaced)         0.800     9.877    u_fdpe/s2_interp_w2_n_96
+                         LUT4 (Prop_lut4_I2_O)        0.124    10.001 r  u_fdpe/s2_decay[3]_i_5/O
+                         net (fo=1, unplaced)         0.000    10.001    u_fdpe/s2_decay[3]_i_5_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    10.534 r  u_fdpe/s2_decay_reg[3]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.009    10.543    u_fdpe/s2_decay_reg[3]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.660 r  u_fdpe/s2_decay_reg[7]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.660    u_fdpe/s2_decay_reg[7]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.777 r  u_fdpe/s2_decay_reg[11]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.777    u_fdpe/s2_decay_reg[11]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.894 r  u_fdpe/s2_decay_reg[15]_i_3/CO[3]
+                         net (fo=1, unplaced)         0.000    10.894    u_fdpe/s2_decay_reg[15]_i_3_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    11.231 f  u_fdpe/s2_decay_reg[15]_i_2/O[1]
+                         net (fo=16, unplaced)        0.665    11.896    u_fdpe/s2_decay_reg[15]_i_2_n_6
+                         LUT4 (Prop_lut4_I0_O)        0.332    12.228 r  u_fdpe/s2_decay[1]_i_1/O
+                         net (fo=1, unplaced)         0.000    12.228    u_fdpe/s2_decay[1]_i_1_n_0
+                         FDCE                                         r  u_fdpe/s2_decay_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                                                      0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.811    10.811 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    11.570    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.661 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.439    12.100    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s2_decay_reg[1]/C
+                         clock pessimism              0.178    12.279    
+                         clock uncertainty           -0.035    12.243    
+                         FDCE (Setup_fdce_C_D)        0.029    12.272    u_fdpe/s2_decay_reg[1]
+  -------------------------------------------------------------------
+                         required time                         12.272    
+                         arrival time                         -12.228    
+  -------------------------------------------------------------------
+                         slack                                  0.044    
+
+Slack (MET) :             0.044ns  (required time - arrival time)
+  Source:                 u_fdpe/s1_y0_reg[6]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            u_fdpe/s2_decay_reg[3]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        9.804ns  (logic 7.531ns (76.812%)  route 2.273ns (23.188%))
+  Logic Levels:           8  (CARRY4=5 DSP48E1=1 LUT4=2)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.100ns = ( 12.100 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.424ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.944     0.944 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.800     1.744    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.840 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.584     2.424    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s1_y0_reg[6]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.902 r  u_fdpe/s1_y0_reg[6]/Q
+                         net (fo=5, unplaced)         0.800     3.701    u_fdpe/s1_y0[6]
+                         DSP48E1 (Prop_dsp48e1_A[6]_P[9])
+                                                      5.376     9.077 r  u_fdpe/s2_interp_w2/P[9]
+                         net (fo=1, unplaced)         0.800     9.877    u_fdpe/s2_interp_w2_n_96
+                         LUT4 (Prop_lut4_I2_O)        0.124    10.001 r  u_fdpe/s2_decay[3]_i_5/O
+                         net (fo=1, unplaced)         0.000    10.001    u_fdpe/s2_decay[3]_i_5_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    10.534 r  u_fdpe/s2_decay_reg[3]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.009    10.543    u_fdpe/s2_decay_reg[3]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.660 r  u_fdpe/s2_decay_reg[7]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.660    u_fdpe/s2_decay_reg[7]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.777 r  u_fdpe/s2_decay_reg[11]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.777    u_fdpe/s2_decay_reg[11]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.894 r  u_fdpe/s2_decay_reg[15]_i_3/CO[3]
+                         net (fo=1, unplaced)         0.000    10.894    u_fdpe/s2_decay_reg[15]_i_3_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    11.231 f  u_fdpe/s2_decay_reg[15]_i_2/O[1]
+                         net (fo=16, unplaced)        0.665    11.896    u_fdpe/s2_decay_reg[15]_i_2_n_6
+                         LUT4 (Prop_lut4_I0_O)        0.332    12.228 r  u_fdpe/s2_decay[3]_i_1/O
+                         net (fo=1, unplaced)         0.000    12.228    u_fdpe/s2_decay[3]_i_1_n_0
+                         FDCE                                         r  u_fdpe/s2_decay_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                                                      0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.811    10.811 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    11.570    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.661 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.439    12.100    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s2_decay_reg[3]/C
+                         clock pessimism              0.178    12.279    
+                         clock uncertainty           -0.035    12.243    
+                         FDCE (Setup_fdce_C_D)        0.029    12.272    u_fdpe/s2_decay_reg[3]
+  -------------------------------------------------------------------
+                         required time                         12.272    
+                         arrival time                         -12.228    
+  -------------------------------------------------------------------
+                         slack                                  0.044    
+
+Slack (MET) :             0.044ns  (required time - arrival time)
+  Source:                 u_fdpe/s1_y0_reg[6]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            u_fdpe/s2_decay_reg[5]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        9.804ns  (logic 7.531ns (76.812%)  route 2.273ns (23.188%))
+  Logic Levels:           8  (CARRY4=5 DSP48E1=1 LUT4=2)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.100ns = ( 12.100 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.424ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.944     0.944 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.800     1.744    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.840 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.584     2.424    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s1_y0_reg[6]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.902 r  u_fdpe/s1_y0_reg[6]/Q
+                         net (fo=5, unplaced)         0.800     3.701    u_fdpe/s1_y0[6]
+                         DSP48E1 (Prop_dsp48e1_A[6]_P[9])
+                                                      5.376     9.077 r  u_fdpe/s2_interp_w2/P[9]
+                         net (fo=1, unplaced)         0.800     9.877    u_fdpe/s2_interp_w2_n_96
+                         LUT4 (Prop_lut4_I2_O)        0.124    10.001 r  u_fdpe/s2_decay[3]_i_5/O
+                         net (fo=1, unplaced)         0.000    10.001    u_fdpe/s2_decay[3]_i_5_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    10.534 r  u_fdpe/s2_decay_reg[3]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.009    10.543    u_fdpe/s2_decay_reg[3]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.660 r  u_fdpe/s2_decay_reg[7]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.660    u_fdpe/s2_decay_reg[7]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.777 r  u_fdpe/s2_decay_reg[11]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.777    u_fdpe/s2_decay_reg[11]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.894 r  u_fdpe/s2_decay_reg[15]_i_3/CO[3]
+                         net (fo=1, unplaced)         0.000    10.894    u_fdpe/s2_decay_reg[15]_i_3_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    11.231 f  u_fdpe/s2_decay_reg[15]_i_2/O[1]
+                         net (fo=16, unplaced)        0.665    11.896    u_fdpe/s2_decay_reg[15]_i_2_n_6
+                         LUT4 (Prop_lut4_I0_O)        0.332    12.228 r  u_fdpe/s2_decay[5]_i_1/O
+                         net (fo=1, unplaced)         0.000    12.228    u_fdpe/s2_decay[5]_i_1_n_0
+                         FDCE                                         r  u_fdpe/s2_decay_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                                                      0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.811    10.811 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    11.570    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.661 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.439    12.100    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s2_decay_reg[5]/C
+                         clock pessimism              0.178    12.279    
+                         clock uncertainty           -0.035    12.243    
+                         FDCE (Setup_fdce_C_D)        0.029    12.272    u_fdpe/s2_decay_reg[5]
+  -------------------------------------------------------------------
+                         required time                         12.272    
+                         arrival time                         -12.228    
+  -------------------------------------------------------------------
+                         slack                                  0.044    
+
+Slack (MET) :             0.044ns  (required time - arrival time)
+  Source:                 u_fdpe/s1_y0_reg[6]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            u_fdpe/s2_decay_reg[7]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        9.804ns  (logic 7.531ns (76.812%)  route 2.273ns (23.188%))
+  Logic Levels:           8  (CARRY4=5 DSP48E1=1 LUT4=2)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.100ns = ( 12.100 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.424ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.944     0.944 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.800     1.744    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.840 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.584     2.424    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s1_y0_reg[6]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.902 r  u_fdpe/s1_y0_reg[6]/Q
+                         net (fo=5, unplaced)         0.800     3.701    u_fdpe/s1_y0[6]
+                         DSP48E1 (Prop_dsp48e1_A[6]_P[9])
+                                                      5.376     9.077 r  u_fdpe/s2_interp_w2/P[9]
+                         net (fo=1, unplaced)         0.800     9.877    u_fdpe/s2_interp_w2_n_96
+                         LUT4 (Prop_lut4_I2_O)        0.124    10.001 r  u_fdpe/s2_decay[3]_i_5/O
+                         net (fo=1, unplaced)         0.000    10.001    u_fdpe/s2_decay[3]_i_5_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    10.534 r  u_fdpe/s2_decay_reg[3]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.009    10.543    u_fdpe/s2_decay_reg[3]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.660 r  u_fdpe/s2_decay_reg[7]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.660    u_fdpe/s2_decay_reg[7]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.777 r  u_fdpe/s2_decay_reg[11]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.777    u_fdpe/s2_decay_reg[11]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.894 r  u_fdpe/s2_decay_reg[15]_i_3/CO[3]
+                         net (fo=1, unplaced)         0.000    10.894    u_fdpe/s2_decay_reg[15]_i_3_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    11.231 f  u_fdpe/s2_decay_reg[15]_i_2/O[1]
+                         net (fo=16, unplaced)        0.665    11.896    u_fdpe/s2_decay_reg[15]_i_2_n_6
+                         LUT4 (Prop_lut4_I0_O)        0.332    12.228 r  u_fdpe/s2_decay[7]_i_1/O
+                         net (fo=1, unplaced)         0.000    12.228    u_fdpe/s2_decay[7]_i_1_n_0
+                         FDCE                                         r  u_fdpe/s2_decay_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                                                      0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.811    10.811 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    11.570    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.661 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.439    12.100    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s2_decay_reg[7]/C
+                         clock pessimism              0.178    12.279    
+                         clock uncertainty           -0.035    12.243    
+                         FDCE (Setup_fdce_C_D)        0.029    12.272    u_fdpe/s2_decay_reg[7]
+  -------------------------------------------------------------------
+                         required time                         12.272    
+                         arrival time                         -12.228    
+  -------------------------------------------------------------------
+                         slack                                  0.044    
+
+Slack (MET) :             0.044ns  (required time - arrival time)
+  Source:                 u_fdpe/s1_y0_reg[6]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            u_fdpe/s2_decay_reg[9]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        9.804ns  (logic 7.531ns (76.812%)  route 2.273ns (23.188%))
+  Logic Levels:           8  (CARRY4=5 DSP48E1=1 LUT4=2)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.100ns = ( 12.100 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.424ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.944     0.944 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.800     1.744    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.840 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.584     2.424    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s1_y0_reg[6]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.902 r  u_fdpe/s1_y0_reg[6]/Q
+                         net (fo=5, unplaced)         0.800     3.701    u_fdpe/s1_y0[6]
+                         DSP48E1 (Prop_dsp48e1_A[6]_P[9])
+                                                      5.376     9.077 r  u_fdpe/s2_interp_w2/P[9]
+                         net (fo=1, unplaced)         0.800     9.877    u_fdpe/s2_interp_w2_n_96
+                         LUT4 (Prop_lut4_I2_O)        0.124    10.001 r  u_fdpe/s2_decay[3]_i_5/O
+                         net (fo=1, unplaced)         0.000    10.001    u_fdpe/s2_decay[3]_i_5_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    10.534 r  u_fdpe/s2_decay_reg[3]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.009    10.543    u_fdpe/s2_decay_reg[3]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.660 r  u_fdpe/s2_decay_reg[7]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.660    u_fdpe/s2_decay_reg[7]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.777 r  u_fdpe/s2_decay_reg[11]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.777    u_fdpe/s2_decay_reg[11]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.894 r  u_fdpe/s2_decay_reg[15]_i_3/CO[3]
+                         net (fo=1, unplaced)         0.000    10.894    u_fdpe/s2_decay_reg[15]_i_3_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    11.231 f  u_fdpe/s2_decay_reg[15]_i_2/O[1]
+                         net (fo=16, unplaced)        0.665    11.896    u_fdpe/s2_decay_reg[15]_i_2_n_6
+                         LUT4 (Prop_lut4_I0_O)        0.332    12.228 r  u_fdpe/s2_decay[9]_i_1/O
+                         net (fo=1, unplaced)         0.000    12.228    u_fdpe/s2_decay[9]_i_1_n_0
+                         FDCE                                         r  u_fdpe/s2_decay_reg[9]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                                                      0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.811    10.811 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    11.570    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.661 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.439    12.100    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s2_decay_reg[9]/C
+                         clock pessimism              0.178    12.279    
+                         clock uncertainty           -0.035    12.243    
+                         FDCE (Setup_fdce_C_D)        0.029    12.272    u_fdpe/s2_decay_reg[9]
+  -------------------------------------------------------------------
+                         required time                         12.272    
+                         arrival time                         -12.228    
+  -------------------------------------------------------------------
+                         slack                                  0.044    
+
+Slack (MET) :             0.070ns  (required time - arrival time)
+  Source:                 u_fdpe/s1_y0_reg[6]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            u_fdpe/s2_decay_reg[0]/D
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        9.778ns  (logic 7.505ns (76.751%)  route 2.273ns (23.249%))
+  Logic Levels:           8  (CARRY4=5 DSP48E1=1 LUT4=2)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.100ns = ( 12.100 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.424ns
+    Clock Pessimism Removal (CPR):    0.178ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.944     0.944 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.800     1.744    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.840 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.584     2.424    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s1_y0_reg[6]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.902 r  u_fdpe/s1_y0_reg[6]/Q
+                         net (fo=5, unplaced)         0.800     3.701    u_fdpe/s1_y0[6]
+                         DSP48E1 (Prop_dsp48e1_A[6]_P[9])
+                                                      5.376     9.077 r  u_fdpe/s2_interp_w2/P[9]
+                         net (fo=1, unplaced)         0.800     9.877    u_fdpe/s2_interp_w2_n_96
+                         LUT4 (Prop_lut4_I2_O)        0.124    10.001 r  u_fdpe/s2_decay[3]_i_5/O
+                         net (fo=1, unplaced)         0.000    10.001    u_fdpe/s2_decay[3]_i_5_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    10.534 r  u_fdpe/s2_decay_reg[3]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.009    10.543    u_fdpe/s2_decay_reg[3]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.660 r  u_fdpe/s2_decay_reg[7]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.660    u_fdpe/s2_decay_reg[7]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.777 r  u_fdpe/s2_decay_reg[11]_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    10.777    u_fdpe/s2_decay_reg[11]_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.894 r  u_fdpe/s2_decay_reg[15]_i_3/CO[3]
+                         net (fo=1, unplaced)         0.000    10.894    u_fdpe/s2_decay_reg[15]_i_3_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    11.231 f  u_fdpe/s2_decay_reg[15]_i_2/O[1]
+                         net (fo=16, unplaced)        0.665    11.896    u_fdpe/s2_decay_reg[15]_i_2_n_6
+                         LUT4 (Prop_lut4_I0_O)        0.306    12.202 r  u_fdpe/s2_decay[0]_i_1/O
+                         net (fo=1, unplaced)         0.000    12.202    u_fdpe/s2_decay[0]_i_1_n_0
+                         FDCE                                         r  u_fdpe/s2_decay_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  
+                                                      0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.811    10.811 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.760    11.570    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.661 r  clk_IBUF_BUFG_inst/O
+                         net (fo=1161, unplaced)      0.439    12.100    u_fdpe/clk_IBUF_BUFG
+                         FDCE                                         r  u_fdpe/s2_decay_reg[0]/C
+                         clock pessimism              0.178    12.279    
+                         clock uncertainty           -0.035    12.243    
+                         FDCE (Setup_fdce_C_D)        0.029    12.272    u_fdpe/s2_decay_reg[0]
+  -------------------------------------------------------------------
+                         required time                         12.272    
+                         arrival time                         -12.202    
+  -------------------------------------------------------------------
+                         slack                                  0.070    
+
+
+
+

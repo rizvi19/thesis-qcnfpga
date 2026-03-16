@@ -1,0 +1,17 @@
+{
+  "top": "qflow_top_tc5",
+  "utilization": {},
+  "timing": {
+    "WNS_ns": 0.033,
+    "TNS_ns": 0.0,
+    "Requirement_ns": 10.0,
+    "Data_path_delay_ns": 9.815,
+    "Worst_source": "u_fdpe/s1_y0_reg[6]/C",
+    "Worst_destination": "u_fdpe/s2_decay_reg[14]/D",
+    "approx_Fmax_MHz": 101.885
+  },
+  "notes": [
+    "Step 9G timing-closure build pipelines FDPE by separating LUT capture, interpolation, multiply, and exact divide-by-65535 output stages while reusing the tc4 SKAG closure path.",
+    "The main check is whether the FDPE s1_f_init -> s2_result arithmetic path is broken into shorter stages and the estimated Fmax moves toward 100 MHz."
+  ]
+}

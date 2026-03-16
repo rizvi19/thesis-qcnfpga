@@ -1,0 +1,16 @@
+# QFlow Top-Level Timing-Closure-3 Summary
+
+## Utilization
+
+## Timing
+- WNS_ns: -68.443
+- TNS_ns: -1412.372
+- Requirement_ns: 10.0
+- Data_path_delay_ns: 78.292
+- Worst_source: u_skag/fdpe_s0_fidelity_reg[0]/C
+- Worst_destination: u_skag/fdpe_s1_dyn_term_reg[0]/D
+- approx_Fmax_MHz: 12.773
+
+## Notes
+- Step 9E timing-closure build deepens the SKAG FDPE update path into separate dynamic-term, add, and writeback stages.
+- The main check is whether the prior u_skag S0-to-S1 worst path moves or shrinks materially.
