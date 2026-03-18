@@ -1,0 +1,40 @@
+% QFlow thesis-ready results section draft
+\subsection{Implementation and Timing-Closure Results}
+The integrated QFlow core was refined through successive timing-closure iterations. In the tc3 baseline, the dominant bottleneck remained inside SKAG and the design failed the 10~ns target by a large margin. After restructuring the SKAG datapath in tc4, the worst path shifted into FDPE, indicating that the primary SKAG bottleneck had been sufficiently reduced. The final tc5 revision re-pipelined FDPE and achieved positive setup slack at the 10~ns target. This result was corroborated by out-of-context (OOC) post-route implementation, which also reported positive setup and hold slack.
+
+\begin{table}[t]
+\centering
+\caption{QFlow timing-closure progression.}
+\begin{tabular}{lrrrrl}
+\hline
+Version & WNS (ns) & TNS (ns) & Fmax (MHz) & Delay (ns) & Interpretation \\ 
+\hline
+tc3 & -68.443 & -1412.372 & 12.773 & - & - \\ 
+tc4 & -8.154 & -178.942 & 55.549 & - & - \\ 
+tc5 & 0.033 & 0.000 & 101.885 & - & - \\ 
+tc5\_ooc\_impl & 0.039 & 0.000 & 100.392 & - & - \\ 
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Evaluation and Baseline Comparison}
+The earlier software PMO-GA evaluation appeared to collapse to the key-aware shortest-path baseline. A focused follow-up study showed that this collapse was substantially influenced by the final-answer selection policy. When the Pareto-front member was selected using weighted Tchebycheff scoring rather than a latency-first rule, PMO-GA separated from the key-aware heuristic on a meaningful subset of cases. The most thesis-faithful software reference is therefore \texttt{ga\_tcheby\_pick\_default}.
+
+\begin{table}[t]
+\centering
+\caption{Recommended PMO-GA variant and tradeoff against the key-aware baseline.}
+\begin{tabular}{llrrr}
+\hline
+Profile/Topology & Variant & $\Delta$Lat. & $\Delta$Fid. & $\Delta$Bal. \\ 
+\hline
+current\_like/mesh9 & ga\_tcheby\_pick\_fidelityheavy & 0.009086 & -0.000624 & -0.032559 \\ 
+current\_like/mesh16 & ga\_tcheby\_pick\_default & 0.041286 & 0.000444 & -0.025694 \\ 
+current\_like/irregular12 & ga\_tcheby\_pick\_default & 0.007135 & 0.000190 & -0.031157 \\ 
+depletion\_plus\_stricter\_fidelity/mesh9 & ga\_tcheby\_pick\_default & 0.000000 & 0.000000 & 0.000000 \\ 
+depletion\_plus\_stricter\_fidelity/mesh16 & ga\_tcheby\_pick\_default & 0.006393 & 0.000000 & -0.033333 \\ 
+depletion\_plus\_stricter\_fidelity/irregular12 & ga\_tcheby\_pick\_default & -0.002931 & -0.001342 & -0.145170 \\ 
+\hline
+\end{tabular}
+\end{table}
+
+The strongest observed PMO-GA benefit is generally lower load-balance, i.e., better load spreading, sometimes with only a very small latency penalty and occasionally with a small fidelity gain. Accordingly, the correct claim is tradeoff-aware separation rather than universal domination over the key-aware shortest-path heuristic.

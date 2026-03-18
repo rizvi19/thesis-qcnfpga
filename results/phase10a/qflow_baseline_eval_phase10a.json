@@ -1,0 +1,97 @@
+{
+  "config": {
+    "topologies": [
+      "ring6"
+    ],
+    "seed": 42,
+    "sim_duration_s": 0.5,
+    "tick_dt_s": 0.001,
+    "f_min": 0.9,
+    "ga_pop_size": 64,
+    "ga_max_generations": 100,
+    "alphas": [
+      1.0,
+      1.5,
+      0.5,
+      2.0
+    ]
+  },
+  "topologies": [
+    {
+      "name": "ring6",
+      "n_nodes": 6,
+      "n_directed_links": 12,
+      "src": 0,
+      "dst": 3,
+      "baselines": [
+        {
+          "baseline": "dijkstra_distance",
+          "runtime_ms": 0.024897999992390396,
+          "feasible": true,
+          "path": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "hops": 3,
+          "latency": 5.514355977481588,
+          "bottleneck_fidelity": 0.9321719522223071,
+          "load_balance": 0.0,
+          "distance_km": 75.0
+        },
+        {
+          "baseline": "dijkstra_keyaware",
+          "runtime_ms": 0.01198099994326185,
+          "feasible": true,
+          "path": [
+            0,
+            5,
+            4,
+            3
+          ],
+          "hops": 3,
+          "latency": 5.460343748912665,
+          "bottleneck_fidelity": 0.9283955138475625,
+          "load_balance": 0.0,
+          "distance_km": 75.0
+        },
+        {
+          "baseline": "random_valid_path",
+          "runtime_ms": 0.0610509999887654,
+          "feasible": true,
+          "path": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "hops": 3,
+          "latency": 5.514355977481588,
+          "bottleneck_fidelity": 0.9321719522223071,
+          "load_balance": 0.0,
+          "distance_km": 75.0
+        },
+        {
+          "baseline": "software_pmo_ga",
+          "runtime_ms": 78.08008599999994,
+          "feasible": true,
+          "path": [
+            0,
+            5,
+            4,
+            3
+          ],
+          "hops": 3,
+          "latency": 5.460343748912665,
+          "bottleneck_fidelity": 0.9283955138475625,
+          "load_balance": 0.0,
+          "distance_km": 75.0,
+          "pareto_front_size": 64,
+          "convergence_points": 11,
+          "best_tchebycheff": 0.001510575349897847
+        }
+      ]
+    }
+  ]
+}

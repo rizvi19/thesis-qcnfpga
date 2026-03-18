@@ -1,0 +1,561 @@
+{
+  "config": {
+    "topologies": [
+      "mesh9",
+      "mesh16",
+      "irregular12"
+    ],
+    "seed_start": 42,
+    "repetitions": 6,
+    "ga_pop_size": 64,
+    "ga_max_generations": 100,
+    "profiles": [
+      {
+        "name": "current_like",
+        "sim_duration_s": 0.5,
+        "tick_dt_s": 0.001,
+        "f_min": 0.9,
+        "request_multiplier": 1
+      },
+      {
+        "name": "depletion_plus_stricter_fidelity",
+        "sim_duration_s": 1.0,
+        "tick_dt_s": 0.001,
+        "f_min": 0.92,
+        "request_multiplier": 2
+      }
+    ],
+    "ga_variants": [
+      {
+        "baseline": "ga_latency_pick_default",
+        "obj_weights": [
+          0.4,
+          0.4,
+          0.2
+        ],
+        "selection_mode": "latency"
+      },
+      {
+        "baseline": "ga_tcheby_pick_default",
+        "obj_weights": [
+          0.4,
+          0.4,
+          0.2
+        ],
+        "selection_mode": "tcheby"
+      },
+      {
+        "baseline": "ga_tcheby_pick_fidelityheavy",
+        "obj_weights": [
+          0.25,
+          0.55,
+          0.2
+        ],
+        "selection_mode": "tcheby"
+      }
+    ],
+    "purpose": "Test whether PMO-GA collapses to key-aware shortest path because the final answer is selected by minimum latency instead of weighted Tchebycheff score."
+  },
+  "profile_topology_summaries": [
+    {
+      "profile": "current_like",
+      "topology": "mesh9",
+      "baseline_stats": [
+        {
+          "baseline": "dijkstra_keyaware",
+          "runs": 6,
+          "mean_avg_latency": 6.069915067328025,
+          "latency_ci95": 0.11910562578180944,
+          "mean_avg_bottleneck_fidelity": 0.9205052376877071,
+          "fidelity_ci95": 0.0032170304828552584,
+          "mean_avg_load_balance": 0.15381944444444443,
+          "load_balance_ci95": 0.05288840634992292,
+          "mean_total_runtime_ms": 0.09020233119372278,
+          "runtime_ci95": 0.004664955961621382
+        },
+        {
+          "baseline": "ga_latency_pick_default",
+          "runs": 6,
+          "mean_avg_latency": 6.069915067328025,
+          "latency_ci95": 0.11910562578180944,
+          "mean_avg_bottleneck_fidelity": 0.9205052376877071,
+          "fidelity_ci95": 0.0032170304828552584,
+          "mean_avg_load_balance": 0.15381944444444443,
+          "load_balance_ci95": 0.05288840634992292,
+          "mean_total_runtime_ms": 288.08454299966496,
+          "runtime_ci95": 5.870107299130328
+        },
+        {
+          "baseline": "ga_tcheby_pick_default",
+          "runs": 6,
+          "mean_avg_latency": 6.07900229479833,
+          "latency_ci95": 0.11630387237316037,
+          "mean_avg_bottleneck_fidelity": 0.9200963231491289,
+          "fidelity_ci95": 0.003999549943365393,
+          "mean_avg_load_balance": 0.12386485042735042,
+          "load_balance_ci95": 0.03240899278598037,
+          "mean_total_runtime_ms": 288.8626885002547,
+          "runtime_ci95": 5.72444850558385
+        },
+        {
+          "baseline": "ga_tcheby_pick_fidelityheavy",
+          "runs": 6,
+          "mean_avg_latency": 6.079000758866754,
+          "latency_ci95": 0.11630493809695873,
+          "mean_avg_bottleneck_fidelity": 0.9198810922232091,
+          "fidelity_ci95": 0.003911014516880768,
+          "mean_avg_load_balance": 0.12126068376068376,
+          "load_balance_ci95": 0.030702318388766265,
+          "mean_total_runtime_ms": 288.46459200091584,
+          "runtime_ci95": 5.495060432000974
+        }
+      ],
+      "variant_comparisons_vs_keyaware": [
+        {
+          "variant": "ga_latency_pick_default",
+          "request_instances": 24,
+          "same_path_rate_vs_keyaware": 1.0,
+          "ga_lower_latency_rate": 0.0,
+          "ga_higher_fidelity_rate": 0.0,
+          "ga_lower_balance_rate": 0.0
+        },
+        {
+          "variant": "ga_tcheby_pick_default",
+          "request_instances": 24,
+          "same_path_rate_vs_keyaware": 0.7916666666666666,
+          "ga_lower_latency_rate": 0.08333333333333333,
+          "ga_higher_fidelity_rate": 0.16666666666666666,
+          "ga_lower_balance_rate": 0.25
+        },
+        {
+          "variant": "ga_tcheby_pick_fidelityheavy",
+          "request_instances": 24,
+          "same_path_rate_vs_keyaware": 0.7916666666666666,
+          "ga_lower_latency_rate": 0.08333333333333333,
+          "ga_higher_fidelity_rate": 0.16666666666666666,
+          "ga_lower_balance_rate": 0.25
+        }
+      ]
+    },
+    {
+      "profile": "current_like",
+      "topology": "mesh16",
+      "baseline_stats": [
+        {
+          "baseline": "dijkstra_keyaware",
+          "runs": 6,
+          "mean_avg_latency": 9.412682460700266,
+          "latency_ci95": 0.08718982772984323,
+          "mean_avg_bottleneck_fidelity": 0.913123289415204,
+          "fidelity_ci95": 0.003635407231614359,
+          "mean_avg_load_balance": 0.17857142857142858,
+          "load_balance_ci95": 0.034557761630187915,
+          "mean_total_runtime_ms": 0.1670244995087463,
+          "runtime_ci95": 0.006890974715605106
+        },
+        {
+          "baseline": "ga_latency_pick_default",
+          "runs": 6,
+          "mean_avg_latency": 9.412682460700266,
+          "latency_ci95": 0.08718982772984323,
+          "mean_avg_bottleneck_fidelity": 0.913123289415204,
+          "fidelity_ci95": 0.003635407231614359,
+          "mean_avg_load_balance": 0.17857142857142858,
+          "load_balance_ci95": 0.034557761630187915,
+          "mean_total_runtime_ms": 385.70205249925493,
+          "runtime_ci95": 179.23533399790963
+        },
+        {
+          "baseline": "ga_tcheby_pick_default",
+          "runs": 6,
+          "mean_avg_latency": 9.453968574827156,
+          "latency_ci95": 0.1430754468698914,
+          "mean_avg_bottleneck_fidelity": 0.913567628953873,
+          "fidelity_ci95": 0.003839444450379352,
+          "mean_avg_load_balance": 0.1528769841269841,
+          "load_balance_ci95": 0.08655661192480466,
+          "mean_total_runtime_ms": 385.06583316666365,
+          "runtime_ci95": 178.6708632004446
+        },
+        {
+          "baseline": "ga_tcheby_pick_fidelityheavy",
+          "runs": 6,
+          "mean_avg_latency": 9.453968574827156,
+          "latency_ci95": 0.1430754468698914,
+          "mean_avg_bottleneck_fidelity": 0.913567628953873,
+          "fidelity_ci95": 0.003839444450379352,
+          "mean_avg_load_balance": 0.1528769841269841,
+          "load_balance_ci95": 0.08655661192480466,
+          "mean_total_runtime_ms": 384.98084616670286,
+          "runtime_ci95": 179.21567609235174
+        }
+      ],
+      "variant_comparisons_vs_keyaware": [
+        {
+          "variant": "ga_latency_pick_default",
+          "request_instances": 24,
+          "same_path_rate_vs_keyaware": 1.0,
+          "ga_lower_latency_rate": 0.0,
+          "ga_higher_fidelity_rate": 0.0,
+          "ga_lower_balance_rate": 0.0
+        },
+        {
+          "variant": "ga_tcheby_pick_default",
+          "request_instances": 24,
+          "same_path_rate_vs_keyaware": 0.7083333333333334,
+          "ga_lower_latency_rate": 0.041666666666666664,
+          "ga_higher_fidelity_rate": 0.125,
+          "ga_lower_balance_rate": 0.20833333333333334
+        },
+        {
+          "variant": "ga_tcheby_pick_fidelityheavy",
+          "request_instances": 24,
+          "same_path_rate_vs_keyaware": 0.7083333333333334,
+          "ga_lower_latency_rate": 0.041666666666666664,
+          "ga_higher_fidelity_rate": 0.125,
+          "ga_lower_balance_rate": 0.20833333333333334
+        }
+      ]
+    },
+    {
+      "profile": "current_like",
+      "topology": "irregular12",
+      "baseline_stats": [
+        {
+          "baseline": "dijkstra_keyaware",
+          "runs": 6,
+          "mean_avg_latency": 6.252080049532711,
+          "latency_ci95": 0.10962941714205714,
+          "mean_avg_bottleneck_fidelity": 0.9250113516351731,
+          "fidelity_ci95": 0.002094141337942116,
+          "mean_avg_load_balance": 0.09550010175010175,
+          "load_balance_ci95": 0.048099642272520345,
+          "mean_total_runtime_ms": 0.12443883254794248,
+          "runtime_ci95": 0.00965036348230248
+        },
+        {
+          "baseline": "ga_latency_pick_default",
+          "runs": 6,
+          "mean_avg_latency": 6.252080049532711,
+          "latency_ci95": 0.10962941714205714,
+          "mean_avg_bottleneck_fidelity": 0.9250113516351731,
+          "fidelity_ci95": 0.002094141337942116,
+          "mean_avg_load_balance": 0.09550010175010175,
+          "load_balance_ci95": 0.048099642272520345,
+          "mean_total_runtime_ms": 302.2536801672686,
+          "runtime_ci95": 2.9949433259069727
+        },
+        {
+          "baseline": "ga_tcheby_pick_default",
+          "runs": 6,
+          "mean_avg_latency": 6.259214864566549,
+          "latency_ci95": 0.1052044176615859,
+          "mean_avg_bottleneck_fidelity": 0.9252015441341749,
+          "fidelity_ci95": 0.0019579908791403124,
+          "mean_avg_load_balance": 0.06434358465608465,
+          "load_balance_ci95": 0.03745311960184102,
+          "mean_total_runtime_ms": 303.1531864999124,
+          "runtime_ci95": 2.529151828294547
+        },
+        {
+          "baseline": "ga_tcheby_pick_fidelityheavy",
+          "runs": 6,
+          "mean_avg_latency": 6.267877204967245,
+          "latency_ci95": 0.10317431666198058,
+          "mean_avg_bottleneck_fidelity": 0.9245286910921799,
+          "fidelity_ci95": 0.002056190935298231,
+          "mean_avg_load_balance": 0.04565972222222222,
+          "load_balance_ci95": 0.04028817997061483,
+          "mean_total_runtime_ms": 304.303542832713,
+          "runtime_ci95": 3.4486979136524156
+        }
+      ],
+      "variant_comparisons_vs_keyaware": [
+        {
+          "variant": "ga_latency_pick_default",
+          "request_instances": 24,
+          "same_path_rate_vs_keyaware": 1.0,
+          "ga_lower_latency_rate": 0.0,
+          "ga_higher_fidelity_rate": 0.0,
+          "ga_lower_balance_rate": 0.0
+        },
+        {
+          "variant": "ga_tcheby_pick_default",
+          "request_instances": 24,
+          "same_path_rate_vs_keyaware": 0.9166666666666666,
+          "ga_lower_latency_rate": 0.08333333333333333,
+          "ga_higher_fidelity_rate": 0.041666666666666664,
+          "ga_lower_balance_rate": 0.125
+        },
+        {
+          "variant": "ga_tcheby_pick_fidelityheavy",
+          "request_instances": 24,
+          "same_path_rate_vs_keyaware": 0.8333333333333334,
+          "ga_lower_latency_rate": 0.125,
+          "ga_higher_fidelity_rate": 0.041666666666666664,
+          "ga_lower_balance_rate": 0.25
+        }
+      ]
+    },
+    {
+      "profile": "depletion_plus_stricter_fidelity",
+      "topology": "mesh9",
+      "baseline_stats": [
+        {
+          "baseline": "dijkstra_keyaware",
+          "runs": 6,
+          "mean_avg_latency": 7.194368580511719,
+          "latency_ci95": 0.4308497980286195,
+          "mean_avg_bottleneck_fidelity": 0.9305865907034381,
+          "fidelity_ci95": 0.0021110615391427444,
+          "mean_avg_load_balance": 0.4798859126984127,
+          "load_balance_ci95": 0.230127900834883,
+          "mean_total_runtime_ms": 0.17549399854033254,
+          "runtime_ci95": 0.014156464240891576
+        },
+        {
+          "baseline": "ga_latency_pick_default",
+          "runs": 6,
+          "mean_avg_latency": 7.194368580511719,
+          "latency_ci95": 0.4308497980286195,
+          "mean_avg_bottleneck_fidelity": 0.9305865907034381,
+          "fidelity_ci95": 0.0021110615391427444,
+          "mean_avg_load_balance": 0.4798859126984127,
+          "load_balance_ci95": 0.230127900834883,
+          "mean_total_runtime_ms": 2302.9814835002376,
+          "runtime_ci95": 1388.2297170886652
+        },
+        {
+          "baseline": "ga_tcheby_pick_default",
+          "runs": 6,
+          "mean_avg_latency": 7.194368580511719,
+          "latency_ci95": 0.4308497980286195,
+          "mean_avg_bottleneck_fidelity": 0.9305865907034381,
+          "fidelity_ci95": 0.0021110615391427444,
+          "mean_avg_load_balance": 0.4798859126984127,
+          "load_balance_ci95": 0.230127900834883,
+          "mean_total_runtime_ms": 2303.884391666846,
+          "runtime_ci95": 1388.350095003846
+        },
+        {
+          "baseline": "ga_tcheby_pick_fidelityheavy",
+          "runs": 6,
+          "mean_avg_latency": 7.194368580511719,
+          "latency_ci95": 0.4308497980286195,
+          "mean_avg_bottleneck_fidelity": 0.9305865907034381,
+          "fidelity_ci95": 0.0021110615391427444,
+          "mean_avg_load_balance": 0.4798859126984127,
+          "load_balance_ci95": 0.230127900834883,
+          "mean_total_runtime_ms": 2304.5384071665467,
+          "runtime_ci95": 1389.494656102934
+        }
+      ],
+      "variant_comparisons_vs_keyaware": [
+        {
+          "variant": "ga_latency_pick_default",
+          "request_instances": 48,
+          "same_path_rate_vs_keyaware": 0.6875,
+          "ga_lower_latency_rate": 0.0,
+          "ga_higher_fidelity_rate": 0.0,
+          "ga_lower_balance_rate": 0.0
+        },
+        {
+          "variant": "ga_tcheby_pick_default",
+          "request_instances": 48,
+          "same_path_rate_vs_keyaware": 0.6875,
+          "ga_lower_latency_rate": 0.0,
+          "ga_higher_fidelity_rate": 0.0,
+          "ga_lower_balance_rate": 0.0
+        },
+        {
+          "variant": "ga_tcheby_pick_fidelityheavy",
+          "request_instances": 48,
+          "same_path_rate_vs_keyaware": 0.6875,
+          "ga_lower_latency_rate": 0.0,
+          "ga_higher_fidelity_rate": 0.0,
+          "ga_lower_balance_rate": 0.0
+        }
+      ]
+    },
+    {
+      "profile": "depletion_plus_stricter_fidelity",
+      "topology": "mesh16",
+      "baseline_stats": [
+        {
+          "baseline": "dijkstra_keyaware",
+          "runs": 6,
+          "mean_avg_latency": 11.40777252690566,
+          "latency_ci95": 0.78817740984388,
+          "mean_avg_bottleneck_fidelity": 0.9287069594112586,
+          "fidelity_ci95": 0.0019220236351161308,
+          "mean_avg_load_balance": 0.6106481481481482,
+          "load_balance_ci95": 0.26184482480486776,
+          "mean_total_runtime_ms": 0.28017799983596586,
+          "runtime_ci95": 0.02951922664354237
+        },
+        {
+          "baseline": "ga_latency_pick_default",
+          "runs": 6,
+          "mean_avg_latency": 11.40777252690566,
+          "latency_ci95": 0.78817740984388,
+          "mean_avg_bottleneck_fidelity": 0.9287069594112586,
+          "fidelity_ci95": 0.0019220236351161308,
+          "mean_avg_load_balance": 0.6106481481481482,
+          "load_balance_ci95": 0.26184482480486776,
+          "mean_total_runtime_ms": 2956.3279368327735,
+          "runtime_ci95": 828.8374834514453
+        },
+        {
+          "baseline": "ga_tcheby_pick_default",
+          "runs": 6,
+          "mean_avg_latency": 11.41416586566151,
+          "latency_ci95": 0.7888111378165348,
+          "mean_avg_bottleneck_fidelity": 0.9287069594112586,
+          "fidelity_ci95": 0.0019220236351161308,
+          "mean_avg_load_balance": 0.5773148148148148,
+          "load_balance_ci95": 0.24085300302718957,
+          "mean_total_runtime_ms": 2952.78199716995,
+          "runtime_ci95": 824.3976580618687
+        },
+        {
+          "baseline": "ga_tcheby_pick_fidelityheavy",
+          "runs": 6,
+          "mean_avg_latency": 11.41416586566151,
+          "latency_ci95": 0.7888111378165348,
+          "mean_avg_bottleneck_fidelity": 0.9287069594112586,
+          "fidelity_ci95": 0.0019220236351161308,
+          "mean_avg_load_balance": 0.5773148148148148,
+          "load_balance_ci95": 0.24085300302718957,
+          "mean_total_runtime_ms": 2963.8977028322793,
+          "runtime_ci95": 834.5163972036945
+        }
+      ],
+      "variant_comparisons_vs_keyaware": [
+        {
+          "variant": "ga_latency_pick_default",
+          "request_instances": 48,
+          "same_path_rate_vs_keyaware": 0.6041666666666666,
+          "ga_lower_latency_rate": 0.0,
+          "ga_higher_fidelity_rate": 0.0,
+          "ga_lower_balance_rate": 0.0
+        },
+        {
+          "variant": "ga_tcheby_pick_default",
+          "request_instances": 48,
+          "same_path_rate_vs_keyaware": 0.5833333333333334,
+          "ga_lower_latency_rate": 0.0,
+          "ga_higher_fidelity_rate": 0.0,
+          "ga_lower_balance_rate": 0.020833333333333332
+        },
+        {
+          "variant": "ga_tcheby_pick_fidelityheavy",
+          "request_instances": 48,
+          "same_path_rate_vs_keyaware": 0.5833333333333334,
+          "ga_lower_latency_rate": 0.0,
+          "ga_higher_fidelity_rate": 0.0,
+          "ga_lower_balance_rate": 0.020833333333333332
+        }
+      ]
+    },
+    {
+      "profile": "depletion_plus_stricter_fidelity",
+      "topology": "irregular12",
+      "baseline_stats": [
+        {
+          "baseline": "dijkstra_keyaware",
+          "runs": 6,
+          "mean_avg_latency": 6.536211494957314,
+          "latency_ci95": 0.20643200706748593,
+          "mean_avg_bottleneck_fidelity": 0.9346573376852795,
+          "fidelity_ci95": 0.0022907849636227833,
+          "mean_avg_load_balance": 0.47845643939393945,
+          "load_balance_ci95": 0.12103241800466494,
+          "mean_total_runtime_ms": 0.24389199825236574,
+          "runtime_ci95": 0.01228780270847127
+        },
+        {
+          "baseline": "ga_latency_pick_default",
+          "runs": 6,
+          "mean_avg_latency": 6.536211494957314,
+          "latency_ci95": 0.20643200706748593,
+          "mean_avg_bottleneck_fidelity": 0.9346573376852795,
+          "fidelity_ci95": 0.0022907849636227833,
+          "mean_avg_load_balance": 0.47845643939393945,
+          "load_balance_ci95": 0.12103241800466494,
+          "mean_total_runtime_ms": 830.4794528339698,
+          "runtime_ci95": 241.10125931369393
+        },
+        {
+          "baseline": "ga_tcheby_pick_default",
+          "runs": 6,
+          "mean_avg_latency": 6.533280721101686,
+          "latency_ci95": 0.2014535227076359,
+          "mean_avg_bottleneck_fidelity": 0.9333152873654448,
+          "fidelity_ci95": 0.0017561384331759489,
+          "mean_avg_load_balance": 0.3332859848484849,
+          "load_balance_ci95": 0.09394989075513269,
+          "mean_total_runtime_ms": 830.4220066662916,
+          "runtime_ci95": 241.64972155117854
+        },
+        {
+          "baseline": "ga_tcheby_pick_fidelityheavy",
+          "runs": 6,
+          "mean_avg_latency": 6.56365738445453,
+          "latency_ci95": 0.21521216532960386,
+          "mean_avg_bottleneck_fidelity": 0.9327542732656848,
+          "fidelity_ci95": 0.001639885216294689,
+          "mean_avg_load_balance": 0.2919665404040404,
+          "load_balance_ci95": 0.09569224517919724,
+          "mean_total_runtime_ms": 830.7772059973407,
+          "runtime_ci95": 241.32063901965773
+        }
+      ],
+      "variant_comparisons_vs_keyaware": [
+        {
+          "variant": "ga_latency_pick_default",
+          "request_instances": 48,
+          "same_path_rate_vs_keyaware": 1.0,
+          "ga_lower_latency_rate": 0.0,
+          "ga_higher_fidelity_rate": 0.0,
+          "ga_lower_balance_rate": 0.0
+        },
+        {
+          "variant": "ga_tcheby_pick_default",
+          "request_instances": 48,
+          "same_path_rate_vs_keyaware": 0.875,
+          "ga_lower_latency_rate": 0.16666666666666666,
+          "ga_higher_fidelity_rate": 0.020833333333333332,
+          "ga_lower_balance_rate": 0.22916666666666666
+        },
+        {
+          "variant": "ga_tcheby_pick_fidelityheavy",
+          "request_instances": 48,
+          "same_path_rate_vs_keyaware": 0.7916666666666666,
+          "ga_lower_latency_rate": 0.125,
+          "ga_higher_fidelity_rate": 0.0625,
+          "ga_lower_balance_rate": 0.2708333333333333
+        }
+      ]
+    }
+  ],
+  "headline_findings": {
+    "max_tcheby_separation_rate": 0.41666666666666663,
+    "best_tcheby_variant_by_fidelity_gain_rate": {
+      "variant": "ga_tcheby_pick_default",
+      "request_instances": 24,
+      "same_path_rate_vs_keyaware": 0.7916666666666666,
+      "ga_lower_latency_rate": 0.08333333333333333,
+      "ga_higher_fidelity_rate": 0.16666666666666666,
+      "ga_lower_balance_rate": 0.25
+    },
+    "best_tcheby_variant_by_balance_gain_rate": {
+      "variant": "ga_tcheby_pick_fidelityheavy",
+      "request_instances": 48,
+      "same_path_rate_vs_keyaware": 0.7916666666666666,
+      "ga_lower_latency_rate": 0.125,
+      "ga_higher_fidelity_rate": 0.0625,
+      "ga_lower_balance_rate": 0.2708333333333333
+    },
+    "interpretation": "If tcheby-picked GA separates from key-aware here, the collapse seen in Phase 10C was largely a final-answer selection-policy issue. If it still matches key-aware, then the current topology/request suite truly does not induce enough multi-objective conflict."
+  }
+}

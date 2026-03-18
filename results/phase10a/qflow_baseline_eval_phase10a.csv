@@ -1,0 +1,5 @@
+topology,src,dst,baseline,feasible,hops,distance_km,latency,bottleneck_fidelity,load_balance,runtime_ms,path,pareto_front_size,convergence_points,best_tchebycheff
+ring6,0,3,dijkstra_distance,True,3,75.0,5.514355977481588,0.9321719522223071,0.0,0.024897999992390396,"[0, 1, 2, 3]",,,
+ring6,0,3,dijkstra_keyaware,True,3,75.0,5.460343748912665,0.9283955138475625,0.0,0.01198099994326185,"[0, 5, 4, 3]",,,
+ring6,0,3,random_valid_path,True,3,75.0,5.514355977481588,0.9321719522223071,0.0,0.0610509999887654,"[0, 1, 2, 3]",,,
+ring6,0,3,software_pmo_ga,True,3,75.0,5.460343748912665,0.9283955138475625,0.0,78.08008599999994,"[0, 5, 4, 3]",64,11,0.001510575349897847

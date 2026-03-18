@@ -1,0 +1,1390 @@
+{
+  "config": {
+    "topologies": [
+      "mesh9",
+      "mesh16",
+      "irregular12"
+    ],
+    "seed_start": 42,
+    "repetitions": 30,
+    "sim_duration_s": 0.5,
+    "tick_dt_s": 0.001,
+    "f_min": 0.9,
+    "ga_pop_size": 64,
+    "ga_max_generations": 100,
+    "request_mode": "sequential_multi_request_with_key_consumption",
+    "alphas": [
+      1.0,
+      1.5,
+      0.5,
+      2.0
+    ]
+  },
+  "topologies": [
+    {
+      "name": "mesh9",
+      "requests": [
+        {
+          "src": 0,
+          "dst": 8,
+          "max_hops": 8
+        },
+        {
+          "src": 2,
+          "dst": 6,
+          "max_hops": 8
+        },
+        {
+          "src": 0,
+          "dst": 5,
+          "max_hops": 8
+        },
+        {
+          "src": 1,
+          "dst": 7,
+          "max_hops": 8
+        }
+      ],
+      "repeated_baseline_stats": [
+        {
+          "baseline": "dijkstra_distance",
+          "runs": 30,
+          "mean_avg_hops": 3.35,
+          "mean_avg_distance_km": 76.12083333333334,
+          "mean_avg_latency": 6.31986279371169,
+          "latency_ci95": 0.13789691800657858,
+          "mean_avg_bottleneck_fidelity": 0.9169923295776281,
+          "fidelity_ci95": 0.0014937912488730781,
+          "mean_avg_load_balance": 0.12156084656084656,
+          "load_balance_ci95": 0.040157555491381385,
+          "mean_total_runtime_ms": 0.06525299997216887,
+          "runtime_ci95": 0.0015422575812053007,
+          "mean_latency_wins": 2.066666666666667,
+          "mean_fidelity_wins": 1.9
+        },
+        {
+          "baseline": "dijkstra_keyaware",
+          "runs": 30,
+          "mean_avg_hops": 3.35,
+          "mean_avg_distance_km": 77.68333333333334,
+          "mean_avg_latency": 6.22525804403463,
+          "latency_ci95": 0.1281598726901822,
+          "mean_avg_bottleneck_fidelity": 0.9177087376831932,
+          "fidelity_ci95": 0.001574054508294823,
+          "mean_avg_load_balance": 0.13843347624597627,
+          "load_balance_ci95": 0.03162854887779365,
+          "mean_total_runtime_ms": 0.058065633311343845,
+          "runtime_ci95": 0.0006333915263276227,
+          "mean_latency_wins": 2.966666666666667,
+          "mean_fidelity_wins": 2.2
+        },
+        {
+          "baseline": "random_valid_path",
+          "runs": 30,
+          "mean_avg_hops": 3.8333333333333335,
+          "mean_avg_distance_km": 90.10416666666667,
+          "mean_avg_latency": 7.356369926272148,
+          "latency_ci95": 0.2779689425331153,
+          "mean_avg_bottleneck_fidelity": 0.9183387190250698,
+          "fidelity_ci95": 0.001440148728867557,
+          "mean_avg_load_balance": 0.2124186650337966,
+          "load_balance_ci95": 0.055134943275123284,
+          "mean_total_runtime_ms": 0.16667826653247175,
+          "runtime_ci95": 0.010710502939669474,
+          "mean_latency_wins": 0.5666666666666667,
+          "mean_fidelity_wins": 2.066666666666667
+        },
+        {
+          "baseline": "software_pmo_ga",
+          "runs": 30,
+          "mean_avg_hops": 3.35,
+          "mean_avg_distance_km": 77.68333333333334,
+          "mean_avg_latency": 6.22525804403463,
+          "latency_ci95": 0.1281598726901822,
+          "mean_avg_bottleneck_fidelity": 0.9177087376831932,
+          "fidelity_ci95": 0.001574054508294823,
+          "mean_avg_load_balance": 0.13843347624597627,
+          "load_balance_ci95": 0.03162854887779365,
+          "mean_total_runtime_ms": 317.2500549667954,
+          "runtime_ci95": 3.57000728071567,
+          "mean_latency_wins": 2.966666666666667,
+          "mean_fidelity_wins": 2.2
+        }
+      ],
+      "ga_vs_keyaware_request_match": [
+        {
+          "request_index": 0,
+          "src": 0,
+          "dst": 8,
+          "max_hops": 8,
+          "ga_matches_keyaware_count": 30,
+          "ga_matches_keyaware_rate": 1.0,
+          "distinct_keyaware_paths": [
+            [
+              0,
+              1,
+              2,
+              5,
+              8
+            ],
+            [
+              0,
+              1,
+              4,
+              5,
+              8
+            ],
+            [
+              0,
+              1,
+              4,
+              7,
+              8
+            ],
+            [
+              0,
+              3,
+              4,
+              5,
+              8
+            ],
+            [
+              0,
+              3,
+              4,
+              7,
+              8
+            ],
+            [
+              0,
+              3,
+              6,
+              7,
+              8
+            ]
+          ],
+          "distinct_ga_paths": [
+            [
+              0,
+              1,
+              2,
+              5,
+              8
+            ],
+            [
+              0,
+              1,
+              4,
+              5,
+              8
+            ],
+            [
+              0,
+              1,
+              4,
+              7,
+              8
+            ],
+            [
+              0,
+              3,
+              4,
+              5,
+              8
+            ],
+            [
+              0,
+              3,
+              4,
+              7,
+              8
+            ],
+            [
+              0,
+              3,
+              6,
+              7,
+              8
+            ]
+          ]
+        },
+        {
+          "request_index": 1,
+          "src": 2,
+          "dst": 6,
+          "max_hops": 8,
+          "ga_matches_keyaware_count": 30,
+          "ga_matches_keyaware_rate": 1.0,
+          "distinct_keyaware_paths": [
+            [
+              2,
+              1,
+              0,
+              3,
+              6
+            ],
+            [
+              2,
+              5,
+              4,
+              7,
+              6
+            ],
+            [
+              2,
+              5,
+              8,
+              7,
+              6
+            ]
+          ],
+          "distinct_ga_paths": [
+            [
+              2,
+              1,
+              0,
+              3,
+              6
+            ],
+            [
+              2,
+              5,
+              4,
+              7,
+              6
+            ],
+            [
+              2,
+              5,
+              8,
+              7,
+              6
+            ]
+          ]
+        },
+        {
+          "request_index": 2,
+          "src": 0,
+          "dst": 5,
+          "max_hops": 8,
+          "ga_matches_keyaware_count": 30,
+          "ga_matches_keyaware_rate": 1.0,
+          "distinct_keyaware_paths": [
+            [
+              0,
+              1,
+              2,
+              5
+            ],
+            [
+              0,
+              1,
+              4,
+              5
+            ],
+            [
+              0,
+              3,
+              4,
+              5
+            ]
+          ],
+          "distinct_ga_paths": [
+            [
+              0,
+              1,
+              2,
+              5
+            ],
+            [
+              0,
+              1,
+              4,
+              5
+            ],
+            [
+              0,
+              3,
+              4,
+              5
+            ]
+          ]
+        },
+        {
+          "request_index": 3,
+          "src": 1,
+          "dst": 7,
+          "max_hops": 8,
+          "ga_matches_keyaware_count": 30,
+          "ga_matches_keyaware_rate": 1.0,
+          "distinct_keyaware_paths": [
+            [
+              1,
+              0,
+              3,
+              4,
+              7
+            ],
+            [
+              1,
+              0,
+              3,
+              6,
+              7
+            ],
+            [
+              1,
+              4,
+              7
+            ]
+          ],
+          "distinct_ga_paths": [
+            [
+              1,
+              0,
+              3,
+              4,
+              7
+            ],
+            [
+              1,
+              0,
+              3,
+              6,
+              7
+            ],
+            [
+              1,
+              4,
+              7
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mesh16",
+      "requests": [
+        {
+          "src": 0,
+          "dst": 15,
+          "max_hops": 10
+        },
+        {
+          "src": 3,
+          "dst": 12,
+          "max_hops": 10
+        },
+        {
+          "src": 1,
+          "dst": 14,
+          "max_hops": 10
+        },
+        {
+          "src": 4,
+          "dst": 11,
+          "max_hops": 10
+        }
+      ],
+      "repeated_baseline_stats": [
+        {
+          "baseline": "dijkstra_distance",
+          "runs": 30,
+          "mean_avg_hops": 5.083333333333333,
+          "mean_avg_distance_km": 123.77916666666667,
+          "mean_avg_latency": 9.848029753833403,
+          "latency_ci95": 0.20480652839850513,
+          "mean_avg_bottleneck_fidelity": 0.913979543751761,
+          "fidelity_ci95": 0.0011355933003214093,
+          "mean_avg_load_balance": 0.29557539682539685,
+          "load_balance_ci95": 0.07332865688821953,
+          "mean_total_runtime_ms": 0.12642626678219435,
+          "runtime_ci95": 0.0033568550365052387,
+          "mean_latency_wins": 1.1,
+          "mean_fidelity_wins": 1.5
+        },
+        {
+          "baseline": "dijkstra_keyaware",
+          "runs": 30,
+          "mean_avg_hops": 5.05,
+          "mean_avg_distance_km": 126.87916666666666,
+          "mean_avg_latency": 9.529374269292193,
+          "latency_ci95": 0.1145413077028149,
+          "mean_avg_bottleneck_fidelity": 0.9142444705992059,
+          "fidelity_ci95": 0.0015288078726515566,
+          "mean_avg_load_balance": 0.1694083694083694,
+          "load_balance_ci95": 0.025738992828798588,
+          "mean_total_runtime_ms": 0.1187706000716086,
+          "runtime_ci95": 0.0012021766709070362,
+          "mean_latency_wins": 3.2666666666666666,
+          "mean_fidelity_wins": 2.0
+        },
+        {
+          "baseline": "random_valid_path",
+          "runs": 30,
+          "mean_avg_hops": 6.233333333333333,
+          "mean_avg_distance_km": 155.32222222222222,
+          "mean_avg_latency": 12.160335282677465,
+          "latency_ci95": 0.3543137723568264,
+          "mean_avg_bottleneck_fidelity": 0.9131148659055868,
+          "fidelity_ci95": 0.0010392814956730312,
+          "mean_avg_load_balance": 0.3505753968253968,
+          "load_balance_ci95": 0.08310243037540048,
+          "mean_total_runtime_ms": 0.4078665001088666,
+          "runtime_ci95": 0.1948866327931964,
+          "mean_latency_wins": 0.2,
+          "mean_fidelity_wins": 1.5666666666666667
+        },
+        {
+          "baseline": "software_pmo_ga",
+          "runs": 30,
+          "mean_avg_hops": 5.05,
+          "mean_avg_distance_km": 126.87916666666666,
+          "mean_avg_latency": 9.529374269292193,
+          "latency_ci95": 0.1145413077028149,
+          "mean_avg_bottleneck_fidelity": 0.9142444705992059,
+          "fidelity_ci95": 0.0015288078726515566,
+          "mean_avg_load_balance": 0.1694083694083694,
+          "load_balance_ci95": 0.025738992828798588,
+          "mean_total_runtime_ms": 496.15200096651887,
+          "runtime_ci95": 117.23727072559106,
+          "mean_latency_wins": 3.2666666666666666,
+          "mean_fidelity_wins": 2.0
+        }
+      ],
+      "ga_vs_keyaware_request_match": [
+        {
+          "request_index": 0,
+          "src": 0,
+          "dst": 15,
+          "max_hops": 10,
+          "ga_matches_keyaware_count": 30,
+          "ga_matches_keyaware_rate": 1.0,
+          "distinct_keyaware_paths": [
+            [
+              0,
+              1,
+              2,
+              3,
+              7,
+              11,
+              15
+            ],
+            [
+              0,
+              1,
+              2,
+              6,
+              7,
+              11,
+              15
+            ],
+            [
+              0,
+              1,
+              2,
+              6,
+              10,
+              14,
+              15
+            ],
+            [
+              0,
+              1,
+              5,
+              6,
+              10,
+              11,
+              15
+            ],
+            [
+              0,
+              1,
+              5,
+              6,
+              10,
+              14,
+              15
+            ],
+            [
+              0,
+              1,
+              5,
+              9,
+              10,
+              11,
+              15
+            ],
+            [
+              0,
+              1,
+              5,
+              9,
+              10,
+              14,
+              15
+            ],
+            [
+              0,
+              1,
+              5,
+              9,
+              13,
+              14,
+              15
+            ],
+            [
+              0,
+              4,
+              5,
+              6,
+              10,
+              11,
+              15
+            ],
+            [
+              0,
+              4,
+              5,
+              6,
+              10,
+              14,
+              15
+            ],
+            [
+              0,
+              4,
+              5,
+              9,
+              10,
+              11,
+              15
+            ],
+            [
+              0,
+              4,
+              5,
+              9,
+              10,
+              14,
+              15
+            ],
+            [
+              0,
+              4,
+              8,
+              9,
+              10,
+              11,
+              15
+            ],
+            [
+              0,
+              4,
+              8,
+              9,
+              10,
+              14,
+              15
+            ],
+            [
+              0,
+              4,
+              8,
+              12,
+              13,
+              14,
+              15
+            ]
+          ],
+          "distinct_ga_paths": [
+            [
+              0,
+              1,
+              2,
+              3,
+              7,
+              11,
+              15
+            ],
+            [
+              0,
+              1,
+              2,
+              6,
+              7,
+              11,
+              15
+            ],
+            [
+              0,
+              1,
+              2,
+              6,
+              10,
+              14,
+              15
+            ],
+            [
+              0,
+              1,
+              5,
+              6,
+              10,
+              11,
+              15
+            ],
+            [
+              0,
+              1,
+              5,
+              6,
+              10,
+              14,
+              15
+            ],
+            [
+              0,
+              1,
+              5,
+              9,
+              10,
+              11,
+              15
+            ],
+            [
+              0,
+              1,
+              5,
+              9,
+              10,
+              14,
+              15
+            ],
+            [
+              0,
+              1,
+              5,
+              9,
+              13,
+              14,
+              15
+            ],
+            [
+              0,
+              4,
+              5,
+              6,
+              10,
+              11,
+              15
+            ],
+            [
+              0,
+              4,
+              5,
+              6,
+              10,
+              14,
+              15
+            ],
+            [
+              0,
+              4,
+              5,
+              9,
+              10,
+              11,
+              15
+            ],
+            [
+              0,
+              4,
+              5,
+              9,
+              10,
+              14,
+              15
+            ],
+            [
+              0,
+              4,
+              8,
+              9,
+              10,
+              11,
+              15
+            ],
+            [
+              0,
+              4,
+              8,
+              9,
+              10,
+              14,
+              15
+            ],
+            [
+              0,
+              4,
+              8,
+              12,
+              13,
+              14,
+              15
+            ]
+          ]
+        },
+        {
+          "request_index": 1,
+          "src": 3,
+          "dst": 12,
+          "max_hops": 10,
+          "ga_matches_keyaware_count": 30,
+          "ga_matches_keyaware_rate": 1.0,
+          "distinct_keyaware_paths": [
+            [
+              3,
+              2,
+              1,
+              0,
+              4,
+              8,
+              12
+            ],
+            [
+              3,
+              2,
+              1,
+              5,
+              9,
+              13,
+              12
+            ],
+            [
+              3,
+              2,
+              6,
+              5,
+              9,
+              13,
+              12
+            ],
+            [
+              3,
+              2,
+              6,
+              10,
+              9,
+              13,
+              12
+            ],
+            [
+              3,
+              7,
+              6,
+              5,
+              9,
+              13,
+              12
+            ],
+            [
+              3,
+              7,
+              6,
+              10,
+              9,
+              13,
+              12
+            ],
+            [
+              3,
+              7,
+              11,
+              10,
+              9,
+              8,
+              12
+            ],
+            [
+              3,
+              7,
+              11,
+              10,
+              9,
+              13,
+              12
+            ],
+            [
+              3,
+              7,
+              11,
+              10,
+              14,
+              13,
+              12
+            ]
+          ],
+          "distinct_ga_paths": [
+            [
+              3,
+              2,
+              1,
+              0,
+              4,
+              8,
+              12
+            ],
+            [
+              3,
+              2,
+              1,
+              5,
+              9,
+              13,
+              12
+            ],
+            [
+              3,
+              2,
+              6,
+              5,
+              9,
+              13,
+              12
+            ],
+            [
+              3,
+              2,
+              6,
+              10,
+              9,
+              13,
+              12
+            ],
+            [
+              3,
+              7,
+              6,
+              5,
+              9,
+              13,
+              12
+            ],
+            [
+              3,
+              7,
+              6,
+              10,
+              9,
+              13,
+              12
+            ],
+            [
+              3,
+              7,
+              11,
+              10,
+              9,
+              8,
+              12
+            ],
+            [
+              3,
+              7,
+              11,
+              10,
+              9,
+              13,
+              12
+            ],
+            [
+              3,
+              7,
+              11,
+              10,
+              14,
+              13,
+              12
+            ]
+          ]
+        },
+        {
+          "request_index": 2,
+          "src": 1,
+          "dst": 14,
+          "max_hops": 10,
+          "ga_matches_keyaware_count": 30,
+          "ga_matches_keyaware_rate": 1.0,
+          "distinct_keyaware_paths": [
+            [
+              1,
+              0,
+              4,
+              5,
+              9,
+              13,
+              14
+            ],
+            [
+              1,
+              2,
+              6,
+              10,
+              14
+            ],
+            [
+              1,
+              5,
+              6,
+              10,
+              14
+            ],
+            [
+              1,
+              5,
+              9,
+              10,
+              14
+            ],
+            [
+              1,
+              5,
+              9,
+              13,
+              14
+            ]
+          ],
+          "distinct_ga_paths": [
+            [
+              1,
+              0,
+              4,
+              5,
+              9,
+              13,
+              14
+            ],
+            [
+              1,
+              2,
+              6,
+              10,
+              14
+            ],
+            [
+              1,
+              5,
+              6,
+              10,
+              14
+            ],
+            [
+              1,
+              5,
+              9,
+              10,
+              14
+            ],
+            [
+              1,
+              5,
+              9,
+              13,
+              14
+            ]
+          ]
+        },
+        {
+          "request_index": 3,
+          "src": 4,
+          "dst": 11,
+          "max_hops": 10,
+          "ga_matches_keyaware_count": 30,
+          "ga_matches_keyaware_rate": 1.0,
+          "distinct_keyaware_paths": [
+            [
+              4,
+              0,
+              1,
+              5,
+              6,
+              10,
+              11
+            ],
+            [
+              4,
+              0,
+              1,
+              5,
+              9,
+              10,
+              11
+            ],
+            [
+              4,
+              5,
+              6,
+              7,
+              11
+            ],
+            [
+              4,
+              5,
+              6,
+              10,
+              11
+            ],
+            [
+              4,
+              5,
+              9,
+              10,
+              11
+            ],
+            [
+              4,
+              8,
+              9,
+              10,
+              11
+            ]
+          ],
+          "distinct_ga_paths": [
+            [
+              4,
+              0,
+              1,
+              5,
+              6,
+              10,
+              11
+            ],
+            [
+              4,
+              0,
+              1,
+              5,
+              9,
+              10,
+              11
+            ],
+            [
+              4,
+              5,
+              6,
+              7,
+              11
+            ],
+            [
+              4,
+              5,
+              6,
+              10,
+              11
+            ],
+            [
+              4,
+              5,
+              9,
+              10,
+              11
+            ],
+            [
+              4,
+              8,
+              9,
+              10,
+              11
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "irregular12",
+      "requests": [
+        {
+          "src": 0,
+          "dst": 11,
+          "max_hops": 10
+        },
+        {
+          "src": 1,
+          "dst": 10,
+          "max_hops": 10
+        },
+        {
+          "src": 4,
+          "dst": 7,
+          "max_hops": 10
+        },
+        {
+          "src": 2,
+          "dst": 9,
+          "max_hops": 10
+        }
+      ],
+      "repeated_baseline_stats": [
+        {
+          "baseline": "dijkstra_distance",
+          "runs": 30,
+          "mean_avg_hops": 3.5166666666666666,
+          "mean_avg_distance_km": 63.916666666666664,
+          "mean_avg_latency": 6.345471419607138,
+          "latency_ci95": 0.05153645282653417,
+          "mean_avg_bottleneck_fidelity": 0.9210501702902715,
+          "fidelity_ci95": 0.001141599119905294,
+          "mean_avg_load_balance": 0.09552808302808304,
+          "load_balance_ci95": 0.021138075271583918,
+          "mean_total_runtime_ms": 0.09657263331064314,
+          "runtime_ci95": 0.0013464609813263106,
+          "mean_latency_wins": 1.9666666666666666,
+          "mean_fidelity_wins": 1.6666666666666667
+        },
+        {
+          "baseline": "dijkstra_keyaware",
+          "runs": 30,
+          "mean_avg_hops": 3.5166666666666666,
+          "mean_avg_distance_km": 67.26666666666667,
+          "mean_avg_latency": 6.19625604935573,
+          "latency_ci95": 0.03989547289929722,
+          "mean_avg_bottleneck_fidelity": 0.9238092191740984,
+          "fidelity_ci95": 0.0009852439573222371,
+          "mean_avg_load_balance": 0.0818321955821956,
+          "load_balance_ci95": 0.01435489380184422,
+          "mean_total_runtime_ms": 0.08613376652040945,
+          "runtime_ci95": 0.0009985793872172779,
+          "mean_latency_wins": 2.966666666666667,
+          "mean_fidelity_wins": 2.7333333333333334
+        },
+        {
+          "baseline": "random_valid_path",
+          "runs": 30,
+          "mean_avg_hops": 5.083333333333333,
+          "mean_avg_distance_km": 96.39166666666667,
+          "mean_avg_latency": 9.142279387052433,
+          "latency_ci95": 0.40280263948330614,
+          "mean_avg_bottleneck_fidelity": 0.9190240847851302,
+          "fidelity_ci95": 0.0011759172845045847,
+          "mean_avg_load_balance": 0.10546273171273171,
+          "load_balance_ci95": 0.024698439765454477,
+          "mean_total_runtime_ms": 0.2161516333368733,
+          "runtime_ci95": 0.011597651141924487,
+          "mean_latency_wins": 0.16666666666666666,
+          "mean_fidelity_wins": 1.0
+        },
+        {
+          "baseline": "software_pmo_ga",
+          "runs": 30,
+          "mean_avg_hops": 3.5166666666666666,
+          "mean_avg_distance_km": 67.26666666666667,
+          "mean_avg_latency": 6.19625604935573,
+          "latency_ci95": 0.03989547289929722,
+          "mean_avg_bottleneck_fidelity": 0.9238092191740984,
+          "fidelity_ci95": 0.0009852439573222371,
+          "mean_avg_load_balance": 0.0818321955821956,
+          "load_balance_ci95": 0.01435489380184422,
+          "mean_total_runtime_ms": 424.5722968332454,
+          "runtime_ci95": 80.36470176039286,
+          "mean_latency_wins": 2.966666666666667,
+          "mean_fidelity_wins": 2.7333333333333334
+        }
+      ],
+      "ga_vs_keyaware_request_match": [
+        {
+          "request_index": 0,
+          "src": 0,
+          "dst": 11,
+          "max_hops": 10,
+          "ga_matches_keyaware_count": 30,
+          "ga_matches_keyaware_rate": 1.0,
+          "distinct_keyaware_paths": [
+            [
+              0,
+              1,
+              2,
+              3,
+              7,
+              11
+            ],
+            [
+              0,
+              1,
+              2,
+              6,
+              10,
+              11
+            ],
+            [
+              0,
+              1,
+              5,
+              9,
+              10,
+              11
+            ],
+            [
+              0,
+              4,
+              5,
+              6,
+              10,
+              11
+            ],
+            [
+              0,
+              4,
+              8,
+              9,
+              10,
+              11
+            ]
+          ],
+          "distinct_ga_paths": [
+            [
+              0,
+              1,
+              2,
+              3,
+              7,
+              11
+            ],
+            [
+              0,
+              1,
+              2,
+              6,
+              10,
+              11
+            ],
+            [
+              0,
+              1,
+              5,
+              9,
+              10,
+              11
+            ],
+            [
+              0,
+              4,
+              5,
+              6,
+              10,
+              11
+            ],
+            [
+              0,
+              4,
+              8,
+              9,
+              10,
+              11
+            ]
+          ]
+        },
+        {
+          "request_index": 1,
+          "src": 1,
+          "dst": 10,
+          "max_hops": 10,
+          "ga_matches_keyaware_count": 30,
+          "ga_matches_keyaware_rate": 1.0,
+          "distinct_keyaware_paths": [
+            [
+              1,
+              2,
+              6,
+              10
+            ],
+            [
+              1,
+              5,
+              9,
+              10
+            ]
+          ],
+          "distinct_ga_paths": [
+            [
+              1,
+              2,
+              6,
+              10
+            ],
+            [
+              1,
+              5,
+              9,
+              10
+            ]
+          ]
+        },
+        {
+          "request_index": 2,
+          "src": 4,
+          "dst": 7,
+          "max_hops": 10,
+          "ga_matches_keyaware_count": 30,
+          "ga_matches_keyaware_rate": 1.0,
+          "distinct_keyaware_paths": [
+            [
+              4,
+              5,
+              2,
+              3,
+              7
+            ],
+            [
+              4,
+              8,
+              9,
+              10,
+              11,
+              7
+            ]
+          ],
+          "distinct_ga_paths": [
+            [
+              4,
+              5,
+              2,
+              3,
+              7
+            ],
+            [
+              4,
+              8,
+              9,
+              10,
+              11,
+              7
+            ]
+          ]
+        },
+        {
+          "request_index": 3,
+          "src": 2,
+          "dst": 9,
+          "max_hops": 10,
+          "ga_matches_keyaware_count": 30,
+          "ga_matches_keyaware_rate": 1.0,
+          "distinct_keyaware_paths": [
+            [
+              2,
+              6,
+              9
+            ]
+          ],
+          "distinct_ga_paths": [
+            [
+              2,
+              6,
+              9
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

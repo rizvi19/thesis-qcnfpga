@@ -1,0 +1,96 @@
+{
+  "phase10c_context": {
+    "software_pmo_ga_old_suite_matches_keyaware": []
+  },
+  "phase10d_headline_findings": {
+    "max_tcheby_separation_rate": 0.41666666666666663,
+    "best_tcheby_variant_by_fidelity_gain_rate": {
+      "variant": "ga_tcheby_pick_default",
+      "request_instances": 24,
+      "same_path_rate_vs_keyaware": 0.7916666666666666,
+      "ga_lower_latency_rate": 0.08333333333333333,
+      "ga_higher_fidelity_rate": 0.16666666666666666,
+      "ga_lower_balance_rate": 0.25
+    },
+    "best_tcheby_variant_by_balance_gain_rate": {
+      "variant": "ga_tcheby_pick_fidelityheavy",
+      "request_instances": 48,
+      "same_path_rate_vs_keyaware": 0.7916666666666666,
+      "ga_lower_latency_rate": 0.125,
+      "ga_higher_fidelity_rate": 0.0625,
+      "ga_lower_balance_rate": 0.2708333333333333
+    },
+    "interpretation": "If tcheby-picked GA separates from key-aware here, the collapse seen in Phase 10C was largely a final-answer selection-policy issue. If it still matches key-aware, then the current topology/request suite truly does not induce enough multi-objective conflict."
+  },
+  "adopted_recommendations_by_profile_topology": [
+    {
+      "profile": "current_like",
+      "topology": "mesh9",
+      "recommended_ga_variant": "ga_tcheby_pick_fidelityheavy",
+      "latency_delta_ga_minus_keyaware": 0.00908569153872918,
+      "fidelity_delta_ga_minus_keyaware": -0.0006241454644979605,
+      "load_balance_delta_ga_minus_keyaware": -0.032558760683760665,
+      "runtime_ratio_ga_over_keyaware": 3197.9726929827975
+    },
+    {
+      "profile": "current_like",
+      "topology": "mesh16",
+      "recommended_ga_variant": "ga_tcheby_pick_default",
+      "latency_delta_ga_minus_keyaware": 0.04128611412689054,
+      "fidelity_delta_ga_minus_keyaware": 0.0004443395386689586,
+      "load_balance_delta_ga_minus_keyaware": -0.025694444444444464,
+      "runtime_ratio_ga_over_keyaware": 2305.4452149189024
+    },
+    {
+      "profile": "current_like",
+      "topology": "irregular12",
+      "recommended_ga_variant": "ga_tcheby_pick_default",
+      "latency_delta_ga_minus_keyaware": 0.007134815033838393,
+      "fidelity_delta_ga_minus_keyaware": 0.00019019249900176227,
+      "load_balance_delta_ga_minus_keyaware": -0.031156517094017094,
+      "runtime_ratio_ga_over_keyaware": 2436.162251708017
+    },
+    {
+      "profile": "depletion_plus_stricter_fidelity",
+      "topology": "mesh9",
+      "recommended_ga_variant": "ga_tcheby_pick_default",
+      "latency_delta_ga_minus_keyaware": 0.0,
+      "fidelity_delta_ga_minus_keyaware": 0.0,
+      "load_balance_delta_ga_minus_keyaware": 0.0,
+      "runtime_ratio_ga_over_keyaware": 13127.995320805006
+    },
+    {
+      "profile": "depletion_plus_stricter_fidelity",
+      "topology": "mesh16",
+      "recommended_ga_variant": "ga_tcheby_pick_default",
+      "latency_delta_ga_minus_keyaware": 0.006393338755849243,
+      "fidelity_delta_ga_minus_keyaware": 0.0,
+      "load_balance_delta_ga_minus_keyaware": -0.033333333333333326,
+      "runtime_ratio_ga_over_keyaware": 10538.950234846054
+    },
+    {
+      "profile": "depletion_plus_stricter_fidelity",
+      "topology": "irregular12",
+      "recommended_ga_variant": "ga_tcheby_pick_default",
+      "latency_delta_ga_minus_keyaware": -0.0029307738556276774,
+      "fidelity_delta_ga_minus_keyaware": -0.0013420503198346978,
+      "load_balance_delta_ga_minus_keyaware": -0.14517045454545457,
+      "runtime_ratio_ga_over_keyaware": 3404.875980420717
+    }
+  ],
+  "global_recommended_software_ga_variant_for_thesis": "ga_tcheby_pick_default",
+  "thesis_safe_interpretation": {
+    "core_message": "The earlier PMO-GA collapse was substantially influenced by latency-first final-answer selection. When the GA output is selected with weighted Tchebycheff scoring, it separates from key-aware shortest path on a meaningful subset of request instances, typically trading a small latency change for improved balance and occasionally improved fidelity.",
+    "do_say": [
+      "Tchebycheff-picked PMO-GA provides a more faithful software reference to the intended multi-objective formulation.",
+      "Selection policy materially affects whether PMO-GA appears distinct from the key-aware heuristic.",
+      "The strongest observed GA advantage is usually lower load-balance (better spreading), not dominant wins on every metric."
+    ],
+    "do_not_say": [
+      "PMO-GA universally dominates key-aware shortest path.",
+      "Every tested scenario shows better fidelity and lower latency simultaneously.",
+      "Hardware board deployment has already been demonstrated."
+    ]
+  },
+  "phase11a_present": true
+}

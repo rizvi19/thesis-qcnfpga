@@ -1,0 +1,11 @@
+SECTION,version/profile,topology,wns_ns,tns_ns,fmax_mhz,data_path_delay_ns,recommended_ga_variant,latency_delta_ga_minus_keyaware,fidelity_delta_ga_minus_keyaware,load_balance_delta_ga_minus_keyaware
+timing,tc3,,-68.443,-1412.372,12.773,,,,,
+timing,tc4,,-8.154,-178.942,55.549,,,,,
+timing,tc5,,0.033,0.0,101.885,,,,,
+timing,tc5_ooc_impl,,0.039,0.0,100.39152695512499,,,,,
+evaluation,current_like,mesh9,,,,,ga_tcheby_pick_fidelityheavy,0.00908569153872918,-0.0006241454644979605,-0.032558760683760665
+evaluation,current_like,mesh16,,,,,ga_tcheby_pick_default,0.04128611412689054,0.0004443395386689586,-0.025694444444444464
+evaluation,current_like,irregular12,,,,,ga_tcheby_pick_default,0.007134815033838393,0.00019019249900176227,-0.031156517094017094
+evaluation,depletion_plus_stricter_fidelity,mesh9,,,,,ga_tcheby_pick_default,0.0,0.0,0.0
+evaluation,depletion_plus_stricter_fidelity,mesh16,,,,,ga_tcheby_pick_default,0.006393338755849243,0.0,-0.033333333333333326
+evaluation,depletion_plus_stricter_fidelity,irregular12,,,,,ga_tcheby_pick_default,-0.0029307738556276774,-0.0013420503198346978,-0.14517045454545457

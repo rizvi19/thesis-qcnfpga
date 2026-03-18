@@ -1,0 +1,32 @@
+{
+  "default_variant_recommended_count": 5,
+  "evaluation_cases": 6,
+  "global_recommended_variant": "ga_tcheby_pick_default",
+  "largest_balance_improvement_case": {
+    "profile": "depletion_plus_stricter_fidelity",
+    "topology": "irregular12",
+    "recommended_ga_variant": "ga_tcheby_pick_default",
+    "latency_delta_ga_minus_keyaware": -0.0029307738556276774,
+    "fidelity_delta_ga_minus_keyaware": -0.0013420503198346978,
+    "load_balance_delta_ga_minus_keyaware": -0.14517045454545457,
+    "runtime_ratio_ga_over_keyaware": 3404.875980420717
+  },
+  "best_latency_case": {
+    "profile": "depletion_plus_stricter_fidelity",
+    "topology": "irregular12",
+    "recommended_ga_variant": "ga_tcheby_pick_default",
+    "latency_delta_ga_minus_keyaware": -0.0029307738556276774,
+    "fidelity_delta_ga_minus_keyaware": -0.0013420503198346978,
+    "load_balance_delta_ga_minus_keyaware": -0.14517045454545457,
+    "runtime_ratio_ga_over_keyaware": 3404.875980420717
+  },
+  "best_fidelity_case": {
+    "profile": "current_like",
+    "topology": "mesh16",
+    "recommended_ga_variant": "ga_tcheby_pick_default",
+    "latency_delta_ga_minus_keyaware": 0.04128611412689054,
+    "fidelity_delta_ga_minus_keyaware": 0.0004443395386689586,
+    "load_balance_delta_ga_minus_keyaware": -0.025694444444444464,
+    "runtime_ratio_ga_over_keyaware": 2305.4452149189024
+  }
+}
