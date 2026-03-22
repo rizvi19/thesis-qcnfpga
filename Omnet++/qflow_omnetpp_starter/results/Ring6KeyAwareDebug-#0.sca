@@ -1,0 +1,63 @@
+version 3
+run Ring6KeyAwareDebug-0-20260322-13:50:14-14897
+attr configname Ring6KeyAwareDebug
+attr datetime 20260322-13:50:14
+attr datetimef 20260322-135014
+attr experiment Ring6KeyAwareDebug
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network src.QFlowNetwork
+attr processid 14897
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config description "Ring-6 debug run"
+config **.controller.topologyFile "\"topologies/ring6.csv\""
+config **.controller.algorithm "\"keyaware\""
+config **.controller.requestRate 20
+config **.controller.requestLimit 100
+config **.controller.srcNode 0
+config **.controller.dstNode 3
+config **.controller.outputCsv "\"results/ring6_keyaware_debug.csv\""
+config network src.QFlowNetwork
+config sim-time-limit 100000s
+config repeat 1
+config seed-set 0
+config **.controller.fidelityThreshold 0.90
+config **.controller.fiberLossDbPerKm 0.2
+config **.controller.maxHops 8
+config **.controller.maxCandidatePaths 256
+config **.controller.alpha1 1.0
+config **.controller.alpha2 1.5
+config **.controller.alpha3 0.5
+config **.controller.alpha4 2.0
+config **.controller.rngSeed 42
+
+par QFlowNetwork.controller typename "\"src.QFlowController\""
+par QFlowNetwork.controller topologyFile "\"topologies/ring6.csv\""
+par QFlowNetwork.controller algorithm "\"keyaware\""
+par QFlowNetwork.controller outputCsv "\"results/ring6_keyaware_debug.csv\""
+par QFlowNetwork.controller requestRate 20
+par QFlowNetwork.controller requestLimit 100
+par QFlowNetwork.controller fidelityThreshold 0.9
+par QFlowNetwork.controller fiberLossDbPerKm 0.2
+par QFlowNetwork.controller maxHops 8
+par QFlowNetwork.controller maxCandidatePaths 256
+par QFlowNetwork.controller srcNode 0
+par QFlowNetwork.controller dstNode 3
+par QFlowNetwork.controller alpha1 1
+par QFlowNetwork.controller alpha2 1.5
+par QFlowNetwork.controller alpha3 0.5
+par QFlowNetwork.controller alpha4 2
+par QFlowNetwork.controller rngSeed 42
+scalar QFlowNetwork.controller requests_total 100
+scalar QFlowNetwork.controller requests_served 74
+scalar QFlowNetwork.controller requests_blocked 26
+scalar QFlowNetwork.controller blocking_probability 0.26
+par QFlowNetwork typename "\"src.QFlowNetwork\""
+
