@@ -1,0 +1,70 @@
+version 3
+run Mesh16LoadSweep-0-20260322-15:11:23-66946
+attr configname Mesh16LoadSweep
+attr datetime 20260322-15:11:23
+attr datetimef 20260322-151123
+attr experiment Mesh16LoadSweep
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network src.QFlowNetwork
+attr processid 66946
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 30
+config **.controller.algorithm "\"ga_tcheby_proxy\""
+config **.controller.dstNode -1
+config **.controller.outputCsv "\"results/paper_refined/mesh16_ga_tcheby_proxy_rate40_seed30.csv\""
+config **.controller.requestLimit 10000
+config **.controller.requestRate 40
+config **.controller.rngSeed 30
+config **.controller.srcNode -1
+config **.controller.topologyFile "\"topologies/mesh16.csv\""
+config seed-set 30
+config description "Mesh-16 load sweep"
+config **.controller.topologyFile "\"topologies/mesh16.csv\""
+config **.controller.algorithm "\"keyaware\""
+config **.controller.requestRate 500
+config **.controller.requestLimit 5000
+config **.controller.outputCsv "\"results/mesh16_keyaware.csv\""
+config network src.QFlowNetwork
+config sim-time-limit 100000s
+config repeat 1
+config seed-set 0
+config **.controller.fidelityThreshold 0.90
+config **.controller.fiberLossDbPerKm 0.2
+config **.controller.maxHops 8
+config **.controller.maxCandidatePaths 256
+config **.controller.alpha1 1.0
+config **.controller.alpha2 1.5
+config **.controller.alpha3 0.5
+config **.controller.alpha4 2.0
+config **.controller.rngSeed 42
+
+par QFlowNetwork.controller typename "\"src.QFlowController\""
+par QFlowNetwork.controller topologyFile "\"topologies/mesh16.csv\""
+par QFlowNetwork.controller algorithm "\"ga_tcheby_proxy\""
+par QFlowNetwork.controller outputCsv "\"results/paper_refined/mesh16_ga_tcheby_proxy_rate40_seed30.csv\""
+par QFlowNetwork.controller requestRate 40
+par QFlowNetwork.controller requestLimit 10000
+par QFlowNetwork.controller fidelityThreshold 0.9
+par QFlowNetwork.controller fiberLossDbPerKm 0.2
+par QFlowNetwork.controller maxHops 8
+par QFlowNetwork.controller maxCandidatePaths 256
+par QFlowNetwork.controller srcNode -1
+par QFlowNetwork.controller dstNode -1
+par QFlowNetwork.controller alpha1 1
+par QFlowNetwork.controller alpha2 1.5
+par QFlowNetwork.controller alpha3 0.5
+par QFlowNetwork.controller alpha4 2
+par QFlowNetwork.controller rngSeed 30
+scalar QFlowNetwork.controller requests_total 10000
+scalar QFlowNetwork.controller requests_served 964
+scalar QFlowNetwork.controller requests_blocked 9036
+scalar QFlowNetwork.controller blocking_probability 0.9036
+par QFlowNetwork typename "\"src.QFlowNetwork\""
+

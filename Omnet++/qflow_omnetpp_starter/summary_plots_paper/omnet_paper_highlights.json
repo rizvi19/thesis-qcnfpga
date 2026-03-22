@@ -1,0 +1,28 @@
+{
+  "topology_highlights": [
+    {
+      "topology": "irregular12",
+      "highest_rate": 100,
+      "blocking_delta_ga_minus_keyaware": 0.0024999999999999467,
+      "fidelity_delta_ga_minus_keyaware": 0.011371726190476217,
+      "utilization_delta_ga_minus_keyaware": -7.159476500000001e-05,
+      "latency_delta_ga_minus_keyaware_ms": 0.45
+    },
+    {
+      "topology": "mesh16",
+      "highest_rate": 100,
+      "blocking_delta_ga_minus_keyaware": -0.0019999999999998908,
+      "fidelity_delta_ga_minus_keyaware": -0.0003015333333333814,
+      "utilization_delta_ga_minus_keyaware": 1.1140785000000002e-05,
+      "latency_delta_ga_minus_keyaware_ms": 0.45
+    },
+    {
+      "topology": "mesh9",
+      "highest_rate": 100,
+      "blocking_delta_ga_minus_keyaware": 0.004000000000000226,
+      "fidelity_delta_ga_minus_keyaware": -0.0010606732026146037,
+      "utilization_delta_ga_minus_keyaware": -5.239531999999999e-05,
+      "latency_delta_ga_minus_keyaware_ms": 0.45
+    }
+  ]
+}

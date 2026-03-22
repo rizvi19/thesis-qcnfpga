@@ -1,0 +1,19 @@
+\subsection{Dynamic-load network evaluation with OMNeT++}
+
+To assess routing behavior under stochastic network dynamics, we constructed an OMNeT++-based network-layer simulator using Poisson request arrivals, stochastic key-pool updates, and fidelity decay abstractions. This simulation layer is used to compare routing policies under repeated traffic load, and it complements the hardware timing package rather than replacing it.
+
+\paragraph{Role of the OMNeT++ layer.}
+The OMNeT++ study answers the network-behavior question: how blocking probability, path fidelity, route efficiency, and link-usage behavior change as traffic load increases across different topologies. It should therefore be read as the dynamic-load comparison layer of QFlow, not as the primary source of hardware timing evidence.
+
+\paragraph{Final use in the paper.}
+For the main paper, the strongest OMNeT++ figures are:
+(i) blocking probability versus load on Mesh-16,
+(ii) blocking probability versus load on Irregular12,
+(iii) fidelity CDF on Mesh-16,
+(iv) fidelity CDF on Irregular12,
+(v) a per-link usage heatmap comparing Key-Aware routing and the GA-style proxy on Mesh-16, and
+(vi) the topology-size scalability figure.
+The most compact table is the representative-rate comparison table derived from the refined OMNeT++ summary.
+
+\paragraph{Claim discipline.}
+The dynamic-load GA comparator in the current simulator should be described as a \emph{GA-style proxy} rather than the exact final software PMO-GA selector. The OMNeT++ results support claims about dynamic-load tradeoffs, route-quality behavior, and comparison against weaker baselines such as random routing, but they should not be overclaimed as universal dominance or exact software-equivalence proof.

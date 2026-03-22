@@ -1,0 +1,66 @@
+{
+  "topology_highlights": [
+    {
+      "topology": "mesh9",
+      "representative_rate": 10,
+      "blocking_delta_ga_minus_keyaware": -0.0004566666666666608,
+      "fidelity_delta_ga_minus_keyaware": 7.561614623197155e-05,
+      "hop_delta_ga_minus_keyaware": -0.0010366666666667967,
+      "distance_delta_ga_minus_keyaware": -0.021313333333335294
+    },
+    {
+      "topology": "mesh16",
+      "representative_rate": 10,
+      "blocking_delta_ga_minus_keyaware": -0.0001566666666666383,
+      "fidelity_delta_ga_minus_keyaware": 3.169311979744904e-05,
+      "hop_delta_ga_minus_keyaware": -0.00749333333333313,
+      "distance_delta_ga_minus_keyaware": -0.16728333333333012
+    },
+    {
+      "topology": "irregular12",
+      "representative_rate": 10,
+      "blocking_delta_ga_minus_keyaware": 0.0010200000000000209,
+      "fidelity_delta_ga_minus_keyaware": -0.0008021334354320064,
+      "hop_delta_ga_minus_keyaware": -0.002786666666666715,
+      "distance_delta_ga_minus_keyaware": 0.39602333333333206
+    }
+  ],
+  "link_heatmap_manifest": [
+    {
+      "topology": "mesh16",
+      "algorithm": "keyaware",
+      "rate": 10,
+      "figure": "perlink_usage_mesh16_keyaware_rate10.png"
+    },
+    {
+      "topology": "mesh16",
+      "algorithm": "ga_tcheby_proxy",
+      "rate": 10,
+      "figure": "perlink_usage_mesh16_ga_tcheby_proxy_rate10.png"
+    },
+    {
+      "topology": "irregular12",
+      "algorithm": "keyaware",
+      "rate": 10,
+      "figure": "perlink_usage_irregular12_keyaware_rate10.png"
+    },
+    {
+      "topology": "irregular12",
+      "algorithm": "ga_tcheby_proxy",
+      "rate": 10,
+      "figure": "perlink_usage_irregular12_ga_tcheby_proxy_rate10.png"
+    },
+    {
+      "topology": "mesh9",
+      "algorithm": "keyaware",
+      "rate": 10,
+      "figure": "perlink_usage_mesh9_keyaware_rate10.png"
+    },
+    {
+      "topology": "mesh9",
+      "algorithm": "ga_tcheby_proxy",
+      "rate": 10,
+      "figure": "perlink_usage_mesh9_ga_tcheby_proxy_rate10.png"
+    }
+  ]
+}

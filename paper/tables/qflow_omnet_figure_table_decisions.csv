@@ -1,0 +1,13 @@
+artifact_id,artifact_type,priority,status,paper_section,decision,reason
+F_OMN_1,blocking_vs_load_mesh16,high,keep_main,Results,main paper,Primary dynamic-load operational figure on the main topology
+F_OMN_2,blocking_vs_load_irregular12,high,keep_main,Results,main paper,Shows robustness outside symmetric meshes
+F_OMN_3,blocking_vs_load_mesh9,medium,appendix,Appendix,appendix,Useful but not as strong as Mesh-16/Irregular12
+F_OMN_4,fidelity_cdf_mesh16,high,keep_main,Results,main paper,Primary route-quality figure
+F_OMN_5,fidelity_cdf_irregular12,high,keep_main,Results,main paper,Quality behavior on heterogeneous topology
+F_OMN_6,fidelity_cdf_mesh9,medium,appendix,Appendix,appendix,Helpful but redundant for the main story
+F_OMN_7,perlink_usage_mesh16_keyaware_vs_ga,high,keep_main,Results,main paper,Best visual for routing-distribution differences
+F_OMN_8,perlink_usage_irregular12_keyaware_vs_ga,medium,appendix,Appendix,appendix,Useful support figure but not mandatory
+F_OMN_9,scalability_plot,high,keep_main,Results,main paper,Required by plan to avoid small-scale criticism
+T_OMN_1,omnet_paper_ready_table,high,keep_main,Results,main paper,Best compact comparison table for dynamic-load results
+T_OMN_2,omnet_final_summary,medium,appendix,Appendix,appendix,Useful complete matrix but too dense for the main paper
+T_OMN_3,omnet_final_run_level_summary,low,appendix,Supplementary,supplementary,Reproducibility/supporting material

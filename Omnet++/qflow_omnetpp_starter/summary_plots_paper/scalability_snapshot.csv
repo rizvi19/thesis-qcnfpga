@@ -1,0 +1,7 @@
+topology,nodes,algorithm,blocking_probability,mean_bottleneck_fidelity
+irregular12,12,keyaware,0.9895,0.9222945238095237
+irregular12,12,ga_tcheby_proxy,0.992,0.9336662499999999
+mesh16,16,keyaware,0.9975,0.9214392
+mesh16,16,ga_tcheby_proxy,0.9955000000000002,0.9211376666666666
+mesh9,9,keyaware,0.9914999999999999,0.9283611176470589
+mesh9,9,ga_tcheby_proxy,0.9955000000000002,0.9273004444444443
