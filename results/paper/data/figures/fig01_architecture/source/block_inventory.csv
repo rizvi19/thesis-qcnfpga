@@ -1,0 +1,8 @@
+block_id,block_name,category,role_in_figure,show_in_main_panel,show_in_pipeline_panel,notes
+B01,Request Input,io,Incoming route request and control fields,yes,yes,Top-level input
+B02,Network State Input,io,Current network/key/fidelity-related state input,yes,yes,May be grouped with request input
+B03,FDPE,compute,Fidelity/state-related processing block,yes,yes,Use final paper wording
+B04,SKAG / Memory Block,storage,State/key/path support memory structure,yes,yes,Keep naming consistent with text
+B05,Selection Logic,control,Final route scoring and selection path,yes,yes,Central decision stage
+B06,Route Decision Output,io,Chosen route / action output,yes,yes,Top-level output
+B07,Control / Sequencing,control,Optional control FSM or orchestration block,optional,yes,Only include if visually useful

@@ -1,0 +1,94 @@
+{
+  "paper_id": "qflow_fpga_qkd_routing_2026",
+  "paper_short_title": "QFlow",
+  "target_fpga": "Xilinx Artix-7 XC7A200T-1FBG484",
+  "target_clock_period_ns": 10.0,
+  "acceptable_final_target_mhz": 100.0,
+  "aspirational_only_target_mhz": 200.0,
+  "frozen_results": {
+    "tc3_post_synth": {
+      "wns_ns": -68.443,
+      "approx_fmax_mhz": 12.773
+    },
+    "tc4_post_synth": {
+      "wns_ns": -8.154,
+      "approx_fmax_mhz": 55.549
+    },
+    "tc5_post_synth": {
+      "wns_ns": 0.033,
+      "approx_fmax_mhz": 101.885
+    },
+    "ooc_post_route": {
+      "wns_ns": 0.039,
+      "whs_ns": 0.098,
+      "approx_fmax_mhz": 100.392
+    }
+  },
+  "frozen_baselines": [
+    "distance_shortest_path",
+    "keyaware_shortest_path",
+    "random_valid_path",
+    "software_pmo_ga",
+    "ga_tcheby_proxy"
+  ],
+  "adopted_software_reference": "ga_tcheby_pick_default",
+  "policy_display_names": {
+    "distance_shortest_path": "Distance",
+    "keyaware_shortest_path": "Key-aware",
+    "random_valid_path": "Random",
+    "software_pmo_ga": "Software PMO-GA",
+    "ga_tcheby_proxy": "GA proxy"
+  },
+  "main_topologies": [
+    "Mesh-16",
+    "Irregular12"
+  ],
+  "appendix_topologies": [
+    "Mesh-9"
+  ],
+  "main_asset_ids": {
+    "figures": ["FIG01", "FIG02", "FIG03", "FIG04", "FIG05", "FIG06"],
+    "tables": ["TAB01", "TAB02", "TAB03"]
+  },
+  "appendix_asset_ids": ["TABA1", "APPFIG01", "APPFIG02", "APPFIG03", "APPFIG04"],
+  "plot_style": {
+    "font_family": "serif",
+    "base_font_size_pt": 9,
+    "axis_label_font_size_pt": 9,
+    "tick_font_size_pt": 8,
+    "legend_font_size_pt": 8,
+    "line_width_pt": 1.6,
+    "marker_size_pt": 5,
+    "grid_alpha": 0.25,
+    "default_decimals": 3,
+    "percent_decimals": 2,
+    "dpi_png": 600,
+    "vector_formats": ["pdf", "svg"],
+    "raster_formats": ["png"],
+    "disallowed_colormaps": ["jet", "rainbow"],
+    "heatmap_requires_shared_scale": true
+  },
+  "table_style": {
+    "decimal_places_default": 3,
+    "decimal_places_percent": 2,
+    "units_in_headers": true,
+    "bold_only_key_values": true,
+    "label_estimated_vs_measured": true
+  },
+  "results_roots": {
+    "synthesis_primary_dir": "results/phase9h",
+    "synthesis_ooc_dir": "results/phase9h_ooc",
+    "static_eval_dir": "TODO_SET_EXACT_STATIC_EVAL_DIR",
+    "omnet_eval_dir": "TODO_SET_EXACT_OMNET_RESULTS_DIR",
+    "paper_data_root": "results/paper/data",
+    "paper_export_root": "results/paper/export"
+  },
+  "claim_guardrails": {
+    "allow_hardware_realizable_claim": true,
+    "allow_100mhz_class_claim": true,
+    "allow_meaningful_advantage_over_simpler_baselines": true,
+    "allow_universal_best_claim": false,
+    "allow_board_demo_done_claim": false,
+    "allow_exact_omnet_equals_software_ga_claim": false
+  }
+}

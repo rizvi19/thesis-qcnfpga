@@ -1,0 +1,138 @@
+% FIG01 body only
+% Use with \input{figures/fig01_architecture_tikz}
+% Recommended in paper:
+% \begin{figure*}[t]
+%   \centering
+%   \resizebox{\textwidth}{!}{\input{figures/fig01_architecture_tikz}}
+%   \caption{...}
+%   \label{fig:qflow_architecture}
+% \end{figure*}
+
+\begin{tikzpicture}[
+    x=1cm, y=1cm,
+    >=Latex,
+    font=\footnotesize,
+    line join=round,
+    line cap=round,
+    every node/.style={align=center}
+]
+
+% ---------------- Colors ----------------
+\definecolor{qblue}{RGB}{54,120,191}
+\definecolor{qbluefill}{RGB}{236,243,252}
+\definecolor{qgreen}{RGB}{86,142,60}
+\definecolor{qgreenfill}{RGB}{239,247,236}
+\definecolor{qorange}{RGB}{196,102,28}
+\definecolor{qorangefill}{RGB}{252,241,233}
+\definecolor{qgold}{RGB}{150,112,8}
+\definecolor{qgoldfill}{RGB}{250,245,226}
+\definecolor{qgray}{RGB}{70,70,70}
+\definecolor{qpanel}{RGB}{68,68,68}
+
+% ---------------- Styles ----------------
+\tikzset{
+  panel/.style={
+    draw=qpanel,
+    rounded corners=4pt,
+    line width=0.9pt
+  },
+  flow/.style={
+    draw=qgray,
+    line width=0.9pt,
+    -{Latex[length=2.4mm,width=1.8mm]}
+  },
+  ctrlflow/.style={
+    draw=qgold,
+    line width=0.8pt,
+    dashed,
+    -{Latex[length=2.2mm,width=1.6mm]}
+  },
+  blockbase/.style={
+    rounded corners=3pt,
+    minimum height=1.05cm,
+    text width=2.25cm,
+    inner sep=3.2pt,
+    line width=0.9pt
+  },
+  inblock/.style={
+    blockbase,
+    draw=qblue,
+    fill=qbluefill
+  },
+  coreblock/.style={
+    blockbase,
+    draw=qgreen,
+    fill=qgreenfill
+  },
+  outblock/.style={
+    blockbase,
+    draw=qorange,
+    fill=qorangefill
+  },
+  ctrlblock/.style={
+    blockbase,
+    draw=qgold,
+    fill=qgoldfill
+  },
+  stageblock/.style={
+    rounded corners=3pt,
+    minimum height=1.00cm,
+    text width=2.05cm,
+    inner sep=3pt,
+    line width=0.9pt
+  },
+  stageA/.style={stageblock, draw=qblue, fill=qbluefill},
+  stageB/.style={stageblock, draw=qgreen, fill=qgreenfill},
+  stageC/.style={stageblock, draw=qorange, fill=qorangefill},
+  panellabel/.style={
+    font=\bfseries\footnotesize,
+    anchor=west
+  },
+  subtxt/.style={
+    font=\scriptsize
+  }
+}
+
+% ================= Panel A =================
+\draw[panel] (0,2.45) rectangle (16.1,5.10);
+\node[panellabel] at (0.15,5.28) {(a) Top-level Architecture};
+
+% Top-level nodes
+\node[inblock]   (req)   at (1.45,4.05) {Request\\{\scriptsize input}};
+\node[inblock]   (state) at (1.45,3.05) {Network\\{\scriptsize state}};
+\node[coreblock, text width=2.35cm] (fdpe)  at (5.10,4.05) {FDPE\\{\scriptsize metric processing}};
+\node[coreblock, text width=2.65cm] (skag)  at (8.55,4.05) {SKAG / Memory\\{\scriptsize state support}};
+\node[outblock,  text width=2.20cm] (sel)   at (12.05,4.05) {Selection\\Logic};
+\node[outblock,  text width=1.75cm] (out)   at (14.80,4.05) {Route\\Output};
+
+\node[ctrlblock, text width=3.10cm, minimum height=0.88cm] (ctrl) at (7.20,3.00)
+{Control / Sequencing};
+
+% Main datapath arrows
+\draw[flow] (req.east) -- (fdpe.west);
+\draw[flow] (state.east) -| ([yshift=-0.18cm]fdpe.west);
+\draw[flow] (fdpe.east) -- (skag.west);
+\draw[flow] (skag.east) -- (sel.west);
+\draw[flow] (sel.east) -- (out.west);
+
+% Control influence
+\draw[ctrlflow] (ctrl.north) -- ++(0,0.22) -| ([yshift=-0.10cm]fdpe.south);
+\draw[ctrlflow] (ctrl.north) -- ++(0,0.25) -| ([yshift=-0.10cm]skag.south);
+\draw[ctrlflow] (ctrl.east) -- ++(0.40,0) |- ([yshift=-0.10cm]sel.south);
+
+% ================= Panel B =================
+\draw[panel] (0,0) rectangle (16.1,1.65);
+\node[panellabel] at (0.15,1.83) {(b) Decision Pipeline};
+
+\node[stageA] (s1) at (1.60,0.82) {S1\\Input};
+\node[stageB] (s2) at (4.70,0.82) {S2\\Metric Prep};
+\node[stageB, text width=2.25cm] (s3) at (7.95,0.82) {S3\\Candidate Scoring};
+\node[stageC] (s4) at (11.15,0.82) {S4\\Selection};
+\node[stageC] (s5) at (14.25,0.82) {S5\\Output};
+
+\draw[flow] (s1.east) -- (s2.west);
+\draw[flow] (s2.east) -- (s3.west);
+\draw[flow] (s3.east) -- (s4.west);
+\draw[flow] (s4.east) -- (s5.west);
+
+\end{tikzpicture}

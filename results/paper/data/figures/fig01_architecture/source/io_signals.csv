@@ -1,0 +1,6 @@
+signal_group,direction,description,importance,notes
+request_fields,input,Incoming request descriptors,high,
+network_state,input,Current network status and related metrics,high,
+control_flags,input,Optional mode/select/reset control,medium,
+route_choice,output,Selected route or next-hop decision,high,
+status_flags,output,Optional valid/ready/status signaling,medium,

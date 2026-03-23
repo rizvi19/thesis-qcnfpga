@@ -1,0 +1,6 @@
+stage_id,stage_name,order,brief_role,include_in_pipeline_panel,notes
+S1,Input Capture,1,Acquire request and current network state,yes,
+S2,State / Metric Preparation,2,Prepare internal values needed for routing evaluation,yes,
+S3,Scoring / Candidate Evaluation,3,Compute or compare route-related scores,yes,
+S4,Selection,4,Choose the final route/action,yes,
+S5,Output Commit,5,Emit selected routing decision,yes,

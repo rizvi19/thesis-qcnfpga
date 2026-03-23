@@ -1,0 +1,142 @@
+paper_id: qflow_fpga_qkd_routing_2026
+paper_short_title: QFlow
+version: 0.1.0-draft-control-layer
+status: control-layer-initialized
+
+freeze_policy:
+  reopen_hardware_baseline: false
+  reopen_timing_story: false
+  reopen_ooc_claim: false
+  reopen_static_reference_selector: false
+  reopen_omnet_role: false
+  stretch_items_block_submission: false
+
+project_scope:
+  thesis_topic: "FPGA-based QFlow hardware for real-time quantum key routing"
+  primary_target_fpga: "Xilinx Artix-7 XC7A200T-1FBG484"
+  target_clock_period_ns: 10.0
+  acceptable_final_target_mhz: 100.0
+  aspirational_only_target_mhz: 200.0
+
+frozen_rtl_baseline:
+  fdpe: "rtl/fdpe_tc5.v"
+  skag: "rtl/skag_mem_tc4.v"
+  top: "rtl/qflow_top_tc5.v"
+
+frozen_hardware_results:
+  tc3_post_synth:
+    wns_ns: -68.443
+    approx_fmax_mhz: 12.773
+  tc4_post_synth:
+    wns_ns: -8.154
+    approx_fmax_mhz: 55.549
+  tc5_post_synth:
+    wns_ns: 0.033
+    approx_fmax_mhz: 101.885
+  ooc_post_route:
+    wns_ns: 0.039
+    whs_ns: 0.098
+    approx_fmax_mhz: 100.392
+  implementation_claim: "Post-synthesis and OOC post-route timing closure achieved"
+  board_deployment_done: false
+
+static_evaluation:
+  completed_baselines:
+    - distance_shortest_path
+    - keyaware_shortest_path
+    - random_valid_path
+    - software_pmo_ga
+  adopted_software_reference: "ga_tcheby_pick_default"
+  frozen_interpretation:
+    - "Random is the weakest baseline"
+    - "Key-aware shortest path is the strongest classical baseline"
+    - "PMO-GA shows tradeoff-aware separation"
+    - "Do not claim universal domination over key-aware shortest path"
+
+omnet_dynamic_layer:
+  role: "Dynamic-load routing comparison layer"
+  not_for_claiming: "Hardware timing proof"
+  compared_policies:
+    - distance
+    - keyaware
+    - random
+    - ga_tcheby_proxy
+  frozen_interpretation:
+    - "Blocking grows with request load across topologies"
+    - "Random routing is clearly weaker in path efficiency"
+    - "Key-aware and GA-style routing are much more structured than random"
+    - "Describe GA comparator as GA-style dynamic-load proxy not exact final software selector"
+
+main_paper_assets:
+  figures:
+    - FIG01
+    - FIG02
+    - FIG03
+    - FIG04
+    - FIG05
+    - FIG06
+  tables:
+    - TAB01
+    - TAB02
+    - TAB03
+  appendix_candidates:
+    - TABA1
+    - APPFIG01
+    - APPFIG02
+    - APPFIG03
+    - APPFIG04
+
+main_paper_omnet_figures:
+  - "Blocking vs load — Mesh-16"
+  - "Blocking vs load — Irregular12"
+  - "Fidelity CDF — Mesh-16"
+  - "Fidelity CDF — Irregular12"
+  - "Per-link usage heatmap — Mesh-16 Keyaware vs GA proxy"
+  - "Scalability plot"
+
+results_source_roots:
+  synthesis_primary_dir: "results/phase9h"
+  synthesis_ooc_dir: "results/phase9h_ooc"
+  static_eval_dir: "TODO_SET_EXACT_STATIC_EVAL_DIR"
+  omnet_eval_dir: "TODO_SET_EXACT_OMNET_RESULTS_DIR"
+  paper_data_root: "results/paper/data"
+  paper_export_root: "results/paper/export"
+
+export_policy:
+  figure_vector_formats:
+    - pdf
+    - svg
+  figure_raster_format: png
+  table_formats:
+    - tex
+    - csv
+  keep_raw_inputs: true
+  keep_generation_scripts: true
+  one_canonical_source_per_final_asset: true
+
+naming_convention:
+  figures: "figNN_shortname"
+  tables: "tabNN_shortname"
+  scripts: "make_figNN_shortname.py / make_tabNN_shortname.py"
+  exports: "qflow_<asset_id>_<variant>.<ext>"
+
+plot_style:
+  font_family: "serif"
+  base_font_size_pt: 9
+  title_font_size_pt: 9
+  label_font_size_pt: 9
+  tick_font_size_pt: 8
+  legend_font_size_pt: 8
+  line_width_pt: 1.6
+  marker_size_pt: 5
+  grid_alpha: 0.25
+  decimals_default: 3
+  decimals_percent: 2
+  use_rainbow_colormap: false
+  shared_axes_when_comparable: true
+
+open_items:
+  - "Set exact static evaluation results directory"
+  - "Set exact OMNeT results directory"
+  - "Populate caption bank after each asset is built"
+  - "Confirm whether TABA1 stays in main paper or appendix"
