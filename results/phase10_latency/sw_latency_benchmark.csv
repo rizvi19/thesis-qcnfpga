@@ -1,0 +1,4 @@
+method_id,display_name,domain,iterations,quantity_type,median_us,mean_us,min_us,max_us,p95_us,decision_repr
+distance_sw,Distance,software,3000,measured_median,2.411,2.436419,2.327,7.885,2.477,"[0, 1, 2, 3]"
+keyaware_sw,Key-aware,software,3000,measured_median,4.037,4.0740300000000005,3.867,10.357,4.19,"[0, 5, 4, 3]"
+pmo_ga_sw,Software PMO-GA,software,200,measured_median,1132.174,1136.93971,1100.024,1196.686,1161.0867,"[0, 5, 4, 3]"

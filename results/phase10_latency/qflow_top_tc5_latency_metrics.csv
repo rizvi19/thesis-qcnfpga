@@ -1,0 +1,5 @@
+metric_name,cycles,latency_ns
+fdpe,5,50.000
+skag_commit,51,510.000
+ga_selection,32,320.000
+end_to_end,85,850.000

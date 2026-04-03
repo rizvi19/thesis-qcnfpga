@@ -1,0 +1,6 @@
+check_item,quantity_checked,metric,result,status
+LUT interpolation bound,exp(-x) over [0,8] with L=256,max abs. error bound,<= 1.22e-4,Analytic
+FDPE hardware vs reference,stored fidelity Q0.16,max abs. deviation,2 LSB,Measured
+SKAG weight kernel,composite edge weight Q16.16,max deviation,0 LSB,Measured
+Top-level smoke regression,integrated output fields,hardware-vs-reference mismatch rate,0% observed,Measured
+PRNG unit sanity,Xorshift128+ 10k-sample check,statistical sanity,Pass,Measured

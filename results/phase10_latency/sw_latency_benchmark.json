@@ -1,0 +1,41 @@
+[
+  {
+    "method_id": "distance_sw",
+    "display_name": "Distance",
+    "domain": "software",
+    "iterations": 3000,
+    "quantity_type": "measured_median",
+    "decision_repr": "[0, 1, 2, 3]",
+    "median_us": 2.411,
+    "mean_us": 2.436419,
+    "min_us": 2.327,
+    "max_us": 7.885,
+    "p95_us": 2.477
+  },
+  {
+    "method_id": "keyaware_sw",
+    "display_name": "Key-aware",
+    "domain": "software",
+    "iterations": 3000,
+    "quantity_type": "measured_median",
+    "decision_repr": "[0, 5, 4, 3]",
+    "median_us": 4.037,
+    "mean_us": 4.0740300000000005,
+    "min_us": 3.867,
+    "max_us": 10.357,
+    "p95_us": 4.19
+  },
+  {
+    "method_id": "pmo_ga_sw",
+    "display_name": "Software PMO-GA",
+    "domain": "software",
+    "iterations": 200,
+    "quantity_type": "measured_median",
+    "decision_repr": "[0, 5, 4, 3]",
+    "median_us": 1132.174,
+    "mean_us": 1136.93971,
+    "min_us": 1100.024,
+    "max_us": 1196.686,
+    "p95_us": 1161.0867
+  }
+]

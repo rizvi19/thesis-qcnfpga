@@ -1,0 +1,41 @@
+{
+  "Final top-level (post-synth)": {
+    "json_source": "results/phase9g/qflow_top_tc5_synth_summary.json",
+    "rpt_source": "results/phase9h/qflow_top_tc5_impl_synth_utilization.rpt",
+    "available_json_keys": [
+      "notes[0]",
+      "notes[1]",
+      "timing.Data_path_delay_ns",
+      "timing.Requirement_ns",
+      "timing.TNS_ns",
+      "timing.WNS_ns",
+      "timing.Worst_destination",
+      "timing.Worst_source",
+      "timing.approx_Fmax_MHz",
+      "top"
+    ]
+  },
+  "OOC reference (post-route)": {
+    "json_source": "results/phase9h_ooc/qflow_top_tc5_impl_ooc_summary.json",
+    "rpt_source": "results/phase9h_ooc/qflow_top_tc5_impl_ooc_utilization.rpt",
+    "available_json_keys": [
+      "files.log",
+      "files.route_status",
+      "files.timing_summary",
+      "route_status.failed_nets",
+      "route_status.node_overlaps",
+      "route_status.partially_routed_nets",
+      "route_status.unrouted_nets",
+      "status.ooc_clock_warning",
+      "status.ooc_partpin_warning",
+      "status.route_completed",
+      "status.timing_met",
+      "timing.THS_ns",
+      "timing.TNS_ns",
+      "timing.WHS_ns",
+      "timing.WNS_ns",
+      "timing.approx_Fmax_MHz",
+      "timing.requirement_ns"
+    ]
+  }
+}

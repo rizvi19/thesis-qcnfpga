@@ -28,7 +28,7 @@ Use it as the single caption-development location before moving text into LaTeX.
 ---
 
 # FIG01 — QFlow architecture and decision dataflow
-**Status:** DRAFT
+**Status:** REVISED
 
 ## Short caption
 QFlow architecture and decision dataflow.
@@ -53,7 +53,7 @@ QFlow architecture and decision dataflow.
 Decision latency comparison across hardware and software baselines.
 
 ## Draft caption v1
-**Figure 2.** Decision latency comparison across hardware and software routing modes. The hardware QFlow path exhibits substantially lower decision latency than software-side routing evaluation, supporting the use of an FPGA-based routing accelerator for time-sensitive quantum-network decisions. Measured and estimated quantities are labeled explicitly where applicable.
+**Figure 2.** Decision latency comparison across hardware and software routing modes. The QFlow hardware decision path achieves sub-microsecond latency and is substantially faster than the evaluated software baselines, supporting the use of an FPGA-based routing accelerator for time-sensitive routing decisions. The hardware bar is derived from cycle count at 100 MHz using the GA selection path, whereas the software bars report measured median runtime.
 
 ## Caption intent notes
 - Must be careful about mixed measured/estimated values.

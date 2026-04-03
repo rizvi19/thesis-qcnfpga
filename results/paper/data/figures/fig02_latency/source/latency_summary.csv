@@ -1,0 +1,5 @@
+method_id,display_name,domain,latency_value,latency_unit,quantity_type,source_basis,include_in_main_plot,notes
+qflow_hw,QFlow hardware,hardware,0.320000,us,derived_from_cycle_count_at_100MHz,ga_selection_cycles_from_ga_start_to_ga_result_valid,yes,Main FIG02 hardware bar uses GA selection path only
+distance_sw,Distance,software,2.411000,us,measured_median,median_of_3000_runs,yes,
+keyaware_sw,Key-aware,software,4.037000,us,measured_median,median_of_3000_runs,yes,
+pmo_ga_sw,Software PMO-GA,software,1132.174000,us,measured_median,median_of_200_runs,yes,
