@@ -1,0 +1,54 @@
+%Warning-WIDTHEXPAND: rtl/qflow_mmio_regs.v:197:53: Operator SUB expects 32 bits on the LHS, but LHS's VARREF 'addr' generates 12 bits.
+                                                  : ... note: In instance 'qflow_mmio_regs'
+  197 |                                 edge_wr_idx = (addr - EDGE_BASE) >> 5;
+      |                                                     ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.020
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: rtl/qflow_mmio_regs.v:197:53: Operator SUB expects 32 bits on the RHS, but RHS's VARREF 'EDGE_BASE' generates 12 bits.
+                                                  : ... note: In instance 'qflow_mmio_regs'
+  197 |                                 edge_wr_idx = (addr - EDGE_BASE) >> 5;
+      |                                                     ^
+%Warning-WIDTHEXPAND: rtl/qflow_mmio_regs.v:209:53: Operator SUB expects 32 bits on the LHS, but LHS's VARREF 'addr' generates 12 bits.
+                                                  : ... note: In instance 'qflow_mmio_regs'
+  209 |                                 cand_wr_idx = (addr - CAND_BASE) >> 4;
+      |                                                     ^
+%Warning-WIDTHEXPAND: rtl/qflow_mmio_regs.v:209:53: Operator SUB expects 32 bits on the RHS, but RHS's VARREF 'CAND_BASE' generates 12 bits.
+                                                  : ... note: In instance 'qflow_mmio_regs'
+  209 |                                 cand_wr_idx = (addr - CAND_BASE) >> 4;
+      |                                                     ^
+%Warning-WIDTHEXPAND: rtl/qflow_mmio_regs.v:256:45: Operator SUB expects 32 bits on the LHS, but LHS's VARREF 'addr' generates 12 bits.
+                                                  : ... note: In instance 'qflow_mmio_regs'
+  256 |                         edge_rd_idx = (addr - EDGE_BASE) >> 5;
+      |                                             ^
+%Warning-WIDTHEXPAND: rtl/qflow_mmio_regs.v:256:45: Operator SUB expects 32 bits on the RHS, but RHS's VARREF 'EDGE_BASE' generates 12 bits.
+                                                  : ... note: In instance 'qflow_mmio_regs'
+  256 |                         edge_rd_idx = (addr - EDGE_BASE) >> 5;
+      |                                             ^
+%Warning-WIDTHEXPAND: rtl/qflow_mmio_regs.v:268:45: Operator SUB expects 32 bits on the LHS, but LHS's VARREF 'addr' generates 12 bits.
+                                                  : ... note: In instance 'qflow_mmio_regs'
+  268 |                         cand_rd_idx = (addr - CAND_BASE) >> 4;
+      |                                             ^
+%Warning-WIDTHEXPAND: rtl/qflow_mmio_regs.v:268:45: Operator SUB expects 32 bits on the RHS, but RHS's VARREF 'CAND_BASE' generates 12 bits.
+                                                  : ... note: In instance 'qflow_mmio_regs'
+  268 |                         cand_rd_idx = (addr - CAND_BASE) >> 4;
+      |                                             ^
+%Warning-UNUSEDSIGNAL: rtl/fdpe_kernel.v:19:17: Bits of signal are not used: 'product'[15:0]
+                                              : ... note: In instance 'qflow_mmio_regs.u_kernel.EDGE_PIPE[7].u_fdpe'
+   19 |     wire [31:0] product;
+      |                 ^~~~~~~
+%Warning-BLKSEQ: rtl/qflow_mmio_regs.v:197:45: Blocking assignment '=' in sequential logic process
+                                             : ... Suggest using delayed assignment '<='
+  197 |                                 edge_wr_idx = (addr - EDGE_BASE) >> 5;
+      |                                             ^
+%Warning-BLKSEQ: rtl/qflow_mmio_regs.v:198:45: Blocking assignment '=' in sequential logic process
+                                             : ... Suggest using delayed assignment '<='
+  198 |                                 edge_wr_off = (addr - EDGE_BASE) & 12'h01F;
+      |                                             ^
+%Warning-BLKSEQ: rtl/qflow_mmio_regs.v:209:45: Blocking assignment '=' in sequential logic process
+                                             : ... Suggest using delayed assignment '<='
+  209 |                                 cand_wr_idx = (addr - CAND_BASE) >> 4;
+      |                                             ^
+%Warning-BLKSEQ: rtl/qflow_mmio_regs.v:210:45: Blocking assignment '=' in sequential logic process
+                                             : ... Suggest using delayed assignment '<='
+  210 |                                 cand_wr_off = (addr - CAND_BASE) & 12'h00F;
+      |                                             ^

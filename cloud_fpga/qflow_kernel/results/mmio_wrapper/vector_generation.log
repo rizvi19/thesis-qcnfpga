@@ -1,0 +1,6 @@
+Wrote /media/shahriar-rizvi/Data/CSE/Thesis/from13March/qflow_step1_phase0/cloud_fpga/qflow_kernel/vectors/exp_lut.hex
+Wrote /media/shahriar-rizvi/Data/CSE/Thesis/from13March/qflow_step1_phase0/cloud_fpga/qflow_kernel/vectors/golden_vectors.csv
+Deterministic vectors: 15
+Randomized vectors: 200
+Total vector count: 215
+Random seed: 20260514
