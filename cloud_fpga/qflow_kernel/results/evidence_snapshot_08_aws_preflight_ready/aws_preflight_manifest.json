@@ -1,0 +1,93 @@
+{
+  "generated_utc": "2026-05-13T19:09:25.785402+00:00",
+  "project": "QFlow Cloud FPGA Kernel",
+  "stage": "local_pre_aws_f2_preflight",
+  "claim_boundary": "Local RTL/MMIO/static readiness only; not AWS F2 physical execution evidence.",
+  "files": [
+    {
+      "path": "rtl/fdpe_kernel.v",
+      "bytes": 1141,
+      "sha256": "fdd10944b0fe9b34a934081412c824d356ac653f52a43bc75b030d127b611dbd"
+    },
+    {
+      "path": "rtl/skag_weight_kernel.v",
+      "bytes": 2256,
+      "sha256": "0f1bc77a75e64ffb09bc1081238cea242b7e818c79860d079d7cff3949c49bc9"
+    },
+    {
+      "path": "rtl/path_selector_kernel.v",
+      "bytes": 4572,
+      "sha256": "5f7fd1c4445994266a556d4983cfa8d7005fcd35ea1ec38751ce510648fb633c"
+    },
+    {
+      "path": "rtl/qflow_cloud_kernel.v",
+      "bytes": 5289,
+      "sha256": "8cb6a0775da96ad4b7765a55255f31abbefe76961a8a107e45e37bb3e9b7dbe5"
+    },
+    {
+      "path": "rtl/qflow_mmio_regs.v",
+      "bytes": 12762,
+      "sha256": "5e01716446067a7ad7d2fcf3e5130c2f52e4c0cb880e011230e07101c1316fdf"
+    },
+    {
+      "path": "vectors/golden_vectors.csv",
+      "bytes": 75551,
+      "sha256": "af614053ccf0954080e25052f3b5b916d7e952d82dc0f0c04f91327105d9408a"
+    },
+    {
+      "path": "vectors/exp_lut.hex",
+      "bytes": 1280,
+      "sha256": "38faeff2acee23ce9544e609777fb71b1feadcd59f8f55989494d3d0da79cd44"
+    },
+    {
+      "path": "docs/aws_mmio_register_map.md",
+      "bytes": 2189,
+      "sha256": "49c2c2d1a17bf48e8ff07ff1720c35630f5736600edbc88f76b7535b743cbe0f"
+    }
+  ],
+  "snapshots": [
+    {
+      "path": "results/evidence_snapshot_02_extended_local_pass",
+      "has_readme": true,
+      "file_count": 6
+    },
+    {
+      "path": "results/evidence_snapshot_03_fixed_seed_random_pass",
+      "has_readme": true,
+      "file_count": 6
+    },
+    {
+      "path": "results/evidence_snapshot_04_control_stress_pass",
+      "has_readme": true,
+      "file_count": 5
+    },
+    {
+      "path": "results/evidence_snapshot_05_x_sanity_pass",
+      "has_readme": true,
+      "file_count": 6
+    },
+    {
+      "path": "results/evidence_snapshot_06_static_lint_pass",
+      "has_readme": true,
+      "file_count": 11
+    },
+    {
+      "path": "results/evidence_snapshot_07_mmio_wrapper_pass",
+      "has_readme": true,
+      "file_count": 11
+    }
+  ],
+  "quick_metrics": {
+    "golden_vector_rows": 215,
+    "static_compare_rows": 215,
+    "mmio_compare_rows": 215,
+    "static_compare_pass_fail": [
+      215,
+      0
+    ],
+    "mmio_compare_pass_fail": [
+      215,
+      0
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+AWS_PRELAUNCH_CHECKLIST
+[ ] Branch pushed to GitHub: cloud-fpga-f2-kernel or equivalent
+[ ] Git status clean before EC2 launch
+[ ] AWS budgets created: $25, $50, $100 alerts
+[ ] Root MFA enabled
+[ ] No root access keys created
+[ ] EC2 F-instance quota checked/requested
+[ ] Region selected intentionally, preferably us-east-1 if available
+[ ] Security group SSH source restricted to My IP only
+[ ] f2.6xlarge selected intentionally, not f2.12xlarge/f2.48xlarge
+[ ] Instance stop/terminate rule understood
+[ ] Session cost log prepared
+[ ] Official AWS FPGA example will be run before QFlow
