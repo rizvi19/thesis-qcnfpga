@@ -100,7 +100,17 @@ else:
                 done = flags & 1
                 valid = (flags >> 1) & 1
                 no_path = (flags >> 2) & 1
-                exp_valid = int(r['expected_valid_path'])
+                # expected_valid_path appears in both golden and x_sanity_output.csv,
+                # so pandas merge may suffix it as expected_valid_path_golden.
+                if 'expected_valid_path' in r.index:
+                    exp_valid = int(r['expected_valid_path'])
+                elif 'expected_valid_path_golden' in r.index:
+                    exp_valid = int(r['expected_valid_path_golden'])
+                elif 'expected_valid_path_hw' in r.index:
+                    exp_valid = int(r['expected_valid_path_hw'])
+                else:
+                    mismatches.append((r['test_id'], 'missing_expected_valid_path'))
+                    break
                 if done != 1:
                     mismatches.append((r['test_id'], 'done_status'))
                     break
@@ -134,7 +144,11 @@ for src_name in [
         dst.write_bytes(src.read_bytes())
 
 xs = pd.read_csv(out_path)
-valid_dist = pd.read_csv(golden_path)['expected_valid_path'].value_counts().to_dict()
+golden_df_for_readme = pd.read_csv(golden_path)
+if 'expected_valid_path' in golden_df_for_readme.columns:
+    valid_dist = golden_df_for_readme['expected_valid_path'].value_counts().to_dict()
+else:
+    valid_dist = {}
 readme = f"""# QFlow Cloud FPGA Kernel — Evidence Snapshot 05
 
 This snapshot records Hardcore Local Check Step 4 before AWS EC2 F2 launch.

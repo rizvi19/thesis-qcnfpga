@@ -1,0 +1,13 @@
+read_verilog -sv rtl/fdpe_kernel.v
+read_verilog -sv rtl/skag_weight_kernel.v
+read_verilog -sv rtl/path_selector_kernel.v
+read_verilog -sv rtl/qflow_cloud_kernel.v
+hierarchy -check -top qflow_cloud_kernel
+proc
+opt
+memory
+opt
+techmap
+opt
+stat
+write_json results/lint_static/qflow_cloud_kernel_yosys.json

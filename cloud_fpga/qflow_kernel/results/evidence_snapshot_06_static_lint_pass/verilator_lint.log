@@ -1,0 +1,6 @@
+%Warning-UNUSEDSIGNAL: rtl/fdpe_kernel.v:19:17: Bits of signal are not used: 'product'[15:0]
+                                              : ... note: In instance 'qflow_cloud_kernel.EDGE_PIPE[7].u_fdpe'
+   19 |     wire [31:0] product;
+      |                 ^~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.020
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.

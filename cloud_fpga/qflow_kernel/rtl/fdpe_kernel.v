@@ -23,5 +23,8 @@ module fdpe_kernel #(
     end
 
     assign product       = f_init_q016 * exp_lut[decay_idx];
-    assign fidelity_q016 = product[31:16];
+
+    // Q0.16 x Q0.16 -> Q0.32. The lower 16 bits are the fractional
+    // remainder and are intentionally truncated for the starter kernel.
+    assign fidelity_q016 = product[31:FID_W];
 endmodule
