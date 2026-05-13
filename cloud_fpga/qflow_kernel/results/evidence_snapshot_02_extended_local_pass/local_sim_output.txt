@@ -1,0 +1,17 @@
+PASS T001_normal_ring6: path=1 weight=3665362 bottleneck=61612 latency_cycles=2
+PASS T002_blocked_candidate: path=3 weight=1997214 bottleneck=64879 latency_cycles=2
+PASS T003_high_threshold: path=1 weight=3617938 bottleneck=63568 latency_cycles=2
+PASS T004_all_candidates_valid: path=1 weight=1348412 bottleneck=64879 latency_cycles=2
+PASS T005_no_valid_path: path=0 weight=4294967295 bottleneck=0 latency_cycles=2
+PASS T006_equal_weight_tie: path=0 weight=679454 bottleneck=64223 latency_cycles=2
+PASS T007_low_key_penalty: path=1 weight=674206 bottleneck=64879 latency_cycles=2
+PASS T008_low_fidelity_penalty: path=1 weight=674206 bottleneck=64879 latency_cycles=2
+PASS T009_high_qber_penalty: path=1 weight=679454 bottleneck=64223 latency_cycles=2
+PASS T010_distance_penalty: path=1 weight=679454 bottleneck=64223 latency_cycles=2
+PASS T011_invalid_edge_id: path=1 weight=744990 bottleneck=64223 latency_cycles=2
+PASS T012_zero_length_candidate: path=1 weight=613918 bottleneck=64223 latency_cycles=2
+PASS T013_arrival_bucket_penalty: path=2 weight=679454 bottleneck=64223 latency_cycles=2
+PASS T014_decay_zero_boundary: path=0 weight=684694 bottleneck=63568 latency_cycles=2
+PASS T015_decay_max_boundary: path=3 weight=870814 bottleneck=64879 latency_cycles=2
+ALL TESTS PASS
+tb/tb_qflow_cloud_kernel.v:1306: $finish called at 625000 (1ps)

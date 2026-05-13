@@ -1,0 +1,16 @@
+test_id,selected_path_id,best_weight,bottleneck_fidelity,latency_cycles,status_flags,src_node,dst_node
+T001_normal_ring6,1,3665362,61612,2,3,0,3
+T002_blocked_candidate,3,1997214,64879,2,3,0,3
+T003_high_threshold,1,3617938,63568,2,3,0,3
+T004_all_candidates_valid,1,1348412,64879,2,3,0,5
+T005_no_valid_path,0,4294967295,0,2,5,0,5
+T006_equal_weight_tie,0,679454,64223,2,3,0,5
+T007_low_key_penalty,1,674206,64879,2,3,0,5
+T008_low_fidelity_penalty,1,674206,64879,2,3,0,5
+T009_high_qber_penalty,1,679454,64223,2,3,0,5
+T010_distance_penalty,1,679454,64223,2,3,0,5
+T011_invalid_edge_id,1,744990,64223,2,3,0,5
+T012_zero_length_candidate,1,613918,64223,2,3,0,5
+T013_arrival_bucket_penalty,2,679454,64223,2,3,0,5
+T014_decay_zero_boundary,0,684694,63568,2,3,0,5
+T015_decay_max_boundary,3,870814,64879,2,3,0,5
