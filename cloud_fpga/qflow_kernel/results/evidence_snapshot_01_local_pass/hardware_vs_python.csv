@@ -1,0 +1,4 @@
+test_id,selected_match,weight_abs_error,fidelity_abs_error,latency_cycles,pass_fail,details
+T001_normal_ring6,1,0,0,2,PASS,
+T002_blocked_candidate,1,0,0,2,PASS,
+T003_high_threshold,1,0,0,2,PASS,

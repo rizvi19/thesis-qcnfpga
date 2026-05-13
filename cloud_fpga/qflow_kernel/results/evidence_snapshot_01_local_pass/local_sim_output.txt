@@ -1,0 +1,5 @@
+PASS T001_normal_ring6: path=1 weight=3665362 bottleneck=61612 latency_cycles=2
+PASS T002_blocked_candidate: path=3 weight=1997214 bottleneck=64879 latency_cycles=2
+PASS T003_high_threshold: path=1 weight=3617938 bottleneck=63568 latency_cycles=2
+ALL TESTS PASS
+tb/tb_qflow_cloud_kernel.v:394: $finish called at 145000 (1ps)
