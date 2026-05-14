@@ -1,0 +1,5 @@
+load_fF,tplh_ps,tphl_ps,average_delay_ps,estimated_load_switching_energy_fJ,spice_file,log_file
+5,10.24282,10.52036,10.381590000000001,8.100000000000001,cmos/pareto_cmp_primitive/spice/load_sweep/tg_mux_2to1_cload_5f.sp,results/partD_cmos/pareto_cmp_primitive/load_sweep/tg_mux_2to1_cload_5f_ngspice.log
+10,17.28645,17.2548,17.270625000000003,16.200000000000003,cmos/pareto_cmp_primitive/spice/load_sweep/tg_mux_2to1_cload_10f.sp,results/partD_cmos/pareto_cmp_primitive/load_sweep/tg_mux_2to1_cload_10f_ngspice.log
+20,27.01999,26.250320000000002,26.635155,32.400000000000006,cmos/pareto_cmp_primitive/spice/load_sweep/tg_mux_2to1_cload_20f.sp,results/partD_cmos/pareto_cmp_primitive/load_sweep/tg_mux_2to1_cload_20f_ngspice.log
+50,56.603950000000005,52.012100000000004,54.308025,81.0,cmos/pareto_cmp_primitive/spice/load_sweep/tg_mux_2to1_cload_50f.sp,results/partD_cmos/pareto_cmp_primitive/load_sweep/tg_mux_2to1_cload_50f_ngspice.log
