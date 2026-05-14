@@ -1,0 +1,11 @@
+VCD info: dumpfile asic/fdpe_kernel/results/fdpe_kernel_v3_lut64_interp.vcd opened for output.
+CASE f_init=65535 lut_index=0 frac=0 fidelity_out=65534
+CASE f_init=62259 lut_index=2 frac=0 fidelity_out=48486
+CASE f_init=58982 lut_index=8 frac=0 fidelity_out=21697
+CASE f_init=62259 lut_index=2 frac=128 fidelity_out=45637
+CASE f_init=58982 lut_index=8 frac=128 fidelity_out=20422
+CASE f_init=49152 lut_index=16 frac=128 fidelity_out=6261
+CASE f_init=32768 lut_index=32 frac=128 fidelity_out=564
+CASE f_init=65535 lut_index=60 frac=128 fidelity_out=33
+FDPE_KERNEL_V3_LUT64_INTERP_SIM_PASS
+asic/fdpe_kernel/tb/tb_fdpe_kernel_v3_lut64_interp.v:87: $finish called at 575000 (1ps)

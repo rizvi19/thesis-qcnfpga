@@ -38,6 +38,14 @@ VARIANTS = [
         "log": ROOT / "asic/fdpe_kernel/reports/fdpe_kernel_v2_lut128_interp_yosys_synth.log",
         "memory_note": "exp_lut mapped to FF/mux logic with two read ports",
     },
+    {
+        "kernel": "fdpe_kernel_v3_lut64_interp",
+        "variant": "V3_64LUT_Q016_LINEAR_INTERP",
+        "lut_entries": 64,
+        "index_bits": 6,
+        "log": ROOT / "asic/fdpe_kernel/reports/fdpe_kernel_v3_lut64_interp_yosys_synth.log",
+        "memory_note": "exp_lut mapped to FF/mux logic with two read ports",
+    },
 ]
 
 CELL_TYPES = [

@@ -25,6 +25,7 @@ X_MAX = 8.0
 LUT_CONFIGS = [
     (256, ROOT / "asic/fdpe_kernel/config/exp_lut_256.hex"),
     (128, ROOT / "asic/fdpe_kernel/config/exp_lut_128.hex"),
+    (64, ROOT / "asic/fdpe_kernel/config/exp_lut_64.hex"),
 ]
 
 OUT_SUMMARY = ROOT / "asic/fdpe_kernel/results/exp_lut_summary.csv"
