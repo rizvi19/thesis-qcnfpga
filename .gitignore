@@ -1,0 +1,6 @@
+
+# ASIC/VLSI simulation generated files
+asic/**/results/*.vcd
+asic/**/results/*.out
+asic/**/results/*.fst
+asic/**/results/*.log
