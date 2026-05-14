@@ -1,0 +1,64 @@
+============================================================
+QFlow FDPE-V3 OpenROAD-flow setup
+============================================================
+Repo: /media/shahriar-rizvi/Data/CSE/Thesis/from13March/qflow_step1_phase0
+ORFS_ROOT: /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts
+FLOW_DIR: /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/flow
+Platform: sky130hd
+Design nickname: qflow_fdpe_v3
+Design top: fdpe_kernel_v3_lut64_interp
+Date: Thu May 14 09:12:53 PM +06 2026
+
+[PASS] copied RTL to: /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/flow/designs/src/qflow_fdpe_v3/fdpe_kernel_v3_lut64_interp.v
+[PASS] copied LUT to: /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/flow/designs/src/qflow_fdpe_v3/exp_lut_64.hex
+[PASS] wrote config: /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/flow/designs/sky130hd/qflow_fdpe_v3/config.mk
+[PASS] wrote SDC: /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/flow/designs/sky130hd/qflow_fdpe_v3/constraint.sdc
+
+===== readmemh check =====
+48:        $readmemh("designs/src/qflow_fdpe_v3/exp_lut_64.hex", exp_lut);
+
+===== Generated config.mk =====
+# QFlow FDPE-V3 OpenROAD-flow configuration
+# Generated from thesis repo: /media/shahriar-rizvi/Data/CSE/Thesis/from13March/qflow_step1_phase0
+
+export DESIGN_NICKNAME = qflow_fdpe_v3
+export DESIGN_NAME = fdpe_kernel_v3_lut64_interp
+export PLATFORM = sky130hd
+
+export VERILOG_FILES = $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/$(DESIGN_NAME).v
+export SDC_FILE = $(DESIGN_HOME)/$(PLATFORM)/$(DESIGN_NICKNAME)/constraint.sdc
+
+# Fixed die/core area method.
+# FDPE-V3 is larger than SKAG-W1 because it has LUT/interpolation logic.
+export DIE_AREA = 0 0 500 500
+export CORE_AREA = 40 40 460 460
+
+===== Generated constraint.sdc =====
+# QFlow FDPE-V3 first physical-design constraint file
+# OpenROAD-compatible SDC version
+
+set clk_name clk
+set clk_period 10.000
+
+create_clock -name core_clock -period $clk_period [get_ports $clk_name]
+
+# Explicit delays. Keep this simple for first flow bring-up.
+set_input_delay 1.000 -clock core_clock [get_ports start]
+set_input_delay 1.000 -clock core_clock [get_ports rst_n]
+set_input_delay 1.000 -clock core_clock [get_ports {f_init_q016[*]}]
+set_input_delay 1.000 -clock core_clock [get_ports {lut_index[*]}]
+set_input_delay 1.000 -clock core_clock [get_ports {frac[*]}]
+
+set_output_delay 1.000 -clock core_clock [get_ports done]
+set_output_delay 1.000 -clock core_clock [get_ports {fidelity_out_q016[*]}]
+
+set_false_path -from [get_ports rst_n]
+
+To run synthesis:
+cd /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/flow
+make DESIGN_CONFIG=designs/sky130hd/qflow_fdpe_v3/config.mk synth
+
+============================================================
+Setup finished. Log:
+/media/shahriar-rizvi/Data/CSE/Thesis/from13March/qflow_step1_phase0/results/partC_vlsi/openroad_fdpe_v3_setup/setup_openroad_fdpe_v3.log
+============================================================
