@@ -1,0 +1,23 @@
+# QFlow Pareto Comparator C1 Score-First Yosys synthesis script
+# Purpose: generate ASIC-style generic synthesis evidence for Pareto-C1.
+
+read_verilog asic/pareto_cmp_kernel/src/pareto_cmp_c1_scorefirst.v
+
+hierarchy -check -top pareto_cmp_c1_scorefirst
+
+proc
+opt
+memory
+opt
+fsm
+opt
+techmap
+opt
+
+abc
+
+clean
+
+stat
+
+write_verilog asic/pareto_cmp_kernel/results/pareto_cmp_c1_scorefirst_synth_netlist.v

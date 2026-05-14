@@ -1,0 +1,10 @@
+VCD info: dumpfile asic/pareto_cmp_kernel/results/pareto_cmp_c1_scorefirst.vcd opened for output.
+CASE          A_SCORE select_a=1 select_b=0 tie=0
+CASE          B_SCORE select_a=0 select_b=1 tie=0
+CASE            A_FID select_a=1 select_b=0 tie=0
+CASE            B_KEY select_a=0 select_b=1 tie=0
+CASE            A_HOP select_a=1 select_b=0 tie=0
+CASE           B_QBER select_a=0 select_b=1 tie=0
+CASE              TIE select_a=0 select_b=0 tie=1
+PARETO_CMP_C1_SCOREFIRST_SIM_PASS
+asic/pareto_cmp_kernel/tb/tb_pareto_cmp_c1_scorefirst.v:174: $finish called at 305000 (1ps)

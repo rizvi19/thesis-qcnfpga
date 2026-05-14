@@ -21,6 +21,13 @@ VARIANTS = [
         "log": ROOT / "asic/pareto_cmp_kernel/reports/pareto_cmp_c0_full_yosys_synth.log",
         "note": "full metric dominance comparator with score/fidelity/key/hop/qber tie-breaks",
     },
+    {
+        "kernel": "pareto_cmp_c1_scorefirst",
+        "variant": "C1_SCORE_FIRST_SELECTOR",
+        "selector_model": "score_first_priority_selector",
+        "log": ROOT / "asic/pareto_cmp_kernel/reports/pareto_cmp_c1_scorefirst_yosys_synth.log",
+        "note": "priority selector: score, fidelity, key_count, hop_count, qber",
+    },
 ]
 
 CELL_TYPES = [

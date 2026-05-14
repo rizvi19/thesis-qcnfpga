@@ -1,2 +1,3 @@
 kernel,variant,selector_model,synthesis_type,note,wires,wire_bits,public_wires,public_wire_bits,ports,port_bits,memories,memory_bits,processes,total_cells,andnot,and,mux,nand,nor,not,ornot,or,sdffepn0p,sdffpn0,sdffpp0,xnor,xor,delta_cells_vs_c0,cell_reduction_percent_vs_c0
 pareto_cmp_c0_full,C0_FULL_PARETO_COMPARATOR,full_pareto_plus_tiebreak,yosys_generic,full metric dominance comparator with score/fidelity/key/hop/qber tie-breaks,510,676,22,188,19,185,0,0,0,497,18,138,0,141,19,1,153,1,5,1,0,20,0,0,0.0
+pareto_cmp_c1_scorefirst,C1_SCORE_FIRST_SELECTOR,score_first_priority_selector,yosys_generic,"priority selector: score, fidelity, key_count, hop_count, qber",485,651,18,184,17,183,0,0,0,472,11,180,0,91,4,0,164,7,3,1,0,11,0,-25,5.030181086519115
