@@ -1,0 +1,23 @@
+# QFlow FDPE Kernel V0 Yosys synthesis script
+# Purpose: generate ASIC-style generic synthesis evidence for FDPE-V0.
+
+read_verilog asic/fdpe_kernel/src/fdpe_kernel_v0.v
+
+hierarchy -check -top fdpe_kernel_v0
+
+proc
+opt
+memory
+opt
+fsm
+opt
+techmap
+opt
+
+abc
+
+clean
+
+stat
+
+write_verilog asic/fdpe_kernel/results/fdpe_kernel_v0_synth_netlist.v

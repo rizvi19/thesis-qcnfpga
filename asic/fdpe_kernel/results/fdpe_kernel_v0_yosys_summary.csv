@@ -1,0 +1,2 @@
+kernel,lut_entries,fidelity_format,lut_source,synthesis_type,memory_preserved,memory_mapping_note,wires,wire_bits,public_wires,public_wire_bits,ports,port_bits,memories,memory_bits,processes,total_cells,andnot,and,mux,nand,nor,not,ornot,or,sdffepn0p,sdffpn0,sdffpp0,xnor,xor
+fdpe_kernel_v0,256,Q0.16,generated_exp_lut_256_hex,yosys_generic,no,exp_lut mapped to FF/mux logic in generic Yosys run,2178,2322,12,110,7,44,0,0,0,2258,41,459,45,1033,15,5,46,92,16,46,5,36,419
