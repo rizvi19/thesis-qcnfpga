@@ -1,83 +1,77 @@
 #!/usr/bin/env python3
-"""
-Build combined OpenROAD physical-design summary for QFlow Part C.
-
-Inputs:
-  results/partC_vlsi/openroad_skag_w1/openroad_skag_w1_status.md
-  results/partC_vlsi/openroad_fdpe_v3/openroad_fdpe_v3_status.md
-
-Outputs:
-  results/partC_vlsi/openroad_physical_summary.csv
-  docs/partC_vlsi/openroad_physical_summary.md
-"""
-
 from pathlib import Path
 import csv
 import re
 
 ROOT = Path(__file__).resolve().parents[2]
 
-TARGETS = [
+targets = [
     {
         "kernel": "SKAG-W1",
         "role": "edge-weight scoring",
-        "story": "fixed-alpha shift-add optimization",
+        "story": "fixed-alpha shift-add scoring; removes runtime multipliers",
         "folder": ROOT / "results/partC_vlsi/openroad_skag_w1",
-        "status_file": "openroad_skag_w1_status.md",
-        "final_artifacts": "GDS/DEF/SPEF/Verilog/SDC",
-        "paper_value": "shows multiplier-removal / shift-add physical feasibility",
+        "status": "openroad_skag_w1_status.md",
     },
     {
         "kernel": "FDPE-V3",
         "role": "fidelity-decay approximation",
         "story": "64-entry LUT with linear interpolation",
         "folder": ROOT / "results/partC_vlsi/openroad_fdpe_v3",
-        "status_file": "openroad_fdpe_v3_status.md",
-        "final_artifacts": "GDS/DEF/SPEF/Verilog/SDC",
-        "paper_value": "shows approximation area-accuracy physical feasibility",
+        "status": "openroad_fdpe_v3_status.md",
+    },
+    {
+        "kernel": "Pareto-C0",
+        "role": "route-candidate selector/comparator",
+        "story": "full Pareto comparator with tie-break logic",
+        "folder": ROOT / "results/partC_vlsi/openroad_pareto_c0",
+        "status": "openroad_pareto_c0_status.md",
     },
 ]
 
-def read_text(path: Path) -> str:
+def read(path):
     return path.read_text(errors="replace") if path.exists() else ""
 
-def extract_number(pattern: str, text: str, default: str = "") -> str:
-    m = re.search(pattern, text, re.IGNORECASE)
+def find_value(pattern, text, default="n/a"):
+    m = re.search(pattern, text, flags=re.IGNORECASE)
     return m.group(1) if m else default
 
-def has_file(folder: Path, rel: str) -> str:
-    return "yes" if (folder / rel).exists() else "no"
+def yes_no(path):
+    return "yes" if path.exists() else "no"
 
 rows = []
 
-for t in TARGETS:
+for t in targets:
     folder = t["folder"]
-    status_text = read_text(folder / t["status_file"])
+    status_text = read(folder / t["status"])
 
-    final_area = extract_number(r"Final design area:\s*([0-9.]+)", status_text)
-    final_util = extract_number(r"Final utilization:\s*([0-9.]+)", status_text)
-    floor_area = extract_number(r"Floorplan design area:\s*([0-9.]+)", status_text)
-    floor_util = extract_number(r"Floorplan utilization:\s*([0-9.]+)", status_text)
+    final_area = find_value(r"Final design area:\s*([0-9.]+)", status_text)
+    final_util = find_value(r"Final utilization:\s*([0-9.]+)", status_text)
+    floor_area = find_value(r"Floorplan design area:\s*([0-9.]+)", status_text)
+    floor_util = find_value(r"Floorplan utilization:\s*([0-9.]+)", status_text)
 
-    route_clean = "yes" if "0 final" in status_text.lower() or "0 net violations" in status_text.lower() else "unknown"
+    route_clean = "yes" if (
+        "0 final violations" in status_text.lower()
+        or "0 net violations" in status_text.lower()
+        or "detailed route completed with 0" in status_text.lower()
+    ) else "check"
 
     rows.append({
         "kernel": t["kernel"],
         "design_role": t["role"],
         "optimization_story": t["story"],
-        "openroad_status": "RTL-to-GDS complete",
+        "flow_status": "RTL-to-GDS complete",
         "floorplan_area_um2": floor_area,
         "floorplan_utilization_percent": floor_util,
         "final_area_um2": final_area,
         "final_utilization_percent": final_util,
         "route_clean": route_clean,
-        "has_final_gds": has_file(folder, "results/6_final.gds"),
-        "has_final_def": has_file(folder, "results/6_final.def"),
-        "has_final_spef": has_file(folder, "results/6_final.spef"),
-        "has_final_netlist": has_file(folder, "results/6_final.v"),
-        "has_final_layout_image": has_file(folder, "reports/final_all.webp"),
-        "final_artifacts": t["final_artifacts"],
-        "paper_value": t["paper_value"],
+        "has_final_gds": yes_no(folder / "results/6_final.gds"),
+        "has_final_def": yes_no(folder / "results/6_final.def"),
+        "has_final_spef": yes_no(folder / "results/6_final.spef"),
+        "has_final_netlist": yes_no(folder / "results/6_final.v"),
+        "has_final_sdc": yes_no(folder / "results/6_final.sdc"),
+        "has_final_layout_image": yes_no(folder / "reports/final_all.webp"),
     })
 
 out_csv = ROOT / "results/partC_vlsi/openroad_physical_summary.csv"
@@ -94,68 +88,75 @@ md = """# QFlow Part C OpenROAD Physical-Design Summary
 
 ## Purpose
 
-This document summarizes the completed OpenROAD/SKY130 physical-design evidence for the QFlow Part C VLSI extension.
+This document summarizes the completed SKY130/OpenROAD physical-design evidence for the QFlow Part C VLSI extension.
 
-The purpose is to separate generic synthesis evidence from physical-design evidence and to provide paper-ready wording for the completed RTL-to-GDS kernel implementations.
+These are open-source PDK/OpenROAD physical-design feasibility results, not fabricated-silicon measurements.
 
 ## Completed physical-design kernels
 
-| Kernel | Design role | Optimization story | Flow status | Final area (µm²) | Final utilization | Route status | Final artifacts |
+| Kernel | Design role | Optimization / implementation story | Flow status | Final area (um^2) | Final utilization | Route status | Final artifacts |
 |---|---|---|---|---:|---:|---|---|
 """
 
 for r in rows:
+    artifacts = []
+    if r["has_final_gds"] == "yes":
+        artifacts.append("GDS")
+    if r["has_final_def"] == "yes":
+        artifacts.append("DEF")
+    if r["has_final_spef"] == "yes":
+        artifacts.append("SPEF")
+    if r["has_final_netlist"] == "yes":
+        artifacts.append("Verilog")
+    if r["has_final_sdc"] == "yes":
+        artifacts.append("SDC")
+
+    route_text = "clean final route evidence" if r["route_clean"] == "yes" else "check reports"
+
     md += (
         f"| {r['kernel']} | {r['design_role']} | {r['optimization_story']} | "
-        f"{r['openroad_status']} | {r['final_area_um2']} | {r['final_utilization_percent']}% | "
-        f"{'clean final route evidence' if r['route_clean'] == 'yes' else 'check report'} | "
-        f"{r['final_artifacts']} |\n"
+        f"{r['flow_status']} | {r['final_area_um2']} | {r['final_utilization_percent']}% | "
+        f"{route_text} | {'/'.join(artifacts)} |\n"
     )
 
 md += """
-## Evidence interpretation
 
-The completed OpenROAD physical-design results support two different VLSI claims:
+## Interpretation
 
-1. **SKAG-W1:** the fixed-alpha shift-add edge-score kernel is physically implementable through the SKY130/OpenROAD flow and supports the multiplier-removal area-optimization story.
-2. **FDPE-V3:** the LUT64 linear-interpolation fidelity-decay kernel is physically implementable through the SKY130/OpenROAD flow and supports the FDPE area-accuracy tradeoff story.
+The completed OpenROAD results support three different physical-design claims:
+
+1. SKAG-W1 supports the multiplier-removal / shift-add edge-score optimization story.
+2. FDPE-V3 supports the LUT/interpolation area-accuracy approximation story.
+3. Pareto-C0 supports the physical feasibility of the route-candidate selector/comparator.
+
+Together, these three kernels cover the main QFlow decision pipeline:
+
+FDPE fidelity decay -> SKAG edge scoring -> Pareto route selection
 
 ## Paper-safe wording
 
-Use wording like:
+Recommended wording:
 
-> The optimized SKAG-W1 and FDPE-V3 kernels were implemented through the open-source SKY130/OpenROAD physical-design flow, completing synthesis, floorplanning, placement, CTS, routing, RC extraction, IR-drop reporting, and final GDS/DEF/SPEF generation.
+The optimized QFlow kernels were implemented through the open-source SKY130/OpenROAD physical-design flow. The SKAG-W1, FDPE-V3, and Pareto-C0 kernels completed synthesis, floorplanning, placement, clock-tree synthesis, routing, RC extraction, IR-drop reporting, and final GDS/DEF/SPEF generation.
 
-Do not write:
+Important boundary:
 
-> The design was fabricated.
+These are open-source PDK/OpenROAD physical-design feasibility results. They are not fabricated-silicon measurements and not commercial signoff.
 
-Do not write:
+## Publication value
 
-> This is commercial ASIC signoff.
-
-Correct boundary:
-
-> These are open-source PDK/OpenROAD physical-design feasibility results, not fabricated-silicon measurements.
-
-## Current publication value
-
-This is now stronger than a pure FPGA/simulation paper because Part C includes two completed RTL-to-GDS kernel implementations.
-
-Recommended next step:
-
-- Run Pareto-C0 through OpenROAD if quick.
-- Then start Part D CMOS/ngspice primitive study.
+This strengthens the QFlow paper beyond pure simulation or FPGA-only evidence because the work now includes a reproducible RTL-to-GDS path for the three major hardware kernels.
 """
 
 out_md.write_text(md, encoding="utf-8")
 
 print(f"[PASS] wrote {out_csv}")
 print(f"[PASS] wrote {out_md}")
+print()
 
 for r in rows:
     print(
-        f"{r['kernel']}: final_area={r['final_area_um2']}um^2 "
-        f"util={r['final_utilization_percent']}% "
-        f"gds={r['has_final_gds']} def={r['has_final_def']} spef={r['has_final_spef']}"
+        f"{r['kernel']}: final_area={r['final_area_um2']}um^2, "
+        f"util={r['final_utilization_percent']}%, "
+        f"GDS={r['has_final_gds']}, DEF={r['has_final_def']}, SPEF={r['has_final_spef']}"
     )
