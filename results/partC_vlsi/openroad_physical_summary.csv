@@ -1,0 +1,3 @@
+kernel,design_role,optimization_story,openroad_status,floorplan_area_um2,floorplan_utilization_percent,final_area_um2,final_utilization_percent,route_clean,has_final_gds,has_final_def,has_final_spef,has_final_netlist,has_final_layout_image,final_artifacts,paper_value
+SKAG-W1,edge-weight scoring,fixed-alpha shift-add optimization,RTL-to-GDS complete,5597,22,6451,26,yes,yes,yes,yes,yes,yes,GDS/DEF/SPEF/Verilog/SDC,shows multiplier-removal / shift-add physical feasibility
+FDPE-V3,fidelity-decay approximation,64-entry LUT with linear interpolation,RTL-to-GDS complete,19903,11,22186,13,yes,yes,yes,yes,yes,yes,GDS/DEF/SPEF/Verilog/SDC,shows approximation area-accuracy physical feasibility
