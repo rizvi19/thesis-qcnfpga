@@ -1,0 +1,9 @@
+kernel_family,variant,design_role,total_cells,baseline,delta_vs_baseline_cells,cell_reduction_vs_baseline_percent,accuracy_or_behavior,main_interpretation
+FDPE,V0_256LUT_Q016,fidelity_decay_approximation,2258,FDPE-V0,0,0.00%,max_rel_error_x0_3=3.1853%,area-accuracy LUT/interpolation tradeoff
+FDPE,V1_128LUT_Q016_FLOOR,fidelity_decay_approximation,1944,FDPE-V0,-314,13.91%,max_rel_error_x0_3=6.4597%,area-accuracy LUT/interpolation tradeoff
+FDPE,V2_128LUT_Q016_LINEAR_INTERP,fidelity_decay_approximation,3399,FDPE-V0,1141,-50.53%,max_rel_error_x0_3=0.0587%,area-accuracy LUT/interpolation tradeoff
+FDPE,V3_64LUT_Q016_LINEAR_INTERP,fidelity_decay_approximation,3014,FDPE-V0,756,-33.48%,max_rel_error_x0_3=0.1986%,area-accuracy LUT/interpolation tradeoff
+SKAG,W0_BUCKET_WEIGHTED_SCORE,edge_weight_score,5343,SKAG-W0,0,0.00%,baseline tested scores,fixed shift-add weights remove runtime multipliers
+SKAG,W1_FIXED_ALPHA_SHIFTADD,edge_weight_score,503,SKAG-W0,-4840,90.59%,same tested scores as W0,fixed shift-add weights remove runtime multipliers
+Pareto,C0_FULL_PARETO_COMPARATOR,route_candidate_selection,497,Pareto-C0,0,0.00%,selection testbench passed,full comparator already compact; score-first saves modest area
+Pareto,C1_SCORE_FIRST_SELECTOR,route_candidate_selection,472,Pareto-C0,-25,5.03%,selection testbench passed,full comparator already compact; score-first saves modest area
