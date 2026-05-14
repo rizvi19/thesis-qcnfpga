@@ -1,0 +1,23 @@
+# QFlow SKAG Weight Kernel W1 Shift-Add Yosys synthesis script
+# Purpose: generate ASIC-style generic synthesis evidence for SKAG-W1.
+
+read_verilog asic/skag_weight_kernel/src/skag_weight_w1_shiftadd.v
+
+hierarchy -check -top skag_weight_w1_shiftadd
+
+proc
+opt
+memory
+opt
+fsm
+opt
+techmap
+opt
+
+abc
+
+clean
+
+stat
+
+write_verilog asic/skag_weight_kernel/results/skag_weight_w1_shiftadd_synth_netlist.v

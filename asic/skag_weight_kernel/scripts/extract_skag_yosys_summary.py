@@ -21,6 +21,13 @@ VARIANTS = [
         "log": ROOT / "asic/skag_weight_kernel/reports/skag_weight_w0_bucket_yosys_synth.log",
         "note": "baseline bucketized score; four parallel 16x16 products",
     },
+    {
+        "kernel": "skag_weight_w1_shiftadd",
+        "variant": "W1_FIXED_ALPHA_SHIFTADD",
+        "score_model": "fixed_alpha_shift_add_penalties",
+        "log": ROOT / "asic/skag_weight_kernel/reports/skag_weight_w1_shiftadd_yosys_synth.log",
+        "note": "optimized fixed-alpha score; replaces runtime multipliers with shift-add logic",
+    },
 ]
 
 CELL_TYPES = [
