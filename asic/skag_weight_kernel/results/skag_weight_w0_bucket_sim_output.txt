@@ -1,0 +1,7 @@
+VCD info: dumpfile asic/skag_weight_kernel/results/skag_weight_w0_bucket.vcd opened for output.
+CASE key=300 fid=64000 arrival=512 qber=100 score=2502
+CASE key=128 fid=60000 arrival=128 qber=500 score=9494
+CASE key=10 fid=50000 arrival=32 qber=2000 score=27660
+CASE key=0 fid=62000 arrival=64 qber=800 score=7254
+SKAG_WEIGHT_W0_BUCKET_SIM_PASS
+asic/skag_weight_kernel/tb/tb_skag_weight_w0_bucket.v:111: $finish called at 295000 (1ps)

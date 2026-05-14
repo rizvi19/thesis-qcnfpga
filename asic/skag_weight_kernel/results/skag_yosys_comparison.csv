@@ -1,0 +1,2 @@
+kernel,variant,score_model,synthesis_type,note,wires,wire_bits,public_wires,public_wire_bits,ports,port_bits,memories,memory_bits,processes,total_cells,andnot,and,mux,nand,nor,not,ornot,or,sdffepn0p,sdffpn0,xnor,xor,delta_cells_vs_w0,cell_reduction_percent_vs_w0
+skag_weight_w0_bucket,W0_BUCKET_WEIGHTED_SCORE,four_weighted_penalties,yosys_generic,baseline bucketized score; four parallel 16x16 products,5079,6520,21,344,13,164,0,0,0,5343,259,886,7,2181,17,2,49,104,26,157,178,1477,0,0.0
