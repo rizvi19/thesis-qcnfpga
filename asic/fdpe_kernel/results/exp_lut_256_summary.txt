@@ -1,0 +1,11 @@
+QFlow FDPE exp(-x) LUT summary
+================================
+entries: 256
+x_range: [0, 8.0)
+step: 0.03125
+format: Q0.16 unsigned
+scale: 65535
+first_entry_hex: ffff
+last_entry_hex: 0017
+max_abs_quantization_error: 7.602303880458e-06
+max_rel_quantization_error: 1.816016214100e-02
