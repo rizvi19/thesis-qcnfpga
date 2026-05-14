@@ -1,0 +1,22 @@
+QFlow Part D CMOS primitive measurement
+Primitive: 2:1 transmission-gate mux
+Connection to QFlow: representative selector/mux behavior from Pareto-C0 route-candidate selection path
+Tool: ngspice
+Device model: simple Level-1 MOS first-pass model
+
+Delay measurements
+tplh_seconds=2.701999e-11
+tphl_seconds=2.625032e-11
+average_delay_seconds=2.6635155e-11
+tplh_ps=27.01999
+tphl_ps=26.250320000000002
+average_delay_ps=26.635155
+
+Energy and power estimate
+energy_joules=1.7128759624155029e-19
+energy_femtojoules=0.00017128759624155027
+average_power_watts=8.564379812077514e-12
+
+Evidence boundary
+This is a representative transistor-level primitive simulation.
+It is not full-chip SPICE, not fabricated-silicon measurement, and not foundry signoff.
