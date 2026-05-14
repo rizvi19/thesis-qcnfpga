@@ -4,3 +4,6 @@ asic/**/results/*.vcd
 asic/**/results/*.out
 asic/**/results/*.fst
 asic/**/results/*.log
+
+# OpenROAD binary database files; keep locally, do not commit.
+results/partC_vlsi/openroad_*/results/*.odb

@@ -1,0 +1,4 @@
+
+22. Executing CHECK pass (checking for obvious problems).
+Checking module pareto_cmp_c0_full...
+Found and reported 0 problems.

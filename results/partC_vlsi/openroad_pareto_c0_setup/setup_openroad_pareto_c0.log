@@ -1,0 +1,92 @@
+============================================================
+QFlow Pareto-C0 OpenROAD-flow setup
+============================================================
+Repo: /media/shahriar-rizvi/Data/CSE/Thesis/from13March/qflow_step1_phase0
+ORFS_ROOT: /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts
+FLOW_DIR: /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/flow
+Platform: sky130hd
+Design nickname: qflow_pareto_c0
+Design top: pareto_cmp_c0_full
+Date: Thu May 14 10:30:24 PM +06 2026
+
+[PASS] copied RTL to: /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/flow/designs/src/qflow_pareto_c0/pareto_cmp_c0_full.v
+[PASS] wrote config: /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/flow/designs/sky130hd/qflow_pareto_c0/config.mk
+[PASS] wrote SDC: /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/flow/designs/sky130hd/qflow_pareto_c0/constraint.sdc
+
+===== RTL module/port preview =====
+21:module pareto_cmp_c0_full #(
+28:    input wire clk,
+29:    input wire rst_n,
+30:    input wire start,
+32:    input wire [SCORE_W-1:0] score_a,
+33:    input wire [FID_W-1:0]   fidelity_a,
+34:    input wire [KEY_W-1:0]   key_count_a,
+35:    input wire [HOP_W-1:0]   hop_count_a,
+36:    input wire [QBER_W-1:0]  qber_a,
+38:    input wire [SCORE_W-1:0] score_b,
+39:    input wire [FID_W-1:0]   fidelity_b,
+40:    input wire [KEY_W-1:0]   key_count_b,
+41:    input wire [HOP_W-1:0]   hop_count_b,
+42:    input wire [QBER_W-1:0]  qber_b,
+44:    output reg done,
+45:    output reg select_a,
+46:    output reg select_b,
+47:    output reg tie,
+48:    output reg a_dominates_b,
+49:    output reg b_dominates_a
+149:endmodule
+
+===== Generated config.mk =====
+# QFlow Pareto-C0 OpenROAD-flow configuration
+# Generated from thesis repo: /media/shahriar-rizvi/Data/CSE/Thesis/from13March/qflow_step1_phase0
+
+export DESIGN_NICKNAME = qflow_pareto_c0
+export DESIGN_NAME = pareto_cmp_c0_full
+export PLATFORM = sky130hd
+
+export VERILOG_FILES = $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/$(DESIGN_NAME).v
+export SDC_FILE = $(DESIGN_HOME)/$(PLATFORM)/$(DESIGN_NICKNAME)/constraint.sdc
+
+# Fixed die/core area method.
+# Pareto-C0 is compact, so this is intentionally small but still safe.
+export DIE_AREA = 0 0 200 200
+export CORE_AREA = 20 20 180 180
+
+===== Generated constraint.sdc =====
+# QFlow Pareto-C0 first physical-design constraint file
+# Auto-generated from RTL port declarations
+
+set clk_name clk
+set clk_period 10.000
+
+create_clock -name core_clock -period $clk_period [get_ports $clk_name]
+
+set_input_delay 1.000 -clock core_clock [get_ports start]
+set_input_delay 1.000 -clock core_clock [get_ports {score_a[*]}]
+set_input_delay 1.000 -clock core_clock [get_ports {fidelity_a[*]}]
+set_input_delay 1.000 -clock core_clock [get_ports {key_count_a[*]}]
+set_input_delay 1.000 -clock core_clock [get_ports {hop_count_a[*]}]
+set_input_delay 1.000 -clock core_clock [get_ports {qber_a[*]}]
+set_input_delay 1.000 -clock core_clock [get_ports {score_b[*]}]
+set_input_delay 1.000 -clock core_clock [get_ports {fidelity_b[*]}]
+set_input_delay 1.000 -clock core_clock [get_ports {key_count_b[*]}]
+set_input_delay 1.000 -clock core_clock [get_ports {hop_count_b[*]}]
+set_input_delay 1.000 -clock core_clock [get_ports {qber_b[*]}]
+
+set_output_delay 1.000 -clock core_clock [get_ports done]
+set_output_delay 1.000 -clock core_clock [get_ports select_a]
+set_output_delay 1.000 -clock core_clock [get_ports select_b]
+set_output_delay 1.000 -clock core_clock [get_ports tie]
+set_output_delay 1.000 -clock core_clock [get_ports a_dominates_b]
+set_output_delay 1.000 -clock core_clock [get_ports b_dominates_a]
+
+set_false_path -from [get_ports rst_n]
+
+To run synthesis:
+cd /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/flow
+make DESIGN_CONFIG=designs/sky130hd/qflow_pareto_c0/config.mk synth
+
+============================================================
+Setup finished. Log:
+/media/shahriar-rizvi/Data/CSE/Thesis/from13March/qflow_step1_phase0/results/partC_vlsi/openroad_pareto_c0_setup/setup_openroad_pareto_c0.log
+============================================================
