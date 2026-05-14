@@ -24,11 +24,19 @@ VARIANTS = [
     },
     {
         "kernel": "fdpe_kernel_v1_lut128",
-        "variant": "V1_128LUT_Q016",
+        "variant": "V1_128LUT_Q016_FLOOR",
         "lut_entries": 128,
         "index_bits": 7,
         "log": ROOT / "asic/fdpe_kernel/reports/fdpe_kernel_v1_lut128_yosys_synth.log",
         "memory_note": "exp_lut mapped to FF/mux logic",
+    },
+    {
+        "kernel": "fdpe_kernel_v2_lut128_interp",
+        "variant": "V2_128LUT_Q016_LINEAR_INTERP",
+        "lut_entries": 128,
+        "index_bits": 7,
+        "log": ROOT / "asic/fdpe_kernel/reports/fdpe_kernel_v2_lut128_interp_yosys_synth.log",
+        "memory_note": "exp_lut mapped to FF/mux logic with two read ports",
     },
 ]
 

@@ -1,3 +1,4 @@
 kernel,variant,lut_entries,index_bits,fidelity_format,synthesis_type,memory_preserved,memory_mapping_note,wires,wire_bits,public_wires,public_wire_bits,ports,port_bits,memories,memory_bits,processes,total_cells,andnot,and,mux,nand,nor,not,ornot,or,sdffepn0p,sdffpn0,sdffpp0,xnor,xor,delta_cells_vs_v0,cell_reduction_percent_vs_v0
 fdpe_kernel_v0,V0_256LUT_Q016,256,8,Q0.16,yosys_generic,no,exp_lut mapped to FF/mux logic,2178,2322,12,110,7,44,0,0,0,2258,41,459,45,1033,15,5,46,92,16,46,5,36,419,0,0.0
-fdpe_kernel_v1_lut128,V1_128LUT_Q016,128,7,Q0.16,yosys_generic,no,exp_lut mapped to FF/mux logic,1864,2007,12,109,7,43,0,0,0,1944,38,381,28,824,28,2,53,71,16,46,5,34,418,-314,13.906111603188661
+fdpe_kernel_v1_lut128,V1_128LUT_Q016_FLOOR,128,7,Q0.16,yosys_generic,no,exp_lut mapped to FF/mux logic,1864,2007,12,109,7,43,0,0,0,1944,38,381,28,824,28,2,53,71,16,46,5,34,418,-314,13.906111603188661
+fdpe_kernel_v2_lut128_interp,V2_128LUT_Q016_LINEAR_INTERP,128,7,Q0.16,yosys_generic,no,exp_lut mapped to FF/mux logic with two read ports,3258,3475,18,174,8,51,0,0,0,3399,59,702,49,1460,21,4,75,135,16,82,26,87,683,1141,-50.531443755535875

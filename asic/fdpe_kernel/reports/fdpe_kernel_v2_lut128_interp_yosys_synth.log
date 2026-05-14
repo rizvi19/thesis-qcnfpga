@@ -1,0 +1,603 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.51 (git sha1 c4b519022, clang++ 18.1.3 -fPIC -O3)
+
+-- Executing script file `asic/fdpe_kernel/scripts/synth_fdpe_kernel_v2_lut128_interp_yosys.ys' --
+
+1. Executing Verilog-2005 frontend: asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v
+Parsing Verilog input from `asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v' to AST representation.
+Generating RTLIL representation for module `\fdpe_kernel_v2_lut128_interp'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \fdpe_kernel_v2_lut128_interp
+
+2.2. Analyzing design hierarchy..
+Top module:  \fdpe_kernel_v2_lut128_interp
+Removed 0 unused modules.
+
+3. Executing PROC pass (convert processes to netlists).
+
+3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `fdpe_kernel_v2_lut128_interp.$proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:0$16'.
+Cleaned up 0 empty switches.
+
+3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 3 switch rules as full_case in process $proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:75$4 in module fdpe_kernel_v2_lut128_interp.
+Removed a total of 0 dead cases.
+
+3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 11 redundant assignments.
+Promoted 3 assignments to connections.
+
+3.4. Executing PROC_INIT pass (extract init attributes).
+
+3.5. Executing PROC_ARST pass (detect async resets in processes).
+
+3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~4 debug messages>
+
+3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\fdpe_kernel_v2_lut128_interp.$proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:75$4'.
+     1/15: $0\done[0:0]
+     2/15: $0\valid_s3[0:0]
+     3/15: $0\mult_s3[31:0]
+     4/15: $0\valid_s2[0:0]
+     5/15: $0\interp_s2[15:0]
+     6/15: $0\f_init_s2[15:0]
+     7/15: $0\valid_s1[0:0]
+     8/15: $0\frac_s1[7:0]
+     9/15: $0\y1_s1[15:0]
+    10/15: $0\y0_s1[15:0]
+    11/15: $0\f_init_s1[15:0]
+    12/15: $1\interp_s2_comb[17:0]
+    13/15: $1\frac_mult_s2_comb[25:0]
+    14/15: $1\diff_s2_comb[16:0]
+    15/15: $0\fidelity_q016[15:0]
+
+3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\fdpe_kernel_v2_lut128_interp.\done' using process `\fdpe_kernel_v2_lut128_interp.$proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:75$4'.
+  created $dff cell `$procdff$70' with positive edge clock.
+Creating register for signal `\fdpe_kernel_v2_lut128_interp.\fidelity_q016' using process `\fdpe_kernel_v2_lut128_interp.$proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:75$4'.
+  created $dff cell `$procdff$71' with positive edge clock.
+Creating register for signal `\fdpe_kernel_v2_lut128_interp.\f_init_s1' using process `\fdpe_kernel_v2_lut128_interp.$proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:75$4'.
+  created $dff cell `$procdff$72' with positive edge clock.
+Creating register for signal `\fdpe_kernel_v2_lut128_interp.\y0_s1' using process `\fdpe_kernel_v2_lut128_interp.$proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:75$4'.
+  created $dff cell `$procdff$73' with positive edge clock.
+Creating register for signal `\fdpe_kernel_v2_lut128_interp.\y1_s1' using process `\fdpe_kernel_v2_lut128_interp.$proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:75$4'.
+  created $dff cell `$procdff$74' with positive edge clock.
+Creating register for signal `\fdpe_kernel_v2_lut128_interp.\frac_s1' using process `\fdpe_kernel_v2_lut128_interp.$proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:75$4'.
+  created $dff cell `$procdff$75' with positive edge clock.
+Creating register for signal `\fdpe_kernel_v2_lut128_interp.\valid_s1' using process `\fdpe_kernel_v2_lut128_interp.$proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:75$4'.
+  created $dff cell `$procdff$76' with positive edge clock.
+Creating register for signal `\fdpe_kernel_v2_lut128_interp.\f_init_s2' using process `\fdpe_kernel_v2_lut128_interp.$proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:75$4'.
+  created $dff cell `$procdff$77' with positive edge clock.
+Creating register for signal `\fdpe_kernel_v2_lut128_interp.\interp_s2' using process `\fdpe_kernel_v2_lut128_interp.$proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:75$4'.
+  created $dff cell `$procdff$78' with positive edge clock.
+Creating register for signal `\fdpe_kernel_v2_lut128_interp.\valid_s2' using process `\fdpe_kernel_v2_lut128_interp.$proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:75$4'.
+  created $dff cell `$procdff$79' with positive edge clock.
+Creating register for signal `\fdpe_kernel_v2_lut128_interp.\mult_s3' using process `\fdpe_kernel_v2_lut128_interp.$proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:75$4'.
+  created $dff cell `$procdff$80' with positive edge clock.
+Creating register for signal `\fdpe_kernel_v2_lut128_interp.\valid_s3' using process `\fdpe_kernel_v2_lut128_interp.$proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:75$4'.
+  created $dff cell `$procdff$81' with positive edge clock.
+Creating register for signal `\fdpe_kernel_v2_lut128_interp.\diff_s2_comb' using process `\fdpe_kernel_v2_lut128_interp.$proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:75$4'.
+  created $dff cell `$procdff$82' with positive edge clock.
+Creating register for signal `\fdpe_kernel_v2_lut128_interp.\frac_mult_s2_comb' using process `\fdpe_kernel_v2_lut128_interp.$proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:75$4'.
+  created $dff cell `$procdff$83' with positive edge clock.
+Creating register for signal `\fdpe_kernel_v2_lut128_interp.\interp_s2_comb' using process `\fdpe_kernel_v2_lut128_interp.$proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:75$4'.
+  created $dff cell `$procdff$84' with positive edge clock.
+
+3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 4 empty switches in `\fdpe_kernel_v2_lut128_interp.$proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:75$4'.
+Removing empty process `fdpe_kernel_v2_lut128_interp.$proc$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:75$4'.
+Cleaned up 4 empty switches.
+
+3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fdpe_kernel_v2_lut128_interp.
+<suppressed ~16 debug messages>
+
+4. Executing OPT pass (performing simple optimizations).
+
+4.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fdpe_kernel_v2_lut128_interp.
+
+4.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fdpe_kernel_v2_lut128_interp'.
+Removed a total of 0 cells.
+
+4.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fdpe_kernel_v2_lut128_interp..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~16 debug messages>
+
+4.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fdpe_kernel_v2_lut128_interp.
+Performed a total of 0 changes.
+
+4.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fdpe_kernel_v2_lut128_interp'.
+Removed a total of 0 cells.
+
+4.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$84 ($dff) from module fdpe_kernel_v2_lut128_interp (D = $add$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:106$11_Y [17:0], Q = \interp_s2_comb).
+Adding SRST signal on $procdff$70 ($dff) from module fdpe_kernel_v2_lut128_interp (D = \valid_s3, Q = \done, rval = 1'0).
+Adding SRST signal on $procdff$71 ($dff) from module fdpe_kernel_v2_lut128_interp (D = $procmux$65_Y, Q = \fidelity_q016, rval = 16'0000000000000000).
+Adding EN signal on $auto$ff.cc:266:slice$87 ($sdff) from module fdpe_kernel_v2_lut128_interp (D = \mult_s3 [31:16], Q = \fidelity_q016).
+Adding SRST signal on $procdff$72 ($dff) from module fdpe_kernel_v2_lut128_interp (D = \f_init_q016, Q = \f_init_s1, rval = 16'0000000000000000).
+Adding SRST signal on $procdff$73 ($dff) from module fdpe_kernel_v2_lut128_interp (D = $memrd$\exp_lut$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:96$6_DATA, Q = \y0_s1, rval = 16'0000000000000000).
+Adding SRST signal on $procdff$74 ($dff) from module fdpe_kernel_v2_lut128_interp (D = $memrd$\exp_lut$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:97$7_DATA, Q = \y1_s1, rval = 16'0000000000000000).
+Adding SRST signal on $procdff$75 ($dff) from module fdpe_kernel_v2_lut128_interp (D = \frac_q08, Q = \frac_s1, rval = 8'00000000).
+Adding SRST signal on $procdff$76 ($dff) from module fdpe_kernel_v2_lut128_interp (D = \start, Q = \valid_s1, rval = 1'0).
+Adding SRST signal on $procdff$77 ($dff) from module fdpe_kernel_v2_lut128_interp (D = \f_init_s1, Q = \f_init_s2, rval = 16'0000000000000000).
+Adding SRST signal on $procdff$78 ($dff) from module fdpe_kernel_v2_lut128_interp (D = $procmux$30_Y, Q = \interp_s2, rval = 16'0000000000000000).
+Adding SRST signal on $procdff$79 ($dff) from module fdpe_kernel_v2_lut128_interp (D = \valid_s1, Q = \valid_s2, rval = 1'0).
+Adding SRST signal on $procdff$80 ($dff) from module fdpe_kernel_v2_lut128_interp (D = $mul$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:117$14_Y, Q = \mult_s3, rval = 0).
+Adding SRST signal on $procdff$81 ($dff) from module fdpe_kernel_v2_lut128_interp (D = \valid_s2, Q = \valid_s3, rval = 1'0).
+Adding EN signal on $procdff$82 ($dff) from module fdpe_kernel_v2_lut128_interp (D = $sub$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:104$8_Y, Q = \diff_s2_comb).
+Adding EN signal on $procdff$83 ($dff) from module fdpe_kernel_v2_lut128_interp (D = $mul$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:105$9_Y, Q = \frac_mult_s2_comb).
+
+4.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fdpe_kernel_v2_lut128_interp..
+Removed 21 unused cells and 59 unused wires.
+<suppressed ~25 debug messages>
+
+4.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fdpe_kernel_v2_lut128_interp.
+
+4.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fdpe_kernel_v2_lut128_interp..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~2 debug messages>
+
+4.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fdpe_kernel_v2_lut128_interp.
+Performed a total of 0 changes.
+
+4.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fdpe_kernel_v2_lut128_interp'.
+Removed a total of 0 cells.
+
+4.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fdpe_kernel_v2_lut128_interp..
+
+4.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fdpe_kernel_v2_lut128_interp.
+
+4.16. Finished OPT passes. (There is nothing left to do.)
+
+5. Executing MEMORY pass.
+
+5.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+5.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+5.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+5.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+5.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+Checking read port `\exp_lut'[0] in module `\fdpe_kernel_v2_lut128_interp': merging output FF to cell.
+Checking read port `\exp_lut'[1] in module `\fdpe_kernel_v2_lut128_interp': merging output FF to cell.
+
+5.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fdpe_kernel_v2_lut128_interp..
+Removed 2 unused cells and 34 unused wires.
+<suppressed ~3 debug messages>
+
+5.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+Consolidating read ports of memory fdpe_kernel_v2_lut128_interp.exp_lut by address:
+
+5.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+5.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fdpe_kernel_v2_lut128_interp..
+
+5.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+5.11. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory \exp_lut in module \fdpe_kernel_v2_lut128_interp:
+  created 128 $dff cells and 0 static cells of width 16.
+Extracted data FF from read port 0 of fdpe_kernel_v2_lut128_interp.exp_lut: $\exp_lut$rdreg[0]
+Extracted data FF from read port 1 of fdpe_kernel_v2_lut128_interp.exp_lut: $\exp_lut$rdreg[1]
+  read interface: 2 $dff and 254 $mux cells.
+  write interface: 0 write mux blocks.
+
+6. Executing OPT pass (performing simple optimizations).
+
+6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fdpe_kernel_v2_lut128_interp.
+<suppressed ~2 debug messages>
+
+6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fdpe_kernel_v2_lut128_interp'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fdpe_kernel_v2_lut128_interp..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~4 debug messages>
+
+6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fdpe_kernel_v2_lut128_interp.
+Performed a total of 0 changes.
+
+6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fdpe_kernel_v2_lut128_interp'.
+Removed a total of 0 cells.
+
+6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fdpe_kernel_v2_lut128_interp..
+Removed 1 unused cells and 258 unused wires.
+<suppressed ~2 debug messages>
+
+6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fdpe_kernel_v2_lut128_interp.
+
+6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fdpe_kernel_v2_lut128_interp..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~4 debug messages>
+
+6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fdpe_kernel_v2_lut128_interp.
+Performed a total of 0 changes.
+
+6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fdpe_kernel_v2_lut128_interp'.
+Removed a total of 0 cells.
+
+6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fdpe_kernel_v2_lut128_interp..
+
+6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fdpe_kernel_v2_lut128_interp.
+
+6.16. Finished OPT passes. (There is nothing left to do.)
+
+7. Executing FSM pass (extract and optimize FSM).
+
+7.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fdpe_kernel_v2_lut128_interp..
+
+7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+8. Executing OPT pass (performing simple optimizations).
+
+8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fdpe_kernel_v2_lut128_interp.
+
+8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fdpe_kernel_v2_lut128_interp'.
+Removed a total of 0 cells.
+
+8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fdpe_kernel_v2_lut128_interp..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~4 debug messages>
+
+8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fdpe_kernel_v2_lut128_interp.
+Performed a total of 0 changes.
+
+8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fdpe_kernel_v2_lut128_interp'.
+Removed a total of 0 cells.
+
+8.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fdpe_kernel_v2_lut128_interp..
+
+8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fdpe_kernel_v2_lut128_interp.
+
+8.9. Finished OPT passes. (There is nothing left to do.)
+
+9. Executing TECHMAP pass (map to technology primitives).
+
+9.1. Executing Verilog-2005 frontend: /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/tools/install/yosys/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/tools/install/yosys/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+9.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $eq.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=0:A_WIDTH=7:B_SIGNED=0:B_WIDTH=7:Y_WIDTH=7:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=0:A_WIDTH=7:B_SIGNED=0:B_WIDTH=7:Y_WIDTH=7:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=0:A_WIDTH=7:B_SIGNED=0:B_WIDTH=7:Y_WIDTH=7:394426c56d1a028ba8fdd5469b163e04011def47.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $sdff.
+Running "alumacc" on wrapper $extern:wrap:$sub:A_SIGNED=1:A_WIDTH=17:B_SIGNED=1:B_WIDTH=17:Y_WIDTH=17:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$sub:A_SIGNED=1:A_WIDTH=17:B_SIGNED=1:B_WIDTH=17:Y_WIDTH=17:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$sub:A_SIGNED=1:A_WIDTH=17:B_SIGNED=1:B_WIDTH=17:Y_WIDTH=17:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$mul:A_SIGNED=1:A_WIDTH=17:B_SIGNED=1:B_WIDTH=26:Y_WIDTH=26:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$mul:A_SIGNED=1:A_WIDTH=17:B_SIGNED=1:B_WIDTH=26:Y_WIDTH=26:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$mul:A_SIGNED=1:A_WIDTH=17:B_SIGNED=1:B_WIDTH=26:Y_WIDTH=26:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$add:A_SIGNED=1:A_WIDTH=26:B_SIGNED=1:B_WIDTH=26:Y_WIDTH=26:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$add:A_SIGNED=1:A_WIDTH=26:B_SIGNED=1:B_WIDTH=26:Y_WIDTH=26:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$add:A_SIGNED=1:A_WIDTH=26:B_SIGNED=1:B_WIDTH=26:Y_WIDTH=26:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$lt:A_SIGNED=1:A_WIDTH=18:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$lt:A_SIGNED=1:A_WIDTH=18:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$lt:A_SIGNED=1:A_WIDTH=18:B_SIGNED=1:B_WIDTH=32:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$gt:A_SIGNED=1:A_WIDTH=18:B_SIGNED=1:B_WIDTH=18:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$gt:A_SIGNED=1:A_WIDTH=18:B_SIGNED=1:B_WIDTH=18:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$gt:A_SIGNED=1:A_WIDTH=18:B_SIGNED=1:B_WIDTH=18:Y_WIDTH=1:394426c56d1a028ba8fdd5469b163e04011def47.
+Running "alumacc" on wrapper $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=16:B_SIGNED=0:B_WIDTH=16:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using template $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=16:B_SIGNED=0:B_WIDTH=16:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47 for cells of type $extern:wrap:$mul:A_SIGNED=0:A_WIDTH=16:B_SIGNED=0:B_WIDTH=16:Y_WIDTH=32:394426c56d1a028ba8fdd5469b163e04011def47.
+Using extmapper simplemap for cells of type $sdffe.
+Using extmapper simplemap for cells of type $reduce_or.
+Using template $paramod$dbcdc7e8aa1a4080cea2deda6fdc8772064f4d90\_90_alu for cells of type $alu.
+Using template $paramod$0f9ec1a5c604af8320b4d806039a9d64938c6a2d\_90_alu for cells of type $alu.
+Using extmapper maccmap for cells of type $macc.
+  add { 18'000000000000000000 \frac_s1 } * $sub$asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v:104$8_Y (26x17 bits, signed)
+Using template $paramod$e03c98fd1a296ff65fe7a9d9adbfd30632ace553\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod$f9ff466c9b9a68555c41df08348b1615aa9bc5ec\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $reduce_and.
+Using template $paramod$fbcf46ed94b87f5a0d4aa07686f54f8c76ced033\_90_alu for cells of type $alu.
+  add \f_init_s2 * \interp_s2 (16x16 bits, unsigned)
+Using extmapper simplemap for cells of type $and.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000111 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000010001 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000011010 for cells of type $fa.
+Using template $paramod$7af98a8d3d01ff58dee4212ab52569c379e064a1\_90_alu for cells of type $alu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000011010 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000100000 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000010010 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000100000 for cells of type $fa.
+Using template $paramod$fbc7873bff55778c0b3173955b7e4bce1d9d6834\_90_alu for cells of type $alu.
+No more expansions possible.
+<suppressed ~2178 debug messages>
+
+10. Executing OPT pass (performing simple optimizations).
+
+10.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fdpe_kernel_v2_lut128_interp.
+<suppressed ~6332 debug messages>
+
+10.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fdpe_kernel_v2_lut128_interp'.
+<suppressed ~2781 debug messages>
+Removed a total of 927 cells.
+
+10.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fdpe_kernel_v2_lut128_interp..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+10.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fdpe_kernel_v2_lut128_interp.
+Performed a total of 0 changes.
+
+10.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fdpe_kernel_v2_lut128_interp'.
+Removed a total of 0 cells.
+
+10.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $auto$ff.cc:266:slice$3234 ($_SDFF_PN0_) from module fdpe_kernel_v2_lut128_interp (D = $memory\exp_lut$rdmux[1][2][0]$a$534 [15], Q = \y0_s1 [15], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$1158 ($_SDFF_PN0_) from module fdpe_kernel_v2_lut128_interp (D = $memory\exp_lut$rdmux[0][2][0]$a$153 [15], Q = \y1_s1 [15], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$1154 ($_SDFF_PN0_) from module fdpe_kernel_v2_lut128_interp (D = $memory\exp_lut$rdmux[0][0][0]$a$144 [11], Q = \y1_s1 [11], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$1155 ($_SDFF_PN0_) from module fdpe_kernel_v2_lut128_interp (D = $memory\exp_lut$rdmux[0][0][0]$a$144 [12], Q = \y1_s1 [12], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$1156 ($_SDFF_PN0_) from module fdpe_kernel_v2_lut128_interp (D = $memory\exp_lut$rdmux[0][0][0]$a$144 [13], Q = \y1_s1 [13], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$1157 ($_SDFF_PN0_) from module fdpe_kernel_v2_lut128_interp (D = $memory\exp_lut$rdmux[0][1][0]$a$147 [14], Q = \y1_s1 [14], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$3230 ($_SDFF_PN0_) from module fdpe_kernel_v2_lut128_interp (D = $memory\exp_lut$rdmux[1][0][0]$a$525 [11], Q = \y0_s1 [11], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$3231 ($_SDFF_PN0_) from module fdpe_kernel_v2_lut128_interp (D = $memory\exp_lut$rdmux[1][0][0]$a$525 [12], Q = \y0_s1 [12], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$3232 ($_SDFF_PN0_) from module fdpe_kernel_v2_lut128_interp (D = $memory\exp_lut$rdmux[1][0][0]$a$525 [13], Q = \y0_s1 [13], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:266:slice$3233 ($_SDFF_PN0_) from module fdpe_kernel_v2_lut128_interp (D = $memory\exp_lut$rdmux[1][1][0]$a$528 [14], Q = \y0_s1 [14], rval = 1'0).
+
+10.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fdpe_kernel_v2_lut128_interp..
+Removed 280 unused cells and 954 unused wires.
+<suppressed ~281 debug messages>
+
+10.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fdpe_kernel_v2_lut128_interp.
+<suppressed ~21 debug messages>
+
+10.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+10.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fdpe_kernel_v2_lut128_interp..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+10.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fdpe_kernel_v2_lut128_interp.
+Performed a total of 0 changes.
+
+10.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fdpe_kernel_v2_lut128_interp'.
+<suppressed ~42 debug messages>
+Removed a total of 14 cells.
+
+10.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+10.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fdpe_kernel_v2_lut128_interp..
+Removed 0 unused cells and 22 unused wires.
+<suppressed ~1 debug messages>
+
+10.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fdpe_kernel_v2_lut128_interp.
+
+10.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+10.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fdpe_kernel_v2_lut128_interp..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+10.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fdpe_kernel_v2_lut128_interp.
+Performed a total of 0 changes.
+
+10.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fdpe_kernel_v2_lut128_interp'.
+Removed a total of 0 cells.
+
+10.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+10.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fdpe_kernel_v2_lut128_interp..
+
+10.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fdpe_kernel_v2_lut128_interp.
+
+10.23. Finished OPT passes. (There is nothing left to do.)
+
+11. Executing ABC pass (technology mapping using ABC).
+
+11.1. Extracting gate netlist of module `\fdpe_kernel_v2_lut128_interp' to `<abc-temp-dir>/input.blif'..
+Extracted 3408 gates and 3490 wires to a netlist network with 80 inputs and 71 outputs.
+
+11.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+11.1.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:      702
+ABC RESULTS:            ANDNOT cells:       59
+ABC RESULTS:               MUX cells:       49
+ABC RESULTS:              NAND cells:     1460
+ABC RESULTS:               NOR cells:       21
+ABC RESULTS:               NOT cells:        4
+ABC RESULTS:                OR cells:      135
+ABC RESULTS:             ORNOT cells:       75
+ABC RESULTS:              XNOR cells:       87
+ABC RESULTS:               XOR cells:      683
+ABC RESULTS:        internal signals:     3339
+ABC RESULTS:           input signals:       80
+ABC RESULTS:          output signals:       71
+Removing temp directory.
+Removed 0 unused cells and 707 unused wires.
+
+12. Printing statistics.
+
+=== fdpe_kernel_v2_lut128_interp ===
+
+   Number of wires:               3258
+   Number of wire bits:           3475
+   Number of public wires:          18
+   Number of public wire bits:     174
+   Number of ports:                  8
+   Number of port bits:             51
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               3399
+     $_ANDNOT_                      59
+     $_AND_                        702
+     $_MUX_                         49
+     $_NAND_                      1460
+     $_NOR_                         21
+     $_NOT_                          4
+     $_ORNOT_                       75
+     $_OR_                         135
+     $_SDFFE_PN0P_                  16
+     $_SDFF_PN0_                    82
+     $_SDFF_PP0_                    26
+     $_XNOR_                        87
+     $_XOR_                        683
+
+13. Executing Verilog backend.
+
+13.1. Executing BMUXMAP pass.
+
+13.2. Executing DEMUXMAP pass.
+Dumping module `\fdpe_kernel_v2_lut128_interp'.
+
+End of script. Logfile hash: 729eb12f6c, CPU: user 0.61s system 0.01s, MEM: 40.08 MB peak
+Yosys 0.51 (git sha1 c4b519022, clang++ 18.1.3 -fPIC -O3)
+Time spent: 90% 1x abc (5 sec), 2% 23x opt_expr (0 sec), ...

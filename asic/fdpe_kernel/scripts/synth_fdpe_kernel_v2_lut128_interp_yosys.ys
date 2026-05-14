@@ -1,0 +1,23 @@
+# QFlow FDPE Kernel V2 LUT128 interpolation Yosys synthesis script
+# Purpose: generate ASIC-style generic synthesis evidence for FDPE-V2.
+
+read_verilog asic/fdpe_kernel/src/fdpe_kernel_v2_lut128_interp.v
+
+hierarchy -check -top fdpe_kernel_v2_lut128_interp
+
+proc
+opt
+memory
+opt
+fsm
+opt
+techmap
+opt
+
+abc
+
+clean
+
+stat
+
+write_verilog asic/fdpe_kernel/results/fdpe_kernel_v2_lut128_interp_synth_netlist.v
