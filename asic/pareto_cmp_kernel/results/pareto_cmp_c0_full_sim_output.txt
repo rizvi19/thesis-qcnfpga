@@ -1,0 +1,8 @@
+VCD info: dumpfile asic/pareto_cmp_kernel/results/pareto_cmp_c0_full.vcd opened for output.
+CASE            A_DOM select_a=1 select_b=0 tie=0 a_dom=1 b_dom=0
+CASE            B_DOM select_a=0 select_b=1 tie=0 a_dom=0 b_dom=1
+CASE              TIE select_a=0 select_b=0 tie=1 a_dom=0 b_dom=0
+CASE       A_SCORE_TB select_a=1 select_b=0 tie=0 a_dom=0 b_dom=0
+CASE         B_FID_TB select_a=0 select_b=1 tie=0 a_dom=0 b_dom=0
+PARETO_CMP_C0_FULL_SIM_PASS
+asic/pareto_cmp_kernel/tb/tb_pareto_cmp_c0_full.v:164: $finish called at 245000 (1ps)
