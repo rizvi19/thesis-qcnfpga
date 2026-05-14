@@ -1,0 +1,105 @@
+============================================================
+QFlow Part C OpenROAD Physical Design Preflight
+============================================================
+Repo: /media/shahriar-rizvi/Data/CSE/Thesis/from13March/qflow_step1_phase0
+Date: Thu May 14 05:21:37 PM +06 2026
+Branch: vlsi-kernel-study
+
+===== Git status =====
+?? Makefile.qflow-tools
+?? Makefile.qflow-tools.bak
+?? activate_qflow_env.sh
+?? activate_qflow_env.sh.bak.2026-05-07-1753
+?? asic/fdpe_kernel/results/fdpe_lut_error_comparison.csv
+?? asic/fdpe_kernel/scripts/analyze_fdpe_lut_error.py
+?? check_thesis_stack.sh
+?? check_thesis_stack.sh.bak2
+?? dist-newstyle/
+?? docs/partC_vlsi/check_openroad_physical_preflight.sh
+?? results/partC_vlsi/openroad_preflight/
+?? thesis_stack_check.log
+?? thesis_stack_check_after_omnet_fixed.log
+?? toolchain_test_tmp/
+
+===== Kernel RTL existence =====
+[PASS] found asic/skag_weight_kernel/src/skag_weight_w1_shiftadd.v
+[PASS] found asic/fdpe_kernel/src/fdpe_kernel_v3_lut64_interp.v
+[PASS] found asic/pareto_cmp_kernel/src/pareto_cmp_c0_full.v
+
+===== Checking command: yosys =====
+[PASS] yosys found: /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/tools/install/yosys/bin/yosys
+Yosys 0.51 (git sha1 c4b519022, clang++ 18.1.3 -fPIC -O3)
+
+===== Checking command: openroad =====
+[PASS] openroad found: /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/tools/install/OpenROAD/bin/openroad
+v2.0-19993-ga613c7e53 
+
+===== Checking command: sta =====
+[PASS] sta found: /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/tools/install/OpenROAD/bin/sta
+2.6.0
+
+===== Checking command: opensta =====
+[FAIL] opensta not found in PATH
+
+===== Checking command: klayout =====
+[PASS] klayout found: /usr/bin/klayout
+
+===== Checking command: magic =====
+[PASS] magic found: /opt/magic-8.3/bin/magic
+8.3.525
+
+===== Checking command: make =====
+[PASS] make found: /usr/bin/make
+GNU Make 4.3
+Built for x86_64-pc-linux-gnu
+Copyright (C) 1988-2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+===== Checking command: python3 =====
+[PASS] python3 found: /home/shahriar-rizvi/miniconda3/envs/vlsi/bin/python3
+Python 3.13.0
+
+===== OpenROAD-flow-scripts discovery =====
+[PASS] candidate exists: /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts
+[PASS] flow directory exists: /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/flow
+[PASS] OPENROAD_FLOW_ROOT_CANDIDATE=/home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts
+
+===== OpenROAD-flow-scripts platform check =====
+[PASS] platforms directory exists: /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/flow/platforms
+Available platforms:
+asap7
+common
+gf180
+ihp-sg13g2
+nangate45
+sky130hd
+sky130hs
+sky130io
+sky130ram
+
+Checking common SKY130 platform folders:
+[PASS] found platform: sky130hd
+[PASS] found platform: sky130hs
+[MISS] platform not found: sky130_fd_sc_hd
+[MISS] platform not found: sky130_fd_sc_hd__tt_025C_1v80
+
+Checking flow Makefile:
+[PASS] found /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/flow/Makefile
+
+Checking flow designs folder:
+[PASS] found /home/shahriar-rizvi/Documents/VLSI/tools/OpenROAD-flow-scripts/flow/designs
+
+===== Environment variables =====
+OPENROAD_FLOW_ROOT=<unset>
+OPENROAD_EXE=<unset>
+YOSYS_EXE=<unset>
+PDK_ROOT=<unset>
+PLATFORM=<unset>
+DESIGN_CONFIG=<unset>
+
+============================================================
+Preflight finished. Log written to:
+results/partC_vlsi/openroad_preflight/openroad_physical_preflight.log
+============================================================
