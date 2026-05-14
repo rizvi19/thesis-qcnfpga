@@ -1,11 +1,16 @@
 QFlow FDPE exp(-x) LUT summary
 ================================
 entries: 256
-x_range: [0, 8.0)
+hex_file: asic/fdpe_kernel/config/exp_lut_256.hex
+x_range: [0,8)
 step: 0.03125
-format: Q0.16 unsigned
+format: Q0.16
 scale: 65535
 first_entry_hex: ffff
 last_entry_hex: 0017
-max_abs_quantization_error: 7.602303880458e-06
-max_rel_quantization_error: 1.816016214100e-02
+max_abs_quantization_error: 7.602303880457906e-06
+max_rel_quantization_error: 0.018160162141003727
+max_abs_error_x0_3: 7.602303880457906e-06
+max_rel_error_x0_3: 0.00013390378278018618
+max_abs_error_x0_5: 7.602303880457906e-06
+max_rel_error_x0_5: 0.0009707228708150271

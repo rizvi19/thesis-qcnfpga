@@ -1,0 +1,3 @@
+entries,hex_file,x_range,step,format,scale,first_entry_hex,last_entry_hex,max_abs_quantization_error,max_rel_quantization_error,max_abs_error_x0_3,max_rel_error_x0_3,max_abs_error_x0_5,max_rel_error_x0_5
+256,asic/fdpe_kernel/config/exp_lut_256.hex,[0,8),0.03125,Q0.16,65535,ffff,0017,7.602303880457906e-06,0.018160162141003727,7.602303880457906e-06,0.00013390378278018618,7.602303880457906e-06,0.0009707228708150271
+128,asic/fdpe_kernel/config/exp_lut_128.hex,[0,8),0.0625,Q0.16,65535,ffff,0017,7.585480027993974e-06,0.018160162141003727,7.585480027993974e-06,0.00011638963528551714,7.585480027993974e-06,0.0009707228708150271
