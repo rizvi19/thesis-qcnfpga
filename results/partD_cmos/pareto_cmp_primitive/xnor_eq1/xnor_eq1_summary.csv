@@ -1,0 +1,2 @@
+primitive,connection_to_qflow,tool,model_type,vdd_v,load_fF,tplh_ps,tphl_ps,average_delay_ps,estimated_load_switching_energy_fJ,evidence_boundary
+1bit_xnor_equality,Pareto-C0 comparator/equality behavior,ngspice,simple_Level1_MOS,1.8,20,27.02,26.25,26.64,32.40,representative primitive simulation not full-chip signoff

@@ -1,0 +1,22 @@
+QFlow Part D CMOS primitive measurement
+Primitive: 1-bit XNOR/equality primitive
+Connection to QFlow: representative comparator/equality behavior from Pareto-C0 route-candidate selection path
+Tool: ngspice
+Device model: simple Level-1 MOS first-pass model
+Supply voltage: 1.8 V
+Load capacitance: 20 fF
+
+Delay measurements
+tplh_seconds=2.701999e-11
+tphl_seconds=2.625032e-11
+average_delay_seconds=2.6635155e-11
+tplh_ps=27.01999
+tphl_ps=26.250320000000002
+average_delay_ps=26.635155
+
+Energy estimate
+estimated_load_switching_energy_fJ=32.400000000000006
+
+Evidence boundary
+This is a representative transistor-level primitive simulation.
+It is not full-chip SPICE, not fabricated-silicon measurement, and not foundry signoff.
