@@ -4,6 +4,10 @@
 
 Study the area, timing, and power cost of the QFlow Fidelity Decay Prediction Engine when mapped into an ASIC-style open-source flow.
 
+## Why FDPE first?
+
+FDPE is central to QFlow because it computes stored-key fidelity decay, and it is one of the most meaningful QFlow kernels for VLSI optimization. The existing QFlow architecture uses a LUT-backed exponential approximation and fixed-point fidelity output, so it is a natural starting point for ASIC-style PPA analysis.
+
 ## Baseline kernel
 
 FDPE-V0:

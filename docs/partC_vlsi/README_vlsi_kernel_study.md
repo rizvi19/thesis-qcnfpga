@@ -18,7 +18,7 @@ This branch adds a new evidence layer:
 - approximation-vs-quality study,
 - area/timing/power reports,
 - optional OpenRAM memory macro study,
-- CMOS/transistor-level explanation of critical primitives.
+- CMOS/transistor-level analysis of critical primitives.
 
 ## Main research direction
 
