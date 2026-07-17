@@ -1,0 +1,110 @@
+======================================================================
+QFlow Reference Model — 6-Node Ring Experiment
+======================================================================
+  Nodes:          6
+  Links:          12
+  Sim duration:   0.5 s
+  Tick interval:  0.001 s
+  F_min:          0.9
+
+Link states after simulation:
+  (0→1): K=   9  F̄=0.9322  λ_eff=1533.7 keys/s  w=1.7806
+  (0→5): K=   6  F̄=0.9291  λ_eff=1533.7 keys/s  w=1.8415
+  (1→0): K=   6  F̄=0.9259  λ_eff=1533.7 keys/s  w=1.8470
+  (1→2): K=   9  F̄=0.9489  λ_eff=1533.7 keys/s  w=1.7521
+  (2→1): K=   7  F̄=0.9294  λ_eff=1533.7 keys/s  w=1.8171
+  (2→3): K=   3  F̄=0.9446  λ_eff=1533.7 keys/s  w=1.9816
+  (3→2): K=   4  F̄=0.9464  λ_eff=1533.7 keys/s  w=1.8953
+  (3→4): K=   9  F̄=0.9468  λ_eff=1533.7 keys/s  w=1.7557
+  (4→3): K=   5  F̄=0.9284  λ_eff=1533.7 keys/s  w=1.8760
+  (4→5): K=   4  F̄=0.9416  λ_eff=1533.7 keys/s  w=1.9034
+  (5→0): K=   6  F̄=0.9322  λ_eff=1533.7 keys/s  w=1.8360
+  (5→4): K=  11  F̄=0.9425  λ_eff=1533.7 keys/s  w=1.7428
+
+Running PMO-GA:  0 → 3
+  Gen    0  best_tcheby=0.001511  pop=64
+  Converged at generation 10 (stall=10).
+
+Pareto front (64 solutions):
+  [0] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [1] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [2] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [3] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [4] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [5] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [6] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [7] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [8] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [9] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [10] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [11] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [12] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [13] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [14] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [15] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [16] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [17] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [18] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [19] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [20] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [21] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [22] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [23] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [24] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [25] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [26] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [27] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [28] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [29] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [30] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [31] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [32] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [33] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [34] path=[0, 5, 4, 3]  latency=5.4603  fidelity=0.9284  balance=0.0000
+  [35] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [36] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [37] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [38] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [39] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [40] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [41] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [42] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [43] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [44] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [45] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [46] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [47] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [48] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [49] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [50] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [51] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [52] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [53] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [54] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [55] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [56] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [57] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [58] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [59] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [60] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [61] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [62] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+  [63] path=[0, 1, 2, 3]  latency=5.5144  fidelity=0.9322  balance=0.0000
+
+TSN schedule (4 packets emitted):
+  t=10.000 µs  pri=7  QKD_CTRL
+  t=10.512 µs  pri=7  QKD_CTRL_2
+  t=11.536 µs  pri=3  CLASSICAL
+  t=23.680 µs  pri=0  BEST_EFFORT
+  Quantum packets: 2
+  Classical packets: 2
+
+======================================================================
+EXPERIMENT COMPLETE — Summary
+======================================================================
+  Pareto front size: 64
+  Convergence steps: 11
+  Best path:         [0, 5, 4, 3]
+  Best latency:      5.460344
+  Best fidelity:     0.928396
+  Best balance:      0.000000

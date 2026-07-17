@@ -1,0 +1,1 @@
+run_id,timestamp_iso8601,git_sha,branch,policy_mode,topology,trace_checksum,vector_checksum,seeds,fidelity_format,weight_format,clock_constraint,tool_versions,board_model,board_serial,bitstream_sha256,kernel_cycles,uart_host_time_ms,output_files,decision,notes

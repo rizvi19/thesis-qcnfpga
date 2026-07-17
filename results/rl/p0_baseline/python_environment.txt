@@ -1,0 +1,8 @@
+QFlow P0 baseline Python environment
+2026-07-17T14:43:42+06:00
+Repository: /media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga
+Branch: main
+Commit: 54a2d57b4d425d30627a5ca3bba2cd369e6d73ab
+Python executable: /home/shahriar-rizvi/miniconda3/envs/vlsi/bin/python
+Python 3.13.0
+NumPy: 2.4.4
