@@ -1,0 +1,19 @@
+{
+  "additional_training_after_test": false,
+  "decision": "PASS_DESCRIPTIVE_INSUFFICIENT_POWER",
+  "defense_ablation_summary_complete": true,
+  "journal_retrained_ablation_matrix_deferred_to_j2": true,
+  "new_test_trace_generation": 0,
+  "p4_authorized": true,
+  "phase": "P3",
+  "policy_revision_after_test": false,
+  "rom_export_performed": false,
+  "rtl_or_board_work_performed": false,
+  "schema_version": 1,
+  "selected_controller_unchanged": "h4_revised_seed_229",
+  "statistics_complete": true,
+  "step": "P3_STEP_8_STATISTICS_UTILITY_GATE_ABLATIONS",
+  "test_access_count_carried_forward": 4,
+  "test_rows_read_only": true,
+  "utility_gate_complete": true
+}

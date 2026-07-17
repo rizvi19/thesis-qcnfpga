@@ -1,0 +1,13 @@
+controller,partition,profile_id,decision_count,fraction
+h2_forced_fixed,test,0,2048,1.000000000000
+h2_forced_fixed,test,1,0,0.000000000000
+h2_forced_fixed,test,2,0,0.000000000000
+h2_forced_fixed,test,3,0,0.000000000000
+h3_threshold,test,0,325,0.158691406250
+h3_threshold,test,1,817,0.398925781250
+h3_threshold,test,2,510,0.249023437500
+h3_threshold,test,3,396,0.193359375000
+h4_revised_seed_229,test,0,340,0.166015625000
+h4_revised_seed_229,test,1,578,0.282226562500
+h4_revised_seed_229,test,2,675,0.329589843750
+h4_revised_seed_229,test,3,455,0.222167968750

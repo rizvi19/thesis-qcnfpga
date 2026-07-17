@@ -1,0 +1,3 @@
+comparison,pair_count,h4_wins,paired_mean_difference,ci_95_low,ci_95_high,ci_excludes_zero,raw_permutation_p,paired_cohens_dz,minimum_attainable_two_sided_p,holm_adjusted_p,statistical_superiority,interpretation
+h4_revised_seed_229_minus_h2_forced_fixed,4,4,0.064055256945,0.060163373139,0.068097620966,true,0.125000000000,12.711009973924,0.125000000000,0.250000000000,false,descriptive_improvement_insufficient_power
+h4_revised_seed_229_minus_h3_threshold,4,4,0.047831057560,0.046590470077,0.049104058241,true,0.125000000000,30.045597937487,0.125000000000,0.250000000000,false,descriptive_improvement_insufficient_power

@@ -1,0 +1,117 @@
+{
+  "adverse_metric_disclosure": {
+    "h4_minus_h2_mean_hops": 0.0791015625,
+    "h4_minus_h2_switch_rate": 0.2328767123287671,
+    "h4_minus_h3_mean_hops": -0.0234375,
+    "h4_minus_h3_switch_rate": -0.04843444227005872
+  },
+  "all_predeclared_utility_checks_pass": true,
+  "checks": {
+    "all_four_test_seeds_reward_wins": true,
+    "balance_no_serious_degradation": true,
+    "blocking_noninferior_to_h2": true,
+    "fidelity_no_serious_degradation": true,
+    "minimum_distinct_profiles": true,
+    "minimum_secondary_profile_fraction": true,
+    "reward_exceeds_h2": true,
+    "reward_exceeds_h3": true,
+    "switch_rate_within_ceiling": true
+  },
+  "claim_boundary": "held_out_descriptive_improvement_and_utility_gate_pass; no_statistical_superiority_claim",
+  "controller_means": {
+    "h2_forced_fixed": {
+      "blocking_rate": 0.0,
+      "controller": "h2_forced_fixed",
+      "decision_count": 2048,
+      "distinct_profiles": 1,
+      "environment_seed_count": 4,
+      "mean_balance_utility_success": 0.16880925674260636,
+      "mean_hops_success": 2.875,
+      "mean_success_bottleneck_fidelity": 0.9581482421875,
+      "mean_total_reward": 4.613024100492606,
+      "partition": "test",
+      "profile_counts": [
+        2048,
+        0,
+        0,
+        0
+      ],
+      "profile_fractions": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "secondary_profile_fraction": 0.0,
+      "success_count": 2048,
+      "switch_count": 0,
+      "switch_rate": 0.0
+    },
+    "h3_threshold": {
+      "blocking_rate": 0.0,
+      "controller": "h3_threshold",
+      "decision_count": 2048,
+      "distinct_profiles": 4,
+      "environment_seed_count": 4,
+      "mean_balance_utility_success": 0.25512622956470615,
+      "mean_hops_success": 2.9775390625,
+      "mean_success_bottleneck_fidelity": 0.9594348632812499,
+      "mean_total_reward": 4.629248299877205,
+      "partition": "test",
+      "profile_counts": [
+        325,
+        817,
+        510,
+        396
+      ],
+      "profile_fractions": [
+        0.15869140625,
+        0.39892578125,
+        0.2490234375,
+        0.193359375
+      ],
+      "secondary_profile_fraction": 0.2490234375,
+      "success_count": 2048,
+      "switch_count": 575,
+      "switch_rate": 0.28131115459882583
+    },
+    "h4_revised_seed_229": {
+      "blocking_rate": 0.0,
+      "controller": "h4_revised_seed_229",
+      "decision_count": 2048,
+      "distinct_profiles": 4,
+      "environment_seed_count": 4,
+      "mean_balance_utility_success": 0.2649934199372676,
+      "mean_hops_success": 2.9541015625,
+      "mean_success_bottleneck_fidelity": 0.96043583984375,
+      "mean_total_reward": 4.677079357437266,
+      "partition": "test",
+      "profile_counts": [
+        340,
+        578,
+        675,
+        455
+      ],
+      "profile_fractions": [
+        0.166015625,
+        0.2822265625,
+        0.32958984375,
+        0.22216796875
+      ],
+      "secondary_profile_fraction": 0.2822265625,
+      "success_count": 2048,
+      "switch_count": 476,
+      "switch_rate": 0.2328767123287671
+    }
+  },
+  "decision": "PASS_DESCRIPTIVE_INSUFFICIENT_POWER",
+  "minimum_attainable_two_sided_p": 0.125,
+  "p4_authorized_by_p3_utility_gate": true,
+  "phase": "P3",
+  "policy_or_training_revision_allowed": false,
+  "power_assessment": "insufficient_for_exact_two_sided_p_below_0.05_with_four_pairs",
+  "schema_version": 1,
+  "selected_controller_for_p4": "h4_revised_seed_229",
+  "statistical_superiority_claim_allowed": false,
+  "step": "P3_STEP_8_UTILITY_GATE"
+}

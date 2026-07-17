@@ -1,0 +1,55 @@
+{
+  "algorithm": "tabular_q_learning",
+  "candidate_policy_sha256": {
+    "17": "08c78dadb194fd6e3875f51650b7ea37646db532558d49f8a008bef7723622a2",
+    "29": "81608ae1d94d59930dd22d1040fd8a29f0f570625102e5ec0930271e61c39887"
+  },
+  "candidate_q_table_sha256": {
+    "17": "9a0f70280564ae2a2f772f1055aed10eba37fa2b5e7b132dda96470af74c2fcf",
+    "29": "9ef065acdfcd8e4995da6dd8dd1bce69738e6240de4e2f375a294d5d32cbbb0a"
+  },
+  "decision": "PASS",
+  "epochs_per_candidate": 2,
+  "full_h4_training_performed": false,
+  "full_transitions_per_candidate": 819200,
+  "model_selection_performed": false,
+  "partitions_accessed": [
+    "train"
+  ],
+  "phase": "P3",
+  "policy_freeze_performed": false,
+  "rom_export_performed": false,
+  "rtl_or_board_work_performed": false,
+  "schema_version": 1,
+  "smoke_fraction_of_full_budget": 0.01,
+  "step": "P3_STEP_5_TRAINING_SMOKE",
+  "test_access_count": 0,
+  "test_partition_locked": true,
+  "trace_sha256": {
+    "101": "f21d07dc5324be68374031c821eb6413669174f87fecff8ee658e1526f394a9f",
+    "211": "5635eabbe698f8899309c5023856c73554f577a4ae5b1d83e4f466e997522942",
+    "307": "a1ad880f0db71717b75c88e8a61b3f82229a175e2ad9a2d1ddcb1227b00403a8",
+    "401": "5853b76226cceb69d092950746a2131ed33fb94bfd9546eda4ce15212c161129",
+    "503": "ef1cc63e5124da2287ebff2b3d5483000a07722f1a8e5bf0975b6df454c2e3f5",
+    "601": "d6fb7fea94174f8a35d88adbdc2070f1a795152979e886b18ff4067fb63a8e17",
+    "701": "6a7cf3bfe6a32fe0117c054aca3748460db8b1e5b76d36e92adedfc6a2ae6451",
+    "809": "71c162f014112e56c88ee60ff4f73eb6be1dfbe9ac9f489dd691ac665a2e32f8"
+  },
+  "trainer_rng_seeds": [
+    17,
+    29
+  ],
+  "training_config_sha256": "467a970fe91e4b31388b99642db68442432738b217dc0cae0fcc42b85aeaa7a4",
+  "training_environment_seeds": [
+    101,
+    211,
+    307,
+    401,
+    503,
+    601,
+    701,
+    809
+  ],
+  "transitions_per_candidate": 8192,
+  "validation_access_count": 0
+}

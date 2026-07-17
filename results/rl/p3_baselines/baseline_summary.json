@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "summaries": [
+    {
+      "blocking_rate": 0.0,
+      "controller": "h2_forced_fixed",
+      "decision_count": 4096,
+      "mean_balance_utility_success": 0.1692149203471225,
+      "mean_hops_success": 2.875,
+      "mean_success_bottleneck_fidelity": 0.9582699951171875,
+      "mean_total_reward": 4.615864822690872,
+      "partition": "train",
+      "seed_count": 8,
+      "success_count": 4096,
+      "switch_rate": 0.0
+    },
+    {
+      "blocking_rate": 0.0,
+      "controller": "h3_threshold",
+      "decision_count": 4096,
+      "mean_balance_utility_success": 0.2510217216729668,
+      "mean_hops_success": 2.97900390625,
+      "mean_success_bottleneck_fidelity": 0.9594321044921875,
+      "mean_total_reward": 4.623867913079216,
+      "partition": "train",
+      "seed_count": 8,
+      "success_count": 4096,
+      "switch_rate": 0.2847358121330724
+    },
+    {
+      "blocking_rate": 0.0,
+      "controller": "h2_forced_fixed",
+      "decision_count": 2048,
+      "mean_balance_utility_success": 0.17364570040961644,
+      "mean_hops_success": 2.875,
+      "mean_success_bottleneck_fidelity": 0.9582999999999999,
+      "mean_total_reward": 4.620895700409616,
+      "partition": "validation",
+      "seed_count": 4,
+      "success_count": 2048,
+      "switch_rate": 0.0
+    },
+    {
+      "blocking_rate": 0.0,
+      "controller": "h3_threshold",
+      "decision_count": 2048,
+      "mean_balance_utility_success": 0.2548985892308646,
+      "mean_hops_success": 2.978515625,
+      "mean_success_bottleneck_fidelity": 0.9594865234375,
+      "mean_total_reward": 4.629687651730864,
+      "partition": "validation",
+      "seed_count": 4,
+      "success_count": 2048,
+      "switch_rate": 0.28180039138943247
+    }
+  ]
+}

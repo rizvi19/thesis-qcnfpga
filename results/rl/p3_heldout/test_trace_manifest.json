@@ -1,0 +1,25 @@
+{
+  "episode_length": 512,
+  "generated_after_verified_unlock": true,
+  "partition": "test",
+  "schema_version": 1,
+  "traces": [
+    {
+      "seed": 2003,
+      "trace_sha256": "52e590b70cf4dad07f2ecfd2fd74a1cf67e9d514c085b3c440492b2523dfe655"
+    },
+    {
+      "seed": 2111,
+      "trace_sha256": "1fe550a288d5f04944eec4b0c519d2414d27a3552232f2f06b07b9d933380650"
+    },
+    {
+      "seed": 2203,
+      "trace_sha256": "30b32ce3cc133dc50f6d3caede5f8afb60e761263c5e1f83bb1ff85c8ef818e7"
+    },
+    {
+      "seed": 2309,
+      "trace_sha256": "2400f3b72a75f5b375d55022753b470fa31fd2f1d7762485a2cc671d62eec3bd"
+    }
+  ],
+  "unique_trace_count": 4
+}

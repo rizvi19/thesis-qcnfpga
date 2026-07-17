@@ -1,0 +1,39 @@
+{
+  "ablation_scope": "defense_level_diagnostics_on_frozen_validation_controller; no retraining or selection",
+  "p4_authorized_by_p3_utility_gate": true,
+  "schema_version": 1,
+  "statistical_superiority_claim_allowed": false,
+  "statistics": [
+    {
+      "ci_95_high": 0.06809762096575023,
+      "ci_95_low": 0.06016337313949993,
+      "ci_excludes_zero": true,
+      "comparison": "h4_revised_seed_229_minus_h2_forced_fixed",
+      "h4_wins": 4,
+      "holm_adjusted_p": 0.25,
+      "interpretation": "descriptive_improvement_insufficient_power",
+      "minimum_attainable_two_sided_p": 0.125,
+      "pair_count": 4,
+      "paired_cohens_dz": 12.711009973924055,
+      "paired_mean_difference": 0.0640552569445001,
+      "raw_permutation_p": 0.125,
+      "statistical_superiority": false
+    },
+    {
+      "ci_95_high": 0.04910405824100028,
+      "ci_95_low": 0.04659047007700012,
+      "ci_excludes_zero": true,
+      "comparison": "h4_revised_seed_229_minus_h3_threshold",
+      "h4_wins": 4,
+      "holm_adjusted_p": 0.25,
+      "interpretation": "descriptive_improvement_insufficient_power",
+      "minimum_attainable_two_sided_p": 0.125,
+      "pair_count": 4,
+      "paired_cohens_dz": 30.04559793748697,
+      "paired_mean_difference": 0.047831057560000056,
+      "raw_permutation_p": 0.125,
+      "statistical_superiority": false
+    }
+  ],
+  "utility_gate_decision": "PASS_DESCRIPTIVE_INSUFFICIENT_POWER"
+}

@@ -1,0 +1,43 @@
+{
+  "baseline_summary_sha256": "393db97c01e8122a8a39cc6e146945ac15a20e33ec9acbc47294143ac3e76fde",
+  "candidate_count": 8,
+  "decision": "PASS",
+  "eligible_checkpoint": "epoch_200_only",
+  "epochs_per_candidate": 200,
+  "full_h4_training_performed": true,
+  "phase": "P3",
+  "policy_freeze_performed": false,
+  "revision_required": false,
+  "rom_export_performed": false,
+  "rtl_or_board_work_performed": false,
+  "schema_version": 1,
+  "selected_trainer_seed": 43,
+  "step": "P3_STEP_6_FULL_TRAINING_SELECTION",
+  "test_access_count": 0,
+  "test_partition_locked": true,
+  "total_training_transitions": 6553600,
+  "trainer_rng_seeds": [
+    17,
+    29,
+    43,
+    71,
+    113,
+    167,
+    229,
+    283
+  ],
+  "training_config_sha256": "467a970fe91e4b31388b99642db68442432738b217dc0cae0fcc42b85aeaa7a4",
+  "training_environment_seeds": [
+    101,
+    211,
+    307,
+    401,
+    503,
+    601,
+    701,
+    809
+  ],
+  "transitions_per_candidate": 819200,
+  "validation_model_selection_performed": true,
+  "validation_trace_evaluations": 32
+}

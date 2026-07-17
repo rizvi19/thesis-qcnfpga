@@ -1,0 +1,49 @@
+{
+  "base_contract": {
+    "contract_id": "qflow_rl_p3_tabular_v0",
+    "path": "rl/config/training_config.yaml",
+    "sha256": "467a970fe91e4b31388b99642db68442432738b217dc0cae0fcc42b85aeaa7a4"
+  },
+  "contract_id": "qflow_rl_p3_tabular_v1_balance4_dwell3",
+  "controlled_revision": {
+    "controller_guard": {
+      "kind": "minimum_dwell",
+      "minimum_dwell_decisions": 3,
+      "reset_scope": "each_environment_trace"
+    },
+    "full_matrix": {
+      "epochs_per_candidate": 200,
+      "trainer_seeds": [17, 29, 43, 71, 113, 167, 229, 283],
+      "transitions_per_candidate": 819200
+    },
+    "invocation_count": 1,
+    "rationale": "The v0 learner underweighted balance relative to the frozen utility gate and could not observe the history used by the switch penalty. The single revision uses balance_weight 4.0 for training targets and a three-decision minimum dwell for inference. Final validation metrics remain computed with the original frozen reward.",
+    "training_reward": {
+      "balance_weight": 4.0,
+      "evaluation_reward_unchanged": true,
+      "other_terms_unchanged": true
+    },
+    "trigger": "validation_only_switch_instability_and_balance_degradation"
+  },
+  "effective_contract": {
+    "action_count": 4,
+    "blocking_noninferiority_margin_absolute": 0.005,
+    "maximum_balance_utility_degradation_absolute": 0.05,
+    "maximum_fidelity_degradation_absolute": 0.005,
+    "minimum_distinct_profiles": 2,
+    "minimum_secondary_profile_fraction": 0.01,
+    "state_count": 256,
+    "switch_rate_ceiling": 0.25,
+    "test_access": "locked_until_revised_policy_freeze",
+    "test_seeds": [2003, 2111, 2203, 2309],
+    "validation_seeds": [1009, 1103, 1201, 1301]
+  },
+  "revision_policy": {
+    "additional_revision_allowed": false,
+    "post_test_revision_allowed": false,
+    "preserve_v0_evidence": true,
+    "test_partition_remains_locked": true
+  },
+  "schema_version": 1,
+  "status": "controlled_revision_frozen_before_full_revised_matrix"
+}

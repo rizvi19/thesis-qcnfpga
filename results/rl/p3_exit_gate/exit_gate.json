@@ -1,0 +1,38 @@
+{
+  "additional_training_after_test": false,
+  "all_predeclared_utility_checks_pass": true,
+  "claim_boundary": "held_out_descriptive_improvement_and_utility_gate_pass; no_statistical_superiority_claim",
+  "commit_or_push_performed": false,
+  "decision": "PASS_PENDING_STEP_10_CHECKPOINT",
+  "evidence_manifest_sha256": "28934cc0e192233eaaf3b0ad90aefbd88d21ea68683d2e1f1d14491d73ff8421",
+  "evidence_record_count": 136,
+  "export_manifest_sha256": "04af02b5d4f74238ad2993e0b3753b6483d33bec50a1b76680c3e547a3d1ad73",
+  "export_sha256sums_sha256": "f1e0e8598992b9c87e36b1ddc3ce5ccde02d7dd045438bc51e6462b6282aee53",
+  "model_card_sha256": "fc6f42651e596e1e18e0f8b2ac3ccfa345d29d8ad2d5f8e2b51dd5778a24cb8e",
+  "new_test_trace_generation_in_step9": 0,
+  "next_required_action": "guarded_step10_verification_commit_and_non_force_push",
+  "p4_authorized_after_step10_checkpoint": true,
+  "phase": "P3",
+  "policy_revision_allowed": false,
+  "rom_export": {
+    "policy_entries": 256,
+    "profile_entries": 4,
+    "profile_payload_bits_total": 72,
+    "q_argmax_mismatches": 0,
+    "q_words": 1024
+  },
+  "rtl_synthesis_or_board_work_performed": false,
+  "schema_version": 1,
+  "selected_controller": "h4_revised_seed_229",
+  "selected_trainer_seed": 229,
+  "statistical_superiority_claim_allowed": false,
+  "step": "P3_STEP_9_EXIT_GATE",
+  "test_access_count": 4,
+  "utility_gate_decision": "PASS_DESCRIPTIVE_INSUFFICIENT_POWER",
+  "verification": {
+    "applicable_p2_tests": 64,
+    "controlled_file_count_after_exit": 139,
+    "legacy_tests": 26,
+    "p3_tests": 67
+  }
+}

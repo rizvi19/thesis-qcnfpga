@@ -1,0 +1,7 @@
+{
+  "diagnosis": "hidden_switch_history_and_balance_underweighting",
+  "identical_observation_action_reward_difference": -0.25,
+  "previous_profile_present_in_v0_state": false,
+  "previous_profile_used_by_reward": true,
+  "schema_version": 1
+}

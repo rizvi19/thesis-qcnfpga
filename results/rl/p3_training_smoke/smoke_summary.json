@@ -1,0 +1,43 @@
+{
+  "candidates": [
+    {
+      "distinct_profiles": 4,
+      "episode_count": 16,
+      "epochs": 2,
+      "policy_length": 256,
+      "policy_sha256": "08c78dadb194fd6e3875f51650b7ea37646db532558d49f8a008bef7723622a2",
+      "profile_counts": [
+        2542,
+        1572,
+        2528,
+        1550
+      ],
+      "q_max": 61.536219355291465,
+      "q_min": 0.0,
+      "q_table_sha256": "9a0f70280564ae2a2f772f1055aed10eba37fa2b5e7b132dda96470af74c2fcf",
+      "trainer_seed": 17,
+      "transition_count": 8192,
+      "visited_state_count": 107
+    },
+    {
+      "distinct_profiles": 4,
+      "episode_count": 16,
+      "epochs": 2,
+      "policy_length": 256,
+      "policy_sha256": "81608ae1d94d59930dd22d1040fd8a29f0f570625102e5ec0930271e61c39887",
+      "profile_counts": [
+        1966,
+        1401,
+        3344,
+        1481
+      ],
+      "q_max": 61.57170611040068,
+      "q_min": 0.0,
+      "q_table_sha256": "9ef065acdfcd8e4995da6dd8dd1bce69738e6240de4e2f375a294d5d32cbbb0a",
+      "trainer_seed": 29,
+      "transition_count": 8192,
+      "visited_state_count": 118
+    }
+  ],
+  "schema_version": 1
+}

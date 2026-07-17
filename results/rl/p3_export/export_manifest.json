@@ -1,0 +1,29 @@
+{
+  "minimum_dwell_decisions": 3,
+  "model_id": "qflow_rl_tabular_h4_seed229_dwell3_v1",
+  "online_or_onchip_learning_claimed": false,
+  "phase": "P3",
+  "policy_entry_count": 256,
+  "policy_revision_allowed": false,
+  "policy_roundtrip_match": true,
+  "profile_entry_count": 4,
+  "profile_payload_bits_total": 72,
+  "profile_roundtrip_match": true,
+  "q_quantization": {
+    "fraction_bits": 7,
+    "maximum_absolute_error": 0.0038979528920037865,
+    "policy_argmax_mismatch_count": 0,
+    "word_bits": 16
+  },
+  "q_word_count": 1024,
+  "rtl_or_synthesis_claimed": false,
+  "schema_version": 1,
+  "selected_trainer_seed": 229,
+  "source_policy_file_sha256": "cb1557680472781c01cab7ce961fdc35d672a0c76fbc0993e3c2599274f8d611",
+  "source_policy_semantic_sha256": "a133e3c7edfd7f592d56b18e46157f70215dd238cd4c23ece2ca018dfca5a5b4",
+  "source_q_file_sha256": "a95a0431b565f01dc012211a22bf57eddb87ed21d4e8dd34671c55ace16b411a",
+  "source_q_semantic_sha256": "c515a2fef2ec0b658d26600e2939db15dc1dcac984af9ef33f9dde1518026b87",
+  "statistical_superiority_claim_allowed": false,
+  "step": "P3_STEP_9_FROZEN_EXPORT",
+  "utility_gate_decision": "PASS_DESCRIPTIVE_INSUFFICIENT_POWER"
+}

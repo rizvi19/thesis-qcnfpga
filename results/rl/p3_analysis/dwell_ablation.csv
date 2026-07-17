@@ -1,0 +1,3 @@
+minimum_dwell_decisions,validation_seed_count,decision_count,mean_total_reward,blocking_rate,mean_success_bottleneck_fidelity,mean_balance_utility_success,mean_hops_success,switch_rate,distinct_profiles
+1,4,2048,4.627724898609,0.000000000000,0.960521630859,0.276056929859,2.959960937500,0.476027397260,4
+3,4,2048,4.685529888623,0.000000000000,0.960729150391,0.266967388623,2.958007812500,0.226516634051,4

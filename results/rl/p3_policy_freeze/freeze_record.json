@@ -1,0 +1,21 @@
+{
+  "additional_revision_allowed": false,
+  "balance_training_weight": 4.0,
+  "controller_frozen": true,
+  "minimum_dwell_decisions": 3,
+  "phase": "P3",
+  "policy_file_sha256": "cb1557680472781c01cab7ce961fdc35d672a0c76fbc0993e3c2599274f8d611",
+  "policy_frozen": true,
+  "policy_semantic_sha256": "a133e3c7edfd7f592d56b18e46157f70215dd238cd4c23ece2ca018dfca5a5b4",
+  "q_table_file_sha256": "a95a0431b565f01dc012211a22bf57eddb87ed21d4e8dd34671c55ace16b411a",
+  "q_table_semantic_sha256": "c515a2fef2ec0b658d26600e2939db15dc1dcac984af9ef33f9dde1518026b87",
+  "revision_manifest_sha256": "cde2ffb62da0fed510811d8e50862a96d76d206afe546ba4c57bc1556b4d8ccb",
+  "schema_version": 1,
+  "selected_trainer_seed": 229,
+  "selection_record_sha256": "18c2406ffd3fb0d0b3e23a347e41826d95b5bb8e44ff5f1a7d37633aeda10250",
+  "sequence": 1,
+  "step": "P3_STEP_7_POLICY_FREEZE",
+  "test_access_count_before_freeze": 0,
+  "test_evaluation_performed": false,
+  "training_config_sha256": "c75b68b25e42f348aa2156ba17479676618d738776e7ebf3e3b1feca7f46da0f"
+}

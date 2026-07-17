@@ -1,0 +1,6 @@
+ablation,removed_feature,validation_seed_count,decision_count,mean_total_reward,blocking_rate,mean_success_bottleneck_fidelity,mean_balance_utility_success,mean_hops_success,switch_rate,distinct_profiles,reward_delta_from_full
+none_frozen_h4,none,4,2048,4.685529888623,0.000000000000,0.960729150391,0.266967388623,2.958007812500,0.226516634051,4,
+remove_min_key_occupancy_by_action_marginalization,min_key_occupancy,4,2048,4.652672238894,0.000000000000,0.961425000000,0.171486692019,2.875000000000,0.114481409002,4,-0.032857649729
+remove_bottleneck_fidelity_by_action_marginalization,bottleneck_fidelity,4,2048,4.631718488326,0.000000000000,0.958231640625,0.253462628951,2.946289062500,0.199608610568,4,-0.053811400297
+remove_offered_request_load_by_action_marginalization,offered_request_load,4,2048,4.696275004238,0.000000000000,0.960992822266,0.255227152676,2.952148437500,0.163405088063,4,0.010745115616
+remove_utilization_imbalance_by_action_marginalization,utilization_imbalance,4,2048,4.665955452940,0.000000000000,0.959752636719,0.249223031065,2.948242187500,0.165362035225,4,-0.019574435683

@@ -1,0 +1,32 @@
+{
+  "authorized_controllers": [
+    "h2_forced_fixed",
+    "h3_threshold",
+    "h4_revised_seed_229"
+  ],
+  "authorized_test_seeds": [
+    2003,
+    2111,
+    2203,
+    2309
+  ],
+  "controller_trace_evaluation_limit": 12,
+  "freeze_record_sha256": "f460c5896954d9be53ba445c7ec3304f86237ad01730724f8dc35086b883dfd9",
+  "phase": "P3",
+  "post_unlock_revision_allowed": false,
+  "schema_version": 1,
+  "sequence": 2,
+  "step": "P3_STEP_7_TEST_UNLOCK",
+  "test_access_count_at_unlock": 0,
+  "test_partition_unlocked": true,
+  "unique_test_trace_limit": 4,
+  "unlock_conditions": {
+    "all_training_runs_complete": true,
+    "candidate_selected_using_validation_only": true,
+    "no_additional_revision_allowed": true,
+    "selected_policy_checksum_frozen": true,
+    "selected_q_table_checksum_frozen": true,
+    "selection_record_written_before_test": true,
+    "training_config_checksum_frozen": true
+  }
+}

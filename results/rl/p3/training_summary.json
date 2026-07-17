@@ -1,0 +1,133 @@
+{
+  "candidates": [
+    {
+      "epoch_count": 200,
+      "policy_sha256": "17114167a3f98cc618b6a99818a2c639d45f4fc92eaacb5dd8ace8da453234c9",
+      "q_max": 95.50355849512312,
+      "q_min": 0.0,
+      "q_table_sha256": "f9e2a49aa0e4edeb7e1137edab92c13f07d4e210fd90cc77089ce030d9853acd",
+      "trainer_seed": 17,
+      "training_profile_counts": [
+        231417,
+        157723,
+        291443,
+        138617
+      ],
+      "transition_count": 819200,
+      "visited_state_count": 133
+    },
+    {
+      "epoch_count": 200,
+      "policy_sha256": "9f33b6451ec42b130b7fa1fc12ad5727f96775697cf4e2a71c312b1f77e911e6",
+      "q_max": 94.98823272724378,
+      "q_min": 0.0,
+      "q_table_sha256": "c6f72e59db15680bcc54c37c05a5b628669805bb8976ff5d150e0fcb875e87e2",
+      "trainer_seed": 29,
+      "training_profile_counts": [
+        226923,
+        152856,
+        291510,
+        147911
+      ],
+      "transition_count": 819200,
+      "visited_state_count": 134
+    },
+    {
+      "epoch_count": 200,
+      "policy_sha256": "35fa90e8fed4848bc32bc9f11e4bf7eec7729d5c80099ea32e542c10f8a2d57b",
+      "q_max": 95.29841654954473,
+      "q_min": 0.0,
+      "q_table_sha256": "74a992161ae308863028cfe32269e8bb3279b8bfe313792ff317e05204f520de",
+      "trainer_seed": 43,
+      "training_profile_counts": [
+        231728,
+        152016,
+        289881,
+        145575
+      ],
+      "transition_count": 819200,
+      "visited_state_count": 134
+    },
+    {
+      "epoch_count": 200,
+      "policy_sha256": "7ad836c503406e7f5040a70ee06046e4f0fefc35225f95257245fb33a7833b4c",
+      "q_max": 95.3271274766924,
+      "q_min": 0.0,
+      "q_table_sha256": "3df20c0cb2f695f5dc2fcffc6d783866d24140edc919c0a7ab50b367e9887118",
+      "trainer_seed": 71,
+      "training_profile_counts": [
+        232691,
+        154958,
+        274619,
+        156932
+      ],
+      "transition_count": 819200,
+      "visited_state_count": 131
+    },
+    {
+      "epoch_count": 200,
+      "policy_sha256": "62bf869e4e5f7eb67c6aa02c91333ca1d7cf98bef56c2b46eb5eca2625e78d00",
+      "q_max": 95.1134440666012,
+      "q_min": 0.0,
+      "q_table_sha256": "154d2717325c3a5c907b1c5ff49df4aafa1566b8fff317272d1ff3cff5021231",
+      "trainer_seed": 113,
+      "training_profile_counts": [
+        226384,
+        151768,
+        298595,
+        142453
+      ],
+      "transition_count": 819200,
+      "visited_state_count": 135
+    },
+    {
+      "epoch_count": 200,
+      "policy_sha256": "9ed140d085d535dad2770843bafc8e9248c4420a77a9d890d6100e061f470fc7",
+      "q_max": 95.48579211685139,
+      "q_min": 0.0,
+      "q_table_sha256": "f0df818eae9614a2088a5caaaa57a2ccc855efcc7d4707be239f1327a4e7e75b",
+      "trainer_seed": 167,
+      "training_profile_counts": [
+        246224,
+        151351,
+        280249,
+        141376
+      ],
+      "transition_count": 819200,
+      "visited_state_count": 133
+    },
+    {
+      "epoch_count": 200,
+      "policy_sha256": "d08912e8ba678943644b30c96fdad655d2e30059b409ecab2ce2111f724509a3",
+      "q_max": 95.15781635770668,
+      "q_min": 0.0,
+      "q_table_sha256": "818ec17a1571b4f713c87902695236cd47d1c14db3be771ae110a6469359097a",
+      "trainer_seed": 229,
+      "training_profile_counts": [
+        233823,
+        152784,
+        291057,
+        141536
+      ],
+      "transition_count": 819200,
+      "visited_state_count": 135
+    },
+    {
+      "epoch_count": 200,
+      "policy_sha256": "e60bac7bebd0419280b701321f4013d793d944f9e462375f9a9a18c89b6c0fa1",
+      "q_max": 95.36468376584762,
+      "q_min": 0.0,
+      "q_table_sha256": "7d2f8712068ed628b979debdf07d03755f0300e0f6524da3d4585fb0078123ac",
+      "trainer_seed": 283,
+      "training_profile_counts": [
+        234574,
+        150385,
+        285478,
+        148763
+      ],
+      "transition_count": 819200,
+      "visited_state_count": 133
+    }
+  ],
+  "schema_version": 1
+}

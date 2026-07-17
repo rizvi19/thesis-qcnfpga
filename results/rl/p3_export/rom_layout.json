@@ -1,0 +1,31 @@
+{
+  "policy_rom": {
+    "address_order": "state_id_0_to_255",
+    "depth": 256,
+    "file_hex_digits_per_word": 1,
+    "useful_width_bits": 2
+  },
+  "profile_rom": {
+    "depth": 4,
+    "field_order_msb_to_lsb": [
+      "alpha1_u2_1",
+      "alpha2_u2_1",
+      "alpha3_u2_1",
+      "alpha4_u2_1",
+      "lambda1_u2",
+      "lambda2_u2",
+      "lambda3_u2"
+    ],
+    "file_hex_digits_per_word": 5,
+    "payload_bits": 18
+  },
+  "q_table": {
+    "address_order": "state_major_action_minor",
+    "depth": 1024,
+    "format_name": "Q8.7",
+    "fraction_bits": 7,
+    "signed_twos_complement": true,
+    "word_bits": 16
+  },
+  "schema_version": 1
+}

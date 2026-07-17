@@ -1,0 +1,31 @@
+{
+  "action_count": 4,
+  "contract_id": "qflow_rl_p3_tabular_v0",
+  "decision": "PASS",
+  "environment_seed_counts": {
+    "test": 4,
+    "train": 8,
+    "validation": 4
+  },
+  "h3_action_distribution_over_256_states": {
+    "0": 40,
+    "1": 112,
+    "2": 96,
+    "3": 8
+  },
+  "h4_training_performed": false,
+  "p2_mdp_sha256": "799cb37a8fd1c819def69801a8d03c762b922a478d717f4991eff91fc02fd078",
+  "p2_profile_codebook_sha256": "a6faf2b8fdb760213fa92ad0f43fa8a3ce812b50e9210a75afac6f5150dd3fa1",
+  "p4_authorized": false,
+  "p4_rtl_present": false,
+  "schema_version": 1,
+  "seed_manifest_sha256": "387b4e3d86140eb378c386fa73fd150545e8f14ff03e4ed66cca266bf215b708",
+  "state_count": 256,
+  "statistics_seed": 32452843,
+  "step": "P3_STEP_2_CONTRACT_FREEZE",
+  "test_access_count": 0,
+  "test_partition_locked": true,
+  "trainer_seed_count": 8,
+  "training_config_sha256": "467a970fe91e4b31388b99642db68442432738b217dc0cae0fcc42b85aeaa7a4",
+  "transitions_per_trainer": 819200
+}

@@ -1,0 +1,17 @@
+controller,partition,profile_id,decision_count,fraction
+h2_forced_fixed,train,0,4096,1.000000000000
+h2_forced_fixed,train,1,0,0.000000000000
+h2_forced_fixed,train,2,0,0.000000000000
+h2_forced_fixed,train,3,0,0.000000000000
+h3_threshold,train,0,674,0.164550781250
+h3_threshold,train,1,1667,0.406982421875
+h3_threshold,train,2,1018,0.248535156250
+h3_threshold,train,3,737,0.179931640625
+h2_forced_fixed,validation,0,2048,1.000000000000
+h2_forced_fixed,validation,1,0,0.000000000000
+h2_forced_fixed,validation,2,0,0.000000000000
+h2_forced_fixed,validation,3,0,0.000000000000
+h3_threshold,validation,0,336,0.164062500000
+h3_threshold,validation,1,794,0.387695312500
+h3_threshold,validation,2,511,0.249511718750
+h3_threshold,validation,3,407,0.198730468750

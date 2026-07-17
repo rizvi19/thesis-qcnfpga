@@ -1,0 +1,54 @@
+{
+  "action_count": 4,
+  "algorithm": "tabular_q_learning",
+  "decision": "PASS",
+  "deployment_tie_state_9_action": 1,
+  "epsilon_schedule": {
+    "first": 1.0,
+    "first_fixed": 0.05,
+    "last": 0.05,
+    "last_decay": 0.05
+  },
+  "extracted_policy_length": 256,
+  "fisher_yates_seed_17_train_order": [
+    601,
+    401,
+    307,
+    503,
+    809,
+    701,
+    211,
+    101
+  ],
+  "full_h4_training_performed": false,
+  "nonterminal_update": {
+    "bootstrap": 2.0,
+    "new": 0.5900000000000001,
+    "old": 0.0,
+    "target": 5.9
+  },
+  "phase": "P3",
+  "rtl_or_board_work_performed": false,
+  "schema_version": 1,
+  "state_count": 256,
+  "step": "P3_STEP_4_Q_LEARNING_UNIT",
+  "terminal_update": {
+    "bootstrap": 0.0,
+    "new": 0.13100000000000006,
+    "old": 0.5900000000000001,
+    "target": -4.0
+  },
+  "test_access_count": 0,
+  "test_partition_locked": true,
+  "trainer_rng": "xorshift32",
+  "training_config_sha256": "467a970fe91e4b31388b99642db68442432738b217dc0cae0fcc42b85aeaa7a4",
+  "training_trace_access_count": 0,
+  "validation_access_count": 0,
+  "xorshift32_seed_17_first_five_u32": [
+    4596240,
+    1150042706,
+    1409999377,
+    22020245,
+    689350324
+  ]
+}

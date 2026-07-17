@@ -1,0 +1,247 @@
+{
+  "base": {
+    "branch": "rl-nexys3-adaptive",
+    "commit": "1bcb9cbe1c95b77893c125183cf3a650bf946b13",
+    "h2_canonical_sha256": "e4a393bc349f064ab7709e75fe6093210cf05f6f842fee33d4cc5b0adbcdaf3f",
+    "mdp_contract_path": "rl/config/mdp_v0.yaml",
+    "mdp_contract_sha256": "799cb37a8fd1c819def69801a8d03c762b922a478d717f4991eff91fc02fd078",
+    "profile_codebook_path": "rl/config/profile_codebook_v0.json",
+    "profile_codebook_sha256": "a6faf2b8fdb760213fa92ad0f43fa8a3ce812b50e9210a75afac6f5150dd3fa1"
+  },
+  "contract_id": "qflow_rl_p3_tabular_v0",
+  "controller_matrix": {
+    "h2": {
+      "action_id": 0,
+      "mode": "forced_fixed_balanced",
+      "uses_learning": false
+    },
+    "h3": {
+      "default_action_id": 0,
+      "feature_bin_order": [
+        "min_key_occupancy",
+        "bottleneck_fidelity",
+        "offered_request_load",
+        "utilization_imbalance"
+      ],
+      "mode": "deterministic_threshold_v0",
+      "priority_rules": [
+        {
+          "action_id": 1,
+          "all": {
+            "min_key_occupancy_bin": [0]
+          },
+          "name": "critical_key_scarcity",
+          "priority": 1
+        },
+        {
+          "action_id": 2,
+          "all": {
+            "bottleneck_fidelity_bin": [0, 1]
+          },
+          "name": "infeasible_or_marginal_fidelity",
+          "priority": 2
+        },
+        {
+          "action_id": 1,
+          "all": {
+            "utilization_imbalance_bin": [2, 3]
+          },
+          "name": "high_or_severe_imbalance",
+          "priority": 3
+        },
+        {
+          "action_id": 3,
+          "all": {
+            "bottleneck_fidelity_bin": [2, 3],
+            "min_key_occupancy_bin": [2, 3],
+            "offered_request_load_bin": [3],
+            "utilization_imbalance_bin": [0, 1]
+          },
+          "name": "safe_saturated_low_latency",
+          "priority": 4
+        }
+      ],
+      "uses_learning": false
+    },
+    "h4": {
+      "action_count": 4,
+      "algorithm": "tabular_q_learning",
+      "deployment": "frozen_policy_index_rom",
+      "mode": "reinforcement_learned_adaptive",
+      "on_chip_learning": false,
+      "state_count": 256
+    }
+  },
+  "metrics": {
+    "optimization_direction": {
+      "blocking_rate": "minimize",
+      "mean_balance_utility_success": "maximize",
+      "mean_hops_success": "minimize",
+      "mean_success_bottleneck_fidelity": "maximize",
+      "mean_total_reward": "maximize",
+      "switch_rate": "minimize"
+    },
+    "per_seed_required": [
+      "decision_count",
+      "success_count",
+      "blocking_rate",
+      "mean_total_reward",
+      "mean_success_bottleneck_fidelity",
+      "mean_balance_utility_success",
+      "mean_hops_success",
+      "switch_rate",
+      "profile_counts",
+      "profile_fractions"
+    ],
+    "primary_quality_metric": "mean_total_reward",
+    "safety_metrics": [
+      "blocking_rate",
+      "mean_success_bottleneck_fidelity"
+    ]
+  },
+  "model_selection": {
+    "candidate_checkpoint": "final_epoch_only",
+    "eligibility": {
+      "blocking_noninferiority_margin_absolute": 0.005,
+      "minimum_distinct_profiles": 2,
+      "minimum_secondary_profile_fraction": 0.01,
+      "switch_rate_ceiling": 0.25
+    },
+    "fallback_when_none_eligible": "select_safety_first_validation_candidate_and_invoke_at_most_one_controlled_revision",
+    "ranking": [
+      "highest_validation_mean_total_reward",
+      "lowest_validation_blocking_rate",
+      "highest_validation_mean_success_bottleneck_fidelity",
+      "lowest_validation_switch_rate",
+      "smallest_trainer_seed"
+    ],
+    "uses_test_partition": false,
+    "uses_validation_partition": true
+  },
+  "partitions": {
+    "episode_length": 512,
+    "test_access": "locked_until_policy_freeze",
+    "test_seeds": [
+      2003,
+      2111,
+      2203,
+      2309
+    ],
+    "train_seeds": [
+      101,
+      211,
+      307,
+      401,
+      503,
+      601,
+      701,
+      809
+    ],
+    "validation_seeds": [
+      1009,
+      1103,
+      1201,
+      1301
+    ]
+  },
+  "revision_policy": {
+    "maximum_controlled_revisions": 1,
+    "permitted_trigger": "validation_only_failure_of_blocking_fidelity_or_switch_safety_gate",
+    "post_test_revision_allowed": false,
+    "require_new_config_version_and_checksum": true,
+    "test_partition_remains_locked_during_revision": true
+  },
+  "schema_version": 1,
+  "scope_firewall": {
+    "dqn_allowed": false,
+    "eight_action_training_allowed_initially": false,
+    "p4_rtl_allowed": false,
+    "training_mode": "offline_only"
+  },
+  "statistics": {
+    "alpha": 0.05,
+    "bootstrap": {
+      "confidence": 0.95,
+      "method": "paired_seed_percentile",
+      "replicates": 10000,
+      "rng_seed": 32452843
+    },
+    "effect_size": [
+      "raw_paired_mean_difference",
+      "paired_cohens_dz_when_defined"
+    ],
+    "family_correction": "holm_for_h4_vs_h2_and_h4_vs_h3_primary_tests",
+    "insufficient_power_rule": "report_paired_descriptive_results_and_do_not_claim_statistical_superiority",
+    "paired_significance_test": "exact_two_sided_paired_permutation",
+    "unit_of_pairing": "environment_trace_seed"
+  },
+  "status": "frozen_before_training",
+  "test_lock": {
+    "access_count_before_freeze": 0,
+    "locked": true,
+    "no_revision_after_unlock": true,
+    "unlock_artifact": "results/rl/p3_policy_freeze/test_unlock.json",
+    "unlock_conditions": [
+      "all_training_runs_complete",
+      "one_candidate_selected_using_validation_only",
+      "training_config_checksum_frozen",
+      "selected_q_table_and_policy_checksums_frozen",
+      "selection_record_written_before_test_evaluation"
+    ]
+  },
+  "training": {
+    "discount_gamma": 0.95,
+    "early_stopping": {
+      "enabled": false,
+      "reason": "fixed_budget_avoids_validation_epoch_tuning"
+    },
+    "eligible_checkpoint": "epoch_200_only",
+    "episodes_per_epoch": 8,
+    "epochs": 200,
+    "epsilon": {
+      "decay_fraction_of_training_transitions": 0.8,
+      "end": 0.05,
+      "evaluation": 0.0,
+      "schedule": "linear_by_transition",
+      "start": 1.0
+    },
+    "hyperparameter_sweep_allowed": false,
+    "learning_rate_alpha": 0.1,
+    "q_initial_value": 0.0,
+    "terminal_bootstrap_value": 0.0,
+    "tie_breaking": {
+      "deployment_and_evaluation": "smallest_action_id",
+      "training": "xorshift32_uniform_among_maxima"
+    },
+    "trace_order": "xorshift32_fisher_yates_train_seeds_each_epoch",
+    "trainer_rng": "xorshift32",
+    "trainer_seeds": [
+      17,
+      29,
+      43,
+      71,
+      113,
+      167,
+      229,
+      283
+    ],
+    "transitions_per_trainer": 819200,
+    "update_equation": "Q(s,a) <- Q(s,a) + alpha * (r + gamma * max_a_prime Q(s_prime,a_prime) - Q(s,a)); terminal bootstrap is zero"
+  },
+  "utility_gate": {
+    "adaptation": {
+      "minimum_distinct_profiles": 2,
+      "minimum_secondary_profile_fraction": 0.01
+    },
+    "blocking_noninferiority_margin_absolute": 0.005,
+    "claim_rule": "superiority_requires_ci_excluding_zero_and_corrected_p_below_alpha; otherwise label improvement descriptive_or_inconclusive",
+    "maximum_balance_utility_degradation_absolute": 0.05,
+    "maximum_fidelity_degradation_absolute": 0.005,
+    "maximum_switch_rate": 0.25,
+    "primary_quality_rule": "heldout_mean_total_reward_must_exceed_h2_and_h3",
+    "required_comparators": [
+      "h2_forced_fixed",
+      "h3_threshold"
+    ]
+  }
+}

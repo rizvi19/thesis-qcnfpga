@@ -1,0 +1,71 @@
+{
+  "additional_revision_allowed": false,
+  "balance_training_weight": 4.0,
+  "base_training_config_sha256": "467a970fe91e4b31388b99642db68442432738b217dc0cae0fcc42b85aeaa7a4",
+  "candidate_count": 8,
+  "decision": "PASS",
+  "eligible_candidate_count": 7,
+  "epochs_per_candidate": 200,
+  "minimum_dwell_decisions": 3,
+  "phase": "P3",
+  "policy_freeze_performed": false,
+  "revision_config_sha256": "c75b68b25e42f348aa2156ba17479676618d738776e7ebf3e3b1feca7f46da0f",
+  "revision_count": 1,
+  "rom_export_performed": false,
+  "rtl_or_board_work_performed": false,
+  "schema_version": 1,
+  "selected_trainer_seed": 229,
+  "selected_validation": {
+    "blocking_rate": 0.0,
+    "decision_count": 2048,
+    "distinct_profiles": 4,
+    "eligible": true,
+    "environment_seed_count": 4,
+    "ineligibility_reasons": [],
+    "mean_balance_utility_success": 0.26696738862266206,
+    "mean_hops_success": 2.9580078125,
+    "mean_success_bottleneck_fidelity": 0.960729150390625,
+    "mean_total_reward": 4.6855298886226615,
+    "minimum_dwell_decisions": 3,
+    "policy_sha256": "a133e3c7edfd7f592d56b18e46157f70215dd238cd4c23ece2ca018dfca5a5b4",
+    "profile_counts": [
+      316,
+      636,
+      694,
+      402
+    ],
+    "profile_fractions": [
+      0.154296875,
+      0.310546875,
+      0.3388671875,
+      0.1962890625
+    ],
+    "q_table_sha256": "c515a2fef2ec0b658d26600e2939db15dc1dcac984af9ef33f9dde1518026b87",
+    "secondary_profile_fraction": 0.310546875,
+    "success_count": 2048,
+    "switch_count": 463,
+    "switch_rate": 0.22651663405088063,
+    "trainer_seed": 229
+  },
+  "step": "P3_STEP_6R_CONTROLLED_REVISION",
+  "test_access_count": 0,
+  "test_partition_locked": true,
+  "total_revised_training_transitions": 6553600,
+  "transitions_per_candidate": 819200,
+  "v0_selection_record_sha256": "782baeb0196f2af154fe89bd0364290ed22e4f0ff6deb730b8c02c4ea6760761",
+  "validation_revision_gate": {
+    "checks": {
+      "balance_vs_h2": true,
+      "balance_vs_h3": true,
+      "blocking_noninferior": true,
+      "fidelity_vs_h2": true,
+      "fidelity_vs_h3": true,
+      "meaningful_adaptation": true,
+      "reward_exceeds_h2": true,
+      "reward_exceeds_h3": true,
+      "switch_rate": true
+    },
+    "decision": "PASS"
+  },
+  "validation_trace_evaluations": 32
+}

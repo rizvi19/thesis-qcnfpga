@@ -1,0 +1,43 @@
+{
+  "controller_trace_run_count": 24,
+  "controllers": [
+    "h2_forced_fixed",
+    "h3_threshold"
+  ],
+  "data_sha256": {
+    "baseline_per_seed.csv": "90fbf7b6e63245e04ffc29d0e57657a966b485b47aa46a083cd7fca9836ac6fd",
+    "baseline_summary.json": "393db97c01e8122a8a39cc6e146945ac15a20e33ec9acbc47294143ac3e76fde",
+    "profile_usage.csv": "f2fb7f8ca94b91716e50defda281834df90e99a51fcc9208c433c6ebd4775483"
+  },
+  "environment_seed_count": 12,
+  "h4_training_performed": false,
+  "input_trace_sha256": {
+    "train:101": "f21d07dc5324be68374031c821eb6413669174f87fecff8ee658e1526f394a9f",
+    "train:211": "5635eabbe698f8899309c5023856c73554f577a4ae5b1d83e4f466e997522942",
+    "train:307": "a1ad880f0db71717b75c88e8a61b3f82229a175e2ad9a2d1ddcb1227b00403a8",
+    "train:401": "5853b76226cceb69d092950746a2131ed33fb94bfd9546eda4ce15212c161129",
+    "train:503": "ef1cc63e5124da2287ebff2b3d5483000a07722f1a8e5bf0975b6df454c2e3f5",
+    "train:601": "d6fb7fea94174f8a35d88adbdc2070f1a795152979e886b18ff4067fb63a8e17",
+    "train:701": "6a7cf3bfe6a32fe0117c054aca3748460db8b1e5b76d36e92adedfc6a2ae6451",
+    "train:809": "71c162f014112e56c88ee60ff4f73eb6be1dfbe9ac9f489dd691ac665a2e32f8",
+    "validation:1009": "aa25bd63b8ce074a2a644ee070989752e27abaef5d3759c4849767a97e711a3b",
+    "validation:1103": "836fc27fa4f7901a7c357185a27f75130a4c9906df5bf38614b9dc37dc5880bb",
+    "validation:1201": "55cbb81f4e873dc76d4a6a14ac7062b71ba6253a863c44b7f8a06a67c6bcc498",
+    "validation:1301": "6d425fe6c90827d5bd0d58b7e82a868d2ae79e0c453cc4b51195ab076b5cf36a"
+  },
+  "observations": {
+    "h3_exceeds_h4_switch_ceiling": true,
+    "h3_validation_switch_rate": 0.28180039138943247,
+    "response": "retain_the_predeclared_h3_baseline_without_post_result_tuning"
+  },
+  "partitions_evaluated": [
+    "train",
+    "validation"
+  ],
+  "phase": "P3",
+  "schema_version": 1,
+  "step": "baseline_evaluation",
+  "test_access_count": 0,
+  "test_partition_locked": true,
+  "training_config_sha256": "467a970fe91e4b31388b99642db68442432738b217dc0cae0fcc42b85aeaa7a4"
+}
