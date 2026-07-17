@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "selection_status": "four_profiles_selected_by_p2_sensitivity",
+  "profiles": [
+    {
+      "action_id": 0,
+      "key": "balanced",
+      "name": "Balanced",
+      "status": "frozen_h2_anchor",
+      "intent": "Reproduce the existing fixed-coefficient H2 controller exactly.",
+      "alphas": [
+        1.0,
+        1.5,
+        0.5,
+        2.0
+      ],
+      "lambda_tch": [
+        0.4,
+        0.4,
+        0.2
+      ],
+      "lambda_tch_hw_ratio": [
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "action_id": 1,
+      "key": "scarcity_protection",
+      "name": "Scarcity protection",
+      "status": "selected_p2_sensitivity",
+      "intent": "Increase key-scarcity and replenishment penalties and favor load balance.",
+      "alphas": [
+        1.5,
+        1.5,
+        1.0,
+        2.0
+      ],
+      "lambda_tch": [
+        0.25,
+        0.25,
+        0.5
+      ],
+      "lambda_tch_hw_ratio": [
+        1,
+        1,
+        2
+      ],
+      "selection_evidence": "results/rl/p2_sensitivity/selection_summary.json"
+    },
+    {
+      "action_id": 2,
+      "key": "fidelity_protection",
+      "name": "Fidelity protection",
+      "status": "selected_p2_sensitivity",
+      "intent": "Increase fidelity and QBER penalties and favor bottleneck fidelity.",
+      "alphas": [
+        1.0,
+        2.0,
+        0.5,
+        3.0
+      ],
+      "lambda_tch": [
+        0.25,
+        0.5,
+        0.25
+      ],
+      "lambda_tch_hw_ratio": [
+        1,
+        2,
+        1
+      ],
+      "selection_evidence": "results/rl/p2_sensitivity/selection_summary.json"
+    },
+    {
+      "action_id": 3,
+      "key": "low_latency",
+      "name": "Low-latency",
+      "status": "selected_p2_sensitivity",
+      "intent": "Reduce nonessential penalties and favor path cost or hop count.",
+      "alphas": [
+        0.5,
+        1.0,
+        0.5,
+        1.0
+      ],
+      "lambda_tch": [
+        0.5,
+        0.25,
+        0.25
+      ],
+      "lambda_tch_hw_ratio": [
+        2,
+        1,
+        1
+      ],
+      "selection_evidence": "results/rl/p2_sensitivity/selection_summary.json"
+    }
+  ]
+}

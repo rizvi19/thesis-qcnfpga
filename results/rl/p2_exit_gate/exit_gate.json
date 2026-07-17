@@ -1,0 +1,97 @@
+{
+  "checkpoint_commit_pending": true,
+  "criteria": [
+    {
+      "criterion": "forced_fixed_reproduces_h2",
+      "evidence": "results/rl/p2_forced_fixed/h2_regression.json",
+      "status": "PASS"
+    },
+    {
+      "criterion": "state_action_reward_and_environment_tests",
+      "evidence": "72 P2 unit tests plus 26 legacy tests",
+      "status": "PASS"
+    },
+    {
+      "criterion": "partitions_and_seeds_frozen",
+      "evidence": "results/rl/p2_environment/trace_manifest.json",
+      "status": "PASS"
+    },
+    {
+      "criterion": "profile_multipliers_hardware_implementable",
+      "evidence": "results/rl/p2_hardware_audit/hardware_audit_summary.json",
+      "status": "PASS"
+    }
+  ],
+  "evidence_manifest": {
+    "record_count": 49,
+    "sha256": "6645bdf1d56b1b6ba908a3c03136ef2e6d2d1f4254c47dde7c896627a327380c"
+  },
+  "facts": {
+    "checksum_bundles": {
+      "results/rl/p2_contract": 1,
+      "results/rl/p2_environment": 3,
+      "results/rl/p2_forced_fixed": 4,
+      "results/rl/p2_hardware_audit": 3,
+      "results/rl/p2_sensitivity": 3
+    },
+    "forced_fixed": {
+      "canonical_json_byte_identical": true,
+      "forced_balanced_step_count": 8192,
+      "forced_balanced_trace_count": 16,
+      "h2_sha256": "e4a393bc349f064ab7709e75fe6093210cf05f6f842fee33d4cc5b0adbcdaf3f",
+      "route_selection_parity": true,
+      "training_performed": false
+    },
+    "hardware_coefficients": {
+      "codebook_rom_payload_bits_total": 72,
+      "exact_alpha_roundtrip_count": 4,
+      "exact_lambda_ratio_count": 4,
+      "generic_profile_multiplier_budget": 0,
+      "p2_hardware_coefficient_gate_passed": true,
+      "profile_count": 4,
+      "profile_rom_payload_bits_each": 18,
+      "route_equivalence_checks": 24,
+      "route_equivalence_matches": 24,
+      "rtl_or_synthesis_claimed": false
+    },
+    "mdp_and_partitions": {
+      "action_count": 4,
+      "dqn_allowed_in_p2": false,
+      "episode_length": 512,
+      "frozen_trace_count": 16,
+      "manual_trace_steps": 8,
+      "partition_seed_counts": {
+        "test": 4,
+        "train": 8,
+        "validation": 4
+      },
+      "state_count": 256
+    },
+    "profile_selection": {
+      "adaptive_profiles_selected_by_sensitivity": 3,
+      "profile_count": 4,
+      "scenario_count": 5
+    },
+    "scope_boundary": {
+      "board_measurement_claimed": false,
+      "forbidden_p3_artifacts_present": [],
+      "rtl_artifacts_present": [],
+      "rtl_implemented": false,
+      "training_performed": false
+    },
+    "sources": {
+      "copies_byte_identical": true,
+      "root_reference_model_sha256": "82d6935240a05b51ef989c4f55b0de26f630d74dcd52bbc88b352a1860db75e2",
+      "tools_reference_model_sha256": "82d6935240a05b51ef989c4f55b0de26f630d74dcd52bbc88b352a1860db75e2"
+    }
+  },
+  "p3_authorized_before_step10": false,
+  "phase": "P2",
+  "schema_version": 1,
+  "status": "PASS",
+  "tests": {
+    "all_passed": true,
+    "legacy_test_count": 26,
+    "p2_test_count": 72
+  }
+}

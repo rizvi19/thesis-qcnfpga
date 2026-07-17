@@ -1,0 +1,5 @@
+action_id,profile,alphas,alpha_numerators_q1,alpha_shift_positions,lambda_tch,lambda_ratio,lambda_shift_positions,alpha_exact,lambda_ratio_exact,max_alpha_add_terms,max_lambda_add_terms,profile_rom_payload_bits,generic_profile_multipliers,passed
+0,balanced,"[1.0,1.5,0.5,2.0]","[2,3,1,4]","[[1],[0,1],[0],[2]]","[0.4,0.4,0.2]","[2,2,1]","[[1],[1],[0]]",True,True,2,1,18,0,True
+1,scarcity_protection,"[1.5,1.5,1.0,2.0]","[3,3,2,4]","[[0,1],[0,1],[1],[2]]","[0.25,0.25,0.5]","[1,1,2]","[[0],[0],[1]]",True,True,2,1,18,0,True
+2,fidelity_protection,"[1.0,2.0,0.5,3.0]","[2,4,1,6]","[[1],[2],[0],[1,2]]","[0.25,0.5,0.25]","[1,2,1]","[[0],[1],[0]]",True,True,2,1,18,0,True
+3,low_latency,"[0.5,1.0,0.5,1.0]","[1,2,1,2]","[[0],[1],[0],[1]]","[0.5,0.25,0.25]","[2,1,1]","[[1],[0],[0]]",True,True,1,1,18,0,True

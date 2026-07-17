@@ -1,0 +1,125 @@
+{
+  "generator": "xorshift32_ring6_trace_v0",
+  "manual_trace": {
+    "final_done": true,
+    "step_count": 8,
+    "step_log_sha256": "1b8b867d774797b03b6cd63dc82ca69990c5d7dac2e8e2a1f6c26edd5c7e0914",
+    "success_count": 8,
+    "trace_sha256": "c5fca408fd5311b3ad17c4fac913ace26a322164f2606c218fb4e44d3c7592de"
+  },
+  "schema_version": 1,
+  "traces": [
+    {
+      "partition": "train",
+      "record_count": 512,
+      "seed": 101,
+      "sha256": "f21d07dc5324be68374031c821eb6413669174f87fecff8ee658e1526f394a9f",
+      "trace_id": "ring6_seed0101_len512"
+    },
+    {
+      "partition": "train",
+      "record_count": 512,
+      "seed": 211,
+      "sha256": "5635eabbe698f8899309c5023856c73554f577a4ae5b1d83e4f466e997522942",
+      "trace_id": "ring6_seed0211_len512"
+    },
+    {
+      "partition": "train",
+      "record_count": 512,
+      "seed": 307,
+      "sha256": "a1ad880f0db71717b75c88e8a61b3f82229a175e2ad9a2d1ddcb1227b00403a8",
+      "trace_id": "ring6_seed0307_len512"
+    },
+    {
+      "partition": "train",
+      "record_count": 512,
+      "seed": 401,
+      "sha256": "5853b76226cceb69d092950746a2131ed33fb94bfd9546eda4ce15212c161129",
+      "trace_id": "ring6_seed0401_len512"
+    },
+    {
+      "partition": "train",
+      "record_count": 512,
+      "seed": 503,
+      "sha256": "ef1cc63e5124da2287ebff2b3d5483000a07722f1a8e5bf0975b6df454c2e3f5",
+      "trace_id": "ring6_seed0503_len512"
+    },
+    {
+      "partition": "train",
+      "record_count": 512,
+      "seed": 601,
+      "sha256": "d6fb7fea94174f8a35d88adbdc2070f1a795152979e886b18ff4067fb63a8e17",
+      "trace_id": "ring6_seed0601_len512"
+    },
+    {
+      "partition": "train",
+      "record_count": 512,
+      "seed": 701,
+      "sha256": "6a7cf3bfe6a32fe0117c054aca3748460db8b1e5b76d36e92adedfc6a2ae6451",
+      "trace_id": "ring6_seed0701_len512"
+    },
+    {
+      "partition": "train",
+      "record_count": 512,
+      "seed": 809,
+      "sha256": "71c162f014112e56c88ee60ff4f73eb6be1dfbe9ac9f489dd691ac665a2e32f8",
+      "trace_id": "ring6_seed0809_len512"
+    },
+    {
+      "partition": "validation",
+      "record_count": 512,
+      "seed": 1009,
+      "sha256": "aa25bd63b8ce074a2a644ee070989752e27abaef5d3759c4849767a97e711a3b",
+      "trace_id": "ring6_seed1009_len512"
+    },
+    {
+      "partition": "validation",
+      "record_count": 512,
+      "seed": 1103,
+      "sha256": "836fc27fa4f7901a7c357185a27f75130a4c9906df5bf38614b9dc37dc5880bb",
+      "trace_id": "ring6_seed1103_len512"
+    },
+    {
+      "partition": "validation",
+      "record_count": 512,
+      "seed": 1201,
+      "sha256": "55cbb81f4e873dc76d4a6a14ac7062b71ba6253a863c44b7f8a06a67c6bcc498",
+      "trace_id": "ring6_seed1201_len512"
+    },
+    {
+      "partition": "validation",
+      "record_count": 512,
+      "seed": 1301,
+      "sha256": "6d425fe6c90827d5bd0d58b7e82a868d2ae79e0c453cc4b51195ab076b5cf36a",
+      "trace_id": "ring6_seed1301_len512"
+    },
+    {
+      "partition": "test",
+      "record_count": 512,
+      "seed": 2003,
+      "sha256": "52e590b70cf4dad07f2ecfd2fd74a1cf67e9d514c085b3c440492b2523dfe655",
+      "trace_id": "ring6_seed2003_len512"
+    },
+    {
+      "partition": "test",
+      "record_count": 512,
+      "seed": 2111,
+      "sha256": "1fe550a288d5f04944eec4b0c519d2414d27a3552232f2f06b07b9d933380650",
+      "trace_id": "ring6_seed2111_len512"
+    },
+    {
+      "partition": "test",
+      "record_count": 512,
+      "seed": 2203,
+      "sha256": "30b32ce3cc133dc50f6d3caede5f8afb60e761263c5e1f83bb1ff85c8ef818e7",
+      "trace_id": "ring6_seed2203_len512"
+    },
+    {
+      "partition": "test",
+      "record_count": 512,
+      "seed": 2309,
+      "sha256": "2400f3b72a75f5b375d55022753b470fa31fd2f1d7762485a2cc671d62eec3bd",
+      "trace_id": "ring6_seed2309_len512"
+    }
+  ]
+}

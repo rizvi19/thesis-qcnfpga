@@ -1,0 +1,23 @@
+{
+  "action_clamp": {
+    "action_id": 0,
+    "profile": "balanced"
+  },
+  "manual": {
+    "all_actions_balanced": true,
+    "final_done": true,
+    "step_count": 8,
+    "step_log_sha256": "190bdde936fc3d1add06649d4edbdad2a6c1d8aaddea6412ca2b8d6d4e35af0a",
+    "success_count": 8,
+    "trace_sha256": "c5fca408fd5311b3ad17c4fac913ace26a322164f2606c218fb4e44d3c7592de"
+  },
+  "partitions": {
+    "all_steps_balanced": true,
+    "blocked_count": 0,
+    "step_count": 8192,
+    "success_count": 8192,
+    "trace_count": 16
+  },
+  "schema_version": 1,
+  "training_performed": false
+}

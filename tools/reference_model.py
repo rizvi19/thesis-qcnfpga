@@ -1189,6 +1189,8 @@ def run_ring6_experiment(
     tick_dt_s: float = 0.001,
     f_min: float = 0.9,
     verbose: bool = True,
+    alphas: Tuple[float, ...] = (1.0, 1.5, 0.5, 2.0),
+    obj_weights: Tuple[float, float, float] = (0.4, 0.4, 0.2),
 ) -> dict:
     """
     Full QFlow simulation on the 6-node ring.
@@ -1208,7 +1210,7 @@ def run_ring6_experiment(
         coherence_time=0.050,
         qber=0.03,
         link_distance_km=25.0,
-        alphas=(1.0, 1.5, 0.5, 2.0),
+        alphas=alphas,
     )
 
     if verbose:
@@ -1256,7 +1258,7 @@ def run_ring6_experiment(
         f_min=f_min,
         stall_gens=10,
         stall_epsilon=1e-6,
-        obj_weights=(0.4, 0.4, 0.2),
+        obj_weights=obj_weights,
         seed=seed,
     )
 

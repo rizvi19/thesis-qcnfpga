@@ -1,0 +1,16 @@
+intent,scenario,expected_path,selected_path,selected_score,score_margin,correct
+scarcity_protection,resource_fidelity_tradeoff_moderate,"[0, 5, 4, 3]","[0, 5, 4, 3]",0.249952325377,0.250014979356,true
+scarcity_protection,resource_fidelity_tradeoff_severe,"[0, 5, 4, 3]","[0, 5, 4, 3]",0.249936437877,0.250045252247,true
+scarcity_protection,slow_replenishment_tradeoff,"[0, 5, 4, 3]","[0, 5, 4, 3]",0.249930661105,0.250028652102,true
+scarcity_protection,short_path_quality_tradeoff_moderate,"[0, 5, 4, 3, 2]","[0, 5, 4, 3, 2]",0.249998142099,0.249971342185,true
+scarcity_protection,short_path_quality_tradeoff_severe,"[0, 5, 4, 3, 2]","[0, 5, 4, 3, 2]",0.249995680570,0.249986881423,true
+fidelity_protection,resource_fidelity_tradeoff_moderate,"[0, 1, 2, 3]","[0, 1, 2, 3]",0.249983652366,0.249920998388,true
+fidelity_protection,resource_fidelity_tradeoff_severe,"[0, 1, 2, 3]","[0, 1, 2, 3]",0.249996188067,0.249876687687,true
+fidelity_protection,slow_replenishment_tradeoff,"[0, 1, 2, 3]","[0, 1, 2, 3]",0.249989396930,0.249871925279,true
+fidelity_protection,short_path_quality_tradeoff_moderate,"[0, 5, 4, 3, 2]","[0, 5, 4, 3, 2]",0.249998836932,0.249831678437,true
+fidelity_protection,short_path_quality_tradeoff_severe,"[0, 5, 4, 3, 2]","[0, 5, 4, 3, 2]",0.249998447047,0.249874428707,true
+low_latency,resource_fidelity_tradeoff_moderate,"[0, 5, 4, 3]","[0, 5, 4, 3]",0.249952325377,0.250006681716,true
+low_latency,resource_fidelity_tradeoff_severe,"[0, 5, 4, 3]","[0, 5, 4, 3]",0.249936437877,0.250054846502,true
+low_latency,slow_replenishment_tradeoff,"[0, 5, 4, 3]","[0, 5, 4, 3]",0.249930661105,0.250054906889,true
+low_latency,short_path_quality_tradeoff_moderate,"[0, 1, 2]","[0, 1, 2]",0.249984742142,0.250010469343,true
+low_latency,short_path_quality_tradeoff_severe,"[0, 1, 2]","[0, 1, 2]",0.249991280996,0.250001792940,true

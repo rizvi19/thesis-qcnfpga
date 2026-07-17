@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "mdp_id": "qflow_rl_ring6_v0",
+  "status": "p2_contract_frozen",
+  "state": {
+    "normalization_constants": {
+      "key_pool_capacity_per_link": 16,
+      "request_capacity_per_control_window": 4,
+      "utilization_window_steps": 16
+    },
+    "feature_order": [
+      "min_key_occupancy",
+      "bottleneck_fidelity",
+      "offered_request_load",
+      "utilization_imbalance"
+    ],
+    "radix": 4,
+    "state_count": 256,
+    "features": {
+      "min_key_occupancy": {
+        "definition": "minimum over candidate-path links of key_count / 16",
+        "clip": [0.0, 1.0],
+        "thresholds": [0.25, 0.5, 0.75],
+        "labels": ["critical", "low", "moderate", "healthy"]
+      },
+      "bottleneck_fidelity": {
+        "definition": "minimum current fidelity over candidate-path links",
+        "clip": [0.0, 1.0],
+        "thresholds": [0.9, 0.93, 0.96],
+        "labels": ["infeasible", "marginal", "acceptable", "high"]
+      },
+      "offered_request_load": {
+        "definition": "requests offered in the control window divided by 4",
+        "clip": [0.0, 1.0],
+        "thresholds": [0.25, 0.5, 0.75],
+        "labels": ["light", "moderate", "heavy", "saturated"]
+      },
+      "utilization_imbalance": {
+        "definition": "clipped max-minus-min of consumed_in_last_16_steps / max(key_count, 1) over candidate-path links",
+        "clip": [0.0, 1.0],
+        "thresholds": [0.125, 0.25, 0.5],
+        "labels": ["balanced", "mild", "high", "severe"]
+      }
+    },
+    "encoding": "state_id = (((key_bin * 4) + fidelity_bin) * 4 + load_bin) * 4 + imbalance_bin",
+    "boundary_rule": "a value equal to a threshold enters the higher bin"
+  },
+  "action": {
+    "count": 4,
+    "profile_source": "rl/config/profile_codebook_v0.json",
+    "actions": [
+      {"id": 0, "key": "balanced"},
+      {"id": 1, "key": "scarcity_protection"},
+      {"id": 2, "key": "fidelity_protection"},
+      {"id": 3, "key": "low_latency"}
+    ]
+  },
+  "transition": {
+    "order": [
+      "observe_current_state",
+      "select_profile_action",
+      "select_route_or_block",
+      "consume_one_key_per_selected_link_on_success",
+      "apply_trace_key_arrivals_and_fidelity_update",
+      "advance_trace_index",
+      "observe_next_state"
+    ],
+    "no_path_terminal": false,
+    "terminal_rule": "episode terminates only after the final trace record is advanced",
+    "invalid_action": "raise_value_error"
+  },
+  "reward": {
+    "fidelity_floor": 0.9,
+    "terms": {
+      "success": 4.0,
+      "blocking": -4.0,
+      "fidelity_weight": 2.0,
+      "balance_weight": 1.0,
+      "hop_cost_per_edge": -0.25,
+      "profile_switch": -0.25
+    },
+    "definitions": {
+      "fidelity_utility": "fidelity_weight * clip((bottleneck_fidelity - fidelity_floor) / (1 - fidelity_floor), 0, 1)",
+      "balance_utility": "balance_weight * (1 - clip(post_decision_imbalance, 0, 1))",
+      "hop_cost": "hop_cost_per_edge * selected_path_hops",
+      "switch_cost": "profile_switch when previous_action exists and differs, otherwise 0"
+    },
+    "blocked_step_rule": "blocking and optional switch terms only; fidelity, balance and hop terms are zero",
+    "nominal_bounds": [-4.25, 6.75],
+    "logging": "log every component and the total"
+  },
+  "partitions": {
+    "topology": "Ring-6",
+    "trace_generator_version": "ring6_trace_v0",
+    "episode_length": 512,
+    "train_seeds": [101, 211, 307, 401, 503, 601, 701, 809],
+    "validation_seeds": [1009, 1103, 1201, 1301],
+    "test_seeds": [2003, 2111, 2203, 2309],
+    "separation_rule": "no seed or generated trace may appear in more than one partition"
+  },
+  "deployment": {
+    "training_mode": "offline_tabular_q_learning",
+    "defense_policy": "frozen_policy",
+    "q_value_format_start": "signed_16_bit",
+    "allowed_exports": ["q_table.mem", "policy_rom.mem", "profile_rom.mem"],
+    "dqn_allowed_in_p2": false
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "action_count": 4,
+  "contract_sha256": "799cb37a8fd1c819def69801a8d03c762b922a478d717f4991eff91fc02fd078",
+  "dqn_allowed_in_p2": false,
+  "mdp_id": "qflow_rl_ring6_v0",
+  "partition_seed_counts": {
+    "test": 4,
+    "train": 8,
+    "validation": 4
+  },
+  "profile_codebook_sha256": "a6faf2b8fdb760213fa92ad0f43fa8a3ce812b50e9210a75afac6f5150dd3fa1",
+  "reward_bounds": [
+    -4.25,
+    6.75
+  ],
+  "state_count": 256,
+  "state_feature_order": [
+    "min_key_occupancy",
+    "bottleneck_fidelity",
+    "offered_request_load",
+    "utilization_imbalance"
+  ]
+}

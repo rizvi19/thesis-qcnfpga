@@ -1,0 +1,25 @@
+{
+  "alpha_format": {
+    "implicit_fraction_bits": 1,
+    "maximum_encoded_numerator": 6,
+    "maximum_shift_add_terms": 2,
+    "unsigned_numerator_bits": 3
+  },
+  "codebook_rom_payload_bits_total": 72,
+  "exact_alpha_roundtrip_count": 4,
+  "exact_lambda_ratio_count": 4,
+  "generic_profile_multiplier_budget": 0,
+  "lambda_ratio_format": {
+    "common_scale_removed_per_profile": true,
+    "maximum_encoded_ratio": 2,
+    "maximum_shift_add_terms": 1,
+    "unsigned_ratio_bits": 2
+  },
+  "p2_hardware_coefficient_gate_passed": true,
+  "profile_count": 4,
+  "profile_rom_payload_bits_each": 18,
+  "route_equivalence_checks": 24,
+  "route_equivalence_matches": 24,
+  "rtl_or_synthesis_claimed": false,
+  "schema_version": 1
+}

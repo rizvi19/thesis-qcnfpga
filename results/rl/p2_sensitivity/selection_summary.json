@@ -1,0 +1,79 @@
+{
+  "eligible_candidate_counts": {
+    "fidelity_protection": 18,
+    "low_latency": 12,
+    "scarcity_protection": 36
+  },
+  "protocol": {
+    "minimum_required_margin": 0.19,
+    "normalization_epsilon": 1.52587890625e-05,
+    "scenario_count": 5,
+    "selection_order": [
+      "all scenario intents correct",
+      "minimum margin at least threshold",
+      "minimum L1 alpha distance from Balanced",
+      "minimum integer-ratio complexity",
+      "maximum mean score margin"
+    ]
+  },
+  "schema_version": 1,
+  "selected_profiles": {
+    "fidelity_protection": {
+      "action_id": 2,
+      "alphas": [
+        1.0,
+        2.0,
+        0.5,
+        3.0
+      ],
+      "lambda_tch": [
+        0.25,
+        0.5,
+        0.25
+      ],
+      "lambda_tch_hw_ratio": [
+        1,
+        2,
+        1
+      ]
+    },
+    "low_latency": {
+      "action_id": 3,
+      "alphas": [
+        0.5,
+        1.0,
+        0.5,
+        1.0
+      ],
+      "lambda_tch": [
+        0.5,
+        0.25,
+        0.25
+      ],
+      "lambda_tch_hw_ratio": [
+        2,
+        1,
+        1
+      ]
+    },
+    "scarcity_protection": {
+      "action_id": 1,
+      "alphas": [
+        1.5,
+        1.5,
+        1.0,
+        2.0
+      ],
+      "lambda_tch": [
+        0.25,
+        0.25,
+        0.5
+      ],
+      "lambda_tch_hw_ratio": [
+        1,
+        1,
+        2
+      ]
+    }
+  }
+}

@@ -1,0 +1,770 @@
+{
+  "edge_order": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      0,
+      5
+    ]
+  ],
+  "initial_links": [
+    {
+      "fidelity": 0.97,
+      "key_count": 8,
+      "key_rate": 4.0,
+      "qber": 0.03
+    },
+    {
+      "fidelity": 0.97,
+      "key_count": 8,
+      "key_rate": 4.0,
+      "qber": 0.03
+    },
+    {
+      "fidelity": 0.97,
+      "key_count": 8,
+      "key_rate": 4.0,
+      "qber": 0.03
+    },
+    {
+      "fidelity": 0.97,
+      "key_count": 8,
+      "key_rate": 4.0,
+      "qber": 0.03
+    },
+    {
+      "fidelity": 0.97,
+      "key_count": 8,
+      "key_rate": 4.0,
+      "qber": 0.03
+    },
+    {
+      "fidelity": 0.97,
+      "key_count": 8,
+      "key_rate": 4.0,
+      "qber": 0.03
+    },
+    {
+      "fidelity": 0.97,
+      "key_count": 8,
+      "key_rate": 4.0,
+      "qber": 0.03
+    },
+    {
+      "fidelity": 0.97,
+      "key_count": 8,
+      "key_rate": 4.0,
+      "qber": 0.03
+    },
+    {
+      "fidelity": 0.97,
+      "key_count": 8,
+      "key_rate": 4.0,
+      "qber": 0.03
+    },
+    {
+      "fidelity": 0.97,
+      "key_count": 8,
+      "key_rate": 4.0,
+      "qber": 0.03
+    },
+    {
+      "fidelity": 0.97,
+      "key_count": 8,
+      "key_rate": 4.0,
+      "qber": 0.03
+    },
+    {
+      "fidelity": 0.97,
+      "key_count": 8,
+      "key_rate": 4.0,
+      "qber": 0.03
+    }
+  ],
+  "records": [
+    {
+      "dst": 3,
+      "offered_requests": 1,
+      "phase": "scarcity",
+      "src": 0,
+      "updates": [
+        {
+          "arrivals": 0,
+          "fidelity": 0.99,
+          "key_rate": 2.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 0,
+          "fidelity": 0.99,
+          "key_rate": 2.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 0,
+          "fidelity": 0.99,
+          "key_rate": 2.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 0,
+          "fidelity": 0.99,
+          "key_rate": 2.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 0,
+          "fidelity": 0.99,
+          "key_rate": 2.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 0,
+          "fidelity": 0.99,
+          "key_rate": 2.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.92,
+          "key_rate": 10.0,
+          "qber": 0.07
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.92,
+          "key_rate": 10.0,
+          "qber": 0.07
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.92,
+          "key_rate": 10.0,
+          "qber": 0.07
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.92,
+          "key_rate": 10.0,
+          "qber": 0.07
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.92,
+          "key_rate": 10.0,
+          "qber": 0.07
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.92,
+          "key_rate": 10.0,
+          "qber": 0.07
+        }
+      ]
+    },
+    {
+      "dst": 3,
+      "offered_requests": 3,
+      "phase": "scarcity",
+      "src": 0,
+      "updates": [
+        {
+          "arrivals": 0,
+          "fidelity": 0.99,
+          "key_rate": 2.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 0,
+          "fidelity": 0.99,
+          "key_rate": 2.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 0,
+          "fidelity": 0.99,
+          "key_rate": 2.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 0,
+          "fidelity": 0.99,
+          "key_rate": 2.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 0,
+          "fidelity": 0.99,
+          "key_rate": 2.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 0,
+          "fidelity": 0.99,
+          "key_rate": 2.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.92,
+          "key_rate": 10.0,
+          "qber": 0.07
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.92,
+          "key_rate": 10.0,
+          "qber": 0.07
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.92,
+          "key_rate": 10.0,
+          "qber": 0.07
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.92,
+          "key_rate": 10.0,
+          "qber": 0.07
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.92,
+          "key_rate": 10.0,
+          "qber": 0.07
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.92,
+          "key_rate": 10.0,
+          "qber": 0.07
+        }
+      ]
+    },
+    {
+      "dst": 3,
+      "offered_requests": 2,
+      "phase": "fidelity",
+      "src": 0,
+      "updates": [
+        {
+          "arrivals": 1,
+          "fidelity": 0.99,
+          "key_rate": 3.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.99,
+          "key_rate": 3.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.99,
+          "key_rate": 3.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.99,
+          "key_rate": 3.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.99,
+          "key_rate": 3.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.99,
+          "key_rate": 3.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.905,
+          "key_rate": 10.0,
+          "qber": 0.09
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.905,
+          "key_rate": 10.0,
+          "qber": 0.09
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.905,
+          "key_rate": 10.0,
+          "qber": 0.09
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.905,
+          "key_rate": 10.0,
+          "qber": 0.09
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.905,
+          "key_rate": 10.0,
+          "qber": 0.09
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.905,
+          "key_rate": 10.0,
+          "qber": 0.09
+        }
+      ]
+    },
+    {
+      "dst": 3,
+      "offered_requests": 4,
+      "phase": "fidelity",
+      "src": 0,
+      "updates": [
+        {
+          "arrivals": 1,
+          "fidelity": 0.99,
+          "key_rate": 3.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.99,
+          "key_rate": 3.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.99,
+          "key_rate": 3.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.99,
+          "key_rate": 3.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.99,
+          "key_rate": 3.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.99,
+          "key_rate": 3.0,
+          "qber": 0.01
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.905,
+          "key_rate": 10.0,
+          "qber": 0.09
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.905,
+          "key_rate": 10.0,
+          "qber": 0.09
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.905,
+          "key_rate": 10.0,
+          "qber": 0.09
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.905,
+          "key_rate": 10.0,
+          "qber": 0.09
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.905,
+          "key_rate": 10.0,
+          "qber": 0.09
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.905,
+          "key_rate": 10.0,
+          "qber": 0.09
+        }
+      ]
+    },
+    {
+      "dst": 2,
+      "offered_requests": 4,
+      "phase": "low_latency",
+      "src": 0,
+      "updates": [
+        {
+          "arrivals": 1,
+          "fidelity": 0.94,
+          "key_rate": 3.0,
+          "qber": 0.05
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.94,
+          "key_rate": 3.0,
+          "qber": 0.05
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.94,
+          "key_rate": 3.0,
+          "qber": 0.05
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.94,
+          "key_rate": 3.0,
+          "qber": 0.05
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.94,
+          "key_rate": 3.0,
+          "qber": 0.05
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.94,
+          "key_rate": 3.0,
+          "qber": 0.05
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.985,
+          "key_rate": 10.0,
+          "qber": 0.015
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.985,
+          "key_rate": 10.0,
+          "qber": 0.015
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.985,
+          "key_rate": 10.0,
+          "qber": 0.015
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.985,
+          "key_rate": 10.0,
+          "qber": 0.015
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.985,
+          "key_rate": 10.0,
+          "qber": 0.015
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.985,
+          "key_rate": 10.0,
+          "qber": 0.015
+        }
+      ]
+    },
+    {
+      "dst": 2,
+      "offered_requests": 2,
+      "phase": "low_latency",
+      "src": 0,
+      "updates": [
+        {
+          "arrivals": 1,
+          "fidelity": 0.94,
+          "key_rate": 3.0,
+          "qber": 0.05
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.94,
+          "key_rate": 3.0,
+          "qber": 0.05
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.94,
+          "key_rate": 3.0,
+          "qber": 0.05
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.94,
+          "key_rate": 3.0,
+          "qber": 0.05
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.94,
+          "key_rate": 3.0,
+          "qber": 0.05
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.94,
+          "key_rate": 3.0,
+          "qber": 0.05
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.985,
+          "key_rate": 10.0,
+          "qber": 0.015
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.985,
+          "key_rate": 10.0,
+          "qber": 0.015
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.985,
+          "key_rate": 10.0,
+          "qber": 0.015
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.985,
+          "key_rate": 10.0,
+          "qber": 0.015
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.985,
+          "key_rate": 10.0,
+          "qber": 0.015
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.985,
+          "key_rate": 10.0,
+          "qber": 0.015
+        }
+      ]
+    },
+    {
+      "dst": 3,
+      "offered_requests": 3,
+      "phase": "mixed",
+      "src": 0,
+      "updates": [
+        {
+          "arrivals": 0,
+          "fidelity": 0.93,
+          "key_rate": 2.0,
+          "qber": 0.05
+        },
+        {
+          "arrivals": 0,
+          "fidelity": 0.93,
+          "key_rate": 2.0,
+          "qber": 0.05
+        },
+        {
+          "arrivals": 0,
+          "fidelity": 0.93,
+          "key_rate": 2.0,
+          "qber": 0.05
+        },
+        {
+          "arrivals": 0,
+          "fidelity": 0.93,
+          "key_rate": 2.0,
+          "qber": 0.05
+        },
+        {
+          "arrivals": 0,
+          "fidelity": 0.93,
+          "key_rate": 2.0,
+          "qber": 0.05
+        },
+        {
+          "arrivals": 0,
+          "fidelity": 0.93,
+          "key_rate": 2.0,
+          "qber": 0.05
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.96,
+          "key_rate": 8.0,
+          "qber": 0.04
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.96,
+          "key_rate": 8.0,
+          "qber": 0.04
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.96,
+          "key_rate": 8.0,
+          "qber": 0.04
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.96,
+          "key_rate": 8.0,
+          "qber": 0.04
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.96,
+          "key_rate": 8.0,
+          "qber": 0.04
+        },
+        {
+          "arrivals": 1,
+          "fidelity": 0.96,
+          "key_rate": 8.0,
+          "qber": 0.04
+        }
+      ]
+    },
+    {
+      "dst": 3,
+      "offered_requests": 1,
+      "phase": "nominal",
+      "src": 0,
+      "updates": [
+        {
+          "arrivals": 2,
+          "fidelity": 0.975,
+          "key_rate": 6.0,
+          "qber": 0.03
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.975,
+          "key_rate": 6.0,
+          "qber": 0.03
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.975,
+          "key_rate": 6.0,
+          "qber": 0.03
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.975,
+          "key_rate": 6.0,
+          "qber": 0.03
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.975,
+          "key_rate": 6.0,
+          "qber": 0.03
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.975,
+          "key_rate": 6.0,
+          "qber": 0.03
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.975,
+          "key_rate": 6.0,
+          "qber": 0.03
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.975,
+          "key_rate": 6.0,
+          "qber": 0.03
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.975,
+          "key_rate": 6.0,
+          "qber": 0.03
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.975,
+          "key_rate": 6.0,
+          "qber": 0.03
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.975,
+          "key_rate": 6.0,
+          "qber": 0.03
+        },
+        {
+          "arrivals": 2,
+          "fidelity": 0.975,
+          "key_rate": 6.0,
+          "qber": 0.03
+        }
+      ]
+    }
+  ],
+  "seed": 0,
+  "trace_id": "manual_ring6_v0"
+}

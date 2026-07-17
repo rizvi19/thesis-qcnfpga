@@ -1,0 +1,9 @@
+trace_index,state_id,action_id,profile,success,selected_path,reward,next_state_id,done
+0,180,0,balanced,True,0-1-2-3,5.507142857143,93,False
+1,93,0,balanced,True,0-1-2-3,5.716666666667,90,False
+2,90,0,balanced,True,0-5-4-3,4.316666666667,93,False
+3,93,0,balanced,True,0-1-2-3,5.550000000000,94,False
+4,94,0,balanced,True,0-1-2,5.633333333333,107,False
+5,107,0,balanced,True,0-1-2,4.466666666667,111,False
+6,111,0,balanced,True,0-5-4-3,5.235714285714,103,False
+7,103,0,balanced,True,0-5-4-3,4.735714285714,,True

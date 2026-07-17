@@ -1,0 +1,22 @@
+{
+  "balanced_selected_route": [
+    0,
+    5,
+    4,
+    3
+  ],
+  "canonical_json_byte_identical": true,
+  "dynamic_trace_equivalence_claimed": false,
+  "expected_h2_sha256": "e4a393bc349f064ab7709e75fe6093210cf05f6f842fee33d4cc5b0adbcdaf3f",
+  "forced_balanced_h2_sha256": "e4a393bc349f064ab7709e75fe6093210cf05f6f842fee33d4cc5b0adbcdaf3f",
+  "legacy_first_route": [
+    0,
+    5,
+    4,
+    3
+  ],
+  "legacy_h2_sha256": "e4a393bc349f064ab7709e75fe6093210cf05f6f842fee33d4cc5b0adbcdaf3f",
+  "regression_boundary": "canonical_h2_computation_and_balanced_action_clamp",
+  "route_selection_parity": true,
+  "schema_version": 1
+}

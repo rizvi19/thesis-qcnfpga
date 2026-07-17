@@ -1,0 +1,9 @@
+trace_index,state_id,action_id,profile,success,selected_path,reward,next_state_id,done
+0,180,0,balanced,True,0-1-2-3,5.507142857143,93,False
+1,93,1,scarcity_protection,True,0-5-4-3,4.257142857143,88,False
+2,88,2,fidelity_protection,True,0-1-2-3,5.466666666667,93,False
+3,93,3,low_latency,True,0-1-2-3,5.300000000000,94,False
+4,94,0,balanced,True,0-1-2,5.383333333333,107,False
+5,107,1,scarcity_protection,True,0-5-4-3-2,3.978571428571,174,False
+6,174,2,fidelity_protection,True,0-5-4-3,5.200000000000,166,False
+7,166,3,low_latency,True,0-5-4-3,4.700000000000,,True
