@@ -1,0 +1,28 @@
+===== P4 STEP 7 INTEGRATED TESTS =====
+test_action_and_dwell_timelines_match_frozen_python_controller (__main__.TestFrozenH4Traces.test_action_and_dwell_timelines_match_frozen_python_controller) ... ok
+test_each_independent_trace_has_one_final_done (__main__.TestFrozenH4Traces.test_each_independent_trace_has_one_final_done) ... ok
+test_every_frozen_trace_profile_payload_is_exact (__main__.TestFrozenH4Traces.test_every_frozen_trace_profile_payload_is_exact) ... ok
+test_manual_and_locked_test_trace_membership_is_exact (__main__.TestFrozenH4Traces.test_manual_and_locked_test_trace_membership_is_exact) ... ok
+test_trace_hashes_match_the_frozen_p2_manifest (__main__.TestFrozenH4Traces.test_trace_hashes_match_the_frozen_p2_manifest) ... ok
+test_all_530_valid_acceptances_complete_after_n_plus_3 (__main__.TestIntegratedCycleTimeline.test_all_530_valid_acceptances_complete_after_n_plus_3) ... ok
+test_exact_schema_cycle_count_and_case_identity (__main__.TestIntegratedCycleTimeline.test_exact_schema_cycle_count_and_case_identity) ... ok
+test_profile_changes_dwell_no_path_and_all_actions_are_covered (__main__.TestIntegratedCycleTimeline.test_profile_changes_dwell_no_path_and_all_actions_are_covered) ... ok
+test_published_outputs_hold_between_valid_completions (__main__.TestIntegratedCycleTimeline.test_published_outputs_hold_between_valid_completions) ... ok
+test_reset_invalid_stall_and_back_to_back_rules_are_explicit (__main__.TestIntegratedCycleTimeline.test_reset_invalid_stall_and_back_to_back_rules_are_explicit) ... ok
+test_generator_is_byte_reproducible (__main__.TestReproducibilityAndBoundary.test_generator_is_byte_reproducible) ... ok
+test_numeric_rtl_vectors_match_cycle_csv (__main__.TestReproducibilityAndBoundary.test_numeric_rtl_vectors_match_cycle_csv) ... ok
+test_step7_boundary_excludes_synthesis_board_and_learning_claims (__main__.TestReproducibilityAndBoundary.test_step7_boundary_excludes_synthesis_board_and_learning_claims) ... FAIL
+
+======================================================================
+FAIL: test_step7_boundary_excludes_synthesis_board_and_learning_claims (__main__.TestReproducibilityAndBoundary.test_step7_boundary_excludes_synthesis_board_and_learning_claims)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/sim/rl/test_p4_integrated_controller.py", line 189, in test_step7_boundary_excludes_synthesis_board_and_learning_claims
+    self.assertIn(phrase, status)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+AssertionError: 'ISE synthesis' not found in '# P4 Step 7 Status\n\nStep 7 performs integrated, cycle-exact verification of the reviewed P4\ncontroller checkpoint. It does not change the encoder, policy ROM, profile ROM,\ncontroller RTL, frozen policy, frozen profiles, or any training result.\n\nThe primary trace ladder contains two authoritative Python H4 replays. The\nfirst is the eight-decision manual Ring-6 trace frozen in P2. The second is the\nfirst locked 512-decision test-partition trace from the frozen MDP contract and\ntrace manifest. Each independent trace resets dwell history. Every decision\nrecords its state, policy proposal, dwell-filtered action, exact profile\npayload, no-path result, reward, next state, and final status.\n\nThose 520 frozen-trace decisions are converted into the four-feature UNORM16\ncontroller interface using exact representative codes for their decoded bins.\nThe RTL must reproduce every state, proposal, selected action, profile payload,\ndwell count, switch flag, no-path flag, handshake, and three-cycle completion.\nA ten-decision directed trace then guarantees all four selected profiles,\ndwell holds and switches, plus an explicit no-path completion. Reset dominance,\nthe one-cycle invalid response, starts while busy, and back-to-back requests are\nalso covered.\n\nThe exhaustive all-256-state and all-threshold-edge gate remains Step 8. ISE\nsynthesis, timing/resource claims, board programming, EEPROM access, online\nlearning, Q-table argmax deployment, and `q_update.v` remain outside Step 7.\n'
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.147s
+
+FAILED (failures=1)
