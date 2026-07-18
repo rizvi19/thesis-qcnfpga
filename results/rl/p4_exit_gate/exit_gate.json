@@ -1,0 +1,120 @@
+{
+  "checkpoints": {
+    "p3": "cdfeda3f5f2fca586546ef6e362ac451512d75bc",
+    "p4_step2": "2c250ac8c3988278fe3aa34b25f6a693f405c0fa",
+    "p4_step3": "6d3ea1ceb7ca9a932d0d137eaf38b5fb42aefab4",
+    "p4_step4": "250d5c4dc8e404d2ed89e8c6c393b66c1bef4346",
+    "p4_step5": "381b27d16e2f443d5ad381008e87dd8e751fdae2",
+    "p4_step6": "97ca2679d9d7d6a7183528af9046937dd0ee5331",
+    "p4_step7": "2ac85677c1c548063660f23d9bc087edb0b1e128",
+    "p4_step8": "b4fdd64e3c4bf5416e51836b73543c19f16fa619",
+    "p4_step9": "3e7540137804ba9607891b8fb853f7758f773ec4"
+  },
+  "claim_firewall": {
+    "bitgen_performed": false,
+    "board_programming_performed": false,
+    "board_timing_claimed": false,
+    "eeprom_access_performed": false,
+    "map_performed": false,
+    "online_or_onchip_learning_claimed": false,
+    "p5_or_p6_evidence_claimed": false,
+    "par_performed": false,
+    "post_par_timing_claimed": false,
+    "statistical_superiority_claimed": false,
+    "trce_signoff_performed": false,
+    "uart_qflow_mini_integrated": false
+  },
+  "completion": {
+    "checkpoint_scope_files": 4,
+    "next_action": "await controlled P5 scope gate",
+    "p4_exit_gate": "PASS",
+    "p4_progress": "10_OF_10"
+  },
+  "decision": "PASS",
+  "evidence": {
+    "evidence_manifest": "results/rl/p4_exit_gate/evidence_manifest.csv",
+    "evidence_manifest_sha256": "86724832ac726010cf24385b7c651bf71a66526810064581158bbfbd8048c91d",
+    "hash_record_count": 104,
+    "source_manifest_count": 8,
+    "unique_artifact_count": 104
+  },
+  "exit_criteria": {
+    "clean_reset_and_handshake": true,
+    "no_unexplained_route_or_synthesis_mismatch": true,
+    "required_state_to_profile_vector_agreement_percent": 100,
+    "valid_synthesis_netlist": true,
+    "zero_rtl_mismatches": true
+  },
+  "gate_evaluation": "PASS_EXIT_CRITERIA_MET",
+  "human_review": {
+    "claim_firewall_all_false": true,
+    "decision": "PASS",
+    "evidence_records_verified": 104,
+    "exit_criteria_passed": 4,
+    "exit_criteria_total": 4,
+    "manifest_sha256": "86724832ac726010cf24385b7c651bf71a66526810064581158bbfbd8048c91d",
+    "p5_or_board_work_authorized": false,
+    "reviewed_source_checkpoint": "3e7540137804ba9607891b8fb853f7758f773ec4",
+    "rtl_mismatch_count": 0,
+    "unexpected_synthesis_warning_count": 0,
+    "unique_artifacts_verified": 104
+  },
+  "implementation": {
+    "action_count": 4,
+    "complete_profile_rom_bits": 72,
+    "deployment_artifact": "results/rl/p3_export/policy_rom.mem",
+    "minimum_dwell_decisions": 3,
+    "profile_count": 4,
+    "profile_payload_bits_each": 18,
+    "q_table_role": "audit_only",
+    "q_update_implemented": false,
+    "runtime_argmax_deployed": false,
+    "state_count": 256,
+    "valid_request_latency_cycles": 3
+  },
+  "next_phase": "P5_QFLOW_MINI_SPARTAN6_INTEGRATION_AFTER_HUMAN_REVIEW_AND_CHECKPOINT",
+  "phase": "P4",
+  "schema_version": 1,
+  "source_checkpoint": "3e7540137804ba9607891b8fb853f7758f773ec4",
+  "step": "P4_STEP_10_EXIT_GATE",
+  "synthesis": {
+    "ngc_sha256": "18339137e1f574a20a751c0c5d2325c981324a2e0813737c806798ab6acb4bd7",
+    "ngc_valid": true,
+    "ngd_sha256": "2ed59197c260e48b35425a5d0526713b74aa29dae2338b60238fb84f73dfbecb",
+    "ngd_valid": true,
+    "ngdbuild_error_count": 0,
+    "ngdbuild_warning_count": 14,
+    "ngdbuild_warning_disposition": "ACCEPTED_EXPECTED_SYNTHESIS_OPTIMIZATION",
+    "slice_luts": 103,
+    "slice_registers": 79,
+    "target_part": "xc6slx16-2-csg324",
+    "timing_scope": "XST post-synthesis estimate only; not Map/PAR/TRCE timing closure or board-achieved timing",
+    "tool": "Xilinx ISE XST",
+    "tool_release": "14.7",
+    "xst_error_count": 0,
+    "xst_maximum_frequency_mhz_estimate": 247.812,
+    "xst_minimum_period_ns_estimate": 4.035
+  },
+  "verification": {
+    "all_state_case_count": 256,
+    "clean_reset_handshake": true,
+    "controller_unit_cycle_vectors": 49,
+    "encoded_endpoint_case_count": 2,
+    "exhaustive_cycle_vectors": 1509,
+    "exhaustive_valid_decisions": 302,
+    "final_python_test_count": 80,
+    "frozen_h4_trace_count": 2,
+    "frozen_h4_trace_decisions": 520,
+    "integrated_cycle_vectors": 2125,
+    "integrated_valid_decisions": 530,
+    "rtl_mismatch_count": 0,
+    "selected_actions": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "threshold_edge_case_count": 36,
+    "unexplained_mismatch_count": 0
+  }
+}
