@@ -1,0 +1,9 @@
+iverilog -g2001 -Wall -Wimplicit -t null -s rl_controller_synth_top
+/usr/lib/x86_64-linux-gnu/ivl/ivl: /mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/lib/lin64/libstdc++.so.6: version `GLIBCXX_3.4.32' not found (required by /usr/lib/x86_64-linux-gnu/ivl/ivl)
+/usr/lib/x86_64-linux-gnu/ivl/ivl: /mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/lib/lin64/libstdc++.so.6: version `GLIBCXX_3.4.20' not found (required by /usr/lib/x86_64-linux-gnu/ivl/ivl)
+/usr/lib/x86_64-linux-gnu/ivl/ivl: /mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/lib/lin64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by /usr/lib/x86_64-linux-gnu/ivl/ivl)
+/usr/lib/x86_64-linux-gnu/ivl/ivl: /mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/lib/lin64/libstdc++.so.6: version `GLIBCXX_3.4.11' not found (required by /usr/lib/x86_64-linux-gnu/ivl/ivl)
+/usr/lib/x86_64-linux-gnu/ivl/ivl: /mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/lib/lin64/libstdc++.so.6: version `GLIBCXX_3.4.29' not found (required by /usr/lib/x86_64-linux-gnu/ivl/ivl)
+/usr/lib/x86_64-linux-gnu/ivl/ivl: /mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/lib/lin64/libstdc++.so.6: version `GLIBCXX_3.4.9' not found (required by /usr/lib/x86_64-linux-gnu/ivl/ivl)
+/usr/lib/x86_64-linux-gnu/ivl/ivl: /mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/lib/lin64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by /usr/lib/x86_64-linux-gnu/ivl/ivl)
+/usr/lib/x86_64-linux-gnu/ivl/ivl: /mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/lib/lin64/libstdc++.so.6: version `GLIBCXX_3.4.15' not found (required by /usr/lib/x86_64-linux-gnu/ivl/ivl)

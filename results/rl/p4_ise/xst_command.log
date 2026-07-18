@@ -1,0 +1,1 @@
+xst -ifn fpga/ise_nexys3/p4_controller/controller.xst -ofn <temporary>/xst_report.syr -intstyle silent

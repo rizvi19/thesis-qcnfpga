@@ -1,0 +1,2 @@
+xst -ifn fpga/ise_nexys3/p4_controller/controller.xst -ofn <temporary>/xst_report.syr -intstyle silent
+ERROR:Xst:2883 - Option "-verilog2001" is not available for the selected device family.

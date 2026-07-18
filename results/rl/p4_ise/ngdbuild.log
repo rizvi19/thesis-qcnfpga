@@ -1,0 +1,69 @@
+ngdbuild -p xc6slx16-2-csg324 -nt timestamp <NGC> <NGD>
+Release 14.7 - ngdbuild P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Command Line:
+/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/ngdbuild -p
+xc6slx16-2-csg324 -nt timestamp
+results/rl/p4_ise/build/rl_controller_synth_top.ngc
+results/rl/p4_ise/build/rl_controller_synth_top.ngd
+
+Reading NGO file
+"/tmp/qflow-p4-step9-repair.MkaQCD/work/results/rl/p4_ise/build/rl_controller_sy
+nth_top.ngc" ...
+Gathering constraint information from source properties...
+Done.
+
+Resolving constraint associations...
+Checking Constraint Associations...
+Done...
+
+Checking expanded design ...
+WARNING:NgdBuild:452 - logical net 'controller_i/bottleneck_fidelity_u16<0>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'controller_i/utilization_imbalance_u16<12>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'controller_i/utilization_imbalance_u16<11>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'controller_i/utilization_imbalance_u16<10>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'controller_i/utilization_imbalance_u16<9>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'controller_i/utilization_imbalance_u16<8>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'controller_i/utilization_imbalance_u16<7>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'controller_i/utilization_imbalance_u16<6>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'controller_i/utilization_imbalance_u16<5>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'controller_i/utilization_imbalance_u16<4>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'controller_i/utilization_imbalance_u16<3>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'controller_i/utilization_imbalance_u16<2>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'controller_i/utilization_imbalance_u16<1>'
+   has no driver
+WARNING:NgdBuild:452 - logical net 'controller_i/utilization_imbalance_u16<0>'
+   has no driver
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:  14
+
+Writing NGD file "results/rl/p4_ise/build/rl_controller_synth_top.ngd" ...
+Total REAL time to NGDBUILD completion:  1 sec
+Total CPU time to NGDBUILD completion:   1 sec
+
+Writing NGDBUILD log file
+"results/rl/p4_ise/build/rl_controller_synth_top.bld"...
+
+NGDBUILD done.

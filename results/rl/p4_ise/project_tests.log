@@ -1,0 +1,11 @@
+test_project_has_exact_reviewed_source_order (__main__.TestISEProjectContract.test_project_has_exact_reviewed_source_order) ... ok
+test_status_preserves_synthesis_and_claim_firewalls (__main__.TestISEProjectContract.test_status_preserves_synthesis_and_claim_firewalls) ... ok
+test_xst_targets_exact_part_top_and_supported_spartan6_flow (__main__.TestISEProjectContract.test_xst_targets_exact_part_top_and_supported_spartan6_flow) ... ok
+test_parser_accepts_synthetic_zero_error_evidence (__main__.TestReportParser.test_parser_accepts_synthetic_zero_error_evidence) ... ok
+test_wrapper_adds_no_behavior_or_state (__main__.TestTransparentSynthesisTop.test_wrapper_adds_no_behavior_or_state) ... ok
+test_wrapper_exposes_every_frozen_controller_port (__main__.TestTransparentSynthesisTop.test_wrapper_exposes_every_frozen_controller_port) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.004s
+
+OK

@@ -1,0 +1,2 @@
+env -u LD_LIBRARY_PATH <host-iverilog> -g2001 -Wall -Wimplicit -t null -s rl_controller_synth_top
+PASS: transparent synthesis top and frozen RTL pass host Verilog-2001 warning/implicit-net lint

@@ -1,0 +1,24 @@
+ISE_SETTINGS=/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/settings64.sh
+XILINX=/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE
+XILINXD_LICENSE_FILE=/home/shahriar-rizvi/.Xilinx/Xilinx.lic
+HOST_IVERILOG=/usr/bin/iverilog
+HOST_IVERILOG_LIBRARY_MODE=LD_LIBRARY_PATH_REMOVED
+XST=/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/bin/lin64/xst
+NGDBUILD=/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/bin/lin64/ngdbuild
+PARTGEN=/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/bin/lin64/partgen
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Usage: xst [-ifn <InputFile>] [-ofn <OutputFile>] [-filter <FilterFile>] [-ise
+xc6slx16		SPEEDS:		-3    -3N    -2
+        csg324
+        ftg256
+        csg225
+        cpg196	-3    -2
+xc6slx25		SPEEDS:		-3    -3N    -2
+FLOW_BOUNDARY=XST_PLUS_NGDBUILD_ONLY
+MAP_PERFORMED=NO
+PAR_PERFORMED=NO
+TRCE_SIGNOFF_PERFORMED=NO
+BITGEN_PERFORMED=NO
+BOARD_PROGRAMMING_PERFORMED=NO
+EEPROM_ACCESS_PERFORMED=NO

@@ -1,0 +1,5 @@
+verilog work "rtl/rl/rl_state_encoder.v"
+verilog work "rtl/rl/rl_policy_rom.v"
+verilog work "rtl/rl/rl_profile_rom.v"
+verilog work "rtl/rl/rl_controller.v"
+verilog work "fpga/ise_nexys3/p4_controller/rl_controller_synth_top.v"
