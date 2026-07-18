@@ -1,0 +1,2 @@
+P4_POLICY_ROM_RTL_PASS vectors=260 mismatches=0
+sim/rl/tb_rl_policy_rom.v:107: $finish called at 2606000 (1ps)

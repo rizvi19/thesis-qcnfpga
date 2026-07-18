@@ -1,0 +1,60 @@
+{
+  "action_counts": {
+    "0": 145,
+    "1": 43,
+    "2": 44,
+    "3": 24
+  },
+  "action_width_bits": 2,
+  "board_programming_performed": false,
+  "decision": "PASS",
+  "deployment_artifact": "results/rl/p3_export/policy_rom.mem",
+  "eeprom_access_performed": false,
+  "explicit_state_addresses": 256,
+  "files": {
+    "docs/rl/p4_step4_status.md": "affaa959a57d9bde55cc16bbb634fea2a92429968395d9335ad2a0e6dcae4608",
+    "results/rl/p4_policy_rom/generator_repro.log": "b3bd76d0d844cf85163af6e01b95c8c611464f964e6d20a64fb9640e3220f465",
+    "results/rl/p4_policy_rom/iverilog_compile.log": "b2748189dbc5f8a4fe815c2e95234bbfe37a880b913252d06e16f8d01bfdb89d",
+    "results/rl/p4_policy_rom/python_tests.log": "9eacebb96cd83d2ef0e53c10f72314b5c5f1a3e44c066b4982d4695e2949ce54",
+    "results/rl/p4_policy_rom/rtl_sim.log": "14f25c80ad8be51a50f89c5717b368043d7043db9e92372a8ff1b79ebd33ce8c",
+    "rtl/rl/rl_policy_rom.v": "0c3832f4dc90fdd039e90c1ff63276c645bd3d197b5c4bf562e4f37ce42d4dfd",
+    "sim/rl/p4_generate_policy_rom_vectors.py": "ac6e16373a22c7a3d6f183d9d00bd7e1cddc0312341a301978267f6fd223bf7d",
+    "sim/rl/p4_policy_rom_vectors.csv": "b024d2c4482450488394972a10d2ad55f7cc61b781f483d5c18d9d6c7c8aa686",
+    "sim/rl/p4_policy_rom_vectors.txt": "3e558380b21fb293f1fcc8cec8d7ee6c65c1e921f86bd8d9c7c9010fc2073464",
+    "sim/rl/tb_rl_policy_rom.v": "332c95aac91ecca3fd9176f2d9e067f0119e69039fa457a7906356618eae2c28",
+    "sim/rl/test_p4_policy_rom.py": "2201e99bb833b91888a295cf3f9ff0cf2f7c12329b044400ae79e889bad39780"
+  },
+  "human_review": {
+    "basis": "all 256 addresses, 260 exact RTL vectors, four actions, 27 passing Python tests",
+    "content_changed_during_review": false,
+    "rtl_mismatch_count": 0,
+    "status": "ACCEPTED"
+  },
+  "ise_synthesis_performed": false,
+  "iverilog_version": "Icarus Verilog version 12.0 (stable) ()",
+  "phase": "P4",
+  "policy_mem_sha256": "15d7cfc26ebd01b622f801050f198283f2f5c1b44bcdbb07e903a167c81646c7",
+  "policy_or_training_changed": false,
+  "python_test_count": 27,
+  "python_test_counts_by_suite": [
+    7,
+    7,
+    13
+  ],
+  "q_table_argmax_deployed": false,
+  "read_latency_cycles": 1,
+  "rom_depth": 256,
+  "rtl_mismatch_count": 0,
+  "rtl_module": "rtl/rl/rl_policy_rom.v",
+  "rtl_standard": "Verilog-2001",
+  "schema_version": 1,
+  "source_checkpoint": "6d3ea1ceb7ca9a932d0d137eaf38b5fb42aefab4",
+  "step": "P4_STEP_4_POLICY_ROM",
+  "vector_categories": {
+    "all_256_states": 256,
+    "enable_hold": 1,
+    "post_reset_read": 1,
+    "reset": 2
+  },
+  "vector_count": 260
+}
