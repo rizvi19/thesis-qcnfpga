@@ -1,0 +1,2 @@
+iverilog -g2001 -Wall -Wimplicit -s tb_rl_state_encoder
+PASS: Icarus accepted the RTL and testbench as Verilog-2001

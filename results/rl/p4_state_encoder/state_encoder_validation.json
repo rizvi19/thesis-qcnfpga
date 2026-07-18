@@ -1,0 +1,61 @@
+{
+  "board_programming_performed": false,
+  "decision": "PASS",
+  "eeprom_access_performed": false,
+  "explicit_state_categories": 256,
+  "files": {
+    "docs/rl/p4_step3_status.md": "db3699f8dca4e30e4729e46474bf803c6ff50580980563af120ff4deb566345c",
+    "results/rl/p4_state_encoder/generator_repro.log": "433336bbeae78106089720dd753043982a28f8ff90316907dc762bcf6f7c9114",
+    "results/rl/p4_state_encoder/iverilog_compile.log": "0f3789aaa4f8c360a72550de904031152e6ee973e3d101d72d97f649658fe5c4",
+    "results/rl/p4_state_encoder/python_tests.log": "f949d11d28e3c67823b5477690bb2c66f67fa7afbed9f0e11cae74625d8bda61",
+    "results/rl/p4_state_encoder/rtl_sim.log": "ff6873a0099e0361f6bec5541bf85bd07a2bcb288d1956d61760f519a2361e05",
+    "rtl/rl/rl_state_encoder.v": "603051a9ed92187cc01fcf8d1f4df0aed5f12115e653ac78e17736d788f8128e",
+    "sim/rl/p4_generate_state_encoder_vectors.py": "584c4c4059efe7779a6c44ca6551861c8227185c9db29619324b6337f8aedddc",
+    "sim/rl/p4_state_encoder_vectors.csv": "9df303090b5991fc84e65ef441c81d920908c993af915066873b85cc25ceefdd",
+    "sim/rl/p4_state_encoder_vectors.txt": "a7e36e1513faf8c168e5982a4b0e02fb4e0104f5f538c36a72d73c684b1d4380",
+    "sim/rl/tb_rl_state_encoder.v": "5c108e32988c6274e7c48c3fa13c4cd62df02ffca230eeb4352644392c7d3a5a",
+    "sim/rl/test_p4_state_encoder.py": "8b62e5a2352ac9c614dd84a60e8a3aa7250568d87c0fe269f1e366bc388aea25"
+  },
+  "human_review": {
+    "basis": "297 exact RTL vectors, all 256 states, 36 threshold edges, 20 passing Python tests",
+    "content_changed_during_review": false,
+    "rtl_mismatch_count": 0,
+    "status": "ACCEPTED"
+  },
+  "ise_synthesis_performed": false,
+  "iverilog_version": "Icarus Verilog version 12.0 (stable) ()",
+  "phase": "P4",
+  "policy_or_training_changed": false,
+  "python_test_count": 20,
+  "python_test_counts_by_suite": [
+    7,
+    13
+  ],
+  "registered_latency_cycles": 1,
+  "rtl_mismatch_count": 0,
+  "rtl_module": "rtl/rl/rl_state_encoder.v",
+  "rtl_standard": "Verilog-2001",
+  "schema_version": 1,
+  "scope_exclusions": [
+    "policy ROM",
+    "profile ROM",
+    "dwell controller",
+    "integrated controller",
+    "ISE synthesis",
+    "board programming"
+  ],
+  "source_checkpoint": "2c250ac8c3988278fe3aa34b25f6a693f405c0fa",
+  "step": "P4_STEP_3_STATE_ENCODER",
+  "threshold_edge_vectors": 36,
+  "vector_categories": {
+    "all_256_states": 256,
+    "enable_hold": 1,
+    "encoded_clip_high": 1,
+    "encoded_clip_low": 1,
+    "reset": 2,
+    "threshold_above": 12,
+    "threshold_below": 12,
+    "threshold_equal": 12
+  },
+  "vector_count": 297
+}

@@ -1,0 +1,2 @@
+P4_STATE_ENCODER_RTL_PASS vectors=297 mismatches=0
+sim/rl/tb_rl_state_encoder.v:128: $finish called at 2976000 (1ps)
