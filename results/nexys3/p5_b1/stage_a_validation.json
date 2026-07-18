@@ -1,0 +1,66 @@
+{
+  "assistant_review": {
+    "baud_divider": "868_PASS",
+    "baud_error_percent": "+0.0064004096_PASS",
+    "clock_constraint": "10NS_PASS",
+    "decision": "PASS",
+    "display_digits": "4_OF_4_PASS",
+    "file_scope": "10_OF_10_PASS",
+    "reset_cases": "2_OF_2_PASS",
+    "uart_bytes": "16_OF_16_PASS",
+    "ucf_locations": "17_OF_17_PASS"
+  },
+  "baud": {
+    "actual": 115207.3732718894,
+    "clocks_per_bit": 868,
+    "error_percent": 0.0064004096,
+    "requested": 115200
+  },
+  "board_access": false,
+  "checkpoint_operation": {
+    "commit": "AUTHORIZED_AFTER_ASSISTANT_REVIEW",
+    "non_force_push": "AUTHORIZED_AFTER_ASSISTANT_REVIEW",
+    "staging": "AUTHORIZED_EXACT_10_FILE_SCOPE_ONLY"
+  },
+  "claim_level": "rtl_simulation_only",
+  "clock_hz": 100000000,
+  "eeprom_access": false,
+  "ise_tools_run": false,
+  "live_uart_access": false,
+  "phase": "P5",
+  "pins": {
+    "an_n": [
+      "N16",
+      "N15",
+      "P18",
+      "P17"
+    ],
+    "btn_reset": "B8",
+    "clk_100mhz": "V10",
+    "led_heartbeat": "U16",
+    "led_reset": "V16",
+    "seg_n": [
+      "T17",
+      "T18",
+      "U17",
+      "U18",
+      "M14",
+      "N14",
+      "L14",
+      "M13"
+    ],
+    "uart_tx": "N18"
+  },
+  "record": "QF5B1,1,<counter_hex4>,0\\r\\n",
+  "source_checkpoint": "238400187af1e819746a7751363ff1c6ff4d6a11",
+  "stage": "B1_STAGE_A_IMPLEMENTATION_SIMULATION",
+  "status": "PASS_AFTER_ASSISTANT_REVIEW",
+  "step": "P5_STEP_3",
+  "tests": {
+    "display_digits": "4_OF_4_PASS",
+    "reset_cases": "2_OF_2_PASS",
+    "static_checks": "7_PASS",
+    "uart_bytes": "16_OF_16_PASS",
+    "ucf_locations": "17_OF_17_PASS"
+  }
+}
