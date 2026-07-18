@@ -1,0 +1,59 @@
+===== P4 STEP 5 PROFILE-ROM CONTRACT TESTS =====
+test_checksum_layout_and_72_bit_contract_are_exact (__main__.TestFrozenProfileArtifact.test_checksum_layout_and_72_bit_contract_are_exact) ... ok
+test_every_payload_roundtrips_to_exact_frozen_coefficients (__main__.TestFrozenProfileArtifact.test_every_payload_roundtrips_to_exact_frozen_coefficients) ... ok
+test_memory_exactly_matches_action_major_frozen_codebook (__main__.TestFrozenProfileArtifact.test_memory_exactly_matches_action_major_frozen_codebook) ... ok
+test_rtl_is_registered_verilog_2001_and_reads_frozen_memory (__main__.TestProfileRomRTL.test_rtl_is_registered_verilog_2001_and_reads_frozen_memory) ... ok
+test_all_four_action_payloads_agree_exactly (__main__.TestProfileVectors.test_all_four_action_payloads_agree_exactly) ... ok
+test_generator_is_byte_reproducible (__main__.TestProfileVectors.test_generator_is_byte_reproducible) ... ok
+test_numeric_rtl_vectors_match_reviewable_csv (__main__.TestProfileVectors.test_numeric_rtl_vectors_match_reviewable_csv) ... ok
+test_reset_enable_hold_and_post_reset_read_are_deterministic (__main__.TestProfileVectors.test_reset_enable_hold_and_post_reset_read_are_deterministic) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.007s
+
+OK
+===== P4 STEP 4 POLICY-ROM REGRESSION =====
+test_checksum_layout_and_export_contract_are_exact (__main__.TestFrozenPolicyArtifact.test_checksum_layout_and_export_contract_are_exact) ... ok
+test_memory_is_exact_frozen_policy_and_exercises_all_actions (__main__.TestFrozenPolicyArtifact.test_memory_is_exact_frozen_policy_and_exercises_all_actions) ... ok
+test_rtl_is_registered_verilog_2001_and_reads_frozen_memory (__main__.TestPolicyRomRTL.test_rtl_is_registered_verilog_2001_and_reads_frozen_memory) ... ok
+test_all_256_addresses_have_exact_action_agreement (__main__.TestPolicyVectors.test_all_256_addresses_have_exact_action_agreement) ... ok
+test_generator_is_byte_reproducible (__main__.TestPolicyVectors.test_generator_is_byte_reproducible) ... ok
+test_numeric_rtl_vectors_match_reviewable_csv (__main__.TestPolicyVectors.test_numeric_rtl_vectors_match_reviewable_csv) ... ok
+test_reset_enable_hold_and_post_reset_read_are_deterministic (__main__.TestPolicyVectors.test_reset_enable_hold_and_post_reset_read_are_deterministic) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.012s
+
+OK
+===== P4 STEP 3 STATE-ENCODER REGRESSION =====
+test_all_256_state_categories_are_explicit_and_exact (__main__.TestFrozenBoundary.test_all_256_state_categories_are_explicit_and_exact) ... ok
+test_all_36_threshold_edge_vectors_are_exact (__main__.TestFrozenBoundary.test_all_36_threshold_edge_vectors_are_exact) ... ok
+test_contract_thresholds_are_independently_rederived (__main__.TestFrozenBoundary.test_contract_thresholds_are_independently_rederived) ... ok
+test_generator_is_byte_reproducible (__main__.TestVectorSequence.test_generator_is_byte_reproducible) ... ok
+test_numeric_rtl_vectors_match_the_reviewable_csv (__main__.TestVectorSequence.test_numeric_rtl_vectors_match_the_reviewable_csv) ... ok
+test_reset_enable_endpoints_and_registered_sequence (__main__.TestVectorSequence.test_reset_enable_endpoints_and_registered_sequence) ... ok
+test_rtl_is_verilog_2001_and_contains_the_exact_frozen_boundary (__main__.TestVerilogBoundary.test_rtl_is_verilog_2001_and_contains_the_exact_frozen_boundary) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.015s
+
+OK
+===== FROZEN P4 STEP 2 CONTRACT REGRESSION =====
+test_reset_removes_dwell_history (__main__.TestDwellContract.test_reset_removes_dwell_history) ... ok
+test_saturating_hardware_count_preserves_python_action_timeline (__main__.TestDwellContract.test_saturating_hardware_count_preserves_python_action_timeline) ... ok
+test_claim_firewall_is_all_false (__main__.TestHandshakeSchemaAndClaims.test_claim_firewall_is_all_false) ... ok
+test_golden_schema_has_unique_columns_and_required_categories (__main__.TestHandshakeSchemaAndClaims.test_golden_schema_has_unique_columns_and_required_categories) ... ok
+test_handshake_and_exception_rules_are_complete (__main__.TestHandshakeSchemaAndClaims.test_handshake_and_exception_rules_are_complete) ... ok
+test_module_port_widths_are_frozen (__main__.TestHandshakeSchemaAndClaims.test_module_port_widths_are_frozen) ... ok
+test_policy_rom_is_deployed_and_q_table_is_audit_only (__main__.TestRomAndProfileContract.test_policy_rom_is_deployed_and_q_table_is_audit_only) ... ok
+test_policy_rom_is_exact_frozen_policy (__main__.TestRomAndProfileContract.test_policy_rom_is_exact_frozen_policy) ... ok
+test_profile_rom_is_four_18_bit_entries_totaling_72_bits (__main__.TestRomAndProfileContract.test_profile_rom_is_four_18_bit_entries_totaling_72_bits) ... ok
+test_all_state_ids_pack_and_decode_exactly (__main__.TestStateContract.test_all_state_ids_pack_and_decode_exactly) ... ok
+test_encoded_below_equal_above_rule (__main__.TestStateContract.test_encoded_below_equal_above_rule) ... ok
+test_python_thresholds_and_unorm_codes_are_exactly_derived (__main__.TestStateContract.test_python_thresholds_and_unorm_codes_are_exactly_derived) ... ok
+test_source_checkpoint_and_state_shape (__main__.TestStateContract.test_source_checkpoint_and_state_shape) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.115s
+
+OK

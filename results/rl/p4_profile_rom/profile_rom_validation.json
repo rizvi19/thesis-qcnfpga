@@ -1,0 +1,63 @@
+{
+  "board_programming_performed": false,
+  "complete_rom_payload_bits": 72,
+  "decision": "PASS",
+  "deployment_artifact": "results/rl/p3_export/profile_rom.mem",
+  "eeprom_access_performed": false,
+  "explicit_actions": 4,
+  "files": {
+    "docs/rl/p4_step5_status.md": "9343a76f40540b2e5f2c361cc913c705e4111358a0178b07a2bd583d316b2f9a",
+    "results/rl/p4_profile_rom/generator_repro.log": "b309fba3cc601c9d6c6d918ec3b6a61a431c183d8da9e78065965fa06e133618",
+    "results/rl/p4_profile_rom/iverilog_compile.log": "56be4983abdd37d85a968b797fa460929c32339c84426458017ea286344d7e8c",
+    "results/rl/p4_profile_rom/python_tests.log": "7c90ba105e4f0edeaf00d288a922cf7704ad84196030f20e2f9da1ee3d595b21",
+    "results/rl/p4_profile_rom/rtl_sim.log": "d4dc958108646e8d8987aba5c3b5b247b03196a509e2fb7e0fe988e49fb0d939",
+    "rtl/rl/rl_profile_rom.v": "9bd8d28c015e6230a896377713efce9371482309a334d474eec9f96967af6d0e",
+    "sim/rl/p4_generate_profile_rom_vectors.py": "d5b58a9e0e11b8649bf0d98b466dec35e8b2d8df6c5e122304c27b3178209051",
+    "sim/rl/p4_profile_rom_vectors.csv": "8d8e7ec7b010911fd84421473b4fcb0728395f534fee9b61b165369bed7419c9",
+    "sim/rl/p4_profile_rom_vectors.txt": "249d4ce0b21b431e029e2004f4252d84fed787ec285d2452a510a7468a7b6a36",
+    "sim/rl/tb_rl_profile_rom.v": "41a29261fc5a18ba95273b57ad58b07a3544672ea3b6ee88c02cf72a880783b5",
+    "sim/rl/test_p4_profile_rom.py": "71335094f050431e396a9b2b83dc2ce94dde882a48def165a27097862740696d"
+  },
+  "human_review": {
+    "basis": "four exact 18-bit payloads, 72 useful bits, exact roundtrip, 8 RTL vectors, 35 tests",
+    "content_changed_during_review": false,
+    "roundtrip_mismatch_count": 0,
+    "rtl_mismatch_count": 0,
+    "status": "ACCEPTED"
+  },
+  "ise_synthesis_performed": false,
+  "iverilog_version": "Icarus Verilog version 12.0 (stable) ()",
+  "payload_width_bits": 18,
+  "payloads_hex_action_order": [
+    "13329",
+    "1B516",
+    "14399",
+    "0A2A5"
+  ],
+  "phase": "P4",
+  "policy_or_profile_changed": false,
+  "profile_mem_sha256": "39e4187665dffa86bac1b7d816ec5cfcab54aff11ecba8726dbdf01df03ad5ae",
+  "python_test_count": 35,
+  "python_test_counts_by_suite": [
+    8,
+    7,
+    7,
+    13
+  ],
+  "read_latency_cycles": 1,
+  "rom_depth": 4,
+  "roundtrip_mismatch_count": 0,
+  "rtl_mismatch_count": 0,
+  "rtl_module": "rtl/rl/rl_profile_rom.v",
+  "rtl_standard": "Verilog-2001",
+  "schema_version": 1,
+  "source_checkpoint": "250d5c4dc8e404d2ed89e8c6c393b66c1bef4346",
+  "step": "P4_STEP_5_PROFILE_ROM",
+  "vector_categories": {
+    "all_four_actions": 4,
+    "enable_hold": 1,
+    "post_reset_read": 1,
+    "reset": 2
+  },
+  "vector_count": 8
+}

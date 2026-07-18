@@ -1,0 +1,2 @@
+P4_PROFILE_ROM_RTL_PASS vectors=8 mismatches=0
+sim/rl/tb_rl_profile_rom.v:107: $finish called at 86000 (1ps)

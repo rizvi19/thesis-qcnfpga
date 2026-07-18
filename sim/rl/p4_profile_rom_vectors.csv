@@ -1,0 +1,9 @@
+case_id,category,rst,en,selected_action,expected_valid,expected_profile_payload_hex,expected_profile_payload_decimal,notes
+0,reset,1,1,3,0,00000,0,reset dominates enable and action
+1,all_four_actions,0,1,0,1,13329,78633,exact frozen action-major profile lookup
+2,all_four_actions,0,1,1,1,1B516,111894,exact frozen action-major profile lookup
+3,all_four_actions,0,1,2,1,14399,82841,exact frozen action-major profile lookup
+4,all_four_actions,0,1,3,1,0A2A5,41637,exact frozen action-major profile lookup
+5,enable_hold,0,0,0,0,0A2A5,41637,valid clears and payload holds
+6,reset,1,1,3,0,00000,0,midstream reset clears the prior payload
+7,post_reset_read,0,1,0,1,13329,78633,first enabled read after reset
