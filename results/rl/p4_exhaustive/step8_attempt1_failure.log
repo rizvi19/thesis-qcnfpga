@@ -1,0 +1,35 @@
+===== P4 STEP 8 EXHAUSTIVE TESTS =====
+test_every_state_has_exact_frozen_policy_action (__main__.TestAllStatesAndProfiles.test_every_state_has_exact_frozen_policy_action) ... ok
+test_every_state_has_exact_selected_profile_payload (__main__.TestAllStatesAndProfiles.test_every_state_has_exact_selected_profile_payload) ... ok
+test_exactly_one_isolated_case_exists_for_every_state (__main__.TestAllStatesAndProfiles.test_exactly_one_isolated_case_exists_for_every_state) ... ok
+test_policy_distribution_and_all_actions_are_preserved (__main__.TestAllStatesAndProfiles.test_policy_distribution_and_all_actions_are_preserved) ... ok
+test_all_rtl_remains_verilog_2001_without_argmax_or_q_update (__main__.TestCycleReproducibilityAndLintBoundary.test_all_rtl_remains_verilog_2001_without_argmax_or_q_update) ... ok
+test_generator_is_byte_reproducible (__main__.TestCycleReproducibilityAndLintBoundary.test_generator_is_byte_reproducible) ... ok
+test_numeric_vectors_match_reviewable_csv (__main__.TestCycleReproducibilityAndLintBoundary.test_numeric_vectors_match_reviewable_csv) ... ok
+test_schema_cycle_count_and_all_n_plus_3_completions_are_exact (__main__.TestCycleReproducibilityAndLintBoundary.test_schema_cycle_count_and_all_n_plus_3_completions_are_exact) ... ok
+test_summary_and_policy_rom_decision_firewall_are_exact (__main__.TestCycleReproducibilityAndLintBoundary.test_summary_and_policy_rom_decision_firewall_are_exact) ... ok
+test_all_36_threshold_edges_are_explicit (__main__.TestThresholdsEndpointsAndExceptions.test_all_36_threshold_edges_are_explicit) ... ok
+test_below_and_above_codes_straddle_each_threshold_exactly (__main__.TestThresholdsEndpointsAndExceptions.test_below_and_above_codes_straddle_each_threshold_exactly) ... FAIL
+test_encoded_endpoints_and_isolated_action_cases_are_explicit (__main__.TestThresholdsEndpointsAndExceptions.test_encoded_endpoints_and_isolated_action_cases_are_explicit) ... ok
+test_exception_dwell_and_handshake_categories_are_all_present (__main__.TestThresholdsEndpointsAndExceptions.test_exception_dwell_and_handshake_categories_are_all_present) ... ok
+test_threshold_equality_enters_the_higher_bin (__main__.TestThresholdsEndpointsAndExceptions.test_threshold_equality_enters_the_higher_bin) ... ok
+
+======================================================================
+FAIL: test_below_and_above_codes_straddle_each_threshold_exactly (__main__.TestThresholdsEndpointsAndExceptions.test_below_and_above_codes_straddle_each_threshold_exactly)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/sim/rl/test_p4_exhaustive.py", line 95, in test_below_and_above_codes_straddle_each_threshold_exactly
+    self.assertEqual(values, {"threshold_below": threshold - 1, "threshold_equal": threshold, "threshold_above": threshold + 1})
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'threshold_below': 0, 'threshold_equal': 0, 'threshold_above': 0} != {'threshold_below': 16383, 'threshold_equal': 16384, 'threshold_above': 16385}
+- {'threshold_above': 0, 'threshold_below': 0, 'threshold_equal': 0}
+?                     ^                     ^                     ^
+
++ {'threshold_above': 16385, 'threshold_below': 16383, 'threshold_equal': 16384}
+?                     ^^^^^                     ^^^^^                     ^^^^^
+
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.064s
+
+FAILED (failures=1)

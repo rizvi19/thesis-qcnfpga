@@ -1,0 +1,2 @@
+iverilog -g2001 -Wall -Wimplicit -t null -s rl_controller
+PASS: four-module controller passed Verilog-2001 warning/implicit-net lint

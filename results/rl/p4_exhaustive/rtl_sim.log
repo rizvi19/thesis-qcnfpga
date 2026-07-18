@@ -1,0 +1,2 @@
+P4_EXHAUSTIVE_RTL_PASS vectors=1509 decisions=302 mismatches=0
+sim/rl/tb_rl_controller_exhaustive.v:69: $finish called at 15096000 (1ps)
