@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "phase": "P5",
+  "step": "P5_STEP_2_CONTRACT_FREEZE",
+  "source_checkpoint": "2dba73ea36e6cd35b43cf3d06cbf6e774a6e429d",
+  "branch": "rl-nexys3-adaptive",
+  "target": {"board": "Digilent Nexys3", "part": "XC6SLX16-2-CSG324", "hdl": "Verilog-2001"},
+  "scope": {
+    "authorized": ["contracts", "machine_readable_contract", "vector_schema", "contract_tests", "deterministic_contract_evidence"],
+    "prohibited": ["rtl", "ucf", "ise_activation", "xst", "ngdbuild", "map", "par", "trce", "bitgen", "live_board_enumeration", "uart_access", "board_programming", "eeprom_access", "stage", "commit", "push"]
+  },
+  "topology": {
+    "name": "Ring-6",
+    "nodes": [0, 1, 2, 3, 4, 5],
+    "directed_edges": [[0,1],[1,0],[1,2],[2,1],[2,3],[3,2],[3,4],[4,3],[4,5],[5,4],[5,0],[0,5]],
+    "candidate_slot_count": 4,
+    "candidate_slots": [
+      {"id": 0, "valid": true, "meaning": "clockwise_simple_path_add_one_modulo_6"},
+      {"id": 1, "valid": true, "meaning": "counterclockwise_simple_path_subtract_one_modulo_6"},
+      {"id": 2, "valid": false, "meaning": "reserved_zero_payload"},
+      {"id": 3, "valid": false, "meaning": "reserved_zero_payload"}
+    ],
+    "path_representation": {"valid_bits": 1, "hop_count_bits": 3, "max_nodes": 6, "node_id_bits": 3, "unused_node_fields": 0}
+  },
+  "fixed_point": {
+    "rounding": "round_to_nearest_half_up",
+    "addition": "saturating",
+    "comparisons": "unsigned_encoded_domain",
+    "fidelity_qber": {"name": "UNORM16", "bits": 16, "scale": 65535, "min_code": 0, "max_code": 65535},
+    "key_count": {"bits": 16, "scale": 1, "logical_trace_capacity": 16},
+    "key_rate": {"name": "UQ8.8", "bits": 16, "fraction_bits": 8},
+    "weight": {"name": "UQ16.16", "bits": 32, "fraction_bits": 16, "infinity": 4294967295, "max_finite": 4294967294},
+    "utilization": {"name": "UQ16.16", "bits": 32, "fraction_bits": 16},
+    "normalized_objective": {"name": "UNORM16", "bits": 16, "scale": 65535},
+    "alpha": {"name": "U2.1", "bits": 3, "fraction_bits": 1},
+    "lambda_ratio": {"bits": 2, "normalization_omitted_for_argmin": true},
+    "profile_payload_bits": 18
+  },
+  "fdpe_mini": {
+    "equation": "f_initial_times_exp_minus_elapsed_over_tau",
+    "x_format": "UQ4.12",
+    "lut_depth": 256,
+    "lut_x_step": "1/32",
+    "lut_word_rule": "round_half_up(exp(-i/32)*65535)",
+    "interpolation_fraction_denominator": 128,
+    "x_at_least_8_output": 0,
+    "final_multiply_rescale": "full_product_shift_right_16_truncate",
+    "zero_tau": "invalid_zero_output"
+  },
+  "skag_mini": {
+    "edge_count": 12,
+    "edge_entry_bits": 64,
+    "field_order_msb_to_lsb": ["key_count_u16", "fidelity_unorm16", "key_rate_uq8_8", "qber_unorm16"],
+    "weight_equation": "alpha1/K + alpha2/F + alpha3/key_rate + alpha4*qber",
+    "lower_weight_is_better": true,
+    "zero_key_fidelity_or_rate": "infeasible_infinity"
+  },
+  "candidate_evaluator": {
+    "fidelity_floor_unorm16": 58982,
+    "feasibility": ["all_directed_edges_exist", "key_count_at_least_1", "positive_key_rate", "fidelity_at_least_floor", "simple_frozen_path"],
+    "objectives": ["saturating_path_weight_sum", "bottleneck_fidelity", "max_consumed_plus_one_over_key_count"],
+    "minimization_vector": ["path_cost", "65535_minus_bottleneck_fidelity", "utilization_imbalance"],
+    "normalization": "zero_if_range_zero_else_round_half_up((value-min)*65535/((max-min)+1))",
+    "score": "max(lambda_ratio_i*normalized_i)",
+    "ranking": ["score", "path_cost", "hop_count", "candidate_slot"],
+    "no_feasible_candidate": "NO_PATH"
+  },
+  "policy_shell": {
+    "compile_time_parameter": "POLICY_MODE",
+    "modes": {"0":"H0_feasible_shortest_distance", "1":"H1_fixed_key_aware", "2":"H2_fixed_qflow_profile_0", "3":"H3_frozen_threshold_rule", "4":"H4_frozen_learned_policy"},
+    "common_outputs": ["policy_id", "state_id", "profile_id", "selected_path", "score", "bottleneck_fidelity", "cycles", "status"],
+    "h4": {
+      "state_count": 256,
+      "action_count": 4,
+      "deployment": "policy_index_rom",
+      "q_table_role": "audit_only",
+      "minimum_dwell_decisions": 3,
+      "valid_controller_latency_cycles": 3,
+      "profile_payloads_hex": ["13329", "1B516", "14399", "0A2A5"],
+      "runtime_argmax": false,
+      "q_update": false,
+      "online_learning": false
+    }
+  },
+  "handshake": {
+    "reset": "synchronous_active_high_dominant",
+    "accept": "start_and_ready_and_input_valid",
+    "ready": "idle_only",
+    "done": "one_cycle_completion_pulse",
+    "route_valid": "one_cycle_with_done_on_success_only",
+    "invalid_request": "done_after_one_cycle_status_2_no_state_change",
+    "start_while_busy": "reject_and_pulse_stall_no_transaction_change",
+    "no_path": "done_status_1_route_valid_0_h4_dwell_advances",
+    "latency_cycles": "N_done_minus_N_accept_excludes_uart_host"
+  },
+  "uart": {
+    "electrical": "8N1_idle_high",
+    "baud_and_pins": "deferred_to_B1_review",
+    "result_prefix": "QF5R",
+    "b1_prefix": "QF5B1",
+    "record_version": 1,
+    "terminator": "CRLF",
+    "status_codes": {"0":"OK", "1":"NO_PATH", "2":"INVALID_REQUEST", "3":"CONTRACT_ERROR", "4":"INTERNAL_ERROR"},
+    "no_route_selected_path": 255,
+    "no_route_score_hex": "FFFFF",
+    "no_route_bottleneck_hex": "0000"
+  },
+  "milestones": ["B1_clock_reset_display_uart", "B2_fdpe_mini", "B3_skag_mini", "B4_candidate_evaluator", "B5_policy_shell_H0_H4", "B6_internal_latency_counter"],
+  "fallback_order": ["policy_rom_not_q_table", "preserve_4_actions", "reduce_states_to_128_or_64_after_review", "serialize_fdpe", "reduce_candidate_count", "reduce_numeric_widths_with_revalidation"],
+  "claim_firewall": {
+    "rtl_complete": false, "ucf_complete": false, "ise_run": false, "synthesis": false, "map": false, "par": false, "trce": false, "bitgen": false, "timing_closure": false, "board_access": false, "uart_access": false, "board_programming": false, "eeprom_access": false, "hardware_result": false, "statistical_superiority": false, "online_fpga_learning": false
+  },
+  "authority_sha256": {
+    "docs/rl/benchmark_contract.md": "6e0a13cb93434204b2aec9233b335e22e9fdf4b0a9ab45cc52e78814b499dbd4",
+    "docs/rl/p2_environment_contract.md": "c1bd4be06d0f314f2806c6ca48767870ab208c707630f0c71a3d7bd97ab2c9ad",
+    "docs/rl/p2_mdp_contract.md": "3325af7465d7360b4f84fe919c8e8f688d8867b8af158858cb4af3b80bca54f0",
+    "docs/rl/p4_rtl_contract.md": "22e9522fe95c7d420a4867d8991ff37e20311042cee3613e020e852d7b38f14d",
+    "docs/rl/p4_verification_contract.md": "8d9762a0c0a7a0191bcfc6a49171dd5fb6a33eaa0f8b74a03e5b707f3882e23a",
+    "docs/rl/p4_policy_rom_deployment_decision.md": "afe61bc510af35f6e88c3e8451904f7ca026d1eb2db030815c17ae70cbdebafa",
+    "rl/config/mdp_v0.yaml": "799cb37a8fd1c819def69801a8d03c762b922a478d717f4991eff91fc02fd078",
+    "rl/config/profile_codebook_v0.json": "a6faf2b8fdb760213fa92ad0f43fa8a3ce812b50e9210a75afac6f5150dd3fa1",
+    "rl/config/p4_rtl_contract_v1.json": "761df7a7d2529dd0d5ab881cd833d5b4eaaf3ef5e74ee36cb4821ddb477632ba",
+    "rl/trace_generator.py": "7f7c848d518eba4a36df9f3dfd0db37f6e4deb9930f10fcb5920a95d3aebaaf1",
+    "rl/ring6_environment.py": "c10a07078c52dbd43f25adc83858b3be6e81fe5b2ad2d1cc0da0e0113300ef30",
+    "rl/route_selector.py": "3179532fe2f42eacca93a982caff1ecc4642545614ce2f595a3fb8f7053d1e71",
+    "rtl/rl/rl_controller.v": "5cad1fa420ea25270b743cc55ab0239de452214e1040b36ae51c5d975eedbc96",
+    "results/rl/p3_export/policy_rom.mem": "15d7cfc26ebd01b622f801050f198283f2f5c1b44bcdbb07e903a167c81646c7",
+    "results/rl/p3_export/profile_rom.mem": "39e4187665dffa86bac1b7d816ec5cfcab54aff11ecba8726dbdf01df03ad5ae",
+    "results/rl/p3_export/q_table.mem": "5bbbc3417afad3a70abd53c171e874e55808c51144c4b63d89498d72b6fb1ca5"
+  }
+}

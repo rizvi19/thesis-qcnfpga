@@ -1,0 +1,65 @@
+{
+  "assistant_review": {
+    "authority_hashes": "16_PASS",
+    "candidate_slots": "4_WITH_2_ACTIVE_2_RESERVED_PASS",
+    "contract_tests": "9_PASS",
+    "decision": "PASS",
+    "evidence_checksums": "PASS",
+    "file_scope": "10_OF_10_PASS",
+    "ordered_endpoint_pairs": "30_PASS",
+    "result_health": "GOOD"
+  },
+  "authored_payload_files": 7,
+  "authority_hashes": 16,
+  "branch": "rl-nexys3-adaptive",
+  "candidate_slots": {
+    "active": [
+      0,
+      1
+    ],
+    "reserved_invalid": [
+      2,
+      3
+    ],
+    "total": 4
+  },
+  "claim_firewall": {
+    "bitgen": false,
+    "board_programming": false,
+    "eeprom_access": false,
+    "hardware_result": false,
+    "ise_activation": false,
+    "live_board_access": false,
+    "map": false,
+    "online_fpga_learning": false,
+    "par": false,
+    "rtl": false,
+    "statistical_superiority": false,
+    "synthesis": false,
+    "timing_closure": false,
+    "trce": false,
+    "uart_access": false,
+    "ucf": false
+  },
+  "checkpoint_operation": {
+    "commit": "AUTHORIZED_AFTER_ASSISTANT_REVIEW",
+    "non_force_push": "AUTHORIZED_AFTER_ASSISTANT_REVIEW",
+    "staging": "AUTHORIZED_EXACT_10_FILE_SCOPE_ONLY"
+  },
+  "contract_tests": 9,
+  "decision": "PASS_AFTER_ASSISTANT_REVIEW",
+  "directed_edges": 12,
+  "generated_evidence_files_including_sha256sums": 3,
+  "ordered_endpoint_pairs_checked": 30,
+  "p4_handoff": {
+    "actions": 4,
+    "controller_latency_cycles": 3,
+    "deployment": "policy_index_rom",
+    "minimum_dwell": 3,
+    "states": 256
+  },
+  "phase": "P5",
+  "schema_version": 1,
+  "source_checkpoint": "2dba73ea36e6cd35b43cf3d06cbf6e774a6e429d",
+  "step": "P5_STEP_2_CONTRACT_FREEZE"
+}

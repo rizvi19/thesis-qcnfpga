@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "contract": "rl/config/p5_qflow_mini_contract_v1.json",
+  "purpose": "column_and_category_authority_for_later_P5_golden_vectors",
+  "step2_generates_vectors": false,
+  "common_columns": [
+    {"name":"case_id","type":"string"},
+    {"name":"test_id","type":"uint32"},
+    {"name":"category","type":"enum"},
+    {"name":"input_cycle","type":"uint"},
+    {"name":"expected_done_cycle","type":"uint_or_null"},
+    {"name":"src","type":"uint3"},
+    {"name":"dst","type":"uint3"},
+    {"name":"policy_id","type":"uint3"},
+    {"name":"state_id","type":"uint8"},
+    {"name":"profile_id","type":"uint2"},
+    {"name":"candidate_valid_mask","type":"uint4"},
+    {"name":"selected_path","type":"uint8"},
+    {"name":"score","type":"uint18_or_infinity"},
+    {"name":"bottleneck_fidelity","type":"unorm16"},
+    {"name":"cycles","type":"uint32"},
+    {"name":"status","type":"uint3"},
+    {"name":"route_valid","type":"bit"},
+    {"name":"notes","type":"string"}
+  ],
+  "categories": [
+    "reset", "valid_request", "invalid_request", "busy_stall", "back_to_back",
+    "ring_path", "reserved_slot", "fdpe_lut_boundary", "fdpe_interpolation",
+    "fdpe_saturation", "fdpe_zero_tau", "skag_finite", "skag_infinite",
+    "skag_rounding", "skag_saturation", "fidelity_floor_edge",
+    "one_candidate", "two_candidates", "no_path", "normalization_zero_range",
+    "normalization_nonzero_range", "tie_score", "tie_cost", "tie_hops",
+    "tie_slot", "h0", "h1", "h2", "h3", "h4_p4_handoff",
+    "latency_counter", "uart_valid", "uart_reject"
+  ],
+  "module_specific_columns": {
+    "fdpe": ["x_uq4_12", "f_initial_unorm16", "expected_fidelity_unorm16", "expected_error"],
+    "skag": ["edge_id", "key_count", "fidelity_unorm16", "key_rate_uq8_8", "qber_unorm16", "profile_payload", "expected_weight_uq16_16", "expected_feasible"],
+    "candidate": ["candidate_slot", "path_nodes", "hop_count", "path_cost_uq16_16", "fidelity_loss_unorm16", "utilization_uq16_16", "normalized_0", "normalized_1", "normalized_2", "expected_score_uint18"],
+    "uart": ["expected_ascii_hex", "expected_record_text"]
+  },
+  "exact_comparison_fields": ["path_nodes", "selected_path", "state_id", "profile_id", "score", "bottleneck_fidelity", "cycles", "status", "route_valid", "expected_fidelity_unorm16", "expected_weight_uq16_16", "expected_ascii_hex"],
+  "required_coverage": {
+    "ordered_endpoint_pairs": 30,
+    "directed_edges": 12,
+    "candidate_slots": 4,
+    "active_candidate_slots": [0,1],
+    "reserved_candidate_slots": [2,3],
+    "policy_modes": [0,1,2,3,4],
+    "status_codes": [0,1,2,3,4],
+    "p4_states": 256,
+    "p4_actions": 4,
+    "fdpe_lut_interval_boundaries": 256
+  },
+  "claim_boundary": "schema_only_no_vectors_or_hardware_results_at_step2"
+}
