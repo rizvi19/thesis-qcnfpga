@@ -1,0 +1,160 @@
+{
+  "assistant_review": {
+    "accepted_attempt3_installer_sha256": "5c848861e0cb7517a053f02ba529bb13b3e55295a5e71025727a4bbeeba663bb",
+    "accepted_attempt3_package_sha256": "d71fd07a13371c620e89145e4d215a75a64d8a15a0ee72b730b5cf46c4eb7143",
+    "archival_attempts": {
+      "attempt1": "FAIL_PRESERVED_MISSING_OPTIONAL_RG_BEFORE_REPOSITORY_MUTATION",
+      "attempt2": "PASS_PENDING_CHECKPOINT"
+    },
+    "attempts": {
+      "attempt1": "FAIL_PRESERVED_ISE_NOUNSET_ACTIVATION",
+      "attempt2": "FAIL_PRESERVED_PREMATURE_PCF_GATE",
+      "attempt3": "PASS"
+    },
+    "claim_boundary": "post-PAR/TRCE implemented timing only; not physical-board evidence",
+    "decision": "PASS",
+    "owner": "assistant",
+    "raw_installer_outputs": {
+      "completion_attempt1_output.txt": {
+        "bytes": 503,
+        "sha256": "9c9a356ff9eec5c80e998c4fe0cd12bacf38c4b499830afcd76daf53ff5effce"
+      },
+      "installer_attempt1_output.txt": {
+        "bytes": 2915,
+        "sha256": "072a61a7834a6883e540c4faeb2f13bc2039805345bea2a33135fefbda6cf794"
+      },
+      "installer_attempt2_output.txt": {
+        "bytes": 4436,
+        "sha256": "e59faf15d2189674c94ed2e53f2555ea036fc8bd1702bd25c0a64690ba83f5b7"
+      },
+      "installer_attempt3_output.txt": {
+        "bytes": 24811,
+        "sha256": "8892ee0c602fd54425efb83c274c6bcc24a26adfda351752d8b0e03d112580ef"
+      }
+    },
+    "review_transcript_sha256": "e010eaa197aafbfac30194e51b10c8deb0343670c73513673778f04f8731578e"
+  },
+  "b1_complete": false,
+  "bitstream_sha256": "bf657f09f3b6968efd39079d53dfab42348a9de185cf178bc947035b7e59673b",
+  "bitstream_size_bytes": 464294,
+  "board_enumeration_performed": false,
+  "board_programming_performed": false,
+  "claim_level": "post_par_trce_implemented_timing_for_exact_build_only",
+  "clock_target_ns": 10.0,
+  "decision": "PASS_ASSISTANT_REVIEWED",
+  "eeprom_access_performed": false,
+  "flow": [
+    "XST",
+    "NGDBuild",
+    "Map",
+    "PAR",
+    "TRCE",
+    "BitGen"
+  ],
+  "intermediate_artifacts": {
+    "p5_b1.ngc": {
+      "bytes": 77141,
+      "sha256": "e1a488a61ac702c9683759458d74bc504c5358c8ee73699c56d74cbf54a30342"
+    },
+    "p5_b1.ngd": {
+      "bytes": 117288,
+      "sha256": "e1cf70766eb9865ca6bf7c4bab9b1bc7873fee72e35180828545a49d54ea59f5"
+    },
+    "p5_b1.pcf": {
+      "bytes": 3707,
+      "sha256": "816e8bfb6bef169ec4f36056940c867d39fd2b6e99f82c2653bc01262df46654"
+    },
+    "p5_b1_map.ncd": {
+      "bytes": 40798,
+      "sha256": "9cb63975e15cb49e3fca44963ab50ecb1cc3a4a0f15e4c270f7d5e113d89f057"
+    },
+    "p5_b1_routed.ncd": {
+      "bytes": 68710,
+      "sha256": "2da8ce23c6971ed55b7238ede8473ad15251a32bd4fff42c49ae14ff6c66371b"
+    }
+  },
+  "map_error_count": 0,
+  "ngdbuild_error_count": 0,
+  "par_error_count": 0,
+  "par_timing_score": 0,
+  "phase": "P5",
+  "post_par_maximum_frequency_mhz": 163.212,
+  "post_par_minimum_period_ns": 6.127,
+  "reported_slack_ns": 7.334,
+  "repository_commit_performed": false,
+  "repository_push_performed": false,
+  "repository_staging_performed": false,
+  "resources": {
+    "bonded_iobs": 17,
+    "bufg_bufgctrl": null,
+    "occupied_slices": 64,
+    "slice_luts": 192,
+    "slice_registers": 92
+  },
+  "retained_build_evidence": {
+    "bitgen.log": {
+      "bytes": 506,
+      "sha256": "15327aff3df7e3a719d1c6753f018718961344591694f1efdd211a5b0ddf6631"
+    },
+    "commands.log": {
+      "bytes": 372,
+      "sha256": "a297839a2193ee3468c5a56445322a084d1f6f693c10c7b35f4579687e59c25d"
+    },
+    "map.log": {
+      "bytes": 6537,
+      "sha256": "b9da8367184b67f0de3f888b61da6ddcada5e03e7faf9b70cd0eaa278420276d"
+    },
+    "ngdbuild.log": {
+      "bytes": 1045,
+      "sha256": "05e90d31ba292a085d73967b2944af9dce08b788fe73fdefbbcaf1450b25be20"
+    },
+    "p5_b1.bit": {
+      "bytes": 464294,
+      "sha256": "bf657f09f3b6968efd39079d53dfab42348a9de185cf178bc947035b7e59673b"
+    },
+    "p5_b1.syr": {
+      "bytes": 33494,
+      "sha256": "531a3d1c33fe37f98353a399a97f58d6a7cff83ab9576e041769e51f9ea63847"
+    },
+    "p5_b1.twr": {
+      "bytes": 42437,
+      "sha256": "fba2842bd40344907c3c7b281b907aa647a46a2fcc62238e76e448ad35bc3505"
+    },
+    "p5_b1_map.mrp": {
+      "bytes": 11242,
+      "sha256": "58e3c08a83d026d7278bcfb7ceb0994cc301c32e770f107a0bd6448b9ca16421"
+    },
+    "p5_b1_routed.par": {
+      "bytes": 8235,
+      "sha256": "baa329019936317aba0325ccadc281ebc17349079fc18c91280d4058bfe3b6aa"
+    },
+    "par.log": {
+      "bytes": 8144,
+      "sha256": "cbbc76fef96dc6eda540353e1013f99b99919a02fe824f8b39c4150c42506f32"
+    },
+    "toolchain.log": {
+      "bytes": 1965,
+      "sha256": "f126b96ffeb39df12e2bd672008609945e56ce7679729ec35608c91283d6c29b"
+    },
+    "trce.log": {
+      "bytes": 1891,
+      "sha256": "b3450df29b360235ad478d6fb57d0a4f26e8182789861c2abf0d63f0cde0dd12"
+    },
+    "xst.log": {
+      "bytes": 58,
+      "sha256": "d1ee3bb56d80a6ef1da75bd07294d43b1038ab962f7e06e4f39ef05ad6c77149"
+    }
+  },
+  "rtl_standard": "Verilog-2001",
+  "schema_version": 1,
+  "source_checkpoint": "097788bb3359e878e600bd74703b86ee6856367e",
+  "stage": "B1_STAGE_B_OFFLINE_ISE_IMPLEMENTATION",
+  "step": "P5_STEP_3_B1",
+  "target_board": "Digilent Nexys 3",
+  "target_part": "xc6slx16-2-csg324",
+  "tool": "Xilinx ISE 14.7 WebPACK",
+  "top": "p5_b1_top",
+  "trce_timing_errors": 0,
+  "uart_device_access_performed": false,
+  "xst_error_count": 0
+}

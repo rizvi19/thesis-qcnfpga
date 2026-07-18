@@ -1,0 +1,38 @@
+Release 14.7 - ngdbuild P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Command Line:
+/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/ngdbuild -p
+xc6slx16-2-csg324 -nt timestamp -uc p5_b1_io_sanity.ucf p5_b1.ngc p5_b1.ngd
+
+Reading NGO file
+"/home/shahriar-rizvi/Downloads/QFlow_P5_Step3_B1B_ISE_Build_097788bb_Attempt3/p
+5_b1.ngc" ...
+Gathering constraint information from source properties...
+Done.
+
+Annotating constraints to design from ucf file "p5_b1_io_sanity.ucf" ...
+Resolving constraint associations...
+Checking Constraint Associations...
+Done...
+
+Checking expanded design ...
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   0
+
+Writing NGD file "p5_b1.ngd" ...
+Total REAL time to NGDBUILD completion:  1 sec
+Total CPU time to NGDBUILD completion:   1 sec
+
+Writing NGDBUILD log file "p5_b1.bld"...
+
+NGDBUILD done.

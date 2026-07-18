@@ -1,0 +1,603 @@
+===== QFLOW-RL P5 STEP 3 / B1 STAGE B OFFLINE ISE ATTEMPT 3 =====
+P5_PROGRESS_BEFORE=2_OF_9_COMPLETED
+Repository: /media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga
+Expected branch: rl-nexys3-adaptive
+Expected HEAD: 097788bb3359e878e600bd74703b86ee6856367e
+ISE build directory: /home/shahriar-rizvi/Downloads/QFlow_P5_Step3_B1B_ISE_Build_097788bb_Attempt3
+Scope: four existing authored files plus nineteen checksum-bound implementation evidence files
+Repairs: retain nounset activation fix; require PCF after Map instead of after NGDBuild
+Authorized: offline XST NGDBuild Map PAR TRCE BitGen only
+Prohibited: live-board enumeration UART-device access programming EEPROM stage commit push
+
+===== PACKAGE INTEGRITY =====
+./docs/rl/p5_b1_ise_implementation.md: OK
+./fpga/ise_nexys3/p5_b1/p5_b1.prj: OK
+./fpga/ise_nexys3/p5_b1/p5_b1.xst: OK
+./results/nexys3/builds/p5_b1_stage_b/stage_b_attempt1_failure.log: OK
+./results/nexys3/builds/p5_b1_stage_b/stage_b_attempt2_failure.log: OK
+./sim/spartan6/test_p5_b1_ise.py: OK
+P5_STEP3_B1_STAGE_B_PACKAGE_INTEGRITY=PASS
+
+===== READ-ONLY REPOSITORY PRECHECK =====
+BRANCH=rl-nexys3-adaptive
+HEAD=097788bb3359e878e600bd74703b86ee6856367e
+UPSTREAM_HEAD=097788bb3359e878e600bd74703b86ee6856367e
+LIVE_REMOTE_HEAD=097788bb3359e878e600bd74703b86ee6856367e
+TRACKED_WORKTREE_INDEX_CLEAN=PASS
+ATTEMPT2_UNTRACKED_SCOPE=5_OF_5_PASS
+docs/rl/p5_b1_ise_implementation.md: OK
+fpga/ise_nexys3/p5_b1/p5_b1.prj: OK
+fpga/ise_nexys3/p5_b1/p5_b1.xst: OK
+sim/spartan6/test_p5_b1_ise.py: OK
+results/nexys3/builds/p5_b1_stage_b/stage_b_attempt1_failure.log: OK
+ATTEMPT2_PARTIAL_STATE_HASHES=5_OF_5_PASS
+
+===== EXACT STAGE-A SOURCE CHECKPOINT =====
+docs/rl/p5_b1_io_sanity.md: OK
+rtl/spartan6/p5_b1_uart_tx.v: OK
+rtl/spartan6/p5_b1_sevenseg.v: OK
+rtl/spartan6/p5_b1_top.v: OK
+sim/spartan6/tb_p5_b1_io_sanity.v: OK
+sim/spartan6/test_p5_b1.py: OK
+constraints/nexys3/p5_b1_io_sanity.ucf: OK
+results/nexys3/p5_b1/stage_a_test.log: OK
+results/nexys3/p5_b1/stage_a_validation.json: OK
+results/nexys3/p5_b1/STAGE_A_SHA256SUMS: OK
+docs/rl/p5_b1_io_sanity.md: OK
+rtl/spartan6/p5_b1_uart_tx.v: OK
+rtl/spartan6/p5_b1_sevenseg.v: OK
+rtl/spartan6/p5_b1_top.v: OK
+sim/spartan6/tb_p5_b1_io_sanity.v: OK
+sim/spartan6/test_p5_b1.py: OK
+constraints/nexys3/p5_b1_io_sanity.ucf: OK
+results/nexys3/p5_b1/stage_a_test.log: OK
+results/nexys3/p5_b1/stage_a_validation.json: OK
+P5_B1_STAGE_A_PRECONDITION_HASHES=10_OF_10_PASS
+
+===== TARGET ABSENCE AND BOUNDARY CHECK =====
+P5_STEP3_B1_STAGE_B_NEW_EVIDENCE_TARGETS_ABSENT=18_OF_18_PASS
+P5_STEP3_B1_STAGE_B_ATTEMPT1_BUILD_PRESERVED=7_OF_7_PASS
+P5_STEP3_B1_STAGE_B_ATTEMPT2_BUILD_PRESERVED=19_OF_19_PASS
+
+===== ISE READ-ONLY MOUNT AND LICENSE PRECHECK =====
+ISE_SETTINGS=/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/settings64.sh
+ISE_LICENSE_PRESENT=PASS
+ISE_MOUNT_READ_ONLY=PASS
+
+===== VERIFY THREE EXISTING PAYLOADS AND INSTALL PARSER REPAIR =====
+VERIFIED docs/rl/p5_b1_ise_implementation.md
+VERIFIED fpga/ise_nexys3/p5_b1/p5_b1.prj
+VERIFIED fpga/ise_nexys3/p5_b1/p5_b1.xst
+REPAIRED sim/spartan6/test_p5_b1_ise.py
+PRESERVED results/nexys3/builds/p5_b1_stage_b/stage_b_attempt1_failure.log
+RECORDED results/nexys3/builds/p5_b1_stage_b/stage_b_attempt2_failure.log
+
+===== LOWER-RUNG RTL REGRESSION =====
+P5_B1_STAGE_A_STATIC_CHECKS=7_PASS
+P5_B1_UCF_LOCATIONS=17_OF_17_PASS
+P5_B1_CLOCK_CONSTRAINT_10NS=PASS
+P5_B1_UART_DIVIDER=868_PASS
+P5_B1_UART_BAUD_ERROR_PERCENT=+0.0064004096_PASS
+P5_B1_SIM_UART_BYTES=16_OF_16_PASS
+P5_B1_SIM_DISPLAY_DIGITS=4_OF_4_PASS
+P5_B1_SIM_RESET_CASES=2_OF_2_PASS
+P5_B1_STAGE_A=PASS
+P5_B1_STAGE_A_RERUN=PASS_EXACT_LOG_MATCH
+
+===== ACTIVATE OFFLINE ISE TOOLCHAIN =====
+
+===== XST =====
+
+===== NGDBUILD =====
+Release 14.7 - ngdbuild P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Command Line:
+/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/ngdbuild -p
+xc6slx16-2-csg324 -nt timestamp -uc p5_b1_io_sanity.ucf p5_b1.ngc p5_b1.ngd
+
+Reading NGO file
+"/home/shahriar-rizvi/Downloads/QFlow_P5_Step3_B1B_ISE_Build_097788bb_Attempt3/p
+5_b1.ngc" ...
+Gathering constraint information from source properties...
+Done.
+
+Annotating constraints to design from ucf file "p5_b1_io_sanity.ucf" ...
+Resolving constraint associations...
+Checking Constraint Associations...
+Done...
+
+Checking expanded design ...
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   0
+
+Writing NGD file "p5_b1.ngd" ...
+Total REAL time to NGDBUILD completion:  1 sec
+Total CPU time to NGDBUILD completion:   1 sec
+
+Writing NGDBUILD log file "p5_b1.bld"...
+
+NGDBUILD done.
+
+===== MAP =====
+Release 14.7 - Map P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Using target part "6slx16csg324-2".
+Mapping design into LUTs...
+Writing file p5_b1_map.ngm...
+Running directed packing...
+Running delay-based LUT packing...
+Updating timing models...
+INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
+   (.mrp).
+Running timing-driven placement...
+Total REAL time at the beginning of Placer: 2 secs 
+Total CPU  time at the beginning of Placer: 2 secs 
+
+Phase 1.1  Initial Placement Analysis
+Phase 1.1  Initial Placement Analysis (Checksum:3f35137e) REAL time: 2 secs 
+
+Phase 2.7  Design Feasibility Check
+Phase 2.7  Design Feasibility Check (Checksum:3f35137e) REAL time: 2 secs 
+
+Phase 3.31  Local Placement Optimization
+Phase 3.31  Local Placement Optimization (Checksum:3f35137e) REAL time: 2 secs 
+
+Phase 4.2  Initial Placement for Architecture Specific Features
+
+Phase 4.2  Initial Placement for Architecture Specific Features
+(Checksum:8002b38e) REAL time: 3 secs 
+
+Phase 5.36  Local Placement Optimization
+Phase 5.36  Local Placement Optimization (Checksum:8002b38e) REAL time: 3 secs 
+
+Phase 6.30  Global Clock Region Assignment
+Phase 6.30  Global Clock Region Assignment (Checksum:8002b38e) REAL time: 3 secs 
+
+Phase 7.3  Local Placement Optimization
+Phase 7.3  Local Placement Optimization (Checksum:8002b38e) REAL time: 3 secs 
+
+Phase 8.5  Local Placement Optimization
+Phase 8.5  Local Placement Optimization (Checksum:8002b38e) REAL time: 3 secs 
+
+Phase 9.8  Global Placement
+.......
+....
+Phase 9.8  Global Placement (Checksum:e0a07f72) REAL time: 3 secs 
+
+Phase 10.5  Local Placement Optimization
+Phase 10.5  Local Placement Optimization (Checksum:e0a07f72) REAL time: 3 secs 
+
+Phase 11.18  Placement Optimization
+Phase 11.18  Placement Optimization (Checksum:8f146b02) REAL time: 3 secs 
+
+Phase 12.5  Local Placement Optimization
+Phase 12.5  Local Placement Optimization (Checksum:8f146b02) REAL time: 3 secs 
+
+Phase 13.34  Placement Validation
+Phase 13.34  Placement Validation (Checksum:8f146b02) REAL time: 3 secs 
+
+Total REAL time to Placer completion: 3 secs 
+Total CPU  time to Placer completion: 3 secs 
+Running post-placement packing...
+Writing output files...
+
+Design Summary:
+Number of errors:      0
+Number of warnings:    0
+Slice Logic Utilization:
+  Number of Slice Registers:                    92 out of  18,224    1%
+    Number used as Flip Flops:                  92
+    Number used as Latches:                      0
+    Number used as Latch-thrus:                  0
+    Number used as AND/OR logics:                0
+  Number of Slice LUTs:                        192 out of   9,112    2%
+    Number used as logic:                      183 out of   9,112    2%
+      Number using O6 output only:              99
+      Number using O5 output only:              63
+      Number using O5 and O6:                   21
+      Number used as ROM:                        0
+    Number used as Memory:                       1 out of   2,176    1%
+      Number used as Dual Port RAM:              0
+      Number used as Single Port RAM:            0
+      Number used as Shift Register:             1
+        Number using O6 output only:             1
+        Number using O5 output only:             0
+        Number using O5 and O6:                  0
+    Number used exclusively as route-thrus:      8
+      Number with same-slice register load:      4
+      Number with same-slice carry load:         4
+      Number with other load:                    0
+
+Slice Logic Distribution:
+  Number of occupied Slices:                    64 out of   2,278    2%
+  Number of MUXCYs used:                        76 out of   4,556    1%
+  Number of LUT Flip Flop pairs used:          192
+    Number with an unused Flip Flop:           112 out of     192   58%
+    Number with an unused LUT:                   0 out of     192    0%
+    Number of fully used LUT-FF pairs:          80 out of     192   41%
+    Number of unique control sets:               7
+    Number of slice register sites lost
+      to control set restrictions:              35 out of  18,224    1%
+
+  A LUT Flip Flop pair for this architecture represents one LUT paired with
+  one Flip Flop within a slice.  A control set is a unique combination of
+  clock, reset, set, and enable signals for a registered element.
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+
+IO Utilization:
+  Number of bonded IOBs:                        17 out of     232    7%
+    Number of LOCed IOBs:                       17 out of      17  100%
+
+Specific Feature Utilization:
+  Number of RAMB16BWERs:                         0 out of      32    0%
+  Number of RAMB8BWERs:                          0 out of      64    0%
+  Number of BUFIO2/BUFIO2_2CLKs:                 0 out of      32    0%
+  Number of BUFIO2FB/BUFIO2FB_2CLKs:             0 out of      32    0%
+  Number of BUFG/BUFGMUXs:                       1 out of      16    6%
+    Number used as BUFGs:                        1
+    Number used as BUFGMUX:                      0
+  Number of DCM/DCM_CLKGENs:                     0 out of       4    0%
+  Number of ILOGIC2/ISERDES2s:                   0 out of     248    0%
+  Number of IODELAY2/IODRP2/IODRP2_MCBs:         0 out of     248    0%
+  Number of OLOGIC2/OSERDES2s:                   0 out of     248    0%
+  Number of BSCANs:                              0 out of       4    0%
+  Number of BUFHs:                               0 out of     128    0%
+  Number of BUFPLLs:                             0 out of       8    0%
+  Number of BUFPLL_MCBs:                         0 out of       4    0%
+  Number of DSP48A1s:                            0 out of      32    0%
+  Number of ICAPs:                               0 out of       1    0%
+  Number of MCBs:                                0 out of       2    0%
+  Number of PCILOGICSEs:                         0 out of       2    0%
+  Number of PLL_ADVs:                            0 out of       2    0%
+  Number of PMVs:                                0 out of       1    0%
+  Number of STARTUPs:                            0 out of       1    0%
+  Number of SUSPEND_SYNCs:                       0 out of       1    0%
+
+Average Fanout of Non-Clock Nets:                3.14
+
+Peak Memory Usage:  662 MB
+Total REAL time to MAP completion:  3 secs 
+Total CPU time to MAP completion:   3 secs 
+
+Mapping completed.
+See MAP report file "p5_b1_map.mrp" for details.
+
+===== PLACE AND ROUTE =====
+Release 14.7 - par P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+
+
+Constraints file: p5_b1.pcf.
+Loading device for application Rf_Device from file '6slx16.nph' in environment
+/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/.
+   "p5_b1_top" is an NCD, version 3.2, device xc6slx16, package csg324, speed -2
+
+Initializing temperature to 85.000 Celsius. (default - Range: 0.000 to 85.000 Celsius)
+Initializing voltage to 1.140 Volts. (default - Range: 1.140 to 1.260 Volts)
+
+
+Device speed data version:  "PRODUCTION 1.23 2013-10-13".
+
+
+
+Device Utilization Summary:
+
+Slice Logic Utilization:
+  Number of Slice Registers:                    92 out of  18,224    1%
+    Number used as Flip Flops:                  92
+    Number used as Latches:                      0
+    Number used as Latch-thrus:                  0
+    Number used as AND/OR logics:                0
+  Number of Slice LUTs:                        192 out of   9,112    2%
+    Number used as logic:                      183 out of   9,112    2%
+      Number using O6 output only:              99
+      Number using O5 output only:              63
+      Number using O5 and O6:                   21
+      Number used as ROM:                        0
+    Number used as Memory:                       1 out of   2,176    1%
+      Number used as Dual Port RAM:              0
+      Number used as Single Port RAM:            0
+      Number used as Shift Register:             1
+        Number using O6 output only:             1
+        Number using O5 output only:             0
+        Number using O5 and O6:                  0
+    Number used exclusively as route-thrus:      8
+      Number with same-slice register load:      4
+      Number with same-slice carry load:         4
+      Number with other load:                    0
+
+Slice Logic Distribution:
+  Number of occupied Slices:                    64 out of   2,278    2%
+  Number of MUXCYs used:                        76 out of   4,556    1%
+  Number of LUT Flip Flop pairs used:          192
+    Number with an unused Flip Flop:           112 out of     192   58%
+    Number with an unused LUT:                   0 out of     192    0%
+    Number of fully used LUT-FF pairs:          80 out of     192   41%
+    Number of slice register sites lost
+      to control set restrictions:               0 out of  18,224    0%
+
+  A LUT Flip Flop pair for this architecture represents one LUT paired with
+  one Flip Flop within a slice.  A control set is a unique combination of
+  clock, reset, set, and enable signals for a registered element.
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+
+IO Utilization:
+  Number of bonded IOBs:                        17 out of     232    7%
+    Number of LOCed IOBs:                       17 out of      17  100%
+
+Specific Feature Utilization:
+  Number of RAMB16BWERs:                         0 out of      32    0%
+  Number of RAMB8BWERs:                          0 out of      64    0%
+  Number of BUFIO2/BUFIO2_2CLKs:                 0 out of      32    0%
+  Number of BUFIO2FB/BUFIO2FB_2CLKs:             0 out of      32    0%
+  Number of BUFG/BUFGMUXs:                       1 out of      16    6%
+    Number used as BUFGs:                        1
+    Number used as BUFGMUX:                      0
+  Number of DCM/DCM_CLKGENs:                     0 out of       4    0%
+  Number of ILOGIC2/ISERDES2s:                   0 out of     248    0%
+  Number of IODELAY2/IODRP2/IODRP2_MCBs:         0 out of     248    0%
+  Number of OLOGIC2/OSERDES2s:                   0 out of     248    0%
+  Number of BSCANs:                              0 out of       4    0%
+  Number of BUFHs:                               0 out of     128    0%
+  Number of BUFPLLs:                             0 out of       8    0%
+  Number of BUFPLL_MCBs:                         0 out of       4    0%
+  Number of DSP48A1s:                            0 out of      32    0%
+  Number of ICAPs:                               0 out of       1    0%
+  Number of MCBs:                                0 out of       2    0%
+  Number of PCILOGICSEs:                         0 out of       2    0%
+  Number of PLL_ADVs:                            0 out of       2    0%
+  Number of PMVs:                                0 out of       1    0%
+  Number of STARTUPs:                            0 out of       1    0%
+  Number of SUSPEND_SYNCs:                       0 out of       1    0%
+
+
+Overall effort level (-ol):   Standard 
+Router effort level (-rl):    High 
+
+Starting initial Timing Analysis.  REAL time: 1 secs 
+Finished initial Timing Analysis.  REAL time: 1 secs 
+
+Starting Router
+
+
+Phase  1  : 771 unrouted;      REAL time: 1 secs 
+
+Phase  2  : 652 unrouted;      REAL time: 2 secs 
+
+Phase  3  : 210 unrouted;      REAL time: 2 secs 
+
+Phase  4  : 210 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 2 secs 
+
+Updating file: p5_b1_routed.ncd with current fully routed design.
+
+Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 2 secs 
+
+Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 2 secs 
+
+Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 2 secs 
+
+Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 2 secs 
+
+Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 2 secs 
+
+Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 2 secs 
+Total REAL time to Router completion: 2 secs 
+Total CPU time to Router completion: 2 secs 
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Generating "PAR" statistics.
+
+**************************
+Generating Clock Report
+**************************
+
++---------------------+--------------+------+------+------------+-------------+
+|        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
++---------------------+--------------+------+------+------------+-------------+
+|    clk_100mhz_BUFGP | BUFGMUX_X3Y13| No   |   27 |  0.039     |  1.128      |
++---------------------+--------------+------+------+------------+-------------+
+
+* Net Skew is the difference between the minimum and maximum routing
+only delays for the net. Note this is different from Clock Skew which
+is reported in TRCE timing report. Clock Skew is the difference between
+the minimum and maximum path delays which includes logic delays.
+
+* The fanout is the number of component pins not the individual BEL loads,
+for example SLICE loads not FF loads.
+
+Timing Score: 0 (Setup: 0, Hold: 0, Component Switching Limit: 0)
+
+Asterisk (*) preceding a constraint indicates it was not met.
+   This may be due to a setup or hold violation.
+
+----------------------------------------------------------------------------------------------------------
+  Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
+                                            |             |    Slack   | Achievable | Errors |    Score   
+----------------------------------------------------------------------------------------------------------
+  TS_P5_B1_CLK = PERIOD TIMEGRP "P5_B1_CLK" | SETUP       |     3.873ns|     6.127ns|       0|           0
+   10 ns HIGH 50%                           | HOLD        |     0.420ns|            |       0|           0
+----------------------------------------------------------------------------------------------------------
+
+
+All constraints were met.
+
+
+Generating Pad Report.
+
+All signals are completely routed.
+
+Total REAL time to PAR completion: 2 secs 
+Total CPU time to PAR completion: 2 secs 
+
+Peak Memory Usage:  605 MB
+
+Placer: Placement generated during map.
+Routing: Completed - No errors found.
+Timing: Completed - No errors found.
+
+Number of error messages: 0
+Number of warning messages: 0
+Number of info messages: 0
+
+Writing design to file p5_b1_routed.ncd
+
+
+
+PAR done!
+
+===== TRCE POST-PAR TIMING =====
+Release 14.7 - Trace  (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+
+Loading device for application Rf_Device from file '6slx16.nph' in environment
+/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/.
+   "p5_b1_top" is an NCD, version 3.2, device xc6slx16, package csg324, speed -2
+--------------------------------------------------------------------------------
+Release 14.7 Trace  (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/trce -v 10 -n 10
+-s 2 -fastpaths p5_b1_routed.ncd -o p5_b1.twr p5_b1.pcf
+
+
+Design file:              p5_b1_routed.ncd
+Physical constraint file: p5_b1.pcf
+Device,speed:             xc6slx16,-2 (PRODUCTION 1.23 2013-10-13)
+Report level:             verbose report, limited to 10 items per constraint
+--------------------------------------------------------------------------------
+
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths option. All paths that are not constrained will be reported in
+   the unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on a 50 Ohm transmission line loading model.  For the details of
+   this model, and for more information on accounting for different loading conditions, please see the device datasheet.
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0 (Setup/Max: 0, Hold: 0)
+
+Constraints cover 2622 paths, 0 nets, and 618 connections
+
+Design statistics:
+   Minimum period:   6.127ns (Maximum frequency: 163.212MHz)
+
+
+Analysis completed Sun Jul 19 01:33:42 2026
+--------------------------------------------------------------------------------
+
+Generating Report ...
+
+Number of warnings: 0
+Number of info messages: 3
+Total time: 1 secs 
+
+===== BITGEN =====
+Release 14.7 - Bitgen P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Loading device for application Rf_Device from file '6slx16.nph' in environment
+/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/.
+   "p5_b1_top" is an NCD, version 3.2, device xc6slx16, package csg324, speed -2
+Opened constraints file p5_b1.pcf.
+
+Sun Jul 19 01:33:44 2026
+
+Running DRC.
+DRC detected 0 errors and 0 warnings.
+Creating bit map...
+Saving bit stream in "p5_b1.bit".
+Bitstream generation is complete.
+
+===== PARSE AND ENFORCE IMPLEMENTATION GATE =====
+P5_B1_ISE_XST_ERRORS=0_PASS
+P5_B1_ISE_NGDBUILD_ERRORS=0_PASS
+P5_B1_ISE_MAP_ERRORS=0_PASS
+P5_B1_ISE_PAR_ERRORS=0_PASS
+P5_B1_ISE_PAR_TIMING_SCORE=0_PASS
+P5_B1_ISE_TRCE_TIMING_ERRORS=0_PASS
+P5_B1_ISE_CLOCK_TARGET_10NS=MET_PASS
+P5_B1_ISE_BITSTREAM_BYTES=464294_PASS
+P5_B1_ISE_BITSTREAM_SHA256=bf657f09f3b6968efd39079d53dfab42348a9de185cf178bc947035b7e59673b
+P5_B1_ISE_POST_PAR_MINIMUM_PERIOD_NS=6.127
+P5_B1_ISE_POST_PAR_MAXIMUM_FREQUENCY_MHZ=163.212
+P5_B1_STAGE_B=PASS
+
+===== INSTALL EXACT IMPLEMENTATION EVIDENCE ALLOWLIST =====
+
+===== CHECKSUM-BOUND EVIDENCE CHECK =====
+docs/rl/p5_b1_ise_implementation.md: OK
+fpga/ise_nexys3/p5_b1/p5_b1.prj: OK
+fpga/ise_nexys3/p5_b1/p5_b1.xst: OK
+sim/spartan6/test_p5_b1_ise.py: OK
+results/nexys3/builds/p5_b1_stage_b/stage_b_attempt1_failure.log: OK
+results/nexys3/builds/p5_b1_stage_b/stage_b_attempt2_failure.log: OK
+results/nexys3/builds/p5_b1_stage_b/stage_a_rerun.log: OK
+results/nexys3/builds/p5_b1_stage_b/toolchain.log: OK
+results/nexys3/builds/p5_b1_stage_b/commands.log: OK
+results/nexys3/builds/p5_b1_stage_b/xst.log: OK
+results/nexys3/builds/p5_b1_stage_b/p5_b1.syr: OK
+results/nexys3/builds/p5_b1_stage_b/ngdbuild.log: OK
+results/nexys3/builds/p5_b1_stage_b/map.log: OK
+results/nexys3/builds/p5_b1_stage_b/p5_b1_map.mrp: OK
+results/nexys3/builds/p5_b1_stage_b/par.log: OK
+results/nexys3/builds/p5_b1_stage_b/p5_b1_routed.par: OK
+results/nexys3/builds/p5_b1_stage_b/trce.log: OK
+results/nexys3/builds/p5_b1_stage_b/p5_b1.twr: OK
+results/nexys3/builds/p5_b1_stage_b/bitgen.log: OK
+results/nexys3/builds/p5_b1_stage_b/p5_b1.bit: OK
+results/nexys3/builds/p5_b1_stage_b/stage_b_parser.log: OK
+results/nexys3/builds/p5_b1_stage_b/stage_b_validation.json: OK
+P5_B1_STAGE_B_AUTHORED_FILES=4_PASS
+P5_B1_STAGE_B_EVIDENCE_FILES=19_PASS
+P5_B1_STAGE_B_EVIDENCE=PASS
+
+===== EXACT FILE-SCOPE CHECK =====
+P5_B1_STAGE_B_FILE_SCOPE=23_OF_23_PASS
+P5_B1_STAGE_B_STAGED_FILES=0_PASS
+P5_B1_STAGE_B_COMMITS_CREATED=0_PASS
+P5_B1_STAGE_B_PUSHES=0_PASS
+
+===== FINAL CONTROLLED STATUS =====
+P3_PROGRESS=10_OF_10
+P4_PROGRESS=10_OF_10
+P4_PHASE_COMPLETION=PASS
+P5_COMPLETED_STEPS=2_OF_9
+P5_STEP1=COMPLETE
+P5_STEP2=COMPLETE
+P5_STEP3_B1_STAGE_A=COMPLETE
+P5_STEP3_B1_STAGE_B_ATTEMPT1=FAIL_PRESERVED
+P5_STEP3_B1_STAGE_B_ATTEMPT2=FAIL_PRESERVED
+P5_STEP3_B1_STAGE_B_ATTEMPT3_REPAIRS=NOUNSET_SOURCE_FIX_AND_POST_MAP_PCF_CHECK
+P5_STEP3_B1_STAGE_B=PASS_PENDING_ASSISTANT_REVIEW
+P5_STEP3_B1_COMPLETE=NO
+P5_STEP3_B1_ISE_XST_NGDBUILD_MAP_PAR_TRCE_BITGEN=6_OF_6_PASS
+P5_STEP3_B1_LIVE_BOARD_ENUMERATION=0
+P5_STEP3_B1_UART_DEVICE_ACCESS=0
+P5_STEP3_B1_BOARD_PROGRAMMING=0
+P5_STEP3_B1_EEPROM_ACCESS=0
+P5_STEP3_B1_REPOSITORY_WRITES=23_UNTRACKED_FILES_ONLY
+CURRENT_HEAD=097788bb3359e878e600bd74703b86ee6856367e
+RESULT_HEALTH=GOOD_PENDING_ASSISTANT_REVIEW
+SAFE_TO_PROGRESS=NO_WAIT_FOR_ASSISTANT_REVIEW
+AWAITING_ASSISTANT_REVIEW

@@ -1,0 +1,8 @@
+===== QFLOW-RL P5 STEP 3 / B1 STAGE B ARCHIVAL AND CHECKPOINT =====
+P5_PROGRESS_BEFORE=2_OF_9_COMPLETED
+Repository: /media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga
+Expected parent: 097788bb3359e878e600bd74703b86ee6856367e
+Scope: assistant review, three raw installer outputs and isolated 26-file checkpoint
+Prohibited: ISE rerun live-board enumeration UART-device access programming EEPROM
+P5_STEP3_B1_STAGE_B_COMPLETION=FAIL
+REASON=rg not available

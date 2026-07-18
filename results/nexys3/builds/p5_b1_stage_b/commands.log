@@ -1,0 +1,6 @@
+xst -ifn p5_b1.xst -ofn p5_b1.syr -intstyle silent
+ngdbuild -p xc6slx16-2-csg324 -nt timestamp -uc p5_b1_io_sanity.ucf p5_b1.ngc p5_b1.ngd
+map -w -p xc6slx16-2-csg324 -o p5_b1_map.ncd p5_b1.ngd p5_b1.pcf
+par -w p5_b1_map.ncd p5_b1_routed.ncd p5_b1.pcf
+trce -v 10 -n 10 -s 2 -fastpaths p5_b1_routed.ncd -o p5_b1.twr p5_b1.pcf
+bitgen -w p5_b1_routed.ncd p5_b1.bit p5_b1.pcf

@@ -1,0 +1,38 @@
+ISE_SETTINGS=/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/settings64.sh
+XILINX=/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE
+XILINXD_LICENSE_FILE=/home/shahriar-rizvi/.Xilinx/Xilinx.lic
+ISE_MOUNT_OPTIONS=ro,nosuid,nodev,relatime
+XST=/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/bin/lin64/xst
+NGDBUILD=/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/bin/lin64/ngdbuild
+MAP=/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/bin/lin64/map
+PAR=/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/bin/lin64/par
+TRCE=/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/bin/lin64/trce
+BITGEN=/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/bin/lin64/bitgen
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Usage: xst [-ifn <InputFile>] [-ofn <OutputFile>] [-filter <FilterFile>] [-ise
+<iseProjectFile>] [-intstyle <Style>] 
+There is no -finalclean architecture-specific help available for "xst".  The
+architecture-independent help is instead provided below.
+ 
+Where:
+  -ifn = Script file name
+      Contains a set of valid Xst commands.
+  -ofn = Output log file name
+      If not specified, <ifn>.srp will be generated.
+      If -intstyle is not used, the output goes on stdout as well.
+  -filter = Message Filter file name (for example "filter.filter").
+      If specified, the contents of this file will be used to 
+      filter messages from this application. The filter file 
+      can be created using Xreport.      
+  -intstyle [ise | xflow | silent] = Indicate contextual information when
+invoking Xilinx applications within a flow or project environment.
+      The mode "ise" indicates that the program is being run as part of an
+integrated design environment.
+      The mode "xflow" indicates that the program is being run as part of a
+batch flow.
+      The mode "silent" indicates that no output will be displayed to the
+screen.
+      Default: Program is run as a standalone application.
+
+Note: if no options are specified XST will be run in interactive mode.

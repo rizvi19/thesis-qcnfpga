@@ -1,0 +1,74 @@
+===== QFLOW-RL P5 STEP 3 / B1 STAGE B OFFLINE ISE =====
+P5_PROGRESS_BEFORE=2_OF_9_COMPLETED
+Repository: /media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga
+Expected branch: rl-nexys3-adaptive
+Expected HEAD: 097788bb3359e878e600bd74703b86ee6856367e
+ISE build directory: /home/shahriar-rizvi/Downloads/QFlow_P5_Step3_B1B_ISE_Build_097788bb
+Scope: four authored files plus seventeen checksum-bound implementation evidence files
+Authorized: offline XST NGDBuild Map PAR TRCE BitGen only
+Prohibited: live-board enumeration UART-device access programming EEPROM stage commit push
+
+===== PACKAGE INTEGRITY =====
+./docs/rl/p5_b1_ise_implementation.md: OK
+./fpga/ise_nexys3/p5_b1/p5_b1.prj: OK
+./fpga/ise_nexys3/p5_b1/p5_b1.xst: OK
+./sim/spartan6/test_p5_b1_ise.py: OK
+P5_STEP3_B1_STAGE_B_PACKAGE_INTEGRITY=PASS
+
+===== READ-ONLY REPOSITORY PRECHECK =====
+BRANCH=rl-nexys3-adaptive
+HEAD=097788bb3359e878e600bd74703b86ee6856367e
+UPSTREAM_HEAD=097788bb3359e878e600bd74703b86ee6856367e
+LIVE_REMOTE_HEAD=097788bb3359e878e600bd74703b86ee6856367e
+WORKTREE_INDEX_CLEAN=PASS
+
+===== EXACT STAGE-A SOURCE CHECKPOINT =====
+docs/rl/p5_b1_io_sanity.md: OK
+rtl/spartan6/p5_b1_uart_tx.v: OK
+rtl/spartan6/p5_b1_sevenseg.v: OK
+rtl/spartan6/p5_b1_top.v: OK
+sim/spartan6/tb_p5_b1_io_sanity.v: OK
+sim/spartan6/test_p5_b1.py: OK
+constraints/nexys3/p5_b1_io_sanity.ucf: OK
+results/nexys3/p5_b1/stage_a_test.log: OK
+results/nexys3/p5_b1/stage_a_validation.json: OK
+results/nexys3/p5_b1/STAGE_A_SHA256SUMS: OK
+docs/rl/p5_b1_io_sanity.md: OK
+rtl/spartan6/p5_b1_uart_tx.v: OK
+rtl/spartan6/p5_b1_sevenseg.v: OK
+rtl/spartan6/p5_b1_top.v: OK
+sim/spartan6/tb_p5_b1_io_sanity.v: OK
+sim/spartan6/test_p5_b1.py: OK
+constraints/nexys3/p5_b1_io_sanity.ucf: OK
+results/nexys3/p5_b1/stage_a_test.log: OK
+results/nexys3/p5_b1/stage_a_validation.json: OK
+P5_B1_STAGE_A_PRECONDITION_HASHES=10_OF_10_PASS
+
+===== TARGET ABSENCE AND BOUNDARY CHECK =====
+P5_STEP3_B1_STAGE_B_TARGETS_ABSENT=21_OF_21_PASS
+
+===== ISE READ-ONLY MOUNT AND LICENSE PRECHECK =====
+ISE_SETTINGS=/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/settings64.sh
+ISE_LICENSE_PRESENT=PASS
+ISE_MOUNT_READ_ONLY=PASS
+
+===== INSTALL FOUR REVIEW PAYLOADS =====
+INSTALLED docs/rl/p5_b1_ise_implementation.md
+INSTALLED fpga/ise_nexys3/p5_b1/p5_b1.prj
+INSTALLED fpga/ise_nexys3/p5_b1/p5_b1.xst
+INSTALLED sim/spartan6/test_p5_b1_ise.py
+
+===== LOWER-RUNG RTL REGRESSION =====
+P5_B1_STAGE_A_STATIC_CHECKS=7_PASS
+P5_B1_UCF_LOCATIONS=17_OF_17_PASS
+P5_B1_CLOCK_CONSTRAINT_10NS=PASS
+P5_B1_UART_DIVIDER=868_PASS
+P5_B1_UART_BAUD_ERROR_PERCENT=+0.0064004096_PASS
+P5_B1_SIM_UART_BYTES=16_OF_16_PASS
+P5_B1_SIM_DISPLAY_DIGITS=4_OF_4_PASS
+P5_B1_SIM_RESET_CASES=2_OF_2_PASS
+P5_B1_STAGE_A=PASS
+P5_B1_STAGE_A_RERUN=PASS_EXACT_LOG_MATCH
+
+===== ACTIVATE OFFLINE ISE TOOLCHAIN =====
+/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/common/.settings64.sh: line 3: LD_ASSUME_KERNEL: unbound variable
