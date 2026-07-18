@@ -1,0 +1,70 @@
+{
+  "board_programming_performed": false,
+  "busy_starts_advance_dwell": false,
+  "decision": "PASS",
+  "dwell_counter_saturates_at": 3,
+  "eeprom_access_performed": false,
+  "files": {
+    "docs/rl/p4_step6_status.md": "399a95bad4fe482f9a44a24388ec4c8f28df190776ad7353febd9543f5779464",
+    "results/rl/p4_controller_unit/generator_repro.log": "f996fe7319c8513b195912211f1a6eebb428a0273dcbd72536787611cff2fdf7",
+    "results/rl/p4_controller_unit/iverilog_compile.log": "b9bd383be84ba90a219651899e937f989b3a3f6d125b2ad00ae6d0590f454bfc",
+    "results/rl/p4_controller_unit/python_tests.log": "9891f0f01882696eb9bfb83d6af29c4e470d08ef16243aa1d779e2b22456471e",
+    "results/rl/p4_controller_unit/rtl_sim.log": "251bdd7e85339ba0475ef431aa7bcb70f8c0db6c3b2b508bb205724f69e7e9c7",
+    "rtl/rl/rl_controller.v": "5cad1fa420ea25270b743cc55ab0239de452214e1040b36ae51c5d975eedbc96",
+    "sim/rl/p4_controller_unit_vectors.csv": "f2f94bb800d4d21a6b64b7f198b605d6007c004994760c35e0a968b3f645e571",
+    "sim/rl/p4_controller_unit_vectors.txt": "cf520b81b1db15ebb76fb67fac56d65b5aca0e2a4c5bc187d4387252549ff136",
+    "sim/rl/p4_generate_controller_unit_vectors.py": "427596592225fef187093292fa16b403792e81a4daef889c0e25a1d3a536bb85",
+    "sim/rl/tb_rl_controller.v": "8b97655c8331ed42cb4e8d7c62368ca9bb35f6a0dcf5ee751034cb4356684cf5",
+    "sim/rl/test_p4_controller.py": "c9eeab6a7e8c2a47a61b93ece84c378e49692966add4f37715378f1253b70066"
+  },
+  "human_review": {
+    "basis": "49 cycle-exact vectors, 47 passing tests, valid N+3 and invalid N+1 response, dwell=3, zero RTL mismatches",
+    "content_changed_during_review": false,
+    "rtl_mismatch_count": 0,
+    "status": "ACCEPTED"
+  },
+  "integrated_modules": [
+    "rl_state_encoder",
+    "rl_policy_rom",
+    "rl_profile_rom"
+  ],
+  "invalid_requests_advance_dwell": false,
+  "ise_synthesis_performed": false,
+  "iverilog_version": "Icarus Verilog version 12.0 (stable) ()",
+  "minimum_dwell_decisions": 3,
+  "no_path_advances_dwell": true,
+  "pending_action_storage": false,
+  "phase": "P4",
+  "python_test_count": 47,
+  "python_test_counts_by_suite": [
+    12,
+    8,
+    7,
+    7,
+    13
+  ],
+  "rtl_mismatch_count": 0,
+  "rtl_module": "rtl/rl/rl_controller.v",
+  "rtl_standard": "Verilog-2001",
+  "schema_version": 1,
+  "source_checkpoint": "381b27d16e2f443d5ad381008e87dd8e751fdae2",
+  "step": "P4_STEP_6_CONTROLLER_UNIT",
+  "training_changed": false,
+  "valid_completion_count": 11,
+  "valid_request_latency_cycles": 3,
+  "vector_categories": {
+    "back_to_back_requests": 8,
+    "dwell_hold": 4,
+    "dwell_switch": 3,
+    "idle": 1,
+    "invalid_complete": 1,
+    "invalid_input": 1,
+    "no_path_passthrough": 1,
+    "pipeline_wait": 21,
+    "reset": 2,
+    "start_while_busy": 1,
+    "valid_accept": 3,
+    "valid_complete": 3
+  },
+  "vector_count": 49
+}

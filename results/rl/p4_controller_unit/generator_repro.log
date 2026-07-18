@@ -1,0 +1,9 @@
+P4_CONTROLLER_UNIT_VECTOR_COUNT=49
+P4_CONTROLLER_UNIT_CATEGORIES=["back_to_back_requests","dwell_hold","dwell_switch","idle","invalid_complete","invalid_input","no_path_passthrough","pipeline_wait","reset","start_while_busy","valid_accept","valid_complete"]
+P4_CONTROLLER_UNIT_CSV_SHA256=f2f94bb800d4d21a6b64b7f198b605d6007c004994760c35e0a968b3f645e571
+P4_CONTROLLER_UNIT_RTL_VECTOR_SHA256=cf520b81b1db15ebb76fb67fac56d65b5aca0e2a4c5bc187d4387252549ff136
+P4_CONTROLLER_UNIT_VECTOR_COUNT=49
+P4_CONTROLLER_UNIT_CATEGORIES=["back_to_back_requests","dwell_hold","dwell_switch","idle","invalid_complete","invalid_input","no_path_passthrough","pipeline_wait","reset","start_while_busy","valid_accept","valid_complete"]
+P4_CONTROLLER_UNIT_CSV_SHA256=f2f94bb800d4d21a6b64b7f198b605d6007c004994760c35e0a968b3f645e571
+P4_CONTROLLER_UNIT_RTL_VECTOR_SHA256=cf520b81b1db15ebb76fb67fac56d65b5aca0e2a4c5bc187d4387252549ff136
+PASS: both tracked controller-unit vector files regenerate byte-for-byte

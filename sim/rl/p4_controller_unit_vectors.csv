@@ -1,0 +1,50 @@
+case_id,category,cycle,rst,start,input_valid,no_path_in,min_key_occupancy_u16,bottleneck_fidelity_u16,offered_request_load_u16,utilization_imbalance_u16,expected_ready,expected_busy,expected_done,expected_output_valid,expected_invalid_state,expected_stall,expected_no_path_out,expected_state_id,expected_proposed_action,expected_selected_action,expected_profile_payload_hex,expected_switched,expected_dwell_count_sat,notes
+ctrl_000,reset,0,1,1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,00000,0,0,synchronous reset dominates start
+ctrl_001,idle,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,00000,0,0,idle ready state
+ctrl_002,valid_accept,2,0,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,00000,0,0,accept policy proposal action 0
+ctrl_003,pipeline_wait,3,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,00000,0,0,registered pipeline wait 1
+ctrl_004,pipeline_wait,4,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,00000,0,0,registered pipeline wait 2
+ctrl_005,valid_complete,5,0,0,1,0,0,0,0,0,1,0,1,1,0,0,0,0,0,0,13329,0,1,valid completion after three-cycle latency
+ctrl_006,back_to_back_requests,6,0,1,1,0,0,58982,32768,8192,0,1,0,0,0,0,0,0,0,0,13329,0,1,accept policy proposal action 1
+ctrl_007,start_while_busy,7,0,1,1,0,0,58982,0,8192,0,1,0,0,0,1,0,0,0,0,13329,0,1,busy start rejected without changing active transaction
+ctrl_008,pipeline_wait,8,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,13329,0,1,registered pipeline wait 2
+ctrl_009,dwell_hold,9,0,0,1,0,0,0,0,0,1,0,1,1,0,0,0,25,1,0,13329,0,2,valid completion after three-cycle latency
+ctrl_010,back_to_back_requests,10,0,1,1,0,0,58982,32768,8192,0,1,0,0,0,0,0,25,1,0,13329,0,2,accept policy proposal action 1
+ctrl_011,pipeline_wait,11,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,25,1,0,13329,0,2,registered pipeline wait 1
+ctrl_012,pipeline_wait,12,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,25,1,0,13329,0,2,registered pipeline wait 2
+ctrl_013,dwell_hold,13,0,0,1,0,0,0,0,0,1,0,1,1,0,0,0,25,1,0,13329,0,3,valid completion after three-cycle latency
+ctrl_014,back_to_back_requests,14,0,1,1,0,0,58982,32768,8192,0,1,0,0,0,0,0,25,1,0,13329,0,3,accept policy proposal action 1
+ctrl_015,pipeline_wait,15,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,25,1,0,13329,0,3,registered pipeline wait 1
+ctrl_016,pipeline_wait,16,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,25,1,0,13329,0,3,registered pipeline wait 2
+ctrl_017,dwell_switch,17,0,0,1,0,0,0,0,0,1,0,1,1,0,0,0,25,1,1,1B516,1,1,valid completion after three-cycle latency
+ctrl_018,back_to_back_requests,18,0,1,1,0,0,58982,32768,8192,0,1,0,0,0,0,0,25,1,1,1B516,0,1,accept policy proposal action 1
+ctrl_019,pipeline_wait,19,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,25,1,1,1B516,0,1,registered pipeline wait 1
+ctrl_020,pipeline_wait,20,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,25,1,1,1B516,0,1,registered pipeline wait 2
+ctrl_021,valid_complete,21,0,0,1,0,0,0,0,0,1,0,1,1,0,0,0,25,1,1,1B516,0,2,valid completion after three-cycle latency
+ctrl_022,invalid_input,22,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,25,1,1,1B516,0,2,invalid request completes without dwell update
+ctrl_023,invalid_complete,23,0,0,1,0,0,0,0,0,1,0,1,0,1,0,0,25,1,1,1B516,0,2,invalid status after frozen one-cycle response latency
+ctrl_024,valid_accept,24,0,1,1,0,0,58982,0,8192,0,1,0,0,0,0,0,25,1,1,1B516,0,2,accept policy proposal action 2
+ctrl_025,pipeline_wait,25,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,25,1,1,1B516,0,2,registered pipeline wait 1
+ctrl_026,pipeline_wait,26,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,25,1,1,1B516,0,2,registered pipeline wait 2
+ctrl_027,dwell_hold,27,0,0,1,0,0,0,0,0,1,0,1,1,0,0,0,17,2,1,1B516,0,3,valid completion after three-cycle latency
+ctrl_028,back_to_back_requests,28,0,1,1,0,0,58982,0,8192,0,1,0,0,0,0,0,17,2,1,1B516,0,3,accept policy proposal action 2
+ctrl_029,pipeline_wait,29,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,17,2,1,1B516,0,3,registered pipeline wait 1
+ctrl_030,pipeline_wait,30,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,17,2,1,1B516,0,3,registered pipeline wait 2
+ctrl_031,dwell_switch,31,0,0,1,0,0,0,0,0,1,0,1,1,0,0,0,17,2,2,14399,1,1,valid completion after three-cycle latency
+ctrl_032,back_to_back_requests,32,0,1,1,1,0,58982,0,8192,0,1,0,0,0,0,0,17,2,2,14399,0,1,accept policy proposal action 2
+ctrl_033,pipeline_wait,33,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,17,2,2,14399,0,1,registered pipeline wait 1
+ctrl_034,pipeline_wait,34,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,17,2,2,14399,0,1,registered pipeline wait 2
+ctrl_035,no_path_passthrough,35,0,0,1,0,0,0,0,0,1,0,1,1,0,0,1,17,2,2,14399,0,2,valid completion after three-cycle latency
+ctrl_036,back_to_back_requests,36,0,1,1,0,16384,60948,32768,0,0,1,0,0,0,0,0,17,2,2,14399,0,2,accept policy proposal action 3
+ctrl_037,pipeline_wait,37,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,17,2,2,14399,0,2,registered pipeline wait 1
+ctrl_038,pipeline_wait,38,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,17,2,2,14399,0,2,registered pipeline wait 2
+ctrl_039,dwell_hold,39,0,0,1,0,0,0,0,0,1,0,1,1,0,0,0,104,3,2,14399,0,3,valid completion after three-cycle latency
+ctrl_040,back_to_back_requests,40,0,1,1,0,16384,60948,32768,0,0,1,0,0,0,0,0,104,3,2,14399,0,3,accept policy proposal action 3
+ctrl_041,pipeline_wait,41,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,104,3,2,14399,0,3,registered pipeline wait 1
+ctrl_042,pipeline_wait,42,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,104,3,2,14399,0,3,registered pipeline wait 2
+ctrl_043,dwell_switch,43,0,0,1,0,0,0,0,0,1,0,1,1,0,0,0,104,3,3,0A2A5,1,1,valid completion after three-cycle latency
+ctrl_044,reset,44,1,1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,00000,0,0,reset clears action and dwell history
+ctrl_045,valid_accept,45,0,1,1,0,0,58982,0,8192,0,1,0,0,0,0,0,0,0,0,00000,0,0,accept policy proposal action 2
+ctrl_046,pipeline_wait,46,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,00000,0,0,registered pipeline wait 1
+ctrl_047,pipeline_wait,47,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,00000,0,0,registered pipeline wait 2
+ctrl_048,valid_complete,48,0,0,1,0,0,0,0,0,1,0,1,1,0,0,0,17,2,2,14399,0,1,valid completion after three-cycle latency

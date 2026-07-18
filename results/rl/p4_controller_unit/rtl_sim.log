@@ -1,0 +1,2 @@
+P4_CONTROLLER_RTL_PASS vectors=49 mismatches=0
+sim/rl/tb_rl_controller.v:93: $finish called at 496000 (1ps)
