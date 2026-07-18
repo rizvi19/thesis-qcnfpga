@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "phase": "P4",
+  "purpose": "Exact Python-to-RTL controller comparison schema",
+  "formats": {
+    "feature_inputs": "unsigned decimal UNORM16 values in 0..65535",
+    "state_id": "unsigned decimal 0..255",
+    "actions": "unsigned decimal 0..3",
+    "profile_payload": "five uppercase hexadecimal digits carrying 18 useful bits",
+    "booleans": "integer 0 or 1"
+  },
+  "columns": [
+    "case_id",
+    "category",
+    "cycle",
+    "rst",
+    "start",
+    "input_valid",
+    "no_path_in",
+    "min_key_occupancy_u16",
+    "bottleneck_fidelity_u16",
+    "offered_request_load_u16",
+    "utilization_imbalance_u16",
+    "expected_ready",
+    "expected_busy",
+    "expected_done",
+    "expected_output_valid",
+    "expected_invalid_state",
+    "expected_stall",
+    "expected_no_path_out",
+    "expected_state_id",
+    "expected_proposed_action",
+    "expected_selected_action",
+    "expected_profile_payload_hex",
+    "expected_switched",
+    "expected_dwell_count_sat",
+    "notes"
+  ],
+  "required_categories": [
+    "reset",
+    "all_256_states",
+    "threshold_below",
+    "threshold_equal",
+    "threshold_above",
+    "encoded_clip_low",
+    "encoded_clip_high",
+    "all_four_actions",
+    "dwell_hold",
+    "dwell_switch",
+    "invalid_input",
+    "start_while_busy",
+    "no_path_passthrough",
+    "back_to_back_requests"
+  ],
+  "comparison": {
+    "action_agreement": "exact",
+    "profile_payload_agreement": "exact",
+    "state_id_agreement": "exact",
+    "cycle_timeline_agreement": "exact",
+    "unexplained_mismatches_allowed": 0
+  }
+}

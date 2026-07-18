@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "phase": "P4",
+  "step": "P4_STEP_2_RTL_CONTRACT_FREEZE",
+  "source_checkpoint": "cdfeda3f5f2fca586546ef6e362ac451512d75bc",
+  "deployment_model_id": "qflow_rl_tabular_h4_seed229_dwell3_v1",
+  "state_interface": {
+    "representation": "UNORM16",
+    "input_width_bits_per_feature": 16,
+    "encoded_minimum": 0,
+    "encoded_maximum": 65535,
+    "real_domain": [0.0, 1.0],
+    "reference_quantization": "clip_to_0_1_then_round_half_up(real_value_times_65535)",
+    "sub_lsb_boundary_rule": "comparison is exact in the encoded domain; below/equal/above RTL vectors use threshold_code-1, threshold_code, threshold_code+1",
+    "feature_order_msb_to_lsb": [
+      "min_key_occupancy",
+      "bottleneck_fidelity",
+      "offered_request_load",
+      "utilization_imbalance"
+    ],
+    "features": {
+      "min_key_occupancy": {
+        "python_thresholds": [0.25, 0.5, 0.75],
+        "threshold_codes": [16384, 32768, 49151],
+        "source_definition": "minimum over candidate-path links of key_count / 16"
+      },
+      "bottleneck_fidelity": {
+        "python_thresholds": [0.9, 0.93, 0.96],
+        "threshold_codes": [58982, 60948, 62914],
+        "source_definition": "minimum current fidelity over candidate-path links"
+      },
+      "offered_request_load": {
+        "python_thresholds": [0.25, 0.5, 0.75],
+        "threshold_codes": [16384, 32768, 49151],
+        "source_definition": "requests offered in the control window divided by 4"
+      },
+      "utilization_imbalance": {
+        "python_thresholds": [0.125, 0.25, 0.5],
+        "threshold_codes": [8192, 16384, 32768],
+        "source_definition": "clipped max-minus-min of consumed_in_last_16_steps / max(key_count, 1) over candidate-path links"
+      }
+    },
+    "comparison_rule": "bin increments when encoded_value >= threshold_code",
+    "state_id_width_bits": 8,
+    "state_id_packing": {
+      "bits_7_6": "min_key_occupancy_bin",
+      "bits_5_4": "bottleneck_fidelity_bin",
+      "bits_3_2": "offered_request_load_bin",
+      "bits_1_0": "utilization_imbalance_bin"
+    },
+    "state_id_equation": "(((key_bin * 4) + fidelity_bin) * 4 + load_bin) * 4 + imbalance_bin",
+    "state_count": 256
+  },
+  "policy_rom": {
+    "deployment_artifact": "results/rl/p3_export/policy_rom.mem",
+    "depth": 256,
+    "action_width_bits": 2,
+    "file_format": "one uppercase hexadecimal digit per state-major line",
+    "address_order": "state_id_0_to_255",
+    "actions": {
+      "0": "balanced",
+      "1": "scarcity_protection",
+      "2": "fidelity_protection",
+      "3": "low_latency"
+    },
+    "read_latency_cycles": 1,
+    "tie_handling": "not applicable to deployed policy-index ROM; frozen training argmax used the lowest action index"
+  },
+  "profile_rom": {
+    "deployment_artifact": "results/rl/p3_export/profile_rom.mem",
+    "depth": 4,
+    "payload_width_bits_per_profile": 18,
+    "complete_rom_payload_bits": 72,
+    "file_format": "five uppercase hexadecimal digits per action-major line",
+    "read_latency_cycles": 1,
+    "field_order_msb_to_lsb": [
+      {"name": "alpha1_u2_1", "bits": "17:15", "width": 3},
+      {"name": "alpha2_u2_1", "bits": "14:12", "width": 3},
+      {"name": "alpha3_u2_1", "bits": "11:9", "width": 3},
+      {"name": "alpha4_u2_1", "bits": "8:6", "width": 3},
+      {"name": "lambda1_u2", "bits": "5:4", "width": 2},
+      {"name": "lambda2_u2", "bits": "3:2", "width": 2},
+      {"name": "lambda3_u2", "bits": "1:0", "width": 2}
+    ]
+  },
+  "q_table": {
+    "artifact": "results/rl/p3_export/q_table.mem",
+    "deployment_role": "audit_only",
+    "deployed_in_p4": false,
+    "depth": 1024,
+    "word_bits": 16,
+    "fraction_bits": 7,
+    "signed_twos_complement": true,
+    "address_order": "state_major_action_minor"
+  },
+  "dwell": {
+    "minimum_decisions": 3,
+    "counter_width_bits": 2,
+    "hardware_counter_values": [0, 1, 2, 3],
+    "hardware_counter_saturates_at": 3,
+    "reset_current_action_valid": false,
+    "reset_dwell_count": 0,
+    "first_valid_decision": "accept proposed action immediately and set dwell_count to 1",
+    "same_action": "retain action and increment dwell_count with saturation at 3",
+    "early_change": "retain current action and increment dwell_count with saturation at 3",
+    "eligible_change": "when proposed action differs and dwell_count is at least 3, accept it and set dwell_count to 1",
+    "pending_action_storage": false,
+    "equivalence_boundary": "saturating the unobservable count at 3 is action-timeline equivalent to the unbounded frozen Python count"
+  },
+  "module_ports": {
+    "rl_state_encoder": {
+      "inputs": {
+        "clk": 1,
+        "rst": 1,
+        "en": 1,
+        "min_key_occupancy_u16": 16,
+        "bottleneck_fidelity_u16": 16,
+        "offered_request_load_u16": 16,
+        "utilization_imbalance_u16": 16
+      },
+      "outputs": {
+        "valid": 1,
+        "state_id": 8
+      }
+    },
+    "rl_policy_rom": {
+      "inputs": {"clk": 1, "rst": 1, "en": 1, "state_id": 8},
+      "outputs": {"valid": 1, "proposed_action": 2}
+    },
+    "rl_profile_rom": {
+      "inputs": {"clk": 1, "rst": 1, "en": 1, "selected_action": 2},
+      "outputs": {"valid": 1, "profile_payload": 18}
+    },
+    "rl_controller": {
+      "inputs": {
+        "clk": 1,
+        "rst": 1,
+        "start": 1,
+        "input_valid": 1,
+        "no_path_in": 1,
+        "min_key_occupancy_u16": 16,
+        "bottleneck_fidelity_u16": 16,
+        "offered_request_load_u16": 16,
+        "utilization_imbalance_u16": 16
+      },
+      "outputs": {
+        "ready": 1,
+        "busy": 1,
+        "done": 1,
+        "output_valid": 1,
+        "invalid_state": 1,
+        "stall": 1,
+        "no_path_out": 1,
+        "state_id": 8,
+        "proposed_action": 2,
+        "selected_action": 2,
+        "profile_payload": 18,
+        "switched": 1,
+        "dwell_count_sat": 2
+      }
+    }
+  },
+  "module_timing": {
+    "reset": "synchronous active-high; reset dominates start and all enables",
+    "rl_state_encoder": "enable sampled on edge N; valid and state_id asserted for one cycle after edge N+1",
+    "rl_policy_rom": "enable and state_id sampled on edge N; valid and proposed_action asserted for one cycle after edge N+1",
+    "rl_profile_rom": "enable and selected_action sampled on edge N; valid and profile_payload asserted for one cycle after edge N+1",
+    "rl_controller_valid_request": "request accepted on edge N when start and ready; done/output_valid asserted after edge N+3",
+    "rl_controller_invalid_request": "start with ready and input_valid low is rejected; done and invalid_state asserted after edge N+1",
+    "done": "one-cycle pulse",
+    "output_valid": "one-cycle pulse coincident with done only for a valid completed decision",
+    "ready": "high only in idle state",
+    "busy": "high from valid request acceptance through the cycle before done",
+    "stall": "one-cycle status pulse whenever start is asserted while ready is low; active transaction is unchanged"
+  },
+  "exception_behavior": {
+    "encoded_numeric_clipping": "UNORM16 ports inherently represent the clipped domain 0..1 inclusive",
+    "input_valid_low": "no encoder, ROM, dwell, selected-action, or profile state update",
+    "invalid_output_defaults_after_reset": {
+      "state_id": 0,
+      "proposed_action": 0,
+      "selected_action": 0,
+      "profile_payload": 0
+    },
+    "no_path": "sampled with an accepted valid request and reported with done; it does not suppress policy selection or dwell advancement",
+    "start_while_busy": "not accepted and does not modify the in-flight request"
+  },
+  "claim_firewall": {
+    "online_or_onchip_learning": false,
+    "full_q_table_argmax_deployed": false,
+    "q_update_implemented": false,
+    "rtl_complete_at_step2": false,
+    "synthesis_performed_at_step2": false,
+    "board_programming_performed_at_step2": false,
+    "timing_closure_claimed": false,
+    "statistical_superiority_claimed": false
+  }
+}

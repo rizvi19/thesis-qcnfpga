@@ -1,0 +1,50 @@
+{
+  "board_programming_performed": false,
+  "contract_schema_version": 1,
+  "decision": "PASS",
+  "files": {
+    "docs/rl/p4_policy_rom_deployment_decision.md": "afe61bc510af35f6e88c3e8451904f7ca026d1eb2db030815c17ae70cbdebafa",
+    "docs/rl/p4_rtl_contract.md": "22e9522fe95c7d420a4867d8991ff37e20311042cee3613e020e852d7b38f14d",
+    "docs/rl/p4_step2_status.md": "4b4d60079ea3fc987d4065d25671343da7e199f4d517d388ad2172876efe5b25",
+    "docs/rl/p4_verification_contract.md": "8d9762a0c0a7a0191bcfc6a49171dd5fb6a33eaa0f8b74a03e5b707f3882e23a",
+    "results/rl/p4_contract/step2_attempt1_failure.log": "c746f64dcaf632a3bbbc15339f6a4b0c8c1b172ab19a26bd6bf222fe1a089a0a",
+    "results/rl/p4_contract/step2_test.log": "261185cf3dda60d938e8d504db05c471f267ac310e9397af247b354ee83b9c73",
+    "rl/config/p4_rtl_contract_v1.json": "761df7a7d2529dd0d5ab881cd833d5b4eaaf3ef5e74ee36cb4821ddb477632ba",
+    "sim/rl/p4_golden_vector_schema.json": "378722c038cdf9039c230f29a0276152873458e8f5b8fc164b5d6ecb98803367",
+    "sim/rl/test_p4_contract.py": "23d8ae1bcd7ba2c8a0eb99e28b60966d1534299f0cd5d4896510f95338a42105"
+  },
+  "human_review": {
+    "basis": "four passing suites, exact reviewed file scope, preserved recovery record",
+    "contract_or_test_content_changed_during_review": false,
+    "status": "ACCEPTED",
+    "test_count": 35
+  },
+  "minimum_dwell": 3,
+  "online_learning_claimed": false,
+  "phase": "P4",
+  "policy_entries": 256,
+  "profile_bits_per_entry": 18,
+  "profile_entries": 4,
+  "profile_rom_total_bits": 72,
+  "recovery": {
+    "attempt_1_failure": "repository root absent from Python module search path",
+    "attempt_1_log_preserved": true,
+    "attempt_1_status": "FAILED_INVOCATION_ENVIRONMENT",
+    "contract_or_test_content_changed_for_repair": false,
+    "repair": "rerun identical tests with repository root prepended to PYTHONPATH"
+  },
+  "rtl_files_created": 0,
+  "schema_version": 1,
+  "source_checkpoint": "cdfeda3f5f2fca586546ef6e362ac451512d75bc",
+  "state_count": 256,
+  "step": "P4_STEP_2_RTL_CONTRACT_FREEZE",
+  "synthesis_performed": false,
+  "test_count": 35,
+  "test_counts_by_suite": [
+    13,
+    13,
+    6,
+    3
+  ],
+  "test_suite_count": 4
+}
