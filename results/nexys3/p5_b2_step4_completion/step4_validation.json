@@ -1,0 +1,38 @@
+{
+  "schema": "qflow-p5-step4-b2-completion-v1",
+  "p5_completed_steps_after_commit": 4,
+  "p5_total_steps": 9,
+  "step": 4,
+  "stage": "B2 FDPE-mini",
+  "status": "complete",
+  "contract": {
+    "x_format": "UQ4.12",
+    "lut_entries": 256,
+    "vectors_exact_pass": 519,
+    "latency_cycles": 6
+  },
+  "implementation": {
+    "device": "XC6SLX16-2-CSG324",
+    "clock_constraint_mhz": 100.0,
+    "timing_errors": 0,
+    "timing_score": 0,
+    "worst_setup_slack_ns": 0.409,
+    "minimum_period_ns": 9.591,
+    "maximum_frequency_mhz": 104.264,
+    "bitstream_bytes": 464294,
+    "bitstream_sha256": "2847ae90b782b6d6345bad7c2439e8b6d6307239115bd0a545e6a83b620988c6"
+  },
+  "physical_validation": {
+    "display_b210": true,
+    "ld0_blinking": true,
+    "ld1_on": true,
+    "ld2_off": true,
+    "ld3_on": true,
+    "center_restarts_and_returns_to_b210": true
+  },
+  "nonvolatile_access": {
+    "controller_eeprom": 0,
+    "fpga_configuration_flash": 0
+  },
+  "repository_parent": "cb559ab3d6bc3a9338e5ad3638928ba7ab6df91a"
+}

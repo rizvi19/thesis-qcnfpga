@@ -1,0 +1,3 @@
+verilog work "p5_b2_fdpe.v"
+verilog work "p5_b1_sevenseg.v"
+verilog work "p5_b2_selftest_top.v"

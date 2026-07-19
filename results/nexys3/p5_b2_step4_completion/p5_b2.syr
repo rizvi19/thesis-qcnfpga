@@ -1,0 +1,651 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "p5_b2.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "p5_b2"
+Output Format                      : NGC
+Target Device                      : xc6slx16-2-csg324
+
+---- Source Options
+Top Module Name                    : p5_b2_selftest_top
+Safe Implementation                : No
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+ROM Style                          : Auto
+Shift Register Extraction          : YES
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : YES
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : YES
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "/home/shahriar-rizvi/Downloads/QFlow_P5_Step4_B2_FDPE_Mini_Attempt5_Build/ise/p5_b2_fdpe.v" into library work
+Parsing module <p5_b2_fdpe>.
+Analyzing Verilog file "/home/shahriar-rizvi/Downloads/QFlow_P5_Step4_B2_FDPE_Mini_Attempt5_Build/ise/p5_b1_sevenseg.v" into library work
+Parsing module <p5_b1_sevenseg>.
+Analyzing Verilog file "/home/shahriar-rizvi/Downloads/QFlow_P5_Step4_B2_FDPE_Mini_Attempt5_Build/ise/p5_b2_selftest_top.v" into library work
+Parsing module <p5_b2_selftest_top>.
+Parsing verilog file "p5_b2_board_vectors.vh" included at line 37.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating module <p5_b2_selftest_top>.
+
+Elaborating module <p5_b2_fdpe(LUT_FILE="p5_b2_exp_lut.mem")>.
+Reading initialization file \"p5_b2_exp_lut.mem\".
+Reading initialization file \"p5_b2_exp_lut.mem\".
+WARNING:HDLCompiler:1127 - "/home/shahriar-rizvi/Downloads/QFlow_P5_Step4_B2_FDPE_Mini_Attempt5_Build/ise/p5_b2_selftest_top.v" Line 60: Assignment to core_busy ignored, since the identifier is never used
+
+Elaborating module <p5_b1_sevenseg>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <p5_b2_selftest_top>.
+    Related source file is "/home/shahriar-rizvi/Downloads/QFlow_P5_Step4_B2_FDPE_Mini_Attempt5_Build/ise/p5_b2_selftest_top.v".
+        HEARTBEAT_BIT = 25
+        LUT_FILE = "p5_b2_exp_lut.mem"
+INFO:Xst:3210 - "/home/shahriar-rizvi/Downloads/QFlow_P5_Step4_B2_FDPE_Mini_Attempt5_Build/ise/p5_b2_selftest_top.v" line 52: Output port <busy> of the instance <u_fdpe> is unconnected or connected to loadless signal.
+    Found 1-bit register for signal <core_start>.
+    Found 1-bit register for signal <waiting_for_done>.
+    Found 5-bit register for signal <test_index>.
+    Found 8-bit register for signal <pass_count>.
+    Found 1-bit register for signal <failed>.
+    Found 1-bit register for signal <led_done>.
+    Found 50-bit register for signal <active_vector>.
+    Found 26-bit register for signal <heartbeat_counter>.
+    Found 26-bit adder for signal <heartbeat_counter[25]_GND_1_o_add_21_OUT> created at line 85.
+    Found 8-bit adder for signal <pass_count[7]_GND_1_o_add_25_OUT> created at line 97.
+    Found 5-bit adder for signal <test_index[4]_GND_1_o_add_28_OUT> created at line 103.
+    Found 16x50-bit Read Only RAM for signal <_n0135>
+    Found 16-bit comparator equal for signal <core_fidelity[15]_active_vector[15]_equal_24_o> created at line 95
+    Found 1-bit comparator equal for signal <core_error_active_vector[48]_equal_25_o> created at line 96
+    Summary:
+	inferred   1 RAM(s).
+	inferred   3 Adder/Subtractor(s).
+	inferred  93 D-type flip-flop(s).
+	inferred   2 Comparator(s).
+	inferred   1 Multiplexer(s).
+Unit <p5_b2_selftest_top> synthesized.
+
+Synthesizing Unit <p5_b2_fdpe>.
+    Related source file is "/home/shahriar-rizvi/Downloads/QFlow_P5_Step4_B2_FDPE_Mini_Attempt5_Build/ise/p5_b2_fdpe.v".
+        LUT_FILE = "p5_b2_exp_lut.mem"
+    Set property "rom_style = distributed" for signal <exp_lut_a>.
+    Set property "rom_style = distributed" for signal <exp_lut_b>.
+WARNING:Xst:2999 - Signal 'exp_lut_a', unconnected in block 'p5_b2_fdpe', is tied to its initial value.
+WARNING:Xst:2999 - Signal 'exp_lut_b', unconnected in block 'p5_b2_fdpe', is tied to its initial value.
+    Found 256x16-bit dual-port Read Only RAM <Mram_exp_lut_b> for signal <exp_lut_b>.
+    Found 16-bit register for signal <x_reg>.
+    Found 16-bit register for signal <f_reg>.
+    Found 1-bit register for signal <tau_zero_reg>.
+    Found 1-bit register for signal <endpoint_zero_reg>.
+    Found 8-bit register for signal <index_reg>.
+    Found 7-bit register for signal <fraction_reg>.
+    Found 16-bit register for signal <decay_reg>.
+    Found 16-bit register for signal <y0_reg>.
+    Found 16-bit register for signal <y1_reg>.
+    Found 17-bit register for signal <delta_reg>.
+    Found 32-bit register for signal <base_reg>.
+    Found 7-bit register for signal <fraction_pipe_reg>.
+    Found 32-bit register for signal <scaled_delta_reg>.
+    Found 32-bit register for signal <base_pipe_reg>.
+    Found 1-bit register for signal <busy>.
+    Found 1-bit register for signal <done>.
+    Found 1-bit register for signal <error>.
+    Found 16-bit register for signal <fidelity_unorm16>.
+    Found 3-bit register for signal <stage>.
+    Found finite state machine <FSM_0> for signal <stage>.
+    -----------------------------------------------------------------------
+    | States             | 6                                              |
+    | Transitions        | 17                                             |
+    | Inputs             | 2                                              |
+    | Outputs            | 4                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | rst (positive)                                 |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 000                                            |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 17-bit subtractor for signal <GND_2_o_GND_2_o_sub_12_OUT> created at line 95.
+    Found 32-bit subtractor for signal <n0175> created at line 109.
+    Found 8-bit adder for signal <index_reg[7]_GND_2_o_add_8_OUT> created at line 91.
+    Found 32-bit adder for signal <n0124> created at line 110.
+    Found 17x7-bit multiplier for signal <delta_reg[16]_fraction_pipe_reg[6]_MuLt_12_OUT> created at line 101.
+    Found 16x16-bit multiplier for signal <n0127> created at line 119.
+    Found 16-bit comparator lessequal for signal <n0006> created at line 81
+    Found 25-bit comparator greater for signal <GND_2_o_base_pipe_reg[31]_LessThan_16_o> created at line 111
+    Summary:
+	inferred   1 RAM(s).
+	inferred   2 Multiplier(s).
+	inferred   4 Adder/Subtractor(s).
+	inferred 236 D-type flip-flop(s).
+	inferred   2 Comparator(s).
+	inferred   2 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <p5_b2_fdpe> synthesized.
+
+Synthesizing Unit <p5_b1_sevenseg>.
+    Related source file is "/home/shahriar-rizvi/Downloads/QFlow_P5_Step4_B2_FDPE_Mini_Attempt5_Build/ise/p5_b1_sevenseg.v".
+        SCAN_COUNTER_BITS = 18
+    Found 18-bit register for signal <scan_counter>.
+    Found 18-bit adder for signal <scan_counter[17]_GND_5_o_add_2_OUT> created at line 48.
+    Found 4x4-bit Read Only RAM for signal <an_n>
+    Found 16x7-bit Read Only RAM for signal <seg_n<6:0>>
+    Found 1-bit 4-to-1 multiplexer for signal <nibble<3>> created at line 22.
+    Found 1-bit 4-to-1 multiplexer for signal <nibble<2>> created at line 22.
+    Found 1-bit 4-to-1 multiplexer for signal <nibble<1>> created at line 22.
+    Found 1-bit 4-to-1 multiplexer for signal <nibble<0>> created at line 22.
+    Summary:
+	inferred   2 RAM(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred  18 D-type flip-flop(s).
+	inferred   4 Multiplexer(s).
+Unit <p5_b1_sevenseg> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 4
+ 16x50-bit single-port Read Only RAM                   : 1
+ 16x7-bit single-port Read Only RAM                    : 1
+ 256x16-bit dual-port Read Only RAM                    : 1
+ 4x4-bit single-port Read Only RAM                     : 1
+# Multipliers                                          : 2
+ 16x16-bit multiplier                                  : 1
+ 17x7-bit multiplier                                   : 1
+# Adders/Subtractors                                   : 8
+ 17-bit subtractor                                     : 1
+ 18-bit adder                                          : 1
+ 26-bit adder                                          : 1
+ 32-bit adder                                          : 1
+ 32-bit subtractor                                     : 1
+ 5-bit adder                                           : 1
+ 8-bit adder                                           : 2
+# Registers                                            : 27
+ 1-bit register                                        : 9
+ 16-bit register                                       : 6
+ 17-bit register                                       : 1
+ 18-bit register                                       : 1
+ 26-bit register                                       : 1
+ 32-bit register                                       : 3
+ 5-bit register                                        : 1
+ 50-bit register                                       : 1
+ 7-bit register                                        : 2
+ 8-bit register                                        : 2
+# Comparators                                          : 4
+ 1-bit comparator equal                                : 1
+ 16-bit comparator equal                               : 1
+ 16-bit comparator lessequal                           : 1
+ 25-bit comparator greater                             : 1
+# Multiplexers                                         : 7
+ 1-bit 4-to-1 multiplexer                              : 4
+ 16-bit 2-to-1 multiplexer                             : 2
+ 8-bit 2-to-1 multiplexer                              : 1
+# FSMs                                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+INFO:Xst:2261 - The FF/Latch <base_reg_0> in Unit <u_fdpe> is equivalent to the following 15 FFs/Latches, which will be removed : <base_reg_1> <base_reg_2> <base_reg_3> <base_reg_4> <base_reg_5> <base_reg_6> <base_reg_23> <base_reg_24> <base_reg_25> <base_reg_26> <base_reg_27> <base_reg_28> <base_reg_29> <base_reg_30> <base_reg_31> 
+INFO:Xst:2261 - The FF/Latch <scaled_delta_reg_24> in Unit <u_fdpe> is equivalent to the following 7 FFs/Latches, which will be removed : <scaled_delta_reg_25> <scaled_delta_reg_26> <scaled_delta_reg_27> <scaled_delta_reg_28> <scaled_delta_reg_29> <scaled_delta_reg_30> <scaled_delta_reg_31> 
+INFO:Xst:2261 - The FF/Latch <base_pipe_reg_0> in Unit <u_fdpe> is equivalent to the following 15 FFs/Latches, which will be removed : <base_pipe_reg_1> <base_pipe_reg_2> <base_pipe_reg_3> <base_pipe_reg_4> <base_pipe_reg_5> <base_pipe_reg_6> <base_pipe_reg_23> <base_pipe_reg_24> <base_pipe_reg_25> <base_pipe_reg_26> <base_pipe_reg_27> <base_pipe_reg_28> <base_pipe_reg_29> <base_pipe_reg_30> <base_pipe_reg_31> 
+WARNING:Xst:1710 - FF/Latch <base_reg_0> (without init value) has a constant value of 0 in block <u_fdpe>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <scaled_delta_reg_24> (without init value) has a constant value of 0 in block <u_fdpe>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <base_pipe_reg_0> (without init value) has a constant value of 0 in block <u_fdpe>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2404 -  FFs/Latches <scaled_delta_reg<31:24>> (without init value) have a constant value of 0 in block <p5_b2_fdpe>.
+WARNING:Xst:2404 -  FFs/Latches <base_reg<31:23>> (without init value) have a constant value of 0 in block <p5_b2_fdpe>.
+WARNING:Xst:2404 -  FFs/Latches <base_pipe_reg<31:23>> (without init value) have a constant value of 0 in block <p5_b2_fdpe>.
+
+Synthesizing (advanced) Unit <p5_b1_sevenseg>.
+The following registers are absorbed into counter <scan_counter>: 1 register on signal <scan_counter>.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_an_n> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 4-word x 4-bit                      |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <scan_counter>  |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <an_n>          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_seg_n<6:0>> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 7-bit                     |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <nibble>        |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <seg_n>         |          |
+    -----------------------------------------------------------------------
+Unit <p5_b1_sevenseg> synthesized (advanced).
+
+Synthesizing (advanced) Unit <p5_b2_fdpe>.
+	Multiplier <Mmult_delta_reg[16]_fraction_pipe_reg[6]_MuLt_12_OUT> in block <p5_b2_fdpe> and adder/subtractor <Msub_n0175> in block <p5_b2_fdpe> are combined into a MAC<Maddsub_delta_reg[16]_fraction_pipe_reg[6]_MuLt_12_OUT>.
+	The following registers are also absorbed by the MAC: <scaled_delta_reg> in block <p5_b2_fdpe>, <base_pipe_reg> in block <p5_b2_fdpe>.
+INFO:Xst:3216 - HDL ADVISOR - LUT implementation is currently selected for the RAM <Mram_exp_lut_b>. If you want the register to be removed and the RAM to be implemented as block RAM, please change the RAM implementation style accordingly.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 256-word x 16-bit                   |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <index_reg>     |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 256-word x 16-bit                   |          |
+    |     weB            | connected to signal <GND>           | high     |
+    |     addrB          | connected to signal <_n0177>        |          |
+    |     diB            | connected to signal <GND>           |          |
+    |     doB            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <p5_b2_fdpe> synthesized (advanced).
+
+Synthesizing (advanced) Unit <p5_b2_selftest_top>.
+The following registers are absorbed into counter <heartbeat_counter>: 1 register on signal <heartbeat_counter>.
+The following registers are absorbed into counter <test_index>: 1 register on signal <test_index>.
+The following registers are absorbed into counter <pass_count>: 1 register on signal <pass_count>.
+INFO:Xst:3231 - The small RAM <Mram__n0135> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 50-bit                    |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <test_index<3:0>> |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <p5_b2_selftest_top> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 4
+ 16x50-bit single-port distributed Read Only RAM       : 1
+ 16x7-bit single-port distributed Read Only RAM        : 1
+ 256x16-bit dual-port distributed Read Only RAM        : 1
+ 4x4-bit single-port distributed Read Only RAM         : 1
+# MACs                                                 : 1
+ 17x7-to-32-bit MAC                                    : 1
+# Multipliers                                          : 1
+ 16x16-bit multiplier                                  : 1
+# Adders/Subtractors                                   : 3
+ 17-bit subtractor                                     : 1
+ 32-bit adder                                          : 1
+ 8-bit adder                                           : 1
+# Counters                                             : 4
+ 18-bit up counter                                     : 1
+ 26-bit up counter                                     : 1
+ 5-bit up counter                                      : 1
+ 8-bit up counter                                      : 1
+# Registers                                            : 217
+ Flip-Flops                                            : 217
+# Comparators                                          : 4
+ 1-bit comparator equal                                : 1
+ 16-bit comparator equal                               : 1
+ 16-bit comparator lessequal                           : 1
+ 25-bit comparator greater                             : 1
+# Multiplexers                                         : 7
+ 1-bit 4-to-1 multiplexer                              : 4
+ 16-bit 2-to-1 multiplexer                             : 2
+ 8-bit 2-to-1 multiplexer                              : 1
+# FSMs                                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch <base_reg_0> (without init value) has a constant value of 0 in block <p5_b2_fdpe>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <base_reg_1> (without init value) has a constant value of 0 in block <p5_b2_fdpe>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <base_reg_2> (without init value) has a constant value of 0 in block <p5_b2_fdpe>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <base_reg_3> (without init value) has a constant value of 0 in block <p5_b2_fdpe>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <base_reg_4> (without init value) has a constant value of 0 in block <p5_b2_fdpe>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <base_reg_5> (without init value) has a constant value of 0 in block <p5_b2_fdpe>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <base_reg_6> (without init value) has a constant value of 0 in block <p5_b2_fdpe>. This FF/Latch will be trimmed during the optimization process.
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <u_fdpe/FSM_0> on signal <stage[1:3]> with user encoding.
+-------------------
+ State | Encoding
+-------------------
+ 000   | 000
+ 001   | 001
+ 010   | 010
+ 011   | 011
+ 100   | 100
+ 101   | 101
+-------------------
+INFO:Xst:2261 - The FF/Latch <active_vector_32> in Unit <p5_b2_selftest_top> is equivalent to the following 2 FFs/Latches, which will be removed : <active_vector_33> <active_vector_35> 
+INFO:Xst:2261 - The FF/Latch <active_vector_19> in Unit <p5_b2_selftest_top> is equivalent to the following 2 FFs/Latches, which will be removed : <active_vector_23> <active_vector_27> 
+INFO:Xst:2261 - The FF/Latch <active_vector_40> in Unit <p5_b2_selftest_top> is equivalent to the following FF/Latch, which will be removed : <active_vector_42> 
+INFO:Xst:2261 - The FF/Latch <active_vector_34> in Unit <p5_b2_selftest_top> is equivalent to the following FF/Latch, which will be removed : <active_vector_37> 
+INFO:Xst:2261 - The FF/Latch <active_vector_17> in Unit <p5_b2_selftest_top> is equivalent to the following 2 FFs/Latches, which will be removed : <active_vector_21> <active_vector_30> 
+INFO:Xst:2261 - The FF/Latch <active_vector_48> in Unit <p5_b2_selftest_top> is equivalent to the following FF/Latch, which will be removed : <active_vector_49> 
+INFO:Xst:2261 - The FF/Latch <active_vector_18> in Unit <p5_b2_selftest_top> is equivalent to the following 2 FFs/Latches, which will be removed : <active_vector_22> <active_vector_26> 
+
+Optimizing unit <p5_b2_selftest_top> ...
+
+Optimizing unit <p5_b2_fdpe> ...
+
+Optimizing unit <p5_b1_sevenseg> ...
+WARNING:Xst:1710 - FF/Latch <test_index_4> (without init value) has a constant value of 0 in block <p5_b2_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block p5_b2_selftest_top, actual ratio is 4.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 219
+ Flip-Flops                                            : 219
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : p5_b2.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 577
+#      GND                         : 3
+#      INV                         : 6
+#      LUT1                        : 49
+#      LUT2                        : 39
+#      LUT3                        : 18
+#      LUT4                        : 57
+#      LUT5                        : 86
+#      LUT6                        : 146
+#      MUXCY                       : 71
+#      MUXF7                       : 30
+#      VCC                         : 3
+#      XORCY                       : 69
+# FlipFlops/Latches                : 219
+#      FDR                         : 70
+#      FDRE                        : 149
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 17
+#      IBUF                        : 1
+#      OBUF                        : 16
+# DSPs                             : 3
+#      DSP48A1                     : 3
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx16csg324-2 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             219  out of  18224     1%  
+ Number of Slice LUTs:                  401  out of   9112     4%  
+    Number used as Logic:               401  out of   9112     4%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    467
+   Number with an unused Flip Flop:     248  out of    467    53%  
+   Number with an unused LUT:            66  out of    467    14%  
+   Number of fully used LUT-FF pairs:   153  out of    467    32%  
+   Number of unique control sets:        12
+
+IO Utilization: 
+ Number of IOs:                          18
+ Number of bonded IOBs:                  18  out of    232     7%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
+ Number of DSP48A1s:                      3  out of     32     9%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+-------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)   | Load  |
+-----------------------------------+-------------------------+-------+
+clk_100mhz                         | BUFGP                   | 221   |
+u_fdpe/base_reg<0>                 | NONE(u_fdpe/Madd_n01241)| 1     |
+-----------------------------------+-------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -2
+
+   Minimum period: 12.102ns (Maximum Frequency: 82.631MHz)
+   Minimum input arrival time before clock: 5.249ns
+   Maximum output required time after clock: 8.660ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_100mhz'
+  Clock period: 12.102ns (frequency: 82.631MHz)
+  Total number of paths / destination ports: 14589 / 448
+-------------------------------------------------------------------------
+Delay:               12.102ns (Levels of Logic = 4)
+  Source:            u_fdpe/Maddsub_delta_reg[16]_fraction_pipe_reg[6]_MuLt_12_OUT (DSP)
+  Destination:       u_fdpe/decay_reg_0 (FF)
+  Source Clock:      clk_100mhz rising
+  Destination Clock: clk_100mhz rising
+
+  Data Path: u_fdpe/Maddsub_delta_reg[16]_fraction_pipe_reg[6]_MuLt_12_OUT to u_fdpe/decay_reg_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     DSP48A1:CLK->PCOUT47    1   3.952   0.000  Maddsub_delta_reg[16]_fraction_pipe_reg[6]_MuLt_12_OUT (Maddsub_delta_reg[16]_fraction_pipe_reg[6]_MuLt_12_OUT_PCOUT_to_Madd_n01241_PCIN_47)
+     DSP48A1:PCIN47->P26    1   2.645   1.112  Madd_n01241 (n0124<26>)
+     LUT5:I0->O            1   0.254   0.682  _n02512 (_n02512)
+     LUT6:I5->O           16   0.254   1.182  _n02513 (_n0251)
+     LUT6:I5->O            1   0.254   0.000  decay_reg_0_glue_set (decay_reg_0_glue_set)
+     FDR:D                     0.074          decay_reg_0
+    ----------------------------------------
+    Total                     12.102ns (9.126ns logic, 2.976ns route)
+                                       (75.4% logic, 24.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_100mhz'
+  Total number of paths / destination ports: 224 / 224
+-------------------------------------------------------------------------
+Offset:              5.249ns (Levels of Logic = 3)
+  Source:            btn_reset (PAD)
+  Destination:       u_fdpe/done (FF)
+  Destination Clock: clk_100mhz rising
+
+  Data Path: btn_reset to u_fdpe/done
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O           224   1.328   2.531  btn_reset_IBUF (Reset_OR_DriverANDClockEnable)
+     begin scope: 'u_fdpe:rst'
+     LUT2:I0->O            1   0.250   0.681  busy_inv11 (busy_inv_0)
+     FDR:R                     0.459          done
+    ----------------------------------------
+    Total                      5.249ns (2.037ns logic, 3.212ns route)
+                                       (38.8% logic, 61.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_100mhz'
+  Total number of paths / destination ports: 218 / 15
+-------------------------------------------------------------------------
+Offset:              8.660ns (Levels of Logic = 5)
+  Source:            test_index_1 (FF)
+  Destination:       seg_n<6> (PAD)
+  Source Clock:      clk_100mhz rising
+
+  Data Path: test_index_1 to seg_n<6>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q            43   0.525   1.812  test_index_1 (test_index_1)
+     LUT3:I1->O            1   0.250   0.790  Mmux_display_value21 (display_value<1>)
+     begin scope: 'u_display:value<1>'
+     LUT4:I2->O            7   0.250   1.186  Mmux_nibble<1>11 (nibble<1>)
+     LUT4:I0->O            1   0.254   0.681  Mram_seg_n<6:0>61 (seg_n<6>)
+     end scope: 'u_display:seg_n<6>'
+     OBUF:I->O                 2.912          seg_n_6_OBUF (seg_n<6>)
+    ----------------------------------------
+    Total                      8.660ns (4.191ns logic, 4.469ns route)
+                                       (48.4% logic, 51.6% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk_100mhz
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk_100mhz     |   12.102|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock u_fdpe/base_reg<0>
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk_100mhz     |    5.645|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 5.94 secs
+ 
+--> 
+
+
+Total memory usage is 377096 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   17 (   0 filtered)
+Number of infos    :   16 (   0 filtered)
+

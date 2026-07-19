@@ -1,0 +1,16 @@
+            5'd0: board_vector = 50'h00000FFFFFFFE;
+            5'd1: board_vector = 50'h0000080007FFF;
+            5'd2: board_vector = 50'h00080FFFFF81E;
+            5'd3: board_vector = 50'h000C0F123E61E;
+            5'd4: board_vector = 50'h01000FFFF5E2C;
+            5'd5: board_vector = 50'h02000E6661F2E;
+            5'd6: board_vector = 50'h04000FFFF04AF;
+            5'd7: board_vector = 50'h07000FFFF003B;
+            5'd8: board_vector = 50'h07F80FFFF0016;
+            5'd9: board_vector = 50'h07FC0F1230015;
+            5'd10: board_vector = 50'h08000FFFF0000;
+            5'd11: board_vector = 50'h0FFFFFFFF0000;
+            5'd12: board_vector = 50'h30000FFFF0000;
+            5'd13: board_vector = 50'h0123400000000;
+            5'd14: board_vector = 50'h0000000010000;
+            5'd15: board_vector = 50'h02A5BCDEF0E96;
