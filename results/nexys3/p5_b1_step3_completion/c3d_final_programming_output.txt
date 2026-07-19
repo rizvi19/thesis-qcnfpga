@@ -1,0 +1,35 @@
+===== C3D FINAL DIRECT PROGRAMMING GATE =====
+P5_PROGRESS=2_OF_9_COMPLETED
+ISE_REBUILD=0
+EEPROM_ACCESS=0
+
+===== CONTROLLER IDENTITY =====
+OPERATIONAL_USB=Bus 003 Device 009: ID 1443:0007 Digilent Development board JTAG
+RAW_CYPRESS_USB=NONE
+P5_B1_OPERATIONAL_USB=1443:0007_EXACT_PASS
+
+===== ADEPT AND JTAG CHECK =====
+Found 1 device(s)
+
+Device: Nexys3
+    Device Transport Type: 00010001 (USB)
+    Product Name:          Nexys3
+    User Name:             Nexys3
+    Serial Number:         210182697240
+Initializing scan chain...
+Found Device ID: 44002093
+
+Found 1 device(s):
+    Device 0: XC6SLX16
+P5_B1_ADEPT_AND_JTAG=EXACT_PASS
+
+===== ONE VOLATILE REPAIRED-B1 PROGRAMMING OPERATION =====
+BITSTREAM_SHA256=7eefc2e1cae4089cc47e58c2cca11a8b91efa359630d2e3b70fefe1074bc5347
+Programming device. Do not touch your board. This may take a few minutes...
+Programming succeeded.
+
+P5_B1_C3D_REPAIRED_B1_PROGRAMMING=1_AUTHORIZED_PASS
+P5_B1_C3D_EEPROM_ACCESS=0_PASS
+P5_B1_C3D_REPOSITORY_WRITES=0_PASS
+BOARD_POWER_MUST_REMAIN_ON=YES
+NEXT_ACTION=PHYSICAL_RESET_VALIDATION

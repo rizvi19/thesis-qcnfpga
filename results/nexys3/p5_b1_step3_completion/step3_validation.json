@@ -1,0 +1,43 @@
+{
+  "schema": "qflow-p5-step3-b1-completion-v1",
+  "p5_completed_steps_after_commit": 3,
+  "p5_total_steps": 9,
+  "step": 3,
+  "stage": "B1 I/O sanity",
+  "status": "complete",
+  "board": {
+    "product": "Nexys3",
+    "revision": "B",
+    "adept_serial": "210182697240",
+    "operational_usb_id": "1443:0007",
+    "raw_recovery_usb_id": "04b4:8613",
+    "fpga": "XC6SLX16",
+    "jtag_id": "44002093"
+  },
+  "root_cause": "internal FPGA PULLDOWN on externally driven btn_reset input",
+  "repair": "remove active PULLDOWN from btn_reset at B8",
+  "repaired_bitstream": {
+    "bytes": 464294,
+    "sha256": "7eefc2e1cae4089cc47e58c2cca11a8b91efa359630d2e3b70fefe1074bc5347",
+    "minimum_period_ns": 6.253,
+    "maximum_frequency_mhz": 159.923,
+    "timing_score": 0,
+    "timing_errors": 0
+  },
+  "physical_validation": {
+    "display_counting": true,
+    "ld0_alternating": true,
+    "center_held_display_0000": true,
+    "center_held_ld1_on": true,
+    "after_release_ld1_off": true,
+    "after_release_restarted_from_0001": true
+  },
+  "controller_recovery": {
+    "official_image_sha256": "ad744e1908ab029b9c08400dbab49f00998c0da0300fa16f188782566893c6b8",
+    "vendax_sha256": "0e4e5da410b51eb7a111cb8d3627fac02eada997916fefc9ea56f4fc9a673dd9",
+    "eeprom_writes_during_p5": 0,
+    "routine_full_eeprom_reads_required": false,
+    "cd_bytes_meaning": "VendAX transfer failure-fill, not erased EEPROM"
+  },
+  "repository_parent": "2b6f8fdd7465e0b2135a3db8ae57cdc2ed1d431a"
+}

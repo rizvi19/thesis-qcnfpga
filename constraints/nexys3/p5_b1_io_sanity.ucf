@@ -1,11 +1,11 @@
-# QFlow-RL P5 B1 I/O sanity constraints for Digilent Nexys 3 rev. B.
-# Pin choices follow the Digilent Nexys 3 reference manual / master UCF.
+# QFlow-RL P5 B1 repaired I/O sanity constraints for Digilent Nexys 3 rev. B.
+# The board-driven center button must not use an internal FPGA PULLDOWN.
 
 NET "clk_100mhz" LOC = "V10" | IOSTANDARD = LVCMOS33;
 NET "clk_100mhz" TNM_NET = "P5_B1_CLK";
 TIMESPEC "TS_P5_B1_CLK" = PERIOD "P5_B1_CLK" 10 ns HIGH 50%;
 
-NET "btn_reset" LOC = "B8" | IOSTANDARD = LVCMOS33 | PULLDOWN;
+NET "btn_reset" LOC = "B8" | IOSTANDARD = LVCMOS33;
 
 NET "led_heartbeat" LOC = "U16" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW;
 NET "led_reset" LOC = "V16" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW;
