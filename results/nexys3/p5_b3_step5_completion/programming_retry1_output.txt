@@ -1,0 +1,16 @@
+===== P5 B3 CONTROLLED PROGRAMMING RETRY 1 =====
+EXPECTED_BITSTREAM_SHA256=0e1b78eaf17dc6a56b2d6c6794b4b807841286f60b3ce9d43f87f53d3e2cb1f4
+ACTUAL_BITSTREAM_SHA256=0e1b78eaf17dc6a56b2d6c6794b4b807841286f60b3ce9d43f87f53d3e2cb1f4
+
+===== OPERATIONAL USB CHECK =====
+Bus 003 Device 010: ID 1443:0007 Digilent Development board JTAG
+
+===== ADEPT AND JTAG REINITIALIZATION =====
+Found 1 device(s)
+
+Device: DOnbUsb
+    Device Transport Type: 00010001 (USB)
+    Product Name:          Onboard USB
+    User Name:             DOnbUsb
+    Serial Number:         000000000000
+ERROR: unable to open device "Nexys3"

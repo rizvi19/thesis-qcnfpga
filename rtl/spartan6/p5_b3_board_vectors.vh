@@ -1,0 +1,16 @@
+                5'd0: board_vector = 115'h00087FFF808000002665200042001;
+                5'd1: board_vector = 115'h0007FD7080C000A4266520003E197;
+                5'd2: board_vector = 115'h00077AE101000147A66520003CECD;
+                5'd3: board_vector = 115'h000675C20180028FA66520003D747;
+                5'd4: board_vector = 115'h0005F33301C00333266520003E69D;
+                5'd5: board_vector = 115'h00046B848280051EA665200042E73;
+                5'd6: board_vector = 115'h0003666603000666A665200047335;
+                5'd7: board_vector = 115'h0002E3D68340070A2665200049EB9;
+                5'd8: board_vector = 115'h00046B848280051EB6A2C000481A5;
+                5'd9: board_vector = 115'h0003E8F582C005C2B6A2C0004A177;
+                5'd10: board_vector = 115'h00007FFF8080000036A2DFFFFFFFE;
+                5'd11: board_vector = 115'h000080008000FFFFB6A2DFFFFFFFD;
+                5'd12: board_vector = 115'h000080008000FFFFA8733FFFFFFFD;
+                5'd13: board_vector = 115'h7FFFFFFFFFFF80002873200040103;
+                5'd14: board_vector = 115'h00023FFF808080009454A00053F07;
+                5'd15: board_vector = 115'h000440000000BFFF9454A01051FFB;

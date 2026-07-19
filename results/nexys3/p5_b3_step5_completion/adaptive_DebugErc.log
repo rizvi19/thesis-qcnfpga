@@ -1,0 +1,2 @@
+System Time     Process     Thread        ERC     ERC String                  Message
+2074053982      139969      685430464     3075    ercControlTransferFailed    USBC:FGetMAC

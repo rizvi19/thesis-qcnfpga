@@ -179,3 +179,13 @@ verified official image. No EEPROM write was performed.
 The operational priority is therefore to obtain one clean controller boot, keep
 the board powered, program the already-built repaired B1 bitstream, finish its
 physical reset validation, preserve the reusable assets, and close P5 Step 3.
+
+## 9. Operational USB with the generic `DOnbUsb` Adept name
+
+If USB remains `1443:0007` but clean Adept enumeration reports `DOnbUsb`, do
+not enter raw-FX2 recovery. Follow
+`docs/hardware/QFlow_Nexys3_Adept_DOnbUsb_Fallback.md`: initialize JTAG using
+the exact enumerated name, require XC6SLX16 ID `44002093`, and only then program
+the checksum-verified volatile bitstream. This path performs no EEPROM or
+configuration-flash access.
+

@@ -1,0 +1,35 @@
+===== P5 B3 ADAPTIVE ADEPT-NAME RETRY =====
+BITSTREAM_SHA256=0e1b78eaf17dc6a56b2d6c6794b4b807841286f60b3ce9d43f87f53d3e2cb1f4
+
+===== USB IDENTITY =====
+Bus 003 Device 010: ID 1443:0007 Digilent Development board JTAG
+
+===== ADEPT ENUMERATION =====
+Found 1 device(s)
+
+Device: DOnbUsb
+    Device Transport Type: 00010001 (USB)
+    Product Name:          Onboard USB
+    User Name:             DOnbUsb
+    Serial Number:         000000000000
+SELECTED_ADEPT_DEVICE=DOnbUsb
+
+===== READ-ONLY JTAG INITIALIZATION =====
+Initializing scan chain...
+Found Device ID: 44002093
+
+Found 1 device(s):
+    Device 0: XC6SLX16
+P5_B3_JTAG_CHAIN=XC6SLX16_44002093_PASS
+
+===== JTAG SETTLEMENT =====
+
+===== ONE VOLATILE B3 PROGRAMMING RETRY =====
+Programming device. Do not touch your board. This may take a few minutes...
+Programming succeeded.
+
+P5_B3_ADAPTIVE_PROGRAMMING_RETRY=PASS
+EEPROM_ACCESS=0_PASS
+CONFIGURATION_FLASH_ACCESS=0_PASS
+BOARD_POWER_MUST_REMAIN_ON=YES
+NEXT_ACTION=PHYSICAL_B310_VALIDATION

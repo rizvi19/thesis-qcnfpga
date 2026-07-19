@@ -1,0 +1,769 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "p5_b3.prj"
+Input Format                       : mixed
+
+---- Target Parameters
+Output File Name                   : "p5_b3"
+Output Format                      : NGC
+Target Device                      : xc6slx16-2-csg324
+
+---- Source Options
+Top Module Name                    : p5_b3_selftest_top
+Safe Implementation                : No
+Automatic FSM Extraction           : Yes
+FSM Encoding Algorithm             : Auto
+Shift Register Extraction          : Yes
+Resource Sharing                   : Yes
+Asynchronous To Synchronous        : No
+Use DSP Block                      : Auto
+Automatic Register Balancing       : Yes
+
+---- Target Options
+Add IO Buffers                     : Yes
+Global Maximum Fanout              : 100000
+Register Duplication               : Yes
+Optimize Instantiated Primitives   : Yes
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : Yes
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 2
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : Yes
+Write Timing Constraints           : Yes
+Cross Clock Analysis               : No
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "/home/shahriar-rizvi/Downloads/QFlow_P5_Step5_B3_SKAG_Mini_Build/ise/p5_b3_iterative_divider.v" into library work
+Parsing module <p5_b3_iterative_divider>.
+Analyzing Verilog file "/home/shahriar-rizvi/Downloads/QFlow_P5_Step5_B3_SKAG_Mini_Build/ise/p5_b3_skag.v" into library work
+Parsing module <p5_b3_skag>.
+Analyzing Verilog file "/home/shahriar-rizvi/Downloads/QFlow_P5_Step5_B3_SKAG_Mini_Build/ise/p5_b1_sevenseg.v" into library work
+Parsing module <p5_b1_sevenseg>.
+Analyzing Verilog file "/home/shahriar-rizvi/Downloads/QFlow_P5_Step5_B3_SKAG_Mini_Build/ise/p5_b3_selftest_top.v" into library work
+Parsing module <p5_b3_selftest_top>.
+Parsing verilog file "p5_b3_board_vectors.vh" included at line 36.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating module <p5_b3_selftest_top>.
+
+Elaborating module <p5_b3_skag>.
+
+Elaborating module <p5_b3_iterative_divider>.
+WARNING:HDLCompiler:1127 - "/home/shahriar-rizvi/Downloads/QFlow_P5_Step5_B3_SKAG_Mini_Build/ise/p5_b3_skag.v" Line 63: Assignment to div_busy ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/shahriar-rizvi/Downloads/QFlow_P5_Step5_B3_SKAG_Mini_Build/ise/p5_b3_selftest_top.v" Line 53: Assignment to core_busy ignored, since the identifier is never used
+
+Elaborating module <p5_b1_sevenseg>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <p5_b3_selftest_top>.
+    Related source file is "/home/shahriar-rizvi/Downloads/QFlow_P5_Step5_B3_SKAG_Mini_Build/ise/p5_b3_selftest_top.v".
+        HEARTBEAT_BIT = 25
+INFO:Xst:3210 - "/home/shahriar-rizvi/Downloads/QFlow_P5_Step5_B3_SKAG_Mini_Build/ise/p5_b3_selftest_top.v" line 49: Output port <busy> of the instance <u_skag> is unconnected or connected to loadless signal.
+    Found 1-bit register for signal <core_start>.
+    Found 1-bit register for signal <waiting_for_done>.
+    Found 5-bit register for signal <test_index>.
+    Found 8-bit register for signal <pass_count>.
+    Found 1-bit register for signal <failed>.
+    Found 1-bit register for signal <led_done>.
+    Found 115-bit register for signal <active_vector>.
+    Found 26-bit register for signal <heartbeat_counter>.
+    Found 26-bit adder for signal <heartbeat_counter[25]_GND_1_o_add_21_OUT> created at line 73.
+    Found 8-bit adder for signal <pass_count[7]_GND_1_o_add_25_OUT> created at line 85.
+    Found 5-bit adder for signal <test_index[4]_GND_1_o_add_28_OUT> created at line 91.
+    Found 16x115-bit Read Only RAM for signal <_n0135>
+    Found 32-bit comparator equal for signal <core_weight[31]_active_vector[32]_equal_24_o> created at line 83
+    Found 1-bit comparator equal for signal <core_feasible_active_vector[0]_equal_25_o> created at line 84
+    Summary:
+	inferred   1 RAM(s).
+	inferred   3 Adder/Subtractor(s).
+	inferred 158 D-type flip-flop(s).
+	inferred   2 Comparator(s).
+	inferred   1 Multiplexer(s).
+Unit <p5_b3_selftest_top> synthesized.
+
+Synthesizing Unit <p5_b3_skag>.
+    Related source file is "/home/shahriar-rizvi/Downloads/QFlow_P5_Step5_B3_SKAG_Mini_Build/ise/p5_b3_skag.v".
+WARNING:Xst:647 - Input <profile_payload<5:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+INFO:Xst:3210 - "/home/shahriar-rizvi/Downloads/QFlow_P5_Step5_B3_SKAG_Mini_Build/ise/p5_b3_skag.v" line 56: Output port <busy> of the instance <u_divider> is unconnected or connected to loadless signal.
+    Found 16-bit register for signal <fidelity>.
+    Found 16-bit register for signal <key_rate>.
+    Found 16-bit register for signal <qber>.
+    Found 3-bit register for signal <alpha1>.
+    Found 3-bit register for signal <alpha2>.
+    Found 3-bit register for signal <alpha3>.
+    Found 3-bit register for signal <alpha4>.
+    Found 3-bit register for signal <state>.
+    Found 3-bit register for signal <term_index>.
+    Found 32-bit register for signal <sum_reg>.
+    Found 1-bit register for signal <div_start>.
+    Found 48-bit register for signal <div_dividend>.
+    Found 18-bit register for signal <div_divisor>.
+    Found 1-bit register for signal <busy>.
+    Found 1-bit register for signal <done>.
+    Found 1-bit register for signal <feasible>.
+    Found 32-bit register for signal <weight_uq16_16>.
+    Found 16-bit register for signal <key_count>.
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 6                                              |
+    | Transitions        | 21                                             |
+    | Inputs             | 7                                              |
+    | Outputs            | 4                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | rst (positive)                                 |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 000                                            |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 19-bit adder for signal <n0253> created at line 48.
+    Found 19-bit adder for signal <GND_2_o_GND_2_o_add_22_OUT> created at line 48.
+    Found 19-bit adder for signal <n0259> created at line 48.
+    Found 19-bit adder for signal <GND_2_o_GND_2_o_add_27_OUT> created at line 48.
+    Found 37-bit adder for signal <n0264[36:0]> created at line 144.
+    Found 49-bit adder for signal <n0245> created at line 156.
+    Found 3-bit adder for signal <term_index[2]_GND_2_o_add_63_OUT> created at line 171.
+    Found 1-bit 4-to-1 multiplexer for signal <_n0277> created at line 124.
+    Found 1-bit 4-to-1 multiplexer for signal <_n0284> created at line 124.
+    Found 1-bit 4-to-1 multiplexer for signal <_n0291> created at line 124.
+    Found 1-bit 4-to-1 multiplexer for signal <_n0298> created at line 124.
+    Found 1-bit 4-to-1 multiplexer for signal <_n0305> created at line 124.
+    Found 17-bit 4-to-1 multiplexer for signal <_n0315> created at line 124.
+    Found 1-bit 4-to-1 multiplexer for signal <_n0323> created at line 124.
+    Found 18-bit 4-to-1 multiplexer for signal <_n0347> created at line 109.
+    Found 49-bit comparator greater for signal <GND_2_o_BUS_0170_LessThan_62_o> created at line 165
+    Summary:
+	inferred   7 Adder/Subtractor(s).
+	inferred 213 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+	inferred  28 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <p5_b3_skag> synthesized.
+
+Synthesizing Unit <p5_b3_iterative_divider>.
+    Related source file is "/home/shahriar-rizvi/Downloads/QFlow_P5_Step5_B3_SKAG_Mini_Build/ise/p5_b3_iterative_divider.v".
+    Found 1-bit register for signal <done>.
+    Found 48-bit register for signal <quotient>.
+    Found 48-bit register for signal <dividend_shift>.
+    Found 48-bit register for signal <quotient_work>.
+    Found 19-bit register for signal <remainder>.
+    Found 18-bit register for signal <divisor_reg>.
+    Found 6-bit register for signal <count>.
+    Found 1-bit register for signal <busy>.
+    Found 19-bit subtractor for signal <remainder[17]_GND_3_o_sub_8_OUT> created at line 50.
+    Found 6-bit adder for signal <count[5]_GND_3_o_add_10_OUT> created at line 62.
+    Found 19-bit comparator lessequal for signal <n0007> created at line 49
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred 189 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+	inferred   2 Multiplexer(s).
+Unit <p5_b3_iterative_divider> synthesized.
+
+Synthesizing Unit <p5_b1_sevenseg>.
+    Related source file is "/home/shahriar-rizvi/Downloads/QFlow_P5_Step5_B3_SKAG_Mini_Build/ise/p5_b1_sevenseg.v".
+        SCAN_COUNTER_BITS = 18
+    Found 18-bit register for signal <scan_counter>.
+    Found 18-bit adder for signal <scan_counter[17]_GND_4_o_add_2_OUT> created at line 48.
+    Found 4x4-bit Read Only RAM for signal <an_n>
+    Found 16x7-bit Read Only RAM for signal <seg_n<6:0>>
+    Found 1-bit 4-to-1 multiplexer for signal <nibble<3>> created at line 22.
+    Found 1-bit 4-to-1 multiplexer for signal <nibble<2>> created at line 22.
+    Found 1-bit 4-to-1 multiplexer for signal <nibble<1>> created at line 22.
+    Found 1-bit 4-to-1 multiplexer for signal <nibble<0>> created at line 22.
+    Summary:
+	inferred   2 RAM(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred  18 D-type flip-flop(s).
+	inferred   4 Multiplexer(s).
+Unit <p5_b1_sevenseg> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 3
+ 16x115-bit single-port Read Only RAM                  : 1
+ 16x7-bit single-port Read Only RAM                    : 1
+ 4x4-bit single-port Read Only RAM                     : 1
+# Adders/Subtractors                                   : 13
+ 18-bit adder                                          : 1
+ 19-bit adder                                          : 4
+ 19-bit subtractor                                     : 1
+ 26-bit adder                                          : 1
+ 3-bit adder                                           : 1
+ 37-bit adder                                          : 1
+ 49-bit adder                                          : 1
+ 5-bit adder                                           : 1
+ 6-bit adder                                           : 1
+ 8-bit adder                                           : 1
+# Registers                                            : 34
+ 1-bit register                                        : 10
+ 115-bit register                                      : 1
+ 16-bit register                                       : 4
+ 18-bit register                                       : 3
+ 19-bit register                                       : 1
+ 26-bit register                                       : 1
+ 3-bit register                                        : 5
+ 32-bit register                                       : 2
+ 48-bit register                                       : 4
+ 5-bit register                                        : 1
+ 6-bit register                                        : 1
+ 8-bit register                                        : 1
+# Comparators                                          : 4
+ 1-bit comparator equal                                : 1
+ 19-bit comparator lessequal                           : 1
+ 32-bit comparator equal                               : 1
+ 49-bit comparator greater                             : 1
+# Multiplexers                                         : 35
+ 1-bit 2-to-1 multiplexer                              : 10
+ 1-bit 4-to-1 multiplexer                              : 10
+ 16-bit 2-to-1 multiplexer                             : 1
+ 17-bit 2-to-1 multiplexer                             : 1
+ 17-bit 4-to-1 multiplexer                             : 1
+ 18-bit 2-to-1 multiplexer                             : 1
+ 18-bit 4-to-1 multiplexer                             : 1
+ 19-bit 2-to-1 multiplexer                             : 4
+ 32-bit 2-to-1 multiplexer                             : 5
+ 48-bit 2-to-1 multiplexer                             : 1
+# FSMs                                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+INFO:Xst:2261 - The FF/Latch <div_dividend_37> in Unit <u_skag> is equivalent to the following 10 FFs/Latches, which will be removed : <div_dividend_38> <div_dividend_39> <div_dividend_40> <div_dividend_41> <div_dividend_42> <div_dividend_43> <div_dividend_44> <div_dividend_45> <div_dividend_46> <div_dividend_47> 
+WARNING:Xst:1710 - FF/Latch <div_dividend_37> (without init value) has a constant value of 0 in block <u_skag>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <remainder_18> of sequential type is unconnected in block <u_divider>.
+WARNING:Xst:2677 - Node <quotient_work_47> of sequential type is unconnected in block <u_divider>.
+WARNING:Xst:2677 - Node <active_vector_33> of sequential type is unconnected in block <p5_b3_selftest_top>.
+WARNING:Xst:2677 - Node <active_vector_34> of sequential type is unconnected in block <p5_b3_selftest_top>.
+WARNING:Xst:2677 - Node <active_vector_35> of sequential type is unconnected in block <p5_b3_selftest_top>.
+WARNING:Xst:2677 - Node <active_vector_36> of sequential type is unconnected in block <p5_b3_selftest_top>.
+WARNING:Xst:2677 - Node <active_vector_37> of sequential type is unconnected in block <p5_b3_selftest_top>.
+WARNING:Xst:2677 - Node <active_vector_38> of sequential type is unconnected in block <p5_b3_selftest_top>.
+WARNING:Xst:2404 -  FFs/Latches <div_dividend<47:37>> (without init value) have a constant value of 0 in block <p5_b3_skag>.
+
+Synthesizing (advanced) Unit <p5_b1_sevenseg>.
+The following registers are absorbed into counter <scan_counter>: 1 register on signal <scan_counter>.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_an_n> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 4-word x 4-bit                      |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <scan_counter>  |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <an_n>          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_seg_n<6:0>> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 7-bit                     |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <nibble>        |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <seg_n>         |          |
+    -----------------------------------------------------------------------
+Unit <p5_b1_sevenseg> synthesized (advanced).
+
+Synthesizing (advanced) Unit <p5_b3_iterative_divider>.
+The following registers are absorbed into counter <count>: 1 register on signal <count>.
+Unit <p5_b3_iterative_divider> synthesized (advanced).
+
+Synthesizing (advanced) Unit <p5_b3_selftest_top>.
+The following registers are absorbed into counter <heartbeat_counter>: 1 register on signal <heartbeat_counter>.
+The following registers are absorbed into counter <test_index>: 1 register on signal <test_index>.
+The following registers are absorbed into counter <pass_count>: 1 register on signal <pass_count>.
+INFO:Xst:3231 - The small RAM <Mram__n0135> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 115-bit                   |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <test_index<3:0>> |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <p5_b3_selftest_top> synthesized (advanced).
+
+Synthesizing (advanced) Unit <p5_b3_skag>.
+The following registers are absorbed into counter <term_index>: 1 register on signal <term_index>.
+Unit <p5_b3_skag> synthesized (advanced).
+WARNING:Xst:2677 - Node <remainder_18> of sequential type is unconnected in block <p5_b3_iterative_divider>.
+WARNING:Xst:2677 - Node <quotient_work_47> of sequential type is unconnected in block <p5_b3_iterative_divider>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 3
+ 16x115-bit single-port distributed Read Only RAM      : 1
+ 16x7-bit single-port distributed Read Only RAM        : 1
+ 4x4-bit single-port distributed Read Only RAM         : 1
+# Adders/Subtractors                                   : 7
+ 19-bit adder                                          : 4
+ 19-bit subtractor                                     : 1
+ 37-bit adder                                          : 1
+ 49-bit adder                                          : 1
+# Counters                                             : 6
+ 18-bit up counter                                     : 1
+ 26-bit up counter                                     : 1
+ 3-bit up counter                                      : 1
+ 5-bit up counter                                      : 1
+ 6-bit up counter                                      : 1
+ 8-bit up counter                                      : 1
+# Registers                                            : 499
+ Flip-Flops                                            : 499
+# Comparators                                          : 4
+ 1-bit comparator equal                                : 1
+ 19-bit comparator lessequal                           : 1
+ 32-bit comparator equal                               : 1
+ 49-bit comparator greater                             : 1
+# Multiplexers                                         : 35
+ 1-bit 2-to-1 multiplexer                              : 10
+ 1-bit 4-to-1 multiplexer                              : 10
+ 16-bit 2-to-1 multiplexer                             : 1
+ 17-bit 2-to-1 multiplexer                             : 1
+ 17-bit 4-to-1 multiplexer                             : 1
+ 18-bit 2-to-1 multiplexer                             : 1
+ 18-bit 4-to-1 multiplexer                             : 1
+ 19-bit 2-to-1 multiplexer                             : 4
+ 32-bit 2-to-1 multiplexer                             : 5
+ 48-bit 2-to-1 multiplexer                             : 1
+# FSMs                                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+INFO:Xst:2146 - In block <p5_b3_selftest_top>, Counter <heartbeat_counter> <u_display/scan_counter> are equivalent, XST will keep only <heartbeat_counter>.
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <u_skag/FSM_0> on signal <state[1:3]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 000   | 000
+ 001   | 001
+ 010   | 011
+ 011   | 010
+ 100   | 110
+ 101   | 111
+-------------------
+WARNING:Xst:1710 - FF/Latch <active_vector_39> (without init value) has a constant value of 0 in block <p5_b3_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <active_vector_44> (without init value) has a constant value of 0 in block <p5_b3_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <active_vector_50> (without init value) has a constant value of 0 in block <p5_b3_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <div_dividend_36> (without init value) has a constant value of 0 in block <p5_b3_skag>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <active_vector_19> in Unit <p5_b3_selftest_top> is equivalent to the following 12 FFs/Latches, which will be removed : <active_vector_20> <active_vector_21> <active_vector_22> <active_vector_23> <active_vector_25> <active_vector_26> <active_vector_27> <active_vector_28> <active_vector_29> <active_vector_30> <active_vector_31> <active_vector_32> 
+INFO:Xst:2261 - The FF/Latch <active_vector_33> in Unit <p5_b3_selftest_top> is equivalent to the following FF/Latch, which will be removed : <active_vector_42> 
+INFO:Xst:2261 - The FF/Latch <active_vector_35> in Unit <p5_b3_selftest_top> is equivalent to the following FF/Latch, which will be removed : <active_vector_48> 
+INFO:Xst:2261 - The FF/Latch <active_vector_63> in Unit <p5_b3_selftest_top> is equivalent to the following 2 FFs/Latches, which will be removed : <active_vector_64> <active_vector_65> 
+INFO:Xst:2261 - The FF/Latch <active_vector_34> in Unit <p5_b3_selftest_top> is equivalent to the following FF/Latch, which will be removed : <active_vector_43> 
+INFO:Xst:2261 - The FF/Latch <active_vector_41> in Unit <p5_b3_selftest_top> is equivalent to the following FF/Latch, which will be removed : <active_vector_49> 
+INFO:Xst:2261 - The FF/Latch <active_vector_68> in Unit <p5_b3_selftest_top> is equivalent to the following 21 FFs/Latches, which will be removed : <active_vector_69> <active_vector_70> <active_vector_71> <active_vector_72> <active_vector_73> <active_vector_78> <active_vector_79> <active_vector_80> <active_vector_81> <active_vector_82> <active_vector_104> <active_vector_105> <active_vector_106> <active_vector_107> <active_vector_108> <active_vector_109> <active_vector_110> <active_vector_111> <active_vector_112> <active_vector_113> <active_vector_114> 
+INFO:Xst:2261 - The FF/Latch <div_divisor_11> in Unit <p5_b3_skag> is equivalent to the following FF/Latch, which will be removed : <div_dividend_10> 
+INFO:Xst:2261 - The FF/Latch <div_divisor_3> in Unit <p5_b3_skag> is equivalent to the following FF/Latch, which will be removed : <div_dividend_2> 
+INFO:Xst:2261 - The FF/Latch <div_divisor_16> in Unit <p5_b3_skag> is equivalent to the following FF/Latch, which will be removed : <div_dividend_15> 
+INFO:Xst:2261 - The FF/Latch <div_divisor_10> in Unit <p5_b3_skag> is equivalent to the following FF/Latch, which will be removed : <div_dividend_9> 
+INFO:Xst:2261 - The FF/Latch <div_divisor_2> in Unit <p5_b3_skag> is equivalent to the following FF/Latch, which will be removed : <div_dividend_1> 
+INFO:Xst:2261 - The FF/Latch <div_divisor_15> in Unit <p5_b3_skag> is equivalent to the following FF/Latch, which will be removed : <div_dividend_14> 
+INFO:Xst:2261 - The FF/Latch <div_divisor_7> in Unit <p5_b3_skag> is equivalent to the following FF/Latch, which will be removed : <div_dividend_6> 
+INFO:Xst:2261 - The FF/Latch <div_divisor_9> in Unit <p5_b3_skag> is equivalent to the following FF/Latch, which will be removed : <div_dividend_8> 
+INFO:Xst:2261 - The FF/Latch <div_divisor_1> in Unit <p5_b3_skag> is equivalent to the following FF/Latch, which will be removed : <div_dividend_0> 
+INFO:Xst:2261 - The FF/Latch <div_divisor_14> in Unit <p5_b3_skag> is equivalent to the following FF/Latch, which will be removed : <div_dividend_13> 
+INFO:Xst:2261 - The FF/Latch <div_divisor_6> in Unit <p5_b3_skag> is equivalent to the following FF/Latch, which will be removed : <div_dividend_5> 
+INFO:Xst:2261 - The FF/Latch <div_divisor_8> in Unit <p5_b3_skag> is equivalent to the following FF/Latch, which will be removed : <div_dividend_7> 
+INFO:Xst:2261 - The FF/Latch <div_divisor_13> in Unit <p5_b3_skag> is equivalent to the following FF/Latch, which will be removed : <div_dividend_12> 
+INFO:Xst:2261 - The FF/Latch <div_divisor_5> in Unit <p5_b3_skag> is equivalent to the following FF/Latch, which will be removed : <div_dividend_4> 
+INFO:Xst:2261 - The FF/Latch <div_divisor_12> in Unit <p5_b3_skag> is equivalent to the following FF/Latch, which will be removed : <div_dividend_11> 
+INFO:Xst:2261 - The FF/Latch <div_divisor_4> in Unit <p5_b3_skag> is equivalent to the following FF/Latch, which will be removed : <div_dividend_3> 
+INFO:Xst:2261 - The FF/Latch <div_divisor_17> in Unit <p5_b3_skag> is equivalent to the following FF/Latch, which will be removed : <div_dividend_16> 
+
+Optimizing unit <p5_b3_selftest_top> ...
+
+Optimizing unit <p5_b3_skag> ...
+
+Optimizing unit <p5_b3_iterative_divider> ...
+WARNING:Xst:1710 - FF/Latch <u_skag/alpha4_0> (without init value) has a constant value of 0 in block <p5_b3_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <u_skag/alpha3_2> (without init value) has a constant value of 0 in block <p5_b3_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <u_skag/alpha1_2> (without init value) has a constant value of 0 in block <p5_b3_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <active_vector_36> of sequential type is unconnected in block <p5_b3_selftest_top>.
+WARNING:Xst:2677 - Node <active_vector_37> of sequential type is unconnected in block <p5_b3_selftest_top>.
+WARNING:Xst:2677 - Node <active_vector_38> of sequential type is unconnected in block <p5_b3_selftest_top>.
+WARNING:Xst:1710 - FF/Latch <test_index_4> (without init value) has a constant value of 0 in block <p5_b3_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <u_skag/term_index_2> (without init value) has a constant value of 0 in block <p5_b3_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <u_skag/key_count_15> in Unit <p5_b3_selftest_top> is equivalent to the following 21 FFs/Latches, which will be removed : <u_skag/key_count_14> <u_skag/key_count_13> <u_skag/key_count_12> <u_skag/key_count_11> <u_skag/key_count_10> <u_skag/key_count_9> <u_skag/key_count_8> <u_skag/key_count_7> <u_skag/key_count_6> <u_skag/key_count_5> <u_skag/key_rate_15> <u_skag/key_rate_14> <u_skag/key_rate_13> <u_skag/key_rate_12> <u_skag/key_rate_11> <u_skag/key_rate_6> <u_skag/key_rate_5> <u_skag/key_rate_4> <u_skag/key_rate_3> <u_skag/key_rate_2> <u_skag/key_rate_1> 
+INFO:Xst:2261 - The FF/Latch <u_skag/div_dividend_32> in Unit <p5_b3_selftest_top> is equivalent to the following FF/Latch, which will be removed : <u_skag/div_dividend_31> 
+INFO:Xst:2261 - The FF/Latch <u_skag/qber_14> in Unit <p5_b3_selftest_top> is equivalent to the following 2 FFs/Latches, which will be removed : <u_skag/qber_13> <u_skag/qber_12> 
+INFO:Xst:2261 - The FF/Latch <u_skag/alpha4_2> in Unit <p5_b3_selftest_top> is equivalent to the following FF/Latch, which will be removed : <u_skag/alpha1_1> 
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block p5_b3_selftest_top, actual ratio is 8.
+INFO:Xst:2261 - The FF/Latch <active_vector_45> in Unit <p5_b3_selftest_top> is equivalent to the following 3 FFs/Latches, which will be removed : <active_vector_41_BRB1> <active_vector_46_BRB1> <active_vector_75_BRB2> 
+
+Pipelining and Register Balancing Report ...
+
+Processing Unit <p5_b3_selftest_top> :
+	Register(s) active_vector_33 has(ve) been backward balanced into : active_vector_33_BRB0 active_vector_33_BRB1.
+	Register(s) active_vector_34 has(ve) been backward balanced into : active_vector_34_BRB0 .
+	Register(s) active_vector_41 has(ve) been backward balanced into : active_vector_41_BRB0 .
+	Register(s) active_vector_46 has(ve) been backward balanced into : active_vector_46_BRB0 .
+	Register(s) active_vector_47 has(ve) been backward balanced into : active_vector_47_BRB1.
+	Register(s) active_vector_58 has(ve) been backward balanced into : active_vector_58_BRB0 active_vector_58_BRB1 active_vector_58_BRB2 active_vector_58_BRB3 .
+	Register(s) active_vector_66 has(ve) been backward balanced into : active_vector_66_BRB0 active_vector_66_BRB2 .
+	Register(s) active_vector_68 has(ve) been backward balanced into : active_vector_68_BRB1 .
+	Register(s) u_skag/weight_uq16_16_0 has(ve) been backward balanced into : u_skag/weight_uq16_16_0_BRB3 u_skag/weight_uq16_16_0_BRB4 u_skag/weight_uq16_16_0_BRB5.
+	Register(s) u_skag/weight_uq16_16_1 has(ve) been backward balanced into : u_skag/weight_uq16_16_1_BRB1 u_skag/weight_uq16_16_1_BRB4 .
+	Register(s) u_skag/weight_uq16_16_10 has(ve) been backward balanced into : u_skag/weight_uq16_16_10_BRB1 u_skag/weight_uq16_16_10_BRB4 .
+	Register(s) u_skag/weight_uq16_16_11 has(ve) been backward balanced into : u_skag/weight_uq16_16_11_BRB1 u_skag/weight_uq16_16_11_BRB4 .
+	Register(s) u_skag/weight_uq16_16_12 has(ve) been backward balanced into : u_skag/weight_uq16_16_12_BRB1 u_skag/weight_uq16_16_12_BRB4 .
+	Register(s) u_skag/weight_uq16_16_13 has(ve) been backward balanced into : u_skag/weight_uq16_16_13_BRB1 u_skag/weight_uq16_16_13_BRB4 .
+	Register(s) u_skag/weight_uq16_16_14 has(ve) been backward balanced into : u_skag/weight_uq16_16_14_BRB2 u_skag/weight_uq16_16_14_BRB4 .
+	Register(s) u_skag/weight_uq16_16_15 has(ve) been backward balanced into : u_skag/weight_uq16_16_15_BRB2 u_skag/weight_uq16_16_15_BRB4 .
+	Register(s) u_skag/weight_uq16_16_16 has(ve) been backward balanced into : u_skag/weight_uq16_16_16_BRB2 u_skag/weight_uq16_16_16_BRB4 .
+	Register(s) u_skag/weight_uq16_16_17 has(ve) been backward balanced into : u_skag/weight_uq16_16_17_BRB2 u_skag/weight_uq16_16_17_BRB4 .
+	Register(s) u_skag/weight_uq16_16_18 has(ve) been backward balanced into : u_skag/weight_uq16_16_18_BRB2 u_skag/weight_uq16_16_18_BRB4 .
+	Register(s) u_skag/weight_uq16_16_19 has(ve) been backward balanced into : u_skag/weight_uq16_16_19_BRB2 u_skag/weight_uq16_16_19_BRB4 .
+	Register(s) u_skag/weight_uq16_16_2 has(ve) been backward balanced into : u_skag/weight_uq16_16_2_BRB1 u_skag/weight_uq16_16_2_BRB4 .
+	Register(s) u_skag/weight_uq16_16_20 has(ve) been backward balanced into : u_skag/weight_uq16_16_20_BRB2 u_skag/weight_uq16_16_20_BRB4 .
+	Register(s) u_skag/weight_uq16_16_21 has(ve) been backward balanced into : u_skag/weight_uq16_16_21_BRB2 u_skag/weight_uq16_16_21_BRB4 .
+	Register(s) u_skag/weight_uq16_16_22 has(ve) been backward balanced into : u_skag/weight_uq16_16_22_BRB2 u_skag/weight_uq16_16_22_BRB4 .
+	Register(s) u_skag/weight_uq16_16_23 has(ve) been backward balanced into : u_skag/weight_uq16_16_23_BRB2 u_skag/weight_uq16_16_23_BRB4 .
+	Register(s) u_skag/weight_uq16_16_24 has(ve) been backward balanced into : u_skag/weight_uq16_16_24_BRB2 u_skag/weight_uq16_16_24_BRB4 .
+	Register(s) u_skag/weight_uq16_16_25 has(ve) been backward balanced into : u_skag/weight_uq16_16_25_BRB2 u_skag/weight_uq16_16_25_BRB4 .
+	Register(s) u_skag/weight_uq16_16_26 has(ve) been backward balanced into : u_skag/weight_uq16_16_26_BRB2 u_skag/weight_uq16_16_26_BRB4 .
+	Register(s) u_skag/weight_uq16_16_27 has(ve) been backward balanced into : u_skag/weight_uq16_16_27_BRB2 u_skag/weight_uq16_16_27_BRB4 .
+	Register(s) u_skag/weight_uq16_16_28 has(ve) been backward balanced into : u_skag/weight_uq16_16_28_BRB2 u_skag/weight_uq16_16_28_BRB4 .
+	Register(s) u_skag/weight_uq16_16_29 has(ve) been backward balanced into : u_skag/weight_uq16_16_29_BRB2 u_skag/weight_uq16_16_29_BRB4 .
+	Register(s) u_skag/weight_uq16_16_3 has(ve) been backward balanced into : u_skag/weight_uq16_16_3_BRB1 u_skag/weight_uq16_16_3_BRB4 .
+	Register(s) u_skag/weight_uq16_16_30 has(ve) been backward balanced into : u_skag/weight_uq16_16_30_BRB2 u_skag/weight_uq16_16_30_BRB4 .
+	Register(s) u_skag/weight_uq16_16_31 has(ve) been backward balanced into : u_skag/weight_uq16_16_31_BRB0 u_skag/weight_uq16_16_31_BRB1 u_skag/weight_uq16_16_31_BRB2 u_skag/weight_uq16_16_31_BRB3 u_skag/weight_uq16_16_31_BRB4 u_skag/weight_uq16_16_31_BRB5.
+	Register(s) u_skag/weight_uq16_16_4 has(ve) been backward balanced into : u_skag/weight_uq16_16_4_BRB1 u_skag/weight_uq16_16_4_BRB4 .
+	Register(s) u_skag/weight_uq16_16_5 has(ve) been backward balanced into : u_skag/weight_uq16_16_5_BRB1 u_skag/weight_uq16_16_5_BRB4 .
+	Register(s) u_skag/weight_uq16_16_6 has(ve) been backward balanced into : u_skag/weight_uq16_16_6_BRB1 u_skag/weight_uq16_16_6_BRB4 .
+	Register(s) u_skag/weight_uq16_16_7 has(ve) been backward balanced into : u_skag/weight_uq16_16_7_BRB1 u_skag/weight_uq16_16_7_BRB4 .
+	Register(s) u_skag/weight_uq16_16_8 has(ve) been backward balanced into : u_skag/weight_uq16_16_8_BRB1 u_skag/weight_uq16_16_8_BRB4 .
+	Register(s) u_skag/weight_uq16_16_9 has(ve) been backward balanced into : u_skag/weight_uq16_16_9_BRB1 u_skag/weight_uq16_16_9_BRB4 .
+Unit <p5_b3_selftest_top> processed.
+FlipFlop u_skag/weight_uq16_16_31_BRB0 has been replicated 1 time(s)
+FlipFlop u_skag/weight_uq16_16_31_BRB1 has been replicated 1 time(s)
+FlipFlop u_skag/weight_uq16_16_31_BRB3 has been replicated 1 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 462
+ Flip-Flops                                            : 462
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : p5_b3.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 818
+#      GND                         : 1
+#      INV                         : 5
+#      LUT1                        : 48
+#      LUT2                        : 118
+#      LUT3                        : 151
+#      LUT4                        : 117
+#      LUT5                        : 41
+#      LUT6                        : 74
+#      MUXCY                       : 145
+#      VCC                         : 1
+#      XORCY                       : 117
+# FlipFlops/Latches                : 462
+#      FDE                         : 45
+#      FDR                         : 38
+#      FDRE                        : 342
+#      FDSE                        : 37
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 17
+#      IBUF                        : 1
+#      OBUF                        : 16
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx16csg324-2 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             462  out of  18224     2%  
+ Number of Slice LUTs:                  554  out of   9112     6%  
+    Number used as Logic:               554  out of   9112     6%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    672
+   Number with an unused Flip Flop:     210  out of    672    31%  
+   Number with an unused LUT:           118  out of    672    17%  
+   Number of fully used LUT-FF pairs:   344  out of    672    51%  
+   Number of unique control sets:        20
+
+IO Utilization: 
+ Number of IOs:                          18
+ Number of bonded IOBs:                  18  out of    232     7%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk_100mhz                         | BUFGP                  | 462   |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -2
+
+   Minimum period: 6.378ns (Maximum Frequency: 156.777MHz)
+   Minimum input arrival time before clock: 6.671ns
+   Maximum output required time after clock: 7.558ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_100mhz'
+  Clock period: 6.378ns (frequency: 156.777MHz)
+  Total number of paths / destination ports: 188405 / 995
+-------------------------------------------------------------------------
+Delay:               6.378ns (Levels of Logic = 46)
+  Source:            u_skag/sum_reg_0 (FF)
+  Destination:       u_skag/sum_reg_31 (FF)
+  Source Clock:      clk_100mhz rising
+  Destination Clock: clk_100mhz rising
+
+  Data Path: u_skag/sum_reg_0 to u_skag/sum_reg_31
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             1   0.525   0.790  u_skag/sum_reg_0 (u_skag/sum_reg_0)
+     LUT2:I0->O            1   0.250   0.000  u_skag/Madd_n0245_lut<0> (u_skag/Madd_n0245_lut<0>)
+     MUXCY:S->O            1   0.215   0.000  u_skag/Madd_n0245_cy<0> (u_skag/Madd_n0245_cy<0>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<1> (u_skag/Madd_n0245_cy<1>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<2> (u_skag/Madd_n0245_cy<2>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<3> (u_skag/Madd_n0245_cy<3>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<4> (u_skag/Madd_n0245_cy<4>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<5> (u_skag/Madd_n0245_cy<5>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<6> (u_skag/Madd_n0245_cy<6>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<7> (u_skag/Madd_n0245_cy<7>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<8> (u_skag/Madd_n0245_cy<8>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<9> (u_skag/Madd_n0245_cy<9>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<10> (u_skag/Madd_n0245_cy<10>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<11> (u_skag/Madd_n0245_cy<11>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<12> (u_skag/Madd_n0245_cy<12>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<13> (u_skag/Madd_n0245_cy<13>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<14> (u_skag/Madd_n0245_cy<14>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<15> (u_skag/Madd_n0245_cy<15>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<16> (u_skag/Madd_n0245_cy<16>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<17> (u_skag/Madd_n0245_cy<17>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<18> (u_skag/Madd_n0245_cy<18>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<19> (u_skag/Madd_n0245_cy<19>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<20> (u_skag/Madd_n0245_cy<20>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<21> (u_skag/Madd_n0245_cy<21>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<22> (u_skag/Madd_n0245_cy<22>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<23> (u_skag/Madd_n0245_cy<23>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<24> (u_skag/Madd_n0245_cy<24>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<25> (u_skag/Madd_n0245_cy<25>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<26> (u_skag/Madd_n0245_cy<26>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<27> (u_skag/Madd_n0245_cy<27>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<28> (u_skag/Madd_n0245_cy<28>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<29> (u_skag/Madd_n0245_cy<29>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<30> (u_skag/Madd_n0245_cy<30>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<31> (u_skag/Madd_n0245_cy<31>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<32> (u_skag/Madd_n0245_cy<32>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<33> (u_skag/Madd_n0245_cy<33>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<34> (u_skag/Madd_n0245_cy<34>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<35> (u_skag/Madd_n0245_cy<35>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<36> (u_skag/Madd_n0245_cy<36>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<37> (u_skag/Madd_n0245_cy<37>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<38> (u_skag/Madd_n0245_cy<38>)
+     MUXCY:CI->O           1   0.023   0.000  u_skag/Madd_n0245_cy<39> (u_skag/Madd_n0245_cy<39>)
+     XORCY:CI->O           1   0.206   1.112  u_skag/Madd_n0245_xor<40> (u_skag/n0245<40>)
+     LUT5:I0->O            1   0.254   0.000  u_skag/Mcompar_GND_2_o_BUS_0170_LessThan_62_o_lut<8> (u_skag/Mcompar_GND_2_o_BUS_0170_LessThan_62_o_lut<8>)
+     MUXCY:S->O            1   0.215   0.000  u_skag/Mcompar_GND_2_o_BUS_0170_LessThan_62_o_cy<8> (u_skag/Mcompar_GND_2_o_BUS_0170_LessThan_62_o_cy<8>)
+     MUXCY:CI->O          34   0.023   1.553  u_skag/Mcompar_GND_2_o_BUS_0170_LessThan_62_o_cy<9> (u_skag/Mcompar_GND_2_o_BUS_0170_LessThan_62_o_cy<9>)
+     LUT3:I2->O            1   0.254   0.000  u_skag/Mmux_GND_2_o_PWR_2_o_mux_62_OUT11 (u_skag/GND_2_o_PWR_2_o_mux_62_OUT<0>)
+     FDRE:D                    0.074          u_skag/sum_reg_0
+    ----------------------------------------
+    Total                      6.378ns (2.923ns logic, 3.455ns route)
+                                       (45.8% logic, 54.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_100mhz'
+  Total number of paths / destination ports: 417 / 417
+-------------------------------------------------------------------------
+Offset:              6.671ns (Levels of Logic = 2)
+  Source:            btn_reset (PAD)
+  Destination:       u_skag/u_divider/count_5 (FF)
+  Destination Clock: clk_100mhz rising
+
+  Data Path: btn_reset to u_skag/u_divider/count_5
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O           312   1.328   2.666  btn_reset_IBUF (Reset_OR_DriverANDClockEnable)
+     LUT3:I0->O           71   0.235   1.983  u_skag/u_divider/Mcount_count_val1 (u_skag/u_divider/Mcount_count_val)
+     FDRE:R                    0.459          u_skag/u_divider/count_0
+    ----------------------------------------
+    Total                      6.671ns (2.022ns logic, 4.649ns route)
+                                       (30.3% logic, 69.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_100mhz'
+  Total number of paths / destination ports: 190 / 15
+-------------------------------------------------------------------------
+Offset:              7.558ns (Levels of Logic = 3)
+  Source:            test_index_3 (FF)
+  Destination:       seg_n<5> (PAD)
+  Source Clock:      clk_100mhz rising
+
+  Data Path: test_index_3 to seg_n<5>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q            29   0.525   1.746  test_index_3 (test_index_3)
+     LUT6:I2->O            7   0.254   1.186  u_display/Mmux_nibble<0>131 (u_display/nibble<3>)
+     LUT4:I0->O            1   0.254   0.681  u_display/Mram_seg_n<6:0>51 (seg_n_5_OBUF)
+     OBUF:I->O                 2.912          seg_n_5_OBUF (seg_n<5>)
+    ----------------------------------------
+    Total                      7.558ns (3.945ns logic, 3.613ns route)
+                                       (52.2% logic, 47.8% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk_100mhz
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk_100mhz     |    6.378|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 3.00 secs
+Total CPU time to Xst completion: 3.57 secs
+ 
+--> 
+
+
+Total memory usage is 377216 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   27 (   0 filtered)
+Number of infos    :   36 (   0 filtered)
+
