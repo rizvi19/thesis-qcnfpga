@@ -1,0 +1,154 @@
+PASS replay_rows_84
+PASS golden_rows_420
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:34: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:34: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:35: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:35: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:36: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:37: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:37: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:38: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:39: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:40: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:40: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:41: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:42: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:42: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:43: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:43: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:44: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:44: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:45: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:46: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:46: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:47: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:47: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:48: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:49: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:49: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:50: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:34: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:34: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:35: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:35: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:36: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:37: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:37: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:38: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:39: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:40: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:40: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:41: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:42: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:42: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:43: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:43: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:44: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:44: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:45: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:46: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:46: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:47: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:47: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:48: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:49: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:49: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:50: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:34: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:34: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:35: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:35: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:36: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:37: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:37: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:38: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:39: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:40: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:40: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:41: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:42: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:42: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:43: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:43: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:44: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:44: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:45: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:46: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:46: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:47: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:47: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:48: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:49: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:49: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:50: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:34: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:34: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:35: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:35: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:36: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:37: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:37: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:38: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:39: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:40: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:40: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:41: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:42: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:42: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:43: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:43: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:44: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:44: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:45: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:46: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:46: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:47: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:47: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:48: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:49: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:49: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:50: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:34: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:34: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:35: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:35: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:36: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:37: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:37: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:38: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:39: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:40: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:40: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:41: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:42: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:42: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:43: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:43: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:44: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:44: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:45: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:46: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:46: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:47: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:47: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:48: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:49: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:49: warning: @* is sensitive to all 27 words in array 'digits'.
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/rtl/spartan6/p6_qf6r_formatter.v:50: warning: @* is sensitive to all 27 words in array 'digits'.
+PASS iverilog_compile
+MODE H0 records=84 pass=84 errors=0
+MODE H1 records=84 pass=84 errors=0
+MODE H2 records=84 pass=84 errors=0
+MODE H3 records=84 pass=84 errors=0
+MODE H4 records=84 pass=84 errors=0
+P6_PHYSICAL_SHELL=420_OF_420_INTERNAL_COMPARISONS_PASS
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/sim/spartan6/tb_p6_physical_campaign_shell.v:43: $finish called at 385739500000 (1ps)
+PASS vvp_run
+PASS physical_shell_sentinel
+PASS physical_shell_no_fail
+PASS summary_modes_5
+P6_STEP3E_REPLAY_ROM=84_OF_84_PASS
+P6_STEP3E_EXPECTED_ROM=420_OF_420_PASS
+P6_STEP3E_POLICY_WRAPPERS=5_OF_5_PASS
+P6_STEP3E_INTERNAL_COMPARISONS=420_OF_420_PASS
+P6_STEP3E_PHYSICAL_SHELL_GATE=PASS
