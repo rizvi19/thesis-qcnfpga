@@ -1,0 +1,26 @@
+{
+  "branch": "rl-nexys3-adaptive",
+  "claim_boundary": {
+    "golden_results": false,
+    "physical_board_output": false,
+    "replay_materialized_and_frozen": true,
+    "rtl_simulation": false,
+    "uart_capture": false
+  },
+  "combined_rows": 84,
+  "contract_rows": 20,
+  "files": {
+    "results/nexys3/p6_replay/p6_all_replay.csv": "83081e4eb165b887dfdd2c07bd467804f39b78e54e7a9026b4d96007091b07e7",
+    "results/nexys3/p6_replay/p6_contract_replay.csv": "e72411f9e44442cb94a580b25c11583eba6b7e5be729fec5adfea676075191d6",
+    "results/nexys3/p6_replay/p6_heldout_dynamic_replay.csv": "a4892cb91153820c6b77dccda800c6e5452e24d7e0e19d6307f995f9578dfc07"
+  },
+  "generated_utc": "2026-07-20T18:28:34+00:00",
+  "heldout_rows": 64,
+  "heldout_seed": 26072026,
+  "heldout_tuning_after_hash": false,
+  "phase": "P6",
+  "replay_order": "A000_A019_then_B000_B063",
+  "schema_version": 1,
+  "source_checkpoint": "224929c385e2199d551b7c692b6673cd695c7daa",
+  "step": "P6_STEP_3B_REPLAY_FREEZE"
+}
