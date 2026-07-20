@@ -1,0 +1,50 @@
+============================================================
+P5 B4 — CORRECTED SELF-TEST RTL SIMULATION
+============================================================
+IVERILOG_COMPILE=PASS
+
+VECTOR idx=0 v0=0 v1=0 route_valid=0 no_path=1 selected_slot=0 expected_slot=0 selected_score=0 expected_score=0
+VECTOR_RESULT idx=0 PASS
+VECTOR idx=1 v0=1 v1=0 route_valid=1 no_path=0 selected_slot=0 expected_slot=0 selected_score=0 expected_score=0
+VECTOR_RESULT idx=1 PASS
+VECTOR idx=2 v0=0 v1=1 route_valid=1 no_path=0 selected_slot=1 expected_slot=1 selected_score=0 expected_score=0
+VECTOR_RESULT idx=2 PASS
+VECTOR idx=3 v0=1 v1=1 route_valid=1 no_path=0 selected_slot=0 expected_slot=0 selected_score=0 expected_score=0
+VECTOR_RESULT idx=3 PASS
+VECTOR idx=4 v0=1 v1=1 route_valid=1 no_path=0 selected_slot=1 expected_slot=1 selected_score=0 expected_score=0
+VECTOR_RESULT idx=4 PASS
+VECTOR idx=5 v0=1 v1=1 route_valid=1 no_path=0 selected_slot=0 expected_slot=0 selected_score=0 expected_score=0
+VECTOR_RESULT idx=5 PASS
+VECTOR idx=6 v0=1 v1=1 route_valid=1 no_path=0 selected_slot=1 expected_slot=1 selected_score=0 expected_score=0
+VECTOR_RESULT idx=6 PASS
+VECTOR idx=7 v0=1 v1=1 route_valid=1 no_path=0 selected_slot=0 expected_slot=0 selected_score=0 expected_score=0
+VECTOR_RESULT idx=7 PASS
+VECTOR idx=8 v0=1 v1=1 route_valid=1 no_path=0 selected_slot=1 expected_slot=1 selected_score=0 expected_score=0
+VECTOR_RESULT idx=8 PASS
+VECTOR idx=9 v0=1 v1=1 route_valid=1 no_path=0 selected_slot=0 expected_slot=0 selected_score=0 expected_score=0
+VECTOR_RESULT idx=9 PASS
+VECTOR idx=10 v0=1 v1=1 route_valid=1 no_path=0 selected_slot=1 expected_slot=1 selected_score=0 expected_score=0
+VECTOR_RESULT idx=10 PASS
+VECTOR idx=11 v0=1 v1=1 route_valid=1 no_path=0 selected_slot=1 expected_slot=0 selected_score=0 expected_score=0
+VECTOR_RESULT idx=11 FAIL_SLOT actual=1 expected=0
+VECTOR idx=12 v0=1 v1=0 route_valid=1 no_path=0 selected_slot=0 expected_slot=0 selected_score=0 expected_score=0
+VECTOR_RESULT idx=12 PASS
+VECTOR idx=13 v0=1 v1=0 route_valid=1 no_path=0 selected_slot=0 expected_slot=0 selected_score=0 expected_score=0
+VECTOR_RESULT idx=13 PASS
+VECTOR idx=14 v0=1 v1=0 route_valid=1 no_path=0 selected_slot=0 expected_slot=0 selected_score=0 expected_score=0
+VECTOR_RESULT idx=14 PASS
+VECTOR idx=15 v0=1 v1=0 route_valid=1 no_path=0 selected_slot=0 expected_slot=0 selected_score=0 expected_score=0
+VECTOR_RESULT idx=15 PASS
+============================================================
+COMPLETED_TESTS=16
+FINAL_IDX=15
+FINAL_PASS=0
+FINAL_FAIL=1
+FINAL_DONE=1
+SELFTEST_RTL_SIMULATION=FAIL_VECTOR_MISMATCH
+============================================================
+/tmp/qflow_p5_b4_selftest_debug_tb.v:101: $finish called at 7015000 (1ps)
+
+FPGA_PROGRAMMING_PERFORMED=NO
+BOARD_CONNECTION_CHANGED=NO
+PROJECT_SOURCE_MODIFIED=NO

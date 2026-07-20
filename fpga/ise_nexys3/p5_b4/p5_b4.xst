@@ -1,0 +1,9 @@
+run
+-ifn p5_b4.prj
+-ifmt mixed
+-ofn p5_b4
+-ofmt NGC
+-p xc6slx16-2-csg324
+-top p5_b4_selftest_top
+-opt_mode Speed
+-opt_level 1

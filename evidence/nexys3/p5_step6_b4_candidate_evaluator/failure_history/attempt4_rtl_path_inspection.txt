@@ -1,0 +1,396 @@
+===== IDENTIFIED EVALUATOR RTL =====
+RTL=/home/shahriar-rizvi/Downloads/QFlow_P5_Step6_B4_Candidate_Evaluator_Attempt4_Build/source/rtl/spartan6/p5_b4_candidate_evaluator.v
+RTL_BYTES=6388
+RTL_SHA256=9c9876064eae91c508b5915cb57d8505ad00231072c29034c18ad8f5e828f859
+
+===== RELEVANT SIGNAL AND ASSIGNMENT INDEX =====
+29:    localparam S_IDLE=3'd0, S_PREP=3'd1, S_DIV_TEST=3'd2,
+35:    reg [48:0] dividend_shift, quotient;
+36:    reg [33:0] remainder;
+37:    reg [33:0] remainder_trial;
+39:    reg [32:0] divisor;
+43:    reg [31:0] cost0, cost1, util0, util1;
+49:                       (objective==1) ? {16'd0,(16'hffff-fid0)} : util0;
+51:                       (objective==1) ? {16'd0,(16'hffff-fid1)} : util1;
+52:    wire [31:0] difference = (obj0 > obj1) ? (obj0-obj1) : (obj1-obj0);
+53:    wire [32:0] range_plus_one = {1'b0,difference} + 33'd1;
+54:    wire [47:0] scaled_difference = ({16'd0,difference} << 16) - {16'd0,difference};
+55:    wire [48:0] rounded_numerator = {1'b0,scaled_difference} + (range_plus_one >> 1);
+74:    wire [33:0] rem_shift = {remainder[32:0],dividend_shift[48]};
+75:    wire rem_ge = rem_shift >= {1'b0,divisor};
+88:                    util0<=c0_utilization; util1<=c1_utilization;
+102:                        dividend_shift<=rounded_numerator; quotient<=0; remainder<=0;
+103:                        divisor<=range_plus_one; div_count<=0; state<=S_DIV_TEST;
+107:                    dividend_shift <= {dividend_shift[47:0],1'b0};
+108:                    remainder_trial <= rem_shift;
+113:                    remainder <= subtract_needed ?
+114:                                 (remainder_trial-{1'b0,divisor}) : remainder_trial;
+115:                    quotient <= {quotient[47:0],subtract_needed};
+118:                            if(objective==0) n10<={quotient[14:0],subtract_needed};
+119:                            else if(objective==1) n11<={quotient[14:0],subtract_needed};
+120:                            else n12<={quotient[14:0],subtract_needed};
+122:                            if(objective==0) n00<={quotient[14:0],subtract_needed};
+123:                            else if(objective==1) n01<={quotient[14:0],subtract_needed};
+124:                            else n02<={quotient[14:0],subtract_needed};
+
+===== SOURCE WINDOWS AROUND DIVIDEND_SHIFT ASSIGNMENTS =====
+
+----- dividend_shift match at source line 102 -----
+    67	    wire [17:0] score0=(p00>=p01 && p00>=p02)?p00:((p01>=p02)?p01:p02);
+    68	    wire [17:0] score1=(p10>=p11 && p10>=p12)?p10:((p11>=p12)?p11:p12);
+    69	    wire c0_wins = (score0 < score1) ||
+    70	                   ((score0 == score1) && ((cost0 < cost1) ||
+    71	                   ((cost0 == cost1) && ((hops0 < hops1) ||
+    72	                   ((hops0 == hops1) && (slot0 <= slot1))))));
+    73	
+    74	    wire [33:0] rem_shift = {remainder[32:0],dividend_shift[48]};
+    75	    wire rem_ge = rem_shift >= {1'b0,divisor};
+    76	    assign ready = (state == S_IDLE);
+    77	
+    78	    always @(posedge clk) begin
+    79	        if (rst) begin
+    80	            state<=S_IDLE; done<=0; route_valid<=0; no_path<=0;
+    81	            selected_slot<=0; selected_score<=0;
+    82	        end else begin
+    83	            done<=0; route_valid<=0;
+    84	            case (state)
+    85	                S_IDLE: if (start) begin
+    86	                    v0<=c0_valid; v1<=c1_valid; cost0<=c0_cost; cost1<=c1_cost;
+    87	                    fid0<=c0_fidelity; fid1<=c1_fidelity;
+    88	                    util0<=c0_utilization; util1<=c1_utilization;
+    89	                    hops0<=c0_hops; hops1<=c1_hops; slot0<=c0_slot; slot1<=c1_slot;
+    90	                    lam0<=lambda0; lam1<=lambda1; lam2<=lambda2;
+    91	                    n00<=0; n01<=0; n02<=0; n10<=0; n11<=0; n12<=0;
+    92	                    no_path<=0; objective<=0; state<=S_PREP;
+    93	                end
+    94	                S_PREP: begin
+    95	                    if (!v0 && !v1) begin no_path<=1; state<=S_DONE; end
+    96	                    else if (!v0 || !v1) state<=S_SCORE;
+    97	                    else if (obj0 == obj1) begin
+    98	                        if (objective==2) state<=S_SCORE;
+    99	                        else objective<=objective+1'b1;
+   100	                    end else begin
+   101	                        high_is_c1 <= (obj1 > obj0);
+   102	                        dividend_shift<=rounded_numerator; quotient<=0; remainder<=0;
+   103	                        divisor<=range_plus_one; div_count<=0; state<=S_DIV_TEST;
+   104	                    end
+   105	                end
+   106	                S_DIV_TEST: begin
+   107	                    dividend_shift <= {dividend_shift[47:0],1'b0};
+   108	                    remainder_trial <= rem_shift;
+   109	                    subtract_needed <= rem_ge;
+   110	                    state <= S_DIV_COMMIT;
+   111	                end
+   112	                S_DIV_COMMIT: begin
+   113	                    remainder <= subtract_needed ?
+   114	                                 (remainder_trial-{1'b0,divisor}) : remainder_trial;
+   115	                    quotient <= {quotient[47:0],subtract_needed};
+   116	                    if (div_count==48) begin
+   117	                        if (high_is_c1) begin
+   118	                            if(objective==0) n10<={quotient[14:0],subtract_needed};
+   119	                            else if(objective==1) n11<={quotient[14:0],subtract_needed};
+   120	                            else n12<={quotient[14:0],subtract_needed};
+   121	                        end else begin
+   122	                            if(objective==0) n00<={quotient[14:0],subtract_needed};
+   123	                            else if(objective==1) n01<={quotient[14:0],subtract_needed};
+   124	                            else n02<={quotient[14:0],subtract_needed};
+   125	                        end
+   126	                        if(objective==2) state<=S_SCORE;
+   127	                        else begin objective<=objective+1'b1; state<=S_PREP; end
+   128	                    end else begin div_count<=div_count+1'b1; state<=S_DIV_TEST; end
+   129	                end
+   130	                S_SCORE: begin
+   131	                    no_path<=0; route_valid<=1;
+   132	                    if(v0 && !v1) begin selected_slot<=slot0; selected_score<=0; end
+   133	                    else if(v1 && !v0) begin selected_slot<=slot1; selected_score<=0; end
+   134	                    else if(c0_wins) begin selected_slot<=slot0; selected_score<=score0; end
+   135	                    else begin selected_slot<=slot1; selected_score<=score1; end
+   136	                    state<=S_DONE;
+   137	                end
+   138	                S_DONE: begin done<=1; route_valid<=!no_path; state<=S_IDLE; end
+   139	                default: state<=S_IDLE;
+   140	            endcase
+   141	        end
+   142	    end
+   143	endmodule
+
+----- dividend_shift match at source line 107 -----
+    72	                   ((hops0 == hops1) && (slot0 <= slot1))))));
+    73	
+    74	    wire [33:0] rem_shift = {remainder[32:0],dividend_shift[48]};
+    75	    wire rem_ge = rem_shift >= {1'b0,divisor};
+    76	    assign ready = (state == S_IDLE);
+    77	
+    78	    always @(posedge clk) begin
+    79	        if (rst) begin
+    80	            state<=S_IDLE; done<=0; route_valid<=0; no_path<=0;
+    81	            selected_slot<=0; selected_score<=0;
+    82	        end else begin
+    83	            done<=0; route_valid<=0;
+    84	            case (state)
+    85	                S_IDLE: if (start) begin
+    86	                    v0<=c0_valid; v1<=c1_valid; cost0<=c0_cost; cost1<=c1_cost;
+    87	                    fid0<=c0_fidelity; fid1<=c1_fidelity;
+    88	                    util0<=c0_utilization; util1<=c1_utilization;
+    89	                    hops0<=c0_hops; hops1<=c1_hops; slot0<=c0_slot; slot1<=c1_slot;
+    90	                    lam0<=lambda0; lam1<=lambda1; lam2<=lambda2;
+    91	                    n00<=0; n01<=0; n02<=0; n10<=0; n11<=0; n12<=0;
+    92	                    no_path<=0; objective<=0; state<=S_PREP;
+    93	                end
+    94	                S_PREP: begin
+    95	                    if (!v0 && !v1) begin no_path<=1; state<=S_DONE; end
+    96	                    else if (!v0 || !v1) state<=S_SCORE;
+    97	                    else if (obj0 == obj1) begin
+    98	                        if (objective==2) state<=S_SCORE;
+    99	                        else objective<=objective+1'b1;
+   100	                    end else begin
+   101	                        high_is_c1 <= (obj1 > obj0);
+   102	                        dividend_shift<=rounded_numerator; quotient<=0; remainder<=0;
+   103	                        divisor<=range_plus_one; div_count<=0; state<=S_DIV_TEST;
+   104	                    end
+   105	                end
+   106	                S_DIV_TEST: begin
+   107	                    dividend_shift <= {dividend_shift[47:0],1'b0};
+   108	                    remainder_trial <= rem_shift;
+   109	                    subtract_needed <= rem_ge;
+   110	                    state <= S_DIV_COMMIT;
+   111	                end
+   112	                S_DIV_COMMIT: begin
+   113	                    remainder <= subtract_needed ?
+   114	                                 (remainder_trial-{1'b0,divisor}) : remainder_trial;
+   115	                    quotient <= {quotient[47:0],subtract_needed};
+   116	                    if (div_count==48) begin
+   117	                        if (high_is_c1) begin
+   118	                            if(objective==0) n10<={quotient[14:0],subtract_needed};
+   119	                            else if(objective==1) n11<={quotient[14:0],subtract_needed};
+   120	                            else n12<={quotient[14:0],subtract_needed};
+   121	                        end else begin
+   122	                            if(objective==0) n00<={quotient[14:0],subtract_needed};
+   123	                            else if(objective==1) n01<={quotient[14:0],subtract_needed};
+   124	                            else n02<={quotient[14:0],subtract_needed};
+   125	                        end
+   126	                        if(objective==2) state<=S_SCORE;
+   127	                        else begin objective<=objective+1'b1; state<=S_PREP; end
+   128	                    end else begin div_count<=div_count+1'b1; state<=S_DIV_TEST; end
+   129	                end
+   130	                S_SCORE: begin
+   131	                    no_path<=0; route_valid<=1;
+   132	                    if(v0 && !v1) begin selected_slot<=slot0; selected_score<=0; end
+   133	                    else if(v1 && !v0) begin selected_slot<=slot1; selected_score<=0; end
+   134	                    else if(c0_wins) begin selected_slot<=slot0; selected_score<=score0; end
+   135	                    else begin selected_slot<=slot1; selected_score<=score1; end
+   136	                    state<=S_DONE;
+   137	                end
+   138	                S_DONE: begin done<=1; route_valid<=!no_path; state<=S_IDLE; end
+   139	                default: state<=S_IDLE;
+   140	            endcase
+   141	        end
+   142	    end
+   143	endmodule
+
+===== FIRST COMPLETE FAILING TIMING PATH =====
+Timing constraint: TS_P5_B4_CLK = PERIOD TIMEGRP "P5_B4_CLK" 10 ns HIGH 50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 71037939 paths analyzed, 1015 endpoints analyzed, 16 failing endpoints
+ 16 timing errors detected. (16 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is  10.683ns.
+--------------------------------------------------------------------------------
+
+Paths for end point dut/dividend_shift_46 (SLICE_X21Y27.D6), 3706757 paths
+--------------------------------------------------------------------------------
+Slack:                  -0.683ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               dut/util0_5 (FF)
+  Destination:          dut/dividend_shift_46 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      10.619ns (Levels of Logic = 20)
+  Clock Path Skew:      -0.029ns (0.298 - 0.327)
+  Source Clock:         clk_100mhz_BUFGP rising at 0.000ns
+  Destination Clock:    clk_100mhz_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_46
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X23Y16.CMUX    Tshcko                0.518   dut/fid0<12>
+                                                       dut/util0_5
+    SLICE_X25Y15.D3      net (fanout=14)       0.705   dut/util0<5>
+    SLICE_X25Y15.D       Tilo                  0.259   dut/cost1<2>
+                                                       dut/obj0<6>1
+    SLICE_X22Y15.D1      net (fanout=3)        1.081   dut/obj0<6>
+    SLICE_X22Y15.COUT    Topcyd                0.343   dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<3>
+                                                       dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_lutdi3
+                                                       dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<3>
+    SLICE_X22Y16.CIN     net (fanout=1)        0.003   dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<3>
+    SLICE_X22Y16.COUT    Tbyp                  0.093   dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<7>
+                                                       dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<7>
+    SLICE_X22Y17.CIN     net (fanout=1)        0.003   dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<7>
+    SLICE_X22Y17.COUT    Tbyp                  0.093   dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<11>
+                                                       dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<11>
+    SLICE_X22Y18.CIN     net (fanout=1)        0.003   dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<11>
+    SLICE_X22Y18.DMUX    Tcind                 0.305   dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<15>
+                                                       dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<15>
+    SLICE_X23Y18.C6      net (fanout=12)       0.680   dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<15>
+    SLICE_X23Y18.C       Tilo                  0.259   dut/util1<3>
+                                                       dut/Mmux_difference_A271
+    SLICE_X24Y17.AX      net (fanout=1)        0.715   dut/Mmux_difference_rs_A<4>
+    SLICE_X24Y17.COUT    Taxcy                 0.281   dut/objective_0_1
+                                                       dut/Mmux_difference_rs_cy<7>
+    SLICE_X24Y18.CIN     net (fanout=1)        0.003   dut/Mmux_difference_rs_cy<7>
+    SLICE_X24Y18.BMUX    Tcinb                 0.277   dut/Mmux_difference_rs_cy<11>
+                                                       dut/Mmux_difference_rs_cy<11>
+    SLICE_X26Y18.B4      net (fanout=4)        0.554   dut/difference<9>
+    SLICE_X26Y18.COUT    Topcyb                0.483   dut/divisor<11>
+                                                       dut/difference<9>_rt
+                                                       dut/Madd_n0518_cy<11>
+    SLICE_X26Y19.CIN     net (fanout=1)        0.003   dut/Madd_n0518_cy<11>
+    SLICE_X26Y19.COUT    Tbyp                  0.093   dut/divisor<12>
+                                                       dut/Madd_n0518_cy<15>
+    SLICE_X26Y20.CIN     net (fanout=1)        0.003   dut/Madd_n0518_cy<15>
+    SLICE_X26Y20.COUT    Tbyp                  0.093   dut/Madd_n0518_cy<19>
+                                                       dut/Madd_n0518_cy<19>
+    SLICE_X26Y21.CIN     net (fanout=1)        0.003   dut/Madd_n0518_cy<19>
+    SLICE_X26Y21.COUT    Tbyp                  0.093   dut/Madd_n0518_cy<23>
+                                                       dut/Madd_n0518_cy<23>
+    SLICE_X26Y22.CIN     net (fanout=1)        0.003   dut/Madd_n0518_cy<23>
+    SLICE_X26Y22.COUT    Tbyp                  0.093   dut/Madd_n0518_cy<27>
+                                                       dut/Madd_n0518_cy<27>
+    SLICE_X26Y23.CIN     net (fanout=1)        0.003   dut/Madd_n0518_cy<27>
+    SLICE_X26Y23.DQ      Tito_logic            0.798   dut/n0518<31>
+                                                       dut/Madd_n0518_cy<31>
+                                                       dut/n0518<31>_rt
+    SLICE_X20Y23.C5      net (fanout=1)        0.755   dut/n0518<31>
+    SLICE_X20Y23.COUT    Topcyc                0.325   dut/Madd_n0517_cy<31>
+                                                       dut/Madd_n0517_lut<30>
+                                                       dut/Madd_n0517_cy<31>
+    SLICE_X20Y24.CIN     net (fanout=1)        0.082   dut/Madd_n0517_cy<31>
+    SLICE_X20Y24.COUT    Tbyp                  0.091   dut/Madd_n0517_cy<35>
+                                                       dut/Madd_n0517_cy<35>
+    SLICE_X20Y25.CIN     net (fanout=1)        0.003   dut/Madd_n0517_cy<35>
+    SLICE_X20Y25.COUT    Tbyp                  0.091   dut/Madd_n0517_cy<39>
+                                                       dut/Madd_n0517_cy<39>
+    SLICE_X20Y26.CIN     net (fanout=1)        0.003   dut/Madd_n0517_cy<39>
+    SLICE_X20Y26.COUT    Tbyp                  0.091   dut/Madd_n0517_cy<43>
+                                                       dut/Madd_n0517_cy<43>
+    SLICE_X20Y27.CIN     net (fanout=1)        0.003   dut/Madd_n0517_cy<43>
+    SLICE_X20Y27.CMUX    Tcinc                 0.289   dut/Madd_n0517_cy<47>
+                                                       dut/Madd_n0517_cy<47>
+    SLICE_X21Y27.D6      net (fanout=1)        0.670   dut/n0517<46>
+    SLICE_X21Y27.CLK     Tas                   0.373   dut/dividend_shift<46>
+                                                       dut/Mmux__n0984411
+                                                       dut/dividend_shift_46
+    -------------------------------------------------  ---------------------------
+    Total                                     10.619ns (5.341ns logic, 5.278ns route)
+                                                       (50.3% logic, 49.7% route)
+
+--------------------------------------------------------------------------------
+
+===== SECOND FAILING TIMING PATH HEADER =====
+Slack:                  -0.680ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               dut/util0_5 (FF)
+  Destination:          dut/dividend_shift_46 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      10.616ns (Levels of Logic = 20)
+  Clock Path Skew:      -0.029ns (0.298 - 0.327)
+  Source Clock:         clk_100mhz_BUFGP rising at 0.000ns
+  Destination Clock:    clk_100mhz_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_46
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X23Y16.CMUX    Tshcko                0.518   dut/fid0<12>
+                                                       dut/util0_5
+    SLICE_X25Y15.D3      net (fanout=14)       0.705   dut/util0<5>
+    SLICE_X25Y15.D       Tilo                  0.259   dut/cost1<2>
+                                                       dut/obj0<6>1
+    SLICE_X22Y15.D1      net (fanout=3)        1.081   dut/obj0<6>
+    SLICE_X22Y15.COUT    Topcyd                0.343   dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<3>
+                                                       dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_lutdi3
+                                                       dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<3>
+    SLICE_X22Y16.CIN     net (fanout=1)        0.003   dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<3>
+    SLICE_X22Y16.COUT    Tbyp                  0.093   dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<7>
+                                                       dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<7>
+    SLICE_X22Y17.CIN     net (fanout=1)        0.003   dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<7>
+    SLICE_X22Y17.COUT    Tbyp                  0.093   dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<11>
+                                                       dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<11>
+    SLICE_X22Y18.CIN     net (fanout=1)        0.003   dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<11>
+    SLICE_X22Y18.DMUX    Tcind                 0.305   dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<15>
+                                                       dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<15>
+    SLICE_X23Y18.C6      net (fanout=12)       0.680   dut/Mcompar_obj1[31]_obj0[31]_LessThan_11_o_cy<15>
+    SLICE_X23Y18.C       Tilo                  0.259   dut/util1<3>
+                                                       dut/Mmux_difference_A271
+    SLICE_X24Y17.AX      net (fanout=1)        0.715   dut/Mmux_difference_rs_A<4>
+    SLICE_X24Y17.COUT    Taxcy                 0.281   dut/objective_0_1
+                                                       dut/Mmux_difference_rs_cy<7>
+    SLICE_X24Y18.CIN     net (fanout=1)        0.003   dut/Mmux_difference_rs_cy<7>
+    SLICE_X24Y18.COUT    Tbyp                  0.091   dut/Mmux_difference_rs_cy<11>
+                                                       dut/Mmux_difference_rs_cy<11>
+    SLICE_X24Y19.CIN     net (fanout=1)        0.003   dut/Mmux_difference_rs_cy<11>
+    SLICE_X24Y19.BMUX    Tcinb                 0.277   dut/Mmux_difference_rs_cy<15>
+                                                       dut/Mmux_difference_rs_cy<15>
+    SLICE_X26Y19.B4      net (fanout=4)        0.553   dut/difference<13>
+    SLICE_X26Y19.COUT    Topcyb                0.483   dut/divisor<12>
+                                                       dut/difference<13>_rt
+                                                       dut/Madd_n0518_cy<15>
+    SLICE_X26Y20.CIN     net (fanout=1)        0.003   dut/Madd_n0518_cy<15>
+    SLICE_X26Y20.COUT    Tbyp                  0.093   dut/Madd_n0518_cy<19>
+                                                       dut/Madd_n0518_cy<19>
+    SLICE_X26Y21.CIN     net (fanout=1)        0.003   dut/Madd_n0518_cy<19>
+    SLICE_X26Y21.COUT    Tbyp                  0.093   dut/Madd_n0518_cy<23>
+                                                       dut/Madd_n0518_cy<23>
+    SLICE_X26Y22.CIN     net (fanout=1)        0.003   dut/Madd_n0518_cy<23>
+    SLICE_X26Y22.COUT    Tbyp                  0.093   dut/Madd_n0518_cy<27>
+                                                       dut/Madd_n0518_cy<27>
+    SLICE_X26Y23.CIN     net (fanout=1)        0.003   dut/Madd_n0518_cy<27>
+    SLICE_X26Y23.DQ      Tito_logic            0.798   dut/n0518<31>
+                                                       dut/Madd_n0518_cy<31>
+                                                       dut/n0518<31>_rt
+    SLICE_X20Y23.C5      net (fanout=1)        0.755   dut/n0518<31>
+    SLICE_X20Y23.COUT    Topcyc                0.325   dut/Madd_n0517_cy<31>
+                                                       dut/Madd_n0517_lut<30>
+                                                       dut/Madd_n0517_cy<31>
+    SLICE_X20Y24.CIN     net (fanout=1)        0.082   dut/Madd_n0517_cy<31>
+    SLICE_X20Y24.COUT    Tbyp                  0.091   dut/Madd_n0517_cy<35>
+                                                       dut/Madd_n0517_cy<35>
+    SLICE_X20Y25.CIN     net (fanout=1)        0.003   dut/Madd_n0517_cy<35>
+    SLICE_X20Y25.COUT    Tbyp                  0.091   dut/Madd_n0517_cy<39>
+                                                       dut/Madd_n0517_cy<39>
+    SLICE_X20Y26.CIN     net (fanout=1)        0.003   dut/Madd_n0517_cy<39>
+    SLICE_X20Y26.COUT    Tbyp                  0.091   dut/Madd_n0517_cy<43>
+                                                       dut/Madd_n0517_cy<43>
+    SLICE_X20Y27.CIN     net (fanout=1)        0.003   dut/Madd_n0517_cy<43>
+    SLICE_X20Y27.CMUX    Tcinc                 0.289   dut/Madd_n0517_cy<47>
+                                                       dut/Madd_n0517_cy<47>
+    SLICE_X21Y27.D6      net (fanout=1)        0.670   dut/n0517<46>
+    SLICE_X21Y27.CLK     Tas                   0.373   dut/dividend_shift<46>
+                                                       dut/Mmux__n0984411
+                                                       dut/dividend_shift_46
+    -------------------------------------------------  ---------------------------
+    Total                                     10.616ns (5.339ns logic, 5.277ns route)
+                                                       (50.3% logic, 49.7% route)
+
+--------------------------------------------------------------------------------
+
+============================================================
+READ_ONLY_INSPECTION=PASS
+BOARD_CONNECTION_CHANGED=NO
+FPGA_PROGRAMMING_PERFORMED=NO
+RTL_MODIFICATION_PERFORMED=NO
+GIT_MODIFICATION_PERFORMED=NO
+OUTPUT=/home/shahriar-rizvi/Downloads/QFlow_P5_Step6_B4_Attempt4_RTL_Path_Inspection.txt
+============================================================

@@ -1,0 +1,95 @@
+============================================================
+P5 B4 — PHYSICAL SELF-TEST FAILURE DIAGNOSIS
+============================================================
+
+===== COMPLETE SELF-TEST TOP =====
+     1	`timescale 1ns / 1ps
+     2	module p5_b4_selftest_top(
+     3	 input wire clk_100mhz, input wire btn_reset,
+     4	 output wire led_heartbeat, output wire led_pass, output wire led_fail,
+     5	 output wire led_done, output wire [7:0] seg_n, output wire [3:0] an_n);
+     6	 reg [25:0] hb; reg [4:0] idx; reg start; reg pass; reg fail; reg finished;
+     7	 reg v0,v1; reg [31:0] c0,c1,u0,u1; reg [15:0] f0,f1;
+     8	 reg [2:0] h0,h1; reg [1:0] s0,s1,l0,l1,l2; reg [1:0] exp_slot; reg [17:0] exp_score;
+     9	 wire ready,done,route_valid,no_path; wire [1:0] selected_slot; wire [17:0] selected_score;
+    10	 p5_b4_candidate_evaluator dut(clk_100mhz,btn_reset,start,ready,v0,c0,f0,u0,h0,s0,v1,c1,f1,u1,h1,s1,l0,l1,l2,done,route_valid,no_path,selected_slot,selected_score);
+    11	 p5_b1_sevenseg display(clk_100mhz,btn_reset,16'hB410,seg_n,an_n);
+    12	 assign led_heartbeat=hb[25]; assign led_pass=pass; assign led_fail=fail; assign led_done=finished;
+    13	 always @* begin
+    14	   v0=1;v1=1;c0=100;c1=200;f0=62000;f1=61000;u0=500;u1=700;h0=2;h1=3;s0=0;s1=1;l0=2;l1=2;l2=1;exp_slot=0;exp_score=0;
+    15	   case(idx)
+    16	    0: begin v0=0;v1=0;exp_slot=0;exp_score=0;end
+    17	    1: begin v1=0;exp_slot=0;exp_score=0;end
+    18	    2: begin v0=0;exp_slot=1;exp_score=0;end
+    19	    3: begin c0=100;c1=100;f0=60000;f1=60000;u0=10;u1=10;h0=2;h1=2;exp_slot=0;exp_score=0;end
+    20	    4: begin c0=200;c1=100;f0=60000;f1=60000;u0=10;u1=10;exp_slot=1;exp_score=0;end
+    21	    5: begin c0=100;c1=200;f0=60000;f1=60000;u0=10;u1=10;exp_slot=0;exp_score=0;end
+    22	    6: begin c0=100;c1=100;f0=59000;f1=62000;u0=10;u1=10;exp_slot=1;exp_score=0;end
+    23	    7: begin c0=100;c1=100;f0=62000;f1=59000;u0=10;u1=10;exp_slot=0;exp_score=0;end
+    24	    8: begin c0=100;c1=100;f0=60000;f1=60000;u0=20;u1=10;exp_slot=1;exp_score=0;end
+    25	    9: begin c0=100;c1=100;f0=60000;f1=60000;u0=10;u1=20;exp_slot=0;exp_score=0;end
+    26	    10: begin c0=100;c1=100;f0=60000;f1=60000;u0=10;u1=10;h0=3;h1=2;exp_slot=1;exp_score=0;end
+    27	    11: begin c0=100;c1=100;f0=60000;f1=60000;u0=10;u1=10;s0=1;s1=0;exp_slot=0;exp_score=0;end
+    28	    default: begin v1=0;exp_slot=0;exp_score=0;end
+    29	   endcase
+    30	 end
+    31	 always @(posedge clk_100mhz) begin
+    32	   if(btn_reset) begin hb<=0;idx<=0;start<=0;pass<=0;fail<=0;finished<=0;end
+    33	   else begin hb<=hb+1'b1; start<=0;
+    34	     if(!finished && ready && !start) start<=1;
+    35	     if(done) begin
+    36	       if(idx==0) begin if(!no_path || route_valid) fail<=1; end
+    37	       else if(!route_valid || no_path || selected_slot!=exp_slot) fail<=1;
+    38	       if(idx==15) begin finished<=1; pass<=!fail; end else idx<=idx+1'b1;
+    39	     end
+    40	   end
+    41	 end
+    42	endmodule
+
+===== B4 DOCUMENTATION =====
+     1	# P5 Step 6 / B4 Candidate Evaluator
+     2	
+     3	This bounded hardware block evaluates the two valid frozen Ring-6 candidate slots. Upstream path/edge logic supplies a feasibility bit and the three objective values for each candidate. B4 performs the frozen range normalization, profile-weighted minimax score and deterministic ranking `(score, path_cost, hop_count, slot)`.
+     4	
+     5	The implementation uses one 49-by-33-bit iterative unsigned divider, shared across all nonzero objective ranges. With no feasible candidate it asserts `no_path` and suppresses `route_valid`. With one feasible candidate all normalized objectives and its score are zero.
+     6	
+     7	Board self-test signature: display `B410`; LD0 heartbeat; LD1 pass; LD2 fail; LD3 completion. The center button restarts the test. The input constraint at B8 intentionally has no internal `PULLDOWN`, matching the Step-3 board repair.
+
+===== START / DONE / INDEX / EXPECTATION REFERENCES =====
+4: output wire led_heartbeat, output wire led_pass, output wire led_fail,
+5: output wire led_done, output wire [7:0] seg_n, output wire [3:0] an_n);
+6: reg [25:0] hb; reg [4:0] idx; reg start; reg pass; reg fail; reg finished;
+8: reg [2:0] h0,h1; reg [1:0] s0,s1,l0,l1,l2; reg [1:0] exp_slot; reg [17:0] exp_score;
+9: wire ready,done,route_valid,no_path; wire [1:0] selected_slot; wire [17:0] selected_score;
+10: p5_b4_candidate_evaluator dut(clk_100mhz,btn_reset,start,ready,v0,c0,f0,u0,h0,s0,v1,c1,f1,u1,h1,s1,l0,l1,l2,done,route_valid,no_path,selected_slot,selected_score);
+12: assign led_heartbeat=hb[25]; assign led_pass=pass; assign led_fail=fail; assign led_done=finished;
+14:   v0=1;v1=1;c0=100;c1=200;f0=62000;f1=61000;u0=500;u1=700;h0=2;h1=3;s0=0;s1=1;l0=2;l1=2;l2=1;exp_slot=0;exp_score=0;
+15:   case(idx)
+16:    0: begin v0=0;v1=0;exp_slot=0;exp_score=0;end
+17:    1: begin v1=0;exp_slot=0;exp_score=0;end
+18:    2: begin v0=0;exp_slot=1;exp_score=0;end
+19:    3: begin c0=100;c1=100;f0=60000;f1=60000;u0=10;u1=10;h0=2;h1=2;exp_slot=0;exp_score=0;end
+20:    4: begin c0=200;c1=100;f0=60000;f1=60000;u0=10;u1=10;exp_slot=1;exp_score=0;end
+21:    5: begin c0=100;c1=200;f0=60000;f1=60000;u0=10;u1=10;exp_slot=0;exp_score=0;end
+22:    6: begin c0=100;c1=100;f0=59000;f1=62000;u0=10;u1=10;exp_slot=1;exp_score=0;end
+23:    7: begin c0=100;c1=100;f0=62000;f1=59000;u0=10;u1=10;exp_slot=0;exp_score=0;end
+24:    8: begin c0=100;c1=100;f0=60000;f1=60000;u0=20;u1=10;exp_slot=1;exp_score=0;end
+25:    9: begin c0=100;c1=100;f0=60000;f1=60000;u0=10;u1=20;exp_slot=0;exp_score=0;end
+26:    10: begin c0=100;c1=100;f0=60000;f1=60000;u0=10;u1=10;h0=3;h1=2;exp_slot=1;exp_score=0;end
+27:    11: begin c0=100;c1=100;f0=60000;f1=60000;u0=10;u1=10;s0=1;s1=0;exp_slot=0;exp_score=0;end
+28:    default: begin v1=0;exp_slot=0;exp_score=0;end
+32:   if(btn_reset) begin hb<=0;idx<=0;start<=0;pass<=0;fail<=0;finished<=0;end
+33:   else begin hb<=hb+1'b1; start<=0;
+34:     if(!finished && ready && !start) start<=1;
+35:     if(done) begin
+36:       if(idx==0) begin if(!no_path || route_valid) fail<=1; end
+37:       else if(!route_valid || no_path || selected_slot!=exp_slot) fail<=1;
+38:       if(idx==15) begin finished<=1; pass<=!fail; end else idx<=idx+1'b1;
+
+============================================================
+READ_ONLY_DIAGNOSIS=PASS
+FPGA_PROGRAMMING_PERFORMED=NO
+RTL_MODIFICATION_PERFORMED=NO
+GIT_MODIFICATION_PERFORMED=NO
+OUTPUT=/home/shahriar-rizvi/Downloads/QFlow_P5_Step6_B4_Attempt5_Physical_Fail_Diagnosis.txt
+============================================================

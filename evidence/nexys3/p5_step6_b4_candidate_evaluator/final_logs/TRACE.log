@@ -1,0 +1,53 @@
+Release 14.7 - Trace  (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+
+Loading device for application Rf_Device from file '6slx16.nph' in environment
+/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/.
+   "p5_b4_selftest_top" is an NCD, version 3.2, device xc6slx16, package csg324,
+speed -2
+INFO:Timing:3386 - Intersecting Constraints found and resolved.  For more
+   information, see the TSI report.  Please consult the Xilinx Command Line
+   Tools User Guide for information on generating a TSI report.
+--------------------------------------------------------------------------------
+Release 14.7 Trace  (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/trce -v 10 -n 10
+-u 10 p5_b4_routed.ncd p5_b4.pcf -o p5_b4.twr
+
+
+Design file:              p5_b4_routed.ncd
+Physical constraint file: p5_b4.pcf
+Device,speed:             xc6slx16,-2 (PRODUCTION 1.23 2013-10-13)
+Report level:             verbose report, limited to 10 items per constraint
+                          unconstrained path report, limited to 10 items
+--------------------------------------------------------------------------------
+
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on a 50 Ohm transmission line loading model.  For the details of
+   this model, and for more information on accounting for different loading conditions, please see the device datasheet.
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0 (Setup/Max: 0, Hold: 0)
+
+Constraints cover 70826 paths, 0 nets, and 1872 connections
+
+Design statistics:
+   Minimum period:   8.391ns (Maximum frequency: 119.175MHz)
+   Maximum combinational path delay:   3.953ns
+   Minimum input required time before clock:   7.081ns
+   Maximum output delay after clock:  12.347ns
+
+
+Analysis completed Mon Jul 20 21:19:57 2026
+--------------------------------------------------------------------------------
+
+Generating Report ...
+
+Number of warnings: 0
+Number of info messages: 3
+Total time: 1 secs 

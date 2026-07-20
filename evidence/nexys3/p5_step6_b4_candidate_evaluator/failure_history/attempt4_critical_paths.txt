@@ -1,0 +1,301 @@
+===== TIMING SUMMARY AND CRITICAL PATH ENDPOINTS =====
+29:Timing constraint: TS_P5_B4_CLK = PERIOD TIMEGRP "P5_B4_CLK" 10 ns HIGH 50%;
+34: Minimum period is  10.683ns.
+39:Slack:                  -0.683ns (requirement - (data path - clock path skew + uncertainty))
+40:  Source:               dut/util0_5 (FF)
+41:  Destination:          dut/dividend_shift_46 (FF)
+43:  Data Path Delay:      10.619ns (Levels of Logic = 20)
+55:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_46
+131:Slack:                  -0.680ns (requirement - (data path - clock path skew + uncertainty))
+132:  Source:               dut/util0_5 (FF)
+133:  Destination:          dut/dividend_shift_46 (FF)
+135:  Data Path Delay:      10.616ns (Levels of Logic = 20)
+147:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_46
+223:Slack:                  -0.677ns (requirement - (data path - clock path skew + uncertainty))
+224:  Source:               dut/util0_5 (FF)
+225:  Destination:          dut/dividend_shift_46 (FF)
+227:  Data Path Delay:      10.613ns (Levels of Logic = 20)
+239:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_46
+315:Slack:                  -0.675ns (requirement - (data path - clock path skew + uncertainty))
+316:  Source:               dut/util0_5 (FF)
+317:  Destination:          dut/dividend_shift_46 (FF)
+319:  Data Path Delay:      10.611ns (Levels of Logic = 20)
+331:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_46
+407:Slack:                  -0.675ns (requirement - (data path - clock path skew + uncertainty))
+408:  Source:               dut/util0_5 (FF)
+409:  Destination:          dut/dividend_shift_46 (FF)
+411:  Data Path Delay:      10.611ns (Levels of Logic = 20)
+423:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_46
+499:Slack:                  -0.656ns (requirement - (data path - clock path skew + uncertainty))
+500:  Source:               dut/util0_5 (FF)
+501:  Destination:          dut/dividend_shift_46 (FF)
+503:  Data Path Delay:      10.592ns (Levels of Logic = 20)
+515:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_46
+591:Slack:                  -0.656ns (requirement - (data path - clock path skew + uncertainty))
+592:  Source:               dut/util0_5 (FF)
+593:  Destination:          dut/dividend_shift_46 (FF)
+595:  Data Path Delay:      10.592ns (Levels of Logic = 20)
+607:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_46
+683:Slack:                  -0.654ns (requirement - (data path - clock path skew + uncertainty))
+684:  Source:               dut/util0_5 (FF)
+685:  Destination:          dut/dividend_shift_46 (FF)
+687:  Data Path Delay:      10.590ns (Levels of Logic = 20)
+699:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_46
+775:Slack:                  -0.652ns (requirement - (data path - clock path skew + uncertainty))
+776:  Source:               dut/util0_5 (FF)
+777:  Destination:          dut/dividend_shift_46 (FF)
+779:  Data Path Delay:      10.588ns (Levels of Logic = 20)
+791:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_46
+867:Slack:                  -0.652ns (requirement - (data path - clock path skew + uncertainty))
+868:  Source:               dut/util0_5 (FF)
+869:  Destination:          dut/dividend_shift_46 (FF)
+871:  Data Path Delay:      10.588ns (Levels of Logic = 20)
+883:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_46
+962:Slack:                  -0.591ns (requirement - (data path - clock path skew + uncertainty))
+963:  Source:               dut/util0_5 (FF)
+964:  Destination:          dut/dividend_shift_42 (FF)
+966:  Data Path Delay:      10.525ns (Levels of Logic = 19)
+978:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_42
+1051:Slack:                  -0.588ns (requirement - (data path - clock path skew + uncertainty))
+1052:  Source:               dut/util0_5 (FF)
+1053:  Destination:          dut/dividend_shift_42 (FF)
+1055:  Data Path Delay:      10.522ns (Levels of Logic = 19)
+1067:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_42
+1140:Slack:                  -0.585ns (requirement - (data path - clock path skew + uncertainty))
+1141:  Source:               dut/util0_5 (FF)
+1142:  Destination:          dut/dividend_shift_42 (FF)
+1144:  Data Path Delay:      10.519ns (Levels of Logic = 19)
+1156:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_42
+1229:Slack:                  -0.583ns (requirement - (data path - clock path skew + uncertainty))
+1230:  Source:               dut/util0_5 (FF)
+1231:  Destination:          dut/dividend_shift_42 (FF)
+1233:  Data Path Delay:      10.517ns (Levels of Logic = 19)
+1245:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_42
+1318:Slack:                  -0.583ns (requirement - (data path - clock path skew + uncertainty))
+1319:  Source:               dut/util0_5 (FF)
+1320:  Destination:          dut/dividend_shift_42 (FF)
+1322:  Data Path Delay:      10.517ns (Levels of Logic = 19)
+1334:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_42
+1407:Slack:                  -0.564ns (requirement - (data path - clock path skew + uncertainty))
+1408:  Source:               dut/util0_5 (FF)
+1409:  Destination:          dut/dividend_shift_42 (FF)
+1411:  Data Path Delay:      10.498ns (Levels of Logic = 19)
+1423:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_42
+1496:Slack:                  -0.564ns (requirement - (data path - clock path skew + uncertainty))
+1497:  Source:               dut/util0_5 (FF)
+1498:  Destination:          dut/dividend_shift_42 (FF)
+1500:  Data Path Delay:      10.498ns (Levels of Logic = 19)
+1512:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_42
+1585:Slack:                  -0.562ns (requirement - (data path - clock path skew + uncertainty))
+1586:  Source:               dut/util0_5 (FF)
+1587:  Destination:          dut/dividend_shift_42 (FF)
+1589:  Data Path Delay:      10.496ns (Levels of Logic = 19)
+1601:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_42
+1674:Slack:                  -0.560ns (requirement - (data path - clock path skew + uncertainty))
+1675:  Source:               dut/util0_5 (FF)
+1676:  Destination:          dut/dividend_shift_42 (FF)
+1678:  Data Path Delay:      10.494ns (Levels of Logic = 19)
+1690:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_42
+1763:Slack:                  -0.560ns (requirement - (data path - clock path skew + uncertainty))
+1764:  Source:               dut/util0_5 (FF)
+1765:  Destination:          dut/dividend_shift_42 (FF)
+1767:  Data Path Delay:      10.494ns (Levels of Logic = 19)
+1779:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_42
+1855:Slack:                  -0.512ns (requirement - (data path - clock path skew + uncertainty))
+1856:  Source:               dut/util0_5 (FF)
+1857:  Destination:          dut/dividend_shift_40 (FF)
+1859:  Data Path Delay:      10.446ns (Levels of Logic = 19)
+1871:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_40
+1944:Slack:                  -0.509ns (requirement - (data path - clock path skew + uncertainty))
+1945:  Source:               dut/util0_5 (FF)
+1946:  Destination:          dut/dividend_shift_40 (FF)
+1948:  Data Path Delay:      10.443ns (Levels of Logic = 19)
+1960:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_40
+2033:Slack:                  -0.506ns (requirement - (data path - clock path skew + uncertainty))
+2034:  Source:               dut/util0_5 (FF)
+2035:  Destination:          dut/dividend_shift_40 (FF)
+2037:  Data Path Delay:      10.440ns (Levels of Logic = 19)
+2049:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_40
+2122:Slack:                  -0.504ns (requirement - (data path - clock path skew + uncertainty))
+2123:  Source:               dut/util0_5 (FF)
+2124:  Destination:          dut/dividend_shift_40 (FF)
+2126:  Data Path Delay:      10.438ns (Levels of Logic = 19)
+2138:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_40
+2211:Slack:                  -0.504ns (requirement - (data path - clock path skew + uncertainty))
+2212:  Source:               dut/util0_5 (FF)
+2213:  Destination:          dut/dividend_shift_40 (FF)
+2215:  Data Path Delay:      10.438ns (Levels of Logic = 19)
+2227:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_40
+2300:Slack:                  -0.485ns (requirement - (data path - clock path skew + uncertainty))
+2301:  Source:               dut/util0_5 (FF)
+2302:  Destination:          dut/dividend_shift_40 (FF)
+2304:  Data Path Delay:      10.419ns (Levels of Logic = 19)
+2316:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_40
+2389:Slack:                  -0.485ns (requirement - (data path - clock path skew + uncertainty))
+2390:  Source:               dut/util0_5 (FF)
+2391:  Destination:          dut/dividend_shift_40 (FF)
+2393:  Data Path Delay:      10.419ns (Levels of Logic = 19)
+2405:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_40
+2478:Slack:                  -0.483ns (requirement - (data path - clock path skew + uncertainty))
+2479:  Source:               dut/util0_5 (FF)
+2480:  Destination:          dut/dividend_shift_40 (FF)
+2482:  Data Path Delay:      10.417ns (Levels of Logic = 19)
+2494:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_40
+2567:Slack:                  -0.481ns (requirement - (data path - clock path skew + uncertainty))
+2568:  Source:               dut/util0_5 (FF)
+2569:  Destination:          dut/dividend_shift_40 (FF)
+2571:  Data Path Delay:      10.415ns (Levels of Logic = 19)
+2583:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_40
+2656:Slack:                  -0.481ns (requirement - (data path - clock path skew + uncertainty))
+2657:  Source:               dut/util0_5 (FF)
+2658:  Destination:          dut/dividend_shift_40 (FF)
+2660:  Data Path Delay:      10.415ns (Levels of Logic = 19)
+2672:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_40
+2748:Slack:                  -0.431ns (requirement - (data path - clock path skew + uncertainty))
+2749:  Source:               dut/util0_5 (FF)
+2750:  Destination:          dut/dividend_shift_44 (FF)
+2752:  Data Path Delay:      10.373ns (Levels of Logic = 20)
+2764:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_44
+2840:Slack:                  -0.428ns (requirement - (data path - clock path skew + uncertainty))
+2841:  Source:               dut/util0_5 (FF)
+2842:  Destination:          dut/dividend_shift_44 (FF)
+2844:  Data Path Delay:      10.370ns (Levels of Logic = 20)
+2856:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_44
+2932:Slack:                  -0.425ns (requirement - (data path - clock path skew + uncertainty))
+2933:  Source:               dut/util0_5 (FF)
+2934:  Destination:          dut/dividend_shift_44 (FF)
+2936:  Data Path Delay:      10.367ns (Levels of Logic = 20)
+2948:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_44
+3024:Slack:                  -0.423ns (requirement - (data path - clock path skew + uncertainty))
+3025:  Source:               dut/util0_5 (FF)
+3026:  Destination:          dut/dividend_shift_44 (FF)
+3028:  Data Path Delay:      10.365ns (Levels of Logic = 20)
+3040:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_44
+3116:Slack:                  -0.423ns (requirement - (data path - clock path skew + uncertainty))
+3117:  Source:               dut/util0_5 (FF)
+3118:  Destination:          dut/dividend_shift_44 (FF)
+3120:  Data Path Delay:      10.365ns (Levels of Logic = 20)
+3132:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_44
+3208:Slack:                  -0.404ns (requirement - (data path - clock path skew + uncertainty))
+3209:  Source:               dut/util0_5 (FF)
+3210:  Destination:          dut/dividend_shift_44 (FF)
+3212:  Data Path Delay:      10.346ns (Levels of Logic = 20)
+3224:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_44
+3300:Slack:                  -0.404ns (requirement - (data path - clock path skew + uncertainty))
+3301:  Source:               dut/util0_5 (FF)
+3302:  Destination:          dut/dividend_shift_44 (FF)
+3304:  Data Path Delay:      10.346ns (Levels of Logic = 20)
+3316:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_44
+3392:Slack:                  -0.402ns (requirement - (data path - clock path skew + uncertainty))
+3393:  Source:               dut/util0_5 (FF)
+3394:  Destination:          dut/dividend_shift_44 (FF)
+3396:  Data Path Delay:      10.344ns (Levels of Logic = 20)
+3408:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_44
+3484:Slack:                  -0.400ns (requirement - (data path - clock path skew + uncertainty))
+3485:  Source:               dut/util0_5 (FF)
+3486:  Destination:          dut/dividend_shift_44 (FF)
+3488:  Data Path Delay:      10.342ns (Levels of Logic = 20)
+3500:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_44
+3576:Slack:                  -0.400ns (requirement - (data path - clock path skew + uncertainty))
+3577:  Source:               dut/util0_5 (FF)
+3578:  Destination:          dut/dividend_shift_44 (FF)
+3580:  Data Path Delay:      10.342ns (Levels of Logic = 20)
+3592:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_44
+3671:Slack:                  -0.421ns (requirement - (data path - clock path skew + uncertainty))
+3672:  Source:               dut/util0_5 (FF)
+3673:  Destination:          dut/dividend_shift_36 (FF)
+3675:  Data Path Delay:      10.352ns (Levels of Logic = 18)
+3687:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_36
+3757:Slack:                  -0.418ns (requirement - (data path - clock path skew + uncertainty))
+3758:  Source:               dut/util0_5 (FF)
+3759:  Destination:          dut/dividend_shift_36 (FF)
+3761:  Data Path Delay:      10.349ns (Levels of Logic = 18)
+3773:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_36
+3843:Slack:                  -0.415ns (requirement - (data path - clock path skew + uncertainty))
+3844:  Source:               dut/util0_5 (FF)
+3845:  Destination:          dut/dividend_shift_36 (FF)
+3847:  Data Path Delay:      10.346ns (Levels of Logic = 18)
+3859:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_36
+3929:Slack:                  -0.413ns (requirement - (data path - clock path skew + uncertainty))
+3930:  Source:               dut/util0_5 (FF)
+3931:  Destination:          dut/dividend_shift_36 (FF)
+3933:  Data Path Delay:      10.344ns (Levels of Logic = 18)
+3945:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_36
+4015:Slack:                  -0.413ns (requirement - (data path - clock path skew + uncertainty))
+4016:  Source:               dut/util0_5 (FF)
+4017:  Destination:          dut/dividend_shift_36 (FF)
+4019:  Data Path Delay:      10.344ns (Levels of Logic = 18)
+4031:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_36
+4101:Slack:                  -0.394ns (requirement - (data path - clock path skew + uncertainty))
+4102:  Source:               dut/util0_5 (FF)
+4103:  Destination:          dut/dividend_shift_36 (FF)
+4105:  Data Path Delay:      10.325ns (Levels of Logic = 18)
+4117:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_36
+4187:Slack:                  -0.394ns (requirement - (data path - clock path skew + uncertainty))
+4188:  Source:               dut/util0_5 (FF)
+4189:  Destination:          dut/dividend_shift_36 (FF)
+4191:  Data Path Delay:      10.325ns (Levels of Logic = 18)
+4203:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_36
+4273:Slack:                  -0.392ns (requirement - (data path - clock path skew + uncertainty))
+4274:  Source:               dut/util0_5 (FF)
+4275:  Destination:          dut/dividend_shift_36 (FF)
+4277:  Data Path Delay:      10.323ns (Levels of Logic = 18)
+4289:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_36
+4359:Slack:                  -0.390ns (requirement - (data path - clock path skew + uncertainty))
+4360:  Source:               dut/util0_5 (FF)
+4361:  Destination:          dut/dividend_shift_36 (FF)
+4363:  Data Path Delay:      10.321ns (Levels of Logic = 18)
+4375:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_36
+4445:Slack:                  -0.390ns (requirement - (data path - clock path skew + uncertainty))
+4446:  Source:               dut/util0_5 (FF)
+4447:  Destination:          dut/dividend_shift_36 (FF)
+4449:  Data Path Delay:      10.321ns (Levels of Logic = 18)
+4461:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_36
+4534:Slack:                  -0.389ns (requirement - (data path - clock path skew + uncertainty))
+4535:  Source:               dut/util0_5 (FF)
+4536:  Destination:          dut/dividend_shift_47 (FF)
+4538:  Data Path Delay:      10.320ns (Levels of Logic = 20)
+4550:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_47
+4626:Slack:                  -0.386ns (requirement - (data path - clock path skew + uncertainty))
+4627:  Source:               dut/util0_5 (FF)
+4628:  Destination:          dut/dividend_shift_47 (FF)
+4630:  Data Path Delay:      10.317ns (Levels of Logic = 20)
+4642:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_47
+4718:Slack:                  -0.383ns (requirement - (data path - clock path skew + uncertainty))
+4719:  Source:               dut/util0_5 (FF)
+4720:  Destination:          dut/dividend_shift_47 (FF)
+4722:  Data Path Delay:      10.314ns (Levels of Logic = 20)
+4734:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_47
+4810:Slack:                  -0.381ns (requirement - (data path - clock path skew + uncertainty))
+4811:  Source:               dut/util0_5 (FF)
+4812:  Destination:          dut/dividend_shift_47 (FF)
+4814:  Data Path Delay:      10.312ns (Levels of Logic = 20)
+4826:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_47
+4902:Slack:                  -0.381ns (requirement - (data path - clock path skew + uncertainty))
+4903:  Source:               dut/util0_5 (FF)
+4904:  Destination:          dut/dividend_shift_47 (FF)
+4906:  Data Path Delay:      10.312ns (Levels of Logic = 20)
+4918:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_47
+4994:Slack:                  -0.362ns (requirement - (data path - clock path skew + uncertainty))
+4995:  Source:               dut/util0_5 (FF)
+4996:  Destination:          dut/dividend_shift_47 (FF)
+4998:  Data Path Delay:      10.293ns (Levels of Logic = 20)
+5010:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_47
+5086:Slack:                  -0.362ns (requirement - (data path - clock path skew + uncertainty))
+5087:  Source:               dut/util0_5 (FF)
+5088:  Destination:          dut/dividend_shift_47 (FF)
+5090:  Data Path Delay:      10.293ns (Levels of Logic = 20)
+5102:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_47
+5178:Slack:                  -0.360ns (requirement - (data path - clock path skew + uncertainty))
+5179:  Source:               dut/util0_5 (FF)
+5180:  Destination:          dut/dividend_shift_47 (FF)
+5182:  Data Path Delay:      10.291ns (Levels of Logic = 20)
+5194:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_47
+5270:Slack:                  -0.358ns (requirement - (data path - clock path skew + uncertainty))
+5271:  Source:               dut/util0_5 (FF)
+5272:  Destination:          dut/dividend_shift_47 (FF)
+5274:  Data Path Delay:      10.289ns (Levels of Logic = 20)
+5286:  Maximum Data Path at Slow Process Corner: dut/util0_5 to dut/dividend_shift_47
+5362:Slack:                  -0.358ns (requirement - (data path - clock path skew + uncertainty))
+5363:  Source:               dut/util0_5 (FF)
+5364:  Destination:          dut/dividend_shift_47 (FF)

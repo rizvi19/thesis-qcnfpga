@@ -1,0 +1,66 @@
+============================================================
+P5 STEP 6 — ATTEMPT-6 SELF-TEST EXPECTATION REPAIR
+============================================================
+
+===== EVALUATOR PRESERVATION GATE =====
+EXPECTED_EVALUATOR_SHA256=e9fea3a07cfe37b219aa6c9ea95c8e96591f2cf45c3ff260240f972e7c52c985
+ACTUAL_EVALUATOR_SHA256=e9fea3a07cfe37b219aa6c9ea95c8e96591f2cf45c3ff260240f972e7c52c985
+EVALUATOR_UNCHANGED=PASS
+
+===== PATCH VECTOR 11 EXPECTATION =====
+VECTOR11_EXPECTATION_PATCH=PASS
+
+===== EXACT PATCH DIFF =====
+--- /home/shahriar-rizvi/Downloads/QFlow_P5_Step6_B4_Candidate_Evaluator_Attempt5_Build/source/rtl/spartan6/p5_b4_selftest_top.v	2026-07-20 14:43:59.000000000 +0600
++++ /home/shahriar-rizvi/Downloads/QFlow_P5_Step6_B4_Candidate_Evaluator_Attempt6_Build/source/rtl/spartan6/p5_b4_selftest_top.v	2026-07-20 21:16:32.412641637 +0600
+@@ -24,7 +24,7 @@
+     8: begin c0=100;c1=100;f0=60000;f1=60000;u0=20;u1=10;exp_slot=1;exp_score=0;end
+     9: begin c0=100;c1=100;f0=60000;f1=60000;u0=10;u1=20;exp_slot=0;exp_score=0;end
+     10: begin c0=100;c1=100;f0=60000;f1=60000;u0=10;u1=10;h0=3;h1=2;exp_slot=1;exp_score=0;end
+-    11: begin c0=100;c1=100;f0=60000;f1=60000;u0=10;u1=10;s0=1;s1=0;exp_slot=0;exp_score=0;end
++    11: begin c0=100;c1=100;f0=60000;f1=60000;u0=10;u1=10;s0=1;s1=0;exp_slot=1;exp_score=0;end
+     default: begin v1=0;exp_slot=0;exp_score=0;end
+    endcase
+  end
+27:    11: begin c0=100;c1=100;f0=60000;f1=60000;u0=10;u1=10;s0=1;s1=0;exp_slot=1;exp_score=0;end
+VECTOR11_EXPECTED_SLOT=1
+SELFTEST_PATCH_GATE=PASS
+
+===== COMPILE AND RUN COMPLETE SELF-TEST =====
+IVERILOG_COMPILE=PASS
+VECTOR idx=0 actual_slot=0 expected_slot=0 route_valid=0 no_path=1 result=PASS
+VECTOR idx=1 actual_slot=0 expected_slot=0 route_valid=1 no_path=0 result=PASS
+VECTOR idx=2 actual_slot=1 expected_slot=1 route_valid=1 no_path=0 result=PASS
+VECTOR idx=3 actual_slot=0 expected_slot=0 route_valid=1 no_path=0 result=PASS
+VECTOR idx=4 actual_slot=1 expected_slot=1 route_valid=1 no_path=0 result=PASS
+VECTOR idx=5 actual_slot=0 expected_slot=0 route_valid=1 no_path=0 result=PASS
+VECTOR idx=6 actual_slot=1 expected_slot=1 route_valid=1 no_path=0 result=PASS
+VECTOR idx=7 actual_slot=0 expected_slot=0 route_valid=1 no_path=0 result=PASS
+VECTOR idx=8 actual_slot=1 expected_slot=1 route_valid=1 no_path=0 result=PASS
+VECTOR idx=9 actual_slot=0 expected_slot=0 route_valid=1 no_path=0 result=PASS
+VECTOR idx=10 actual_slot=1 expected_slot=1 route_valid=1 no_path=0 result=PASS
+VECTOR idx=11 actual_slot=1 expected_slot=1 route_valid=1 no_path=0 result=PASS
+VECTOR idx=12 actual_slot=0 expected_slot=0 route_valid=1 no_path=0 result=PASS
+VECTOR idx=13 actual_slot=0 expected_slot=0 route_valid=1 no_path=0 result=PASS
+VECTOR idx=14 actual_slot=0 expected_slot=0 route_valid=1 no_path=0 result=PASS
+VECTOR idx=15 actual_slot=0 expected_slot=0 route_valid=1 no_path=0 result=PASS
+============================================================
+COMPLETED_TESTS=16
+VECTOR_ERRORS=0
+FINAL_PASS=1
+FINAL_FAIL=0
+FINAL_DONE=1
+ATTEMPT6_SELFTEST_SIMULATION=16_OF_16_PASS
+============================================================
+/tmp/qflow_p5_b4_attempt6_selftest_tb.v:96: $finish called at 7015000 (1ps)
+
+============================================================
+ATTEMPT6_SELFTEST_REPAIR=PASS
+EVALUATOR_MODIFIED=NO
+EXPECTED_VECTOR_CORRECTED=YES
+FPGA_PROGRAMMING_PERFORMED=NO
+REPOSITORY_MODIFIED=NO
+BOARD_CONNECTION_CHANGED=NO
+ATTEMPT6_SOURCE_ROOT=/home/shahriar-rizvi/Downloads/QFlow_P5_Step6_B4_Candidate_Evaluator_Attempt6_Build/source
+OUTPUT=/home/shahriar-rizvi/Downloads/QFlow_P5_Step6_B4_Attempt6_Selftest_Repair_Verification.txt
+============================================================

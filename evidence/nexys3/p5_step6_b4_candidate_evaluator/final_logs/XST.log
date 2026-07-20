@@ -1,0 +1,753 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "p5_b4.prj"
+Input Format                       : mixed
+
+---- Target Parameters
+Output File Name                   : "p5_b4"
+Output Format                      : NGC
+Target Device                      : xc6slx16-2-csg324
+
+---- Source Options
+Top Module Name                    : p5_b4_selftest_top
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "/home/shahriar-rizvi/Downloads/QFlow_P5_Step6_B4_Candidate_Evaluator_Attempt6_Build/source/rtl/spartan6/p5_b4_candidate_evaluator.v" into library work
+Parsing module <p5_b4_candidate_evaluator>.
+Analyzing Verilog file "/home/shahriar-rizvi/Downloads/QFlow_P5_Step6_B4_Candidate_Evaluator_Attempt6_Build/source/rtl/spartan6/p5_b1_sevenseg.v" into library work
+Parsing module <p5_b1_sevenseg>.
+Analyzing Verilog file "/home/shahriar-rizvi/Downloads/QFlow_P5_Step6_B4_Candidate_Evaluator_Attempt6_Build/source/rtl/spartan6/p5_b4_selftest_top.v" into library work
+Parsing module <p5_b4_selftest_top>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating module <p5_b4_selftest_top>.
+
+Elaborating module <p5_b4_candidate_evaluator>.
+WARNING:HDLCompiler:1127 - "/home/shahriar-rizvi/Downloads/QFlow_P5_Step6_B4_Candidate_Evaluator_Attempt6_Build/source/rtl/spartan6/p5_b4_selftest_top.v" Line 10: Assignment to selected_score ignored, since the identifier is never used
+
+Elaborating module <p5_b1_sevenseg>.
+WARNING:HDLCompiler:1127 - "/home/shahriar-rizvi/Downloads/QFlow_P5_Step6_B4_Candidate_Evaluator_Attempt6_Build/source/rtl/spartan6/p5_b4_selftest_top.v" Line 13: Assignment to exp_score ignored, since the identifier is never used
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <p5_b4_selftest_top>.
+    Related source file is "/home/shahriar-rizvi/Downloads/QFlow_P5_Step6_B4_Candidate_Evaluator_Attempt6_Build/source/rtl/spartan6/p5_b4_selftest_top.v".
+INFO:Xst:3210 - "/home/shahriar-rizvi/Downloads/QFlow_P5_Step6_B4_Candidate_Evaluator_Attempt6_Build/source/rtl/spartan6/p5_b4_selftest_top.v" line 10: Output port <selected_score> of the instance <dut> is unconnected or connected to loadless signal.
+    Found 5-bit register for signal <idx>.
+    Found 1-bit register for signal <start>.
+    Found 1-bit register for signal <led_pass>.
+    Found 1-bit register for signal <led_fail>.
+    Found 1-bit register for signal <led_done>.
+    Found 26-bit register for signal <hb>.
+    Found 26-bit adder for signal <hb[25]_GND_1_o_add_87_OUT> created at line 33.
+    Found 5-bit adder for signal <idx[4]_GND_1_o_add_91_OUT> created at line 38.
+    Found 2-bit comparator not equal for signal <n0059> created at line 37
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  35 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+Unit <p5_b4_selftest_top> synthesized.
+
+Synthesizing Unit <p5_b4_candidate_evaluator>.
+    Related source file is "/home/shahriar-rizvi/Downloads/QFlow_P5_Step6_B4_Candidate_Evaluator_Attempt6_Build/source/rtl/spartan6/p5_b4_candidate_evaluator.v".
+    Found 1-bit register for signal <done>.
+    Found 1-bit register for signal <route_valid>.
+    Found 1-bit register for signal <no_path>.
+    Found 2-bit register for signal <selected_slot>.
+    Found 18-bit register for signal <selected_score>.
+    Found 34-bit register for signal <remainder>.
+    Found 49-bit register for signal <quotient>.
+    Found 16-bit register for signal <n10>.
+    Found 16-bit register for signal <n11>.
+    Found 16-bit register for signal <n12>.
+    Found 16-bit register for signal <n00>.
+    Found 16-bit register for signal <n01>.
+    Found 16-bit register for signal <n02>.
+    Found 2-bit register for signal <objective>.
+    Found 6-bit register for signal <div_count>.
+    Found 49-bit register for signal <dividend_shift>.
+    Found 34-bit register for signal <remainder_trial>.
+    Found 1-bit register for signal <subtract_needed>.
+    Found 48-bit register for signal <scaled_difference_reg>.
+    Found 1-bit register for signal <high_is_c1>.
+    Found 32-bit register for signal <difference_reg>.
+    Found 33-bit register for signal <divisor>.
+    Found 1-bit register for signal <v0>.
+    Found 1-bit register for signal <v1>.
+    Found 32-bit register for signal <cost0>.
+    Found 32-bit register for signal <cost1>.
+    Found 16-bit register for signal <fid0>.
+    Found 16-bit register for signal <fid1>.
+    Found 32-bit register for signal <util0>.
+    Found 32-bit register for signal <util1>.
+    Found 3-bit register for signal <hops0>.
+    Found 3-bit register for signal <hops1>.
+    Found 2-bit register for signal <slot0>.
+    Found 2-bit register for signal <slot1>.
+    Found 2-bit register for signal <lam0>.
+    Found 2-bit register for signal <lam1>.
+    Found 2-bit register for signal <lam2>.
+    Found 3-bit register for signal <state>.
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 8                                              |
+    | Transitions        | 19                                             |
+    | Inputs             | 7                                              |
+    | Outputs            | 6                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | rst (positive)                                 |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 000                                            |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 16-bit subtractor for signal <PWR_2_o_fid0[15]_sub_3_OUT> created at line 52.
+    Found 16-bit subtractor for signal <PWR_2_o_fid1[15]_sub_8_OUT> created at line 54.
+    Found 32-bit subtractor for signal <obj0[31]_obj1[31]_sub_12_OUT> created at line 55.
+    Found 32-bit subtractor for signal <obj1[31]_obj0[31]_sub_13_OUT> created at line 55.
+    Found 48-bit subtractor for signal <difference_reg[31]_GND_2_o_sub_88_OUT> created at line 110.
+    Found 34-bit subtractor for signal <remainder_trial[33]_GND_2_o_sub_90_OUT> created at line 131.
+    Found 33-bit adder for signal <n0506> created at line 56.
+    Found 18-bit adder for signal <n0476> created at line 63.
+    Found 18-bit adder for signal <n0481> created at line 63.
+    Found 18-bit adder for signal <n0486> created at line 63.
+    Found 18-bit adder for signal <n0491> created at line 63.
+    Found 18-bit adder for signal <n0496> created at line 63.
+    Found 18-bit adder for signal <n0501> created at line 63.
+    Found 49-bit adder for signal <n0523> created at line 116.
+    Found 2-bit adder for signal <objective[1]_GND_2_o_add_113_OUT> created at line 144.
+    Found 6-bit adder for signal <div_count[5]_GND_2_o_add_116_OUT> created at line 145.
+    Found 18-bit 4-to-1 multiplexer for signal <p00> created at line 60.
+    Found 18-bit 4-to-1 multiplexer for signal <p01> created at line 60.
+    Found 18-bit 4-to-1 multiplexer for signal <p02> created at line 60.
+    Found 18-bit 4-to-1 multiplexer for signal <p10> created at line 60.
+    Found 18-bit 4-to-1 multiplexer for signal <p11> created at line 60.
+    Found 18-bit 4-to-1 multiplexer for signal <p12> created at line 60.
+    Found 32-bit comparator greater for signal <obj1[31]_obj0[31]_LessThan_11_o> created at line 55
+    Found 18-bit comparator lessequal for signal <n0023> created at line 68
+    Found 18-bit comparator lessequal for signal <n0025> created at line 68
+    Found 18-bit comparator lessequal for signal <n0028> created at line 68
+    Found 18-bit comparator lessequal for signal <n0032> created at line 69
+    Found 18-bit comparator lessequal for signal <n0034> created at line 69
+    Found 18-bit comparator lessequal for signal <n0037> created at line 69
+    Found 18-bit comparator greater for signal <score0[17]_score1[17]_LessThan_38_o> created at line 70
+    Found 18-bit comparator equal for signal <score0[17]_score1[17]_equal_39_o> created at line 71
+    Found 32-bit comparator greater for signal <cost0[31]_cost1[31]_LessThan_40_o> created at line 71
+    Found 32-bit comparator equal for signal <cost0[31]_cost1[31]_equal_41_o> created at line 72
+    Found 3-bit comparator greater for signal <hops0[2]_hops1[2]_LessThan_42_o> created at line 72
+    Found 3-bit comparator equal for signal <hops0[2]_hops1[2]_equal_43_o> created at line 73
+    Found 2-bit comparator lessequal for signal <n0047> created at line 73
+    Found 34-bit comparator lessequal for signal <n0056> created at line 76
+    Found 32-bit comparator equal for signal <obj0[31]_obj1[31]_equal_70_o> created at line 98
+    Found 32-bit comparator greater for signal <obj0[31]_obj1[31]_LessThan_75_o> created at line 102
+    Summary:
+	inferred  15 Adder/Subtractor(s).
+	inferred 586 D-type flip-flop(s).
+	inferred  17 Comparator(s).
+	inferred  54 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <p5_b4_candidate_evaluator> synthesized.
+
+Synthesizing Unit <p5_b1_sevenseg>.
+    Related source file is "/home/shahriar-rizvi/Downloads/QFlow_P5_Step6_B4_Candidate_Evaluator_Attempt6_Build/source/rtl/spartan6/p5_b1_sevenseg.v".
+        SCAN_COUNTER_BITS = 18
+    Found 18-bit register for signal <scan_counter>.
+    Found 18-bit adder for signal <scan_counter[17]_GND_3_o_add_2_OUT> created at line 5.
+    Found 16x7-bit Read Only RAM for signal <seg_n<6:0>>
+    Found 4x7-bit Read Only RAM for signal <_n0027>
+    Summary:
+	inferred   2 RAM(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred  18 D-type flip-flop(s).
+Unit <p5_b1_sevenseg> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 2
+ 16x7-bit single-port Read Only RAM                    : 1
+ 4x7-bit single-port Read Only RAM                     : 1
+# Adders/Subtractors                                   : 18
+ 16-bit subtractor                                     : 2
+ 18-bit adder                                          : 7
+ 2-bit adder                                           : 1
+ 26-bit adder                                          : 1
+ 32-bit subtractor                                     : 1
+ 33-bit adder                                          : 1
+ 34-bit subtractor                                     : 1
+ 48-bit subtractor                                     : 1
+ 49-bit adder                                          : 1
+ 5-bit adder                                           : 1
+ 6-bit adder                                           : 1
+# Registers                                            : 44
+ 1-bit register                                        : 11
+ 16-bit register                                       : 8
+ 18-bit register                                       : 2
+ 2-bit register                                        : 7
+ 26-bit register                                       : 1
+ 3-bit register                                        : 2
+ 32-bit register                                       : 5
+ 33-bit register                                       : 1
+ 34-bit register                                       : 2
+ 48-bit register                                       : 1
+ 49-bit register                                       : 2
+ 5-bit register                                        : 1
+ 6-bit register                                        : 1
+# Comparators                                          : 18
+ 18-bit comparator equal                               : 1
+ 18-bit comparator greater                             : 1
+ 18-bit comparator lessequal                           : 6
+ 2-bit comparator lessequal                            : 1
+ 2-bit comparator not equal                            : 1
+ 3-bit comparator equal                                : 1
+ 3-bit comparator greater                              : 1
+ 32-bit comparator equal                               : 2
+ 32-bit comparator greater                             : 3
+ 34-bit comparator lessequal                           : 1
+# Multiplexers                                         : 54
+ 1-bit 2-to-1 multiplexer                              : 3
+ 16-bit 2-to-1 multiplexer                             : 6
+ 18-bit 2-to-1 multiplexer                             : 31
+ 2-bit 2-to-1 multiplexer                              : 5
+ 32-bit 2-to-1 multiplexer                             : 4
+ 34-bit 2-to-1 multiplexer                             : 2
+ 49-bit 2-to-1 multiplexer                             : 2
+ 6-bit 2-to-1 multiplexer                              : 1
+# FSMs                                                 : 1
+
+=========================================================================
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:2404 -  FFs/Latches <lam2<1:1>> (without init value) have a constant value of 0 in block <p5_b4_candidate_evaluator>.
+
+Synthesizing (advanced) Unit <p5_b1_sevenseg>.
+The following registers are absorbed into counter <scan_counter>: 1 register on signal <scan_counter>.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0027> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 4-word x 7-bit                      |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <scan_counter>  |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_seg_n<6:0>> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 7-bit                     |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <(_n0027<4:5>,_n0027<4>,_n0027<6>)> |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <seg_n>         |          |
+    -----------------------------------------------------------------------
+Unit <p5_b1_sevenseg> synthesized (advanced).
+
+Synthesizing (advanced) Unit <p5_b4_candidate_evaluator>.
+The following registers are absorbed into counter <div_count>: 1 register on signal <div_count>.
+Unit <p5_b4_candidate_evaluator> synthesized (advanced).
+
+Synthesizing (advanced) Unit <p5_b4_selftest_top>.
+The following registers are absorbed into counter <hb>: 1 register on signal <hb>.
+The following registers are absorbed into counter <idx>: 1 register on signal <idx>.
+Unit <p5_b4_selftest_top> synthesized (advanced).
+WARNING:Xst:2677 - Node <lam0_0> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <lam1_0> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_48> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <remainder_33> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 2
+ 16x7-bit single-port distributed Read Only RAM        : 1
+ 4x7-bit single-port distributed Read Only RAM         : 1
+# Adders/Subtractors                                   : 14
+ 16-bit subtractor                                     : 2
+ 18-bit adder                                          : 6
+ 2-bit adder                                           : 1
+ 32-bit subtractor                                     : 1
+ 33-bit adder                                          : 1
+ 34-bit subtractor                                     : 1
+ 48-bit subtractor                                     : 1
+ 49-bit adder                                          : 1
+# Counters                                             : 4
+ 18-bit up counter                                     : 1
+ 26-bit up counter                                     : 1
+ 5-bit up counter                                      : 1
+ 6-bit up counter                                      : 1
+# Registers                                            : 579
+ Flip-Flops                                            : 579
+# Comparators                                          : 18
+ 18-bit comparator equal                               : 1
+ 18-bit comparator greater                             : 1
+ 18-bit comparator lessequal                           : 6
+ 2-bit comparator lessequal                            : 1
+ 2-bit comparator not equal                            : 1
+ 3-bit comparator equal                                : 1
+ 3-bit comparator greater                              : 1
+ 32-bit comparator equal                               : 2
+ 32-bit comparator greater                             : 3
+ 34-bit comparator lessequal                           : 1
+# Multiplexers                                         : 86
+ 1-bit 2-to-1 multiplexer                              : 37
+ 16-bit 2-to-1 multiplexer                             : 6
+ 18-bit 2-to-1 multiplexer                             : 31
+ 2-bit 2-to-1 multiplexer                              : 5
+ 32-bit 2-to-1 multiplexer                             : 4
+ 34-bit 2-to-1 multiplexer                             : 1
+ 49-bit 2-to-1 multiplexer                             : 2
+# FSMs                                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch <lam0_1> (without init value) has a constant value of 1 in block <p5_b4_candidate_evaluator>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <lam1_1> (without init value) has a constant value of 1 in block <p5_b4_candidate_evaluator>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <lam2> (without init value) has a constant value of 1 in block <p5_b4_candidate_evaluator>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <util0_1> in Unit <p5_b4_candidate_evaluator> is equivalent to the following FF/Latch, which will be removed : <util0_3> 
+INFO:Xst:2261 - The FF/Latch <util0_2> in Unit <p5_b4_candidate_evaluator> is equivalent to the following FF/Latch, which will be removed : <util0_4> 
+INFO:Xst:2261 - The FF/Latch <util0_5> in Unit <p5_b4_candidate_evaluator> is equivalent to the following 6 FFs/Latches, which will be removed : <util0_6> <util0_7> <util0_8> <util1_5> <util1_7> <util1_9> 
+INFO:Xst:2261 - The FF/Latch <cost1_2> in Unit <p5_b4_candidate_evaluator> is equivalent to the following FF/Latch, which will be removed : <cost1_5> 
+INFO:Xst:2261 - The FF/Latch <cost0_0> in Unit <p5_b4_candidate_evaluator> is equivalent to the following 116 FFs/Latches, which will be removed : <cost0_1> <cost0_4> <cost0_8> <cost0_9> <cost0_10> <cost0_11> <cost0_12> <cost0_13> <cost0_14> <cost0_15> <cost0_16> <cost0_17> <cost0_18> <cost0_19> <cost0_20> <cost0_21> <cost0_22> <cost0_23> <cost0_24> <cost0_25> <cost0_26> <cost0_27> <cost0_28> <cost0_29> <cost0_30> <cost0_31> <fid0_0> <fid0_1> <fid0_2> <fid0_7> <fid0_8> <util0_0> <util0_9> <util0_10> <util0_11> <util0_12> <util0_13> <util0_14> <util0_15> <util0_16> <util0_17> <util0_18> <util0_19> <util0_20> <util0_21> <util0_22> <util0_23> <util0_24> <util0_25> <util0_26> <util0_27> <util0_28> <util0_29> <util0_30> <util0_31> <hops0_2> <slot0_1> <cost1_0> <cost1_1> <cost1_4> <cost1_8> <cost1_9> <cost1_10> <cost1_11> <cost1_12> <cost1_13> <cost1_14> <cost1_15> <cost1_16> <cost1_17> <cost1_18> <cost1_19> <cost1_20> <cost1_21> <cost1_22> <cost1_23> <cost1_24> <cost1_25> <cost1_26> <cost1_27> <cost1_28>
+   <cost1_29> <cost1_30> <cost1_31> <fid1_0> <fid1_1> <fid1_2> <fid1_7> <fid1_8> <util1_0> <util1_6> <util1_8> <util1_10> <util1_11> <util1_12> <util1_13> <util1_14> <util1_15> <util1_16> <util1_17> <util1_18> <util1_19> <util1_20> <util1_21> <util1_22> <util1_23> <util1_24> <util1_25> <util1_26> <util1_27> <util1_28> <util1_29> <util1_30> <util1_31> <hops1_2> <slot1_1> 
+INFO:Xst:2261 - The FF/Latch <cost0_2> in Unit <p5_b4_candidate_evaluator> is equivalent to the following FF/Latch, which will be removed : <cost0_5> 
+INFO:Xst:2261 - The FF/Latch <cost1_3> in Unit <p5_b4_candidate_evaluator> is equivalent to the following FF/Latch, which will be removed : <cost1_7> 
+INFO:Xst:2261 - The FF/Latch <cost0_3> in Unit <p5_b4_candidate_evaluator> is equivalent to the following FF/Latch, which will be removed : <cost0_7> 
+INFO:Xst:2261 - The FF/Latch <util1_2> in Unit <p5_b4_candidate_evaluator> is equivalent to the following FF/Latch, which will be removed : <util1_4> 
+INFO:Xst:2261 - The FF/Latch <cost0_6> in Unit <p5_b4_candidate_evaluator> is equivalent to the following 12 FFs/Latches, which will be removed : <fid0_5> <fid0_9> <fid0_13> <fid0_14> <fid0_15> <hops0_1> <cost1_6> <fid1_9> <fid1_13> <fid1_14> <fid1_15> <hops1_1> 
+INFO:Xst:2261 - The FF/Latch <fid0_3> in Unit <p5_b4_candidate_evaluator> is equivalent to the following 2 FFs/Latches, which will be removed : <fid0_10> <fid1_12> 
+INFO:Xst:2261 - The FF/Latch <fid0_12> in Unit <p5_b4_candidate_evaluator> is equivalent to the following 2 FFs/Latches, which will be removed : <fid1_3> <fid1_10> 
+WARNING:Xst:1710 - FF/Latch <cost0_0> (without init value) has a constant value of 0 in block <p5_b4_candidate_evaluator>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <cost0_6> (without init value) has a constant value of 1 in block <p5_b4_candidate_evaluator>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2146 - In block <p5_b4_selftest_top>, Counter <hb> <display/scan_counter> are equivalent, XST will keep only <hb>.
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <dut/FSM_0> on signal <state[1:3]> with user encoding.
+-------------------
+ State | Encoding
+-------------------
+ 000   | 000
+ 001   | 001
+ 010   | 010
+ 110   | 110
+ 111   | 111
+ 011   | 011
+ 100   | 100
+ 101   | 101
+-------------------
+WARNING:Xst:1710 - FF/Latch <selected_slot_1> (without init value) has a constant value of 0 in block <p5_b4_candidate_evaluator>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <selected_score_17> (without init value) has a constant value of 0 in block <p5_b4_candidate_evaluator>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <remainder_trial_33> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_15> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_16> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_17> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_18> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_19> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_20> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_21> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_22> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_23> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_24> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_25> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_26> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_27> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_28> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_29> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_30> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_31> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_32> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_33> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_34> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_35> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_36> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_37> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_38> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_39> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_40> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_41> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_42> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_43> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_44> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_45> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_46> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+WARNING:Xst:2677 - Node <quotient_47> of sequential type is unconnected in block <p5_b4_candidate_evaluator>.
+
+Optimizing unit <p5_b4_selftest_top> ...
+
+Optimizing unit <p5_b4_candidate_evaluator> ...
+WARNING:Xst:2677 - Node <dut/selected_score_16> of sequential type is unconnected in block <p5_b4_selftest_top>.
+WARNING:Xst:2677 - Node <dut/selected_score_15> of sequential type is unconnected in block <p5_b4_selftest_top>.
+WARNING:Xst:2677 - Node <dut/selected_score_14> of sequential type is unconnected in block <p5_b4_selftest_top>.
+WARNING:Xst:2677 - Node <dut/selected_score_13> of sequential type is unconnected in block <p5_b4_selftest_top>.
+WARNING:Xst:2677 - Node <dut/selected_score_12> of sequential type is unconnected in block <p5_b4_selftest_top>.
+WARNING:Xst:2677 - Node <dut/selected_score_11> of sequential type is unconnected in block <p5_b4_selftest_top>.
+WARNING:Xst:2677 - Node <dut/selected_score_10> of sequential type is unconnected in block <p5_b4_selftest_top>.
+WARNING:Xst:2677 - Node <dut/selected_score_9> of sequential type is unconnected in block <p5_b4_selftest_top>.
+WARNING:Xst:2677 - Node <dut/selected_score_8> of sequential type is unconnected in block <p5_b4_selftest_top>.
+WARNING:Xst:2677 - Node <dut/selected_score_7> of sequential type is unconnected in block <p5_b4_selftest_top>.
+WARNING:Xst:2677 - Node <dut/selected_score_6> of sequential type is unconnected in block <p5_b4_selftest_top>.
+WARNING:Xst:2677 - Node <dut/selected_score_5> of sequential type is unconnected in block <p5_b4_selftest_top>.
+WARNING:Xst:2677 - Node <dut/selected_score_4> of sequential type is unconnected in block <p5_b4_selftest_top>.
+WARNING:Xst:2677 - Node <dut/selected_score_3> of sequential type is unconnected in block <p5_b4_selftest_top>.
+WARNING:Xst:2677 - Node <dut/selected_score_2> of sequential type is unconnected in block <p5_b4_selftest_top>.
+WARNING:Xst:2677 - Node <dut/selected_score_1> of sequential type is unconnected in block <p5_b4_selftest_top>.
+WARNING:Xst:2677 - Node <dut/selected_score_0> of sequential type is unconnected in block <p5_b4_selftest_top>.
+WARNING:Xst:1710 - FF/Latch <dut/divisor_22> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/divisor_21> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/divisor_20> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/divisor_19> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/divisor_18> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/divisor_17> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/divisor_16> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/divisor_15> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/divisor_14> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/divisor_13> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_31> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_30> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_29> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_28> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_27> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_26> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_25> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_24> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_23> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_22> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_21> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_20> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_19> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_18> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_17> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_16> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_15> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_14> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_13> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/difference_reg_0> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <idx_4> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_47> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_46> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_45> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_44> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_43> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_42> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_41> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_40> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_39> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_38> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_37> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_36> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_35> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_34> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_33> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_32> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_31> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_30> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_29> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/scaled_difference_reg_0> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/divisor_32> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/divisor_31> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/divisor_30> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/divisor_29> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/divisor_28> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/divisor_27> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/divisor_26> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/divisor_25> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/divisor_24> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dut/divisor_23> (without init value) has a constant value of 0 in block <p5_b4_selftest_top>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <dut/divisor_10> in Unit <p5_b4_selftest_top> is equivalent to the following FF/Latch, which will be removed : <dut/difference_reg_10> 
+INFO:Xst:2261 - The FF/Latch <dut/divisor_11> in Unit <p5_b4_selftest_top> is equivalent to the following FF/Latch, which will be removed : <dut/difference_reg_11> 
+INFO:Xst:2261 - The FF/Latch <dut/divisor_12> in Unit <p5_b4_selftest_top> is equivalent to the following FF/Latch, which will be removed : <dut/difference_reg_12> 
+INFO:Xst:2261 - The FF/Latch <dut/divisor_1> in Unit <p5_b4_selftest_top> is equivalent to the following FF/Latch, which will be removed : <dut/difference_reg_1> 
+INFO:Xst:2261 - The FF/Latch <dut/scaled_difference_reg_16> in Unit <p5_b4_selftest_top> is equivalent to the following 3 FFs/Latches, which will be removed : <dut/scaled_difference_reg_15> <dut/scaled_difference_reg_14> <dut/scaled_difference_reg_13> 
+INFO:Xst:2261 - The FF/Latch <dut/divisor_2> in Unit <p5_b4_selftest_top> is equivalent to the following FF/Latch, which will be removed : <dut/difference_reg_2> 
+INFO:Xst:2261 - The FF/Latch <dut/divisor_3> in Unit <p5_b4_selftest_top> is equivalent to the following FF/Latch, which will be removed : <dut/difference_reg_3> 
+INFO:Xst:2261 - The FF/Latch <dut/divisor_4> in Unit <p5_b4_selftest_top> is equivalent to the following FF/Latch, which will be removed : <dut/difference_reg_4> 
+INFO:Xst:2261 - The FF/Latch <dut/divisor_5> in Unit <p5_b4_selftest_top> is equivalent to the following FF/Latch, which will be removed : <dut/difference_reg_5> 
+INFO:Xst:2261 - The FF/Latch <dut/scaled_difference_reg_25> in Unit <p5_b4_selftest_top> is equivalent to the following FF/Latch, which will be removed : <dut/scaled_difference_reg_24> 
+INFO:Xst:2261 - The FF/Latch <dut/divisor_6> in Unit <p5_b4_selftest_top> is equivalent to the following FF/Latch, which will be removed : <dut/difference_reg_6> 
+INFO:Xst:2261 - The FF/Latch <dut/divisor_7> in Unit <p5_b4_selftest_top> is equivalent to the following FF/Latch, which will be removed : <dut/difference_reg_7> 
+INFO:Xst:2261 - The FF/Latch <dut/divisor_9> in Unit <p5_b4_selftest_top> is equivalent to the following 3 FFs/Latches, which will be removed : <dut/divisor_8> <dut/difference_reg_9> <dut/difference_reg_8> 
+INFO:Xst:2261 - The FF/Latch <dut/scaled_difference_reg_9> in Unit <p5_b4_selftest_top> is equivalent to the following FF/Latch, which will be removed : <dut/scaled_difference_reg_8> 
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 0) on block p5_b4_selftest_top, actual ratio is 8.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 336
+ Flip-Flops                                            : 336
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : p5_b4.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 979
+#      GND                         : 1
+#      INV                         : 49
+#      LUT1                        : 55
+#      LUT2                        : 97
+#      LUT3                        : 67
+#      LUT4                        : 222
+#      LUT5                        : 31
+#      LUT6                        : 59
+#      MUXCY                       : 260
+#      MUXF7                       : 2
+#      VCC                         : 1
+#      XORCY                       : 135
+# FlipFlops/Latches                : 336
+#      FDE                         : 295
+#      FDR                         : 36
+#      FDRE                        : 5
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 17
+#      IBUF                        : 1
+#      OBUF                        : 16
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx16csg324-2 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             336  out of  18224     1%  
+ Number of Slice LUTs:                  580  out of   9112     6%  
+    Number used as Logic:               580  out of   9112     6%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    704
+   Number with an unused Flip Flop:     368  out of    704    52%  
+   Number with an unused LUT:           124  out of    704    17%  
+   Number of fully used LUT-FF pairs:   212  out of    704    30%  
+   Number of unique control sets:        17
+
+IO Utilization: 
+ Number of IOs:                          18
+ Number of bonded IOBs:                  18  out of    232     7%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk_100mhz                         | BUFGP                  | 336   |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -2
+
+   Minimum period: 8.301ns (Maximum Frequency: 120.474MHz)
+   Minimum input arrival time before clock: 7.073ns
+   Maximum output required time after clock: 5.496ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_100mhz'
+  Clock period: 8.301ns (frequency: 120.474MHz)
+  Total number of paths / destination ports: 70176 / 636
+-------------------------------------------------------------------------
+Delay:               8.301ns (Levels of Logic = 17)
+  Source:            dut/objective_0 (FF)
+  Destination:       dut/objective_1 (FF)
+  Source Clock:      clk_100mhz rising
+  Destination Clock: clk_100mhz rising
+
+  Data Path: dut/objective_0 to dut/objective_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q             51   0.525   1.937  dut/objective_0 (dut/objective_0)
+     LUT4:I2->O            5   0.250   1.296  dut/obj0<5>1 (dut/obj0<5>)
+     LUT6:I0->O            1   0.254   0.000  dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_lut<1> (dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_lut<1>)
+     MUXCY:S->O            1   0.215   0.000  dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_cy<1> (dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_cy<1>)
+     MUXCY:CI->O           1   0.023   0.000  dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_cy<2> (dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_cy<2>)
+     MUXCY:CI->O           1   0.023   0.000  dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_cy<3> (dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_cy<3>)
+     MUXCY:CI->O           1   0.023   0.000  dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_cy<4> (dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_cy<4>)
+     MUXCY:CI->O           1   0.023   0.000  dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_cy<5> (dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_cy<5>)
+     MUXCY:CI->O           1   0.023   0.000  dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_cy<6> (dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_cy<6>)
+     MUXCY:CI->O           1   0.023   0.000  dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_cy<7> (dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_cy<7>)
+     MUXCY:CI->O           1   0.023   0.000  dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_cy<8> (dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_cy<8>)
+     MUXCY:CI->O           1   0.023   0.000  dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_cy<9> (dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_cy<9>)
+     MUXCY:CI->O           5   0.023   0.000  dut/Mcompar_obj0[31]_obj1[31]_equal_70_o_cy<10> (dut/obj0[31]_obj1[31]_equal_70_o)
+     MUXCY:CI->O           1   0.023   0.000  dut/_n0970_inv2_cy (dut/obj0[31]_obj1[31]_equal_70_o_l1)
+     MUXCY:CI->O           1   0.235   0.682  dut/_n0970_inv2_cy1 (dut/_n0970_inv2)
+     LUT3:I2->O            1   0.254   0.682  dut/_n0970_inv3_SW0 (N20)
+     LUT5:I4->O            2   0.254   1.156  dut/_n0970_inv3_rstpot (dut/_n0970_inv3_rstpot)
+     LUT5:I0->O            1   0.254   0.000  dut/objective_1_dpot (dut/objective_1_dpot)
+     FDE:D                     0.074          dut/objective_1
+    ----------------------------------------
+    Total                      8.301ns (2.548ns logic, 5.753ns route)
+                                       (30.7% logic, 69.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_100mhz'
+  Total number of paths / destination ports: 432 / 336
+-------------------------------------------------------------------------
+Offset:              7.073ns (Levels of Logic = 3)
+  Source:            btn_reset (PAD)
+  Destination:       dut/n02_15 (FF)
+  Destination Clock: clk_100mhz rising
+
+  Data Path: btn_reset to dut/n02_15
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            50   1.328   2.251  btn_reset_IBUF (btn_reset_IBUF)
+     LUT5:I0->O           31   0.254   1.503  dut/_n0798_inv21 (dut/_n0798_inv2)
+     LUT4:I3->O           16   0.254   1.181  dut/_n0929_inv1 (dut/_n0929_inv)
+     FDE:CE                    0.302          dut/n02_0
+    ----------------------------------------
+    Total                      7.073ns (2.138ns logic, 4.935ns route)
+                                       (30.2% logic, 69.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_100mhz'
+  Total number of paths / destination ports: 23 / 14
+-------------------------------------------------------------------------
+Offset:              5.496ns (Levels of Logic = 2)
+  Source:            hb_17 (FF)
+  Destination:       seg_n<0> (PAD)
+  Source Clock:      clk_100mhz rising
+
+  Data Path: hb_17 to seg_n<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              9   0.525   1.084  hb_17 (hb_17)
+     LUT2:I0->O            2   0.250   0.725  seg_n<0>1 (seg_n_0_OBUF)
+     OBUF:I->O                 2.912          seg_n_0_OBUF (seg_n<0>)
+    ----------------------------------------
+    Total                      5.496ns (3.687ns logic, 1.809ns route)
+                                       (67.1% logic, 32.9% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk_100mhz
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk_100mhz     |    8.301|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 3.00 secs
+Total CPU time to Xst completion: 3.62 secs
+ 
+--> 
+
+
+Total memory usage is 378588 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  126 (   0 filtered)
+Number of infos    :   31 (   0 filtered)
+

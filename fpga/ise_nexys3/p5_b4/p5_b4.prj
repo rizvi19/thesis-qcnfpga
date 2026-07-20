@@ -1,0 +1,3 @@
+verilog work ../../../rtl/spartan6/p5_b4_candidate_evaluator.v
+verilog work ../../../rtl/spartan6/p5_b1_sevenseg.v
+verilog work ../../../rtl/spartan6/p5_b4_selftest_top.v
