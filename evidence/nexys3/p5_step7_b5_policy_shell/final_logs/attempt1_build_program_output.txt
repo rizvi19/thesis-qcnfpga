@@ -1,0 +1,143 @@
+============================================================
+QFLOW P5 STEP 7 — B5 BUILD, TIMING AND CONDITIONAL PROGRAM
+============================================================
+2026-07-20T21:52:28+06:00
+
+===== SOURCE AND REPOSITORY GATES =====
+EXPECTED_SHELL_SHA256=6138ce00d262129f9d3436bc6b0ba1b4a43d1601c31ee6ca146a5f20f60cae71
+ACTUAL_SHELL_SHA256=6138ce00d262129f9d3436bc6b0ba1b4a43d1601c31ee6ca146a5f20f60cae71
+B5_HOST_VERIFICATION_GATE=PASS
+REPOSITORY_CLEAN_GATE=PASS
+
+===== CREATE H4 PHYSICAL SELF-TEST TOP =====
+B5_SELFTEST_TOP_CREATED=PASS
+
+===== RERUN B5 HOST REGRESSION =====
+P5_B5_IVERILOG_COMPILE=PASS
+CASE state=0 scenario=0 complete
+CASE state=0 scenario=1 complete
+CASE state=0 scenario=2 complete
+CASE state=0 scenario=3 complete
+CASE state=0 scenario=1 complete
+CASE state=80 scenario=1 complete
+CASE state=98 scenario=1 complete
+CASE state=173 scenario=1 complete
+CASE state=164 scenario=1 complete
+CASE state=0 scenario=1 complete
+CASE state=25 scenario=1 complete
+CASE state=25 scenario=1 complete
+CASE state=25 scenario=1 complete
+CASE state=17 scenario=1 complete
+CASE state=17 scenario=1 complete
+CASE state=17 scenario=1 complete
+CASE state=104 scenario=1 complete
+CASE state=104 scenario=1 complete
+CASE state=104 scenario=1 complete
+P5_B5_HOST_TEST=101_OF_101_MODE_RESULTS_PASS
+/home/shahriar-rizvi/Downloads/QFlow_P5_Step7_B5_Policy_Shell_Attempt1/sim/spartan6/tb_p5_b5_policy_shell.v:311: $finish called at 3546000 (1ps)
+P5_B5_POLICY_SHELL_VERIFICATION=PASS
+B5_HOST_REGRESSION=101_OF_101_PASS
+
+===== SIMULATE PHYSICAL SELF-TEST =====
+FINAL_TEST_ID=16
+FINAL_PASS=1
+FINAL_FAIL=0
+FINAL_DONE=1
+P5_B5_BOARD_SELFTEST_SIMULATION=17_OF_17_PASS
+sim/spartan6/tb_p5_b5_selftest_top.v:52: $finish called at 2015000 (1ps)
+B5_BOARD_SELFTEST_SIMULATION=17_OF_17_PASS
+
+===== CREATE ISE PROJECT =====
+ISE_PROJECT_CREATION=PASS
+
+===== VERIFY ISE ENVIRONMENT =====
+ISE_TOOLCHAIN_GATE=PASS
+
+===== CLEAN GENERATED BUILD OUTPUTS =====
+STALE_OUTPUT_REMOVAL=PASS
+
+===== XST =====
+LOG=/home/shahriar-rizvi/Downloads/QFlow_P5_Step7_B5_Attempt1_Build_Logs/XST.log
+XST=PASS
+
+===== NGDBUILD =====
+LOG=/home/shahriar-rizvi/Downloads/QFlow_P5_Step7_B5_Attempt1_Build_Logs/NGDBUILD.log
+NGDBUILD=PASS
+
+===== MAP =====
+LOG=/home/shahriar-rizvi/Downloads/QFlow_P5_Step7_B5_Attempt1_Build_Logs/MAP.log
+MAP=PASS
+
+===== PAR =====
+LOG=/home/shahriar-rizvi/Downloads/QFlow_P5_Step7_B5_Attempt1_Build_Logs/PAR.log
+PAR=PASS
+
+===== TRACE =====
+LOG=/home/shahriar-rizvi/Downloads/QFlow_P5_Step7_B5_Attempt1_Build_Logs/TRACE.log
+TRACE=PASS
+
+===== TIMING GATE =====
+TIMING_ERRORS=0
+MINIMUM_PERIOD_NS=9.670
+MAXIMUM_FREQUENCY_MHZ=103.413
+TIMING_GATE=PASS_100MHZ_ZERO_ERRORS
+
+===== BITSTREAM GENERATION =====
+
+===== BITGEN =====
+LOG=/home/shahriar-rizvi/Downloads/QFlow_P5_Step7_B5_Attempt1_Build_Logs/BITGEN.log
+BITGEN=PASS
+BITSTREAM=/home/shahriar-rizvi/Downloads/QFlow_P5_Step7_B5_Policy_Shell_Attempt1/fpga/ise_nexys3/p5_b5/p5_b5.bit
+BITSTREAM_BYTES=464294
+EXPECTED_BITSTREAM_BYTES=464294
+BITSTREAM_SHA256=28b5aee122d8a8a951497a436dac1c1b406d6b668ba15aef31ecf2d22be5ae1c
+BITSTREAM_GATE=PASS
+
+===== LIVE BOARD SAFETY GATE =====
+OPERATIONAL_USB_1443_0007=PASS
+RAW_USB_04B4_8613=ABSENT
+Found 1 device(s)
+
+Device: Nexys3
+    Device Transport Type: 00010001 (USB)
+    Product Name:          Nexys3
+    User Name:             Nexys3
+    Serial Number:         210182697240
+Initializing scan chain...
+Found Device ID: 44002093
+
+Found 1 device(s):
+    Device 0: XC6SLX16
+ADEPT_DEVICE=Nexys3
+JTAG_ID_GATE=PASS
+
+===== PROGRAM TIMING-PASSING B5 BITSTREAM =====
+Programming device. Do not touch your board. This may take a few minutes...
+Programming succeeded.
+
+============================================================
+P5_STEP7_B5_BUILD_PROGRAM=PASS
+P5_PROGRESS=6_OF_9_COMPLETED
+CURRENT_STEP=P5_STEP7_B5_H0_H4_POLICY_SHELL
+B5_HOST_MODE_RESULTS=101_OF_101_PASS
+B5_BOARD_SELFTEST_SIMULATION=17_OF_17_PASS
+TIMING_ERRORS=0
+MINIMUM_PERIOD_NS=9.670
+MAXIMUM_FREQUENCY_MHZ=103.413
+BITSTREAM_BYTES=464294
+BITSTREAM_SHA256=28b5aee122d8a8a951497a436dac1c1b406d6b668ba15aef31ecf2d22be5ae1c
+BITSTREAM_PROGRAMMED=YES
+
+EXPECTED_DISPLAY=B510
+EXPECTED_LD0=BLINKING
+EXPECTED_LD1=ON
+EXPECTED_LD2=OFF
+EXPECTED_LD3=ON
+EXPECTED_CENTER_RESET=RETURNS_TO_B510
+
+REPOSITORY_MODIFIED=NO
+EEPROM_WRITE_PERFORMED=NO
+OUTPUT=/home/shahriar-rizvi/Downloads/QFlow_P5_Step7_B5_Attempt1_Build_Program_Output.txt
+LOG_DIR=/home/shahriar-rizvi/Downloads/QFlow_P5_Step7_B5_Attempt1_Build_Logs
+NEXT=HUMAN_PHYSICAL_B5_OBSERVATION
+============================================================

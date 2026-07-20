@@ -1,0 +1,12 @@
+NET "clk_100mhz" LOC = "V10" | IOSTANDARD = LVCMOS33;
+NET "clk_100mhz" TNM_NET = "P5_B5_CLK";
+TIMESPEC "TS_P5_B5_CLK" = PERIOD "P5_B5_CLK" 10 ns HIGH 50%;
+NET "btn_reset" LOC = "B8" | IOSTANDARD = LVCMOS33;
+NET "led_heartbeat" LOC = "U16" | IOSTANDARD = LVCMOS33;
+NET "led_pass" LOC = "V16" | IOSTANDARD = LVCMOS33;
+NET "led_fail" LOC = "U15" | IOSTANDARD = LVCMOS33;
+NET "led_done" LOC = "V15" | IOSTANDARD = LVCMOS33;
+NET "seg_n<0>" LOC="T17"; NET "seg_n<1>" LOC="T18"; NET "seg_n<2>" LOC="U17"; NET "seg_n<3>" LOC="U18";
+NET "seg_n<4>" LOC="M14"; NET "seg_n<5>" LOC="N14"; NET "seg_n<6>" LOC="L14"; NET "seg_n<7>" LOC="M13";
+NET "an_n<0>" LOC="N16"; NET "an_n<1>" LOC="N15"; NET "an_n<2>" LOC="P18"; NET "an_n<3>" LOC="P17";
+NET "seg_n<*>" IOSTANDARD=LVCMOS33; NET "an_n<*>" IOSTANDARD=LVCMOS33;

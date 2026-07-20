@@ -1,0 +1,18 @@
+QFlow P5 Step 7 — B5 H0-H4 Policy Shell
+Physical Nexys3 observation recorded: 2026-07-20
+
+Board: Digilent Nexys3 Rev B
+FPGA: XC6SLX16-2-CSG324
+Adept device: Nexys3
+Adept serial: 210182697240
+JTAG ID: 44002093
+
+Observed after B5 volatile SRAM programming:
+Display: B510
+LD0: blinking
+LD1: on
+LD2: off
+LD3: on
+After CENTER reset: returned successfully to B510
+
+Human physical validation: PASS

@@ -1,0 +1,5 @@
+P5 B5 physical self-test Icarus compilation completed successfully.
+The compiler emitted no warnings or diagnostics.
+Successful execution was confirmed by:
+P5_B5_BOARD_SELFTEST_SIMULATION=17_OF_17_PASS
+IVERILOG_COMPILE=PASS_NO_DIAGNOSTICS

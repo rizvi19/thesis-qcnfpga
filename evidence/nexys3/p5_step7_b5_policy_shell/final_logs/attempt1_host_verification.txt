@@ -1,0 +1,78 @@
+============================================================
+QFLOW P5 STEP 7 — B5 H0-H4 POLICY SHELL ATTEMPT 1
+============================================================
+2026-07-20T21:46:00+06:00
+CURRENT_BRANCH=rl-nexys3-adaptive
+CURRENT_HEAD=cda3cb4c448b5dd8bbf17459536bdf28cee99afc
+SOURCE_CHECKPOINT_GATE=PASS
+
+===== DEPENDENCY REGRESSIONS =====
+test_every_valid_acceptance_completes_exactly_three_cycles_later (__main__.TestControllerSchemaAndTimeline.test_every_valid_acceptance_completes_exactly_three_cycles_later) ... ok
+test_invalid_request_completes_without_changing_decision_or_dwell (__main__.TestControllerSchemaAndTimeline.test_invalid_request_completes_without_changing_decision_or_dwell) ... ok
+test_no_path_is_reported_with_valid_completion_and_advances_dwell (__main__.TestControllerSchemaAndTimeline.test_no_path_is_reported_with_valid_completion_and_advances_dwell) ... ok
+test_reset_is_dominant_and_clears_published_and_dwell_state (__main__.TestControllerSchemaAndTimeline.test_reset_is_dominant_and_clears_published_and_dwell_state) ... ok
+test_start_while_busy_stalls_without_altering_active_transaction (__main__.TestControllerSchemaAndTimeline.test_start_while_busy_stalls_without_altering_active_transaction) ... ok
+test_vectors_use_exact_frozen_golden_schema (__main__.TestControllerSchemaAndTimeline.test_vectors_use_exact_frozen_golden_schema) ... ok
+test_completion_actions_match_frozen_python_dwell_controller (__main__.TestDwellAndPayloadEquivalence.test_completion_actions_match_frozen_python_dwell_controller) ... ok
+test_dwell_hold_and_switch_categories_are_both_exercised (__main__.TestDwellAndPayloadEquivalence.test_dwell_hold_and_switch_categories_are_both_exercised) ... ok
+test_every_completed_payload_matches_selected_action_exactly (__main__.TestDwellAndPayloadEquivalence.test_every_completed_payload_matches_selected_action_exactly) ... ok
+test_generator_is_byte_reproducible (__main__.TestReproducibilityAndRTL.test_generator_is_byte_reproducible) ... ok
+test_numeric_rtl_vectors_match_csv (__main__.TestReproducibilityAndRTL.test_numeric_rtl_vectors_match_csv) ... ok
+test_rtl_integrates_frozen_modules_with_verilog_2001_controls (__main__.TestReproducibilityAndRTL.test_rtl_integrates_frozen_modules_with_verilog_2001_controls) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.038s
+
+OK
+P5_B4_HOST_VECTORS=519_OF_519_EXACT_PASS
+/home/shahriar-rizvi/Downloads/QFlow_P5_Step7_B5_Policy_Shell_Attempt1/sim/spartan6/tb_p5_b4_candidate_evaluator.v:22: $finish called at 1220836000 (1ps)
+
+===== B5 H0-H4 POLICY-SHELL VERIFICATION =====
+P5_B5_IVERILOG_COMPILE=PASS
+CASE state=0 scenario=0 complete
+CASE state=0 scenario=1 complete
+CASE state=0 scenario=2 complete
+CASE state=0 scenario=3 complete
+CASE state=0 scenario=1 complete
+CASE state=80 scenario=1 complete
+CASE state=98 scenario=1 complete
+CASE state=173 scenario=1 complete
+CASE state=164 scenario=1 complete
+CASE state=0 scenario=1 complete
+CASE state=25 scenario=1 complete
+CASE state=25 scenario=1 complete
+CASE state=25 scenario=1 complete
+CASE state=17 scenario=1 complete
+CASE state=17 scenario=1 complete
+CASE state=17 scenario=1 complete
+CASE state=104 scenario=1 complete
+CASE state=104 scenario=1 complete
+CASE state=104 scenario=1 complete
+P5_B5_HOST_TEST=101_OF_101_MODE_RESULTS_PASS
+/home/shahriar-rizvi/Downloads/QFlow_P5_Step7_B5_Policy_Shell_Attempt1/sim/spartan6/tb_p5_b5_policy_shell.v:311: $finish called at 3546000 (1ps)
+P5_B5_POLICY_SHELL_VERIFICATION=PASS
+
+===== ATTEMPT-1 FILE IDENTITIES =====
+6138ce00d262129f9d3436bc6b0ba1b4a43d1601c31ee6ca146a5f20f60cae71  rtl/spartan6/p5_b5_policy_shell.v
+aacd83ed528fa280d8d7abf491c492aa60bac8d122f8fc34b1d6f40b5bcf3270  sim/spartan6/tb_p5_b5_policy_shell.v
+4189da8cf8eb516a105338f76b512bb39286094e9ac4b880cf816f7a2578d437  sim/spartan6/test_p5_b5_policy_shell.py
+6857b459455c02dd822f25b6a8e3c6f299038ac60697718254421ff5b13d7eb9  docs/rl/p5_b5_policy_shell.md
+93b48a115e761893110ce370e4b3c2ff3ff5643c8f30bbd4be58d6cacb2db899  results/nexys3/p5_step7_b5/p4_controller_regression.log
+7cacc9a3996c1dcf1ead6c60235928c12ee077f19f1955b42c2d3d36ca96ad6b  results/nexys3/p5_step7_b5/p5_b4_regression.log
+11ba0e3bb3402be15b5c4db77a481239dc0d9774da2b3aff714cb516104b1fb9  results/nexys3/p5_step7_b5/p5_b5_policy_shell.log
+
+============================================================
+P5_STEP7_B5_ATTEMPT1=PASS
+P5_PROGRESS=6_OF_9_COMPLETED
+CURRENT_STEP=P5_STEP7_B5_H0_H4_POLICY_SHELL
+B5_POLICY_MODES=H0_H1_H2_H3_H4
+B5_MODE_RESULTS=101_OF_101_PASS
+P4_CONTROLLER_REGRESSION=PASS
+P5_B4_REGRESSION=519_OF_519_EXACT_PASS
+REPOSITORY_MODIFIED=NO
+FPGA_PROGRAMMING_PERFORMED=NO
+BOARD_CONNECTION_CHANGED=NO
+WORKSPACE=/home/shahriar-rizvi/Downloads/QFlow_P5_Step7_B5_Policy_Shell_Attempt1
+OUTPUT=/home/shahriar-rizvi/Downloads/QFlow_P5_Step7_B5_Attempt1_Output.txt
+NEXT=ISE_BUILD_AND_PHYSICAL_B5_GATE_AFTER_REVIEW
+============================================================
