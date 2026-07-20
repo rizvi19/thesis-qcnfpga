@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "phase": "P6",
+  "step": "P6_STEP_2_EXPERIMENT_CONTRACT_FREEZE",
+  "source_checkpoint": "e701dfa15d01938d85b281ab38bd07f6368d37e4",
+  "branch": "rl-nexys3-adaptive",
+  "target": {
+    "board": "Digilent Nexys3 Rev. B",
+    "part": "XC6SLX16-2-CSG324",
+    "hdl": "Verilog-2001",
+    "physical_clock_hz": 100000000,
+    "physical_clock_period_ns": 10
+  },
+  "builds": [
+    {"build_tag": "n3_h0", "policy_id": 0, "mode": "H0", "controller": "feasible_shortest_hop"},
+    {"build_tag": "n3_h1", "policy_id": 1, "mode": "H1", "controller": "fixed_key_aware_cost_only"},
+    {"build_tag": "n3_h2", "policy_id": 2, "mode": "H2", "controller": "fixed_qflow_profile_0"},
+    {"build_tag": "n3_h3", "policy_id": 3, "mode": "H3", "controller": "frozen_threshold_rule_adaptive"},
+    {"build_tag": "n3_h4", "policy_id": 4, "mode": "H4", "controller": "reinforcement_learned_adaptive_profile_controller"}
+  ],
+  "common_shell": {
+    "topology": "Ring-6",
+    "candidate_slots": 4,
+    "valid_candidate_slots": [0, 1],
+    "same_external_shell": true,
+    "same_numeric_widths": true,
+    "same_arithmetic": true,
+    "same_replay": true,
+    "same_ucf": true,
+    "same_handshake": true,
+    "same_measurement_boundary": true,
+    "independent_synthesis_per_mode": true
+  },
+  "h4": {
+    "training": "offline",
+    "fpga_behavior": "online_state_to_profile_selection",
+    "state_count": 256,
+    "action_count": 4,
+    "minimum_dwell_decisions": 3,
+    "runtime_argmax": false,
+    "q_update": false,
+    "online_learning": false,
+    "approved_label": "reinforcement-learned adaptive profile controller"
+  },
+  "replay": {
+    "tier_a": {
+      "name": "p5_b6_contract_replay",
+      "rows": 20,
+      "test_ids": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],
+      "source": "sim/spartan6/tb_p5_b6_measurement_shell.v"
+    },
+    "tier_b": {
+      "name": "p6_heldout_dynamic",
+      "rows": 64,
+      "seed": 26072026,
+      "materialization_step": "P6_STEP_3",
+      "tuning_after_hash": false,
+      "final_sha256": null
+    }
+  },
+  "raw_transport": {
+    "prefix": "QF6R",
+    "record_version": 1,
+    "terminator": "CRLF",
+    "field_encoding": "unsigned_decimal",
+    "physical_evidence_requires_raw_capture": true
+  },
+  "result_fields": [
+    "test_id",
+    "policy_id",
+    "state_id",
+    "profile_id",
+    "selected_path",
+    "score",
+    "bottleneck_fidelity",
+    "cycles",
+    "status"
+  ],
+  "status_codes": {
+    "0": "OK",
+    "1": "NO_PATH",
+    "2": "INVALID_REQUEST"
+  },
+  "measurement": {
+    "kernel_cycles": "N_done_minus_N_accept",
+    "board_kernel_latency_ns": "kernel_cycles_times_10",
+    "board_decisions_per_second": "100000000_divided_by_kernel_cycles",
+    "uart_host_excluded": true,
+    "jtag_programming_excluded": true,
+    "human_time_excluded": true,
+    "achieved_fmax_role": "implementation_capacity_not_physical_board_clock"
+  },
+  "required_build_evidence": [
+    "build_tag",
+    "source_commit",
+    "source_hashes",
+    "replay_sha256",
+    "ucf_sha256",
+    "xst",
+    "ngdbuild",
+    "map",
+    "par",
+    "trace",
+    "bitgen",
+    "bitstream_sha256",
+    "programming_success",
+    "raw_board_output",
+    "board_results_csv",
+    "golden_comparison",
+    "physical_observation",
+    "failure_history"
+  ],
+  "correctness": {
+    "mandatory_exact_vector_match_percent": 100,
+    "missing_test_ids_allowed": false,
+    "duplicate_test_ids_allowed": false,
+    "cycle_variation_same_row_allowed": false
+  },
+  "power": {
+    "optional_until_consistent_method_exists": true,
+    "estimated_must_be_labelled": true,
+    "same_activity_assumptions": true,
+    "invent_missing_values": false
+  },
+  "claim_firewall": {
+    "online_fpga_learning": false,
+    "full_artix7_on_nexys3": false,
+    "universal_h4_superiority": false,
+    "fpga_vs_python_algorithm_superiority": false,
+    "physical_uart_without_raw_capture": false,
+    "guaranteed_q1_acceptance": false
+  }
+}
