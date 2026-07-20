@@ -1,0 +1,11 @@
+metric,value
+records,420
+bytes_per_record,44
+serialized_bytes,18480
+parsed_rows,420
+mismatches,0
+production_clock_hz,100000000
+production_baud,115200
+production_clks_per_bit,868
+production_actual_baud,115207.373271889
+production_baud_error_percent,0.006400410
