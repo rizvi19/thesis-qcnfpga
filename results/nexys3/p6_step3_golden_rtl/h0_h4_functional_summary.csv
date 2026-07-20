@@ -1,0 +1,6 @@
+policy_id,policy_name,rows,exact_matches,ok_rows,no_path_rows,invalid_rows,min_cycles,max_cycles,mean_cycles,profile0,profile1,profile2,profile3
+0,H0,84,84,76,5,3,1,2,1.964286,81,0,0,0
+1,H1,84,84,76,5,3,1,309,182.940476,81,0,0,0
+2,H2,84,84,76,5,3,1,310,183.904762,81,0,0,0
+3,H3,84,84,76,5,3,1,310,183.904762,24,36,18,3
+4,H4,84,84,76,5,3,1,312,185.833333,42,11,18,10

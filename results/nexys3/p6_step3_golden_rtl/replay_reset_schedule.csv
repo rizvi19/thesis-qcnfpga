@@ -1,0 +1,5 @@
+test_id,reset_reason
+0,tier_a_contract_start
+5,p5_h3_contract_group
+10,p5_h4_dwell_contract_group
+1000,tier_b_heldout_start
