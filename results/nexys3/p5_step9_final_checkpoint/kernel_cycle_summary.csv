@@ -1,0 +1,6 @@
+policy_mode,samples,minimum_cycles,maximum_cycles,mean_cycles
+H0,20,1,2,1.950000
+H1,20,1,109,11.750000
+H2,20,1,110,12.700000
+H3,20,1,110,12.700000
+H4,20,1,112,14.600000

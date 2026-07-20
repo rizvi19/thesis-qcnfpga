@@ -1,0 +1,7 @@
+block,source,status,scope
+B1,docs/rl/p5_step3_status.md,PASS,LED/seven-segment and reset evidence preserved
+B2,docs/rl/p5_step4_status.md,PASS,LED/seven-segment and reset evidence preserved
+B3,docs/rl/p5_step5_status.md,PASS,LED/seven-segment and reset evidence preserved
+B4,evidence/nexys3/p5_step6_b4_candidate_evaluator/STEP6_COMPLETION.md,PASS,LED/seven-segment and reset evidence preserved
+B5,evidence/nexys3/p5_step7_b5_policy_shell/STEP7_COMPLETION.md,PASS,LED/seven-segment and reset evidence preserved
+B6,evidence/nexys3/p5_step8_b6_measurement/STEP8_COMPLETION.md,PASS,LED/seven-segment and reset evidence preserved
