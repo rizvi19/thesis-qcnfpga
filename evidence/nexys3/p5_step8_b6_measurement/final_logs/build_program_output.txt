@@ -1,0 +1,231 @@
+============================================================
+QFLOW P5 STEP 8 — B6 BUILD, TIMING AND CONDITIONAL PROGRAM
+============================================================
+2026-07-20T22:24:04+06:00
+
+===== SOURCE AND REPOSITORY GATES =====
+EXPECTED_MEASUREMENT_RTL_SHA256=e83c1916cc335755eed19d4e2fbd491a0708cd191b585add164cd710f410abeb
+ACTUAL_MEASUREMENT_RTL_SHA256=e83c1916cc335755eed19d4e2fbd491a0708cd191b585add164cd710f410abeb
+EXPECTED_PATCHED_TB_SHA256=4654cb7e440f2165f5477e5731fc4839594d797e5a72bbbf2f86de38f5a20458
+ACTUAL_PATCHED_TB_SHA256=4654cb7e440f2165f5477e5731fc4839594d797e5a72bbbf2f86de38f5a20458
+B6_HOST_MEASUREMENT_GATE=PASS
+REPOSITORY_CLEAN_GATE=PASS
+
+===== CREATE B6 PHYSICAL SELF-TEST TOP =====
+B6_SELFTEST_TOP_CREATED=PASS
+
+===== RERUN B6 HOST MEASUREMENT =====
+P5_B6_IVERILOG_COMPILE=PASS
+MEASURE case=0 mode=H0 cycles=2
+MEASURE case=0 mode=H1 cycles=7
+MEASURE case=0 mode=H2 cycles=8
+MEASURE case=0 mode=H3 cycles=8
+MEASURE case=0 mode=H4 cycles=10
+MEASURE case=1 mode=H0 cycles=2
+MEASURE case=1 mode=H1 cycles=7
+MEASURE case=1 mode=H2 cycles=8
+MEASURE case=1 mode=H3 cycles=8
+MEASURE case=1 mode=H4 cycles=10
+MEASURE case=2 mode=H0 cycles=2
+MEASURE case=2 mode=H1 cycles=109
+MEASURE case=2 mode=H2 cycles=110
+MEASURE case=2 mode=H3 cycles=110
+MEASURE case=2 mode=H4 cycles=112
+MEASURE case=3 mode=H0 cycles=2
+MEASURE case=3 mode=H1 cycles=6
+MEASURE case=3 mode=H2 cycles=7
+MEASURE case=3 mode=H3 cycles=7
+MEASURE case=3 mode=H4 cycles=9
+MEASURE case=4 mode=H0 cycles=1
+MEASURE case=4 mode=H1 cycles=1
+MEASURE case=4 mode=H2 cycles=1
+MEASURE case=4 mode=H3 cycles=1
+MEASURE case=4 mode=H4 cycles=1
+MEASURE case=5 mode=H0 cycles=2
+MEASURE case=5 mode=H1 cycles=7
+MEASURE case=5 mode=H2 cycles=8
+MEASURE case=5 mode=H3 cycles=8
+MEASURE case=5 mode=H4 cycles=10
+MEASURE case=6 mode=H0 cycles=2
+MEASURE case=6 mode=H1 cycles=7
+MEASURE case=6 mode=H2 cycles=8
+MEASURE case=6 mode=H3 cycles=8
+MEASURE case=6 mode=H4 cycles=10
+MEASURE case=7 mode=H0 cycles=2
+MEASURE case=7 mode=H1 cycles=7
+MEASURE case=7 mode=H2 cycles=8
+MEASURE case=7 mode=H3 cycles=8
+MEASURE case=7 mode=H4 cycles=10
+MEASURE case=8 mode=H0 cycles=2
+MEASURE case=8 mode=H1 cycles=7
+MEASURE case=8 mode=H2 cycles=8
+MEASURE case=8 mode=H3 cycles=8
+MEASURE case=8 mode=H4 cycles=10
+MEASURE case=9 mode=H0 cycles=2
+MEASURE case=9 mode=H1 cycles=7
+MEASURE case=9 mode=H2 cycles=8
+MEASURE case=9 mode=H3 cycles=8
+MEASURE case=9 mode=H4 cycles=10
+MEASURE case=10 mode=H0 cycles=2
+MEASURE case=10 mode=H1 cycles=7
+MEASURE case=10 mode=H2 cycles=8
+MEASURE case=10 mode=H3 cycles=8
+MEASURE case=10 mode=H4 cycles=10
+MEASURE case=11 mode=H0 cycles=2
+MEASURE case=11 mode=H1 cycles=7
+MEASURE case=11 mode=H2 cycles=8
+MEASURE case=11 mode=H3 cycles=8
+MEASURE case=11 mode=H4 cycles=10
+MEASURE case=12 mode=H0 cycles=2
+MEASURE case=12 mode=H1 cycles=7
+MEASURE case=12 mode=H2 cycles=8
+MEASURE case=12 mode=H3 cycles=8
+MEASURE case=12 mode=H4 cycles=10
+MEASURE case=13 mode=H0 cycles=2
+MEASURE case=13 mode=H1 cycles=7
+MEASURE case=13 mode=H2 cycles=8
+MEASURE case=13 mode=H3 cycles=8
+MEASURE case=13 mode=H4 cycles=10
+MEASURE case=14 mode=H0 cycles=2
+MEASURE case=14 mode=H1 cycles=7
+MEASURE case=14 mode=H2 cycles=8
+MEASURE case=14 mode=H3 cycles=8
+MEASURE case=14 mode=H4 cycles=10
+MEASURE case=15 mode=H0 cycles=2
+MEASURE case=15 mode=H1 cycles=7
+MEASURE case=15 mode=H2 cycles=8
+MEASURE case=15 mode=H3 cycles=8
+MEASURE case=15 mode=H4 cycles=10
+MEASURE case=16 mode=H0 cycles=2
+MEASURE case=16 mode=H1 cycles=7
+MEASURE case=16 mode=H2 cycles=8
+MEASURE case=16 mode=H3 cycles=8
+MEASURE case=16 mode=H4 cycles=10
+MEASURE case=17 mode=H0 cycles=2
+MEASURE case=17 mode=H1 cycles=7
+MEASURE case=17 mode=H2 cycles=8
+MEASURE case=17 mode=H3 cycles=8
+MEASURE case=17 mode=H4 cycles=10
+MEASURE case=18 mode=H0 cycles=2
+MEASURE case=18 mode=H1 cycles=7
+MEASURE case=18 mode=H2 cycles=8
+MEASURE case=18 mode=H3 cycles=8
+MEASURE case=18 mode=H4 cycles=10
+MEASURE case=19 mode=H0 cycles=2
+MEASURE case=19 mode=H1 cycles=7
+MEASURE case=19 mode=H2 cycles=8
+MEASURE case=19 mode=H3 cycles=8
+MEASURE case=19 mode=H4 cycles=10
+P5_B6_MEASUREMENT=100_OF_100_COMPLETIONS_PASS
+/home/shahriar-rizvi/Downloads/QFlow_P5_Step8_B6_Measurement_Attempt1/sim/spartan6/tb_p5_b6_measurement_shell.v:321: $finish called at 3516000 (1ps)
+P5_B6_REPRODUCIBILITY=BYTE_EXACT_PASS
+P5_B6_MEASUREMENT_ROWS=100
+P5_B6_MEASUREMENT_CSV=results/nexys3/p5_step8_b6/kernel_cycle_measurements.csv
+P5_B6_SUMMARY_CSV=results/nexys3/p5_step8_b6/kernel_cycle_summary.csv
+P5_B6_MEASUREMENT_PROTOCOL=PASS
+B6_HOST_MEASUREMENT=100_OF_100_PASS
+
+===== SIMULATE PHYSICAL SELF-TEST =====
+B6_SELFTEST_IVERILOG_COMPILE=PASS
+FINAL_TEST_ID=4
+FINAL_PASS=1
+FINAL_FAIL=0
+FINAL_DONE=1
+P5_B6_BOARD_SELFTEST_SIMULATION=5_OF_5_PASS
+sim/spartan6/tb_p5_b6_selftest_top.v:52: $finish called at 1595000 (1ps)
+B6_BOARD_SELFTEST_SIMULATION=5_OF_5_PASS
+
+===== CREATE ISE PROJECT =====
+ISE_PROJECT_CREATION=PASS
+
+===== VERIFY ISE ENVIRONMENT =====
+ISE_TOOLCHAIN_GATE=PASS
+
+===== CLEAN GENERATED BUILD OUTPUTS =====
+STALE_OUTPUT_REMOVAL=PASS
+
+===== XST =====
+LOG=/home/shahriar-rizvi/Downloads/QFlow_P5_Step8_B6_Build_Logs/XST.log
+XST=PASS
+
+===== NGDBUILD =====
+LOG=/home/shahriar-rizvi/Downloads/QFlow_P5_Step8_B6_Build_Logs/NGDBUILD.log
+NGDBUILD=PASS
+
+===== MAP =====
+LOG=/home/shahriar-rizvi/Downloads/QFlow_P5_Step8_B6_Build_Logs/MAP.log
+MAP=PASS
+
+===== PAR =====
+LOG=/home/shahriar-rizvi/Downloads/QFlow_P5_Step8_B6_Build_Logs/PAR.log
+PAR=PASS
+
+===== TRACE =====
+LOG=/home/shahriar-rizvi/Downloads/QFlow_P5_Step8_B6_Build_Logs/TRACE.log
+TRACE=PASS
+
+===== TIMING GATE =====
+TIMING_ERRORS=0
+MINIMUM_PERIOD_NS=9.252
+MAXIMUM_FREQUENCY_MHZ=108.085
+TIMING_GATE=PASS_100MHZ_ZERO_ERRORS
+
+===== BITSTREAM GENERATION =====
+
+===== BITGEN =====
+LOG=/home/shahriar-rizvi/Downloads/QFlow_P5_Step8_B6_Build_Logs/BITGEN.log
+BITGEN=PASS
+BITSTREAM=/home/shahriar-rizvi/Downloads/QFlow_P5_Step8_B6_Measurement_Attempt1/fpga/ise_nexys3/p5_b6/p5_b6.bit
+BITSTREAM_BYTES=464294
+EXPECTED_BITSTREAM_BYTES=464294
+BITSTREAM_SHA256=cb856364427f2883fef522e851dc8a6edacd7b9b5458f82bcd9f801317a06457
+BITSTREAM_GATE=PASS
+
+===== LIVE BOARD SAFETY GATE =====
+OPERATIONAL_USB_1443_0007=PASS
+RAW_USB_04B4_8613=ABSENT
+Found 1 device(s)
+
+Device: Nexys3
+    Device Transport Type: 00010001 (USB)
+    Product Name:          Nexys3
+    User Name:             Nexys3
+    Serial Number:         210182697240
+Initializing scan chain...
+Found Device ID: 44002093
+
+Found 1 device(s):
+    Device 0: XC6SLX16
+ADEPT_DEVICE=Nexys3
+JTAG_ID_GATE=PASS
+
+===== PROGRAM TIMING-PASSING B6 BITSTREAM =====
+Programming device. Do not touch your board. This may take a few minutes...
+Programming succeeded.
+
+============================================================
+P5_STEP8_B6_BUILD_PROGRAM=PASS
+P5_PROGRESS=7_OF_9_COMPLETED
+CURRENT_STEP=P5_STEP8_B6_MEASUREMENT
+B6_HOST_MEASUREMENTS=100_OF_100_PASS
+B6_BOARD_SELFTEST_SIMULATION=5_OF_5_PASS
+TIMING_ERRORS=0
+MINIMUM_PERIOD_NS=9.252
+MAXIMUM_FREQUENCY_MHZ=108.085
+BITSTREAM_BYTES=464294
+BITSTREAM_SHA256=cb856364427f2883fef522e851dc8a6edacd7b9b5458f82bcd9f801317a06457
+BITSTREAM_PROGRAMMED=YES
+
+EXPECTED_DISPLAY=B610
+EXPECTED_LD0=BLINKING
+EXPECTED_LD1=ON
+EXPECTED_LD2=OFF
+EXPECTED_LD3=ON
+EXPECTED_CENTER_RESET=RETURNS_TO_B610
+
+REPOSITORY_MODIFIED=NO
+EEPROM_WRITE_PERFORMED=NO
+OUTPUT=/home/shahriar-rizvi/Downloads/QFlow_P5_Step8_B6_Build_Program_Output.txt
+LOG_DIR=/home/shahriar-rizvi/Downloads/QFlow_P5_Step8_B6_Build_Logs
+NEXT=HUMAN_PHYSICAL_B6_OBSERVATION
+============================================================

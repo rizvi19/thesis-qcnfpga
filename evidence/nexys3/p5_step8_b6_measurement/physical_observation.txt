@@ -1,0 +1,18 @@
+QFlow P5 Step 8 — B6 Kernel-Cycle Measurement
+Physical Nexys3 observation recorded: 2026-07-20
+
+Board: Digilent Nexys3 Rev B
+FPGA: XC6SLX16-2-CSG324
+Adept device: Nexys3
+Adept serial: 210182697240
+JTAG ID: 44002093
+
+Observed after B6 volatile SRAM programming:
+Display: B610
+LD0: blinking
+LD1: on
+LD2: off
+LD3: on
+After CENTER reset: returned successfully to B610
+
+Human physical validation: PASS

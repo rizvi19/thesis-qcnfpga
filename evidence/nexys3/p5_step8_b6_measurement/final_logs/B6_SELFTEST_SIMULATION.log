@@ -1,0 +1,6 @@
+FINAL_TEST_ID=4
+FINAL_PASS=1
+FINAL_FAIL=0
+FINAL_DONE=1
+P5_B6_BOARD_SELFTEST_SIMULATION=5_OF_5_PASS
+sim/spartan6/tb_p5_b6_selftest_top.v:52: $finish called at 1595000 (1ps)

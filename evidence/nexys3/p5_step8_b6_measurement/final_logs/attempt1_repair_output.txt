@@ -1,0 +1,139 @@
+============================================================
+QFLOW P5 STEP 8 — B6 TESTBENCH PULSE-CAPTURE REPAIR
+============================================================
+EXPECTED_ORIGINAL_TB_SHA256=c403b51440e4b08b9ca758390c138095f67c42775448d016a7645d6dee57ff98
+CURRENT_TB_SHA256=c403b51440e4b08b9ca758390c138095f67c42775448d016a7645d6dee57ff98
+TESTBENCH_PULSE_CAPTURE_PATCH=PASS
+PATCHED_TB_SHA256=4654cb7e440f2165f5477e5731fc4839594d797e5a72bbbf2f86de38f5a20458
+
+===== RERUN B6 MEASUREMENT VERIFICATION =====
+P5_B6_IVERILOG_COMPILE=PASS
+MEASURE case=0 mode=H0 cycles=2
+MEASURE case=0 mode=H1 cycles=7
+MEASURE case=0 mode=H2 cycles=8
+MEASURE case=0 mode=H3 cycles=8
+MEASURE case=0 mode=H4 cycles=10
+MEASURE case=1 mode=H0 cycles=2
+MEASURE case=1 mode=H1 cycles=7
+MEASURE case=1 mode=H2 cycles=8
+MEASURE case=1 mode=H3 cycles=8
+MEASURE case=1 mode=H4 cycles=10
+MEASURE case=2 mode=H0 cycles=2
+MEASURE case=2 mode=H1 cycles=109
+MEASURE case=2 mode=H2 cycles=110
+MEASURE case=2 mode=H3 cycles=110
+MEASURE case=2 mode=H4 cycles=112
+MEASURE case=3 mode=H0 cycles=2
+MEASURE case=3 mode=H1 cycles=6
+MEASURE case=3 mode=H2 cycles=7
+MEASURE case=3 mode=H3 cycles=7
+MEASURE case=3 mode=H4 cycles=9
+MEASURE case=4 mode=H0 cycles=1
+MEASURE case=4 mode=H1 cycles=1
+MEASURE case=4 mode=H2 cycles=1
+MEASURE case=4 mode=H3 cycles=1
+MEASURE case=4 mode=H4 cycles=1
+MEASURE case=5 mode=H0 cycles=2
+MEASURE case=5 mode=H1 cycles=7
+MEASURE case=5 mode=H2 cycles=8
+MEASURE case=5 mode=H3 cycles=8
+MEASURE case=5 mode=H4 cycles=10
+MEASURE case=6 mode=H0 cycles=2
+MEASURE case=6 mode=H1 cycles=7
+MEASURE case=6 mode=H2 cycles=8
+MEASURE case=6 mode=H3 cycles=8
+MEASURE case=6 mode=H4 cycles=10
+MEASURE case=7 mode=H0 cycles=2
+MEASURE case=7 mode=H1 cycles=7
+MEASURE case=7 mode=H2 cycles=8
+MEASURE case=7 mode=H3 cycles=8
+MEASURE case=7 mode=H4 cycles=10
+MEASURE case=8 mode=H0 cycles=2
+MEASURE case=8 mode=H1 cycles=7
+MEASURE case=8 mode=H2 cycles=8
+MEASURE case=8 mode=H3 cycles=8
+MEASURE case=8 mode=H4 cycles=10
+MEASURE case=9 mode=H0 cycles=2
+MEASURE case=9 mode=H1 cycles=7
+MEASURE case=9 mode=H2 cycles=8
+MEASURE case=9 mode=H3 cycles=8
+MEASURE case=9 mode=H4 cycles=10
+MEASURE case=10 mode=H0 cycles=2
+MEASURE case=10 mode=H1 cycles=7
+MEASURE case=10 mode=H2 cycles=8
+MEASURE case=10 mode=H3 cycles=8
+MEASURE case=10 mode=H4 cycles=10
+MEASURE case=11 mode=H0 cycles=2
+MEASURE case=11 mode=H1 cycles=7
+MEASURE case=11 mode=H2 cycles=8
+MEASURE case=11 mode=H3 cycles=8
+MEASURE case=11 mode=H4 cycles=10
+MEASURE case=12 mode=H0 cycles=2
+MEASURE case=12 mode=H1 cycles=7
+MEASURE case=12 mode=H2 cycles=8
+MEASURE case=12 mode=H3 cycles=8
+MEASURE case=12 mode=H4 cycles=10
+MEASURE case=13 mode=H0 cycles=2
+MEASURE case=13 mode=H1 cycles=7
+MEASURE case=13 mode=H2 cycles=8
+MEASURE case=13 mode=H3 cycles=8
+MEASURE case=13 mode=H4 cycles=10
+MEASURE case=14 mode=H0 cycles=2
+MEASURE case=14 mode=H1 cycles=7
+MEASURE case=14 mode=H2 cycles=8
+MEASURE case=14 mode=H3 cycles=8
+MEASURE case=14 mode=H4 cycles=10
+MEASURE case=15 mode=H0 cycles=2
+MEASURE case=15 mode=H1 cycles=7
+MEASURE case=15 mode=H2 cycles=8
+MEASURE case=15 mode=H3 cycles=8
+MEASURE case=15 mode=H4 cycles=10
+MEASURE case=16 mode=H0 cycles=2
+MEASURE case=16 mode=H1 cycles=7
+MEASURE case=16 mode=H2 cycles=8
+MEASURE case=16 mode=H3 cycles=8
+MEASURE case=16 mode=H4 cycles=10
+MEASURE case=17 mode=H0 cycles=2
+MEASURE case=17 mode=H1 cycles=7
+MEASURE case=17 mode=H2 cycles=8
+MEASURE case=17 mode=H3 cycles=8
+MEASURE case=17 mode=H4 cycles=10
+MEASURE case=18 mode=H0 cycles=2
+MEASURE case=18 mode=H1 cycles=7
+MEASURE case=18 mode=H2 cycles=8
+MEASURE case=18 mode=H3 cycles=8
+MEASURE case=18 mode=H4 cycles=10
+MEASURE case=19 mode=H0 cycles=2
+MEASURE case=19 mode=H1 cycles=7
+MEASURE case=19 mode=H2 cycles=8
+MEASURE case=19 mode=H3 cycles=8
+MEASURE case=19 mode=H4 cycles=10
+P5_B6_MEASUREMENT=100_OF_100_COMPLETIONS_PASS
+/home/shahriar-rizvi/Downloads/QFlow_P5_Step8_B6_Measurement_Attempt1/sim/spartan6/tb_p5_b6_measurement_shell.v:321: $finish called at 3516000 (1ps)
+P5_B6_REPRODUCIBILITY=BYTE_EXACT_PASS
+P5_B6_MEASUREMENT_ROWS=100
+P5_B6_MEASUREMENT_CSV=results/nexys3/p5_step8_b6/kernel_cycle_measurements.csv
+P5_B6_SUMMARY_CSV=results/nexys3/p5_step8_b6/kernel_cycle_summary.csv
+P5_B6_MEASUREMENT_PROTOCOL=PASS
+
+===== B6 CYCLE SUMMARY =====
+policy_mode,samples,minimum_cycles,maximum_cycles,mean_cycles
+H0,20,1,2,1.950000
+H1,20,1,109,11.750000
+H2,20,1,110,12.700000
+H3,20,1,110,12.700000
+H4,20,1,112,14.600000
+
+============================================================
+P5_STEP8_B6_ATTEMPT1_REPAIR=PASS
+P5_PROGRESS=7_OF_9_COMPLETED
+CURRENT_STEP=P5_STEP8_B6_MEASUREMENT
+ROOT_CAUSE=TESTBENCH_READ_ONE_CYCLE_PULSES_AFTER_ALL_MODES_FINISHED
+B6_MEASURED_COMPLETIONS=100_OF_100_PASS
+B6_REPRODUCIBILITY=BYTE_EXACT_PASS
+MEASUREMENT_RTL_CHANGED=NO
+REPOSITORY_MODIFIED=NO
+FPGA_PROGRAMMING_PERFORMED=NO
+OUTPUT=/home/shahriar-rizvi/Downloads/QFlow_P5_Step8_B6_Attempt1_Repair_Output.txt
+NEXT=ISE_BUILD_AND_PHYSICAL_B6_GATE_AFTER_REVIEW
+============================================================
