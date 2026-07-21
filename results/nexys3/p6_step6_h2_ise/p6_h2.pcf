@@ -1,0 +1,1010 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Wed Jul 22 03:17:25 2026
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "clk_100mhz" LOCATE = SITE "V10" LEVEL 1;
+COMP "led_heartbeat" LOCATE = SITE "U16" LEVEL 1;
+COMP "an_n<0>" LOCATE = SITE "N16" LEVEL 1;
+COMP "an_n<1>" LOCATE = SITE "N15" LEVEL 1;
+COMP "an_n<2>" LOCATE = SITE "P18" LEVEL 1;
+COMP "an_n<3>" LOCATE = SITE "P17" LEVEL 1;
+COMP "led_reset" LOCATE = SITE "V16" LEVEL 1;
+COMP "btn_reset" LOCATE = SITE "B8" LEVEL 1;
+COMP "uart_tx" LOCATE = SITE "N18" LEVEL 1;
+COMP "seg_n<0>" LOCATE = SITE "T17" LEVEL 1;
+COMP "seg_n<1>" LOCATE = SITE "T18" LEVEL 1;
+COMP "seg_n<2>" LOCATE = SITE "U17" LEVEL 1;
+COMP "seg_n<3>" LOCATE = SITE "U18" LEVEL 1;
+COMP "seg_n<4>" LOCATE = SITE "M14" LEVEL 1;
+COMP "seg_n<5>" LOCATE = SITE "N14" LEVEL 1;
+COMP "seg_n<6>" LOCATE = SITE "L14" LEVEL 1;
+COMP "seg_n<7>" LOCATE = SITE "M13" LEVEL 1;
+TIMEGRP P6_CLK = BEL "u/scan_0" BEL "u/scan_1" BEL "u/scan_2" BEL "u/scan_3"
+        BEL "u/scan_4" BEL "u/scan_5" BEL "u/scan_6" BEL "u/scan_7" BEL
+        "u/scan_8" BEL "u/scan_9" BEL "u/scan_10" BEL "u/scan_11" BEL
+        "u/scan_12" BEL "u/scan_13" BEL "u/scan_14" BEL "u/scan_15" BEL
+        "u/scan_16" BEL "u/scan_17" BEL "u/campaign/campaign_done" BEL
+        "u/campaign/tx_policy_id_1" BEL "u/campaign/tx_cycles_0" BEL
+        "u/campaign/tx_cycles_1" BEL "u/campaign/tx_cycles_2" BEL
+        "u/campaign/tx_cycles_3" BEL "u/campaign/tx_cycles_4" BEL
+        "u/campaign/tx_cycles_5" BEL "u/campaign/tx_cycles_6" BEL
+        "u/campaign/tx_cycles_7" BEL "u/campaign/tx_cycles_8" BEL
+        "u/campaign/tx_cycles_9" BEL "u/campaign/tx_cycles_10" BEL
+        "u/campaign/tx_cycles_11" BEL "u/campaign/tx_cycles_12" BEL
+        "u/campaign/tx_cycles_13" BEL "u/campaign/tx_cycles_14" BEL
+        "u/campaign/tx_cycles_15" BEL "u/campaign/tx_status_0" BEL
+        "u/campaign/tx_status_1" BEL "u/campaign/tx_state_id_0" BEL
+        "u/campaign/tx_state_id_1" BEL "u/campaign/tx_state_id_2" BEL
+        "u/campaign/tx_state_id_3" BEL "u/campaign/tx_state_id_4" BEL
+        "u/campaign/tx_state_id_5" BEL "u/campaign/tx_state_id_6" BEL
+        "u/campaign/tx_state_id_7" BEL "u/campaign/tx_score_0" BEL
+        "u/campaign/tx_score_1" BEL "u/campaign/tx_score_2" BEL
+        "u/campaign/tx_score_3" BEL "u/campaign/tx_score_4" BEL
+        "u/campaign/tx_score_5" BEL "u/campaign/tx_score_6" BEL
+        "u/campaign/tx_score_7" BEL "u/campaign/tx_score_8" BEL
+        "u/campaign/tx_score_9" BEL "u/campaign/tx_score_10" BEL
+        "u/campaign/tx_score_11" BEL "u/campaign/tx_score_12" BEL
+        "u/campaign/tx_score_13" BEL "u/campaign/tx_score_14" BEL
+        "u/campaign/tx_score_15" BEL "u/campaign/tx_score_16" BEL
+        "u/campaign/tx_path_0" BEL "u/campaign/tx_path_1" BEL
+        "u/campaign/tx_fidelity_0" BEL "u/campaign/tx_fidelity_1" BEL
+        "u/campaign/tx_fidelity_2" BEL "u/campaign/tx_fidelity_3" BEL
+        "u/campaign/tx_fidelity_4" BEL "u/campaign/tx_fidelity_5" BEL
+        "u/campaign/tx_fidelity_6" BEL "u/campaign/tx_fidelity_7" BEL
+        "u/campaign/tx_fidelity_8" BEL "u/campaign/tx_fidelity_9" BEL
+        "u/campaign/tx_fidelity_10" BEL "u/campaign/tx_fidelity_11" BEL
+        "u/campaign/tx_fidelity_12" BEL "u/campaign/tx_fidelity_13" BEL
+        "u/campaign/tx_fidelity_14" BEL "u/campaign/tx_fidelity_15" BEL
+        "u/campaign/tx_test_id_0" BEL "u/campaign/tx_test_id_1" BEL
+        "u/campaign/tx_test_id_2" BEL "u/campaign/tx_test_id_3" BEL
+        "u/campaign/tx_test_id_4" BEL "u/campaign/tx_test_id_5" BEL
+        "u/campaign/tx_test_id_6" BEL "u/campaign/tx_test_id_7" BEL
+        "u/campaign/tx_test_id_8" BEL "u/campaign/tx_test_id_9" BEL
+        "u/campaign/tx_test_id_10" BEL "u/campaign/core_start" BEL
+        "u/campaign/pass_count_0" BEL "u/campaign/pass_count_1" BEL
+        "u/campaign/pass_count_2" BEL "u/campaign/pass_count_3" BEL
+        "u/campaign/pass_count_4" BEL "u/campaign/pass_count_5" BEL
+        "u/campaign/pass_count_6" BEL "u/campaign/pass_count_7" BEL
+        "u/campaign/error_count_0" BEL "u/campaign/error_count_1" BEL
+        "u/campaign/error_count_2" BEL "u/campaign/error_count_3" BEL
+        "u/campaign/error_count_4" BEL "u/campaign/error_count_5" BEL
+        "u/campaign/error_count_6" BEL "u/campaign/error_count_7" BEL
+        "u/campaign/error_count_8" BEL "u/campaign/error_count_9" BEL
+        "u/campaign/error_count_10" BEL "u/campaign/error_count_11" BEL
+        "u/campaign/error_count_12" BEL "u/campaign/error_count_13" BEL
+        "u/campaign/error_count_14" BEL "u/campaign/error_count_15" BEL
+        "u/campaign/state_FSM_FFd8" BEL "u/campaign/state_FSM_FFd7" BEL
+        "u/campaign/state_FSM_FFd5" BEL "u/campaign/state_FSM_FFd4" BEL
+        "u/campaign/state_FSM_FFd3" BEL "u/campaign/replay_index_0" BEL
+        "u/campaign/replay_index_1" BEL "u/campaign/replay_index_2" BEL
+        "u/campaign/replay_index_3" BEL "u/campaign/replay_index_4" BEL
+        "u/campaign/replay_index_5" BEL "u/campaign/replay_index_6" BEL
+        "u/campaign/records_completed_0" BEL "u/campaign/records_completed_1"
+        BEL "u/campaign/records_completed_2" BEL
+        "u/campaign/records_completed_3" BEL "u/campaign/records_completed_4"
+        BEL "u/campaign/records_completed_5" BEL
+        "u/campaign/records_completed_6" BEL "u/campaign/reset_count_0" BEL
+        "u/campaign/reset_count_1" BEL
+        "u/campaign/kernel/kernel_cycle_counter_0" BEL
+        "u/campaign/kernel/kernel_cycle_counter_1" BEL
+        "u/campaign/kernel/kernel_cycle_counter_2" BEL
+        "u/campaign/kernel/kernel_cycle_counter_3" BEL
+        "u/campaign/kernel/kernel_cycle_counter_4" BEL
+        "u/campaign/kernel/kernel_cycle_counter_5" BEL
+        "u/campaign/kernel/kernel_cycle_counter_6" BEL
+        "u/campaign/kernel/kernel_cycle_counter_9" BEL
+        "u/campaign/kernel/kernel_cycle_counter_7" BEL
+        "u/campaign/kernel/kernel_cycle_counter_8" BEL
+        "u/campaign/kernel/kernel_cycle_counter_10" BEL
+        "u/campaign/kernel/kernel_cycle_counter_11" BEL
+        "u/campaign/kernel/kernel_cycle_counter_12" BEL
+        "u/campaign/kernel/kernel_cycle_counter_13" BEL
+        "u/campaign/kernel/kernel_cycle_counter_14" BEL
+        "u/campaign/kernel/kernel_cycle_counter_15" BEL
+        "u/campaign/kernel/core/cost0_r_0" BEL
+        "u/campaign/kernel/core/cost0_r_1" BEL
+        "u/campaign/kernel/core/cost0_r_2" BEL
+        "u/campaign/kernel/core/cost0_r_3" BEL
+        "u/campaign/kernel/core/cost0_r_4" BEL
+        "u/campaign/kernel/core/cost0_r_5" BEL
+        "u/campaign/kernel/core/cost0_r_6" BEL
+        "u/campaign/kernel/core/cost0_r_7" BEL
+        "u/campaign/kernel/core/cost0_r_8" BEL
+        "u/campaign/kernel/core/cost0_r_9" BEL
+        "u/campaign/kernel/core/cost0_r_10" BEL
+        "u/campaign/kernel/core/cost0_r_11" BEL
+        "u/campaign/kernel/core/cost0_r_12" BEL
+        "u/campaign/kernel/core/cost0_r_13" BEL
+        "u/campaign/kernel/core/cost0_r_14" BEL
+        "u/campaign/kernel/core/cost0_r_15" BEL
+        "u/campaign/kernel/core/fid0_r_0" BEL
+        "u/campaign/kernel/core/fid0_r_1" BEL
+        "u/campaign/kernel/core/fid0_r_2" BEL
+        "u/campaign/kernel/core/fid0_r_3" BEL
+        "u/campaign/kernel/core/fid0_r_4" BEL
+        "u/campaign/kernel/core/fid0_r_5" BEL
+        "u/campaign/kernel/core/fid0_r_6" BEL
+        "u/campaign/kernel/core/fid0_r_7" BEL
+        "u/campaign/kernel/core/fid0_r_8" BEL
+        "u/campaign/kernel/core/fid0_r_9" BEL
+        "u/campaign/kernel/core/fid0_r_10" BEL
+        "u/campaign/kernel/core/fid0_r_11" BEL
+        "u/campaign/kernel/core/fid0_r_12" BEL
+        "u/campaign/kernel/core/fid0_r_13" BEL
+        "u/campaign/kernel/core/fid0_r_14" BEL
+        "u/campaign/kernel/core/fid0_r_15" BEL
+        "u/campaign/kernel/core/util0_r_0" BEL
+        "u/campaign/kernel/core/util0_r_1" BEL
+        "u/campaign/kernel/core/util0_r_2" BEL
+        "u/campaign/kernel/core/util0_r_3" BEL
+        "u/campaign/kernel/core/util0_r_4" BEL
+        "u/campaign/kernel/core/util0_r_5" BEL
+        "u/campaign/kernel/core/util0_r_6" BEL
+        "u/campaign/kernel/core/util0_r_7" BEL
+        "u/campaign/kernel/core/util0_r_8" BEL
+        "u/campaign/kernel/core/util0_r_9" BEL
+        "u/campaign/kernel/core/util0_r_10" BEL
+        "u/campaign/kernel/core/util0_r_11" BEL
+        "u/campaign/kernel/core/util0_r_12" BEL
+        "u/campaign/kernel/core/util0_r_13" BEL
+        "u/campaign/kernel/core/util0_r_14" BEL
+        "u/campaign/kernel/core/util0_r_15" BEL
+        "u/campaign/kernel/core/util0_r_16" BEL
+        "u/campaign/kernel/core/hops0_r_0" BEL
+        "u/campaign/kernel/core/hops0_r_1" BEL
+        "u/campaign/kernel/core/hops0_r_2" BEL
+        "u/campaign/kernel/core/util1_r_0" BEL
+        "u/campaign/kernel/core/util1_r_1" BEL
+        "u/campaign/kernel/core/util1_r_2" BEL
+        "u/campaign/kernel/core/util1_r_3" BEL
+        "u/campaign/kernel/core/util1_r_4" BEL
+        "u/campaign/kernel/core/util1_r_5" BEL
+        "u/campaign/kernel/core/util1_r_6" BEL
+        "u/campaign/kernel/core/util1_r_7" BEL
+        "u/campaign/kernel/core/util1_r_8" BEL
+        "u/campaign/kernel/core/util1_r_9" BEL
+        "u/campaign/kernel/core/util1_r_10" BEL
+        "u/campaign/kernel/core/util1_r_11" BEL
+        "u/campaign/kernel/core/util1_r_12" BEL
+        "u/campaign/kernel/core/util1_r_13" BEL
+        "u/campaign/kernel/core/util1_r_14" BEL
+        "u/campaign/kernel/core/util1_r_15" BEL
+        "u/campaign/kernel/core/util1_r_16" BEL
+        "u/campaign/kernel/core/cost1_r_0" BEL
+        "u/campaign/kernel/core/cost1_r_1" BEL
+        "u/campaign/kernel/core/cost1_r_2" BEL
+        "u/campaign/kernel/core/cost1_r_3" BEL
+        "u/campaign/kernel/core/cost1_r_4" BEL
+        "u/campaign/kernel/core/cost1_r_5" BEL
+        "u/campaign/kernel/core/cost1_r_6" BEL
+        "u/campaign/kernel/core/cost1_r_7" BEL
+        "u/campaign/kernel/core/cost1_r_8" BEL
+        "u/campaign/kernel/core/cost1_r_9" BEL
+        "u/campaign/kernel/core/cost1_r_10" BEL
+        "u/campaign/kernel/core/cost1_r_11" BEL
+        "u/campaign/kernel/core/cost1_r_12" BEL
+        "u/campaign/kernel/core/cost1_r_13" BEL
+        "u/campaign/kernel/core/cost1_r_14" BEL
+        "u/campaign/kernel/core/cost1_r_15" BEL
+        "u/campaign/kernel/core/fid1_r_0" BEL
+        "u/campaign/kernel/core/fid1_r_1" BEL
+        "u/campaign/kernel/core/fid1_r_2" BEL
+        "u/campaign/kernel/core/fid1_r_3" BEL
+        "u/campaign/kernel/core/fid1_r_4" BEL
+        "u/campaign/kernel/core/fid1_r_5" BEL
+        "u/campaign/kernel/core/fid1_r_6" BEL
+        "u/campaign/kernel/core/fid1_r_7" BEL
+        "u/campaign/kernel/core/fid1_r_8" BEL
+        "u/campaign/kernel/core/fid1_r_9" BEL
+        "u/campaign/kernel/core/fid1_r_10" BEL
+        "u/campaign/kernel/core/fid1_r_11" BEL
+        "u/campaign/kernel/core/fid1_r_12" BEL
+        "u/campaign/kernel/core/fid1_r_13" BEL
+        "u/campaign/kernel/core/fid1_r_14" BEL
+        "u/campaign/kernel/core/fid1_r_15" BEL
+        "u/campaign/kernel/core/hops1_r_0" BEL
+        "u/campaign/kernel/core/hops1_r_1" BEL
+        "u/campaign/kernel/core/hops1_r_2" BEL "u/campaign/kernel/core/done"
+        BEL "u/campaign/kernel/core/v1_r" BEL "u/campaign/kernel/core/v0_r"
+        BEL "u/campaign/kernel/core/result_fidelity_0" BEL
+        "u/campaign/kernel/core/result_fidelity_1" BEL
+        "u/campaign/kernel/core/result_fidelity_2" BEL
+        "u/campaign/kernel/core/result_fidelity_3" BEL
+        "u/campaign/kernel/core/result_fidelity_4" BEL
+        "u/campaign/kernel/core/result_fidelity_5" BEL
+        "u/campaign/kernel/core/result_fidelity_6" BEL
+        "u/campaign/kernel/core/result_fidelity_7" BEL
+        "u/campaign/kernel/core/result_fidelity_8" BEL
+        "u/campaign/kernel/core/result_fidelity_9" BEL
+        "u/campaign/kernel/core/result_fidelity_10" BEL
+        "u/campaign/kernel/core/result_fidelity_11" BEL
+        "u/campaign/kernel/core/result_fidelity_12" BEL
+        "u/campaign/kernel/core/result_fidelity_13" BEL
+        "u/campaign/kernel/core/result_fidelity_14" BEL
+        "u/campaign/kernel/core/result_fidelity_15" BEL
+        "u/campaign/kernel/core/lambda2_r_0" BEL
+        "u/campaign/kernel/core/lambda0_r_1" BEL
+        "u/campaign/kernel/core/lambda1_r_1" BEL
+        "u/campaign/kernel/core/state_id_0" BEL
+        "u/campaign/kernel/core/state_id_1" BEL
+        "u/campaign/kernel/core/state_id_2" BEL
+        "u/campaign/kernel/core/state_id_3" BEL
+        "u/campaign/kernel/core/state_id_4" BEL
+        "u/campaign/kernel/core/state_id_5" BEL
+        "u/campaign/kernel/core/state_id_6" BEL
+        "u/campaign/kernel/core/state_id_7" BEL
+        "u/campaign/kernel/core/status_0" BEL
+        "u/campaign/kernel/core/status_1" BEL
+        "u/campaign/kernel/core/bottleneck_fidelity_0" BEL
+        "u/campaign/kernel/core/bottleneck_fidelity_1" BEL
+        "u/campaign/kernel/core/bottleneck_fidelity_2" BEL
+        "u/campaign/kernel/core/bottleneck_fidelity_3" BEL
+        "u/campaign/kernel/core/bottleneck_fidelity_4" BEL
+        "u/campaign/kernel/core/bottleneck_fidelity_5" BEL
+        "u/campaign/kernel/core/bottleneck_fidelity_6" BEL
+        "u/campaign/kernel/core/bottleneck_fidelity_7" BEL
+        "u/campaign/kernel/core/bottleneck_fidelity_8" BEL
+        "u/campaign/kernel/core/bottleneck_fidelity_9" BEL
+        "u/campaign/kernel/core/bottleneck_fidelity_10" BEL
+        "u/campaign/kernel/core/bottleneck_fidelity_11" BEL
+        "u/campaign/kernel/core/bottleneck_fidelity_12" BEL
+        "u/campaign/kernel/core/bottleneck_fidelity_13" BEL
+        "u/campaign/kernel/core/bottleneck_fidelity_14" BEL
+        "u/campaign/kernel/core/bottleneck_fidelity_15" BEL
+        "u/campaign/kernel/core/result_slot_0" BEL
+        "u/campaign/kernel/core/result_score_0" BEL
+        "u/campaign/kernel/core/result_score_1" BEL
+        "u/campaign/kernel/core/result_score_2" BEL
+        "u/campaign/kernel/core/result_score_3" BEL
+        "u/campaign/kernel/core/result_score_4" BEL
+        "u/campaign/kernel/core/result_score_5" BEL
+        "u/campaign/kernel/core/result_score_6" BEL
+        "u/campaign/kernel/core/result_score_7" BEL
+        "u/campaign/kernel/core/result_score_8" BEL
+        "u/campaign/kernel/core/result_score_9" BEL
+        "u/campaign/kernel/core/result_score_10" BEL
+        "u/campaign/kernel/core/result_score_11" BEL
+        "u/campaign/kernel/core/result_score_12" BEL
+        "u/campaign/kernel/core/result_score_13" BEL
+        "u/campaign/kernel/core/result_score_14" BEL
+        "u/campaign/kernel/core/result_score_15" BEL
+        "u/campaign/kernel/core/result_score_16" BEL
+        "u/campaign/kernel/core/selected_slot_0" BEL
+        "u/campaign/kernel/core/selected_score_0" BEL
+        "u/campaign/kernel/core/selected_score_1" BEL
+        "u/campaign/kernel/core/selected_score_2" BEL
+        "u/campaign/kernel/core/selected_score_3" BEL
+        "u/campaign/kernel/core/selected_score_4" BEL
+        "u/campaign/kernel/core/selected_score_5" BEL
+        "u/campaign/kernel/core/selected_score_6" BEL
+        "u/campaign/kernel/core/selected_score_7" BEL
+        "u/campaign/kernel/core/selected_score_8" BEL
+        "u/campaign/kernel/core/selected_score_9" BEL
+        "u/campaign/kernel/core/selected_score_10" BEL
+        "u/campaign/kernel/core/selected_score_11" BEL
+        "u/campaign/kernel/core/selected_score_12" BEL
+        "u/campaign/kernel/core/selected_score_13" BEL
+        "u/campaign/kernel/core/selected_score_14" BEL
+        "u/campaign/kernel/core/selected_score_15" BEL
+        "u/campaign/kernel/core/selected_score_16" BEL
+        "u/campaign/kernel/core/shell_state_FSM_FFd4" BEL
+        "u/campaign/kernel/core/shell_state_FSM_FFd3" BEL
+        "u/campaign/kernel/core/shell_state_FSM_FFd2" BEL
+        "u/campaign/kernel/core/state_encoder_i/valid" BEL
+        "u/campaign/kernel/core/state_encoder_i/state_id_0" BEL
+        "u/campaign/kernel/core/state_encoder_i/state_id_1" BEL
+        "u/campaign/kernel/core/state_encoder_i/state_id_2" BEL
+        "u/campaign/kernel/core/state_encoder_i/state_id_3" BEL
+        "u/campaign/kernel/core/state_encoder_i/state_id_4" BEL
+        "u/campaign/kernel/core/state_encoder_i/state_id_5" BEL
+        "u/campaign/kernel/core/state_encoder_i/state_id_6" BEL
+        "u/campaign/kernel/core/state_encoder_i/state_id_7" BEL
+        "u/campaign/kernel/core/profile_rom_i/valid" BEL
+        "u/campaign/kernel/core/profile_rom_i/profile_payload_0" BEL
+        "u/campaign/kernel/core/evaluator_i/cost0_0" BEL
+        "u/campaign/kernel/core/evaluator_i/cost0_1" BEL
+        "u/campaign/kernel/core/evaluator_i/cost0_2" BEL
+        "u/campaign/kernel/core/evaluator_i/cost0_3" BEL
+        "u/campaign/kernel/core/evaluator_i/cost0_4" BEL
+        "u/campaign/kernel/core/evaluator_i/cost0_5" BEL
+        "u/campaign/kernel/core/evaluator_i/cost0_6" BEL
+        "u/campaign/kernel/core/evaluator_i/cost0_7" BEL
+        "u/campaign/kernel/core/evaluator_i/cost0_8" BEL
+        "u/campaign/kernel/core/evaluator_i/cost0_9" BEL
+        "u/campaign/kernel/core/evaluator_i/cost0_10" BEL
+        "u/campaign/kernel/core/evaluator_i/cost0_11" BEL
+        "u/campaign/kernel/core/evaluator_i/cost0_12" BEL
+        "u/campaign/kernel/core/evaluator_i/cost0_13" BEL
+        "u/campaign/kernel/core/evaluator_i/cost0_14" BEL
+        "u/campaign/kernel/core/evaluator_i/cost0_15" BEL
+        "u/campaign/kernel/core/evaluator_i/fid0_0" BEL
+        "u/campaign/kernel/core/evaluator_i/fid0_1" BEL
+        "u/campaign/kernel/core/evaluator_i/fid0_2" BEL
+        "u/campaign/kernel/core/evaluator_i/fid0_3" BEL
+        "u/campaign/kernel/core/evaluator_i/fid0_4" BEL
+        "u/campaign/kernel/core/evaluator_i/fid0_5" BEL
+        "u/campaign/kernel/core/evaluator_i/fid0_6" BEL
+        "u/campaign/kernel/core/evaluator_i/fid0_7" BEL
+        "u/campaign/kernel/core/evaluator_i/fid0_8" BEL
+        "u/campaign/kernel/core/evaluator_i/fid0_9" BEL
+        "u/campaign/kernel/core/evaluator_i/fid0_10" BEL
+        "u/campaign/kernel/core/evaluator_i/fid0_11" BEL
+        "u/campaign/kernel/core/evaluator_i/fid0_12" BEL
+        "u/campaign/kernel/core/evaluator_i/fid0_13" BEL
+        "u/campaign/kernel/core/evaluator_i/fid0_14" BEL
+        "u/campaign/kernel/core/evaluator_i/fid0_15" BEL
+        "u/campaign/kernel/core/evaluator_i/util0_0" BEL
+        "u/campaign/kernel/core/evaluator_i/util0_1" BEL
+        "u/campaign/kernel/core/evaluator_i/util0_2" BEL
+        "u/campaign/kernel/core/evaluator_i/util0_3" BEL
+        "u/campaign/kernel/core/evaluator_i/util0_4" BEL
+        "u/campaign/kernel/core/evaluator_i/util0_5" BEL
+        "u/campaign/kernel/core/evaluator_i/util0_6" BEL
+        "u/campaign/kernel/core/evaluator_i/util0_7" BEL
+        "u/campaign/kernel/core/evaluator_i/util0_8" BEL
+        "u/campaign/kernel/core/evaluator_i/util0_9" BEL
+        "u/campaign/kernel/core/evaluator_i/util0_10" BEL
+        "u/campaign/kernel/core/evaluator_i/util0_11" BEL
+        "u/campaign/kernel/core/evaluator_i/util0_12" BEL
+        "u/campaign/kernel/core/evaluator_i/util0_13" BEL
+        "u/campaign/kernel/core/evaluator_i/util0_14" BEL
+        "u/campaign/kernel/core/evaluator_i/util0_15" BEL
+        "u/campaign/kernel/core/evaluator_i/util0_16" BEL
+        "u/campaign/kernel/core/evaluator_i/hops0_0" BEL
+        "u/campaign/kernel/core/evaluator_i/hops0_1" BEL
+        "u/campaign/kernel/core/evaluator_i/hops0_2" BEL
+        "u/campaign/kernel/core/evaluator_i/cost1_0" BEL
+        "u/campaign/kernel/core/evaluator_i/cost1_1" BEL
+        "u/campaign/kernel/core/evaluator_i/cost1_2" BEL
+        "u/campaign/kernel/core/evaluator_i/cost1_3" BEL
+        "u/campaign/kernel/core/evaluator_i/cost1_4" BEL
+        "u/campaign/kernel/core/evaluator_i/cost1_5" BEL
+        "u/campaign/kernel/core/evaluator_i/cost1_6" BEL
+        "u/campaign/kernel/core/evaluator_i/cost1_7" BEL
+        "u/campaign/kernel/core/evaluator_i/cost1_8" BEL
+        "u/campaign/kernel/core/evaluator_i/cost1_9" BEL
+        "u/campaign/kernel/core/evaluator_i/cost1_10" BEL
+        "u/campaign/kernel/core/evaluator_i/cost1_11" BEL
+        "u/campaign/kernel/core/evaluator_i/cost1_12" BEL
+        "u/campaign/kernel/core/evaluator_i/cost1_13" BEL
+        "u/campaign/kernel/core/evaluator_i/cost1_14" BEL
+        "u/campaign/kernel/core/evaluator_i/cost1_15" BEL
+        "u/campaign/kernel/core/evaluator_i/fid1_0" BEL
+        "u/campaign/kernel/core/evaluator_i/fid1_1" BEL
+        "u/campaign/kernel/core/evaluator_i/fid1_2" BEL
+        "u/campaign/kernel/core/evaluator_i/fid1_3" BEL
+        "u/campaign/kernel/core/evaluator_i/fid1_4" BEL
+        "u/campaign/kernel/core/evaluator_i/fid1_5" BEL
+        "u/campaign/kernel/core/evaluator_i/fid1_6" BEL
+        "u/campaign/kernel/core/evaluator_i/fid1_7" BEL
+        "u/campaign/kernel/core/evaluator_i/fid1_8" BEL
+        "u/campaign/kernel/core/evaluator_i/fid1_9" BEL
+        "u/campaign/kernel/core/evaluator_i/fid1_10" BEL
+        "u/campaign/kernel/core/evaluator_i/fid1_11" BEL
+        "u/campaign/kernel/core/evaluator_i/fid1_12" BEL
+        "u/campaign/kernel/core/evaluator_i/fid1_13" BEL
+        "u/campaign/kernel/core/evaluator_i/fid1_14" BEL
+        "u/campaign/kernel/core/evaluator_i/fid1_15" BEL
+        "u/campaign/kernel/core/evaluator_i/util1_0" BEL
+        "u/campaign/kernel/core/evaluator_i/util1_1" BEL
+        "u/campaign/kernel/core/evaluator_i/util1_2" BEL
+        "u/campaign/kernel/core/evaluator_i/util1_3" BEL
+        "u/campaign/kernel/core/evaluator_i/util1_4" BEL
+        "u/campaign/kernel/core/evaluator_i/util1_5" BEL
+        "u/campaign/kernel/core/evaluator_i/util1_6" BEL
+        "u/campaign/kernel/core/evaluator_i/util1_7" BEL
+        "u/campaign/kernel/core/evaluator_i/util1_8" BEL
+        "u/campaign/kernel/core/evaluator_i/util1_9" BEL
+        "u/campaign/kernel/core/evaluator_i/util1_10" BEL
+        "u/campaign/kernel/core/evaluator_i/util1_11" BEL
+        "u/campaign/kernel/core/evaluator_i/util1_12" BEL
+        "u/campaign/kernel/core/evaluator_i/util1_13" BEL
+        "u/campaign/kernel/core/evaluator_i/util1_14" BEL
+        "u/campaign/kernel/core/evaluator_i/util1_15" BEL
+        "u/campaign/kernel/core/evaluator_i/util1_16" BEL
+        "u/campaign/kernel/core/evaluator_i/hops1_0" BEL
+        "u/campaign/kernel/core/evaluator_i/hops1_1" BEL
+        "u/campaign/kernel/core/evaluator_i/hops1_2" BEL
+        "u/campaign/kernel/core/evaluator_i/lam0_1" BEL
+        "u/campaign/kernel/core/evaluator_i/lam1_1" BEL
+        "u/campaign/kernel/core/evaluator_i/lam2_0" BEL
+        "u/campaign/kernel/core/evaluator_i/v0" BEL
+        "u/campaign/kernel/core/evaluator_i/v1" BEL
+        "u/campaign/kernel/core/evaluator_i/high_is_c1" BEL
+        "u/campaign/kernel/core/evaluator_i/done" BEL
+        "u/campaign/kernel/core/evaluator_i/difference_reg_0" BEL
+        "u/campaign/kernel/core/evaluator_i/difference_reg_1" BEL
+        "u/campaign/kernel/core/evaluator_i/difference_reg_2" BEL
+        "u/campaign/kernel/core/evaluator_i/difference_reg_3" BEL
+        "u/campaign/kernel/core/evaluator_i/difference_reg_4" BEL
+        "u/campaign/kernel/core/evaluator_i/difference_reg_5" BEL
+        "u/campaign/kernel/core/evaluator_i/difference_reg_6" BEL
+        "u/campaign/kernel/core/evaluator_i/difference_reg_7" BEL
+        "u/campaign/kernel/core/evaluator_i/difference_reg_8" BEL
+        "u/campaign/kernel/core/evaluator_i/difference_reg_9" BEL
+        "u/campaign/kernel/core/evaluator_i/difference_reg_10" BEL
+        "u/campaign/kernel/core/evaluator_i/difference_reg_11" BEL
+        "u/campaign/kernel/core/evaluator_i/difference_reg_12" BEL
+        "u/campaign/kernel/core/evaluator_i/difference_reg_13" BEL
+        "u/campaign/kernel/core/evaluator_i/difference_reg_14" BEL
+        "u/campaign/kernel/core/evaluator_i/difference_reg_15" BEL
+        "u/campaign/kernel/core/evaluator_i/difference_reg_16" BEL
+        "u/campaign/kernel/core/evaluator_i/objective_0" BEL
+        "u/campaign/kernel/core/evaluator_i/objective_1" BEL
+        "u/campaign/kernel/core/evaluator_i/divisor_0" BEL
+        "u/campaign/kernel/core/evaluator_i/divisor_1" BEL
+        "u/campaign/kernel/core/evaluator_i/divisor_2" BEL
+        "u/campaign/kernel/core/evaluator_i/divisor_3" BEL
+        "u/campaign/kernel/core/evaluator_i/divisor_4" BEL
+        "u/campaign/kernel/core/evaluator_i/divisor_5" BEL
+        "u/campaign/kernel/core/evaluator_i/divisor_6" BEL
+        "u/campaign/kernel/core/evaluator_i/divisor_7" BEL
+        "u/campaign/kernel/core/evaluator_i/divisor_8" BEL
+        "u/campaign/kernel/core/evaluator_i/divisor_9" BEL
+        "u/campaign/kernel/core/evaluator_i/divisor_10" BEL
+        "u/campaign/kernel/core/evaluator_i/divisor_11" BEL
+        "u/campaign/kernel/core/evaluator_i/divisor_12" BEL
+        "u/campaign/kernel/core/evaluator_i/divisor_13" BEL
+        "u/campaign/kernel/core/evaluator_i/divisor_14" BEL
+        "u/campaign/kernel/core/evaluator_i/divisor_15" BEL
+        "u/campaign/kernel/core/evaluator_i/divisor_16" BEL
+        "u/campaign/kernel/core/evaluator_i/divisor_17" BEL
+        "u/campaign/kernel/core/evaluator_i/selected_slot_0" BEL
+        "u/campaign/kernel/core/evaluator_i/route_valid" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_0" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_1" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_2" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_3" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_4" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_5" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_6" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_7" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_8" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_9" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_10" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_11" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_12" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_13" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_14" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_15" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_16" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_17" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_18" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_19" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_20" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_21" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_22" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_23" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_24" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_25" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_26" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_27" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_28" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_29" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_30" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_31" BEL
+        "u/campaign/kernel/core/evaluator_i/scaled_difference_reg_32" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_0" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_1" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_2" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_3" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_4" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_5" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_6" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_7" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_8" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_9" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_10" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_11" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_12" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_13" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_14" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_15" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_16" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_17" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_18" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_19" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_20" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_21" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_22" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_23" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_24" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_25" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_26" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_27" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_28" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_29" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_30" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_31" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_32" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_33" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_34" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_35" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_36" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_37" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_38" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_39" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_40" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_41" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_42" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_43" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_44" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_45" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_46" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_47" BEL
+        "u/campaign/kernel/core/evaluator_i/dividend_shift_48" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_0" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_1" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_2" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_3" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_4" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_5" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_6" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_7" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_8" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_9" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_10" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_11" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_12" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_13" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_14" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_15" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_16" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_17" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_18" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_19" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_20" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_21" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_22" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_23" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_24" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_25" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_26" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_27" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_28" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_29" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_30" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_31" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_trial_32" BEL
+        "u/campaign/kernel/core/evaluator_i/subtract_needed" BEL
+        "u/campaign/kernel/core/evaluator_i/quotient_0" BEL
+        "u/campaign/kernel/core/evaluator_i/quotient_1" BEL
+        "u/campaign/kernel/core/evaluator_i/quotient_2" BEL
+        "u/campaign/kernel/core/evaluator_i/quotient_3" BEL
+        "u/campaign/kernel/core/evaluator_i/quotient_4" BEL
+        "u/campaign/kernel/core/evaluator_i/quotient_5" BEL
+        "u/campaign/kernel/core/evaluator_i/quotient_6" BEL
+        "u/campaign/kernel/core/evaluator_i/quotient_7" BEL
+        "u/campaign/kernel/core/evaluator_i/quotient_8" BEL
+        "u/campaign/kernel/core/evaluator_i/quotient_9" BEL
+        "u/campaign/kernel/core/evaluator_i/quotient_10" BEL
+        "u/campaign/kernel/core/evaluator_i/quotient_11" BEL
+        "u/campaign/kernel/core/evaluator_i/quotient_12" BEL
+        "u/campaign/kernel/core/evaluator_i/quotient_13" BEL
+        "u/campaign/kernel/core/evaluator_i/quotient_14" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_0" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_1" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_2" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_3" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_4" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_5" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_6" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_7" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_8" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_9" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_10" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_11" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_12" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_13" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_14" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_15" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_16" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_17" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_18" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_19" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_20" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_21" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_22" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_23" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_24" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_25" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_26" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_27" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_28" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_29" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_30" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_31" BEL
+        "u/campaign/kernel/core/evaluator_i/remainder_32" BEL
+        "u/campaign/kernel/core/evaluator_i/n10_0" BEL
+        "u/campaign/kernel/core/evaluator_i/n10_1" BEL
+        "u/campaign/kernel/core/evaluator_i/n10_2" BEL
+        "u/campaign/kernel/core/evaluator_i/n10_3" BEL
+        "u/campaign/kernel/core/evaluator_i/n10_4" BEL
+        "u/campaign/kernel/core/evaluator_i/n10_5" BEL
+        "u/campaign/kernel/core/evaluator_i/n10_6" BEL
+        "u/campaign/kernel/core/evaluator_i/n10_7" BEL
+        "u/campaign/kernel/core/evaluator_i/n10_8" BEL
+        "u/campaign/kernel/core/evaluator_i/n10_9" BEL
+        "u/campaign/kernel/core/evaluator_i/n10_10" BEL
+        "u/campaign/kernel/core/evaluator_i/n10_11" BEL
+        "u/campaign/kernel/core/evaluator_i/n10_12" BEL
+        "u/campaign/kernel/core/evaluator_i/n10_13" BEL
+        "u/campaign/kernel/core/evaluator_i/n10_14" BEL
+        "u/campaign/kernel/core/evaluator_i/n10_15" BEL
+        "u/campaign/kernel/core/evaluator_i/n11_0" BEL
+        "u/campaign/kernel/core/evaluator_i/n11_1" BEL
+        "u/campaign/kernel/core/evaluator_i/n11_2" BEL
+        "u/campaign/kernel/core/evaluator_i/n11_3" BEL
+        "u/campaign/kernel/core/evaluator_i/n11_4" BEL
+        "u/campaign/kernel/core/evaluator_i/n11_5" BEL
+        "u/campaign/kernel/core/evaluator_i/n11_6" BEL
+        "u/campaign/kernel/core/evaluator_i/n11_7" BEL
+        "u/campaign/kernel/core/evaluator_i/n11_8" BEL
+        "u/campaign/kernel/core/evaluator_i/n11_9" BEL
+        "u/campaign/kernel/core/evaluator_i/n11_10" BEL
+        "u/campaign/kernel/core/evaluator_i/n11_11" BEL
+        "u/campaign/kernel/core/evaluator_i/n11_12" BEL
+        "u/campaign/kernel/core/evaluator_i/n11_13" BEL
+        "u/campaign/kernel/core/evaluator_i/n11_14" BEL
+        "u/campaign/kernel/core/evaluator_i/n11_15" BEL
+        "u/campaign/kernel/core/evaluator_i/n12_0" BEL
+        "u/campaign/kernel/core/evaluator_i/n12_1" BEL
+        "u/campaign/kernel/core/evaluator_i/n12_2" BEL
+        "u/campaign/kernel/core/evaluator_i/n12_3" BEL
+        "u/campaign/kernel/core/evaluator_i/n12_4" BEL
+        "u/campaign/kernel/core/evaluator_i/n12_5" BEL
+        "u/campaign/kernel/core/evaluator_i/n12_6" BEL
+        "u/campaign/kernel/core/evaluator_i/n12_7" BEL
+        "u/campaign/kernel/core/evaluator_i/n12_8" BEL
+        "u/campaign/kernel/core/evaluator_i/n12_9" BEL
+        "u/campaign/kernel/core/evaluator_i/n12_10" BEL
+        "u/campaign/kernel/core/evaluator_i/n12_11" BEL
+        "u/campaign/kernel/core/evaluator_i/n12_12" BEL
+        "u/campaign/kernel/core/evaluator_i/n12_13" BEL
+        "u/campaign/kernel/core/evaluator_i/n12_14" BEL
+        "u/campaign/kernel/core/evaluator_i/n12_15" BEL
+        "u/campaign/kernel/core/evaluator_i/n00_0" BEL
+        "u/campaign/kernel/core/evaluator_i/n00_1" BEL
+        "u/campaign/kernel/core/evaluator_i/n00_2" BEL
+        "u/campaign/kernel/core/evaluator_i/n00_3" BEL
+        "u/campaign/kernel/core/evaluator_i/n00_4" BEL
+        "u/campaign/kernel/core/evaluator_i/n00_5" BEL
+        "u/campaign/kernel/core/evaluator_i/n00_6" BEL
+        "u/campaign/kernel/core/evaluator_i/n00_7" BEL
+        "u/campaign/kernel/core/evaluator_i/n00_8" BEL
+        "u/campaign/kernel/core/evaluator_i/n00_9" BEL
+        "u/campaign/kernel/core/evaluator_i/n00_10" BEL
+        "u/campaign/kernel/core/evaluator_i/n00_11" BEL
+        "u/campaign/kernel/core/evaluator_i/n00_12" BEL
+        "u/campaign/kernel/core/evaluator_i/n00_13" BEL
+        "u/campaign/kernel/core/evaluator_i/n00_14" BEL
+        "u/campaign/kernel/core/evaluator_i/n00_15" BEL
+        "u/campaign/kernel/core/evaluator_i/n01_0" BEL
+        "u/campaign/kernel/core/evaluator_i/n01_1" BEL
+        "u/campaign/kernel/core/evaluator_i/n01_2" BEL
+        "u/campaign/kernel/core/evaluator_i/n01_3" BEL
+        "u/campaign/kernel/core/evaluator_i/n01_4" BEL
+        "u/campaign/kernel/core/evaluator_i/n01_5" BEL
+        "u/campaign/kernel/core/evaluator_i/n01_6" BEL
+        "u/campaign/kernel/core/evaluator_i/n01_7" BEL
+        "u/campaign/kernel/core/evaluator_i/n01_8" BEL
+        "u/campaign/kernel/core/evaluator_i/n01_9" BEL
+        "u/campaign/kernel/core/evaluator_i/n01_10" BEL
+        "u/campaign/kernel/core/evaluator_i/n01_11" BEL
+        "u/campaign/kernel/core/evaluator_i/n01_12" BEL
+        "u/campaign/kernel/core/evaluator_i/n01_13" BEL
+        "u/campaign/kernel/core/evaluator_i/n01_14" BEL
+        "u/campaign/kernel/core/evaluator_i/n01_15" BEL
+        "u/campaign/kernel/core/evaluator_i/n02_0" BEL
+        "u/campaign/kernel/core/evaluator_i/n02_1" BEL
+        "u/campaign/kernel/core/evaluator_i/n02_2" BEL
+        "u/campaign/kernel/core/evaluator_i/n02_3" BEL
+        "u/campaign/kernel/core/evaluator_i/n02_4" BEL
+        "u/campaign/kernel/core/evaluator_i/n02_5" BEL
+        "u/campaign/kernel/core/evaluator_i/n02_6" BEL
+        "u/campaign/kernel/core/evaluator_i/n02_7" BEL
+        "u/campaign/kernel/core/evaluator_i/n02_8" BEL
+        "u/campaign/kernel/core/evaluator_i/n02_9" BEL
+        "u/campaign/kernel/core/evaluator_i/n02_10" BEL
+        "u/campaign/kernel/core/evaluator_i/n02_11" BEL
+        "u/campaign/kernel/core/evaluator_i/n02_12" BEL
+        "u/campaign/kernel/core/evaluator_i/n02_13" BEL
+        "u/campaign/kernel/core/evaluator_i/n02_14" BEL
+        "u/campaign/kernel/core/evaluator_i/n02_15" BEL
+        "u/campaign/kernel/core/evaluator_i/selected_score_0" BEL
+        "u/campaign/kernel/core/evaluator_i/selected_score_1" BEL
+        "u/campaign/kernel/core/evaluator_i/selected_score_2" BEL
+        "u/campaign/kernel/core/evaluator_i/selected_score_3" BEL
+        "u/campaign/kernel/core/evaluator_i/selected_score_4" BEL
+        "u/campaign/kernel/core/evaluator_i/selected_score_5" BEL
+        "u/campaign/kernel/core/evaluator_i/selected_score_6" BEL
+        "u/campaign/kernel/core/evaluator_i/selected_score_7" BEL
+        "u/campaign/kernel/core/evaluator_i/selected_score_8" BEL
+        "u/campaign/kernel/core/evaluator_i/selected_score_9" BEL
+        "u/campaign/kernel/core/evaluator_i/selected_score_10" BEL
+        "u/campaign/kernel/core/evaluator_i/selected_score_11" BEL
+        "u/campaign/kernel/core/evaluator_i/selected_score_12" BEL
+        "u/campaign/kernel/core/evaluator_i/selected_score_13" BEL
+        "u/campaign/kernel/core/evaluator_i/selected_score_14" BEL
+        "u/campaign/kernel/core/evaluator_i/selected_score_15" BEL
+        "u/campaign/kernel/core/evaluator_i/selected_score_16" BEL
+        "u/campaign/kernel/core/evaluator_i/state_FSM_FFd3" BEL
+        "u/campaign/kernel/core/evaluator_i/div_count_0" BEL
+        "u/campaign/kernel/core/evaluator_i/div_count_1" BEL
+        "u/campaign/kernel/core/evaluator_i/div_count_2" BEL
+        "u/campaign/kernel/core/evaluator_i/div_count_3" BEL
+        "u/campaign/kernel/core/evaluator_i/div_count_4" BEL
+        "u/campaign/kernel/core/evaluator_i/div_count_5" BEL
+        "u/campaign/kernel/core/evaluator_i/state_FSM_FFd2" BEL
+        "u/campaign/kernel/core/evaluator_i/state_FSM_FFd1" BEL
+        "u/campaign/kernel/core/evaluator_i/lam1_1_1" BEL
+        "u/campaign/kernel/core/evaluator_i/lam1_1_2" BEL
+        "u/campaign/kernel/core/evaluator_i/lam1_1_3" BEL
+        "u/campaign/kernel/core/evaluator_i/lam0_1_1" BEL
+        "u/campaign/kernel/core/evaluator_i/lam0_1_2" BEL
+        "u/campaign/kernel/core/evaluator_i/lam0_1_3" BEL
+        "u/campaign/kernel/core/evaluator_i/lam2_0_1" BEL
+        "u/campaign/kernel/core/evaluator_i/lam2_0_2" BEL
+        "u/campaign/kernel/core/evaluator_i/lam2_0_3" BEL
+        "u/campaign/kernel/core/evaluator_i/no_path" BEL
+        "u/campaign/kernel/core/result_status_0" BEL
+        "u/campaign/kernel/measurement_active" BEL
+        "u/campaign/formatter/test_id_r_0" BEL
+        "u/campaign/formatter/test_id_r_1" BEL
+        "u/campaign/formatter/test_id_r_2" BEL
+        "u/campaign/formatter/test_id_r_3" BEL
+        "u/campaign/formatter/test_id_r_4" BEL
+        "u/campaign/formatter/test_id_r_5" BEL
+        "u/campaign/formatter/test_id_r_6" BEL
+        "u/campaign/formatter/test_id_r_7" BEL
+        "u/campaign/formatter/test_id_r_8" BEL
+        "u/campaign/formatter/test_id_r_9" BEL
+        "u/campaign/formatter/test_id_r_10" BEL
+        "u/campaign/formatter/policy_id_r_1" BEL
+        "u/campaign/formatter/state_id_r_0" BEL
+        "u/campaign/formatter/state_id_r_1" BEL
+        "u/campaign/formatter/state_id_r_2" BEL
+        "u/campaign/formatter/state_id_r_3" BEL
+        "u/campaign/formatter/state_id_r_4" BEL
+        "u/campaign/formatter/state_id_r_5" BEL
+        "u/campaign/formatter/state_id_r_6" BEL
+        "u/campaign/formatter/state_id_r_7" BEL
+        "u/campaign/formatter/fidelity_r_0" BEL
+        "u/campaign/formatter/fidelity_r_1" BEL
+        "u/campaign/formatter/fidelity_r_2" BEL
+        "u/campaign/formatter/fidelity_r_3" BEL
+        "u/campaign/formatter/fidelity_r_4" BEL
+        "u/campaign/formatter/fidelity_r_5" BEL
+        "u/campaign/formatter/fidelity_r_6" BEL
+        "u/campaign/formatter/fidelity_r_7" BEL
+        "u/campaign/formatter/fidelity_r_8" BEL
+        "u/campaign/formatter/fidelity_r_9" BEL
+        "u/campaign/formatter/fidelity_r_10" BEL
+        "u/campaign/formatter/fidelity_r_11" BEL
+        "u/campaign/formatter/fidelity_r_12" BEL
+        "u/campaign/formatter/fidelity_r_13" BEL
+        "u/campaign/formatter/fidelity_r_14" BEL
+        "u/campaign/formatter/fidelity_r_15" BEL
+        "u/campaign/formatter/selected_path_r_0" BEL
+        "u/campaign/formatter/selected_path_r_1" BEL
+        "u/campaign/formatter/selected_path_r_2" BEL
+        "u/campaign/formatter/selected_path_r_3" BEL
+        "u/campaign/formatter/selected_path_r_4" BEL
+        "u/campaign/formatter/selected_path_r_5" BEL
+        "u/campaign/formatter/selected_path_r_6" BEL
+        "u/campaign/formatter/selected_path_r_7" BEL
+        "u/campaign/formatter/score_r_0" BEL "u/campaign/formatter/score_r_1"
+        BEL "u/campaign/formatter/score_r_2" BEL
+        "u/campaign/formatter/score_r_3" BEL "u/campaign/formatter/score_r_4"
+        BEL "u/campaign/formatter/score_r_5" BEL
+        "u/campaign/formatter/score_r_6" BEL "u/campaign/formatter/score_r_7"
+        BEL "u/campaign/formatter/score_r_8" BEL
+        "u/campaign/formatter/score_r_9" BEL "u/campaign/formatter/score_r_10"
+        BEL "u/campaign/formatter/score_r_11" BEL
+        "u/campaign/formatter/score_r_12" BEL
+        "u/campaign/formatter/score_r_13" BEL
+        "u/campaign/formatter/score_r_14" BEL
+        "u/campaign/formatter/score_r_15" BEL
+        "u/campaign/formatter/score_r_16" BEL
+        "u/campaign/formatter/cycles_r_0" BEL
+        "u/campaign/formatter/cycles_r_1" BEL
+        "u/campaign/formatter/cycles_r_2" BEL
+        "u/campaign/formatter/cycles_r_3" BEL
+        "u/campaign/formatter/cycles_r_4" BEL
+        "u/campaign/formatter/cycles_r_5" BEL
+        "u/campaign/formatter/cycles_r_6" BEL
+        "u/campaign/formatter/cycles_r_7" BEL
+        "u/campaign/formatter/cycles_r_8" BEL
+        "u/campaign/formatter/cycles_r_9" BEL
+        "u/campaign/formatter/cycles_r_10" BEL
+        "u/campaign/formatter/cycles_r_11" BEL
+        "u/campaign/formatter/cycles_r_12" BEL
+        "u/campaign/formatter/cycles_r_13" BEL
+        "u/campaign/formatter/cycles_r_14" BEL
+        "u/campaign/formatter/cycles_r_15" BEL
+        "u/campaign/formatter/status_r_0" BEL
+        "u/campaign/formatter/status_r_1" BEL
+        "u/campaign/formatter/digits<0>_1" BEL
+        "u/campaign/formatter/digits<0>_2" BEL
+        "u/campaign/formatter/digits<1>_2" BEL
+        "u/campaign/formatter/digits<0>_0" BEL
+        "u/campaign/formatter/digits<1>_3" BEL
+        "u/campaign/formatter/digits<2>_3" BEL
+        "u/campaign/formatter/digits<1>_1" BEL
+        "u/campaign/formatter/digits<1>_0" BEL
+        "u/campaign/formatter/digits<2>_0" BEL
+        "u/campaign/formatter/digits<2>_2" BEL
+        "u/campaign/formatter/digits<2>_1" BEL
+        "u/campaign/formatter/digits<3>_1" BEL
+        "u/campaign/formatter/digits<3>_3" BEL
+        "u/campaign/formatter/digits<3>_2" BEL
+        "u/campaign/formatter/digits<4>_2" BEL
+        "u/campaign/formatter/digits<3>_0" BEL
+        "u/campaign/formatter/digits<4>_3" BEL
+        "u/campaign/formatter/digits<5>_3" BEL
+        "u/campaign/formatter/digits<4>_1" BEL
+        "u/campaign/formatter/digits<4>_0" BEL
+        "u/campaign/formatter/digits<5>_0" BEL
+        "u/campaign/formatter/digits<5>_2" BEL
+        "u/campaign/formatter/digits<5>_1" BEL
+        "u/campaign/formatter/digits<6>_1" BEL
+        "u/campaign/formatter/digits<6>_3" BEL
+        "u/campaign/formatter/digits<6>_2" BEL
+        "u/campaign/formatter/digits<7>_2" BEL
+        "u/campaign/formatter/digits<6>_0" BEL
+        "u/campaign/formatter/digits<7>_3" BEL
+        "u/campaign/formatter/digits<8>_3" BEL
+        "u/campaign/formatter/digits<7>_1" BEL
+        "u/campaign/formatter/digits<7>_0" BEL
+        "u/campaign/formatter/digits<8>_0" BEL
+        "u/campaign/formatter/digits<8>_2" BEL
+        "u/campaign/formatter/digits<8>_1" BEL
+        "u/campaign/formatter/digits<9>_1" BEL
+        "u/campaign/formatter/digits<9>_3" BEL
+        "u/campaign/formatter/digits<9>_2" BEL
+        "u/campaign/formatter/digits<10>_2" BEL
+        "u/campaign/formatter/digits<9>_0" BEL
+        "u/campaign/formatter/digits<10>_3" BEL
+        "u/campaign/formatter/digits<11>_3" BEL
+        "u/campaign/formatter/digits<10>_1" BEL
+        "u/campaign/formatter/digits<10>_0" BEL
+        "u/campaign/formatter/digits<11>_0" BEL
+        "u/campaign/formatter/digits<11>_2" BEL
+        "u/campaign/formatter/digits<11>_1" BEL
+        "u/campaign/formatter/digits<12>_1" BEL
+        "u/campaign/formatter/digits<12>_3" BEL
+        "u/campaign/formatter/digits<12>_2" BEL
+        "u/campaign/formatter/digits<13>_2" BEL
+        "u/campaign/formatter/digits<12>_0" BEL
+        "u/campaign/formatter/digits<13>_3" BEL
+        "u/campaign/formatter/digits<14>_3" BEL
+        "u/campaign/formatter/digits<13>_1" BEL
+        "u/campaign/formatter/digits<13>_0" BEL
+        "u/campaign/formatter/digits<14>_0" BEL
+        "u/campaign/formatter/digits<14>_2" BEL
+        "u/campaign/formatter/digits<14>_1" BEL
+        "u/campaign/formatter/digits<15>_1" BEL
+        "u/campaign/formatter/digits<15>_3" BEL
+        "u/campaign/formatter/digits<15>_2" BEL
+        "u/campaign/formatter/digits<16>_2" BEL
+        "u/campaign/formatter/digits<15>_0" BEL
+        "u/campaign/formatter/digits<16>_3" BEL
+        "u/campaign/formatter/digits<17>_3" BEL
+        "u/campaign/formatter/digits<16>_1" BEL
+        "u/campaign/formatter/digits<16>_0" BEL
+        "u/campaign/formatter/digits<17>_0" BEL
+        "u/campaign/formatter/digits<17>_2" BEL
+        "u/campaign/formatter/digits<17>_1" BEL
+        "u/campaign/formatter/digits<18>_1" BEL
+        "u/campaign/formatter/digits<18>_3" BEL
+        "u/campaign/formatter/digits<18>_2" BEL
+        "u/campaign/formatter/digits<19>_2" BEL
+        "u/campaign/formatter/digits<18>_0" BEL
+        "u/campaign/formatter/digits<19>_3" BEL
+        "u/campaign/formatter/digits<20>_3" BEL
+        "u/campaign/formatter/digits<19>_1" BEL
+        "u/campaign/formatter/digits<19>_0" BEL
+        "u/campaign/formatter/digits<20>_0" BEL
+        "u/campaign/formatter/digits<20>_2" BEL
+        "u/campaign/formatter/digits<20>_1" BEL
+        "u/campaign/formatter/digits<21>_3" BEL
+        "u/campaign/formatter/digits<21>_2" BEL
+        "u/campaign/formatter/digits<21>_1" BEL
+        "u/campaign/formatter/digits<21>_0" BEL
+        "u/campaign/formatter/digits<22>_1" BEL
+        "u/campaign/formatter/digits<22>_3" BEL
+        "u/campaign/formatter/digits<22>_2" BEL
+        "u/campaign/formatter/digits<23>_2" BEL
+        "u/campaign/formatter/digits<22>_0" BEL
+        "u/campaign/formatter/digits<23>_3" BEL
+        "u/campaign/formatter/digits<24>_3" BEL
+        "u/campaign/formatter/digits<23>_1" BEL
+        "u/campaign/formatter/digits<23>_0" BEL
+        "u/campaign/formatter/digits<24>_0" BEL
+        "u/campaign/formatter/digits<24>_2" BEL
+        "u/campaign/formatter/digits<24>_1" BEL
+        "u/campaign/formatter/digits<25>_1" BEL
+        "u/campaign/formatter/digits<25>_3" BEL
+        "u/campaign/formatter/digits<25>_2" BEL
+        "u/campaign/formatter/digits<26>_2" BEL
+        "u/campaign/formatter/digits<25>_0" BEL
+        "u/campaign/formatter/digits<26>_3" BEL
+        "u/campaign/formatter/digits<26>_1" BEL
+        "u/campaign/formatter/digits<26>_0" BEL "u/campaign/formatter/done"
+        BEL "u/campaign/formatter/binary_reg_0" BEL
+        "u/campaign/formatter/binary_reg_1" BEL
+        "u/campaign/formatter/binary_reg_2" BEL
+        "u/campaign/formatter/binary_reg_3" BEL
+        "u/campaign/formatter/binary_reg_4" BEL
+        "u/campaign/formatter/binary_reg_5" BEL
+        "u/campaign/formatter/binary_reg_6" BEL
+        "u/campaign/formatter/binary_reg_7" BEL
+        "u/campaign/formatter/binary_reg_8" BEL
+        "u/campaign/formatter/binary_reg_9" BEL
+        "u/campaign/formatter/binary_reg_10" BEL
+        "u/campaign/formatter/binary_reg_11" BEL
+        "u/campaign/formatter/binary_reg_12" BEL
+        "u/campaign/formatter/binary_reg_13" BEL
+        "u/campaign/formatter/binary_reg_14" BEL
+        "u/campaign/formatter/binary_reg_15" BEL
+        "u/campaign/formatter/binary_reg_16" BEL
+        "u/campaign/formatter/binary_reg_17" BEL
+        "u/campaign/formatter/bcd_reg_0" BEL "u/campaign/formatter/bcd_reg_1"
+        BEL "u/campaign/formatter/bcd_reg_2" BEL
+        "u/campaign/formatter/bcd_reg_3" BEL "u/campaign/formatter/bcd_reg_4"
+        BEL "u/campaign/formatter/bcd_reg_5" BEL
+        "u/campaign/formatter/bcd_reg_6" BEL "u/campaign/formatter/bcd_reg_7"
+        BEL "u/campaign/formatter/bcd_reg_8" BEL
+        "u/campaign/formatter/bcd_reg_9" BEL "u/campaign/formatter/bcd_reg_10"
+        BEL "u/campaign/formatter/bcd_reg_11" BEL
+        "u/campaign/formatter/bcd_reg_12" BEL
+        "u/campaign/formatter/bcd_reg_13" BEL
+        "u/campaign/formatter/bcd_reg_14" BEL
+        "u/campaign/formatter/bcd_reg_15" BEL
+        "u/campaign/formatter/bcd_reg_16" BEL
+        "u/campaign/formatter/bcd_reg_17" BEL
+        "u/campaign/formatter/bcd_reg_18" BEL
+        "u/campaign/formatter/bcd_reg_19" BEL
+        "u/campaign/formatter/bcd_reg_20" BEL
+        "u/campaign/formatter/bcd_reg_21" BEL
+        "u/campaign/formatter/bcd_reg_22" BEL
+        "u/campaign/formatter/bcd_reg_23" BEL
+        "u/campaign/formatter/digits<0>_3" BEL
+        "u/campaign/formatter/state_FSM_FFd3" BEL
+        "u/campaign/formatter/state_FSM_FFd2" BEL
+        "u/campaign/formatter/state_FSM_FFd1" BEL
+        "u/campaign/formatter/field_index_0" BEL
+        "u/campaign/formatter/field_index_1" BEL
+        "u/campaign/formatter/field_index_2" BEL
+        "u/campaign/formatter/field_index_3" BEL
+        "u/campaign/formatter/byte_index_0" BEL
+        "u/campaign/formatter/byte_index_1" BEL
+        "u/campaign/formatter/byte_index_2" BEL
+        "u/campaign/formatter/byte_index_3" BEL
+        "u/campaign/formatter/byte_index_4" BEL
+        "u/campaign/formatter/byte_index_5" BEL
+        "u/campaign/formatter/bit_count_0" BEL
+        "u/campaign/formatter/bit_count_1" BEL
+        "u/campaign/formatter/bit_count_2" BEL
+        "u/campaign/formatter/bit_count_3" BEL
+        "u/campaign/formatter/bit_count_4" BEL "u/campaign/uart/frame_0" BEL
+        "u/campaign/uart/frame_1" BEL "u/campaign/uart/frame_2" BEL
+        "u/campaign/uart/frame_3" BEL "u/campaign/uart/frame_4" BEL
+        "u/campaign/uart/frame_5" BEL "u/campaign/uart/frame_6" BEL
+        "u/campaign/uart/frame_7" BEL "u/campaign/uart/frame_8" BEL
+        "u/campaign/uart/baud_counter_0" BEL "u/campaign/uart/baud_counter_1"
+        BEL "u/campaign/uart/baud_counter_2" BEL
+        "u/campaign/uart/baud_counter_3" BEL "u/campaign/uart/baud_counter_4"
+        BEL "u/campaign/uart/baud_counter_5" BEL
+        "u/campaign/uart/baud_counter_6" BEL "u/campaign/uart/baud_counter_7"
+        BEL "u/campaign/uart/baud_counter_8" BEL
+        "u/campaign/uart/baud_counter_9" BEL "u/campaign/uart/bit_index_0" BEL
+        "u/campaign/uart/bit_index_1" BEL "u/campaign/uart/bit_index_2" BEL
+        "u/campaign/uart/bit_index_3" BEL "u/campaign/uart/tx" BEL
+        "u/campaign/uart/busy" BEL "u/campaign/core_rst" BEL
+        "u/campaign/format_start" BEL "u/campaign/state_FSM_FFd6" BEL
+        "u/campaign/state_FSM_FFd2" BEL "clk_100mhz_BUFGP/BUFG";
+TS_P6_CLK = PERIOD TIMEGRP "P6_CLK" 10 ns HIGH 50%;
+SCHEMATIC END;
+
