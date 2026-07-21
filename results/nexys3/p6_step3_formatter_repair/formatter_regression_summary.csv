@@ -1,0 +1,11 @@
+metric,value
+formatter_records,420
+bytes_per_record,44
+formatter_bytes_checked,18480
+formatter_byte_mismatches,0
+policy_modes,5
+replay_rows_per_mode,84
+shell_internal_comparisons,420
+shell_internal_mismatches,0
+binary_to_bcd_steps_per_field,18
+single_cycle_divide_or_modulo,0

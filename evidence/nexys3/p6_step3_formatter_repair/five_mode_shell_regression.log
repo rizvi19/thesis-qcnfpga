@@ -1,0 +1,7 @@
+MODE H0 records=84 pass=84 errors=0
+MODE H1 records=84 pass=84 errors=0
+MODE H2 records=84 pass=84 errors=0
+MODE H3 records=84 pass=84 errors=0
+MODE H4 records=84 pass=84 errors=0
+P6_PHYSICAL_SHELL=420_OF_420_INTERNAL_COMPARISONS_PASS
+/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/sim/spartan6/tb_p6_physical_campaign_shell.v:43: $finish called at 397095500000 (1ps)
