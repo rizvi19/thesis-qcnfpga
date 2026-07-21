@@ -1,0 +1,19 @@
+{
+  "attempt": 2,
+  "bitstream_bytes": 464294,
+  "bitstream_sha256": "63f265b73df4ad4f09f50bdb1d4dcdf35f4edb0f267bb8f3ea9744b4f592ced8",
+  "clock_target_ns": 10.0,
+  "dsp48a1": 0,
+  "maximum_frequency_mhz": 118.948,
+  "minimum_period_ns": 8.407,
+  "occupied_slices": 301,
+  "part": "xc6slx16-2-csg324",
+  "policy_mode": "H0",
+  "ramb16bwer": 0,
+  "slice_luts": 801,
+  "slice_registers": 493,
+  "source_checkpoint": "2fd32b4c0bb29f5158fc68352ccd1761d704551c",
+  "timing_errors": 0,
+  "timing_score": 0,
+  "top": "p6_nexys3_h0"
+}
