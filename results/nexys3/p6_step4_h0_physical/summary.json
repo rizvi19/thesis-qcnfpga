@@ -1,0 +1,23 @@
+{
+  "capture_source": "physical_nexys3_uart",
+  "field_matches": 756,
+  "first_test_id": 0,
+  "golden_csv": "/media/shahriar-rizvi/15ff04dd-7d57-4f19-9c76-148a0b65e70d1/QFlow_RL_Nexys3_Workspace/thesis-qcnfpga/results/nexys3/p6_step3_golden_rtl/golden_results.csv",
+  "golden_rows": 84,
+  "golden_sha256": "6df3c4052a52e662ffb07ad4ee0403e706feabcf2fdb59dd34d909b980fe6ae2",
+  "last_test_id": 1063,
+  "mismatches": 0,
+  "mode": "H0",
+  "raw_bytes": 3696,
+  "raw_sha256": "c99628496d668e3a81f204a40f8b6f8fedb6416e688066e841a1463d1c6ab124",
+  "records": 84,
+  "row_matches": 84,
+  "status_counts": {
+    "0": 76,
+    "1": 5,
+    "2": 3
+  },
+  "total_fields": 756,
+  "uart": "115200_8N1_raw",
+  "unique_test_ids": 84
+}
