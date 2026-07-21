@@ -1,0 +1,2 @@
+source_checkpoint,policy_mode,top,part,clock_target_ns,timing_errors,timing_score,minimum_period_ns,maximum_frequency_mhz,bitstream_bytes,bitstream_sha256,slice_registers,slice_luts,occupied_slices,ramb16bwer,dsp48a1
+c2edac943fe8390dcc24b620428fa08e461005e0,H3,p6_nexys3_h3,xc6slx16-2-csg324,10.0,0,0,9.742,102.648,464294,b0fdbb435b73f95b392d5ca9c20df25a0c544a0154f557425d4f9a7c7f1e7b95,1097,1836,645,0,0
