@@ -1,0 +1,5 @@
+observation_source=user_reported_physical_board_state
+display=4084
+LD0=ON
+LD1=OFF
+interpretation=H4 mode; 84 records completed; all internal expected-result comparisons passed; zero internal comparison errors

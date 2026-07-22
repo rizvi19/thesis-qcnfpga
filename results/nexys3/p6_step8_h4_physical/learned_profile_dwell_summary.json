@@ -1,0 +1,11 @@
+{
+  "controller": "reinforcement-learned adaptive",
+  "dwell_decisions_covered": 81,
+  "dwell_run_count": 25,
+  "maximum_dwell_length": 7,
+  "mean_dwell_length": 3.24,
+  "minimum_dwell_length": 1,
+  "profile_sequence_matches_frozen_golden": true,
+  "runtime_q_update": false,
+  "valid_profile_decisions": 81
+}

@@ -1,0 +1,15 @@
+{
+  "all_rows": 84,
+  "clock_hz": 100000000,
+  "cycle_ns": 10,
+  "maximum_cycles_all": 312,
+  "maximum_cycles_normal": 312,
+  "mean_cycles_all": 185.83333333333334,
+  "mean_cycles_normal": 204.76315789473685,
+  "median_cycles_all": 312.0,
+  "median_cycles_normal": 312.0,
+  "minimum_cycles_all": 1,
+  "minimum_cycles_normal": 10,
+  "normal_rows": 76,
+  "uart_excluded_from_kernel_cycles": true
+}
