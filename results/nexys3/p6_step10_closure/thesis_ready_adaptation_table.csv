@@ -1,0 +1,3 @@
+mode,controller,profile0,profile1,profile2,profile3,transitions,dwell_runs,minimum_dwell,maximum_dwell,runtime_q_update_on_fpga
+H3,threshold/rule adaptive,24,36,18,3,44,45,1,7,NO
+H4,reinforcement-learned adaptive,42,11,18,10,24,25,1,7,NO

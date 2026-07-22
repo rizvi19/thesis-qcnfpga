@@ -1,0 +1,238 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1.65cm]{geometry}
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{float}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  pdftitle={QFlow P6 Final Same-Board FPGA Results},
+  pdfauthor={Shahriar Rizvi},
+  pdfsubject={Nexys3 H0-H4 physical comparison}
+}
+\definecolor{Navy}{RGB}{22,52,90}
+\definecolor{Blue}{RGB}{40,95,150}
+\definecolor{PaleBlue}{RGB}{235,243,250}
+\definecolor{PaleGreen}{RGB}{235,248,239}
+\definecolor{PaleGold}{RGB}{255,248,225}
+\definecolor{PaleRed}{RGB}{253,238,238}
+\definecolor{LightGray}{RGB}{245,245,245}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\setlist[itemize]{nosep,leftmargin=1.35em}
+\renewcommand{\arraystretch}{1.16}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{QFlow P6 Final Results}
+\rhead{Nexys3 same-board comparison}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+\newcommand{\resultbox}[2]{
+  \noindent\colorbox{#1}{\parbox{0.965\linewidth}{#2}}
+}
+\begin{document}
+
+\begin{center}
+{\Large\bfseries\color{Navy} QFlow P6 Final Same-Board FPGA Results}\\[4pt]
+{\large H0--H4 Physical Comparison on Digilent Nexys3}\\[6pt]
+Shahriar Rizvi \hfill Generated from frozen, hashed repository evidence
+\end{center}
+
+\resultbox{PaleGreen}{
+\textbf{Final result. P6 completed: 10/10 steps.} Five independent H0--H4 bitstreams met the
+100 MHz constraint and were cold-programmed into volatile FPGA SRAM.
+Across 420 physical UART records, all 420 rows and all 3,780 result
+fields exactly matched the frozen fixed-point model, with
+\textbf{zero mismatches}.
+}
+
+\vspace{5pt}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{3.8cm}X}
+Board / FPGA & Digilent Nexys3 Rev B / Spartan-6 XC6SLX16-2-CSG324 \\
+Clock & 100 MHz; one kernel cycle = 10 ns \\
+Physical modes & H0, H1, H2, H3 and H4 \\
+Main proposed mode & H4 reinforcement-learned adaptive profile controller \\
+H4 physical proof & 84/84 rows, 756/756 fields, display 4084, LD0 ON, LD1 OFF \\
+Latency boundary & Kernel cycles only; UART, host capture, JTAG and display refresh excluded \\
+\end{tabularx}
+
+\section*{1. Same-board implementation and physical correctness}
+
+\begin{table}[H]
+\centering
+\scriptsize
+\resizebox{\textwidth}{!}{
+\begin{tabular}{llrrrrrrr}
+\toprule
+Mode & Controller & Fmax & Cycles & Latency & Registers & LUTs & Slices & Exact \\
+ & & (MHz) & (normal) & ($\mu$s) & & & & fields \\
+\midrule
+H0 & Shortest distance & 118.948 & 2.00 & 0.0200 & 493 & 801 & 301 & 756/756 \\
+H1 & Fixed key-aware & 107.538 & 201.76 & 2.0176 & 1000 & 1484 & 589 & 756/756 \\
+H2 & Fixed QFlow & 102.838 & 202.76 & 2.0276 & 1085 & 1650 & 649 & 756/756 \\
+H3 & Rule adaptive & 102.648 & 202.76 & 2.0276 & 1097 & 1836 & 645 & 756/756 \\
+\textbf{H4} & \textbf{RL adaptive} & \textbf{102.020} & \textbf{204.76} & \textbf{2.0476} & \textbf{1156} & \textbf{1706} & \textbf{677} & \textbf{756/756} \\
+\bottomrule
+\end{tabular}
+}
+\caption{Independent implementations using the same board, clock constraint,
+replay order, fixed-point contract and physical result shell.}
+\end{table}
+
+\begin{minipage}[t]{0.49\textwidth}
+\textbf{Achieved Fmax (all exceed 100 MHz)}\\[-2pt]
+\begin{tabular}{ll}
+H0 & \rule{5.055cm}{1.25ex} 118.948 MHz \\
+H1 & \rule{4.570cm}{1.25ex} 107.538 MHz \\
+H2 & \rule{4.371cm}{1.25ex} 102.838 MHz \\
+H3 & \rule{4.363cm}{1.25ex} 102.648 MHz \\
+H4 & \rule{4.336cm}{1.25ex} 102.020 MHz \\
+\end{tabular}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.49\textwidth}
+\textbf{Slice-LUT use}\\[-2pt]
+\begin{tabular}{ll}
+H0 & \rule{2.225cm}{1.25ex} 801 LUTs \\
+H1 & \rule{4.122cm}{1.25ex} 1484 LUTs \\
+H2 & \rule{4.583cm}{1.25ex} 1650 LUTs \\
+H3 & \rule{5.100cm}{1.25ex} 1836 LUTs \\
+H4 & \rule{4.739cm}{1.25ex} 1706 LUTs \\
+\end{tabular}
+\end{minipage}
+
+\vspace{6pt}
+\resultbox{PaleBlue}{
+\textbf{H4 engineering trade-off versus H3.}
+H4 uses \textbf{7.08\% fewer LUTs} than H3,
+while registers change by 5.38\%, occupied
+slices by 4.96\%, and normal kernel latency by
+only 0.99\% (two cycles, or 20 ns).
+Its Fmax changes by -0.61\% but remains above the
+required 100 MHz.
+}
+
+\section*{2. Adaptive profile behavior}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llccccc}
+\toprule
+Mode & Controller & Profiles 0/1/2/3 & Transitions & Dwell runs &
+Dwell range & Runtime Q update \\
+\midrule
+H3 & Threshold/rule adaptive & 24/36/18/3 & 44 & 45 & 1-7 & NO \\
+H4 & Reinforcement-learned adaptive & 42/11/18/10 & 24 & 25 & 1-7 & NO \\
+\bottomrule
+\end{tabular}
+\caption{The three intentionally invalid rows are excluded; each mode has
+81 valid/no-path profile decisions.}
+\end{table}
+
+\resultbox{PaleGreen}{
+\textbf{Main novelty demonstrated physically.}
+H4 executed the frozen reinforcement-learned state-to-profile policy
+using all four profiles (42/11/18/10), produced 24 profile transitions
+and 25 dwell runs, and exactly matched the frozen model on every result
+field. Relative to H3, H4 made 45.45\% fewer
+profile transitions, demonstrating a more stable dwell-aware learned
+profile sequence on this replay.
+}
+
+\section*{3. Held-out comparison and statistical interpretation}
+
+\begin{table}[H]
+\centering
+\small
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lrrrrrr}
+\toprule
+Comparison & Joint success & Mean diff. & Bootstrap 95\% CI &
+Sign-test $p$ & Paired $d_z$ & Path changes \\
+\midrule
+H4 vs H2 & 58 & 86.47 & [-23.52, 228.22] & 0.219 & 0.176 & 6 \\
+H4 vs H3 & 58 & -78.05 & [-242.53, 79.93] & 0.453 & -0.127 & 7 \\
+\bottomrule
+\end{tabular}
+}
+\caption{Paired bottleneck-fidelity comparison on the 64-row held-out
+set. Positive differences favor H4.}
+\end{table}
+
+\resultbox{PaleGold}{
+\textbf{Correct statistical claim.} The H4-H2 mean fidelity difference is positive, while the H4-H3 difference is negative. In both comparisons the bootstrap 95\% confidence interval crosses zero and the exact sign-test $p$-value exceeds 0.05. Therefore this replay supports physical correctness and adaptive execution, but not a statistically conclusive universal fidelity-superiority claim.
+}
+
+The held-out success rate is 90.625\% for every mode when the two
+intentionally invalid rows are included. Raw scalar score is not
+compared across modes because adaptive modes can use different profile
+weights; comparing those scores directly would be invalid.
+
+\section*{4. Thesis-ready contribution statement}
+
+\begin{enumerate}[leftmargin=1.5em]
+\item \textbf{Fair hardware comparison:} H0--H4 were implemented and
+      tested independently on the same Nexys3 FPGA rather than comparing
+      FPGA latency against software-only literature results.
+\item \textbf{Bit-exact physical validation:} 420/420 physical rows and
+      3,780/3,780 fields matched the frozen fixed-point golden model.
+\item \textbf{Adaptive hardware behavior:} H3 proved threshold/rule
+      switching; H4 proved reinforcement-learned adaptive profile
+      selection with frozen dwell.
+\item \textbf{Deterministic measurement:} all modes used the same
+      100 MHz clock, vector order, record format and cycle boundary.
+\item \textbf{Efficient realization:} H4 met timing with 1,156
+      registers, 1,706 LUTs, 677 occupied slices, and no BRAM or DSP.
+\end{enumerate}
+
+\section*{5. Claim boundary and limitations}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{>{\bfseries}p{4.2cm}X p{3.2cm}}
+\toprule
+Topic & Evidence-based statement & Status \\
+\midrule
+Physical correctness & 420 rows and 3,780 fields exactly match the frozen model & Supported \\
+100 MHz operation & All five implementations have zero timing error and Fmax above 100 MHz & Supported \\
+Learned adaptation & H4 follows a frozen learned state-to-profile and dwell policy & Supported \\
+Online learning & No runtime Q-table update occurs on the FPGA & Do not claim \\
+Universal fidelity superiority & Held-out confidence intervals include zero & Not established \\
+Power / energy superiority & No common activity-calibrated H0--H4 evidence & Not measured \\
+Photo/video evidence & OMITTED\_NOT\_ARCHIVED\_IN\_REPOSITORY & Explicitly labelled \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\resultbox{PaleRed}{
+\textbf{Defense-safe wording.}
+The evidence supports a reinforcement-learned adaptive FPGA controller
+that is physically correct, deterministic, timing-clean and resource
+feasible. It does not support online learning, universal network
+superiority, or power superiority.
+}
+
+\section*{6. Traceability}
+
+\begin{tabularx}{\textwidth}{>{\ttfamily\scriptsize}p{5.2cm}X}
+same\_board\_comparison.csv & Timing, cycles, resources and correctness \\
+heldout\_pairwise\_h4\_statistics.csv & Confidence intervals, sign tests and effect sizes \\
+profile\_switching\_dwell.csv & Profile transitions and dwell \\
+physical\_evidence\_matrix.csv & Programming, UART hashes, displays and LEDs \\
+power\_energy\_status.csv & Explicit power/energy omission \\
+\end{tabularx}
+
+\end{document}

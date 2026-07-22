@@ -1,0 +1,8 @@
+claim,evidence,status
+Five independent same-board implementations met 100 MHz,H0-H4 timing errors 0; timing score 0; Fmax 102.020-118.948 MHz,SUPPORTED
+Physical FPGA results exactly match the frozen model,420/420 rows and 3780/3780 fields; 0 mismatches,SUPPORTED
+H3 performs threshold/rule profile switching,44 transitions; profile counts 24/36/18/3,SUPPORTED
+H4 executes a reinforcement-learned adaptive profile sequence with frozen dwell,24 transitions; 25 dwell runs; profile counts 42/11/18/10,SUPPORTED
+H4 is universally superior in held-out fidelity,Both 95% confidence intervals include zero and sign-test p-values exceed 0.05,NOT_SUPPORTED_DO_NOT_CLAIM
+H4 has lower power or energy,No common activity-calibrated H0-H4 power evidence,NOT_MEASURED_DO_NOT_CLAIM
+Online learning occurs on the FPGA,H4 uses a frozen learned policy/profile sequence; runtime Q update is disabled,FALSE_DO_NOT_CLAIM

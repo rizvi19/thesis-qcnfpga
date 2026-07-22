@@ -1,0 +1,6 @@
+mode,controller,fmax_mhz,normal_cycles,latency_us,registers,luts,slices,exact_fields,mismatches
+H0,feasible shortest-distance,118.948,2.000000,0.020000,493,801,301,756,0
+H1,fixed key-aware,107.538,201.763158,2.017632,1000,1484,589,756,0
+H2,fixed QFlow,102.838,202.763158,2.027632,1085,1650,649,756,0
+H3,threshold/rule adaptive,102.648,202.763158,2.027632,1097,1836,645,756,0
+H4,reinforcement-learned adaptive,102.020,204.763158,2.047632,1156,1706,677,756,0

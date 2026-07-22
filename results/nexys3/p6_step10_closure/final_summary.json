@@ -1,0 +1,71 @@
+{
+  "board": "Digilent Nexys3 Rev B",
+  "claim_boundary": "same-board physical correctness and implementation; no universal fidelity, power, energy, or online-learning claim",
+  "clock_hz": 100000000,
+  "comparison_class": "A_same_board_hardware",
+  "exact_fields": 3780,
+  "exact_rows": 420,
+  "fpga": "XC6SLX16-2-CSG324",
+  "h4": {
+    "controller": "reinforcement-learned adaptive",
+    "dwell_runs": 25,
+    "fmax_mhz": 102.02,
+    "maximum_dwell": 7,
+    "mean_normal_cycles": 204.763158,
+    "mean_normal_latency_us": 2.047632,
+    "minimum_dwell": 1,
+    "occupied_slices": 677,
+    "profile_counts": [
+      42,
+      11,
+      18,
+      10
+    ],
+    "profile_transitions": 24,
+    "runtime_q_update_on_fpga": false,
+    "slice_luts": 1706,
+    "slice_registers": 1156
+  },
+  "h4_vs_h3": {
+    "fmax_change_pct": -0.6117995479697609,
+    "lut_reduction_pct": 7.080610021786493,
+    "normal_latency_change_pct": 0.9863724848870227,
+    "occupied_slice_change_pct": 4.961240310077519,
+    "profile_transition_reduction_pct": 45.45454545454545,
+    "register_change_pct": 5.378304466727439
+  },
+  "heldout_statistics": [
+    {
+      "baseline_mean_fidelity": "61640.034483",
+      "bootstrap_95ci_high": "228.224138",
+      "bootstrap_95ci_low": "-23.517241",
+      "comparison": "H4_vs_H2",
+      "h4_mean_fidelity": "61726.500000",
+      "joint_success_pairs": "58",
+      "mean_difference": "86.465517",
+      "paired_effect_dz": "0.176084",
+      "path_changes": "6",
+      "sign_test_p": "0.218750000000"
+    },
+    {
+      "baseline_mean_fidelity": "61804.551724",
+      "bootstrap_95ci_high": "79.931034",
+      "bootstrap_95ci_low": "-242.534483",
+      "comparison": "H4_vs_H3",
+      "h4_mean_fidelity": "61726.500000",
+      "joint_success_pairs": "58",
+      "mean_difference": "-78.051724",
+      "paired_effect_dz": "-0.126716",
+      "path_changes": "7",
+      "sign_test_p": "0.453125000000"
+    }
+  ],
+  "implementations_meeting_100mhz": 5,
+  "mismatches": 0,
+  "phase": "P6",
+  "photo_video_status": "OMITTED_NOT_ARCHIVED_IN_REPOSITORY",
+  "physical_records": 420,
+  "power_status": "omitted_explicitly_labelled",
+  "progress": "10_of_10",
+  "status": "complete"
+}
