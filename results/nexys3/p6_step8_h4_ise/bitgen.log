@@ -1,0 +1,42 @@
+Release 14.7 - Bitgen P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Loading device for application Rf_Device from file '6slx16.nph' in environment
+/mnt/xilinx-ise14.7/Xilinx/14.7/ISE_DS/ISE/.
+   "p6_nexys3_h4" is an NCD, version 3.2, device xc6slx16, package csg324, speed
+-2
+Opened constraints file p6_h4.pcf.
+
+Wed Jul 22 12:59:21 2026
+
+Running DRC.
+WARNING:PhysDesignRules:367 - The signal <u/campaign/test_id<8>> is incomplete.
+   The signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <u/campaign/test_id<6>> is incomplete.
+   The signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal
+   <u/campaign/kernel/core/c0_fidelity<14>> is incomplete. The signal does not
+   drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal
+   <u/campaign/kernel/core/c0_fidelity<13>> is incomplete. The signal does not
+   drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal
+   <u/campaign/kernel/core/c1_fidelity<14>> is incomplete. The signal does not
+   drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal
+   <u/campaign/kernel/core/c1_fidelity<13>> is incomplete. The signal does not
+   drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <u/campaign/formatter/selected_path<6>>
+   is incomplete. The signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <u/campaign/formatter/selected_path<5>>
+   is incomplete. The signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <u/campaign/formatter/selected_path<4>>
+   is incomplete. The signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <u/campaign/formatter/selected_path<2>>
+   is incomplete. The signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <u/campaign/formatter/selected_path<1>>
+   is incomplete. The signal does not drive any load pins in the design.
+DRC detected 0 errors and 11 warnings.  Please see the previously displayed
+individual error or warning messages for more details.
+Creating bit map...
+Saving bit stream in "p6_h4.bit".
+Bitstream generation is complete.

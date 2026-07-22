@@ -1,0 +1,6 @@
+xst -ifn p6_h4.xst -ofn xst.log
+ngdbuild -p xc6slx16-2-csg324 -uc p6_h4.ucf p6_h4.ngc p6_h4.ngd
+map -w -p xc6slx16-2-csg324 -o p6_h4_map.ncd p6_h4.ngd p6_h4.pcf
+par -w p6_h4_map.ncd p6_h4_routed.ncd p6_h4.pcf
+trce -v 10 -n 10 -u 10 p6_h4_routed.ncd p6_h4.pcf -o p6_h4.twr
+bitgen -w p6_h4_routed.ncd p6_h4.bit p6_h4.pcf
