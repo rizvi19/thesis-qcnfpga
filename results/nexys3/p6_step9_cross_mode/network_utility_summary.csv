@@ -1,0 +1,6 @@
+mode,controller,heldout_rows,heldout_success_rows,heldout_no_path_rows,heldout_invalid_rows,heldout_success_rate_pct_including_invalid,heldout_no_path_rate_pct,mean_bottleneck_fidelity_success,median_bottleneck_fidelity_success,selected_path_0_success,selected_path_1_success,score_cross_mode_comparable,score_reason
+H0,feasible shortest-distance,64,58,4,2,90.625000,6.250000,61707.189655,62087.500000,32,26,NO,scalar score uses mode-selected profile weights
+H1,fixed key-aware,64,58,4,2,90.625000,6.250000,61640.034483,61673.500000,36,22,NO,scalar score uses mode-selected profile weights
+H2,fixed QFlow,64,58,4,2,90.625000,6.250000,61640.034483,61673.500000,36,22,NO,scalar score uses mode-selected profile weights
+H3,threshold/rule adaptive,64,58,4,2,90.625000,6.250000,61804.551724,61673.500000,33,25,NO,scalar score uses mode-selected profile weights
+H4,reinforcement-learned adaptive,64,58,4,2,90.625000,6.250000,61726.500000,61837.000000,34,24,NO,scalar score uses mode-selected profile weights

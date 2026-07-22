@@ -1,0 +1,6 @@
+mode,controller,delta_slice_registers_vs_h0,delta_slice_luts_vs_h0,delta_occupied_slices_vs_h0,slice_register_overhead_pct_vs_h0,slice_lut_overhead_pct_vs_h0,occupied_slice_overhead_pct_vs_h0,normal_cycle_overhead_vs_h0
+H0,feasible shortest-distance,0,0,0,0.000000,0.000000,0.000000,0.000000
+H1,fixed key-aware,507,683,288,102.839757,85.268414,95.681063,199.763158
+H2,fixed QFlow,592,849,348,120.081136,105.992509,115.614618,200.763158
+H3,threshold/rule adaptive,604,1035,344,122.515213,129.213483,114.285714,200.763158
+H4,reinforcement-learned adaptive,663,905,376,134.482759,112.983770,124.916944,202.763158

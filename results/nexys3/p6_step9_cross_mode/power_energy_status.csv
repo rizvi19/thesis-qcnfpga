@@ -1,0 +1,6 @@
+mode,controller,power_w,energy_per_decision_nj,status,method,activity_assumptions,available_pwr_report_count,claim_boundary
+H0,feasible shortest-distance,,,OMITTED_EXPLICITLY_LABELLED,no common activity-calibrated power report,not available,0,no measured or estimated power superiority claim
+H1,fixed key-aware,,,OMITTED_EXPLICITLY_LABELLED,no common activity-calibrated power report,not available,0,no measured or estimated power superiority claim
+H2,fixed QFlow,,,OMITTED_EXPLICITLY_LABELLED,no common activity-calibrated power report,not available,0,no measured or estimated power superiority claim
+H3,threshold/rule adaptive,,,OMITTED_EXPLICITLY_LABELLED,no common activity-calibrated power report,not available,0,no measured or estimated power superiority claim
+H4,reinforcement-learned adaptive,,,OMITTED_EXPLICITLY_LABELLED,no common activity-calibrated power report,not available,0,no measured or estimated power superiority claim

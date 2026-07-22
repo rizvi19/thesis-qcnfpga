@@ -1,0 +1,6 @@
+mode,controller,board,fpga,programming_log,programming_succeeded,uart_records,uart_bytes,raw_uart_sha256,display,LD0,LD1,photo_video_status
+H0,feasible shortest-distance,Digilent Nexys3 Rev B,XC6SLX16-2-CSG324,results/nexys3/p6_step4_h0_physical/p6_h0_program.log,YES,84,3696,c99628496d668e3a81f204a40f8b6f8fedb6416e688066e841a1463d1c6ab124,0084,ON,OFF,OMITTED_NOT_ARCHIVED_IN_REPOSITORY
+H1,fixed key-aware,Digilent Nexys3 Rev B,XC6SLX16-2-CSG324,results/nexys3/p6_step5_h1_physical/p6_h1_program.log,YES,84,3696,ab6010229b166e55d7056253a6ebd848b10b3c1e7d2ded0903fcbb0523780787,1084,ON,OFF,OMITTED_NOT_ARCHIVED_IN_REPOSITORY
+H2,fixed QFlow,Digilent Nexys3 Rev B,XC6SLX16-2-CSG324,results/nexys3/p6_step6_h2_physical/p6_h2_program.log,YES,84,3696,49a9d37a0355974c9f82bb90194403744159a6369ba56f6778a246c7f37563b3,2084,ON,OFF,OMITTED_NOT_ARCHIVED_IN_REPOSITORY
+H3,threshold/rule adaptive,Digilent Nexys3 Rev B,XC6SLX16-2-CSG324,results/nexys3/p6_step7_h3_physical/p6_h3_program.log,YES,84,3696,3c5b2bc97ffa8dd24a6cfd1556b643166e121f004b81d4332786284c3874af17,3084,ON,OFF,OMITTED_NOT_ARCHIVED_IN_REPOSITORY
+H4,reinforcement-learned adaptive,Digilent Nexys3 Rev B,XC6SLX16-2-CSG324,results/nexys3/p6_step8_h4_physical/p6_h4_program.log,YES,84,3696,70096b865631f2ce006d7b1b95f2c4e87155106ca84e531855318bb45821a500,4084,ON,OFF,OMITTED_NOT_ARCHIVED_IN_REPOSITORY
