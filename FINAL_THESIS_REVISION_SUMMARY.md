@@ -2,45 +2,56 @@
 
 ## Submission identity
 
-- Thesis: *QFlow: A Fixed-Point FPGA Accelerator for Adaptive Key-Resource-Aware Route-Candidate Evaluation in Trusted-Relay QKD Networks*
+- Thesis: *QFlow: A Fixed-Point FPGA Accelerator for Adaptive Key-Resource-Aware
+  Route-Candidate Evaluation in Trusted-Relay QKD Networks*
 - Author: Shahriar Rizvi (Roll 2003104)
 - Department: Computer Science & Engineering, RUET
 - Submission branch: `thesis-final-submission-corrections`
-- Exact thesis-source commit: injected into Appendix A after the corrected source
-  snapshot is created; see `FINAL_THESIS_SOURCE_AVAILABILITY_REPORT.md` in the final
-  package.
+- Exact thesis-source commit:
+  `575a64b19a2a583a7e31e9092c05c9991c24cc76`
 
 ## Revision outcome
 
-The second pass expanded the thesis from 68 to 97 pages through substantive background,
-methodology, interpretation, technical figures, and reproducibility appendices. No project
-timeline, claim ledger, defense script, historical Artix-7/OMNeT++ result section, model-
-correction narrative, or procedural filler was restored.
+The final 92-page thesis now gives one consistent account of the software model,
+fixed-point implementation, physical replay, and supporting VLSI work. It explicitly
+separates the complete offline-training action—four alpha coefficients plus three
+Tchebycheff ratios—from the physical H2-H4 ratio-only projection over supplied,
+profile-independent path costs. Physical exactness is therefore claimed only for the
+implemented projection.
 
-The central semantic correction is explicit: the completed H4 experiment uses minimum key
-occupancy, a bounded bottleneck route-quality code, offered request load, and utilization
-imbalance. No retrained/rebuilt/replayed replenishment controller was found, so the executed
-route-quality feature was not renamed. The final classical network model is kept separate
-from the registered synthetic/controller contract.
+Equation 3.10 retains the implementation-supported reciprocal form and now defines
+units, infeasible denominators, fixed-point rounding, infinity, and finite saturation.
+Eligibility is computed upstream and represented at the FPGA by a supplied validity
+bit. H0 is consistently a feasible minimum-hop baseline. Path-cost and utilization
+encodings no longer share an incorrect sentinel interpretation.
 
-Chapter 2 now includes a trusted-relay routing example, numerical Tchebycheff scoring,
-fixed-point arithmetic, and a broader verified literature synthesis. Chapter 3 now gives
-the complete reward, thresholds, profiles, H0-H4 behavior, H3 rules, training/freeze method,
-detailed RTL architecture, cycle operation, physical protocol, and statistical procedure.
-Chapter 4 explains timing, resource capacity, status counts, adaptive-decision exclusions,
-UNORM16 effects, related-work boundaries, and route-quality confidence intervals. Appendix E
-adds worked controller and verification cases.
+The physical row-level data were recovered from the primary evidence commit and a
+deterministic paired bootstrap was added. Both 95% intervals cross zero, preserving the
+neutral route-quality conclusion. The script, paired differences, summary CSV, seed,
+RNG, resampling unit, replicate count, and percentile convention are now archived.
 
-## Final QA
+The Abstract fits one page and reports the system boundary, H0-H4, exactness, timing,
+adaptive behavior, neutral statistics, and principal limitations. Sparse continuation
+pages were removed without deleting technical substance. The supporting OpenROAD
+results remain explicitly limited to isolated kernels.
 
-- PDF: `document.pdf`, 97 A4 pages
-- PDF SHA-256: `58C23F007CACCA1E8DE97C3F5B61384AC49EAA5C79CA4F281DE1CA0E0DD007E4`
+## Final release
+
+- Root PDF: `document.pdf`
+- Packaged PDF: `output/pdf/QFlow_Thesis_VLSI_Integrated.pdf`
+- Pages: 92 A4
+- PDF SHA-256:
+  `2AD29C8FA49776CE55B7D1A6A4C9F708127411624AE358B75E16C0DBD14899CC`
 - Bibliography records: 41
 - Undefined references/citations: 0
 - Overfull boxes: 0
-- Fatal/package warnings in final scan: 0
-- Rendered and visually inspected pages: 97
+- Non-embedded fonts: 0
+- Rendered and visually inspected pages: 92
 
-Detailed evidence is in `SCIENTIFIC_SEMANTIC_CONSISTENCY_REPORT.md`,
-`METHODOLOGY_COMPLETENESS_CHECKLIST.md`, `FINAL_NUMERICAL_TRACEABILITY.md`, and
+Detailed handoff evidence is in
+`FINAL_THESIS_SOURCE_AVAILABILITY_REPORT.md`,
+`PROFILE_TRAINING_DEPLOYMENT_SEMANTICS_REPORT.md`,
+`PHYSICAL_BOOTSTRAP_REPRODUCIBILITY_REPORT.md`,
+`FINAL_MATHEMATICAL_CORRECTION_REPORT.md`,
+`FINAL_THESIS_NUMERICAL_TRACEABILITY.md`, and
 `FINAL_THESIS_COMPILE_LOG.txt`.

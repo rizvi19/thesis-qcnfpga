@@ -1,24 +1,49 @@
 FINAL THESIS GIT DIFF SUMMARY
 =============================
 
-Scope:
-- complete submission package added on branch thesis-final-submission-polish;
-- staged submission diff: 43 files, 3,668 inserted lines, zero staged deletions;
-- metadata, root document, custom style, bibliography, and README revised;
-- all front matter and Chapters 1–5 rewritten or substantially revised;
-- reproducibility, fixed-point/protocol, complete-results, and scope appendices supplied;
-- figures, tables, and supporting data/source assets retained in the submission package;
-- final PDF and submission QA/audit documents added.
+Branch:
+thesis-final-submission-corrections
 
-Scientific changes:
-- direct valid key-resource narrative replaces project-repair/audit chronology;
-- H0–H4, RH1–RH5, Pi-profile, and route-candidate notation separated;
-- exact same-board FPGA evidence and neutral route-quality result integrated;
-- practical deployment, CPU/FPGA/ASIC platform selection, conceptual cost model,
-  function-aware related-work comparison, and bounded VLSI evidence added;
-- no raw experiment result, evidence branch, implementation report, CSV, verification vector,
-  bitstream, or evidence hash was modified.
+Parent:
+ad16401908bd3227fa43527f18ae4c44907ff455
 
-The exact staged name/status and line statistics were checked immediately before commit to
-ensure that repository files absent from the supplied thesis workspace were not staged as
-deletions.
+Corrected thesis-source commit:
+575a64b19a2a583a7e31e9092c05c9991c24cc76
+
+Source-commit statistics:
+- 26 files changed
+- 988 inserted lines
+- 283 deleted lines
+- no deleted files
+
+Source scope:
+- revised Abstract and Chapters 1-5;
+- revised reproducibility, fixed-point-contract, and additional-results appendices;
+- corrected same-board, dwell, profile-usage, and paired-comparison CSV values/labels;
+- added a deterministic physical paired-row bootstrap script and its two outputs;
+- added mathematical, contradiction, deployment-semantics, bootstrap, and numerical
+  traceability reports; and
+- refreshed earlier semantic and methodology audit reports.
+
+Principal corrections:
+- exact reciprocal Equation 3.10 semantics and fixed-point exceptional behavior;
+- complete offline training profile versus ratio-only physical projection;
+- upstream hard eligibility versus FPGA validity gating;
+- feasible minimum-hop H0 definition;
+- exact path-cost and utilization code ranges;
+- reproducible bootstrap confidence intervals and neutral inference; and
+- explicit separation of isolated VLSI kernels from an integrated ASIC claim.
+
+Release packaging after the source commit:
+- document.pdf;
+- output/pdf/QFlow_Thesis_VLSI_Integrated.pdf;
+- FINAL_THESIS_SOURCE_AVAILABILITY_REPORT.md;
+- FINAL_THESIS_COMPILE_LOG.txt;
+- FINAL_THESIS_QA_CHECKLIST.md;
+- FINAL_THESIS_GIT_DIFF_SUMMARY.txt; and
+- FINAL_THESIS_REVISION_SUMMARY.md.
+
+Safety check:
+The supplied worktree omits many tracked evidence files. Every stage operation used
+explicit paths. No recursive add was used, cached name/status was inspected, and no
+worktree deletion was included in either the source tree or release package.

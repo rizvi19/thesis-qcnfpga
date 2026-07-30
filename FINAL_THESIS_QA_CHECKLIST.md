@@ -1,42 +1,58 @@
 # Final Thesis QA Checklist
 
-## Scientific integrity
+## Mathematical and semantic integrity
 
-- [x] Controller features match the registered model.
-- [x] Profile names and coefficient emphasis match the registered manifest.
-- [x] No executed feature is silently relabelled as replenishment.
-- [x] No stored-classical-key coherence-decay model remains in the final network model.
-- [x] Complete reward and validation-only coefficient revision match the retained records.
-- [x] Thresholds, H0-H4 definitions, H3 rule order, policy ROM, and dwell behavior match
-  the implementation contract.
-- [x] Physical exactness, timing, resources, adaptation, and statistics remain within their
-  measurement boundaries.
-- [x] Route-quality superiority is not claimed.
-- [x] Missing bootstrap repetition/seed metadata is disclosed and not reconstructed.
+- [x] Equation 3.10 matches the executable reciprocal formula and defines every
+  variable, unit, guard, floor, and saturation rule.
+- [x] The software-training action is distinguished from the ratio-only physical
+  deployment projection.
+- [x] The thesis does not claim that the physical FPGA computes Equation 3.10 or
+  deploys the profile alpha coefficients.
+- [x] Upstream KMS/SDN eligibility is distinguished from FPGA validity-bit gating.
+- [x] H0 is consistently defined as the feasible minimum-hop baseline.
+- [x] Path-cost infinity and finite saturation are distinguished from the full-range
+  utilization encoding.
+- [x] Route quality is treated as a bounded abstract experimental input, not stored-key
+  quantum coherence.
+- [x] Supporting VLSI results are identified as isolated kernels, not an integrated
+  QFlow ASIC.
 
-## Content and presentation
+## Numerical reproducibility
 
-- [x] Background contains trusted-relay, scoring, and fixed-point worked examples.
-- [x] Methodology contains complete descriptor, threshold, reward, training, RTL, timing,
-  protocol, and statistics sections.
-- [x] Results explain timing, common status counts, 81 adaptive decisions, UNORM16 scale,
-  official device capacity, and related-work comparability.
-- [x] Verification ladder, architecture, trade-off, paired-CI, and routed-layout figures are
-  present and readable.
-- [x] Wide tables use readable landscape or fitted layouts.
-- [x] External-examiner block uses a conventional blank signature/name line.
-- [x] Unused abbreviations and symbols were removed.
+- [x] Row-level H2, H3, and H4 physical results were read from evidence commit
+  `290b4ad75eef2af2b9da2f1f281a2b89416cfd24`.
+- [x] The paired-row bootstrap is executable from
+  `reproduce_physical_bootstrap.py`.
+- [x] Sampling unit, 58-pair filter, 10,000 replicates, MT19937 RNG, seed 20260731,
+  percentile method, and R-7 interpolation are declared.
+- [x] Recomputed H4-H2 interval: [-25.120690, 226.620690] UNORM16 units.
+- [x] Recomputed H4-H3 interval: [-242.281466, 77.534483] UNORM16 units.
+- [x] Both intervals cross zero; route-quality superiority is not claimed.
+- [x] Tables, figure, appendices, CSV data, and audit reports use the same values.
 
-## Build and artifact checks
+## Source and release
 
-- [x] Branch: `thesis-final-scientific-integrity-pass`.
-- [x] Exact thesis-source commit in Appendix A:
-  `2ac7209e2c621d41165e3eb5136f5d250ead8701`.
-- [x] `document.pdf` is 97 A4 pages and opens with Poppler.
-- [x] All 97 pages rendered and were visually inspected.
-- [x] No fatal errors, undefined references, undefined citations, missing-glyph markers, or
-  overfull boxes were found.
-- [x] All 41 bibliography records compile.
-- [x] Required semantic, methodology, numerical-traceability, and compile reports are present.
+- [x] Branch: `thesis-final-submission-corrections`.
+- [x] Exact source commit:
+  `575a64b19a2a583a7e31e9092c05c9991c24cc76`.
+- [x] The branch was pushed and independently resolved with `git ls-remote` and a
+  subsequent fetch.
+- [x] Root source, chapters, appendices, figures, bibliography, and build instructions
+  were enumerated at that exact commit.
+- [x] Appendix A contains the exact source commit.
+- [x] `document.pdf` and the packaged PDF are identical 92-page A4 files.
 - [x] Final PDF SHA-256:
-  `58C23F007CACCA1E8DE97C3F5B61384AC49EAA5C79CA4F281DE1CA0E0DD007E4`.
+  `2AD29C8FA49776CE55B7D1A6A4C9F708127411624AE358B75E16C0DBD14899CC`.
+
+## Build and visual QA
+
+- [x] XeLaTeX/BibTeX/XeLaTeX/XeLaTeX completed successfully.
+- [x] All 41 bibliography records compiled.
+- [x] No fatal error, undefined reference/citation/control sequence, missing glyph,
+  multiply defined label, overfull box, or rerun request remains.
+- [x] All fonts are embedded.
+- [x] All 92 pages rendered; 88 are portrait and 4 are intentional landscape pages.
+- [x] Every rendered page was visually inspected.
+- [x] The abstract occupies exactly one page.
+- [x] Sparse continuation pages in Methodology, Chapter 4, and Appendix A were removed.
+- [x] No blank page, clipping, overlap, orphaned caption, or unreadable table remains.

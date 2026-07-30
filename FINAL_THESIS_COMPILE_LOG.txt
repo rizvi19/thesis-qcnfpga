@@ -1,68 +1,63 @@
 FINAL THESIS COMPILE LOG
 ========================
 
-Build date: 2026-07-30
+Build date: 2026-07-31
 Project root: C:\Users\shahr\Desktop\__thesis__\New folder (2)
 Root source: document.tex
-Branch: thesis-final-scientific-integrity-pass
-Exact thesis-source commit injected in Appendix A:
-2ac7209e2c621d41165e3eb5136f5d250ead8701
+Branch: thesis-final-submission-corrections
+Exact source commit injected into Appendix A:
+575a64b19a2a583a7e31e9092c05c9991c24cc76
 
 Compiler environment
 --------------------
-- XeTeX 3.141592653-2.6-0.999995 (MiKTeX-XeTeX 4.10, MiKTeX 24.1)
-- BibTeX 0.99d / MiKTeX-BibTeX 4.1 (MiKTeX 24.1)
-- Poppler pdftoppm 23.13.0
-- latexmk launcher unavailable because Perl is not installed; the equivalent direct
-  XeLaTeX/BibTeX sequence was used.
+- XeTeX 3.141592653-2.6-0.999995, MiKTeX 24.1
+- BibTeX 0.99d, MiKTeX 24.1
+- Poppler pdfinfo/pdftotext/pdftoppm 23.13.0
 
-Bibliography and stabilization sequence
-----------------------------------------
-1. xelatex -interaction=nonstopmode -file-line-error document.tex
+Release sequence
+----------------
+1. xelatex -jobname=document -interaction=nonstopmode -halt-on-error
+   "\def\FinalThesisSourceCommit{575a64b19a2a583a7e31e9092c05c9991c24cc76}\input{document.tex}"
 2. bibtex document
-3. xelatex -interaction=nonstopmode -file-line-error document.tex
-4. xelatex -interaction=nonstopmode -file-line-error document.tex
-
-Final release sequence
-----------------------
-The final two passes injected the already-created source commit without modifying the
-LaTeX sources:
-
-xelatex -jobname=document -interaction=nonstopmode -file-line-error
-  "\def\FinalThesisSourceCommit{2ac7209e2c621d41165e3eb5136f5d250ead8701}\input{document.tex}"
-
-The command was run twice to stabilize all references and lists.
+3. repeat the injected XeLaTeX command twice
 
 Final result
 ------------
 - Output: document.pdf
-- Exit code: 0
-- Pages: 97
+- Packaged copy: output/pdf/QFlow_Thesis_VLSI_Integrated.pdf
+- Pages: 92
 - Media: A4, 595.28 x 841.89 pt
-- PDF forms: none
+- File size: 5,368,619 bytes
+- PDF version: 1.5
+- Forms: none
 - Encryption: none
-- SHA-256: 58C23F007CACCA1E8DE97C3F5B61384AC49EAA5C79CA4F281DE1CA0E0DD007E4
 - Bibliography records: 41
+- SHA-256: 2AD29C8FA49776CE55B7D1A6A4C9F708127411624AE358B75E16C0DBD14899CC
+
+Final transcript scan
+---------------------
+- Fatal/emergency errors: 0
+- Undefined control sequences: 0
 - Undefined references: 0
 - Undefined citations: 0
-- Undefined control sequences: 0
-- Fatal/emergency errors: 0
-- Package warnings in the final warning scan: 0
+- Multiply defined labels: 0
+- Missing-character diagnostics: 0
 - Overfull boxes: 0
-- Cross-reference rerun requests after the final pass: 0
+- Cross-reference rerun requests: 0
+- Underfull-box diagnostics: 118
 
-Non-fatal underfull-box diagnostics remain in deliberately narrow table cells. Full-page
-render inspection confirmed that they do not cause clipping, overlap, missing glyphs, or
-unreadable text.
+The underfull diagnostics occur in deliberately narrow table cells and do not imply
+content loss. Render inspection found no clipping, overlap, blank page, missing glyph,
+or unreadable table.
 
 PDF verification
 ----------------
-- pdfinfo opened the final PDF and confirmed 97 A4 pages.
-- pdftotext confirmed the exact source commit in Appendix A and found no placeholder,
-  replacement-character, or stale-source-hash residue.
-- pdftoppm rendered all 97 current pages at 120 DPI without a page failure.
-- Contact sheets and full-resolution checks covered every page; higher-resolution checks
-  included the certificate, wide methodology tables, architecture figure, related-work
-  table, Appendix A hash, landscape paired-statistics table, and final bibliography page.
-- The last visual correction kept the Appendix C.6 heading and its landscape table on the
-  same page, eliminating a near-blank float page.
+- pdfinfo opened the release and confirmed 92 A4 pages.
+- pdftotext extracted 217,078 characters and found the exact source SHA once in
+  Appendix A.
+- pdftoppm rendered all 92 pages: 88 portrait and 4 landscape; no render was empty.
+- Contact sheets and page-level checks covered every rendered page.
+- pdffonts reported zero non-embedded fonts.
+- The root and packaged PDF copies have identical SHA-256 hashes.
+- qpdf was unavailable; Poppler parsing, text extraction, font inspection, and
+  full-page rendering supplied the structural checks.
