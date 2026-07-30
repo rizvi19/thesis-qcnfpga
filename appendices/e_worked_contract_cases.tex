@@ -1,0 +1,266 @@
+\chapter{Worked Controller and Verification Cases}
+\label{app:worked-cases}
+
+This appendix applies the registered equations to concrete boundary and failure
+cases. The values are deterministic worked examples, not additional experimental
+measurements.
+
+\section{Threshold Equality and State Encoding}
+
+Consider the controller input
+\begin{equation}
+(x_K,x_Q,x_L,x_I)=(0.25,0.93,0.75,0.125).
+\end{equation}
+Round-half-up UNORM16 conversion produces codes
+$(16384,60948,49151,8192)$. Every value is exactly on a registered threshold, so
+the left-closed boundary rule gives bins
+\begin{equation}
+(b_K,b_Q,b_L,b_I)=(1,2,3,1).
+\end{equation}
+The radix-4 address is
+\begin{align}
+z&=(((1\times4)+2)\times4+3)\times4+1\\
+ &=109,
+\end{align}
+whose binary representation is \texttt{01 10 11 01}. This one example checks the
+feature ordering, equality behavior, radix construction, and bit slicing.
+
+\begin{table}[H]
+\centering
+\caption{Additional state examples and first-match H3 results. Values are shown as
+bins because quantization has already been applied.}
+\label{tab:worked-h3-states}
+\begin{tabularx}{\textwidth}{@{}ccccr c X@{}}
+\toprule
+$\boldsymbol b_K$ & $\boldsymbol b_Q$ & $\boldsymbol b_L$ &
+$\boldsymbol b_I$ & $\boldsymbol z$ & \textbf{H3 action} & \textbf{First matching rule}\\
+\midrule
+0 & 0 & 3 & 3 & 15 & $\Pi_1$ & Critical occupancy (priority 1)\\
+2 & 1 & 3 & 3 & 175 & $\Pi_2$ & Low route-quality bin (priority 2)\\
+2 & 2 & 1 & 2 & 166 & $\Pi_1$ & High imbalance (priority 3)\\
+2 & 2 & 3 & 1 & 173 & $\Pi_3$ & Saturated load with healthy occupancy/quality
+and low imbalance (priority 4)\\
+1 & 2 & 3 & 1 & 109 & $\Pi_0$ & No preceding rule matches (default)\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The first row also demonstrates priority: even though other stress conditions are
+present, $b_K=0$ selects $\Pi_1$. The fourth row shows that the low-latency profile
+is requested only when all four conjunctive conditions hold. Here ``low latency''
+is the registered profile label for path-cost emphasis, not a promise about the
+number of FPGA kernel cycles.
+
+\section{UNORM16 Boundary Cases}
+
+The converter clips before scaling. Representative values are
+\begin{table}[H]
+\centering
+\caption{Round-half-up and saturation examples for UNORM16.}
+\label{tab:worked-unorm16}
+\begin{tabular}{@{}r r l@{}}
+\toprule
+\textbf{Real input} & \textbf{Code} & \textbf{Reason}\\
+\midrule
+$-0.10$ & 0 & Lower saturation\\
+0 & 0 & Exact lower endpoint\\
+0.125 & 8,192 & $\lfloor0.125(65535)+0.5\rfloor$\\
+0.25 & 16,384 & First occupancy/load threshold\\
+0.50 & 32,768 & Middle occupancy/load threshold\\
+0.75 & 49,151 & Third occupancy/load threshold\\
+0.90 & 58,982 & First route-quality threshold\\
+0.93 & 60,948 & Second route-quality threshold\\
+0.96 & 62,914 & Third route-quality threshold\\
+1.00 & 65,535 & Exact upper endpoint\\
+1.20 & 65,535 & Upper saturation\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Comparing integer codes rather than reconstructed real numbers removes ambiguity at
+thresholds. For example, a code of 60,948 enters route-quality bin 2, whereas 60,947
+remains in bin 1.
+
+\section{Reward Examples}
+
+Suppose a successful route has bounded quality $b=0.96$, post-decision imbalance
+$I^{\rm post}=0.25$, and three hops. Then
+\begin{equation}
+U_Q=\frac{0.96-0.90}{0.10}=0.6,
+\qquad U_B=1-0.25=0.75.
+\end{equation}
+With no profile change, the evaluation reward is
+\begin{equation}
+r=4+2(0.6)+0.75-0.25(3)=5.20.
+\end{equation}
+If the profile changes on the same decision, the switch penalty gives $r=4.95$.
+If no candidate is feasible, the route terms are not evaluated: the reward is
+$-4.00$ without a switch and $-4.25$ with one.
+
+For the controlled training target, only the balance coefficient changes from one
+to four. The same successful non-switching transition therefore has target reward
+\begin{equation}
+r_{\rm train}=4+2(0.6)+4(0.75)-0.25(3)=7.45.
+\end{equation}
+The final validation table does not report this 7.45-scale quantity; it recomputes
+5.20 on the original evaluation scale. This worked case illustrates why training
+targets and reported evaluation utilities must be named separately.
+
+\begin{table}[H]
+\centering
+\caption{Direction of each term in the worked reward.}
+\label{tab:worked-reward-directions}
+\begin{tabularx}{\textwidth}{@{}p{0.25\textwidth}p{0.21\textwidth}X@{}}
+\toprule
+\textbf{Change} & \textbf{Reward effect} & \textbf{Scope}\\
+\midrule
+Successful rather than blocked & $+8$ before route utilities/costs & Service outcome\\
+Higher quality above 0.90 & Positive, clipped at $+2$ & Abstract experimental code\\
+Smaller post-decision imbalance & Positive & Synthetic balance objective\\
+One extra hop & $-0.25$ & Topological path length\\
+Profile change & $-0.25$ & Controller stability\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Candidate Normalization Edge Cases}
+
+For two feasible candidates, the range denominator is one greater than the raw
+difference. If cost codes are $98{,}304$ and $131{,}072$, the larger cost receives
+\begin{equation}
+\operatorname{round}_{\rm half\ up}
+\left(\frac{32768\times65535}{32769}\right)=65533,
+\end{equation}
+not 65,535. If both cost codes are equal, both normalized cost penalties are zero
+and the cost objective cannot distinguish the routes. The comparator then depends
+on the remaining profile-weighted objectives and, if the complete scores tie, the
+raw cost/hop/slot ordering.
+
+With only one feasible candidate, every objective range is constant, all three
+normalized penalties are zero, and the candidate wins regardless of profile. This
+does not mean the route has perfect physical quality; it means there is no feasible
+alternative in the supplied set against which to normalize it. The short cycle
+cases in H1--H4 occur when such constant ranges bypass iterative division.
+
+\begin{table}[H]
+\centering
+\caption{Deterministic winner behavior for common edge cases.}
+\label{tab:worked-winner-cases}
+\begin{tabularx}{\textwidth}{@{}p{0.28\textwidth}p{0.21\textwidth}X@{}}
+\toprule
+\textbf{Candidate condition} & \textbf{Status} & \textbf{Selection behavior}\\
+\midrule
+No feasible candidate & \texttt{NO\_PATH} & Path 255; score/quality zero\\
+Exactly one feasible candidate & \texttt{OK} & Select it; normalized ranges are zero\\
+Two candidates, unequal scores & \texttt{OK} & Select smaller 18-bit score\\
+Equal scores, unequal raw cost & \texttt{OK} & Select smaller UQ16.16 path cost\\
+Equal score/cost, unequal hops & \texttt{OK} & Select smaller hop count\\
+Equal score/cost/hops & \texttt{OK} & Select smaller candidate slot\\
+Malformed field combination & \texttt{INVALID\_REQUEST} & Path 255; score/quality,
+state/profile zero\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Dwell and Failure Sequences}
+
+The dwell mechanism is evaluated on valid accepted decisions, including valid
+no-path decisions. An invalid request does not create a controller decision. The
+illustrative sequence in Table~\ref{tab:worked-dwell-sequence} assumes that $\Pi_0$
+is active and that the three-decision dwell has just been reset.
+
+\begin{table}[H]
+\centering
+\caption{Illustrative minimum-dwell sequence. Requested profiles are hypothetical
+policy-ROM outputs; the table demonstrates controller semantics only.}
+\label{tab:worked-dwell-sequence}
+\begin{tabularx}{\textwidth}{@{}c c c c X@{}}
+\toprule
+\textbf{Decision} & \textbf{Request valid} & \textbf{Requested} &
+\textbf{Applied} & \textbf{Reason}\\
+\midrule
+1 & Yes & $\Pi_2$ & $\Pi_0$ & Minimum dwell not satisfied\\
+2 & Yes, no path & $\Pi_2$ & $\Pi_0$ & Valid controller decision advances dwell\\
+3 & No & --- & --- & Invalid request rejected; dwell unchanged\\
+4 & Yes & $\Pi_2$ & $\Pi_2$ & Third valid dwell decision admits change\\
+5 & Yes & $\Pi_1$ & $\Pi_2$ & Dwell reset after the admitted change\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+This sequence explains why no-path rows are included in the 81 adaptive decisions
+while the three invalid physical records are not. It also shows why profile
+transition counts cannot be reconstructed merely by counting changes in raw policy
+ROM requests; the applied profile is a stateful result of policy and dwell.
+
+\section{Verification Coverage Matrix}
+
+\begin{landscape}
+\begin{table}[p]
+\centering
+\small
+\caption{Verification levels, exact covered quantities, and the defect class each
+level can detect.}
+\label{tab:verification-coverage-matrix}
+\begin{tabularx}{\linewidth}{@{}p{3.0cm}p{4.6cm}p{3.8cm}X@{}}
+\toprule
+\textbf{Level} & \textbf{Registered coverage} & \textbf{Comparison rule} &
+\textbf{Primary defect class}\\
+\midrule
+Software regression & 74 tests & Exact values and declared exceptions & Reward,
+quantization, packing, path-selection logic\\
+Threshold boundaries & 36 below/equal/above cases & Exact bin and state ID &
+Off-by-one and real-to-code boundary errors\\
+State/policy exhaustiveness & 256 state addresses and all four actions & Exact ROM
+word/action & Address order, missing profile, export corruption\\
+Candidate evaluator RTL & 519 of 519 vectors & Exact winner, score, and status &
+Divider, saturation, range, Tchebycheff, tie-break defects\\
+Integrated policy shell & 101 of 101 expected results & Exact output vector &
+Pipeline alignment, H0--H4 mode selection, dwell interaction\\
+Integrated cycle tracing & 2,125 cycle vectors; 530 valid decisions & Exact
+accepted-edge-to-done distance & Busy/reset/wait timing and counter boundary\\
+Independent implementation & Five synthesis/map/place-route/bitstream flows &
+100~MHz constraint and report extraction & Configuration-specific mapping/timing defects\\
+Physical replay & 420 records; 3,780 checked fields & Exact integer equality; no
+tolerance & Board transport, formatter, parser, bitstream, and hardware/reference mismatch\\
+\bottomrule
+\end{tabularx}
+\end{table}
+\end{landscape}
+
+Exactness at one level does not replace another. A Python test cannot establish
+post-route timing; a timing report cannot establish UART parsing; physical
+bit-exactness cannot establish route-quality superiority. The ladder therefore
+supports several bounded claims rather than one undifferentiated ``validated''
+label.
+
+\section{Result-Field Accounting}
+
+There are 84 physical records per mode, nine compared fields per record, and five
+modes:
+\begin{equation}
+84\times9=756\ \text{fields/mode},\qquad
+5\times756=3780\ \text{fields total}.
+\end{equation}
+The complete corpus has 76 OK, five no-path, and three invalid records per mode.
+Adaptive profile counts use $84-3=81$ decisions because no-path is a valid
+controller result. Held-out route-quality pairs use 58 rows because only jointly OK
+rows have a selected-route quality code. These three denominators answer different
+questions and should not be substituted for one another.
+
+\section{Interpretation Checklist}
+
+The worked cases support the following reading rules:
+\begin{enumerate}
+  \item A route-quality code is dimensionless UNORM16 and larger is better; it is
+  not stored-key coherence.
+  \item A smaller Tchebycheff score is better, but scores produced under different
+  active ratios are not a common physical utility scale.
+  \item A no-path result is a valid evaluated request with no feasible candidate;
+  an invalid result is a malformed request rejected by the interface contract.
+  \item H4's two-cycle increment over H3 is controller setup; H0's roughly
+  200-cycle advantage comes from bypassing the iterative multi-objective engine.
+  \item A mean reward near 4.67 is a dimensionless sum under the stated equation.
+  \item Confidence intervals crossing zero and unadjusted exploratory sign tests do
+  not establish route-quality superiority.
+\end{enumerate}

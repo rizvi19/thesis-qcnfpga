@@ -82,16 +82,58 @@ known and expresses engineering priorities among admissible candidates. This
 separation avoids using a weighted score as a substitute for security or resource
 constraints.
 
+\subsection{Concrete trusted-relay example}
+
+Consider five trusted sites $A$--$E$. A request from $A$ to $E$ requires four key
+units on every traversed link. The control plane supplies two simple routes,
+$\mathcal{R}_0=A\!\rightarrow B\!\rightarrow E$ and
+$\mathcal{R}_1=A\!\rightarrow C\!\rightarrow D\!\rightarrow E$. The link-local
+pools and monitored values at one decision instant are shown in
+Table~\ref{tab:trusted-relay-example}. Key units are illustrative fixed blocks; the
+example does not assume that key bits are copied end to end or that stored
+classical keys possess a decaying quantum state.
+
+\begin{table}[H]
+\centering
+\caption{Five-site trusted-relay example for a four-key-unit request. Hard
+eligibility uses status, available pool, and the independently defined QBER alarm.}
+\label{tab:trusted-relay-example}
+\begin{tabularx}{\textwidth}{@{}lrrrrX@{}}
+\toprule
+\textbf{Link} & \textbf{Pool} & \textbf{Capacity} & \textbf{QBER} &
+\textbf{Util.} & \textbf{Status and interpretation}\\
+\midrule
+$A\!\rightarrow B$ & 9 & 16 & 0.021 & 0.25 & Up; enough key units\\
+$B\!\rightarrow E$ & 5 & 16 & 0.028 & 0.31 & Up; bottleneck of $\mathcal R_0$\\
+$A\!\rightarrow C$ & 12 & 16 & 0.019 & 0.18 & Up; enough key units\\
+$C\!\rightarrow D$ & 3 & 16 & 0.024 & 0.16 & Up, but insufficient for the request\\
+$D\!\rightarrow E$ & 10 & 16 & 0.026 & 0.20 & Up; enough key units\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Initially $v_0=1$ and $v_1=0$, so the evaluator must return $\mathcal R_0$ even if
+$\mathcal R_1$ would have a more attractive soft score. If the
+$C\!\rightarrow D$ pool later reaches seven units while all hard checks remain
+valid, both candidates become feasible. A scarcity-oriented profile may then prefer
+the larger bottleneck reserve of $\mathcal R_1$; a path-cost-oriented profile may
+prefer the two-hop $\mathcal R_0$. Thus feasibility answers ``may this route be
+used?'', whereas the profile answers ``which permitted route best expresses the
+current operating preference?'' No finite score can override $v_i=0$.
+
 \section{Candidate-Route Evaluation}
 
 Candidate-generation algorithms may use shortest paths, constrained path search,
 multipath methods, optimization, or policy filters. \QFlow\ receives the resulting
 bounded set $\mathcal{R}_{sd}$ rather than traversing the complete graph. Each
-candidate descriptor contains fixed-width fields such as normalized distance,
-bottleneck occupancy, replenishment condition, load or imbalance, operational risk,
-hop count, and identifier. Candidate evaluation then becomes a regular reduction:
-compute a score for every feasible descriptor and retain the best candidate under a
-deterministic tie-break rule.
+candidate descriptor in the completed FPGA experiment contains a validity bit,
+precomputed path cost, bounded bottleneck route-quality code, utilization objective,
+hop count, and candidate slot. Candidate evaluation then becomes a regular
+reduction: compute a score for every feasible descriptor and retain the best
+candidate under a deterministic tie-break rule. The broader network-control model
+may use occupancy, generation, consumption, freshness, status, utilization, and
+external health indicators to generate these descriptors, but those upstream
+quantities must not be conflated with the executed controller ports.
 
 The distinction between generation and evaluation is important for both science and
 implementation. Network-level papers may assess blocking, topology robustness, or
@@ -101,46 +143,117 @@ but not interchangeable.
 
 \section{Multi-Objective Scoring}
 
-Key-aware selection combines objectives that have different units. Each metric is
-therefore normalized to a bounded dimensionless penalty before weighting. For
-candidate $\mathcal{R}_i$, a four-term vector can be written as
+Key-aware selection combines objectives that have different units. The registered
+candidate evaluator minimizes three quantities for every feasible candidate:
+precomputed path cost $c_i$, route-quality deficit $d_i=65535-q_i$, and utilization
+imbalance $u_i$. Let
 \begin{equation}
-\boldsymbol{\phi}_i[n]
-=
-\begin{bmatrix}
-1-\widehat{o}_i[n]\\
-1-\widehat{r}_i[n]\\
-\widehat{u}_i[n]\\
-\widehat{\rho}_i[n]
-\end{bmatrix},
-\label{eq:bg-penalty-vector}
+\boldsymbol f_i=[c_i,d_i,u_i]^{\mathsf T}.
+\label{eq:bg-objective-vector}
 \end{equation}
-representing scarcity, recharge deficit, utilization or imbalance, and operational
-risk. Scoring profile $\Pi_k$ supplies coefficient vector
-$\boldsymbol{\alpha}^{(k)}$, giving local cost
-\begin{equation}
-c_i^{(k)}[n]
-=\operatorname{sat}_{W_c}
-\left(\sum_{r=1}^{4}\alpha_r^{(k)}\phi_{i,r}[n]\right).
-\label{eq:bg-local-cost}
-\end{equation}
+For the currently valid candidates, the ideal point
+$\boldsymbol z^\star=[\min_i c_i,\min_i d_i,\min_i u_i]^{\mathsf T}$ contains the
+best observed value of each objective. It is a reference vector; it need not
+correspond to one physical route. Each nonnegative distance from the ideal is
+range-normalized to an unsigned 16-bit penalty $N_{i,j}\in[0,65535]$.
+Consequently, zero is ideal and a lower value is better.
 
-Tchebycheff decomposition provides a scalar comparison while retaining an explicit
-multi-objective interpretation \cite{zhang2007moead}. If
-$\widehat{\boldsymbol{f}}_i^{(k)}$ is the normalized objective vector and
-$\boldsymbol{z}^{\star}$ is an ideal point, the score is
+Tchebycheff decomposition retains the worst weighted departure from that ideal
+\cite{zhang2007moead}:
 \begin{equation}
-g_i^{(k)}[n]
-=\max_j\left\{
-\lambda_{\mathrm{TCH},j}^{(k)}
-\left|\widehat{f}_{i,j}^{(k)}[n]-z_j^{\star}\right|
-\right\}.
+S_i^{(k)}=\max_{j\in\{c,q,u\}}
+\left\{\lambda_{j}^{(k)}N_{i,j}\right\}.
 \label{eq:bg-tchebycheff}
 \end{equation}
-The vector $\boldsymbol{\lambda}_{\mathrm{TCH}}^{(k)}$ contains objective weights;
-it is distinct from link key-generation rate $\lambda_{ij}(t)$. The use of Pareto and
-decomposition concepts is grounded in established multi-objective optimization
-methods \cite{deb2002nsga2,zhang2007moead}.
+The candidate having the smallest $S_i^{(k)}$ wins. This ``minimize the maximum
+weighted regret'' interpretation is different from summing all objectives: a very
+poor component cannot be hidden completely by two good components. The weight
+ratios can remain integer because multiplying every $\lambda_j^{(k)}$ by a common
+positive constant does not change the argmin. Multi-objective routing surveys and
+restricted-shortest-path theory motivate explicit objective treatment but do not
+imply that one method is universally best
+\cite{zajac2021objectives,hassin1992restricted,deb2002nsga2}.
+
+The registered profile words also preserve four half-unit coefficients
+$\boldsymbol\alpha^{(k)}$. Their conceptual role is to parameterize an upstream
+local/link-cost construction. In the completed physical shell, candidate path cost
+arrives already computed under the common replay; the candidate evaluator consumes
+only the profile word's lower six bits, namely the three Tchebycheff ratios.
+Therefore the physical H2--H4 comparison changes the relative emphasis among path
+cost, route-quality deficit, and utilization imbalance. It does not recompute an
+$\boldsymbol\alpha$-weighted graph path inside the FPGA.
+
+\subsection{Worked profile-scoring example}
+
+Table~\ref{tab:worked-score-inputs} gives two feasible descriptors using the exact
+numeric contract. UNORM16 values are obtained by round-half-up multiplication by
+65,535; UQ16.16 path cost is obtained by round-half-up multiplication by 65,536.
+
+\begin{table}[H]
+\centering
+\caption{Inputs to the worked candidate-scoring example.}
+\label{tab:worked-score-inputs}
+\begin{tabularx}{\textwidth}{@{}lrrrrrX@{}}
+\toprule
+\textbf{Route} & \textbf{Cost} & \textbf{Cost code} & \textbf{Quality} &
+\textbf{Quality code} & \textbf{Util. code} & \textbf{Hops/slot}\\
+\midrule
+$\mathcal R_0$ & 1.5 & 98,304 & 0.95 & 62,258 & 16,384 & 3 / 0\\
+$\mathcal R_1$ & 2.0 & 131,072 & 0.97 & 63,569 & 8,192 & 4 / 1\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Cost favours $\mathcal R_0$, whereas quality and utilization favour $\mathcal R_1$.
+After the registered finite-range normalization, the three minimization-penalty
+vectors are
+\begin{equation}
+\boldsymbol N_0=[0,65485,65527],\qquad
+\boldsymbol N_1=[65533,0,0].
+\label{eq:worked-normalized-vectors}
+\end{equation}
+For balanced profile $\Pi_0$, whose hardware ratio is $(2,2,1)$,
+\begin{align}
+S_0^{(0)}&=\max(0,2\cdot65485,65527)=130970,\\
+S_1^{(0)}&=\max(2\cdot65533,0,0)=131066,
+\end{align}
+so $\mathcal R_0$ wins by 96 score units. For scarcity-protection profile $\Pi_1$
+the deployed ratio is $(1,1,2)$:
+\begin{align}
+S_0^{(1)}&=\max(0,65485,2\cdot65527)=131054,\\
+S_1^{(1)}&=\max(65533,0,0)=65533,
+\end{align}
+so $\mathcal R_1$ wins. In this contract, the registered profile name identifies a
+controller mode; the physical arithmetic is defined by the numerical ratio. If two
+scores tie, comparison continues lexicographically by raw path cost, hop count, and
+candidate slot, guaranteeing one reproducible result.
+
+\subsection{Worked fixed-point calculation}
+
+For any objective with candidate minimum $m$ and maximum $M$, the implemented
+normalization is
+\begin{equation}
+N(x)=\begin{cases}
+0,&M=m,\\[2pt]
+\operatorname{round}_{\mathrm{half\ up}}
+\!\left(\dfrac{(x-m)65535}{(M-m)+1}\right),&M>m.
+\end{cases}
+\label{eq:bg-fixed-normalization}
+\end{equation}
+The denominator offset prevents the maximum finite difference from producing an
+out-of-range code. For $\mathcal R_1$'s cost,
+$x-m=131072-98304=32768$, hence
+\begin{equation}
+N_c(\mathcal R_1)=
+\operatorname{round}_{\mathrm{half\ up}}
+\left(\frac{32768\times65535}{32768+1}\right)=65533.
+\end{equation}
+The intermediate product is held at sufficient width, the divider returns the
+rounded unsigned result, and the final value saturates to $[0,65535]$. A weight
+ratio of two produces $2\times65533=131066$, which fits the 18-bit score field.
+No binary-to-real conversion is used in the comparison: integer 131066 is compared
+directly with 130970. Saturation handles values above the declared field maximum; it
+never wraps a large penalty into an apparently favourable small value.
 
 \section{Offline Reinforcement Learning for Profile Selection}
 
@@ -163,6 +276,16 @@ deterministic inference. The FPGA therefore contains no exploration mechanism an
 runtime Q-value update path. A minimum-dwell mechanism can suppress rapid profile
 changes by holding the current action until a specified number of accepted decisions
 has elapsed.
+
+This separation is particularly useful for a small deterministic accelerator. The
+training Q-table has $256\times4=1024$ signed Q8.7 entries and depends on exploration,
+episode sequencing, and reward accumulation. The deployed greedy policy requires
+only 256 two-bit actions. Removing online updates eliminates the learning-rate,
+discount, random-selection, and write-conflict hardware from the inference path.
+Policy changes remain possible, but they occur through an independently verified ROM
+image and bitstream rather than through unobserved online adaptation. ROM inference
+therefore provides bounded storage, a known one-cycle read latency, and exhaustive
+state-by-state verification.
 
 \section{Fixed-Point Arithmetic and FPGA Implementation}
 
@@ -209,12 +332,30 @@ routing, channels, key rate, and time slots \cite{zhang2024rckta}. These studies
 show why hop count alone is insufficient, but their evaluated functions and evidence
 boundaries differ from a fixed-point candidate-evaluation kernel.
 
+Recent work broadens this picture. Dynamic security-aware allocation couples route,
+wavelength, time slot, and security level \cite{bhatia2025dynamic}; trusted-node
+optimization minimizes activated relay sites subject to key-rate requirements
+\cite{kong2024trusted}; and linear-programming formulations study KMS-level key
+forwarding \cite{popa2024forwarding}. Progressive recovery applies DRL to staged
+restoration after QKD-network failures \cite{li2024recovery}, while moving-target
+defence changes routes under a zero-trust relay model \cite{ghourab2025zerotrust}.
+These are complementary Class~C studies: they justify resource, recovery, and policy
+awareness but neither implement nor time the same FPGA candidate kernel.
+
 RL-based work includes deep-RL resource assignment
 \cite{sharma2023drl}, tabular Q-learning for resource-aware trusted-relay routing
 \cite{hao2025qlearning}, and a graph-attention agent for flexible meshed topologies
 \cite{johann2026adaptive}. These studies provide broader network or generalization
 evidence than the present physical replay. They do not provide a same-input,
 same-function FPGA timing baseline.
+
+Entanglement-network studies use RL or graph learning with different quantum-state
+and repeater models. Examples include qRL \cite{abreu2024qrl}, deep-RL
+entanglement routing \cite{le2022entanglement}, and RELiQ's local-information graph
+approach \cite{meuser2026reliq}. They are relevant to adaptive routing as algorithmic
+context, but an entanglement fidelity in those models is not the same object as a
+post-processed classical-key pool or the bounded route-quality input in the present
+replay. No latency or quality ratio is transferred between these domains.
 
 \subsection{Operational QKD systems}
 
@@ -235,6 +376,16 @@ wei2025fptems,chandra2025synchronization}. These contributions demonstrate that 
 implementation is practical in QKD systems, but they process different functions
 and use throughput or latency boundaries that cannot be converted into route-selection
 speedups.
+
+The wider hardware literature reinforces the same boundary. A reconciliation
+review surveys software and hardware implementation constraints
+\cite{yang2023reconciliation}; FPGA-accelerated quantum-error-correction work frames
+real-time decoder requirements \cite{branchini2023hitchhiker}; and simulator papers
+such as the QKD-platform survey and NetSquid address model construction rather than
+physical route-selection latency \cite{aji2021simulation,coopmans2021netsquid}.
+RapidLayout uses evolutionary multi-objective search for an EDA placement problem
+\cite{zhang2022rapidlayout}; it is useful methodological context, not an
+FPGA-resident QKD routing baseline.
 
 Hardware genetic-algorithm research provides relevant implementation ideas for
 pipelined evaluation, selection, and specialization

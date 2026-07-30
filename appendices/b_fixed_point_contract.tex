@@ -1,7 +1,10 @@
 \chapter{Fixed-Point, State, and Protocol Contract}
 \label{app:fixed-point}
 
-\section{State and policy layout}
+This appendix collects the bit-level constants required to reproduce the executed
+controller without inferring them from prose.
+
+\section{State and Policy Storage}
 
 \begin{table}[H]
 \centering
@@ -9,79 +12,145 @@
 \label{tab:rom-layout}
 \begin{tabularx}{\textwidth}{@{}p{0.24\textwidth}rrX@{}}
 \toprule
-\textbf{Artifact} & \textbf{Depth} & \textbf{Useful width} & \textbf{Ordering}\\
+\textbf{Storage} & \textbf{Depth} & \textbf{Useful width} & \textbf{Ordering/use}\\
 \midrule
-Policy ROM & 256 & 2 bits & State IDs 0--255\\
-Profile ROM & 4 & 18 bits & Profiles $\Pi_0$--$\Pi_3$\\
-Training Q-table & 1,024 & 16 bits & State-major, action-minor, signed Q8.7\\
+Policy ROM & 256 & 2 bits & State IDs 0--255; deployed H4 actions\\
+Profile ROM & 4 & 18 bits & Profiles $\Pi_0$--$\Pi_3$; deployed payloads\\
+Training Q-table & 1,024 & 16 bits & State-major/action-minor signed Q8.7; not deployed\\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-The deployed controller reads the policy ROM and profile ROM. The training Q-table
-is retained for analysis but is not part of the inference datapath. The state address
-is
+The radix-4 address is
 \begin{equation}
-z=(((b_B\times4)+b_R)\times4+b_L)\times4+b_I.
-\label{eq:appendix-state-address}
+z=(((b_K\times4)+b_Q)\times4+b_L)\times4+b_I.
 \end{equation}
+The two-bit fields occupy $[7{:}6]$, $[5{:}4]$, $[3{:}2]$, and $[1{:}0]$ in that
+order. The deployed policy contains action counts $(145,43,44,24)$ for
+$(\Pi_0,\Pi_1,\Pi_2,\Pi_3)$.
 
-\section{Threshold definitions}
-
-For thresholds $\theta_1<\theta_2<\theta_3$, the four-level bin function is
-\begin{equation}
-b(x;\theta_1,\theta_2,\theta_3)=
-\begin{cases}
-0,&x<\theta_1,\\
-1,&\theta_1\leq x<\theta_2,\\
-2,&\theta_2\leq x<\theta_3,\\
-3,&x\geq\theta_3.
-\end{cases}
-\label{eq:bin-contract}
-\end{equation}
-Equality enters the higher bin. Testing below, at, and above every threshold gives
-36 directed threshold-edge cases for four features and three thresholds.
-
-\section{Profile payload}
-
-Each $\alpha$ coefficient is encoded as a three-bit unsigned half-unit numerator,
-and each Tchebycheff ratio uses two unsigned bits. The 18-bit word is
-\[
-\alpha_1[2{:}0]\,\alpha_2[2{:}0]\,\alpha_3[2{:}0]\,\alpha_4[2{:}0]\,
-\lambda_1[1{:}0]\,\lambda_2[1{:}0]\,\lambda_3[1{:}0].
-\]
-The four hexadecimal payloads are \texttt{13329}, \texttt{1B516},
-\texttt{14399}, and \texttt{0A2A5}.
-
-\section{Request and result protocol}
+\section{Threshold Edge Contract}
 
 \begin{table}[H]
 \centering
-\caption{Synchronous kernel protocol.}
-\label{tab:protocol-contract}
-\begin{tabularx}{\textwidth}{@{}p{0.27\textwidth}X@{}}
+\small
+\caption{Real and encoded threshold constants.}
+\label{tab:appendix-thresholds}
+\begin{tabularx}{\textwidth}{@{}p{0.25\textwidth}cccX@{}}
 \toprule
-\textbf{Condition} & \textbf{Required behavior}\\
+\textbf{Feature} & \textbf{Threshold 1} & \textbf{Threshold 2} &
+\textbf{Threshold 3} & \textbf{UNORM16 codes}\\
 \midrule
-Reset & Clear busy/done, controller history, and dwell state\\
-Valid start while ready & Sample all inputs once and begin evaluation\\
-Start while busy & Apply the declared busy-response status without resampling inputs\\
-Invalid candidate fields & Return invalid status\\
-No feasible candidate & Return no-path status\\
-Back-to-back request & Accept at the first permitted ready edge\\
-Done & Assert on the synchronous completion edge with stable result fields\\
+Minimum key occupancy & 0.25 & 0.50 & 0.75 & 16,384; 32,768; 49,151\\
+Bottleneck route quality & 0.90 & 0.93 & 0.96 & 58,982; 60,948; 62,914\\
+Offered request load & 0.25 & 0.50 & 0.75 & 16,384; 32,768; 49,151\\
+Utilization imbalance & 0.125 & 0.25 & 0.50 & 8,192; 16,384; 32,768\\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-The raw UART record carries the request identifier and the returned status,
-configuration/profile identity, state, selected candidate, score, and cycle-related
-fields required by the registered nine-field comparison. The UART layer transports
-the record but is not included in kernel-cycle measurement.
+The four-bin function is left-closed at every threshold: equality enters the higher
+bin. Testing below, at, and above every one of the 12 thresholds gives 36 directed
+threshold-edge cases.
 
-\section{Latency boundary}
+\section{Numeric Formats and Special Codes}
 
-Cycle count begins at synchronous request acceptance and ends at the synchronous
-\texttt{done} edge. Host parsing, UART serialization, operating-system scheduling,
-JTAG, programming, KMS access, candidate generation, and route installation are
-outside this boundary.
+\begin{table}[H]
+\centering
+\small
+\caption{Fixed-point formats used by the physical candidate shell.}
+\label{tab:appendix-numeric-formats}
+\begin{tabularx}{\textwidth}{@{}p{0.25\textwidth}p{0.19\textwidth}p{0.20\textwidth}X@{}}
+\toprule
+\textbf{Quantity} & \textbf{Format} & \textbf{Scale/range} & \textbf{Rule}\\
+\midrule
+State and route quality & 16-bit UNORM16 & $0$--$65535\leftrightarrow0$--$1$ &
+Round half up and clip\\
+Path cost & 32-bit UQ16.16 & Scale $2^{16}$ & Maximum finite
+\texttt{FFFFFFFE}; infinity \texttt{FFFFFFFF}\\
+Candidate utilization & 32-bit UQ16.16 & Scale $2^{16}$ & Unsigned saturation\\
+Hop count & 3-bit unsigned & 0--7 & Integer edge count\\
+Candidate slot & 2-bit unsigned & 0--3 & Stable final tie-break\\
+Tchebycheff ratio & 2-bit unsigned & 0--3 & Common scaling omitted\\
+Weighted score & 18-bit unsigned & 0--262143 & Maximum of three products\\
+Key count & 16-bit unsigned integer & Trace capacity 16 & Synthetic environment\\
+Synthetic key rate & 16-bit UQ8.8 & Scale $2^8$ & Software/export contract\\
+$\alpha$ coefficient & 3-bit U2.1 & Half-unit increments & Stored in profile word\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+For nonconstant range $m<M$, normalization is
+\begin{equation}
+N(x)=\operatorname{round}_{\rm half\ up}
+\left(\frac{(x-m)65535}{(M-m)+1}\right).
+\end{equation}
+Equal ranges map to zero. The comparator ranking is
+$(\mathrm{score},\mathrm{path\ cost},\mathrm{hops},\mathrm{slot})$, all ascending.
+
+\section{Profile Payloads}
+
+The 18-bit packing order is
+\[
+\alpha_1[2{:}0]\,\alpha_2[2{:}0]\,\alpha_3[2{:}0]\,\alpha_4[2{:}0]\,
+\rho_c[1{:}0],\rho_q[1{:}0],\rho_u[1{:}0].
+\]
+The payloads are \texttt{13329}, \texttt{1B516}, \texttt{14399}, and
+\texttt{0A2A5}. In the physical candidate evaluator, only the lower six ratio bits
+affect selection because path cost is supplied precomputed. The alpha fields remain
+part of the registered semantic/export word.
+
+\section{H3 Priority Function}
+
+For completeness, the exact first-match function is
+\begin{equation}
+a_{H3}(z)=\begin{cases}
+1,&b_K=0,\\
+2,&b_K\ne0\land b_Q\le1,\\
+1,&b_K\ne0\land b_Q>1\land b_I\ge2,\\
+3,&b_L=3\land b_K\ge2\land b_Q\ge2\land b_I\le1,\\
+0,&\text{otherwise}.
+\end{cases}
+\end{equation}
+The order is significant; the mathematical guards make the priority explicit.
+
+\section{Synchronous and UART Protocol}
+
+A request is accepted only on \texttt{start \&\& ready}. Start while busy is
+ignored and does not alter the active request. Reset clears busy/done, cycle count,
+winner state, profile history, and dwell state. Done is a one-cycle pulse with all
+result fields stable.
+
+\begin{table}[H]
+\centering
+\caption{Status and failure-result contract.}
+\label{tab:appendix-status-contract}
+\begin{tabularx}{\textwidth}{@{}c p{0.25\textwidth}X@{}}
+\toprule
+\textbf{Code} & \textbf{Name} & \textbf{Returned fields}\\
+\midrule
+0 & \texttt{OK} & Selected slot 0--3, computed score and route-quality code\\
+1 & \texttt{NO\_PATH} & Selected path 255; score and route quality zero; valid
+controller state/profile retained\\
+2 & \texttt{INVALID\_REQUEST} & Selected path 255; score and route quality zero;
+state/profile zero\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The 44-byte record is
+\begin{center}
+\texttt{QF6R,1,TTTT,P,SSS,R,PPP,CCCCCC,FFFFF,LLL,E\textbackslash r\textbackslash n}.
+\end{center}
+The nine numeric fields are test ID, policy ID, state ID, profile ID, selected path,
+score, route-quality code (registered field name bottleneck fidelity), cycles, and
+status. Production UART is 100~MHz/115,200 baud, 8N1, idle high, no flow control.
+Bytes are emitted left to right; each byte sends least-significant data bit first.
+
+\section{Latency Boundary and Observed Ranges}
+
+Cycle count is $N_{\rm done}-N_{\rm accept}$. H0 normal results are exactly two
+cycles. H1 normal results span 7--309 cycles, H2/H3 span 8--310, and H4 spans
+10--312. Mean values are 2.000, 201.763, 202.763, 202.763, and 204.763 cycles.
+Host parsing, UART serialization, operating-system scheduling, JTAG, programming,
+KMS access, candidate generation, and route installation are excluded.

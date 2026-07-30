@@ -50,6 +50,15 @@ permutation $p$-value was 0.125 and the Holm-adjusted value was 0.25 for both le
 comparisons. The software result therefore describes behavior under the selected
 environment; it is not evidence of statistical superiority.
 
+The learned mean of 4.677079 is interpreted on the reward scale of
+Equations~\eqref{eq:success-reward}--\eqref{eq:block-reward}. Zero blocking means
+each step received the $+4$ success term. The remaining approximately 0.677 mean
+contribution is the net of bounded route-quality and balance utilities, hop costs,
+and profile-switch penalties. It is not an end-to-end secret-key rate, monetary
+value, or physical energy measure. The route-quality column likewise reports the
+registered synthetic metric; it is not evidence of coherence in a stored classical
+key pool.
+
 \section{Controller and Policy Verification}
 
 \begin{table}[H]
@@ -94,8 +103,8 @@ Each build passed synthesis, mapping, placement, routing, and the 100~MHz timing
 constraint. Independent bitstreams prevent a parameter-only simulation from being
 reported as multiple physical implementations. Configuration H0 remained the
 minimal feasibility/distance reference, while configurations H1--H4 added the
-key-aware and profile-scoring functions defined in
-Table~\ref{tab:hardware-configurations}.
+cost and profile-scoring functions defined in
+Table~\ref{tab:h0-h4-definitions}.
 
 \section{Same-Board Physical Replay and Exactness}
 
@@ -202,6 +211,17 @@ Configuration H0 is not feature-equivalent to the remaining configurations; its
 two-cycle result should not be used to calculate an RL overhead. The relevant
 adaptive comparison is configuration H4 versus configuration H3.
 
+The timing separation follows directly from the implemented datapaths. H0 performs
+the feasible-hop comparison and registered completion without range normalization.
+H1--H4 use the shared iterative 49-by-33-bit divider; objective ranges that are not
+equal require repeated division steps, so their median is near the 309--312-cycle
+maximum even though bypassed cases reduce the mean. H1 omits the profile-ROM read.
+H2 and H3 add that one setup cycle, and their common candidate evaluator therefore
+has the same measured mean. H4 adds two controller cycles for policy-ROM/dwell
+inference and retains the same scoring engine. The resulting H4--H3 difference is
+two cycles, or 20~ns at 100~MHz, while the full H0--H4 gap mainly measures the
+presence of the multi-objective evaluator rather than reinforcement learning.
+
 \section{Resource Utilization}
 
 \begin{table}[H]
@@ -228,6 +248,33 @@ to configuration H3, it mapped to 7.081\% fewer LUTs, 5.378\% more registers, an
 directions because slice packing, register placement, and routing affect physical
 occupancy. The LUT reduction is an implementation-specific synthesis result, not a
 general property of reinforcement learning.
+
+\begin{table}[H]
+\centering
+\caption{Detailed H4 utilization from the Xilinx map report for
+XC6SLX16-2-CSG324. Percentages are the report's integer values.}
+\label{tab:h4-device-utilization}
+\begin{tabularx}{\textwidth}{@{}X r r r@{}}
+\toprule
+\textbf{Resource} & \textbf{Used} & \textbf{Available} & \textbf{Utilization}\\
+\midrule
+Slice registers & 1,156 & 18,224 & 6\%\\
+Slice LUTs & 1,706 & 9,112 & 18\%\\
+Occupied slices & 677 & 2,278 & 29\%\\
+Bonded I/O blocks & 17 & 232 & 7\%\\
+RAMB16 block RAMs & 0 & 32 & 0\%\\
+RAMB8 block RAMs & 0 & 64 & 0\%\\
+BUFG global clock buffers & 1 & 16 & 6\%\\
+DSP48A1 slices & 0 & 32 & 0\%\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The zero BRAM and DSP counts in Table~\ref{tab:h4-device-utilization} are explicit
+tool-report entries, not assumptions from missing categories. Policy and profile
+storage mapped into distributed logic for this small design. Occupied-slice
+capacity also explains why 677 slices correspond to the report's 29\% even though
+individual LUT and register percentages are lower.
 
 \section{Adaptive Profile Behavior}
 
@@ -291,12 +338,24 @@ This is a 45.455\% reduction on the evaluated replay, while mean dwell increased
 from 1.80 to 3.24 valid decisions. Isolating the learned policy contribution would
 require a policy-by-dwell ablation.
 
+The denominator 81 is the number of protocol-valid adaptive decisions in the full
+84-row corpus. Records with test IDs 4, 1015, and 1047 were deliberately malformed
+and returned \texttt{INVALID\_REQUEST}; they were excluded because no valid
+controller decision occurred. The five \texttt{NO\_PATH} records (IDs 3, 1007,
+1023, 1039, and 1055) remained included: they carried valid state inputs, advanced
+the profile/dwell controller, and failed only because no candidate was feasible.
+Thus the profile counts sum to 81 for both H3 and H4.
+
 \section{Held-Out Route-Quality Analysis}
 
 All configurations had 58 successful, four no-path, and two invalid rows in the
-64-row held-out physical partition. Route choices could still differ within jointly
-successful pairs. Table~\ref{tab:pairwise-quality} reports comparisons of
-configuration H4 with configurations H2 and H3.
+64-row held-out physical partition. The common hard-feasibility logic and common
+request validity fields determine those outcomes before profile-conditioned soft
+preference. Consequently, a mode could not convert a deliberately invalid row into
+a valid request or select a route when both candidates were infeasible. Differences
+appeared only in which feasible candidate was preferred. Table
+\ref{tab:pairwise-quality} therefore compares configuration H4 with H2 and H3 only
+on the 58 jointly successful rows.
 
 \begin{table}[H]
 \centering
@@ -312,6 +371,36 @@ H4--H3 & 58 & $-78.05$ & $[-242.53,79.93]$ & 0.4531 & $-0.127$ & 7\\
 \bottomrule
 \end{tabularx}
 \end{table}
+
+The route-quality field is unsigned UNORM16: valid codes are 0--65,535, larger is
+better, and one unit is $1/65535\approx0.000015259$ of full scale. The exact mean
+H4--H2 difference of $+86.465517$ units equals $+0.00131938$ normalized, or about
+$+0.132$ percentage points of full scale. The H4--H3 difference of $-78.051724$
+units equals $-0.00119099$, or about $-0.119$ percentage points. These effects are
+small relative to the complete scale. In H4--H2, 5 pairs were higher, 1 lower, and
+52 tied; in H4--H3, 2 were higher, 5 lower, and 51 tied.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.82\textwidth,height=6.2cm,xmin=-300,xmax=300,ymin=0.5,ymax=2.5,
+  xlabel={Mean paired difference (UNORM16 route-quality units)},
+  ytick={1,2},yticklabels={H4--H3,H4--H2},
+  grid=major,grid style={QFlowLine!45},tick label style={font=\small},
+  label style={font=\small}]
+\addplot[QFlowGray,dashed,thick] coordinates {(0,0.5)(0,2.5)};
+\addplot[QFlowTeal,very thick] coordinates {(-242.53,1)(79.93,1)};
+\addplot[QFlowBlue,very thick] coordinates {(-23.52,2)(228.22,2)};
+\addplot[only marks,mark=*,mark size=3pt,QFlowTeal] coordinates {(-78.05,1)};
+\addplot[only marks,mark=*,mark size=3pt,QFlowBlue] coordinates {(86.47,2)};
+\end{axis}
+\end{tikzpicture}
+\caption{Paired mean route-quality differences with registered percentile 95\%
+confidence intervals. Both intervals cross zero; the line at zero denotes no mean
+difference.}
+\label{fig:paired-quality-ci}
+\end{figure}
 
 Both confidence intervals cross zero. The $p$-values are 0.2188 for configuration
 H4 versus configuration H2 and 0.4531 for configuration H4 versus configuration H3.
@@ -351,36 +440,49 @@ depend on winning every route-quality comparison.
 Table~\ref{tab:state-of-art} compares evidence dimensions without constructing
 speedup ratios across different functions.
 
-\begin{table}[H]
+\begin{landscape}
+\begin{table}[p]
 \centering
-\caption{Function- and evidence-aware comparison with representative related work.}
+\scriptsize
+\caption{Function- and measurement-aware comparison with representative verified
+work. ``Direct'' requires the same evaluated function, input contract, and timing
+boundary; only the internal H0--H4 rows satisfy that requirement.}
 \label{tab:state-of-art}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{@{}p{2.5cm}p{3.2cm}p{2.0cm}p{2.2cm}p{2.3cm}cccc@{}}
+\begin{tabularx}{\linewidth}{@{}p{3.0cm}p{3.8cm}p{2.4cm}p{3.0cm}p{3.3cm}cccc@{}}
 \toprule
 \textbf{Work/category} & \textbf{Evaluated function} & \textbf{Platform} &
-\textbf{Evidence type} & \makecell[c]{\textbf{Topology/}\\\textbf{evaluation}\\\textbf{scale}} &
-\textbf{HW impl.} & \textbf{Board} & \textbf{Exact fixed point} &
-\textbf{Directly comparable}\\
+\textbf{Evidence} & \textbf{Evaluation scope} & \textbf{HW} & \textbf{Board} &
+\textbf{Bit exact} & \textbf{Direct}\\
 \midrule
-Bi et al. \cite{bi2023dynamic} & Dynamic key-resource routing & Software &
-Network model & Simulated QKD topology & No & No & No & No\\
-Hao et al. \cite{hao2025qlearning} & Resource-aware Q-learning routing &
-Software & Network simulation & Trusted-relay simulation & No & No & No & No\\
-Johann et al. \cite{johann2026adaptive} & Generalizing DRL routing &
-\makecell[l]{CPU/\\software} &
-Network simulation & Multiple meshed topologies & No & No & No & No\\
+Bi et al. \cite{bi2023dynamic} & Dynamic key-resource routing & Software & Network
+model & Simulated QKD topology & No & No & No & No\\
+Bhatia et al. \cite{bhatia2025dynamic} & Security-aware route/wavelength/time-slot
+allocation & Software & Network simulation & NSFNET and UBN24 experiments & No & No &
+No & No\\
+Hao et al. \cite{hao2025qlearning} & Resource-aware tabular Q-learning routing &
+Software & Network simulation & Trusted-relay model & No & No & No & No\\
+Johann et al. \cite{johann2026adaptive} & DRL routing across flexible mesh sizes &
+Software & Network simulation & Multiple meshed topologies & No & No & No & No\\
+Li et al. \cite{li2024recovery} & Progressive QKD-network recovery & Software DRL &
+Failure-recovery simulation & Staged repair decisions & No & No & No & No\\
+Popa and Popescu \cite{popa2024forwarding} & KMS-level key forwarding & Linear
+program & Network optimization & All-to-all/one-to-all/one-to-one cases & No & No &
+No & No\\
 MadQCI \cite{martin2024madqci} & SDN-QKD integration & Distributed system &
 Operational deployment & Multi-site production facilities & No & No & No & No\\
 Venkatachalam et al. \cite{venkatachalam2023postprocessing} & QKD post-processing &
-FPGA & Component implementation & Post-processing workload & Yes & Yes & Different
-contract & No\\
-\QFlow\ (this work) & Route-candidate evaluation & Spartan-6 FPGA & Post-route and
-physical replay & 420 records across five builds & Yes & Yes & Yes & Internal H0--H4
-only\\
+FPGA & Component implementation & Post-processing workload & Yes & Yes & Different &
+No\\
+Branchini et al. \cite{branchini2023hitchhiker} & Quantum-error-correction decoder
+requirements & FPGA survey & KPI synthesis & Quantum-adjacent decoder scope & Yes &
+Various & Different & No\\
+\QFlow\ H0--H4 & Fixed-point route-candidate evaluation & Spartan-6 FPGA &
+Post-route and physical replay & 420 records across five independent builds & Yes &
+Nexys 3 & Yes & Internal only\\
 \bottomrule
-\end{tabular}}
+\end{tabularx}
 \end{table}
+\end{landscape}
 
 \QFlow\ is stronger in physically validated fixed-point candidate-evaluation
 evidence, while several software studies provide broader topology, network-level,
@@ -503,13 +605,14 @@ benefit of coefficient specialization; generic cells are not FPGA LUTs.
 \centering
 \caption{OpenROAD physical-design results for isolated kernels.}
 \label{tab:openroad}
-\begin{tabularx}{\textwidth}{@{}lXrr@{}}
+\begin{tabularx}{\textwidth}{@{}p{0.34\textwidth}Xrr@{}}
 \toprule
 \textbf{Kernel} & \textbf{Evaluated role} &
 \textbf{Area ($\mu\mathrm{m}^{2}$)} & \textbf{Utilization}\\
 \midrule
 SKAG-W1 & Fixed-coefficient shift-add scoring & 6,451 & 26\%\\
-FDPE-V3 & Supplementary LUT/interpolation arithmetic & 22,186 & 13\%\\
+LUT/interpolation arithmetic kernel (repository identifier FDPE-V3) &
+Supplementary fixed-point interpolation study & 22,186 & 13\%\\
 Pareto-C0 & Dominance and selection comparator & 3,368 & 13\%\\
 \bottomrule
 \end{tabularx}
@@ -525,7 +628,7 @@ Pareto-C0 & Dominance and selection comparator & 3,368 & 13\%\\
 \begin{subfigure}[t]{0.32\textwidth}
 \centering
 \includegraphics[width=\linewidth]{figures/vlsi/fdpe_v3_final_all.png}
-\caption{FDPE-V3.}
+\caption{LUT/interpolation kernel (FDPE-V3).}
 \end{subfigure}\hfill
 \begin{subfigure}[t]{0.32\textwidth}
 \centering

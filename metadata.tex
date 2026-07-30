@@ -27,4 +27,7 @@
 \newcommand{\SubmissionDate}{\SubmissionMonth~\SubmissionYear}
 
 \newcommand{\RepositoryURL}{https://github.com/rizvi19/thesis-qcnfpga}
+% The release build injects the exact source commit before loading document.tex.
+% This fallback keeps ordinary working-tree builds valid.
+\providecommand{\FinalThesisSourceCommit}{injected in the release PDF and handoff}
 \newcommand{\EvidenceSnapshotDate}{24 July 2026}

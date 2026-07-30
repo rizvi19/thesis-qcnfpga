@@ -23,12 +23,14 @@ $\mathcal{R}_i$ & Candidate route with index $i$\\
 $\boldsymbol{\alpha}^{(k)}$ & Scoring-coefficient vector for profile $\Pi_k$\\
 $\boldsymbol{\lambda}_{\mathrm{TCH}}^{(k)}$ & Tchebycheff objective-weight vector for profile $\Pi_k$\\
 $\Pi_k$ & Scoring profile $k$, where $k\in\{0,1,2,3\}$\\
-$s_i$ & Fixed-point scalar score of candidate $\mathcal{R}_i$\\
-$\bm{x}[n]$ & Four-feature controller observation at decision epoch $n$\\
+$N_c$ & Number of feasible candidates in the offered set\\
+$\boldsymbol z^\star$ & Componentwise ideal point over feasible candidates\\
+$N_{i,j}$ & UNORM16 normalized penalty for candidate $i$, objective $j$\\
+$S_i^{(k)}$ & 18-bit Tchebycheff score of candidate $\mathcal{R}_i$ under profile $k$\\
+$(x_K,x_Q,x_L,x_I)$ & Occupancy, route-quality, load, and imbalance controller inputs\\
 $z[n]$ & Encoded controller state in $\{0,\ldots,255\}$\\
 $a[n]$ & Selected profile action in $\{0,1,2,3\}$\\
 $\pi(z)$ & Offline-trained policy-ROM mapping from state to profile\\
-$d_{\min}$ & Minimum profile dwell in accepted decisions\\
 $T_{\mathrm{clk}}$ & FPGA clock period\\
 $L$ & Kernel latency in cycles or time\\
 $f_{\max}$ & Post-route maximum operating frequency\\

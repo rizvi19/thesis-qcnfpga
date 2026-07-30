@@ -24,6 +24,14 @@ feasible shortest-distance baseline, a fixed key-aware baseline, a fixed-profile
 \QFlow\ evaluator, a threshold/rule-adaptive evaluator, and a
 reinforcement-learned adaptive evaluator.
 
+The completed H4 experiment uses minimum key occupancy, a bounded bottleneck
+route-quality code, offered request load, and utilization imbalance. The
+route-quality code is an abstract input from the registered synthetic contract; it
+is not interpreted as quantum coherence of post-processed keys in classical
+storage. The final network-control model separately represents classical pool
+occupancy, generation, consumption, status, utilization, freshness policy, and
+external health indicators.
+
 Verification combined a fixed-point software reference, exhaustive state and
 threshold tests, cycle-accurate register-transfer-level simulation, independent
 Xilinx ISE implementations, and physical replay on a Digilent Nexys 3 Spartan-6

@@ -18,6 +18,13 @@ reinforcement-learned configuration uses a 256-entry two-bit policy ROM and
 minimum-dwell control, and performs deterministic inference without runtime Q-value
 updates.
 
+The executed features are minimum key occupancy, bounded bottleneck route quality,
+offered request load, and utilization imbalance. The second feature is limited to
+its role as an abstract experimental input and is not a stored-classical-key
+coherence quantity. This experimental contract is kept separate from the final
+network model based on occupancy, generation, consumption, status, utilization,
+freshness policy, and external health indicators.
+
 \section{Main Findings}
 
 Five independent hardware evaluation configurations were implemented on a Digilent
@@ -45,7 +52,8 @@ route-quality superiority.
 The supporting VLSI study showed that selected kernels can pass through generic
 synthesis and separate OpenROAD flows. Fixed-coefficient specialization reduced one
 scoring kernel from 5,343 to 503 generic cells, while isolated routed areas were
-6,451~$\mu\mathrm{m}^{2}$ for SKAG-W1, 22,186~$\mu\mathrm{m}^{2}$ for FDPE-V3, and
+6,451~$\mu\mathrm{m}^{2}$ for SKAG-W1, 22,186~$\mu\mathrm{m}^{2}$ for the
+LUT/interpolation arithmetic kernel (repository identifier FDPE-V3), and
 3,368~$\mu\mathrm{m}^{2}$ for Pareto-C0. These results indicate a possible future
 ASIC path; they are not an integrated ASIC implementation.
 

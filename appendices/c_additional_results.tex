@@ -83,21 +83,120 @@ B6 & 9.252 & 108.085 & Pass\\
 \end{tabular}
 \end{table}
 
+\section{Physical Status Distribution and Cycle Detail}
+
+\begin{table}[H]
+\centering
+\caption{Status counts in the complete 84-row physical corpus. Counts are identical
+for H0--H4 because request validity and hard candidate feasibility are common.}
+\label{tab:full-status-counts}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+\textbf{Configuration} & \textbf{OK} & \textbf{No path} & \textbf{Invalid}\\
+\midrule
+H0 & 76 & 5 & 3\\
+H1 & 76 & 5 & 3\\
+H2 & 76 & 5 & 3\\
+H3 & 76 & 5 & 3\\
+H4 & 76 & 5 & 3\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Normal-result cycle distributions at 100~MHz.}
+\label{tab:full-cycle-distribution}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+\textbf{Configuration} & \textbf{Rows} & \textbf{Minimum} & \textbf{Mean} &
+\textbf{Median} & \textbf{Maximum}\\
+\midrule
+H0 & 76 & 2 & 2.000000 & 2 & 2\\
+H1 & 76 & 7 & 201.763158 & 309 & 309\\
+H2 & 76 & 8 & 202.763158 & 310 & 310\\
+H3 & 76 & 8 & 202.763158 & 310 & 310\\
+H4 & 76 & 10 & 204.763158 & 312 & 312\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The minimum-to-median gap is caused by deterministic arithmetic bypass, not timing
+jitter. Equal objective ranges and single-feasible-candidate requests avoid one or
+more iterative normalizations; two nonconstant candidates exercise the full shared
+divider sequence.
+
+\begin{landscape}
+\section{Paired Route-Quality Detail}
+
+\begin{table}[p]
+\centering
+\scriptsize
+\caption{Detailed jointly successful physical comparisons. Difference is first
+configuration minus second in UNORM16 units.}
+\label{tab:pairwise-quality-detail}
+\begin{tabular}{@{}lrrrrrrrr@{}}
+\toprule
+\textbf{Comparison} & \textbf{Pairs} & \textbf{Mean} & \textbf{95\% CI} &
+\textbf{Higher} & \textbf{Lower} & \textbf{Ties} & \textbf{Sign $p$} &
+$\boldsymbol d_z$\\
+\midrule
+H4--H2 & 58 & 86.465517 & $[-23.517,228.224]$ & 5 & 1 & 52 & 0.21875 &
+0.176084\\
+H4--H3 & 58 & $-78.051724$ & $[-242.534,79.931]$ & 2 & 5 & 51 & 0.453125 &
+$-0.126716$\\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{landscape}
+
+Dividing the mean differences by 65,535 gives $+0.00131938$ and
+$-0.00119099$. The exact sign test excludes ties. The registered interval endpoints
+are retained, but their bootstrap repetition count and RNG seed were not preserved;
+no unregistered value is supplied for those fields.
+
+\section{Reward Scale and Policy Storage Detail}
+
+\begin{table}[H]
+\centering
+\caption{Evaluation reward extrema by outcome.}
+\label{tab:reward-extrema}
+\begin{tabularx}{\textwidth}{@{}p{0.22\textwidth}p{0.22\textwidth}X@{}}
+\toprule
+\textbf{Outcome} & \textbf{Expression} & \textbf{Interpretation}\\
+\midrule
+Blocked, no switch & $-4$ & Blocking term only\\
+Blocked, switch & $-4.25$ & Blocking plus profile-change penalty\\
+Successful & $4+2U_Q+U_B-0.25h-0.25\sigma$ & Bounded quality/balance utility
+offset by hop and switching costs\\
+Declared maximum & $6.75$ & Nominal best successful combination under the
+registered contract\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The deployed policy requires 512 useful bits ($256\times2$). The profile ROM adds
+72 useful bits ($4\times18$). By comparison, the audit-only Q-table contains 16,384
+bits ($1024\times16$). Exporting the greedy actions therefore removes the runtime
+Q-value maximum and greatly reduces useful policy storage, while preserving one
+deterministic action for every quantized state.
+
 \section{Supporting VLSI Detail}
 
 \begin{table}[H]
 \centering
 \caption{Generic Yosys synthesis results for isolated kernel variants.}
 \label{tab:vlsi-generic-cells}
-\begin{tabularx}{\textwidth}{@{}lXrr@{}}
+\begin{tabularx}{\textwidth}{@{}p{0.36\textwidth}Xrr@{}}
 \toprule
 \textbf{Variant} & \textbf{Implementation distinction} &
 \textbf{Generic cells} & \textbf{Approx. error}\\
 \midrule
-FDPE-V0 & 256-entry floor lookup & 2,258 & 3.1853\%\\
-FDPE-V1 & 128-entry floor lookup & 1,944 & 6.4597\%\\
-FDPE-V2 & 128-entry linear interpolation & 3,399 & 0.0587\%\\
-FDPE-V3 & 64-entry linear interpolation & 3,014 & 0.1986\%\\
+Interpolation V0 & 256-entry floor lookup & 2,258 & 3.1853\%\\
+Interpolation V1 & 128-entry floor lookup & 1,944 & 6.4597\%\\
+Interpolation V2 & 128-entry linear interpolation & 3,399 & 0.0587\%\\
+LUT/interpolation arithmetic kernel (repository identifier FDPE-V3) &
+64-entry linear interpolation & 3,014 & 0.1986\%\\
 SKAG-W0 & Four runtime 16-by-16 products & 5,343 & ---\\
 SKAG-W1 & Fixed-coefficient shift-add logic & 503 & ---\\
 Pareto-C0 & Full dominance and tie-break & 497 & ---\\
@@ -106,7 +205,7 @@ Pareto-C1 & Score-first priority selector & 472 & ---\\
 \end{tabularx}
 \end{table}
 
-The FDPE rows document a supplementary interpolation arithmetic study rather than
+The interpolation rows document a supplementary arithmetic study rather than
 current candidate-evaluator functionality. Approximation error is reported only for
 that isolated numerical experiment.
 
