@@ -1,0 +1,54 @@
+FINAL THESIS COMPILE LOG
+========================
+
+Project root:
+C:\Users\shahr\Desktop\__thesis__\New folder (2)
+
+Root source:
+document.tex
+
+Compiler environment:
+- XeTeX 3.141592653-2.6-0.999995
+- BibTeX 0.99d
+- MiKTeX 24.1
+- Poppler pdfinfo/pdftoppm used for PDF verification and rendering
+
+Baseline build:
+- latexmk was unavailable because the installed latexmk launcher required Perl.
+- Fallback build used: xelatex -> bibtex -> xelatex -> xelatex.
+- Baseline result: successful 98-page A4 PDF.
+- Fatal errors: 0.
+- Undefined references/citations: 0 after final baseline passes.
+- Serious overfull boxes: 0.
+- Underfull boxes and three missing-glyph warnings were recorded for revision.
+
+Final build sequence:
+1. bibtex document
+2. xelatex -interaction=nonstopmode -halt-on-error document.tex
+3. xelatex -interaction=nonstopmode -halt-on-error document.tex
+4. final stabilization pass:
+   xelatex -interaction=nonstopmode -halt-on-error document.tex
+
+Final result:
+- Exit code: 0.
+- Output: document.pdf.
+- Pages: 68.
+- Media: A4, 595.28 x 841.89 pt.
+- PDF version: 1.5.
+- Fatal errors: 0.
+- Undefined references: 0.
+- Undefined citations: 0.
+- Missing files: 0.
+- Missing characters/glyphs: 0.
+- Overfull boxes: 0.
+- Cross-reference rerun requests: 0.
+- Non-fatal underfull boxes remain in narrow table cells and intentional signature-line
+  layouts; rendered inspection found no clipping or unreadable content.
+
+PDF verification:
+- pdfinfo opened the final PDF successfully.
+- pdftoppm rendered all 68 pages to JPEG without a page failure.
+- Four contact sheets covered all 68 pages.
+- Larger-scale checks covered the cover, certificate, abstract, profile/configuration
+  tables, related-work comparison, VLSI figure/table, reproducibility tables, and final
+  references page.

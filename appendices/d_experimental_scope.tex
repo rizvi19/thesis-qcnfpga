@@ -1,0 +1,35 @@
+\chapter{Experimental Scope and Reproducibility Notes}
+\label{app:scope-notes}
+
+\section{Measurement boundaries}
+
+Physical-board evidence refers to records returned by a programmed Nexys 3 FPGA.
+Post-route timing and resource values come from Xilinx ISE implementation reports.
+RTL and software results are identified as simulations, and the OpenROAD results
+refer to isolated physical-design kernels. These evidence types answer different
+questions and are not combined into a single performance measure.
+
+The reported kernel latency begins when a synchronous request is accepted and ends
+when the FPGA asserts \texttt{done}. It excludes host processing, UART
+serialization, JTAG programming, KMS acquisition, candidate generation, security
+checks, and route installation.
+
+\section{Repository milestone identifiers}
+
+Some repository directories retain P0--P6 prefixes because the evidence was
+archived in sequential engineering milestones. The directories identify the
+software reference and contract foundation, literature verification, policy
+training and freeze, controller verification, FPGA integration, and same-board
+replay stages described by their accompanying completion records. These identifiers
+are repository milestone labels and are not experimental variables. The scientific
+variables used in this thesis are the hardware evaluation configurations H0--H4,
+the research hypotheses RH1--RH5, scoring profiles $\Pi_0$--$\Pi_3$, and candidate
+routes $\mathcal{R}_i$.
+
+\section{Reproducibility records}
+
+Every headline result can be traced to a version-controlled CSV, JSON summary,
+implementation report, raw replay record, or physical-design report. Appendix
+\ref{app:reproducibility} lists the relevant branches, commits, and paths. The
+standalone file \texttt{FINAL\_THESIS\_NUMERICAL\_AUDIT.md} provides a compact
+value-by-value index for the submission package.

@@ -1,0 +1,134 @@
+\chapter{Conclusion and Future Work}
+\label{chap:conclusion}
+
+\section{Thesis Summary}
+
+This thesis developed and physically evaluated \QFlow, a fixed-point FPGA
+accelerator for adaptive key-resource-aware route-candidate evaluation in
+trusted-relay QKD networks. The system accepts externally generated candidate
+descriptors, applies hard eligibility, selects a fixed or adaptive scoring profile,
+evaluates candidates with deterministic arithmetic, and returns a selected
+identifier and status. Candidate generation, topology management, KMS operation,
+SDN orchestration, security validation, and route installation remain control-plane
+functions.
+
+The adaptive controller quantizes four features into a 256-state address and selects
+one of four scoring profiles. Tabular Q-learning is performed offline. The deployed
+reinforcement-learned configuration uses a 256-entry two-bit policy ROM and
+minimum-dwell control, and performs deterministic inference without runtime Q-value
+updates.
+
+\section{Main Findings}
+
+Five independent hardware evaluation configurations were implemented on a Digilent
+Nexys 3 Spartan-6 FPGA under a common interface, clock, replay, and measurement
+contract. All configurations exceeded the 100~MHz post-route target. The physical
+campaign produced 420 records and 3,780 checked fields, all of which matched the
+fixed-point reference exactly.
+
+Configuration H4 achieved a post-route maximum frequency of 102.020~MHz and a mean
+normal-case accepted-request-to-done kernel latency of 2.048~$\mu$s. Relative to
+configuration H3, configuration H4 changed mean latency by +0.986\% and maximum
+frequency by $-0.612$\%, mapped to 7.081\% fewer LUTs, 5.378\% more registers, and
+4.961\% more occupied slices. These values describe one implemented mapping and do
+not imply a universal resource property of reinforcement learning.
+
+The complete configuration H4 controller, including the learned policy ROM and
+minimum-dwell mechanism, produced 24 profile transitions compared with 44 for
+configuration H3, a 45.455\% reduction on the common replay. The corresponding
+route-quality comparisons were not statistically significant: the configuration H4
+versus H2 and H4 versus H3 sign-test $p$-values were 0.2188 and 0.4531, and both
+confidence intervals crossed zero. The evidence therefore supports physical
+deployability, exactness, and distinct adaptive behavior, but does not establish
+route-quality superiority.
+
+The supporting VLSI study showed that selected kernels can pass through generic
+synthesis and separate OpenROAD flows. Fixed-coefficient specialization reduced one
+scoring kernel from 5,343 to 503 generic cells, while isolated routed areas were
+6,451~$\mu\mathrm{m}^{2}$ for SKAG-W1, 22,186~$\mu\mathrm{m}^{2}$ for FDPE-V3, and
+3,368~$\mu\mathrm{m}^{2}$ for Pareto-C0. These results indicate a possible future
+ASIC path; they are not an integrated ASIC implementation.
+
+\section{Contributions}
+
+The work contributes:
+
+\begin{enumerate}
+  \item a classical key-resource model for candidate evaluation that represents
+  pool occupancy, generation, consumption, status, utilization, health indicators,
+  and policy-controlled freshness;
+  \item a bounded fixed-point evaluator with separate hard eligibility and soft
+  multi-objective preference;
+  \item fixed, rule-adaptive, and offline-learned profile-selection mechanisms;
+  \item a deterministic policy-ROM deployment architecture with minimum-dwell
+  control;
+  \item five independent FPGA configurations and a common physical measurement
+  contract; and
+  \item reproducible exactness, timing, latency, resource, adaptive-behavior, and
+  neutral route-quality evidence.
+\end{enumerate}
+
+The principal contribution is thus a reproducible hardware-systems result rather
+than a claim of universal routing superiority.
+
+\section{Limitations}
+
+The candidate evaluator was tested on a bounded record format, one FPGA board and
+device family, and 84 records per configuration. The replay establishes exact
+implementation behavior for those inputs but does not establish network-level
+superiority on unseen topologies or live QKD deployments. The policy was trained in
+a controlled research environment, and replay rows may contain dependence that
+reduces the effective statistical sample size.
+
+No exactly matched CPU/FPGA timing benchmark, activity-calibrated FPGA power
+measurement, or CPU/FPGA energy comparison was completed. No live KMS, SDN
+controller, or QKD device was integrated, and the host/FPGA link was an experimental
+transport rather than a production authenticated interface. The VLSI results concern
+separate kernels and do not provide integrated area, full-chip power, foundry
+signoff, tapeout, or fabricated performance.
+
+\section{Future Work}
+
+The highest-priority next step is an exactly matched CPU/FPGA benchmark using the
+same candidate descriptors, fixed-point contract, request protocol, and timing
+boundary. This would support a defensible kernel speed comparison and expose the
+effect of software scheduling and data transfer.
+
+Second, FPGA power and energy should be measured with activity-calibrated switching
+data and a defined operating point for every configuration. Energy per accepted
+candidate-evaluation transaction should be separated from board idle power and host
+transport.
+
+Third, the policy should be tested on larger independent trace sets and unseen
+topologies. The evaluation should include stronger RL and non-RL baselines, bursts,
+key-pool depletion and recovery, failures, changing key-generation rates, and
+statistically powered route-quality analysis.
+
+Fourth, a policy-by-dwell ablation should independently vary the policy and
+minimum-dwell mechanism. This would determine how much of the observed switching
+reduction arises from the learned mapping, the dwell rule, and their interaction.
+
+Fifth, \QFlow\ should be integrated with a live KMS/SDN testbed. The integration must
+measure metadata acquisition, candidate generation, host/FPGA communication,
+security-policy checks, fallback, and route installation separately from kernel
+latency.
+
+Sixth, the host/FPGA interface should be authenticated and hardened. Input
+validation, replay protection, policy identity, signed bitstreams where supported,
+fault containment, audit logging, and software fallback are important for a
+security-sensitive controller.
+
+Finally, an integrated full-core ASIC study can be considered after the mathematical
+and interface contracts stabilize. Such work would require complete logic and
+physical verification, clock and power design, timing closure, DRC/LVS, packaging,
+test planning, and a measured comparison with the FPGA implementation.
+
+\section{Closing Statement}
+
+The experiments show that an offline-learned key-resource-aware controller can be
+deployed bit-exactly on a resource-constrained FPGA with deterministic
+microsecond-scale candidate-evaluation latency and controlled implementation
+overhead. Equally important, the neutral route-quality result defines where the
+evidence stops. This combination of physical exactness, transparent trade-offs, and
+bounded interpretation provides a sound basis for larger network experiments and
+future deployment studies.

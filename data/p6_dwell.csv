@@ -1,0 +1,6 @@
+mode,controller,valid_profile_decisions,profile_transitions,transition_rate_pct_between_decisions,dwell_runs,minimum_dwell,maximum_dwell,mean_dwell,runtime_q_update_on_fpga
+H0,feasible shortest-distance,81,0,0.000000,1,81,81,81.000000,NO
+H1,fixed key-aware,81,0,0.000000,1,81,81,81.000000,NO
+H2,fixed QFlow,81,0,0.000000,1,81,81,81.000000,NO
+H3,threshold/rule adaptive,81,44,55.000000,45,1,7,1.800000,NO
+H4,reinforcement-learned adaptive,81,24,30.000000,25,1,7,3.240000,NO

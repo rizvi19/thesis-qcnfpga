@@ -1,0 +1,74 @@
+\documentclass[12pt,a4paper,oneside,final]{report}
+
+\input{metadata}
+\usepackage{qflowthesis}
+
+% Compatibility for MiKTeX installations whose amsmath/cleveref combination
+% registers displayed-equation labels with an extra brace pair. Standard LaTeX
+% labels remain the first choice, so the source is portable to other toolchains.
+\makeatletter
+\let\QFlowOriginalEqref\eqref
+\renewcommand{\eqref}[1]{%
+  \@ifundefined{r@#1}{\QFlowOriginalEqref{{#1}}}{\QFlowOriginalEqref{#1}}}
+\makeatother
+
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+\usetikzlibrary{shadows}
+\begin{document}
+
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\input{chapters/i_cover}
+\clearpage
+\input{chapters/ii_acknowledgement}
+\clearpage
+\input{chapters/iii_certificate}
+\clearpage
+\input{chapters/iii_b_declaration}
+\clearpage
+\input{chapters/iv_abstract}
+\clearpage
+
+\addtocontents{toc}{\protect\hfill\textbf{Pages}\protect\par}
+\tableofcontents
+\clearpage
+
+\addcontentsline{toc}{chapter}{LIST OF TABLES}
+\addtocontents{lot}{\protect\hspace{0.2cm}\textbf{No.}\protect\hspace{0.62cm}\textbf{Table Name}\protect\hfill\textbf{Page}\protect\par}
+\listoftables
+\clearpage
+
+\addcontentsline{toc}{chapter}{LIST OF FIGURES}
+\addtocontents{lof}{\protect\hspace{0.2cm}\textbf{No.}\protect\hspace{0.62cm}\textbf{Figure Name}\protect\hfill\textbf{Page}\protect\par}
+\listoffigures
+\clearpage
+
+\input{chapters/v_abbreviations}
+\clearpage
+\input{chapters/vi_symbols}
+
+\clearpage
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+\input{chapters/1_introduction}
+\input{chapters/2_background}
+\input{chapters/3_methodology}
+\input{chapters/4_performance_result}
+\input{chapters/5_future_works}
+
+\appendix
+\input{appendices/a_reproducibility}
+\input{appendices/b_fixed_point_contract}
+\input{appendices/c_additional_results}
+\input{appendices/d_experimental_scope}
+
+\clearpage
+\addcontentsline{toc}{chapter}{REFERENCES}
+\renewcommand{\bibname}{REFERENCES}
+\bibliographystyle{unsrt}
+\bibliography{bibliography}
+
+\end{document}

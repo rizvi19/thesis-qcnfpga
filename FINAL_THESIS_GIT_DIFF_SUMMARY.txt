@@ -1,0 +1,24 @@
+FINAL THESIS GIT DIFF SUMMARY
+=============================
+
+Scope:
+- complete submission package added on branch thesis-final-submission-polish;
+- staged submission diff: 43 files, 3,668 inserted lines, zero staged deletions;
+- metadata, root document, custom style, bibliography, and README revised;
+- all front matter and Chapters 1–5 rewritten or substantially revised;
+- reproducibility, fixed-point/protocol, complete-results, and scope appendices supplied;
+- figures, tables, and supporting data/source assets retained in the submission package;
+- final PDF and submission QA/audit documents added.
+
+Scientific changes:
+- direct valid key-resource narrative replaces project-repair/audit chronology;
+- H0–H4, RH1–RH5, Pi-profile, and route-candidate notation separated;
+- exact same-board FPGA evidence and neutral route-quality result integrated;
+- practical deployment, CPU/FPGA/ASIC platform selection, conceptual cost model,
+  function-aware related-work comparison, and bounded VLSI evidence added;
+- no raw experiment result, evidence branch, implementation report, CSV, verification vector,
+  bitstream, or evidence hash was modified.
+
+The exact staged name/status and line statistics were checked immediately before commit to
+ensure that repository files absent from the supplied thesis workspace were not staged as
+deletions.

@@ -1,0 +1,524 @@
+\chapter{Methodology}
+\label{chap:methodology}
+
+\chapterintro{%
+This chapter defines the system boundary, classical key-resource model, candidate
+representation, scoring profiles, adaptive controller, hardware configurations,
+fixed-point implementation, verification, physical replay, statistical analysis,
+and supporting VLSI method used in the thesis.}
+
+\section{System Overview}
+
+\QFlow\ is placed between control-plane candidate generation and final policy
+validation. The KMS/SDN controller obtains authenticated network metadata and
+generates admissible candidate routes. The accelerator encodes the current state,
+selects one scoring profile, evaluates the supplied candidates, and returns a
+candidate identifier, score, profile identifier, and status. The controller remains
+responsible for security checks, fallback, and route installation.
+
+\begin{figure}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  ext/.style={draw=QFlowGray,fill=gray!7,rounded corners=2pt,
+    minimum height=1.2cm,text width=2.25cm,align=center,font=\small},
+  core/.style={draw=QFlowBlue,fill=QFlowLightBlue,rounded corners=2pt,
+    minimum height=1.2cm,text width=2.2cm,align=center,font=\small},
+  arr/.style={-{Latex[length=2.3mm]},thick,draw=QFlowNavy},
+  node distance=0.45cm]
+\node[ext] (meta) {QKD/KMS metadata};
+\node[ext,right=of meta] (cands) {candidate generation\\outside FPGA};
+\node[core,right=of cands] (state) {state encoding and profile selection};
+\node[core,right=of state] (score) {fixed-point candidate evaluation};
+\node[core,right=of score] (result) {selected candidate and status};
+\node[ext,right=of result] (policy) {policy validation and route installation\\outside FPGA};
+\draw[arr] (meta)--(cands);
+\draw[arr] (cands)--(state);
+\draw[arr] (state)--(score);
+\draw[arr] (score)--(result);
+\draw[arr] (result)--(policy);
+\end{tikzpicture}}
+\caption{End-to-end methodology and the FPGA kernel boundary.}
+\label{fig:methodology-overview}
+\end{figure}
+
+\section{System Boundary}
+
+The accelerator receives fixed-width descriptors and bounded controller features.
+It does not receive secret-key bits, discover network topology, generate arbitrary
+paths, operate the KMS, update an RL Q-table, or install a route. Its output is a
+recommendation within a deterministic arithmetic contract. This boundary is applied
+consistently to software, RTL, post-route, and physical measurements.
+
+\section{Network and Key-Resource Model}
+
+The trusted-relay network is a directed graph $G=(V,E)$. At decision epoch $n$, link
+$(i,j)$ is represented by
+\begin{equation}
+\boldsymbol{\xi}_{ij}[n]
+=\left(K_{ij}[n],K_{ij}^{\max},\lambda_{ij}[n],C_{ij}[n],q_{ij}[n],
+\mathrm{status}_{ij}[n],u_{ij}[n],\mathcal{M}_{ij}[n]\right),
+\label{eq:method-link-state}
+\end{equation}
+where $K_{ij}$ is available classical key material, $\lambda_{ij}$ is effective
+key-generation rate, $C_{ij}$ is consumption, $q_{ij}$ is a QBER-derived or other
+external health indicator, $u_{ij}$ is utilization, and $\mathcal{M}_{ij}$ contains
+authenticated policy metadata. The pool follows the balance in
+\eqref{eq:key-pool-balance}.
+
+For a demand $D[n]$, hard eligibility is
+\begin{equation}
+\chi_{ij}[n;D]
+=\mathbf{1}\{\mathrm{status}_{ij}=\mathrm{UP}\}
+ \mathbf{1}\{K_{ij}[n]\geq D[n]\}
+ \mathbf{1}\{q_{ij}[n]\leq q_{\mathrm{abort}}\}
+ \mathbf{1}\{\mathcal{M}_{ij}[n]\ \text{is valid}\}.
+\label{eq:method-link-feasible}
+\end{equation}
+Policy metadata may encode authorization, provenance, expiry, revocation, or an
+alarm. Optional freshness is a KMS/security rule. It is not modelled as quantum
+decoherence of stored classical keys.
+
+\section{Candidate-Route Representation}
+
+For each request, software supplies
+\begin{equation}
+\mathcal{R}_{sd}
+=\{\mathcal{R}_0,\mathcal{R}_1,\ldots,\mathcal{R}_{m-1}\}.
+\label{eq:method-candidate-set}
+\end{equation}
+Candidate $\mathcal{R}_i$ is described by
+\begin{equation}
+\boldsymbol{c}_i=
+\left(v_i,\widehat d_i,\widehat o_i,\widehat r_i,
+\widehat u_i,\widehat\rho_i,h_i,\mathrm{id}_i\right),
+\label{eq:candidate-vector}
+\end{equation}
+where $v_i$ is feasibility; $\widehat d_i$ is normalized distance or consumption
+cost; $\widehat o_i$ is bottleneck occupancy; $\widehat r_i$ is replenishment or
+effective key-generation condition; $\widehat u_i$ is utilization or imbalance;
+$\widehat\rho_i$ is bounded operational risk; $h_i$ is hop count; and
+$\mathrm{id}_i$ is the deterministic tie-break identifier. Hatted fields are
+dimensionless and saturated to their declared ranges.
+
+\section{Eligibility Rules}
+
+Candidate feasibility is computed before scoring:
+\begin{equation}
+v_i[n]=\prod_{(u,v)\in\mathcal{R}_i}\chi_{uv}[n;D].
+\label{eq:method-route-feasible}
+\end{equation}
+An infeasible candidate cannot win through soft weights. If no candidate is
+feasible, the kernel returns a no-path status. Invalid encodings return an invalid
+status. Exact status behavior and request timing are specified in
+Appendix~\ref{app:fixed-point}.
+
+\section{Fixed-Point Candidate-Scoring Model}
+
+For candidate $\mathcal{R}_i$, the normalized soft-penalty vector is
+\begin{equation}
+\boldsymbol{\phi}_i[n]
+=\begin{bmatrix}
+1-\widehat o_i[n]\\
+1-\widehat r_i[n]\\
+\widehat u_i[n]\\
+\widehat\rho_i[n]
+\end{bmatrix}.
+\label{eq:method-penalties}
+\end{equation}
+For active profile $\Pi_k$, the saturated local cost is
+\begin{equation}
+c_i^{(k)}[n]
+=\operatorname{sat}_{W_c}
+\left(\sum_{r=1}^{4}\alpha_r^{(k)}\phi_{i,r}[n]\right).
+\label{eq:method-profile-cost}
+\end{equation}
+The first path objective is the normalized local cost; the remaining objectives
+represent bottleneck reserve and utilization balance:
+\begin{equation}
+\widehat{\boldsymbol f}_i^{(k)}[n]
+=\begin{bmatrix}
+\mathcal{N}_{c}\!\left(c_i^{(k)}[n]\right)\\
+1-o_{\min}(\mathcal{R}_i,n)\\
+\widehat I(\mathcal{R}_i,n)
+\end{bmatrix}.
+\label{eq:method-objectives}
+\end{equation}
+The Tchebycheff score is
+\begin{equation}
+g_i^{(k)}[n]
+=\max_{j\in\{1,2,3\}}
+\left\{\lambda_{\mathrm{TCH},j}^{(k)}
+\left|\widehat f_{i,j}^{(k)}[n]-z_j^{\star}\right|\right\}.
+\label{eq:method-tchebycheff}
+\end{equation}
+Among feasible candidates, the minimum score wins; an exact tie is resolved by the
+smallest candidate identifier. Scores are compared only within the active profile
+and fixed numeric contract.
+
+\section{Fixed-Point Scoring-Profile Codebook}
+
+The four profiles provide distinct scoring emphases. Their coefficient values are
+encoded in half-unit steps, and their Tchebycheff ratios use two-bit unsigned
+integers. Table~\ref{tab:profile-codebook} defines each profile once for the
+remainder of the thesis.
+
+\begin{table}[H]
+\centering
+\caption{Fixed-point scoring-profile codebook.}
+\label{tab:profile-codebook}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llccc@{}}
+\toprule
+\textbf{Profile} & \textbf{Intended emphasis} &
+$\boldsymbol{\alpha}^{(k)}$ &
+$\boldsymbol{\lambda}_{\mathrm{TCH}}^{(k)}$ & \textbf{HW ratio}\\
+\midrule
+$\Pi_0$ & Balanced operation & $(1.0,1.5,0.5,2.0)$ &
+$(0.40,0.40,0.20)$ & $(2,2,1)$\\
+$\Pi_1$ & Key-scarcity protection & $(1.5,1.5,1.0,2.0)$ &
+$(0.25,0.25,0.50)$ & $(1,1,2)$\\
+$\Pi_2$ & Operational-health protection & $(1.0,2.0,0.5,3.0)$ &
+$(0.25,0.50,0.25)$ & $(1,2,1)$\\
+$\Pi_3$ & Low evaluation cost/latency emphasis & $(0.5,1.0,0.5,1.0)$ &
+$(0.50,0.25,0.25)$ & $(2,1,1)$\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+The profile payload packs four three-bit $\alpha$ numerators followed by three
+two-bit Tchebycheff ratios:
+\begin{equation}
+\underbrace{\alpha_1[2{:}0]\,\alpha_2[2{:}0]\,
+\alpha_3[2{:}0]\,\alpha_4[2{:}0]}_{12\ \mathrm{bits}}
+\underbrace{\lambda_1[1{:}0]\,\lambda_2[1{:}0]\,
+\lambda_3[1{:}0]}_{6\ \mathrm{bits}}.
+\label{eq:profile-payload}
+\end{equation}
+The four 18-bit words are \texttt{13329}, \texttt{1B516}, \texttt{14399}, and
+\texttt{0A2A5} in hexadecimal.
+
+\section{Hardware Evaluation Configurations H0--H4}
+
+The letter H denotes a hardware evaluation configuration. Table
+\ref{tab:hardware-configurations} defines the hardware evaluation configurations
+H0--H4 and their roles. Each configuration was synthesized, placed, routed, and
+programmed independently.
+
+\begin{table}[H]
+\centering
+\caption{Hardware evaluation configurations H0--H4.}
+\label{tab:hardware-configurations}
+\scriptsize
+\begin{tabularx}{\textwidth}{@{}p{0.08\textwidth}p{0.18\textwidth}p{0.14\textwidth}p{0.12\textwidth}p{0.20\textwidth}X@{}}
+\toprule
+\textbf{Config.} & \textbf{Selection method} & \textbf{Profile} &
+\textbf{Learning on FPGA} & \textbf{Additional hardware feature} &
+\textbf{Purpose}\\
+\midrule
+H0 & Feasible shortest distance & None; minimal comparison & No & Feasibility and
+distance comparator & Minimal timing/resource reference\\
+H1 & Fixed key-aware baseline & Fixed & No & Key-aware weighted selection &
+Reference for adding resource awareness\\
+H2 & Fixed-profile \QFlow\ evaluator & Fixed $\Pi_0$ & No & Complete fixed-point
+scoring datapath & Reference for profile-based scoring\\
+H3 & Threshold/rule-adaptive \QFlow\ evaluator & Adaptive & No & Threshold encoder
+and rule controller & Non-learning adaptive-controller baseline\\
+H4 & Reinforcement-learned adaptive \QFlow\ evaluator & Adaptive & No; deterministic
+inference only & Offline-trained policy ROM and minimum-dwell control & Learned
+controller comparison against configuration H3\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Configuration H0 is deliberately minimal and is not feature-equivalent to
+configurations H1--H4. Consequently, the most meaningful adaptive-controller
+comparison is configuration H4 versus configuration H3. Configuration H4 reads a
+fixed policy ROM; the FPGA neither stores training traces nor updates Q-values.
+
+All configurations share the external shell, candidate widths, result schema,
+100~MHz operating constraint, replay rows, and accepted-request-to-done measurement
+boundary.
+
+\section{Controller State Representation}
+
+The adaptive observation is
+\begin{equation}
+\bm{x}[n]=\left(x_B[n],x_R[n],x_L[n],x_I[n]\right),
+\label{eq:state-features}
+\end{equation}
+where $x_B$ is minimum normalized candidate key-pool occupancy, $x_R$ is normalized
+replenishment/effective key-generation condition, $x_L$ is offered request load,
+and $x_I$ is utilization imbalance. Each feature is clipped and assigned to one of
+four bins using three fixed thresholds. Equality enters the higher bin.
+
+The bins are packed in radix four:
+\begin{equation}
+z[n]=\left((4b_B+b_R)4+b_L\right)4+b_I,
+\qquad z[n]\in\{0,\ldots,255\}.
+\label{eq:state-pack}
+\end{equation}
+Four bins for each of four features produce $4^4=256$ states. The action
+$a[n]\in\{0,1,2,3\}$ selects profile $\Pi_{a[n]}$.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  feat/.style={draw=QFlowBlue,fill=QFlowLightBlue,rounded corners=2pt,
+    text width=2.4cm,minimum height=0.8cm,align=center,font=\scriptsize},
+  block/.style={draw=QFlowGreen,fill=QFlowLightGreen,rounded corners=2pt,
+    text width=2.4cm,minimum height=1.05cm,align=center,font=\small},
+  arr/.style={-{Latex[length=2.2mm]},thick,draw=QFlowNavy}]
+\matrix[column sep=0.35cm,row sep=0.18cm] (m) {
+\node[feat] (f0) {minimum occupancy $x_B$};\\
+\node[feat] (f1) {replenishment $x_R$};\\
+\node[feat] (f2) {offered load $x_L$};\\
+\node[feat] (f3) {imbalance $x_I$};\\
+};
+\node[block,right=0.8cm of m] (bin) {four-level quantizers};
+\node[block,right=0.7cm of bin] (enc) {radix-4 encoder\\8-bit state $z$};
+\node[block,right=0.7cm of enc] (rom) {256$\times$2 policy ROM\\profile $\Pi_k$};
+\foreach \n in {0,...,3}{\draw[arr] (f\n.east)--(bin.west);}
+\draw[arr] (bin)--(enc);
+\draw[arr] (enc)--(rom);
+\end{tikzpicture}
+\caption{Four-feature state encoding and policy-ROM inference in configuration H4.}
+\label{fig:state-encoder}
+\end{figure}
+
+\section{Offline Policy Learning}
+
+Eight tabular Q-learning candidates used trainer seeds 17, 29, 43, 71, 113, 167,
+229, and 283. Each candidate trained for 200 epochs and 819,200 transitions. The
+learning rate was $\eta_{\mathrm{RL}}=0.1$, the discount factor was
+$\gamma_{\mathrm{RL}}=0.95$, and exploration decreased linearly from 1.0 to 0.05
+over the first 80\% of training transitions.
+
+Training, validation, and test traces were separated. Candidate eligibility
+required at least two used profiles, at least 1\% use of the second-most-used
+profile, blocking within an absolute 0.005 margin, and validation switch rate no
+greater than 0.25. Eligible candidates were ranked by validation reward, blocking,
+quality outcome, switching, and trainer seed. Seed 229 was selected and its policy,
+semantic description, and file hashes were fixed before held-out evaluation.
+
+\begin{pseudocode}{Pseudocode 3.1. Offline training, selection, and policy freeze}
+\textbf{Input:} training traces $\mathcal{D}_{\mathrm{tr}}$, validation traces
+$\mathcal{D}_{\mathrm{val}}$, and trainer seeds $\mathcal{S}$.\\
+\textbf{Output:} frozen policy $\pi_{229}$.
+\begin{enumerate}
+  \item Initialize one tabular Q-function for every seed in $\mathcal{S}$.
+  \item Apply Q-learning updates over the training traces for 200 epochs.
+  \item Evaluate each final policy on validation traces and record decomposed
+  reward, blocking, profile use, and switching.
+  \item Apply the declared eligibility rules and rank the eligible policies.
+  \item Select seed 229; record configuration and file hashes.
+  \item Lock the policy before accessing the held-out traces.
+\end{enumerate}
+\end{pseudocode}
+
+\section{Policy and Profile ROM Deployment}
+
+The deployed policy ROM contains 256 state-major two-bit actions. The profile ROM
+contains four 18-bit words. A 1,024-word signed Q8.7 table was retained for training
+analysis but is not read by the deployed controller. Replacing runtime argmax over
+four Q-values with the frozen two-bit action removes unnecessary storage and
+comparison logic while preserving the selected policy.
+
+\section{Minimum-Dwell Mechanism}
+
+Let $a^{\star}[n]=\pi(z[n])$ be the requested policy action and $\delta[n]$ the
+number of accepted decisions since the last profile change. The deployed action is
+\begin{equation}
+a[n]=
+\begin{cases}
+a[n-1], & a^{\star}[n]\neq a[n-1]\ \land\ \delta[n]<d_{\min},\\
+a^{\star}[n], & \text{otherwise},
+\end{cases}
+\label{eq:dwell}
+\end{equation}
+with $d_{\min}=3$. Dwell is counted in accepted decisions, not idle clock cycles.
+The mechanism is evaluated as part of the complete configuration H4 controller; the
+experiment does not isolate policy and dwell contributions.
+
+\section{RTL Architecture}
+
+\begin{figure}[H]
+\centering
+\resizebox{0.95\textwidth}{!}{%
+\begin{tikzpicture}[
+  block/.style={draw=QFlowBlue,fill=QFlowLightBlue,rounded corners=2pt,
+    text width=2.4cm,minimum height=1.0cm,align=center,font=\small},
+  ctrl/.style={draw=QFlowGreen,fill=QFlowLightGreen,rounded corners=2pt,
+    text width=2.4cm,minimum height=1.0cm,align=center,font=\small},
+  arr/.style={-{Latex[length=2.2mm]},thick,draw=QFlowNavy},
+  node distance=0.55cm]
+\node[block] (input) {input registers};
+\node[ctrl,right=of input] (controller) {configuration-specific profile controller};
+\node[block,right=of controller] (score) {fixed-point scoring pipeline};
+\node[block,right=of score] (select) {feasibility, compare, tie-break};
+\node[block,right=of select] (output) {result, status, cycle count};
+\draw[arr] (input)--(controller);
+\draw[arr] (controller)--(score);
+\draw[arr] (score)--(select);
+\draw[arr] (select)--(output);
+\end{tikzpicture}}
+\caption{Common candidate-evaluation RTL architecture.}
+\label{fig:rtl-architecture}
+\end{figure}
+
+A request is accepted when \texttt{start} is asserted while the core is ready.
+Inputs are sampled on that edge and held internally. The \texttt{done} signal marks
+the synchronous completion edge with stable output fields. Reset, invalid input,
+no-path, back-to-back request, and start-while-busy behavior are part of the
+verification contract.
+
+\section{Fixed-Point Representation}
+
+The reference and RTL use explicit width, signedness, scaling, rounding, saturation,
+packing order, and tie-breaking rules. The four-profile payload contains 72 useful
+bits in total, and the action uses two useful bits. State IDs and output fields are
+compared as exact integers rather than floating-point approximations. Appendix
+\ref{app:fixed-point} records the storage and protocol layout.
+
+\section{Experimental Inputs, Workloads, and Trace Partitions}
+
+The study used controlled traces and candidate records rather than an observational
+dataset. Table~\ref{tab:trace-partitions} summarizes their roles.
+
+\begin{table}[H]
+\centering
+\caption{Experimental inputs and trace partitions.}
+\label{tab:trace-partitions}
+\small
+\begin{tabularx}{\textwidth}{@{}p{0.25\textwidth}p{0.23\textwidth}X@{}}
+\toprule
+\textbf{Partition} & \textbf{Size} & \textbf{Purpose}\\
+\midrule
+Controller state space & 256 states and 36 threshold-edge cases & Exhaustive state,
+threshold, ROM, and action verification\\
+Offline training & Eight candidates, 200 epochs, 819,200 transitions each & Learn
+tabular policies without held-out access\\
+Validation & Four traces, 512 decisions each & Policy eligibility and selection\\
+Held-out software & Four traces, 512 decisions each & Compare fixed, rule-adaptive,
+and learned controllers after freeze\\
+Physical contract replay & 20 rows per configuration & Directed protocol and
+functional boundary cases\\
+Physical held-out replay & 64 rows per configuration & Common same-board comparison\\
+Physical corpus & 84 rows $\times$ five configurations & 420 records; nine checked
+fields per record\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Verification Methodology}
+
+Verification proceeded from the mathematical reference to the physical board:
+
+\begin{enumerate}
+  \item fixed-point software reference checks;
+  \item exhaustive state encoder, policy ROM, and profile ROM tests;
+  \item cycle-accurate unit and integrated RTL simulation;
+  \item independent synthesis, mapping, placement, routing, and timing for every
+  hardware configuration; and
+  \item physical UART replay with field-by-field comparison.
+\end{enumerate}
+
+Controller verification comprised 1,509 cycle vectors and 302 valid decisions,
+including all 256 states, 36 threshold-edge cases, all four actions, dwell holds and
+switches, invalid input, no path, reset, pipeline wait, and busy behavior. Seventy-four
+Python regression tests passed. Integrated tracing added 2,125 cycle vectors and
+530 valid decisions. Evidence type was recorded separately for software, RTL,
+post-synthesis, post-route, and physical-board results.
+
+\section{FPGA Implementation}
+
+The target was a Digilent Nexys 3 Rev~B with a Xilinx XC6SLX16-2-CSG324 Spartan-6
+FPGA. Xilinx ISE 14.7 independently built configurations H0--H4 with the same board
+shell, UART protocol, 100~MHz user clock, candidate widths, output schema, and replay
+rows. The 100~MHz value is the operating contract; maximum frequency was extracted
+from each post-route timing report.
+
+\section{Physical Replay Protocol}
+
+For each configuration, the host programmed the corresponding bitstream, transmitted
+one fixed record at a time, captured the raw UART response, parsed the record, and
+compared nine output fields with the reference. Eighty-four records produced 756
+checked fields per configuration and 3,780 across the five configurations.
+
+\begin{pseudocode}{Pseudocode 3.2. Physical replay and exact comparison}
+\textbf{Input:} configuration $h$, replay rows $\mathcal{D}$, and expected results
+$Y_h$.\\
+\textbf{Output:} raw capture, parsed records, and exactness summary.
+\begin{enumerate}
+  \item Program the independently generated bitstream for configuration $h$.
+  \item Transmit each encoded replay row and retain the raw response.
+  \item Parse result, status, profile, score, identifier, and cycle fields.
+  \item Compare all nine checked fields with $Y_h$.
+  \item Record row count, exact fields, mismatches, and protocol status.
+  \item Hash the capture, parsed data, implementation reports, and summary.
+\end{enumerate}
+\end{pseudocode}
+
+Kernel latency for record $i$ is
+\begin{equation}
+L_i=c_{\mathrm{done},i}-c_{\mathrm{accept},i},
+\qquad t_i=L_iT_{\mathrm{clk}}.
+\label{eq:latency}
+\end{equation}
+The boundary excludes UART serialization, host parsing, operating-system scheduling,
+JTAG programming, KMS acquisition, candidate generation, security validation, and
+route installation.
+
+\section{Statistical Analysis}
+
+Exactness required equality of every checked integer field. Timing and resource
+metrics came directly from independent implementation reports. Adaptive behavior
+was summarized over valid decisions by profile counts, transitions, dwell runs, and
+dwell lengths.
+
+For held-out route quality, only jointly successful pairs were compared. The analysis
+reported pair count, paired mean difference, bootstrap 95\% confidence interval,
+two-sided sign-test $p$-value, paired effect size $d_z$, and path-change count. The
+limited number of distinct replay rows and repeated structure can reduce statistical
+power and independence. Scores formed under different active profiles were not
+treated as directly comparable physical units.
+
+\section{Supporting VLSI Methodology}
+\label{sec:vlsi-method}
+
+The supporting VLSI study used the version-controlled evidence snapshot identified
+in Appendix~\ref{app:reproducibility}. FDPE-V0--V3, SKAG-W0--W1, and
+Pareto-C0--C1 were synthesized with Yosys, and generic cell counts were read from
+the version-controlled synthesis logs. Generic cells are used only for within-flow
+structural comparisons; they are not FPGA LUTs.
+
+Representative kernels SKAG-W1, FDPE-V3, and Pareto-C0 were separately processed
+through a SKY130 high-density OpenROAD flow comprising synthesis, floorplanning,
+placement, clock-tree synthesis, routing, parasitic extraction, and final report
+generation. Their areas refer to isolated routed kernels, not an integrated \QFlow\
+ASIC. FDPE-V3 retains its repository identifier as a supplementary arithmetic
+interpolation experiment and is not presented as current candidate-evaluator
+functionality.
+
+A representative 2:1 transmission-gate multiplexer was also simulated in ngspice
+with simplified Level-1 MOS models at 1.8~V and loads of 5, 10, 20, and 50~fF. The
+calculated $\tfrac{1}{2}CV^2$ quantity describes only the stated capacitive load, not
+accelerator energy per decision.
+
+\section{Methodological Limitations}
+
+The physical replay used one board and device family, 84 rows per configuration,
+and a bounded candidate interface. The learned policy was trained on a controlled
+research environment and was not evaluated across a large set of unseen production
+topologies. No matched CPU timing experiment or activity-calibrated FPGA power
+measurement was completed. Live QKD devices, KMS/SDN orchestration, authenticated
+host transport, and route installation were outside the experiment. The VLSI work
+is isolated-kernel physical-design evidence rather than full-chip signoff.
+
+\chapterconclusion{%
+The methodology combines a classical key-resource model, explicit eligibility,
+profile-conditioned fixed-point scoring, four-feature state encoding, offline policy
+learning, deterministic ROM inference, and independent same-board implementation.
+Its verification and statistical procedures distinguish exact hardware correctness
+from network-level route-quality evidence.}

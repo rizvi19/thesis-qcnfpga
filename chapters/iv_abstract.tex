@@ -1,0 +1,52 @@
+\addcontentsline{toc}{chapter}{ABSTRACT}
+\begin{center}
+  {\bfseries\fontsize{16pt}{19pt}\selectfont ABSTRACT}
+\end{center}
+\vspace{0.8cm}
+
+\noindent
+Quantum key distribution (QKD) networks require control decisions that account for
+the availability and operating condition of link key resources. Most published QKD
+routing studies evaluate network-level algorithms in software, while FPGA research
+has mainly accelerated physical-layer or post-processing functions. This thesis
+presents \QFlow, a deterministic fixed-point FPGA accelerator that evaluates
+externally generated route candidates for trusted-relay QKD networks. Candidate
+generation, topology management, key-management-system operation,
+software-defined-network orchestration, security-policy enforcement, and route
+installation remain control-plane functions outside the accelerator.
+
+The controller quantizes four features into radix-4 values, producing 256 states and
+four scoring-profile actions. Tabular Q-learning is performed offline. The selected
+policy is deployed as a 256-entry, two-bit read-only memory with minimum-dwell
+control; FPGA execution performs deterministic inference and does not update
+Q-values. Five independent hardware evaluation configurations, H0--H4, implement a
+feasible shortest-distance baseline, a fixed key-aware baseline, a fixed-profile
+\QFlow\ evaluator, a threshold/rule-adaptive evaluator, and a
+reinforcement-learned adaptive evaluator.
+
+Verification combined a fixed-point software reference, exhaustive state and
+threshold tests, cycle-accurate register-transfer-level simulation, independent
+Xilinx ISE implementations, and physical replay on a Digilent Nexys 3 Spartan-6
+FPGA. The physical campaign produced 420 records containing 3,780 checked fields,
+with zero mismatches. All five configurations exceeded 100~MHz after placement and
+routing. Configuration H4 achieved a post-route maximum frequency of 102.020~MHz
+and a mean normal-case accepted-request-to-done kernel latency of 2.048~$\mu$s.
+Relative to configuration H3, configuration H4 changed mean latency by +0.986\%,
+maximum frequency by $-0.612$\%, look-up-table use by $-7.081$\%, register use by
++5.378\%, and occupied-slice use by +4.961\%. The complete H4 controller, comprising
+the learned policy and dwell mechanism, produced 45.455\% fewer profile transitions
+than H3 on the evaluated common replay. Held-out route-quality differences were not
+statistically significant, so the evidence establishes physical deployability and
+distinct adaptive behavior rather than route-quality superiority.
+
+Supporting synthesis and OpenROAD experiments demonstrate implementation depth for
+selected arithmetic and selection kernels and indicate a possible future ASIC path;
+they are not an integrated ASIC implementation. The results demonstrate that an
+offline-learned key-resource-aware controller can be deployed bit-exactly on a
+resource-constrained FPGA with deterministic microsecond-scale candidate-evaluation
+latency and controlled implementation overhead.
+
+\vspace{0.5cm}
+\noindent\textbf{Keywords:} quantum key distribution network, FPGA accelerator,
+route-candidate evaluation, fixed-point arithmetic, reinforcement learning,
+policy ROM, trusted relay.

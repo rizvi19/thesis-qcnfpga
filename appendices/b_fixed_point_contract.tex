@@ -1,0 +1,87 @@
+\chapter{Fixed-Point, State, and Protocol Contract}
+\label{app:fixed-point}
+
+\section{State and policy layout}
+
+\begin{table}[H]
+\centering
+\caption{Adaptive-controller storage layout.}
+\label{tab:rom-layout}
+\begin{tabularx}{\textwidth}{@{}p{0.24\textwidth}rrX@{}}
+\toprule
+\textbf{Artifact} & \textbf{Depth} & \textbf{Useful width} & \textbf{Ordering}\\
+\midrule
+Policy ROM & 256 & 2 bits & State IDs 0--255\\
+Profile ROM & 4 & 18 bits & Profiles $\Pi_0$--$\Pi_3$\\
+Training Q-table & 1,024 & 16 bits & State-major, action-minor, signed Q8.7\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The deployed controller reads the policy ROM and profile ROM. The training Q-table
+is retained for analysis but is not part of the inference datapath. The state address
+is
+\begin{equation}
+z=(((b_B\times4)+b_R)\times4+b_L)\times4+b_I.
+\label{eq:appendix-state-address}
+\end{equation}
+
+\section{Threshold definitions}
+
+For thresholds $\theta_1<\theta_2<\theta_3$, the four-level bin function is
+\begin{equation}
+b(x;\theta_1,\theta_2,\theta_3)=
+\begin{cases}
+0,&x<\theta_1,\\
+1,&\theta_1\leq x<\theta_2,\\
+2,&\theta_2\leq x<\theta_3,\\
+3,&x\geq\theta_3.
+\end{cases}
+\label{eq:bin-contract}
+\end{equation}
+Equality enters the higher bin. Testing below, at, and above every threshold gives
+36 directed threshold-edge cases for four features and three thresholds.
+
+\section{Profile payload}
+
+Each $\alpha$ coefficient is encoded as a three-bit unsigned half-unit numerator,
+and each Tchebycheff ratio uses two unsigned bits. The 18-bit word is
+\[
+\alpha_1[2{:}0]\,\alpha_2[2{:}0]\,\alpha_3[2{:}0]\,\alpha_4[2{:}0]\,
+\lambda_1[1{:}0]\,\lambda_2[1{:}0]\,\lambda_3[1{:}0].
+\]
+The four hexadecimal payloads are \texttt{13329}, \texttt{1B516},
+\texttt{14399}, and \texttt{0A2A5}.
+
+\section{Request and result protocol}
+
+\begin{table}[H]
+\centering
+\caption{Synchronous kernel protocol.}
+\label{tab:protocol-contract}
+\begin{tabularx}{\textwidth}{@{}p{0.27\textwidth}X@{}}
+\toprule
+\textbf{Condition} & \textbf{Required behavior}\\
+\midrule
+Reset & Clear busy/done, controller history, and dwell state\\
+Valid start while ready & Sample all inputs once and begin evaluation\\
+Start while busy & Apply the declared busy-response status without resampling inputs\\
+Invalid candidate fields & Return invalid status\\
+No feasible candidate & Return no-path status\\
+Back-to-back request & Accept at the first permitted ready edge\\
+Done & Assert on the synchronous completion edge with stable result fields\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The raw UART record carries the request identifier and the returned status,
+configuration/profile identity, state, selected candidate, score, and cycle-related
+fields required by the registered nine-field comparison. The UART layer transports
+the record but is not included in kernel-cycle measurement.
+
+\section{Latency boundary}
+
+Cycle count begins at synchronous request acceptance and ends at the synchronous
+\texttt{done} edge. Host parsing, UART serialization, operating-system scheduling,
+JTAG, programming, KMS access, candidate generation, and route installation are
+outside this boundary.

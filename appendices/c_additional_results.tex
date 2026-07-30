@@ -1,0 +1,131 @@
+\chapter{Complete Additional Results}
+\label{app:additional-results}
+
+\section{Additional Same-Board Route-Quality Results}
+
+\begin{table}[H]
+\centering
+\caption{Held-out status and route-quality summaries.}
+\label{tab:utility-full}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llrrrrrr@{}}
+\toprule
+\textbf{Configuration} & \textbf{Selection method} & \textbf{Rows} &
+\textbf{Success} & \textbf{No path} & \textbf{Invalid} &
+\textbf{Mean quality} & \textbf{Median quality}\\
+\midrule
+H0 & feasible shortest distance & 64 & 58 & 4 & 2 & 61707.19 & 62087.50\\
+H1 & fixed key-aware & 64 & 58 & 4 & 2 & 61640.03 & 61673.50\\
+H2 & fixed-profile \QFlow & 64 & 58 & 4 & 2 & 61640.03 & 61673.50\\
+H3 & threshold/rule adaptive & 64 & 58 & 4 & 2 & 61804.55 & 61673.50\\
+H4 & reinforcement-learned adaptive & 64 & 58 & 4 & 2 & 61726.50 & 61837.00\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\section{Adaptive Profile Percentages}
+
+\begin{table}[H]
+\centering
+\caption{Adaptive profile use over 81 valid decisions.}
+\label{tab:profile-percent}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+\textbf{Configuration} & $\boldsymbol{\Pi_0}$ & $\boldsymbol{\Pi_1}$ &
+$\boldsymbol{\Pi_2}$ & $\boldsymbol{\Pi_3}$\\
+\midrule
+H3 & 29.630\% & 44.444\% & 22.222\% & 3.704\%\\
+H4 & 51.852\% & 13.580\% & 22.222\% & 12.346\%\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Controller Overhead Relative to Configuration H0}
+
+\begin{table}[H]
+\centering
+\caption{Absolute resource and cycle differences relative to minimal configuration H0.}
+\label{tab:overhead-h0}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+\textbf{Configuration} & \textbf{$\Delta$ registers} & \textbf{$\Delta$ LUTs} &
+\textbf{$\Delta$ slices} & \textbf{$\Delta$ normal cycles}\\
+\midrule
+H1 & 507 & 683 & 288 & 199.763\\
+H2 & 592 & 849 & 348 & 200.763\\
+H3 & 604 & 1,035 & 344 & 200.763\\
+H4 & 663 & 905 & 376 & 202.763\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+These differences quantify functional additions relative to a deliberately minimal
+reference. They are not an isolated cost of reinforcement learning.
+
+\section{Integration Timing Inventory}
+
+\begin{table}[H]
+\centering
+\caption{Post-route timing checkpoints for successively integrated blocks.}
+\label{tab:integration-timing}
+\begin{tabular}{@{}lrrl@{}}
+\toprule
+\textbf{Block} & \textbf{Minimum period (ns)} &
+\textbf{Maximum frequency (MHz)} & \textbf{Status}\\
+\midrule
+B1 & 6.253 & 159.923 & Pass\\
+B2 & 9.591 & 104.264 & Pass\\
+B3 & 6.517 & 153.445 & Pass\\
+B4 & 8.391 & 119.175 & Pass\\
+B5 & 9.670 & 103.413 & Pass\\
+B6 & 9.252 & 108.085 & Pass\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Supporting VLSI Detail}
+
+\begin{table}[H]
+\centering
+\caption{Generic Yosys synthesis results for isolated kernel variants.}
+\label{tab:vlsi-generic-cells}
+\begin{tabularx}{\textwidth}{@{}lXrr@{}}
+\toprule
+\textbf{Variant} & \textbf{Implementation distinction} &
+\textbf{Generic cells} & \textbf{Approx. error}\\
+\midrule
+FDPE-V0 & 256-entry floor lookup & 2,258 & 3.1853\%\\
+FDPE-V1 & 128-entry floor lookup & 1,944 & 6.4597\%\\
+FDPE-V2 & 128-entry linear interpolation & 3,399 & 0.0587\%\\
+FDPE-V3 & 64-entry linear interpolation & 3,014 & 0.1986\%\\
+SKAG-W0 & Four runtime 16-by-16 products & 5,343 & ---\\
+SKAG-W1 & Fixed-coefficient shift-add logic & 503 & ---\\
+Pareto-C0 & Full dominance and tie-break & 497 & ---\\
+Pareto-C1 & Score-first priority selector & 472 & ---\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The FDPE rows document a supplementary interpolation arithmetic study rather than
+current candidate-evaluator functionality. Approximation error is reported only for
+that isolated numerical experiment.
+
+\begin{table}[H]
+\centering
+\caption{Simplified ngspice transmission-gate multiplexer load sweep.}
+\label{tab:cmos-sweep}
+\begin{tabular}{@{}rrr@{}}
+\toprule
+\textbf{Load (fF)} & \textbf{Average delay (ps)} &
+\textbf{Capacitive-load quantity (fJ)}\\
+\midrule
+5 & 10.38 & 8.10\\
+10 & 17.27 & 16.20\\
+20 & 26.64 & 32.40\\
+50 & 54.31 & 81.00\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The last column is the analytical $\tfrac{1}{2}CV^2$ value for the stated load at
+1.8~V. It is not measured \QFlow\ energy per route decision.

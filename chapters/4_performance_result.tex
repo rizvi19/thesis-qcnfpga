@@ -1,0 +1,624 @@
+\chapter{Results and Discussion}
+\label{chap:results}
+
+\chapterintro{%
+This chapter reports software, RTL, post-route, and physical-board results in their
+respective evidence categories. The central result is a same-board comparison of
+five independent fixed-point candidate-evaluation configurations.}
+
+\section{Experimental Overview}
+
+The evaluation followed four linked stages. Offline software training and held-out
+traces established controller behavior. Exhaustive and integrated RTL tests checked
+state encoding, policy lookup, dwell control, fixed-point arithmetic, and protocol
+timing. Independent Xilinx ISE builds provided post-route timing and resource data.
+Finally, the same Nexys 3 board replayed a common physical corpus for all five
+configurations.
+
+The strongest comparison is internal Class A evidence: identical board, shell,
+clock, widths, record schema, and measurement boundary. Route-quality statistics
+are reported separately from exactness and implementation metrics.
+
+\section{Offline Controller Behavior}
+
+Each of the eight policy candidates completed 819,200 training transitions. Seven
+passed the validation criteria, and seed 229 was selected by the declared ranking.
+Table~\ref{tab:heldout-software} summarizes the four-trace held-out software
+partition after the policy was fixed. All controllers completed 2,048 successful
+decisions with zero blocking in this controlled environment.
+
+\begin{table}[H]
+\centering
+\caption{Software-simulated held-out controller behavior over four
+512-decision traces.}
+\label{tab:heldout-software}
+\begin{tabularx}{\textwidth}{@{}p{0.28\textwidth}rrrrrr@{}}
+\toprule
+\textbf{Controller} & \textbf{Reward} & \textbf{Block} &
+\textbf{Quality} & \textbf{Balance} & \textbf{Hops} & \textbf{Switch rate}\\
+\midrule
+Fixed-profile & 4.6130 & 0 & 0.95815 & 0.16881 & 2.8750 & 0\\
+Rule-adaptive & 4.6292 & 0 & 0.95943 & 0.25513 & 2.9775 & 0.2813\\
+Offline-learned adaptive & 4.6771 & 0 & 0.96044 & 0.26499 & 2.9541 & 0.2329\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The learned policy had the highest descriptive mean reward and balance utility in
+this software partition. With only four paired traces, the exact two-sided
+permutation $p$-value was 0.125 and the Holm-adjusted value was 0.25 for both learned
+comparisons. The software result therefore describes behavior under the selected
+environment; it is not evidence of statistical superiority.
+
+\section{Controller and Policy Verification}
+
+\begin{table}[H]
+\centering
+\caption{Controller and policy verification summary.}
+\label{tab:controller-verification}
+\begin{tabularx}{\textwidth}{@{}X r X@{}}
+\toprule
+\textbf{Verification item} & \textbf{Count/result} & \textbf{Outcome}\\
+\midrule
+Encoded state addresses & 256/256 & Exact policy/state mapping\\
+Threshold below/equal/above cases & 36 & Equality entered the higher bin\\
+Profile actions & 4/4 & All profiles covered\\
+Cycle vectors & 1,509 & Zero RTL mismatch\\
+Valid decisions & 302 & Zero unexplained mismatch\\
+Python regression tests & 74 & Pass\\
+Lint warnings & 0 & Pass\\
+Controller-only synthesis estimate & 103 LUTs, 79 registers & Synthesis pass\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The controller-only synthesis reported an estimated maximum frequency of
+247.812~MHz. This value is a post-synthesis estimate for the isolated controller and
+is not used as the system frequency. Final maximum-frequency results are taken from
+complete post-route implementations.
+
+\section{Integrated RTL Verification}
+
+Integrated cycle-accurate tracing added 2,125 cycle vectors and 530 valid decisions.
+The valid-request controller path had a deterministic three-cycle latency. Reset,
+busy, no-path, invalid-input, threshold equality, dwell hold, dwell switch, and
+pipeline-wait cases were exercised. Candidate-evaluator regression covered 519 of
+519 vectors, and the integrated policy shell matched 101 of 101 expected results.
+These are RTL-simulated results; physical exactness is established by the board
+replay below.
+
+\section{Independent FPGA Implementation}
+
+Configurations H0--H4 were built independently for the XC6SLX16-2-CSG324 device.
+Each build passed synthesis, mapping, placement, routing, and the 100~MHz timing
+constraint. Independent bitstreams prevent a parameter-only simulation from being
+reported as multiple physical implementations. Configuration H0 remained the
+minimal feasibility/distance reference, while configurations H1--H4 added the
+key-aware and profile-scoring functions defined in
+Table~\ref{tab:hardware-configurations}.
+
+\section{Same-Board Physical Replay and Exactness}
+
+Each configuration produced 84 physical records: 20 directed contract records and
+64 held-out records. Nine output fields were checked per record. Table
+\ref{tab:physical-exactness} reports the exact comparison.
+
+\begin{table}[H]
+\centering
+\caption{Physical replay exactness for the five independent configurations.}
+\label{tab:physical-exactness}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+\textbf{Configuration} & \textbf{Records} & \textbf{Fields/record} &
+\textbf{Exact fields} & \textbf{Mismatches}\\
+\midrule
+H0 & 84 & 9 & 756 & 0\\
+H1 & 84 & 9 & 756 & 0\\
+H2 & 84 & 9 & 756 & 0\\
+H3 & 84 & 9 & 756 & 0\\
+H4 & 84 & 9 & 756 & 0\\
+\midrule
+\textbf{Total} & \textbf{420} & --- & \textbf{3,780} & \textbf{0}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This result establishes that physical transport and parsing functioned, each
+independent implementation matched its fixed-point contract, and configuration H4
+performed policy/profile inference consistently with the reference. Exactness does
+not by itself establish that one controller selects higher-quality routes.
+
+\section{Post-Route Timing and Kernel Latency}
+
+\begin{table}[H]
+\centering
+\caption{Post-route maximum frequency and measured kernel latency under the common
+100~MHz operating contract.}
+\label{tab:same-board-timing}
+\small
+\begin{tabularx}{\textwidth}{@{}lXrrr@{}}
+\toprule
+\textbf{Configuration} & \textbf{Selection method} &
+\textbf{$f_{\max}$ (MHz)} & \textbf{Mean cycles} &
+\textbf{Latency ($\mu$s)}\\
+\midrule
+H0 & Feasible shortest distance & 118.948 & 2.000 & 0.020\\
+H1 & Fixed key-aware baseline & 107.538 & 201.763 & 2.018\\
+H2 & Fixed-profile \QFlow & 102.838 & 202.763 & 2.028\\
+H3 & Threshold/rule adaptive & 102.648 & 202.763 & 2.028\\
+H4 & Reinforcement-learned adaptive & 102.020 & 204.763 & 2.048\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+All configurations exceeded 100~MHz. Configuration H4 achieved a post-route maximum
+frequency of 102.020~MHz and a mean normal-case latency of 2.047632~$\mu$s, rounded
+to 2.048~$\mu$s. This is the accepted-request-to-done latency of the tested FPGA
+kernel. UART serialization, host processing, KMS acquisition, candidate generation,
+security checks, and route installation are outside the measurement.
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[t]{0.49\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  ybar,width=\textwidth,height=6.0cm,ymin=95,ymax=122,
+  ylabel={$f_{\max}$ (MHz)},symbolic x coords={H0,H1,H2,H3,H4},xtick=data,
+  bar width=12pt,nodes near coords,grid=major,grid style={QFlowLine!45},
+  tick label style={font=\scriptsize},label style={font=\scriptsize},
+  every node near coord/.append style={font=\tiny}]
+\addplot[fill=QFlowBlue!75,draw=QFlowBlue] coordinates
+{(H0,118.948)(H1,107.538)(H2,102.838)(H3,102.648)(H4,102.020)};
+\end{axis}
+\end{tikzpicture}
+\caption{Post-route maximum frequency.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.49\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  ybar,width=\textwidth,height=6.0cm,ymin=0,ymax=2.25,
+  ylabel={Kernel latency ($\mu$s)},symbolic x coords={H0,H1,H2,H3,H4},xtick=data,
+  bar width=12pt,nodes near coords,grid=major,grid style={QFlowLine!45},
+  tick label style={font=\scriptsize},label style={font=\scriptsize},
+  every node near coord/.append style={font=\tiny}]
+\addplot[fill=QFlowTeal!75,draw=QFlowTeal] coordinates
+{(H0,0.020)(H1,2.018)(H2,2.028)(H3,2.028)(H4,2.048)};
+\end{axis}
+\end{tikzpicture}
+\caption{Mean normal-case latency.}
+\end{subfigure}
+\caption{Timing and latency across the H0--H4 comparison.}
+\label{fig:timing-latency}
+\end{figure}
+
+The reciprocal of the rounded configuration H4 kernel latency is
+$1/(2.048~\mu\mathrm{s})\approx488{,}281$ transactions/s. This is a theoretical
+sequential kernel-service rate under immediate back-to-back acceptance, not measured
+end-to-end throughput.
+
+Configuration H0 is not feature-equivalent to the remaining configurations; its
+two-cycle result should not be used to calculate an RL overhead. The relevant
+adaptive comparison is configuration H4 versus configuration H3.
+
+\section{Resource Utilization}
+
+\begin{table}[H]
+\centering
+\caption{Post-route resource utilization of independent H0--H4 implementations.}
+\label{tab:resources}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+\textbf{Configuration} & \textbf{Slice registers} & \textbf{Slice LUTs} &
+\textbf{Occupied slices}\\
+\midrule
+H0 & 493 & 801 & 301\\
+H1 & 1,000 & 1,484 & 589\\
+H2 & 1,085 & 1,650 & 649\\
+H3 & 1,097 & 1,836 & 645\\
+H4 & 1,156 & 1,706 & 677\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Configuration H4 used 1,706 LUTs, 1,156 registers, and 677 occupied slices. Relative
+to configuration H3, it mapped to 7.081\% fewer LUTs, 5.378\% more registers, and
+4.961\% more occupied slices. LUT count and occupied slices can move in opposite
+directions because slice packing, register placement, and routing affect physical
+occupancy. The LUT reduction is an implementation-specific synthesis result, not a
+general property of reinforcement learning.
+
+\section{Adaptive Profile Behavior}
+
+\begin{table}[H]
+\centering
+\caption{Profile use and switching over 81 valid adaptive decisions.}
+\label{tab:adaptation}
+\begin{tabular}{@{}lrrrrrrrr@{}}
+\toprule
+& \multicolumn{4}{c}{\textbf{Profile count}} &
+\textbf{Transitions} & \textbf{Runs} & \textbf{Min dwell} & \textbf{Max dwell}\\
+\cmidrule(lr){2-5}
+\textbf{Configuration} & $\Pi_0$ & $\Pi_1$ & $\Pi_2$ & $\Pi_3$ & & & &\\
+\midrule
+H3 & 24 & 36 & 18 & 3 & 44 & 45 & 1 & 7\\
+H4 & 42 & 11 & 18 & 10 & 24 & 25 & 1 & 7\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[t]{0.58\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  ybar stacked,width=\textwidth,height=6.1cm,ymin=0,ymax=90,
+  ylabel={Valid decisions},symbolic x coords={H3,H4},xtick=data,bar width=28pt,
+  legend style={at={(0.5,-0.18)},anchor=north,legend columns=4,font=\scriptsize},
+  grid=major,grid style={QFlowLine!45},tick label style={font=\small},
+  label style={font=\small}]
+\addplot[fill=QFlowBlue!80] coordinates {(H3,24)(H4,42)};
+\addplot[fill=QFlowTeal!80] coordinates {(H3,36)(H4,11)};
+\addplot[fill=QFlowAmber!80] coordinates {(H3,18)(H4,18)};
+\addplot[fill=QFlowGreen!80] coordinates {(H3,3)(H4,10)};
+\legend{$\Pi_0$,$\Pi_1$,$\Pi_2$,$\Pi_3$}
+\end{axis}
+\end{tikzpicture}
+\caption{Profile distribution.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.38\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  ybar,width=\textwidth,height=6.1cm,ymin=0,ymax=50,ylabel={Transitions},
+  symbolic x coords={H3,H4},xtick=data,bar width=24pt,nodes near coords,
+  grid=major,grid style={QFlowLine!45},tick label style={font=\small},
+  label style={font=\small}]
+\addplot[fill=QFlowRed!70,draw=QFlowRed] coordinates {(H3,44)(H4,24)};
+\end{axis}
+\end{tikzpicture}
+\caption{Profile transitions.}
+\end{subfigure}
+\caption{Trace-specific adaptive behavior of configurations H3 and H4.}
+\label{fig:adaptation}
+\end{figure}
+
+The complete configuration H4 controller, including the offline-learned policy ROM
+and minimum-dwell mechanism, reduced observed profile transitions from 44 to 24.
+This is a 45.455\% reduction on the evaluated replay, while mean dwell increased
+from 1.80 to 3.24 valid decisions. Isolating the learned policy contribution would
+require a policy-by-dwell ablation.
+
+\section{Held-Out Route-Quality Analysis}
+
+All configurations had 58 successful, four no-path, and two invalid rows in the
+64-row held-out physical partition. Route choices could still differ within jointly
+successful pairs. Table~\ref{tab:pairwise-quality} reports comparisons of
+configuration H4 with configurations H2 and H3.
+
+\begin{table}[H]
+\centering
+\caption{Paired held-out physical route-quality comparisons.}
+\label{tab:pairwise-quality}
+\begin{tabularx}{\textwidth}{@{}lrrrrrr@{}}
+\toprule
+\textbf{Comparison} & \textbf{Pairs} & \textbf{Mean diff.} &
+\textbf{95\% CI} & \textbf{$p$} & \textbf{$d_z$} & \textbf{Path changes}\\
+\midrule
+H4--H2 & 58 & 86.47 & $[-23.52,228.22]$ & 0.2188 & 0.176 & 6\\
+H4--H3 & 58 & $-78.05$ & $[-242.53,79.93]$ & 0.4531 & $-0.127$ & 7\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Both confidence intervals cross zero. The $p$-values are 0.2188 for configuration
+H4 versus configuration H2 and 0.4531 for configuration H4 versus configuration H3.
+The limited number of rows and possible dependence among replay rows reduce
+statistical power. Configuration H4 demonstrated physical deployability and
+distinct adaptive behavior, but the available held-out physical comparisons do not
+establish statistically significant route-quality superiority over configurations
+H2 or H3.
+
+\section{H4 Versus H3 Engineering Trade-Off}
+
+\begin{table}[H]
+\centering
+\caption{Configuration H4 relative to rule-adaptive configuration H3.}
+\label{tab:h4-h3-tradeoff}
+\begin{tabularx}{\textwidth}{@{}X r X@{}}
+\toprule
+\textbf{Metric} & \textbf{Change} & \textbf{Interpretation}\\
+\midrule
+Mean normal-case latency & +0.986\% & Small additional policy/control latency\\
+Post-route $f_{\max}$ & $-0.612$\% & Both configurations remain above 100~MHz\\
+Slice LUTs & $-7.081$\% & Implementation-specific mapping result\\
+Slice registers & +5.378\% & Additional registered control/state\\
+Occupied slices & +4.961\% & Increased physical footprint after packing/routing\\
+Profile transitions & $-45.455$\% & Complete policy-and-dwell controller switched less\\
+Mean route-quality code & $-78.05$ units & Small, non-significant paired difference\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The engineering contribution of configuration H4 is a bit-exact adaptive control
+law with microsecond-scale latency and explicit physical costs. Its value does not
+depend on winning every route-quality comparison.
+
+\section{Comparison with Related Work}
+
+Table~\ref{tab:state-of-art} compares evidence dimensions without constructing
+speedup ratios across different functions.
+
+\begin{table}[H]
+\centering
+\caption{Function- and evidence-aware comparison with representative related work.}
+\label{tab:state-of-art}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}p{2.5cm}p{3.2cm}p{2.0cm}p{2.2cm}p{2.3cm}cccc@{}}
+\toprule
+\textbf{Work/category} & \textbf{Evaluated function} & \textbf{Platform} &
+\textbf{Evidence type} & \makecell[c]{\textbf{Topology/}\\\textbf{evaluation}\\\textbf{scale}} &
+\textbf{HW impl.} & \textbf{Board} & \textbf{Exact fixed point} &
+\textbf{Directly comparable}\\
+\midrule
+Bi et al. \cite{bi2023dynamic} & Dynamic key-resource routing & Software &
+Network model & Simulated QKD topology & No & No & No & No\\
+Hao et al. \cite{hao2025qlearning} & Resource-aware Q-learning routing &
+Software & Network simulation & Trusted-relay simulation & No & No & No & No\\
+Johann et al. \cite{johann2026adaptive} & Generalizing DRL routing &
+\makecell[l]{CPU/\\software} &
+Network simulation & Multiple meshed topologies & No & No & No & No\\
+MadQCI \cite{martin2024madqci} & SDN-QKD integration & Distributed system &
+Operational deployment & Multi-site production facilities & No & No & No & No\\
+Venkatachalam et al. \cite{venkatachalam2023postprocessing} & QKD post-processing &
+FPGA & Component implementation & Post-processing workload & Yes & Yes & Different
+contract & No\\
+\QFlow\ (this work) & Route-candidate evaluation & Spartan-6 FPGA & Post-route and
+physical replay & 420 records across five builds & Yes & Yes & Yes & Internal H0--H4
+only\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\QFlow\ is stronger in physically validated fixed-point candidate-evaluation
+evidence, while several software studies provide broader topology, network-level,
+or generalization evidence. Direct numerical comparison is limited to the internal
+same-board configurations.
+
+\section{Practical Deployment Scenario}
+
+A realistic deployment would partition responsibilities as follows:
+
+\begin{enumerate}
+  \item The KMS/SDN controller receives key-pool occupancy, effective key-generation
+  rate, link activity, QBER-derived or other externally measured health indicators,
+  request load, and utilization.
+  \item The controller generates admissible route candidates from the current
+  topology and policy.
+  \item Candidate descriptors and state metadata are sent to \QFlow.
+  \item \QFlow\ encodes the state, selects profile $\Pi_k$, evaluates the candidates,
+  and returns a candidate identifier, profile, score, and status.
+  \item The controller checks administrative and security policy, installs the
+  selected route, and handles failure or fallback.
+\end{enumerate}
+
+The 2.048~$\mu$s value applies only to step 4 within the tested FPGA boundary. It is
+not the time to collect KMS data or install a network route. The practical value of
+the accelerator lies in deterministic recurring computation, fixed-point
+reproducibility, predictable kernel latency, and reconfigurable profile deployment.
+
+\section{Platform Selection and Cost Implications}
+
+\subsection{CPU role}
+
+CPU/software remains preferable for topology management, KMS and SDN orchestration,
+candidate generation, policy management, offline Q-learning, logging, security
+administration, and irregular or infrequently executed tasks. No same-computation,
+same-input CPU timing experiment was completed. Accordingly, this thesis reports no
+CPU-to-FPGA speedup and no CPU/FPGA energy comparison.
+
+\subsection{FPGA role}
+
+The measured configuration H4 evidence comprises 102.020~MHz post-route maximum
+frequency, 2.048~$\mu$s mean kernel latency, 1,706 LUTs, 1,156 registers, 677
+occupied slices, and exact hardware/reference agreement. FPGA implementation was
+appropriate for the present research stage because the architecture and profiles
+remain evolvable, bitstreams can be changed after deployment, configurations H0--H4
+can be implemented on the same device, deterministic pipelines are available, and
+physical implementation evidence can be collected before committing to silicon.
+
+\subsection{ASIC role}
+
+A mature ASIC could potentially provide lower energy per transaction, higher
+density, greater performance, and lower high-volume unit cost. It would require
+substantial non-recurring engineering, complete signoff, fabrication, packaging,
+testing, longer development time, stronger verification, redesign cost when the
+model changes, and loss of post-fabrication reconfigurability.
+
+For the present low-volume, evolving research prototype, FPGA is the more
+appropriate engineering platform. For a stable, high-volume commercial product,
+ASIC implementation may eventually be more economical and energy-efficient.
+
+\subsection{Conceptual total-cost model}
+
+Let production volume be $N$. A simple platform cost model is
+\begin{align}
+C_{\mathrm{FPGA}}(N)&=C_{\mathrm{dev,FPGA}}+Nc_{\mathrm{FPGA}},
+\label{eq:fpga-cost}\\
+C_{\mathrm{ASIC}}(N)&=C_{\mathrm{NRE,ASIC}}+Nc_{\mathrm{ASIC}},
+\label{eq:asic-cost}
+\end{align}
+where $C_{\mathrm{dev,FPGA}}$ is FPGA development and integration cost,
+$C_{\mathrm{NRE,ASIC}}$ includes ASIC design, verification, masks, fabrication,
+packaging, and test, and $c_{\mathrm{FPGA}}$ and $c_{\mathrm{ASIC}}$ are per-unit
+costs. When $c_{\mathrm{FPGA}}>c_{\mathrm{ASIC}}$, the conceptual break-even volume
+is
+\begin{equation}
+N^{\star}=\frac{C_{\mathrm{NRE,ASIC}}-C_{\mathrm{dev,FPGA}}}
+{c_{\mathrm{FPGA}}-c_{\mathrm{ASIC}}}.
+\label{eq:break-even}
+\end{equation}
+Below $N^{\star}$, FPGA can have lower total cost; above it, a stable ASIC may become
+economical. The thesis does not estimate $N^{\star}$ because verified commercial
+cost inputs are unavailable.
+
+\begin{table}[H]
+\centering
+\caption{Qualitative platform comparison for the \QFlow\ development stages.}
+\label{tab:platform-comparison}
+\small
+\begin{tabularx}{\textwidth}{@{}p{0.22\textwidth}XXX@{}}
+\toprule
+\textbf{Criterion} & \textbf{CPU} & \textbf{FPGA} & \textbf{ASIC}\\
+\midrule
+Development effort & Low to moderate & Moderate & High\\
+Reconfigurability & Software update & Bitstream update & None after fabrication\\
+Deterministic execution & Requires careful system design & Natural for fixed pipeline &
+Natural for fixed design\\
+Low-volume total cost & Usually favourable & Favourable for hardware prototype &
+Usually unfavourable\\
+High-volume unit cost & Processor/platform dependent & Often higher & Potentially lowest\\
+Energy potential & General-purpose overhead & Specialized datapath potential & Highest
+specialization potential\\
+Time to deployment & Short & Moderate & Long\\
+Current \QFlow\ suitability & Control plane and training & Candidate-evaluation
+prototype & Premature\\
+Future mature \QFlow\ & Orchestration and fallback & Reconfigurable product option &
+Potential high-volume option\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Kernel-Level Physical-Design Exploration}
+
+The supporting VLSI study examined selected computation kernels rather than a
+complete accelerator. Yosys generic synthesis reduced the SKAG scoring kernel from
+5,343 cells with runtime products to 503 cells with fixed-coefficient shift-add
+logic, a 90.59\% reduction within that flow. This result illustrates the structural
+benefit of coefficient specialization; generic cells are not FPGA LUTs.
+
+\begin{table}[H]
+\centering
+\caption{OpenROAD physical-design results for isolated kernels.}
+\label{tab:openroad}
+\begin{tabularx}{\textwidth}{@{}lXrr@{}}
+\toprule
+\textbf{Kernel} & \textbf{Evaluated role} &
+\textbf{Area ($\mu\mathrm{m}^{2}$)} & \textbf{Utilization}\\
+\midrule
+SKAG-W1 & Fixed-coefficient shift-add scoring & 6,451 & 26\%\\
+FDPE-V3 & Supplementary LUT/interpolation arithmetic & 22,186 & 13\%\\
+Pareto-C0 & Dominance and selection comparator & 3,368 & 13\%\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[t]{0.32\textwidth}
+\centering
+\includegraphics[width=\linewidth]{figures/vlsi/skag_w1_final_all.png}
+\caption{SKAG-W1.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.32\textwidth}
+\centering
+\includegraphics[width=\linewidth]{figures/vlsi/fdpe_v3_final_all.png}
+\caption{FDPE-V3.}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.32\textwidth}
+\centering
+\includegraphics[width=\linewidth]{figures/vlsi/pareto_c0_final_all.png}
+\caption{Pareto-C0.}
+\end{subfigure}
+\caption{Routed OpenROAD layouts for three isolated kernels. These views do not
+represent an integrated \QFlow\ ASIC.}
+\label{fig:vlsi-layouts}
+\end{figure}
+
+The flows generated routed reports and final artifacts for the separate kernels,
+showing that selected functions can pass through an open-source physical-design
+workflow. The areas must not be summed as a \QFlow\ chip area. The study does not
+provide full-chip power, commercial DRC/LVS signoff, tapeout, or fabricated-silicon
+performance.
+
+\section{Threats to Validity}
+
+\begin{itemize}
+  \item The physical experiment used one FPGA board and device family.
+  \item The physical corpus contained 84 rows per configuration and a bounded
+  candidate set.
+  \item The offline-learned policy was evaluated in a controlled research
+  environment rather than across many independent unseen topologies.
+  \item Replay rows may share structure, reducing the effective independence and
+  power of route-quality tests.
+  \item No matched CPU benchmark, activity-calibrated power measurement, or live
+  KMS/SDN deployment was available.
+  \item Configuration H4 performed inference only; online learning was not tested.
+  \item The OpenROAD results concern isolated kernels and do not establish a
+  complete ASIC implementation.
+\end{itemize}
+
+\section{Answers to the Research Questions}
+
+\begin{table}[H]
+\centering
+\caption{Answers to the research questions.}
+\label{tab:rq-answers}
+\begin{tabularx}{\textwidth}{@{}p{0.08\textwidth}X p{0.26\textwidth}@{}}
+\toprule
+\textbf{RQ} & \textbf{Answer} & \textbf{Evidence}\\
+\midrule
+RQ1 & All five independent configurations exceeded the 100~MHz post-route target. &
+Table~\ref{tab:same-board-timing}\\
+RQ2 & All 420 records and 3,780 checked fields matched exactly, with zero mismatch. &
+Table~\ref{tab:physical-exactness}\\
+RQ3 & Configurations H1--H4 required more logic and cycles than minimal configuration
+H0; configuration H4 added small timing changes relative to H3. &
+Tables~\ref{tab:resources} and \ref{tab:h4-h3-tradeoff}\\
+RQ4 & Configuration H4 used all four profiles and the complete controller produced
+45.455\% fewer transitions than configuration H3 on the replay. &
+Table~\ref{tab:adaptation}\\
+RQ5 & The held-out comparisons did not establish statistically significant
+route-quality improvement. & Table~\ref{tab:pairwise-quality}\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Research-Hypothesis Outcomes}
+
+\begin{table}[H]
+\centering
+\caption{Mapping from research hypotheses to evidence and outcomes.}
+\label{tab:hypothesis-outcomes}
+\begin{tabularx}{\textwidth}{@{}p{0.12\textwidth}p{0.25\textwidth}p{0.18\textwidth}X@{}}
+\toprule
+\textbf{Hypothesis} & \textbf{Evidence} & \textbf{Outcome} &
+\textbf{Interpretation}\\
+\midrule
+RH1 & Five post-route maximum-frequency reports & Supported & Every configuration
+exceeded 100~MHz\\
+RH2 & 3,780 field comparisons & Supported & Zero physical/reference mismatch\\
+RH3 & 2.048~$\mu$s H4 latency and implementation metrics & Supported &
+Microsecond-scale inference with measured resource/timing trade-offs\\
+RH4 & 44 versus 24 transitions & Supported & Complete H4 policy-and-dwell controller
+switched less on the common replay\\
+RH5 & Paired CIs and $p$-values 0.2188 and 0.4531 & Not supported & Route-quality
+superiority was not established\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+RH1--RH4 are supported by the reported evidence, whereas RH5 is not supported. The
+non-support of RH5 is a substantive experimental result: physical feasibility and
+adaptive behavior do not automatically imply statistically superior route quality.
+
+\chapterconclusion{%
+Five independent FPGA configurations exceeded 100~MHz and matched 3,780 physical
+result fields exactly. Configuration H4 achieved 2.048~$\mu$s mean kernel latency
+and exhibited a different, less frequently switching profile trace than
+configuration H3, with explicit timing and resource trade-offs. The held-out
+route-quality comparisons remained statistically neutral. Supporting VLSI results
+show a future physical-design path for isolated kernels without constituting an
+integrated ASIC.}

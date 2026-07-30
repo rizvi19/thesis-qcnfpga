@@ -1,0 +1,128 @@
+\chapter{Reproducibility and Artifact Register}
+\label{app:reproducibility}
+
+\section{Repository snapshots}
+
+The project repository is available at \url{\RepositoryURL}. The primary FPGA and
+controller evidence is preserved on branch \path{rl-nexys3-adaptive} at commit
+\path{290b4ad75eef2af2b9da2f1f281a2b89416cfd24}. The supporting VLSI evidence is
+preserved on branch \path{vlsi-kernel-study} at commit
+\path{0093ba288f26a1520e4318f207e13f52d38db5a8}. The submission source branch is
+\path{thesis-final-submission-polish}; its commit is reported in the repository
+history and submission handoff.
+
+\section{Primary artifact register}
+
+\begin{longtable}{@{}p{0.27\textwidth}p{0.66\textwidth}@{}}
+\caption{Primary reproducibility artifacts.}\label{tab:evidence-register}\\
+\toprule
+\textbf{Artifact} & \textbf{Repository location}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Artifact} & \textbf{Repository location}\\
+\midrule
+\endhead
+RL model description & \path{docs/rl/rl_model_card.md}\\
+Policy selection & \path{results/rl/p3_revision/selection_record.json}\\
+Policy freeze & \path{results/rl/p3_policy_freeze/freeze_record.json}\\
+Held-out controller results & \path{results/rl/p3_heldout/}\\
+Controller verification & \path{results/rl/p4_exhaustive/} and
+\path{results/rl/p4_integrated/}\\
+Integration checkpoint & \path{results/nexys3/p5_step9_final_checkpoint/}\\
+Independent implementation reports & \path{results/nexys3/p6_step3_h0_ise/} through
+\path{results/nexys3/p6_step8_h4_ise/}\\
+Physical records and comparisons & \path{results/nexys3/p6_step9_cross_mode/}\\
+Submission-ready physical summaries & \path{results/nexys3/p6_step10_closure/}\\
+VLSI kernel results & \path{results/partC_vlsi/}\\
+CMOS primitive results & \path{results/partD_cmos/}\\
+Literature verification & \path{literature/p1/audit/} and
+\path{literature/p1/corrected/}\\
+\bottomrule
+\end{longtable}
+
+\section{Headline numerical sources}
+
+\begin{longtable}{@{}p{0.29\textwidth}p{0.64\textwidth}@{}}
+\caption{Authoritative sources for headline numerical results.}
+\label{tab:numerical-sources}\\
+\toprule
+\textbf{Reported quantity} & \textbf{Source artifact}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Reported quantity} & \textbf{Source artifact}\\
+\midrule
+\endhead
+Physical records, exact fields, configuration H4 summary, and H4/H3 percentages &
+\path{results/nexys3/p6_step10_closure/final_summary.json}\\
+H0--H4 post-route timing, cycles, resources, and exactness &
+\path{results/nexys3/p6_step10_closure/thesis_ready_same_board_table.csv}\\
+Profile counts and transitions &
+\path{results/nexys3/p6_step10_closure/thesis_ready_adaptation_table.csv}\\
+Paired route-quality statistics &
+\path{results/nexys3/p6_step10_closure/thesis_ready_pairwise_statistics.csv}\\
+Integration timing inventory &
+\path{results/nexys3/p5_step9_final_checkpoint/p5_timing_inventory.csv}\\
+SKAG generic synthesis &
+\path{asic/skag_weight_kernel/results/skag_yosys_comparison.csv}\\
+Other kernel generic synthesis &
+\path{asic/fdpe_kernel/results/fdpe_yosys_comparison.csv} and
+\path{asic/pareto_cmp_kernel/results/pareto_yosys_comparison.csv}\\
+OpenROAD area and utilization & the three \path{logs/6_report.log} files below
+\path{results/partC_vlsi/openroad_<kernel>/}\\
+Multiplexer delay and load calculation &
+\path{results/partD_cmos/pareto_cmp_primitive/load_sweep/tg_mux_load_sweep.csv}\\
+Literature-search date, queries, and dispositions &
+\path{literature/p1/audit/search_log.csv}, \path{paper_audit.csv}, and
+\path{literature/p1/corrected/PROVENANCE.md}\\
+\bottomrule
+\end{longtable}
+
+\section{Evidence classification}
+
+\begin{table}[H]
+\centering
+\caption{Evidence types used in the thesis.}
+\label{tab:evidence-types}
+\begin{tabularx}{\textwidth}{@{}p{0.25\textwidth}X@{}}
+\toprule
+\textbf{Evidence type} & \textbf{Interpretation}\\
+\midrule
+Physical replay & Output captured from a programmed Nexys 3 FPGA\\
+Post-route implementation & Timing and resources after placement and routing\\
+RTL simulation & Cycle-accurate behavior of the register-transfer-level design\\
+Software simulation & Reference-model, training, and network/controller output\\
+Analytical result & Quantity calculated from a stated equation and inputs\\
+Supporting physical design & OpenROAD result for an isolated kernel\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Tool versions}
+
+The FPGA builds used Xilinx ISE 14.7. The final thesis was built with XeTeX
+3.141592653-2.6-0.999995 and BibTeX 0.99d from MiKTeX 24.1. The retained OpenROAD
+reports identify OpenROAD v2.0-19993-ga613c7e53. Remaining Python, Icarus Verilog,
+Yosys, ngspice, and environment details are recorded by the version-controlled build
+scripts and logs associated with each artifact family.
+
+\section{Build and replay sequence}
+
+\begin{enumerate}
+  \item check out the branch and commit associated with the selected evidence set;
+  \item verify registered source, ROM, and replay hashes;
+  \item run the software reference and controller regression tests;
+  \item compile and run unit and integrated RTL simulations;
+  \item build one selected hardware configuration with Xilinx ISE 14.7;
+  \item inspect synthesis, map, placement-and-route, and timing reports;
+  \item program the volatile FPGA bitstream;
+  \item run the common UART replay and retain the raw response;
+  \item parse the response and compare all expected fields; and
+  \item generate cross-configuration tables only after every configuration passes
+  exactness.
+\end{enumerate}
+
+The CSV files under \path{data/} in the thesis package are direct copies or compact
+extracts of the registered repository summaries. LaTeX figures use those reported
+values or architectural diagrams drawn in the source.

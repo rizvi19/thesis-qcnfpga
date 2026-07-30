@@ -1,0 +1,273 @@
+\chapter{Introduction}
+\label{chap:introduction}
+
+\chapterintro{%
+Trusted-relay quantum key distribution (QKD) networks must coordinate quantum-link
+resources with conventional network control. This thesis addresses one recurring
+control-plane computation: evaluating a bounded set of admissible route candidates
+from key-resource and network-state metadata. It develops \QFlow, a deterministic
+fixed-point FPGA accelerator, and evaluates five independently implemented hardware
+configurations under a common physical measurement contract.}
+
+\section{Motivation}
+
+\subsection{QKD links and trusted-relay networking}
+
+QKD enables two endpoints to establish shared secret material by combining quantum
+transmission with authenticated classical communication. After sifting, parameter
+estimation, error correction, and privacy amplification, the usable keys are
+classical data managed by a key management system (KMS). A network service therefore
+depends not only on the quantum link but also on key storage, authorization,
+consumption, replenishment, monitoring, and failure handling
+\cite{cao2022qinternet,mehic2020networking}.
+
+Direct QKD links do not necessarily connect every communicating pair. Trusted-relay
+networks extend coverage by forwarding key material or coordinating secure segments
+through intermediate trusted sites. Operational demonstrations such as MadQCI and a
+carrier-scale network show the importance of integrating QKD devices with KMS and
+software-defined networking (SDN) functions
+\cite{martin2024madqci,chen2025carrier}. Route selection becomes a control problem
+because candidate paths can differ in distance, hop count, available key material,
+key-generation rate, utilization, and operational health.
+
+\begin{figure}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  ext/.style={draw=QFlowGray,fill=gray!7,rounded corners=2pt,
+    minimum height=1.15cm,text width=2.35cm,align=center,font=\small},
+  core/.style={draw=QFlowBlue,fill=QFlowLightBlue,rounded corners=2pt,
+    minimum height=1.15cm,text width=2.45cm,align=center,font=\small\bfseries},
+  arr/.style={-{Latex[length=2.3mm]},thick,draw=QFlowNavy},
+  node distance=0.55cm]
+\node[ext] (qkd) {QKD devices and link monitors};
+\node[ext,right=of qkd] (kms) {KMS and SDN controller};
+\node[ext,right=of kms] (gen) {candidate generation};
+\node[core,right=of gen] (eval) {\QFlow\\candidate evaluation};
+\node[ext,right=of eval] (install) {policy validation and route installation};
+\draw[arr] (qkd)--(kms);
+\draw[arr] (kms)--(gen);
+\draw[arr] (gen)--(eval);
+\draw[arr] (eval)--(install);
+\end{tikzpicture}}
+\caption{System context of \QFlow. Candidate generation and route installation are
+control-plane functions outside the FPGA kernel.}
+\label{fig:system-context}
+\end{figure}
+
+\subsection{Key-pool-aware routing control}
+
+Post-processed keys are finite classical resources. For a directed link, the KMS can
+report pool occupancy, effective key-generation rate, consumption, link status,
+utilization, and externally measured health indicators such as QBER-derived status.
+An optional age or expiry field represents KMS or security policy; it is not a
+quantum coherence property of stored bits. A route that is short in distance may be
+undesirable when one of its key pools is depleted, while a slightly longer route may
+provide greater reserve or replenishment capacity. Recent work consequently studies
+dynamic key-aware, multipath, joint-resource, and reinforcement-learning approaches
+\cite{bi2023dynamic,kiktenko2024nonoverlap,zhang2024rckta,hao2025qlearning,
+johann2026adaptive}.
+
+Two decision layers are useful. Hard eligibility first excludes a route whose links
+are unavailable, under-provisioned, or administratively invalid. Soft preference
+then ranks the remaining routes according to a selected scoring profile. Keeping
+these layers separate prevents a high score from making an inadmissible route
+appear usable.
+
+\subsection{Route-candidate evaluation as the selected problem}
+
+Full graph routing includes topology acquisition, constraint processing, candidate
+generation, global optimization, security validation, and route installation.
+Mapping that entire workflow to a small FPGA would mix irregular control tasks with
+a compact recurring arithmetic task. This thesis instead accelerates the latter.
+For source $s$ and destination $d$, software supplies
+\begin{equation}
+\mathcal{R}_{sd}
+=
+\{\mathcal{R}_0,\mathcal{R}_1,\ldots,\mathcal{R}_{m-1}\}.
+\label{eq:intro-candidate-set}
+\end{equation}
+Each candidate $\mathcal{R}_i$ has a fixed-width descriptor containing feasibility,
+distance or consumption cost, key-resource conditions, load-related indicators, and
+a deterministic identifier. \QFlow\ selects a scoring profile, evaluates the
+descriptors, and returns the chosen identifier, score, profile, and status.
+
+This boundary makes exact verification possible. The same descriptor and fixed-point
+contract can be evaluated in software, RTL simulation, and physical hardware. It
+also reflects a practical heterogeneous design in which the CPU retains graph and
+policy responsibilities while the FPGA offloads repeated deterministic evaluation.
+
+\subsection{Why deterministic hardware acceleration is relevant}
+
+A candidate evaluator applies the same bounded operations to every request:
+quantization, read-only policy lookup, weighted fixed-point scoring, feasibility
+checks, comparison, and deterministic tie-breaking. These operations are suitable
+for dedicated pipelines and finite-state control. FPGA implementation provides
+cycle-level predictability, explicit numeric widths, and reconfiguration as the
+controller or scoring profiles evolve.
+
+The present research stage also benefits from avoiding ASIC fabrication and from
+implementing all comparison configurations on the same device. CPU software remains
+essential for orchestration, candidate generation, offline learning, and irregular
+tasks. The platform choice is therefore a partitioning decision rather than a claim
+that one platform is universally superior.
+
+\section{Research Gap}
+
+The literature contains sophisticated software studies of QKD routing and resource
+allocation, including adaptive and reinforcement-learning methods. Separately,
+FPGA-based QKD research has demonstrated high-throughput reconciliation,
+post-processing, and synchronization
+\cite{lu2023multidimensional,venkatachalam2023postprocessing,liao2025polar,
+chandra2025synchronization}. Within the documented literature audit, no directly
+comparable same-board implementation of the evaluated candidate-selection function
+was identified. The gap is therefore an implementation and evidence gap: a compact,
+adaptive, fixed-point candidate evaluator has not been compared through independent
+physical configurations with a common interface, exact reference agreement, and
+post-route timing and resource evidence.
+
+\section{System Scope and Boundary}
+
+\QFlow\ is a route-candidate evaluator. It consumes candidate descriptors and
+network-state metadata that have already been validated and quantized at the
+software/hardware boundary. It supports fixed, rule-adaptive, and offline-learned
+profile selection. The learned configuration performs online inference from a
+read-only policy; Q-values are not updated during FPGA execution.
+
+Global topology management, candidate generation, KMS operation, SDN orchestration,
+security-policy enforcement, secret-key delivery, and route installation remain in
+software or the control plane. The FPGA is neither a complete graph router nor a QKD
+physical-layer device. The physical experiment measures the accepted-request-to-done
+kernel boundary; it does not measure complete network provisioning latency.
+
+\section{Problem Statement}
+
+Given an externally generated candidate set $\mathcal{R}_{sd}$ and quantized
+key-resource and network-state metadata, the research problem is to design a bounded
+hardware kernel that:
+
+\begin{enumerate}
+  \item rejects infeasible candidates according to explicit hard constraints;
+  \item selects a fixed or adaptive scoring profile deterministically;
+  \item evaluates feasible candidates using reproducible fixed-point arithmetic;
+  \item returns a stable result under a synchronous request/done protocol; and
+  \item is physically implementable on a resource-constrained FPGA with measurable
+  timing, resource, exactness, and adaptive-behavior trade-offs.
+\end{enumerate}
+
+\section{Research Objectives}
+
+The objectives are to:
+
+\begin{enumerate}
+  \item formulate a classical key-resource model based on pool occupancy,
+  generation rate, consumption, status, utilization, health indicators, and
+  policy-controlled freshness;
+  \item define a fixed-point candidate-scoring contract with distinct hard
+  eligibility and soft preference;
+  \item develop fixed, rule-adaptive, and offline-learned profile controllers;
+  \item implement five independent FPGA configurations under one external contract;
+  \item verify reference-to-RTL and reference-to-board exactness;
+  \item measure post-route timing, kernel latency, resources, and profile behavior;
+  and
+  \item interpret route-quality and platform trade-offs without crossing evidence
+  boundaries.
+\end{enumerate}
+
+\section{Research Questions}
+
+\begin{description}[leftmargin=1.3cm,style=nextline]
+  \item[\textbf{RQ1.}] Can all five independently implemented configurations meet a
+  100~MHz post-route target on the selected FPGA?
+  \item[\textbf{RQ2.}] Do physical outputs match the fixed-point reference exactly
+  under a common replay and output schema?
+  \item[\textbf{RQ3.}] What latency, maximum-frequency, and resource trade-offs
+  arise across the fixed and adaptive configurations?
+  \item[\textbf{RQ4.}] Does the offline-learned controller exhibit distinct and
+  controlled profile behavior relative to the rule-adaptive controller?
+  \item[\textbf{RQ5.}] Do the held-out physical comparisons establish statistically
+  significant route-quality improvement for the learned configuration?
+\end{description}
+
+\section{Research Hypotheses}
+
+\begin{description}[leftmargin=1.3cm,style=nextline]
+  \item[\textbf{RH1.}] Each independent hardware evaluation configuration will meet
+  the 100~MHz post-route timing target.
+  \item[\textbf{RH2.}] Every checked physical result field will match the frozen
+  fixed-point reference.
+  \item[\textbf{RH3.}] The reinforcement-learned adaptive configuration will retain
+  microsecond-scale kernel latency with controlled implementation overhead.
+  \item[\textbf{RH4.}] The reinforcement-learned adaptive configuration with
+  minimum-dwell control will produce fewer profile transitions than the
+  rule-adaptive configuration on the common replay.
+  \item[\textbf{RH5.}] The reinforcement-learned adaptive configuration will achieve
+  statistically significant route-quality improvement over fixed-profile and
+  rule-adaptive alternatives on the held-out physical pairs.
+\end{description}
+
+\section{Contributions}
+
+The thesis makes the following contributions:
+
+\begin{enumerate}
+  \item a classical key-resource model for candidate evaluation based on pool
+  occupancy, generation rate, consumption, operational status, policy freshness,
+  and externally measured health indicators;
+  \item a deterministic fixed-point candidate-evaluation contract that separates
+  hard eligibility from profile-conditioned multi-objective preference;
+  \item an adaptive controller with four radix-4 features, 256 states, four profile
+  actions, offline tabular Q-learning, a 256-entry two-bit policy ROM, and
+  minimum-dwell control;
+  \item five independent FPGA implementations with a common interface and
+  measurement boundary;
+  \item a same-board campaign comprising 420 physical records, 3,780 checked fields,
+  and exact reference agreement; and
+  \item a complete engineering comparison of timing, latency, resources, adaptive
+  behavior, route-quality statistics, and stage-specific platform implications.
+\end{enumerate}
+
+\section{Practical Significance}
+
+In a prospective KMS/SDN deployment, candidate evaluation may recur whenever
+requests arrive or resource state changes. Offloading this fixed-width calculation
+can provide predictable control latency and a bit-exact implementation shared across
+tests and deployments. Reprogrammable policy and profile storage also allows the
+accelerator to evolve without replacing the surrounding control plane.
+
+\section{User Requirements and Broader Considerations}
+
+The engineering users of the proposed kernel are network-control and security
+software developers. Their principal requirements are deterministic requests and
+responses, explicit numeric formats, visible failure status, reproducible profiles,
+and a software fallback. A deployment must authenticate the host/FPGA interface,
+validate inputs, protect policy artifacts, log configuration identity, and retain
+the controller's authority over final route installation.
+
+The work does not process human-subject data. Its societal relevance lies in
+supporting reproducible research on secure-network control rather than promising a
+complete commercial service. Hardware safety is limited to normal laboratory
+electrical and electrostatic-discharge practice. Environmental benefit is not
+quantified because no activity-calibrated power measurement or life-cycle study was
+performed; reconfigurability can, however, extend prototype usefulness by allowing
+new bitstreams on the same device.
+
+\section{Thesis Organization}
+
+Chapter~\ref{chap:background} reviews trusted-relay QKD networking, key-resource
+control, multi-objective scoring, reinforcement learning, fixed-point arithmetic,
+platform alternatives, and related work. Chapter~\ref{chap:methodology} defines the
+system model, scoring profiles, hardware configurations, controller, RTL,
+verification, FPGA experiment, statistical method, and supporting VLSI method.
+Chapter~\ref{chap:results} presents and discusses the software, RTL, post-route,
+physical replay, adaptive-behavior, route-quality, platform, and VLSI results.
+Chapter~\ref{chap:conclusion} summarizes the findings, contributions, limitations,
+and future work. The appendices provide reproducibility records, fixed-point and
+protocol details, additional results, and experimental-scope notes.
+
+\chapterconclusion{%
+The selected problem is a bounded, recurring route-candidate evaluation task within
+a larger KMS/SDN workflow. The research therefore concentrates on fixed-point
+correctness, deterministic control, physical FPGA implementation, and transparent
+trade-offs. The next chapter establishes the technical and literature foundations
+for that design.}

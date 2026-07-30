@@ -1,0 +1,342 @@
+\chapter{Background and Literature Review}
+\label{chap:background}
+
+\chapterintro{%
+This chapter develops the technical background for key-resource-aware candidate
+evaluation and positions \QFlow\ within QKD networking, adaptive control, and
+reconfigurable computing. It also defines a comparison taxonomy that separates
+same-function hardware evidence from network simulations and component-level FPGA
+studies.}
+
+\section{Trusted-Relay QKD Networks}
+
+QKD establishes secret material across a quantum channel and an authenticated
+classical channel. Networking adds key management, trusted relay operation,
+application interfaces, routing, monitoring, and recovery. Surveys describe QKD
+networks as layered systems in which physical links generate secret material and
+classical control software manages its use
+\cite{cao2022qinternet,mehic2020networking}. In a trusted-relay architecture,
+intermediate sites are trusted with the relevant key-handling operations. The trust
+assumption differs from entanglement-repeater architectures and must be part of the
+security policy.
+
+Once link post-processing completes, the KMS stores classical key data and metadata.
+For link $(i,j)$, useful control quantities include available key units
+$K_{ij}(t)$, pool capacity $K_{ij}^{\max}$, effective generation rate
+$\lambda_{ij}(t)$, consumption rate $C_{ij}(t)$, operational status, utilization,
+and health indicators derived from QBER or other monitored values. The physical
+fibre model may use attenuation coefficient $\alpha_{\mathrm{fiber}}$, but this
+quantity is distinct from controller scoring coefficients.
+
+\section{Key Pools and Resource Evolution}
+
+A discrete-time key-pool balance can be written as
+\begin{equation}
+K_{ij}[n+1]
+=\operatorname{clip}_{[0,K_{ij}^{\max}]}
+\left(K_{ij}[n]+G_{ij}[n]-C_{ij}[n]-X_{ij}[n]\right),
+\label{eq:key-pool-balance}
+\end{equation}
+where $G_{ij}[n]$ is newly admitted secret material, $C_{ij}[n]$ is consumed
+material, and $X_{ij}[n]$ is material removed through expiry, revocation, alarms,
+or administrative action. Every term must use the same unit, such as bits or fixed
+key blocks. A normalized occupancy is
+\begin{equation}
+o_{ij}[n]=\frac{K_{ij}[n]}{K_{ij}^{\max}},
+\qquad 0\leq o_{ij}[n]\leq1.
+\label{eq:occupancy}
+\end{equation}
+
+Generation and consumption rates convey information that occupancy alone cannot.
+Two links with equal current occupancy can have different future risk if one is
+replenishing quickly and the other serves a high request load. A useful candidate
+descriptor therefore combines present reserve with bounded rate, load, and health
+information.
+
+Freshness, cryptoperiod, or expiry is a KMS/security-policy property. A policy may
+invalidate material after a configured time, assign a soft preference to newer
+authorized batches, or revoke material after an alarm. These operations concern the
+management of classical keys; they are not quantum-state evolution in memory.
+
+\section{Hard Eligibility and Soft Preference}
+
+For a request requiring $D[n]$ key units, a directed link can be represented by the
+hard eligibility indicator
+\begin{equation}
+\chi_{ij}[n;D]
+=\mathbf{1}\{\mathrm{status}_{ij}=\mathrm{UP}\}
+ \mathbf{1}\{K_{ij}[n]\geq D[n]\}
+ \mathbf{1}\{q_{ij}[n]\leq q_{\mathrm{abort}}\}
+ \mathbf{1}\{\mathcal{M}_{ij}[n]\ \text{is valid}\},
+\label{eq:link-eligibility-bg}
+\end{equation}
+where $\mathcal{M}_{ij}$ collects authenticated administrative metadata. Candidate
+$\mathcal{R}_i$ is feasible when every constituent link is eligible:
+\begin{equation}
+v_i[n]=\prod_{(u,v)\in\mathcal{R}_i}\chi_{uv}[n;D].
+\label{eq:route-eligibility-bg}
+\end{equation}
+
+Hard checks protect invariants. Soft preference is applied only after feasibility is
+known and expresses engineering priorities among admissible candidates. This
+separation avoids using a weighted score as a substitute for security or resource
+constraints.
+
+\section{Candidate-Route Evaluation}
+
+Candidate-generation algorithms may use shortest paths, constrained path search,
+multipath methods, optimization, or policy filters. \QFlow\ receives the resulting
+bounded set $\mathcal{R}_{sd}$ rather than traversing the complete graph. Each
+candidate descriptor contains fixed-width fields such as normalized distance,
+bottleneck occupancy, replenishment condition, load or imbalance, operational risk,
+hop count, and identifier. Candidate evaluation then becomes a regular reduction:
+compute a score for every feasible descriptor and retain the best candidate under a
+deterministic tie-break rule.
+
+The distinction between generation and evaluation is important for both science and
+implementation. Network-level papers may assess blocking, topology robustness, or
+global path quality, while an evaluator implementation may assess arithmetic
+exactness, cycles, post-route timing, and resources. The measurements are related
+but not interchangeable.
+
+\section{Multi-Objective Scoring}
+
+Key-aware selection combines objectives that have different units. Each metric is
+therefore normalized to a bounded dimensionless penalty before weighting. For
+candidate $\mathcal{R}_i$, a four-term vector can be written as
+\begin{equation}
+\boldsymbol{\phi}_i[n]
+=
+\begin{bmatrix}
+1-\widehat{o}_i[n]\\
+1-\widehat{r}_i[n]\\
+\widehat{u}_i[n]\\
+\widehat{\rho}_i[n]
+\end{bmatrix},
+\label{eq:bg-penalty-vector}
+\end{equation}
+representing scarcity, recharge deficit, utilization or imbalance, and operational
+risk. Scoring profile $\Pi_k$ supplies coefficient vector
+$\boldsymbol{\alpha}^{(k)}$, giving local cost
+\begin{equation}
+c_i^{(k)}[n]
+=\operatorname{sat}_{W_c}
+\left(\sum_{r=1}^{4}\alpha_r^{(k)}\phi_{i,r}[n]\right).
+\label{eq:bg-local-cost}
+\end{equation}
+
+Tchebycheff decomposition provides a scalar comparison while retaining an explicit
+multi-objective interpretation \cite{zhang2007moead}. If
+$\widehat{\boldsymbol{f}}_i^{(k)}$ is the normalized objective vector and
+$\boldsymbol{z}^{\star}$ is an ideal point, the score is
+\begin{equation}
+g_i^{(k)}[n]
+=\max_j\left\{
+\lambda_{\mathrm{TCH},j}^{(k)}
+\left|\widehat{f}_{i,j}^{(k)}[n]-z_j^{\star}\right|
+\right\}.
+\label{eq:bg-tchebycheff}
+\end{equation}
+The vector $\boldsymbol{\lambda}_{\mathrm{TCH}}^{(k)}$ contains objective weights;
+it is distinct from link key-generation rate $\lambda_{ij}(t)$. The use of Pareto and
+decomposition concepts is grounded in established multi-objective optimization
+methods \cite{deb2002nsga2,zhang2007moead}.
+
+\section{Offline Reinforcement Learning for Profile Selection}
+
+Reinforcement learning (RL) maps observed state to actions that maximize expected
+long-term reward. In tabular Q-learning, an offline training update is
+\begin{equation}
+Q(s_t,a_t)\leftarrow Q(s_t,a_t)+\eta_{\mathrm{RL}}
+\left[r_t+\gamma_{\mathrm{RL}}\max_a Q(s_{t+1},a)-Q(s_t,a_t)\right],
+\label{eq:q-learning}
+\end{equation}
+where $\eta_{\mathrm{RL}}$ is the learning rate and $\gamma_{\mathrm{RL}}$ is the
+discount factor \cite{watkins1992qlearning,sutton2018rl}. In this thesis, the action
+does not directly construct a route. It selects one of four fixed scoring profiles.
+This reduces the deployed decision to a finite mapping from a quantized state to a
+two-bit action.
+
+Training and inference are separated. Training explores traces, updates Q-values,
+and freezes a selected policy. Deployment stores only the policy mapping needed for
+deterministic inference. The FPGA therefore contains no exploration mechanism and no
+runtime Q-value update path. A minimum-dwell mechanism can suppress rapid profile
+changes by holding the current action until a specified number of accepted decisions
+has elapsed.
+
+\section{Fixed-Point Arithmetic and FPGA Implementation}
+
+Fixed-point arithmetic assigns an explicit integer and fractional width to every
+quantity. For a signed Q$m.n$ value, representable values and rounding rules depend
+on total width, signedness, scaling, saturation, and conversion policy. Bit-exact
+verification requires these details to be identical in the software reference and
+RTL. Saturation is preferable to silent wraparound for bounded metrics because it
+preserves the intended ordering at numeric limits.
+
+FPGA logic can implement quantizers, ROMs, adders, comparators, and finite-state
+control with a deterministic clocked interface. Look-up tables (LUTs), registers,
+occupied slices, block memories, and timing reports characterize the physical
+mapping. Post-synthesis timing is an estimate before placement and routing;
+post-route timing includes the implemented netlist and routing delays and is the
+appropriate source for the maximum-frequency values used in the final comparison.
+
+\section{CPU, FPGA, and ASIC Characteristics}
+
+A CPU offers mature software tools, flexible control flow, and efficient handling of
+irregular workloads. It is appropriate for topology management, candidate
+generation, KMS/SDN orchestration, offline training, logging, and security
+administration. Its execution time can depend on operating-system scheduling,
+caches, and memory behavior unless a real-time environment is used.
+
+An FPGA supports reconfigurable spatial datapaths and deterministic state machines.
+It is attractive for an evolving fixed-point kernel because profiles and interfaces
+can be revised by loading a new bitstream. A dedicated ASIC may ultimately provide
+greater density, performance, and energy efficiency, especially at high volume, but
+requires larger non-recurring engineering effort, signoff, fabrication, packaging,
+test, and redesign if the contract changes. Platform comparison must therefore be
+specific to development stage, volume, and measurement boundary.
+
+\section{Literature Review}
+
+\subsection{QKD routing and network control}
+
+Bi et al. use virtual-network state and key resources for dynamic QKD routing
+\cite{bi2023dynamic}. Chen et al. study hybrid-trusted path selection
+\cite{chen2023hybrid}; Kiktenko et al. examine multiple non-overlapping paths
+\cite{kiktenko2024nonoverlap}; and Akhtar et al. present fast and secure routing
+algorithms for QKD networks \cite{akhtar2023fast}. Zhang et al. jointly optimize
+routing, channels, key rate, and time slots \cite{zhang2024rckta}. These studies
+show why hop count alone is insufficient, but their evaluated functions and evidence
+boundaries differ from a fixed-point candidate-evaluation kernel.
+
+RL-based work includes deep-RL resource assignment
+\cite{sharma2023drl}, tabular Q-learning for resource-aware trusted-relay routing
+\cite{hao2025qlearning}, and a graph-attention agent for flexible meshed topologies
+\cite{johann2026adaptive}. These studies provide broader network or generalization
+evidence than the present physical replay. They do not provide a same-input,
+same-function FPGA timing baseline.
+
+\subsection{Operational QKD systems}
+
+MadQCI demonstrates heterogeneous SDN-QKD integration in production facilities
+\cite{martin2024madqci}. Chen et al. report a carrier-grade quantum communication
+network extending beyond 10,000~km \cite{chen2025carrier}. Such systems establish
+the practical setting for KMS and controller integration. Their scale and end-to-end
+objectives do not make their performance numbers directly comparable with a bounded
+FPGA kernel.
+
+\subsection{FPGA acceleration in QKD}
+
+Reconfigurable hardware has accelerated multidimensional reconciliation encoding,
+QKD post-processing, polar-code information reconciliation, error correction, and
+synchronization
+\cite{lu2023multidimensional,venkatachalam2023postprocessing,liao2025polar,
+wei2025fptems,chandra2025synchronization}. These contributions demonstrate that FPGA
+implementation is practical in QKD systems, but they process different functions
+and use throughput or latency boundaries that cannot be converted into route-selection
+speedups.
+
+Hardware genetic-algorithm research provides relevant implementation ideas for
+pipelined evaluation, selection, and specialization
+\cite{shackleford2001pipelined,tang2004hardware,fernando2010ga,
+guo2014automated,peker2018ga}. It remains component-level context because those
+systems do not evaluate trusted-relay key-resource descriptors.
+
+\subsection{Comparison taxonomy}
+
+\begin{table}[H]
+\centering
+\caption{Comparison classes used throughout the thesis.}
+\label{tab:comparison-classes}
+\begin{tabularx}{\textwidth}{@{}p{0.10\textwidth}p{0.31\textwidth}X@{}}
+\toprule
+\textbf{Class} & \textbf{Definition} & \textbf{Valid comparison}\\
+\midrule
+A & Same function, board, interface, numeric contract, replay, and measurement
+boundary & Direct timing, latency, resource, exactness, and controller-behavior
+comparison\\
+B & Same function and inputs on CPU/software and FPGA & Direct speed or energy
+comparison only when both are measured under a matched protocol\\
+C & QKD routing and network-control algorithms & Blocking, utilization, quality,
+robustness, or generalization under compatible network experiments\\
+D & Different QKD components, FPGA/RL hardware, deployments, or VLSI kernels &
+Architectural and feasibility context; no raw QFlow speed ratio\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Class A is supplied internally by the five same-board configurations. No Class B
+experiment was completed. The QKD routing studies are Class C, while FPGA
+post-processing, operational deployments, hardware genetic algorithms, and isolated
+VLSI kernels are Class D. This taxonomy prevents a latency ratio between systems that
+perform different computations.
+
+\subsection{Reproducible literature search and verification}
+
+The literature record was verified on 17 July 2026 from a predefined 50-row review
+matrix. Each row was searched by exact title at an official publisher database or
+the official arXiv record, including IEEE Xplore, ACM Digital Library, SpringerLink,
+Nature, MDPI, Wiley/IET, Optica, Elsevier ScienceDirect, INFORMS, and Google Books
+where appropriate. The audit checked bibliographic identity, platform, evidence
+layer, metric scope, and whether decision latency was actually reported. One audit
+identifier was retained per matrix row; sources whose exact identity could not be
+verified were excluded, and explicit replacement sources were recorded as
+replacements rather than silently treated as the same publication.
+
+The resulting disposition contained 21 Class C and 29 Class D records, with no
+identified Class A or Class B publication in the documented search. This is a
+bounded finding from the recorded matrix and search date. Search queries, publisher
+locations, verification outcomes, and the final workbook are preserved under
+\path{literature/p1/} on the evidence branch identified in
+Appendix~\ref{app:reproducibility}.
+
+\subsection{Research position}
+
+\begin{table}[H]
+\centering
+\caption{Representative related-work positioning. Direct numerical comparability
+requires an equivalent function and measurement boundary.}
+\label{tab:related-position}
+\small
+\begin{tabularx}{\textwidth}{@{}p{0.17\textwidth}p{0.22\textwidth}p{0.15\textwidth}X@{}}
+\toprule
+\textbf{Work/category} & \textbf{Function} & \textbf{Evidence} &
+\textbf{Relationship to \QFlow}\\
+\midrule
+Hao et al. \cite{hao2025qlearning} & Resource-aware adaptive routing & Network
+simulation & Class C RL counterpart; broader routing scope, no same-function FPGA\\
+Johann et al. \cite{johann2026adaptive} & Generalizing DRL routing & Network
+simulation & Class C topology/generalization evidence; no direct kernel ratio\\
+Bi et al. \cite{bi2023dynamic} & Dynamic key-resource routing & Software and
+network model & Class C resource-aware motivation\\
+MadQCI \cite{martin2024madqci} & SDN-QKD deployment & Operational testbed & Class D
+deployment context\\
+Venkatachalam et al. \cite{venkatachalam2023postprocessing} & QKD post-processing &
+FPGA implementation & Class D proof of FPGA suitability for a different function\\
+This work & Fixed-point candidate evaluation & RTL, post-route, and physical replay &
+Class A internal same-board comparison with exact reference agreement\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The research position is consequently specific. \QFlow\ contributes physically
+validated fixed-point candidate-evaluation evidence, while several software studies
+contribute broader topology, algorithmic, or generalization evidence. Neither type
+of evidence dominates the other in every dimension.
+
+\section{Data-Analysis Principles}
+
+The evaluation uses exact integer comparison for reference/RTL/board agreement;
+post-route reports for maximum frequency and resources; accepted-request-to-done
+cycles for kernel latency; profile counts, transitions, and dwell lengths for
+adaptive behavior; and paired confidence intervals, sign tests, and effect sizes for
+held-out route-quality comparisons. Missing power, energy, or CPU results are
+treated as unmeasured rather than as zero.
+
+\chapterconclusion{%
+The background motivates key-resource-aware routing, establishes the distinction
+between hard eligibility and soft profile-conditioned preference, and explains how
+offline tabular Q-learning becomes deterministic policy-ROM inference. The
+literature taxonomy positions \QFlow\ as a physically validated candidate evaluator
+without constructing invalid speed comparisons to network algorithms or different
+QKD components.}

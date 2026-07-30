@@ -1,0 +1,21 @@
+mode,controller,profile_id,valid_decision_count,valid_decision_total,usage_pct
+H0,feasible shortest-distance,0,81,81,100.000000
+H0,feasible shortest-distance,1,0,81,0.000000
+H0,feasible shortest-distance,2,0,81,0.000000
+H0,feasible shortest-distance,3,0,81,0.000000
+H1,fixed key-aware,0,81,81,100.000000
+H1,fixed key-aware,1,0,81,0.000000
+H1,fixed key-aware,2,0,81,0.000000
+H1,fixed key-aware,3,0,81,0.000000
+H2,fixed QFlow,0,81,81,100.000000
+H2,fixed QFlow,1,0,81,0.000000
+H2,fixed QFlow,2,0,81,0.000000
+H2,fixed QFlow,3,0,81,0.000000
+H3,threshold/rule adaptive,0,24,81,29.629630
+H3,threshold/rule adaptive,1,36,81,44.444444
+H3,threshold/rule adaptive,2,18,81,22.222222
+H3,threshold/rule adaptive,3,3,81,3.703704
+H4,reinforcement-learned adaptive,0,42,81,51.851852
+H4,reinforcement-learned adaptive,1,11,81,13.580247
+H4,reinforcement-learned adaptive,2,18,81,22.222222
+H4,reinforcement-learned adaptive,3,10,81,12.345679

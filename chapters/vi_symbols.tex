@@ -1,0 +1,36 @@
+\addcontentsline{toc}{chapter}{LIST OF SYMBOLS}
+\begin{center}
+  {\bfseries\fontsize{16pt}{19pt}\selectfont LIST OF SYMBOLS}
+\end{center}
+\vspace{0.6cm}
+
+\begin{longtable}{@{}p{0.23\textwidth}p{0.71\textwidth}@{}}
+\toprule
+\textbf{Symbol} & \textbf{Meaning}\\
+\midrule
+\endhead
+$G=(V,E)$ & Directed trusted-relay QKD network graph\\
+$K_{ij}(t)$ & Available classical key units in link pool $(i,j)$ at time $t$\\
+$K_{ij}^{\max}$ & Configured capacity of key pool $(i,j)$\\
+$\lambda_{ij}(t)$ & Effective key-generation rate of link $(i,j)$\\
+$C_{ij}(t)$ & Key-consumption rate of link $(i,j)$\\
+$X_{ij}(t)$ & Key units expired or revoked by policy\\
+$o_{ij}(t)$ & Normalized occupancy of key pool $(i,j)$\\
+$q_{ij}(t)$ & Externally measured QBER or health indicator for link $(i,j)$\\
+$\alpha_{\mathrm{fiber}}$ & Physical fibre attenuation coefficient\\
+$\mathcal{R}_{sd}$ & Externally generated candidate set for source $s$ and destination $d$\\
+$\mathcal{R}_i$ & Candidate route with index $i$\\
+$\boldsymbol{\alpha}^{(k)}$ & Scoring-coefficient vector for profile $\Pi_k$\\
+$\boldsymbol{\lambda}_{\mathrm{TCH}}^{(k)}$ & Tchebycheff objective-weight vector for profile $\Pi_k$\\
+$\Pi_k$ & Scoring profile $k$, where $k\in\{0,1,2,3\}$\\
+$s_i$ & Fixed-point scalar score of candidate $\mathcal{R}_i$\\
+$\bm{x}[n]$ & Four-feature controller observation at decision epoch $n$\\
+$z[n]$ & Encoded controller state in $\{0,\ldots,255\}$\\
+$a[n]$ & Selected profile action in $\{0,1,2,3\}$\\
+$\pi(z)$ & Offline-trained policy-ROM mapping from state to profile\\
+$d_{\min}$ & Minimum profile dwell in accepted decisions\\
+$T_{\mathrm{clk}}$ & FPGA clock period\\
+$L$ & Kernel latency in cycles or time\\
+$f_{\max}$ & Post-route maximum operating frequency\\
+\bottomrule
+\end{longtable}
