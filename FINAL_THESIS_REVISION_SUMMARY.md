@@ -5,8 +5,10 @@
 - Thesis: *QFlow: A Fixed-Point FPGA Accelerator for Adaptive Key-Resource-Aware Route-Candidate Evaluation in Trusted-Relay QKD Networks*
 - Author: Shahriar Rizvi (Roll 2003104)
 - Department: Computer Science & Engineering, RUET
-- Submission branch: `thesis-final-scientific-integrity-pass`
-- Exact thesis-source commit: `2ac7209e2c621d41165e3eb5136f5d250ead8701`
+- Submission branch: `thesis-final-submission-corrections`
+- Exact thesis-source commit: injected into Appendix A after the corrected source
+  snapshot is created; see `FINAL_THESIS_SOURCE_AVAILABILITY_REPORT.md` in the final
+  package.
 
 ## Revision outcome
 

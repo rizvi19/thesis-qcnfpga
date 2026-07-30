@@ -84,8 +84,8 @@ corresponding section of `final_summary.json`.
 
 | Comparison | Joint pairs | Mean difference | Bootstrap 95% CI | Sign-test p | dz | Path changes |
 |---|---:|---:|---:|---:|---:|---:|
-| H4 vs H2 | 58 | 86.465517 | [-23.517241, 228.224138] | 0.218750 | 0.176084 | 6 |
-| H4 vs H3 | 58 | -78.051724 | [-242.534483, 79.931034] | 0.453125 | -0.126716 | 7 |
+| H4 vs H2 | 58 | 86.465517 | [-25.120690, 226.620690] | 0.218750 | 0.176084 | 6 |
+| H4 vs H3 | 58 | -78.051724 | [-242.281466, 77.534483] | 0.453125 | -0.126716 | 7 |
 
 Both intervals cross zero. The thesis therefore reports that route-quality superiority is
 not established and retains the non-support of RH5.

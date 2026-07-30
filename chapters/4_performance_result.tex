@@ -102,7 +102,7 @@ Configurations H0--H4 were built independently for the XC6SLX16-2-CSG324 device.
 Each build passed synthesis, mapping, placement, routing, and the 100~MHz timing
 constraint. Independent bitstreams prevent a parameter-only simulation from being
 reported as multiple physical implementations. Configuration H0 remained the
-minimal feasibility/distance reference, while configurations H1--H4 added the
+feasible minimum-hop baseline, while configurations H1--H4 added the
 cost and profile-scoring functions defined in
 Table~\ref{tab:h0-h4-definitions}.
 
@@ -151,7 +151,7 @@ not by itself establish that one controller selects higher-quality routes.
 \textbf{$f_{\max}$ (MHz)} & \textbf{Mean cycles} &
 \textbf{Latency ($\mu$s)}\\
 \midrule
-H0 & Feasible shortest distance & 118.948 & 2.000 & 0.020\\
+H0 & Feasible minimum-hop baseline & 118.948 & 2.000 & 0.020\\
 H1 & Fixed key-aware baseline & 107.538 & 201.763 & 2.018\\
 H2 & Fixed-profile \QFlow & 102.838 & 202.763 & 2.028\\
 H3 & Threshold/rule adaptive & 102.648 & 202.763 & 2.028\\
@@ -211,8 +211,9 @@ Configuration H0 is not feature-equivalent to the remaining configurations; its
 two-cycle result should not be used to calculate an RL overhead. The relevant
 adaptive comparison is configuration H4 versus configuration H3.
 
-The timing separation follows directly from the implemented datapaths. H0 performs
-the feasible-hop comparison and registered completion without range normalization.
+The timing separation follows directly from the implemented datapaths. H0 selects
+the valid candidate with the smallest hop count, using candidate slot as the
+deterministic tie-break, and registers completion without range normalization.
 H1--H4 use the shared iterative 49-by-33-bit divider; objective ranges that are not
 equal require repeated division steps, so their median is near the 309--312-cycle
 maximum even though bypassed cases reduce the mean. H1 omits the profile-ROM read.
@@ -349,9 +350,10 @@ Thus the profile counts sum to 81 for both H3 and H4.
 \section{Held-Out Route-Quality Analysis}
 
 All configurations had 58 successful, four no-path, and two invalid rows in the
-64-row held-out physical partition. The common hard-feasibility logic and common
-request validity fields determine those outcomes before profile-conditioned soft
-preference. Consequently, a mode could not convert a deliberately invalid row into
+64-row held-out physical partition. Upstream candidate validity and the common
+request fields determine those outcomes before profile-conditioned soft preference;
+the FPGA gates supplied validity rather than recomputing link eligibility.
+Consequently, a mode could not convert a deliberately invalid row into
 a valid request or select a route when both candidates were infeasible. Differences
 appeared only in which feasible candidate was preferred. Table
 \ref{tab:pairwise-quality} therefore compares configuration H4 with H2 and H3 only
@@ -366,8 +368,8 @@ on the 58 jointly successful rows.
 \textbf{Comparison} & \textbf{Pairs} & \textbf{Mean diff.} &
 \textbf{95\% CI} & \textbf{$p$} & \textbf{$d_z$} & \textbf{Path changes}\\
 \midrule
-H4--H2 & 58 & 86.47 & $[-23.52,228.22]$ & 0.2188 & 0.176 & 6\\
-H4--H3 & 58 & $-78.05$ & $[-242.53,79.93]$ & 0.4531 & $-0.127$ & 7\\
+H4--H2 & 58 & 86.47 & $[-25.12,226.62]$ & 0.2188 & 0.176 & 6\\
+H4--H3 & 58 & $-78.05$ & $[-242.28,77.53]$ & 0.4531 & $-0.127$ & 7\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -390,15 +392,15 @@ small relative to the complete scale. In H4--H2, 5 pairs were higher, 1 lower, a
   grid=major,grid style={QFlowLine!45},tick label style={font=\small},
   label style={font=\small}]
 \addplot[QFlowGray,dashed,thick] coordinates {(0,0.5)(0,2.5)};
-\addplot[QFlowTeal,very thick] coordinates {(-242.53,1)(79.93,1)};
-\addplot[QFlowBlue,very thick] coordinates {(-23.52,2)(228.22,2)};
+\addplot[QFlowTeal,very thick] coordinates {(-242.28,1)(77.53,1)};
+\addplot[QFlowBlue,very thick] coordinates {(-25.12,2)(226.62,2)};
 \addplot[only marks,mark=*,mark size=3pt,QFlowTeal] coordinates {(-78.05,1)};
 \addplot[only marks,mark=*,mark size=3pt,QFlowBlue] coordinates {(86.47,2)};
 \end{axis}
 \end{tikzpicture}
-\caption{Paired mean route-quality differences with registered percentile 95\%
-confidence intervals. Both intervals cross zero; the line at zero denotes no mean
-difference.}
+\caption{Paired mean route-quality differences with 10,000-replicate paired-row
+percentile 95\% confidence intervals (seed 20260731). Both intervals cross zero;
+the line at zero denotes no mean difference.}
 \label{fig:paired-quality-ci}
 \end{figure}
 
@@ -431,9 +433,12 @@ Mean route-quality code & $-78.05$ units & Small, non-significant paired differe
 \end{tabularx}
 \end{table}
 
-The engineering contribution of configuration H4 is a bit-exact adaptive control
-law with microsecond-scale latency and explicit physical costs. Its value does not
-depend on winning every route-quality comparison.
+The engineering contribution of configuration H4 is a bit-exact ratio-only deployed
+control law with microsecond-scale latency and explicit physical costs. Because
+physical path cost was supplied and common across profiles, this exactness does not
+establish equivalence to the richer training action in which profile-dependent
+$\alpha$ coefficients also construct path cost. Its value does not depend on winning
+every route-quality comparison.
 
 \section{Comparison with Related Work}
 
@@ -448,7 +453,7 @@ speedup ratios across different functions.
 work. ``Direct'' requires the same evaluated function, input contract, and timing
 boundary; only the internal H0--H4 rows satisfy that requirement.}
 \label{tab:state-of-art}
-\begin{tabularx}{\linewidth}{@{}p{3.0cm}p{3.8cm}p{2.4cm}p{3.0cm}p{3.3cm}cccc@{}}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}p{3.8cm}>{\raggedright\arraybackslash}p{2.4cm}>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}p{3.3cm}cccc@{}}
 \toprule
 \textbf{Work/category} & \textbf{Evaluated function} & \textbf{Platform} &
 \textbf{Evidence} & \textbf{Evaluation scope} & \textbf{HW} & \textbf{Board} &
@@ -497,9 +502,10 @@ A realistic deployment would partition responsibilities as follows:
   \item The KMS/SDN controller receives key-pool occupancy, effective key-generation
   rate, link activity, QBER-derived or other externally measured health indicators,
   request load, and utilization.
-  \item The controller generates admissible route candidates from the current
-  topology and policy.
-  \item Candidate descriptors and state metadata are sent to \QFlow.
+  \item The controller generates route candidates, computes hard eligibility from
+  the current topology, resources, health, and policy, and assigns each validity bit.
+  \item Candidate descriptors, including those validity bits and precomputed path
+  costs, plus state metadata are sent to \QFlow.
   \item \QFlow\ encodes the state, selects profile $\Pi_k$, evaluates the candidates,
   and returns a candidate identifier, profile, score, and status.
   \item The controller checks administrative and security policy, installs the
@@ -571,7 +577,7 @@ cost inputs are unavailable.
 \caption{Qualitative platform comparison for the \QFlow\ development stages.}
 \label{tab:platform-comparison}
 \small
-\begin{tabularx}{\textwidth}{@{}p{0.22\textwidth}XXX@{}}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
 \toprule
 \textbf{Criterion} & \textbf{CPU} & \textbf{FPGA} & \textbf{ASIC}\\
 \midrule
@@ -659,6 +665,9 @@ performance.
   \item No matched CPU benchmark, activity-calibrated power measurement, or live
   KMS/SDN deployment was available.
   \item Configuration H4 performed inference only; online learning was not tested.
+  \item Training used profile-dependent $\alpha$ coefficients and objective ratios,
+  whereas the physical replay deployed only the ratio projection over supplied
+  profile-independent path costs.
   \item The OpenROAD results concern isolated kernels and do not establish a
   complete ASIC implementation.
 \end{itemize}
@@ -667,6 +676,7 @@ performance.
 
 \begin{table}[H]
 \centering
+\footnotesize
 \caption{Answers to the research questions.}
 \label{tab:rq-answers}
 \begin{tabularx}{\textwidth}{@{}p{0.08\textwidth}X p{0.26\textwidth}@{}}
@@ -693,6 +703,7 @@ route-quality improvement. & Table~\ref{tab:pairwise-quality}\\
 
 \begin{table}[H]
 \centering
+\footnotesize
 \caption{Mapping from research hypotheses to evidence and outcomes.}
 \label{tab:hypothesis-outcomes}
 \begin{tabularx}{\textwidth}{@{}p{0.12\textwidth}p{0.25\textwidth}p{0.18\textwidth}X@{}}
@@ -713,15 +724,6 @@ superiority was not established\\
 \end{tabularx}
 \end{table}
 
-RH1--RH4 are supported by the reported evidence, whereas RH5 is not supported. The
-non-support of RH5 is a substantive experimental result: physical feasibility and
-adaptive behavior do not automatically imply statistically superior route quality.
-
-\chapterconclusion{%
-Five independent FPGA configurations exceeded 100~MHz and matched 3,780 physical
-result fields exactly. Configuration H4 achieved 2.048~$\mu$s mean kernel latency
-and exhibited a different, less frequently switching profile trace than
-configuration H3, with explicit timing and resource trade-offs. The held-out
-route-quality comparisons remained statistically neutral. Supporting VLSI results
-show a future physical-design path for isolated kernels without constituting an
-integrated ASIC.}
+{\small\textbf{Chapter conclusion.} RH1--RH4 are supported; RH5 is not. The FPGA
+evidence establishes exact, microsecond-scale adaptive behavior, but neither
+route-quality superiority nor an integrated ASIC.\par}

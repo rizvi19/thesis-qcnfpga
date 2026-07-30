@@ -8,7 +8,7 @@ controller evidence is preserved on branch \path{rl-nexys3-adaptive} at commit
 \path{290b4ad75eef2af2b9da2f1f281a2b89416cfd24}. The supporting VLSI evidence is
 preserved on branch \path{vlsi-kernel-study} at commit
 \path{0093ba288f26a1520e4318f207e13f52d38db5a8}. The submission source branch is
-\path{thesis-final-scientific-integrity-pass}. The exact thesis-source snapshot is
+\path{thesis-final-submission-corrections}. The exact thesis-source snapshot is
 \texttt{\FinalThesisSourceCommit}. This identifier is injected into the release PDF
 after the source commit is created; the later packaging commit changes only compiled
 artifacts and reports. This two-commit release procedure avoids requiring a Git
@@ -37,6 +37,9 @@ Independent implementation reports & \path{results/nexys3/p6_step3_h0_ise/} thro
 \path{results/nexys3/p6_step8_h4_ise/}\\
 Physical records and comparisons & \path{results/nexys3/p6_step9_cross_mode/}\\
 Submission-ready physical summaries & \path{results/nexys3/p6_step10_closure/}\\
+Recomputed physical bootstrap & \path{reproduce_physical_bootstrap.py},
+\path{data/physical_bootstrap_recomputed.csv}, and
+\path{data/physical_paired_differences.csv}\\
 VLSI kernel results & \path{results/partC_vlsi/}\\
 CMOS primitive results & \path{results/partD_cmos/}\\
 Literature verification & \path{literature/p1/audit/} and
@@ -63,8 +66,12 @@ H0--H4 post-route timing, cycles, resources, and exactness &
 \path{results/nexys3/p6_step10_closure/thesis_ready_same_board_table.csv}\\
 Profile counts and transitions &
 \path{results/nexys3/p6_step10_closure/thesis_ready_adaptation_table.csv}\\
-Paired route-quality statistics &
-\path{results/nexys3/p6_step10_closure/thesis_ready_pairwise_statistics.csv}\\
+Paired route-quality means, signs, and effect sizes & raw mode rows under
+\path{results/nexys3/p6_step6_h2_physical/},
+\path{results/nexys3/p6_step7_h3_physical/}, and
+\path{results/nexys3/p6_step8_h4_physical/} at the primary evidence commit\\
+Paired percentile confidence intervals & \path{reproduce_physical_bootstrap.py} and
+\path{data/physical_bootstrap_recomputed.csv} (10,000 replicates; seed 20260731)\\
 Integration timing inventory &
 \path{results/nexys3/p5_step9_final_checkpoint/p5_timing_inventory.csv}\\
 SKAG generic synthesis &
@@ -114,7 +121,7 @@ scripts and logs associated with each artifact family.
 
 \begin{enumerate}
   \item check out the branch and commit associated with the selected evidence set;
-  \item verify registered source, ROM, and replay hashes;
+  \item verify source, ROM, and replay hashes;
   \item run the software reference and controller regression tests;
   \item compile and run unit and integrated RTL simulations;
   \item build one selected hardware configuration with Xilinx ISE 14.7;
@@ -125,7 +132,3 @@ scripts and logs associated with each artifact family.
   \item generate cross-configuration tables only after every configuration passes
   exactness.
 \end{enumerate}
-
-The CSV files under \path{data/} in the thesis package are direct copies or compact
-extracts of the registered repository summaries. LaTeX figures use those reported
-values or architectural diagrams drawn in the source.

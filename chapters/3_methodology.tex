@@ -103,28 +103,32 @@ revocation state. Route $\mathcal R_i$ is eligible when
 v_i=\prod_{(u,v)\in\mathcal R_i}\chi_{uv}(D)=1.
 \label{eq:method-route-eligibility}
 \end{equation}
-These hard conditions are not replaced by a weighted score. Freshness is a
-classical KMS policy property; the model contains no stored-key coherence-decay
-term.
+These hard conditions are not replaced by a weighted score. The upstream KMS/SDN
+controller evaluates Equations~\eqref{eq:method-link-eligibility} and
+\eqref{eq:method-route-eligibility}, then supplies one validity bit $v_i$ with each
+bounded candidate descriptor. The physical FPGA does not recompute link status,
+key sufficiency, QBER, or policy metadata; it gates candidates using the supplied
+bit, excluding invalid slots from range formation and winner selection. Freshness
+is a classical KMS policy property; the model contains no stored-key
+coherence-decay term.
 
-\section{Executed Request and Candidate Contract}
-
-The physical experiment exposes four candidate slots so that interface width does
-not change between builds. Slots 0 and 1 carry the two Ring-6 candidates; slots 2
-and 3 are reserved and invalid in the registered replay. Let $N_c$ denote the
-number of feasible candidates among the offered slots. $N_c=0$ produces
-\texttt{NO\_PATH}; otherwise only feasible candidates enter the objective ranges
-and winner reduction.
-
+\clearpage
+\refstepcounter{section}
+\phantomsection
+\addcontentsline{toc}{section}{\protect\numberline{\thesection}Executed Request and Candidate Contract}
+\sectionmark{Executed Request and Candidate Contract}
 \begin{landscape}
 \begin{table}[p]
 \centering
+{\large\bfseries \thesection\quad Executed Request and Candidate Contract\par}
+\vspace{0.8\baselineskip}
 \scriptsize
 \setlength{\tabcolsep}{4pt}
-\caption{Executed candidate fields used by configurations H0--H4. ``Aggregation''
-describes the software/reference source before the fixed-width request is sampled.}
+\caption{Executed candidate fields used by H0--H4; aggregation precedes
+fixed-width sampling. Slots 0--1 carry Ring-6 candidates, slots 2--3 are invalid,
+and zero feasible candidates produces \texttt{NO\_PATH}.}
 \label{tab:candidate-descriptor}
-\begin{tabularx}{\linewidth}{@{}p{2.1cm}p{1.3cm}p{3.2cm}p{2.7cm}p{1.5cm}p{2.0cm}p{2.0cm}X@{}}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.1cm}>{\raggedright\arraybackslash}p{1.3cm}>{\raggedright\arraybackslash}p{3.2cm}>{\raggedright\arraybackslash}p{2.7cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}X@{}}
 \toprule
 \textbf{Field} & \textbf{Symbol} & \textbf{Meaning/source} &
 \textbf{Route aggregation} & \textbf{Width} & \textbf{Format} &
@@ -134,14 +138,15 @@ Candidate valid & $v_i$ & Upstream eligibility result & Logical AND of link and
 request checks & 1 & unsigned Boolean & 0--1 & Invalid candidates never enter
 min/max or winner selection\\
 Path cost & $c_i$ & Precomputed candidate cost & Sum defined by the software
-environment or supplied replay & 32 & unsigned UQ16.16 & $0$--$2^{16}-2^{-16}$ &
+environment or supplied replay & 32 & unsigned UQ16.16 & $0$--$2^{16}-2^{-15}$ &
 Maximum finite code is \texttt{0xFFFFFFFE}; \texttt{0xFFFFFFFF} is infinity\\
 Bottleneck route quality & $q_i$ & Registered bounded route-quality input & Minimum
 code along the route in the software experiment & 16 & unsigned UNORM16 &
 0--65,535, representing 0--1 & Clip to $[0,1]$, multiply by 65,535, round half up\\
 Utilization objective & $u_i$ & Candidate utilization/imbalance input & Maximum
 candidate-link utilization in the software experiment & 32 & unsigned UQ16.16 &
-$0$--$2^{16}-2^{-16}$ & Clip or saturate to the maximum finite code\\
+$0$--$2^{16}-2^{-16}$ & Full unsigned range through \texttt{0xFFFFFFFF}; no
+reserved infinity code\\
 Hop count & $h_i$ & Number of directed edges & Count of edges in route & 3 &
 unsigned integer & 0--7 & Values outside the interface width are invalid upstream\\
 Candidate slot & $r_i$ & Stable candidate identifier & Assigned by generator & 2 &
@@ -232,8 +237,8 @@ quality are zero, the selected identifier is 255, and status is
 
 \subsection{Why both alpha and Tchebycheff weights exist}
 
-The software environment can construct path cost from link-level variables using
-the registered four-coefficient vector
+For training, action $\Pi_k$ constructs path cost from link-level variables using
+the full four-coefficient vector
 \begin{equation}
 c_i^{(k)}=\sum_{(u,v)\in\mathcal R_i}
 \left(\frac{\alpha_1^{(k)}}{K_{uv}}+
@@ -242,15 +247,28 @@ c_i^{(k)}=\sum_{(u,v)\in\mathcal R_i}
 \alpha_4^{(k)}B_{uv}\right),
 \label{eq:alpha-path-cost}
 \end{equation}
-where $Q_{uv}$ is the registered route-quality value, $R_{uv}$ is the synthetic
-key-rate variable, and $B_{uv}$ is the synthetic QBER variable. This layer produces
-one path-cost objective. The Tchebycheff ratios then trade that objective against
-route-quality deficit and utilization imbalance. In the physical comparison,
-$c_i$ is supplied precomputed and is common to the replay. The 18-bit profile ROM
-retains the $\alpha$ coefficients for semantic/export compatibility, but the
-candidate evaluator uses only the lower six ratio bits. Consequently, the physical
-adaptive modes reweight three supplied objectives; they do not rerun graph search or
-Equation~\eqref{eq:alpha-path-cost} on the FPGA.
+where $K_{uv}$ is an integer available-key count, $Q_{uv}$ is a dimensionless
+route-quality value in $[0,1]$, $R_{uv}$ is the positive synthetic key-rate value,
+and $B_{uv}$ is dimensionless synthetic QBER in $[0,1]$. The training generator
+uses $R_{uv}\in[3,9]$ as a contract value rather than a calibrated physical-rate
+measurement. Hence each reciprocal term penalizes scarcity: lower key count,
+quality, or synthetic rate increases cost, while higher QBER increases it directly.
+Before Equation~\eqref{eq:alpha-path-cost} is evaluated, software rejects a path
+containing $K_{uv}<1$, $Q_{uv}<0.90$, or $R_{uv}\leq0$, preventing division by
+zero. The fixed-point export likewise maps a zero denominator to
+\texttt{0xFFFFFFFF} (infinity), while a finite overflow saturates at
+\texttt{0xFFFFFFFE}.
+
+Equation~\eqref{eq:alpha-path-cost} produces one path-cost objective. During
+training, the same action $\Pi_k$ then uses all three Tchebycheff weights to trade
+that cost against route-quality deficit and utilization imbalance. Thus the four
+$\alpha$ coefficients and three objective ratios both affect a software-training
+action. In the physical replay,
+by contrast, $c_i$ is precomputed, supplied to the FPGA, and common across profiles.
+The 18-bit ROM word still contains the $\alpha$ fields, but the physical candidate
+evaluator reads only the lower six ratio bits. Physical exactness therefore validates
+the ratio-only deployment projection, not numerical equivalence to the full
+training action or on-FPGA evaluation of Equation~\eqref{eq:alpha-path-cost}.
 
 \section{Registered Profile Codebook}
 
@@ -266,24 +284,28 @@ means path-cost/hop preference; it does not mean shorter FPGA evaluation time.}
 $\boldsymbol\lambda_{\rm TCH}^{(k)}$ & \textbf{HW ratio} & \textbf{Payload}\\
 \midrule
 $\Pi_0$ & Balanced & $(1.0,1.5,0.5,2.0)$ & $(.40,.40,.20)$ & $(2,2,1)$ &
-\texttt{13329}\\
+\texttt{0x13329}\\
 $\Pi_1$ & Scarcity protection & $(1.5,1.5,1.0,2.0)$ &
-$(.25,.25,.50)$ & $(1,1,2)$ & \texttt{1B516}\\
+$(.25,.25,.50)$ & $(1,1,2)$ & \texttt{0x1B516}\\
 $\Pi_2$ & Fidelity protection & $(1.0,2.0,0.5,3.0)$ &
-$(.25,.50,.25)$ & $(1,2,1)$ & \texttt{14399}\\
+$(.25,.50,.25)$ & $(1,2,1)$ & \texttt{0x14399}\\
 $\Pi_3$ & Low-latency & $(0.5,1.0,0.5,1.0)$ &
-$(.50,.25,.25)$ & $(2,1,1)$ & \texttt{0A2A5}\\
+$(.50,.25,.25)$ & $(2,1,1)$ & \texttt{0x0A2A5}\\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-The name ``fidelity protection'' is preserved because it is the registered profile
-identifier. In this thesis it means stronger emphasis on the bounded route-quality
-code in the experimental contract, not protection against coherence decay in a
-classical key store. Each $\alpha$ is packed as a three-bit half-unit numerator,
-followed by three two-bit Tchebycheff ratios. Multiplying a ratio vector by a common
-constant does not alter the selected route, so normalization of $(2,2,1)$ to
-$(0.4,0.4,0.2)$ is unnecessary for the integer argmin.
+The registered names are retained, but their deployed numerical meanings are exact:
+$\Pi_1$ gives the utilization/scarcity-management objective the strongest ratio,
+$\Pi_2$ gives route-quality deficit the strongest ratio, and $\Pi_3$ gives supplied
+path cost the strongest ratio. ``Fidelity protection'' refers to the bounded
+route-quality code, not coherence decay in a classical key store. Each $\alpha$ is
+packed as a three-bit half-unit numerator, followed by three two-bit Tchebycheff
+ratios. Multiplying a ratio vector by a common constant does not alter the selected
+route, so normalization of $(2,2,1)$ to $(0.4,0.4,0.2)$ is unnecessary for the
+integer argmin. The $\alpha$ fields affect training through
+Equation~\eqref{eq:alpha-path-cost}; only the ratio fields affect the deployed FPGA
+selection described here.
 
 \section{Exact Definitions of Configurations H0--H4}
 
@@ -300,8 +322,8 @@ placed, and routed independently.
 \toprule
 \textbf{Mode} & \textbf{Controller} & \textbf{Winner rule} & \textbf{Purpose}\\
 \midrule
-H0 & Feasible shortest hop & $\arg\min_{v_i=1}(h_i,r_i)$ & Minimal feasibility and
-distance reference\\
+H0 & Feasible minimum-hop baseline & $\arg\min_{v_i=1}(h_i,r_i)$ & Valid candidate
+with smallest hop count; candidate-slot tie-break\\
 H1 & Fixed key-aware cost-only & $\arg\min_{v_i=1}(N_{i,c},c_i,h_i,r_i)$; ratio
 $(1,0,0)$ & Cost-only evaluator baseline; no profile-ROM read\\
 H2 & Fixed QFlow profile & Equation~\eqref{eq:method-score} with $\Pi_0$ ratio
@@ -323,8 +345,8 @@ H3 the fairest adaptive-controller comparison.
 \textbf{Input:} offered candidate slots, selected profile ratio $\boldsymbol\rho$.\\
 \textbf{Output:} selected slot, score, quality code, and status.
 \begin{enumerate}
-  \item Validate request fields and form the feasible set
-  $\mathcal F=\{i:v_i=1\}$.
+  \item Validate the request framing, accept the upstream-supplied validity bits,
+  and form $\mathcal F=\{i:v_i=1\}$.
   \item If the request is malformed, return \texttt{INVALID\_REQUEST}.
   \item If $\mathcal F=\varnothing$, return \texttt{NO\_PATH}.
   \item Form cost, quality-deficit, and utilization ranges over $\mathcal F$.
@@ -486,8 +508,8 @@ physical causes of infeasibility\\
 Route quality & $+2$ & $0$--$2$ after clipping above 0.90 & Abstract experimental
 route-quality utility, not stored-key coherence\\
 Balance & $+1$ evaluation; $+4$ training target & Larger when post-decision
-imbalance is smaller & Training-target revision changes learning emphasis; reported
-evaluation remains on the original $+1$ scale\\
+imbalance is smaller & Training increases balance emphasis; reported evaluation
+uses the common $+1$ scale\\
 Hop cost & $-0.25$ per edge & More hops reduce reward & A topological proxy, not
 measured end-to-end delay\\
 Profile switch & $-0.25$ & Applied after the first action when the action changes &
@@ -496,9 +518,8 @@ Discourages control chattering; previous action is controller history\\
 \end{tabularx}
 \end{table}
 
-The single registered training-target revision changes only the balance coefficient
-from 1 to 4 and applies the three-decision dwell during inference; all other reward
-terms remain unchanged. Validation and final reported metrics use
+Training uses balance coefficient 4 in the learning target and the three-decision
+dwell mechanism. Validation and final reported metrics use balance coefficient 1 in
 Equations~\eqref{eq:success-reward}--\eqref{eq:block-reward}, preserving a common
 evaluation scale. This distinction matters because the training target shapes
 Q-values, whereas the evaluation reward compares completed controllers.
@@ -531,7 +552,8 @@ The software step order is:
 \begin{enumerate}
   \item observe the current four-feature state;
   \item choose one of four profile actions;
-  \item construct the two path objectives and select a route or block;
+  \item use all four action-specific $\alpha$ coefficients to construct the two path
+  costs, then use all three action-specific ratios to select a route or block;
   \item consume one key unit per selected link on success;
   \item apply the trace's integer key arrivals and registered quality/rate/QBER update;
   \item advance the trace index; and
@@ -626,8 +648,7 @@ action identifier on equality.
 There is no early stopping or hyperparameter sweep. A candidate must use at least
 two profiles, allocate at least 1\% to the second-most-used profile, remain within
 an absolute blocking margin of 0.005, and keep switch rate at or below 0.25. The
-controlled training revision was permitted once, the test set remained locked until
-the revised policy was frozen, and no revision was allowed after test access.
+test partition was inaccessible until policy selection was complete.
 Among seven eligible trainer seeds, seed 229 was selected mechanically by highest
 validation reward, followed in order by lower blocking, higher route quality, lower
 switching, and smaller seed. The resulting policy and profile images were then used
@@ -655,7 +676,7 @@ without online modification.
 \node[ctrl,right=18mm of radix] (dwell) {H4 dwell control\\active profile 2 b};
 \node[mem,right=of dwell] (prof) {profile ROM\\4$\times$18 b};
 \node[block,below=14mm of quant] (store) {candidate storage/stream\\valid, cost, quality, util., hops, slot};
-\node[block,right=of store] (feas) {feasibility and range reduction\\min/max per objective};
+\node[block,right=of store] (feas) {validity gating and range reduction\\min/max per objective};
 \node[block,right=of feas] (norm) {range normalizer\\shared 49$\times$33 divider};
 \node[block,right=of norm] (score) {ratio products\\Tchebycheff max\\18-b score};
 \node[block,right=of score] (win) {winner/tie registers\\score, cost, hops, slot};
@@ -715,7 +736,7 @@ measured from the common replay, not estimates from a nominal pipeline formula.}
 \textbf{Mode} & \textbf{Min} & \textbf{Mean} & \textbf{Median} & \textbf{Max} &
 \textbf{Engineering explanation}\\
 \midrule
-H0 & 2 & 2.000 & 2 & 2 & Direct feasible-hop comparison followed by
+H0 & 2 & 2.000 & 2 & 2 & Direct feasible minimum-hop comparison followed by
 registered completion; iterative evaluator bypassed\\
 H1 & 7 & 201.763 & 309 & 309 & Cost-only range normalization; profile-ROM
 read bypassed\\
@@ -852,9 +873,8 @@ expected records $Y_h$.\\
 \end{enumerate}
 \end{pseudocode}
 
-A board photograph was not archived in the registered repository and is therefore
-not introduced as evidence. Figure~\ref{fig:system-boundary} and the transport
-specification describe the setup that can be reproduced from retained files.
+Figure~\ref{fig:system-boundary} and the transport specification define the
+implemented measurement boundary and retained physical interface.
 
 \section{Statistical Analysis}
 
@@ -882,48 +902,36 @@ The exact two-sided sign test discards zero differences and applies a binomial t
 to the remaining positive and negative signs. The two physical comparisons are
 treated as exploratory and their $p$-values are not multiplicity-adjusted.
 
-The retained physical summary provides percentile bootstrap interval endpoints and
-identifies jointly successful rows as the resampling unit, but it does not preserve
-the bootstrap replication count or RNG seed. Those quantities cannot be recovered
-without inventing provenance. Accordingly, the thesis reports the registered
-intervals, does not claim fully reproducible resampling internals for this one
-analysis, and lists the omission as a statistical reproducibility limitation.
-Metric direction, units, pair counts, exact sign-test behavior, and effect-size
-formula remain fully specified.
+The raw H2--H4 board rows make the interval calculation reproducible. For each
+comparison, the script filters held-out IDs 1000--1063, keeps the 58 jointly
+successful rows, and performs 10,000 paired-row bootstrap replicates with Python
+MT19937 seed 20260731. It reports percentile limits using R-7 linear interpolation
+at $p(B-1)$. The executable, source hashes, row differences, and summary preserve
+the complete calculation.
 
 \section{Supporting VLSI Methodology}
 
-The supplementary VLSI study uses isolated arithmetic and comparison kernels. Yosys
-generic synthesis compares coefficient-specialized and general variants. Selected
-kernels are separately processed through a SKY130 high-density OpenROAD flow with
-synthesis, floorplanning, placement, clock-tree synthesis, routing, parasitic
-extraction, and report generation. Generic cells are not FPGA LUTs, and isolated
-kernel areas are not summed into a QFlow ASIC area.
+The supplementary VLSI study compares isolated arithmetic and comparison kernels
+using Yosys generic synthesis and separate SKY130 OpenROAD flows through routing and
+report generation. Generic cells are not FPGA LUTs, and isolated kernel areas are
+not summed into a QFlow ASIC area.
 
-The repository identifier FDPE-V3 is described in the thesis as a
-``LUT/interpolation arithmetic kernel (repository identifier FDPE-V3).'' It is a
-supplementary numerical experiment, not a fidelity-decay function in the current
-QFlow candidate evaluator. A representative 2:1 transmission-gate multiplexer is
-also simulated in ngspice with simplified Level-1 models at 1.8~V and 5--50~fF
-loads. The calculated $\tfrac12CV^2$ quantity applies only to the stated capacitive
-load and is not accelerator energy per decision.
+FDPE-V3 is a supplementary LUT/interpolation experiment, not a fidelity-decay
+function in QFlow. The ngspice 2:1 multiplexer uses simplified Level-1 models at
+1.8~V and 5--50~fF; its calculated $\tfrac12CV^2$ applies only to that load and is
+not accelerator energy per decision.
 
 \section{Methodological Limitations}
 
-The controlled learning environment uses one Ring-6 topology, synthetic phases, two
-valid candidates per request, and a 512-step horizon. The physical experiment uses
-one board/device family and 84 records per configuration. The second controller
-feature is an abstract bounded route-quality input, not a live-link measurement or
-stored-key quantum state. No matched CPU implementation, activity-calibrated FPGA
-power measurement, live QKD devices, authenticated KMS/SDN deployment, or installed
-network route timing was completed. Physical bootstrap replication metadata is
-incomplete. The VLSI study covers isolated kernels and is not full-chip signoff.
+The study uses one synthetic Ring-6 environment, one FPGA family, and 84 records per
+configuration. Route quality is abstract, not a live measurement or stored-key
+state. No matched CPU benchmark, calibrated FPGA power, live QKD/KMS/SDN deployment,
+or route-installation timing was completed. Training uses $\alpha$ and ratio fields;
+the physical FPGA deploys a ratio-only projection over supplied cost. The isolated
+VLSI kernels do not constitute full-chip signoff.
 
 \chapterconclusion{%
-The methodology now specifies the exact executed semantics: four registered
-controller features, numerical profile codebook, explicit H0--H4 selection laws,
-actual thresholds, complete reward, trace partitions, deterministic ROM inference,
-fixed-point arithmetic, cycle boundary, nine-field UART record, and statistical
-units. It also keeps those hardware results separate from the deployable classical
-key-resource model, preventing an abstract experimental route-quality code from
-being presented as stored-key coherence or replenishment evidence.}
+The methodology specifies upstream eligibility and FPGA validity gating, H0--H4,
+the complete controller/reward/numeric contract, ratio-only physical deployment,
+cycle and protocol boundaries, and reproducible statistics. It keeps the bounded
+route-quality experiment distinct from classical key-resource semantics.}

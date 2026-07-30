@@ -18,7 +18,7 @@
 | Feature thresholds: route quality | 0.90, 0.93, 0.96 | training/MDP configuration and threshold manifest |
 | Feature thresholds: offered load | 0.25, 0.50, 0.75 | training/MDP configuration and threshold manifest |
 | Feature thresholds: imbalance | 0.125, 0.25, 0.50 | training/MDP configuration and threshold manifest |
-| Profile payloads Pi0-Pi3 | `13329`, `1B516`, `14399`, `0A2A5` hex | registered profile manifest and profile-ROM RTL |
+| Profile payloads Pi0-Pi3 | `0x13329`, `0x1B516`, `0x14399`, `0x0A2A5` | profile manifest and profile-ROM RTL |
 | Policy ROM | 256 x 2 bits; action counts (145, 43, 44, 24) | `results/rl/p3_policy_freeze/freeze_record.json` and frozen policy file |
 | Policy candidates | 8 trained; 7 eligible; seed 229 selected | `results/rl/p3_revision/selection_record.json` |
 | Training volume | 819,200 transitions per candidate | retained training configuration/summaries |
@@ -29,9 +29,8 @@
 
 Reward values in the thesis resolve to the registered training implementation. The
 successful-decision reward is `4 + 2 U_q + U_b - 0.25 h - 0.25 switch`; blocking is
-`-4`, or `-4.25` when a profile switch also occurs. The validation-only revision changes
-the balance coefficient from one to four; the final physical replay still evaluates
-the original registered scale.
+`-4`, or `-4.25` when a profile switch also occurs. Training uses balance coefficient
+four; validation and held-out evaluation use the common coefficient-one scale.
 
 ## Verification counts
 
@@ -92,16 +91,16 @@ included because they still exercise state quantization and controller behavior.
 
 | Comparison | Joint OK pairs | Mean difference (UNORM16) | Normalized difference | Bootstrap 95% CI | Sign-test p | dz | Path changes |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| H4-H2 | 58 | +86.465517 | +0.00131938 | [-23.517241, 228.224138] | 0.218750 | 0.176084 | 6 |
-| H4-H3 | 58 | -78.051724 | -0.00119099 | [-242.534483, 79.931034] | 0.453125 | -0.126716 | 7 |
+| H4-H2 | 58 | +86.465517 | +0.00131938 | [-25.120690, 226.620690] | 0.218750 | 0.176084 | 6 |
+| H4-H3 | 58 | -78.051724 | -0.00119099 | [-242.281466, 77.534483] | 0.453125 | -0.126716 | 7 |
 
 UNORM16 ranges from 0 to 65,535; larger is better and one LSB is `1/65535`.
 Both intervals cross zero, so the thesis does not claim route-quality superiority.
 The sign test is exact and two-sided over nonzero differences; zeros are reported as
 ties and excluded from the binomial trial count. `d_z` is the paired mean difference
 divided by its sample standard deviation. No multiplicity correction is claimed for
-these two exploratory physical comparisons. The registered bootstrap repetition count
-and seed were not preserved, and the thesis discloses that limitation.
+these two exploratory physical comparisons. The intervals are recomputed with 10,000
+paired-row percentile replicates, MT19937 seed 20260731, and R-7 linear quantiles.
 
 ## Supporting isolated VLSI/CMOS quantities
 

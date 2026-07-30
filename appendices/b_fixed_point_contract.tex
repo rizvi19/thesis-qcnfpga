@@ -60,21 +60,24 @@ threshold-edge cases.
 \small
 \caption{Fixed-point formats used by the physical candidate shell.}
 \label{tab:appendix-numeric-formats}
-\begin{tabularx}{\textwidth}{@{}p{0.25\textwidth}p{0.19\textwidth}p{0.20\textwidth}X@{}}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.25\textwidth}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}X@{}}
 \toprule
 \textbf{Quantity} & \textbf{Format} & \textbf{Scale/range} & \textbf{Rule}\\
 \midrule
 State and route quality & 16-bit UNORM16 & $0$--$65535\leftrightarrow0$--$1$ &
 Round half up and clip\\
-Path cost & 32-bit UQ16.16 & Scale $2^{16}$ & Maximum finite
-\texttt{FFFFFFFE}; infinity \texttt{FFFFFFFF}\\
-Candidate utilization & 32-bit UQ16.16 & Scale $2^{16}$ & Unsigned saturation\\
+Path cost & 32-bit UQ16.16 & $0$--$2^{16}-2^{-15}$ finite & Maximum finite
+\texttt{0xFFFFFFFE}; \texttt{0xFFFFFFFF} is reserved infinity; finite overflow
+saturates to the maximum finite code\\
+Candidate utilization & 32-bit UQ16.16 & $0$--$2^{16}-2^{-16}$ & Full unsigned
+range through \texttt{0xFFFFFFFF}; upstream saturation; no reserved infinity code\\
 Hop count & 3-bit unsigned & 0--7 & Integer edge count\\
 Candidate slot & 2-bit unsigned & 0--3 & Stable final tie-break\\
 Tchebycheff ratio & 2-bit unsigned & 0--3 & Common scaling omitted\\
 Weighted score & 18-bit unsigned & 0--262143 & Maximum of three products\\
 Key count & 16-bit unsigned integer & Trace capacity 16 & Synthetic environment\\
-Synthetic key rate & 16-bit UQ8.8 & Scale $2^8$ & Software/export contract\\
+Synthetic key rate & 16-bit UQ8.8 & $0$--$2^8-2^{-8}$ & Zero makes a software
+path infeasible; positive values follow the software/export contract\\
 $\alpha$ coefficient & 3-bit U2.1 & Half-unit increments & Stored in profile word\\
 \bottomrule
 \end{tabularx}
@@ -95,10 +98,13 @@ The 18-bit packing order is
 \alpha_1[2{:}0]\,\alpha_2[2{:}0]\,\alpha_3[2{:}0]\,\alpha_4[2{:}0]\,
 \rho_c[1{:}0],\rho_q[1{:}0],\rho_u[1{:}0].
 \]
-The payloads are \texttt{13329}, \texttt{1B516}, \texttt{14399}, and
-\texttt{0A2A5}. In the physical candidate evaluator, only the lower six ratio bits
-affect selection because path cost is supplied precomputed. The alpha fields remain
-part of the registered semantic/export word.
+The payloads are \texttt{0x13329}, \texttt{0x1B516}, \texttt{0x14399}, and
+\texttt{0x0A2A5}. During software training, bits $[17{:}6]$ provide the four
+$\alpha$ coefficients used to construct profile-dependent path cost and bits
+$[5{:}0]$ provide the three objective ratios. In the physical candidate evaluator,
+path cost is supplied precomputed and common across profiles, so only bits $[5{:}0]$
+affect selection. Thus the physical contract deploys the ratio projection of the
+full training profile; it does not evaluate the $\alpha$-dependent cost function.
 
 \section{H3 Priority Function}
 

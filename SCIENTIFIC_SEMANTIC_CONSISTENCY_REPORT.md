@@ -85,11 +85,10 @@ repository traceability.
 
 ## Disclosed limitations
 
-The physical bootstrap confidence intervals were retained from the registered source,
-but the bootstrap repetition count and random seed were not preserved in the available
-record. The thesis states this limitation; it does not supply a reconstructed value.
-Likewise, no authenticated board photograph was available in the retained package, so
-none was invented or substituted. The verification ladder, architecture, trade-off,
+The physical bootstrap confidence intervals were recomputed from the available raw
+paired rows using 10,000 paired-row replicates, MT19937 seed 20260731, and declared
+percentile quantiles. No authenticated board photograph is used as thesis evidence.
+The verification ladder, architecture, trade-off,
 confidence-interval, and routed-layout figures provide the required technical visuals.
 
 ## Outcome

@@ -80,7 +80,11 @@ v_i[n]=\prod_{(u,v)\in\mathcal{R}_i}\chi_{uv}[n;D].
 Hard checks protect invariants. Soft preference is applied only after feasibility is
 known and expresses engineering priorities among admissible candidates. This
 separation avoids using a weighted score as a substitute for security or resource
-constraints.
+constraints. In the intended system, the upstream KMS/SDN controller evaluates
+Equations~\eqref{eq:link-eligibility-bg}--\eqref{eq:route-eligibility-bg}. The FPGA
+receives the resulting $v_i$ bit and uses it only to exclude invalid candidates from
+range formation and winner selection; it does not independently read link-level KMS
+records or recompute these equations.
 
 \subsection{Concrete trusted-relay example}
 
@@ -115,11 +119,15 @@ $D\!\rightarrow E$ & 10 & 16 & 0.026 & 0.20 & Up; enough key units\\
 Initially $v_0=1$ and $v_1=0$, so the evaluator must return $\mathcal R_0$ even if
 $\mathcal R_1$ would have a more attractive soft score. If the
 $C\!\rightarrow D$ pool later reaches seven units while all hard checks remain
-valid, both candidates become feasible. A scarcity-oriented profile may then prefer
-the larger bottleneck reserve of $\mathcal R_1$; a path-cost-oriented profile may
-prefer the two-hop $\mathcal R_0$. Thus feasibility answers ``may this route be
-used?'', whereas the profile answers ``which permitted route best expresses the
-current operating preference?'' No finite score can override $v_i=0$.
+valid, both candidates become feasible. In the software training environment, a
+scarcity profile can change the key-count and key-rate coefficients used to form
+path cost and can also emphasize utilization. In the physical ratio-only projection,
+the profile registered as Scarcity protection uses ratio $(1,1,2)$, so its strongest
+direct arithmetic emphasis is the supplied utilization objective. A path-cost-
+emphasis profile may instead prefer the two-hop $\mathcal R_0$. Thus feasibility
+answers ``may this route be used?'', whereas the profile answers ``which permitted
+route best expresses the current operating preference?'' No finite score can
+override $v_i=0$.
 
 \section{Candidate-Route Evaluation}
 
@@ -174,14 +182,16 @@ restricted-shortest-path theory motivate explicit objective treatment but do not
 imply that one method is universally best
 \cite{zajac2021objectives,hassin1992restricted,deb2002nsga2}.
 
-The registered profile words also preserve four half-unit coefficients
-$\boldsymbol\alpha^{(k)}$. Their conceptual role is to parameterize an upstream
-local/link-cost construction. In the completed physical shell, candidate path cost
-arrives already computed under the common replay; the candidate evaluator consumes
-only the profile word's lower six bits, namely the three Tchebycheff ratios.
-Therefore the physical H2--H4 comparison changes the relative emphasis among path
-cost, route-quality deficit, and utilization imbalance. It does not recompute an
-$\boldsymbol\alpha$-weighted graph path inside the FPGA.
+Each profile contains four half-unit coefficients
+$\boldsymbol\alpha^{(k)}$ and three Tchebycheff ratios. Offline training uses the
+full action: the alpha coefficients form a profile-dependent path cost, and the
+ratios weight the three normalized objectives. In the completed physical shell,
+candidate path cost arrives precomputed and remains common across profiles; the
+candidate evaluator consumes only the profile word's lower six ratio bits.
+Therefore the physical H2--H4 comparison validates a ratio-only projection that
+changes the emphasis among supplied path cost, route-quality deficit, and
+utilization. It does not establish equivalence with the complete software action or
+recompute an alpha-weighted graph path inside the FPGA.
 
 \subsection{Worked profile-scoring example}
 
@@ -217,16 +227,18 @@ For balanced profile $\Pi_0$, whose hardware ratio is $(2,2,1)$,
 S_0^{(0)}&=\max(0,2\cdot65485,65527)=130970,\\
 S_1^{(0)}&=\max(2\cdot65533,0,0)=131066,
 \end{align}
-so $\mathcal R_0$ wins by 96 score units. For scarcity-protection profile $\Pi_1$
-the deployed ratio is $(1,1,2)$:
+so $\mathcal R_0$ wins by 96 score units. For $\Pi_1$, registered as Scarcity
+protection, the deployed ratio is $(1,1,2)$ and therefore emphasizes the utilization
+penalty most strongly:
 \begin{align}
 S_0^{(1)}&=\max(0,65485,2\cdot65527)=131054,\\
 S_1^{(1)}&=\max(65533,0,0)=65533,
 \end{align}
-so $\mathcal R_1$ wins. In this contract, the registered profile name identifies a
-controller mode; the physical arithmetic is defined by the numerical ratio. If two
-scores tie, comparison continues lexicographically by raw path cost, hop count, and
-candidate slot, guaranteeing one reproducible result.
+so $\mathcal R_1$ wins. This example concerns the physical ratio-only projection;
+the software training action may also change candidate costs through
+$\boldsymbol\alpha^{(1)}$. If two scores tie, comparison continues lexicographically
+by raw path cost, hop count, and candidate slot, guaranteeing one reproducible
+result.
 
 \subsection{Worked fixed-point calculation}
 
@@ -428,9 +440,9 @@ The literature record was verified on 17 July 2026 from a predefined 50-row revi
 matrix. Each row was searched by exact title at an official publisher database or
 the official arXiv record, including IEEE Xplore, ACM Digital Library, SpringerLink,
 Nature, MDPI, Wiley/IET, Optica, Elsevier ScienceDirect, INFORMS, and Google Books
-where appropriate. The audit checked bibliographic identity, platform, evidence
-layer, metric scope, and whether decision latency was actually reported. One audit
-identifier was retained per matrix row; sources whose exact identity could not be
+where appropriate. The verification recorded bibliographic identity, platform,
+evidence layer, metric scope, and whether decision latency was actually reported.
+One review identifier was kept per matrix row; sources whose exact identity could not be
 verified were excluded, and explicit replacement sources were recorded as
 replacements rather than silently treated as the same publication.
 
@@ -485,9 +497,7 @@ held-out route-quality comparisons. Missing power, energy, or CPU results are
 treated as unmeasured rather than as zero.
 
 \chapterconclusion{%
-The background motivates key-resource-aware routing, establishes the distinction
-between hard eligibility and soft profile-conditioned preference, and explains how
-offline tabular Q-learning becomes deterministic policy-ROM inference. The
-literature taxonomy positions \QFlow\ as a physically validated candidate evaluator
-without constructing invalid speed comparisons to network algorithms or different
-QKD components.}
+The background motivates key-resource-aware routing, separates upstream eligibility
+from profile-conditioned FPGA preference, and explains deterministic policy-ROM
+inference. The literature taxonomy positions \QFlow\ without invalid cross-function
+speed comparisons.}

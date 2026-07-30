@@ -27,7 +27,7 @@ Authoritative FPGA snapshot: `rl-nexys3-adaptive` at
 
 ## Exact H0-H4 behavior
 
-- [x] H0 feasible shortest-distance selection is specified.
+- [x] H0 feasible minimum-hop selection is specified.
 - [x] H1 fixed key-aware scoring is specified.
 - [x] H2 forced Pi0 evaluation is specified.
 - [x] H3 first-match rule order and complete Pi0-Pi3 action table are specified.
@@ -89,8 +89,8 @@ Authoritative FPGA snapshot: `rl-nexys3-adaptive` at
 - [x] Paired effect size uses `d_z = mean(delta)/sd(delta)` for nonzero variance.
 - [x] No multiple-comparison correction was applied to the two physical exploratory
   comparisons, and both are interpreted as non-significant.
-- [!] The retained physical summary does not preserve bootstrap repetition count or
-  random seed. This missing metadata is disclosed in the thesis and is not fabricated.
+- [x] Physical intervals are reproducible from row-level data with 10,000 paired-row
+  replicates, MT19937 seed 20260731, and declared percentile quantiles.
 
 ## Results interpretation and presentation
 

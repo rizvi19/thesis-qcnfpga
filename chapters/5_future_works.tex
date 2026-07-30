@@ -6,17 +6,24 @@
 This thesis developed and physically evaluated \QFlow, a fixed-point FPGA
 accelerator for adaptive key-resource-aware route-candidate evaluation in
 trusted-relay QKD networks. The system accepts externally generated candidate
-descriptors, applies hard eligibility, selects a fixed or adaptive scoring profile,
-evaluates candidates with deterministic arithmetic, and returns a selected
-identifier and status. Candidate generation, topology management, KMS operation,
-SDN orchestration, security validation, and route installation remain control-plane
-functions.
+descriptors, gates each candidate using its upstream-computed validity bit, selects
+a fixed or adaptive scoring profile, evaluates candidates with deterministic
+arithmetic, and returns a selected identifier and status. Candidate generation,
+hard-eligibility computation, topology management, KMS operation, SDN orchestration,
+security validation, and route installation remain control-plane functions.
 
 The adaptive controller quantizes four features into a 256-state address and selects
 one of four scoring profiles. Tabular Q-learning is performed offline. The deployed
 reinforcement-learned configuration uses a 256-entry two-bit policy ROM and
 minimum-dwell control, and performs deterministic inference without runtime Q-value
 updates.
+
+The software-training action used the complete registered profile: four $\alpha$
+coefficients constructed profile-dependent path costs and three Tchebycheff ratios
+weighted the objectives. In the physical experiment, path costs were supplied
+precomputed and common across profiles, so only the ratios affected selection. The
+physical exactness result therefore validates this ratio-only deployment projection,
+not a complete on-chip realization of the training cost function.
 
 The executed features are minimum key occupancy, bounded bottleneck route quality,
 offered request load, and utilization imbalance. The second feature is limited to
@@ -65,8 +72,8 @@ The work contributes:
   \item a classical key-resource model for candidate evaluation that represents
   pool occupancy, generation, consumption, status, utilization, health indicators,
   and policy-controlled freshness;
-  \item a bounded fixed-point evaluator with separate hard eligibility and soft
-  multi-objective preference;
+  \item an upstream hard-eligibility contract and bounded fixed-point FPGA evaluator
+  that gates supplied validity before soft multi-objective preference;
   \item fixed, rule-adaptive, and offline-learned profile-selection mechanisms;
   \item a deterministic policy-ROM deployment architecture with minimum-dwell
   control;
@@ -87,6 +94,12 @@ implementation behavior for those inputs but does not establish network-level
 superiority on unseen topologies or live QKD deployments. The policy was trained in
 a controlled research environment, and replay rows may contain dependence that
 reduces the effective statistical sample size.
+
+The richer software-training action and ratio-only physical deployment are not
+functionally identical: the physical shell did not recompute profile-conditioned
+path cost. A future implementation should either move that cost construction into
+the hardware boundary or train and evaluate explicitly against the same
+profile-independent supplied costs used for deployment.
 
 No exactly matched CPU/FPGA timing benchmark, activity-calibrated FPGA power
 measurement, or CPU/FPGA energy comparison was completed. No live KMS, SDN
@@ -133,8 +146,9 @@ test planning, and a measured comparison with the FPGA implementation.
 
 \section{Closing Statement}
 
-The experiments show that an offline-learned key-resource-aware controller can be
-deployed bit-exactly on a resource-constrained FPGA with deterministic
+The experiments show that the ratio-only projection of an offline-learned
+key-resource-aware controller can be deployed bit-exactly on a
+resource-constrained FPGA with deterministic
 microsecond-scale candidate-evaluation latency and controlled implementation
 overhead. Equally important, the neutral route-quality result defines where the
 evidence stops. This combination of physical exactness, transparent trade-offs, and

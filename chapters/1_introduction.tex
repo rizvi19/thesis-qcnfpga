@@ -50,8 +50,9 @@ key-generation rate, utilization, and operational health.
 \draw[arr] (gen)--(eval);
 \draw[arr] (eval)--(install);
 \end{tikzpicture}}
-\caption{System context of \QFlow. Candidate generation and route installation are
-control-plane functions outside the FPGA kernel.}
+\caption{System context of \QFlow. Candidate generation, hard-eligibility
+computation, and route installation are control-plane functions outside the FPGA
+kernel.}
 \label{fig:system-context}
 \end{figure}
 
@@ -87,10 +88,11 @@ For source $s$ and destination $d$, software supplies
 \{\mathcal{R}_0,\mathcal{R}_1,\ldots,\mathcal{R}_{m-1}\}.
 \label{eq:intro-candidate-set}
 \end{equation}
-Each candidate $\mathcal{R}_i$ has a fixed-width descriptor containing feasibility,
-distance or consumption cost, key-resource conditions, load-related indicators, and
-a deterministic identifier. \QFlow\ selects a scoring profile, evaluates the
-descriptors, and returns the chosen identifier, score, profile, and status.
+Each candidate $\mathcal{R}_i$ has a fixed-width descriptor containing an upstream
+validity result, path cost, a bounded route-quality code, utilization, hop count,
+and a deterministic identifier. \QFlow\ selects a scoring profile, gates candidates
+using the supplied validity bits, evaluates the remaining descriptors, and returns
+the chosen identifier, score, profile, and status.
 
 This boundary makes exact verification possible. The same descriptor and fixed-point
 contract can be evaluated in software, RTL simulation, and physical hardware. It
@@ -100,8 +102,8 @@ policy responsibilities while the FPGA offloads repeated deterministic evaluatio
 \subsection{Why deterministic hardware acceleration is relevant}
 
 A candidate evaluator applies the same bounded operations to every request:
-quantization, read-only policy lookup, weighted fixed-point scoring, feasibility
-checks, comparison, and deterministic tie-breaking. These operations are suitable
+quantization, read-only policy lookup, supplied-validity gating, weighted fixed-point
+scoring, comparison, and deterministic tie-breaking. These operations are suitable
 for dedicated pipelines and finite-state control. FPGA implementation provides
 cycle-level predictability, explicit numeric widths, and reconfiguration as the
 controller or scoring profiles evolve.
@@ -119,7 +121,7 @@ allocation, including adaptive and reinforcement-learning methods. Separately,
 FPGA-based QKD research has demonstrated high-throughput reconciliation,
 post-processing, and synchronization
 \cite{lu2023multidimensional,venkatachalam2023postprocessing,liao2025polar,
-chandra2025synchronization}. Within the documented literature audit, no directly
+chandra2025synchronization}. Within the documented literature review, no directly
 comparable same-board implementation of the evaluated candidate-selection function
 was identified. The gap is therefore an implementation and evidence gap: a compact,
 adaptive, fixed-point candidate evaluator has not been compared through independent
@@ -147,7 +149,8 @@ key-resource and network-state metadata, the research problem is to design a bou
 hardware kernel that:
 
 \begin{enumerate}
-  \item rejects infeasible candidates according to explicit hard constraints;
+  \item excludes candidates whose upstream validity bits report failed hard
+  constraints;
   \item selects a fixed or adaptive scoring profile deterministically;
   \item evaluates feasible candidates using reproducible fixed-point arithmetic;
   \item returns a stable result under a synchronous request/done protocol; and
@@ -163,8 +166,8 @@ The objectives are to:
   \item formulate a classical key-resource model based on pool occupancy,
   generation rate, consumption, status, utilization, health indicators, and
   policy-controlled freshness;
-  \item define a fixed-point candidate-scoring contract with distinct hard
-  eligibility and soft preference;
+  \item define a fixed-point candidate-scoring contract with distinct upstream hard
+  eligibility, FPGA validity gating, and soft preference;
   \item develop fixed, rule-adaptive, and offline-learned profile controllers;
   \item implement five independent FPGA configurations under one external contract;
   \item verify reference-to-RTL and reference-to-board exactness;
@@ -215,10 +218,12 @@ The thesis makes the following contributions:
   occupancy, generation rate, consumption, operational status, policy freshness,
   and externally measured health indicators;
   \item a deterministic fixed-point candidate-evaluation contract that separates
-  hard eligibility from profile-conditioned multi-objective preference;
-  \item an adaptive controller with four radix-4 features, 256 states, four profile
-  actions, offline tabular Q-learning, a 256-entry two-bit policy ROM, and
-  minimum-dwell control;
+  upstream hard-eligibility computation from FPGA validity gating and
+  profile-conditioned preference;
+  \item an adaptive controller with four radix-4 features, 256 states, four full
+  software-training profile actions, offline tabular Q-learning, and a 256-entry
+  two-bit policy ROM whose physical candidate shell deploys the profiles' objective
+  ratios with minimum-dwell control;
   \item five independent FPGA implementations with a common interface and
   measurement boundary;
   \item a same-board campaign comprising 420 physical records, 3,780 checked fields,

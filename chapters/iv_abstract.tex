@@ -5,54 +5,42 @@
 \vspace{0.8cm}
 
 \noindent
-Quantum key distribution (QKD) networks require control decisions that account for
-the availability and operating condition of link key resources. Most published QKD
-routing studies evaluate network-level algorithms in software, while FPGA research
-has mainly accelerated physical-layer or post-processing functions. This thesis
-presents \QFlow, a deterministic fixed-point FPGA accelerator that evaluates
-externally generated route candidates for trusted-relay QKD networks. Candidate
-generation, topology management, key-management-system operation,
-software-defined-network orchestration, security-policy enforcement, and route
-installation remain control-plane functions outside the accelerator.
+Quantum key distribution (QKD) networks require routing decisions that account for
+finite link-local key resources and changing conditions. This thesis presents
+\QFlow, a deterministic fixed-point FPGA accelerator for evaluating externally
+generated route candidates in trusted-relay QKD networks. The upstream KMS/SDN
+control plane generates candidates, evaluates hard constraints, and supplies each
+candidate's validity bit and bounded descriptors; authorization and route
+installation also remain outside the FPGA.
 
-The controller quantizes four features into radix-4 values, producing 256 states and
-four scoring-profile actions. Tabular Q-learning is performed offline. The selected
-policy is deployed as a 256-entry, two-bit read-only memory with minimum-dwell
-control; FPGA execution performs deterministic inference and does not update
-Q-values. Five independent hardware evaluation configurations, H0--H4, implement a
-feasible shortest-distance baseline, a fixed key-aware baseline, a fixed-profile
-\QFlow\ evaluator, a threshold/rule-adaptive evaluator, and a
-reinforcement-learned adaptive evaluator.
+Four features are quantized into 256 states with four profile actions. Tabular
+Q-learning is performed offline, and the mapping is deployed as a 256-entry two-bit
+policy ROM with minimum-dwell control. Training uses four coefficients to construct
+profile-dependent path cost and three Tchebycheff ratios. During physical replay,
+path cost is precomputed and common across profiles, so H2--H4 deploy only the ratio
+projection. Physical exactness therefore validates that projection, not on-chip
+execution of the complete training action. Five independent configurations comprise
+a feasible minimum-hop baseline (H0), fixed key-aware baseline (H1), fixed-profile
+\QFlow\ (H2), rule-adaptive selection (H3), and learned profile selection (H4).
 
-The completed H4 experiment uses minimum key occupancy, a bounded bottleneck
-route-quality code, offered request load, and utilization imbalance. The
-route-quality code is an abstract input from the registered synthetic contract; it
-is not interpreted as quantum coherence of post-processed keys in classical
-storage. The final network-control model separately represents classical pool
-occupancy, generation, consumption, status, utilization, freshness policy, and
-external health indicators.
+The experiment uses minimum key occupancy, bounded route quality, offered load, and
+utilization imbalance. Route quality is an abstract input, not quantum coherence of
+post-processed classical keys. The network model separately represents key-pool
+generation, consumption, status, utilization, freshness policy, and health.
 
-Verification combined a fixed-point software reference, exhaustive state and
-threshold tests, cycle-accurate register-transfer-level simulation, independent
-Xilinx ISE implementations, and physical replay on a Digilent Nexys 3 Spartan-6
-FPGA. The physical campaign produced 420 records containing 3,780 checked fields,
-with zero mismatches. All five configurations exceeded 100~MHz after placement and
-routing. Configuration H4 achieved a post-route maximum frequency of 102.020~MHz
-and a mean normal-case accepted-request-to-done kernel latency of 2.048~$\mu$s.
-Relative to configuration H3, configuration H4 changed mean latency by +0.986\%,
-maximum frequency by $-0.612$\%, look-up-table use by $-7.081$\%, register use by
-+5.378\%, and occupied-slice use by +4.961\%. The complete H4 controller, comprising
-the learned policy and dwell mechanism, produced 45.455\% fewer profile transitions
-than H3 on the evaluated common replay. Held-out route-quality differences were not
-statistically significant, so the evidence establishes physical deployability and
-distinct adaptive behavior rather than route-quality superiority.
+Verification combined a fixed-point reference, exhaustive tests, cycle-accurate RTL
+simulation, independent Xilinx ISE implementations, and physical replay on a Nexys 3
+Spartan-6 FPGA. Across five builds, 420 records and 3,780 checked fields produced zero
+mismatches; every configuration exceeded 100~MHz. H4 achieved 102.020~MHz and mean
+accepted-request-to-done kernel latency of approximately 2.048~$\mu$s. Relative to
+H3, H4 added 0.986\% mean latency, reduced maximum frequency by 0.612\%, and produced
+24 rather than 44 profile transitions, with fewer LUTs but more registers and
+occupied slices. Reproducible paired-row confidence intervals crossed zero, with
+sign-test $p$-values 0.2188 and 0.4531; route-quality superiority was not established.
 
-Supporting synthesis and OpenROAD experiments demonstrate implementation depth for
-selected arithmetic and selection kernels and indicate a possible future ASIC path;
-they are not an integrated ASIC implementation. The results demonstrate that an
-offline-learned key-resource-aware controller can be deployed bit-exactly on a
-resource-constrained FPGA with deterministic microsecond-scale candidate-evaluation
-latency and controlled implementation overhead.
+Supporting synthesis and OpenROAD results concern isolated kernels, not an
+integrated ASIC. The contribution is a bit-exact, microsecond-scale adaptive
+candidate evaluator with explicit semantic and measurement limits.
 
 \vspace{0.5cm}
 \noindent\textbf{Keywords:} quantum key distribution network, FPGA accelerator,

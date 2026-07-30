@@ -1,8 +1,8 @@
 mode,controller,profile_id,valid_decision_count,valid_decision_total,usage_pct
-H0,feasible shortest-distance,0,81,81,100.000000
-H0,feasible shortest-distance,1,0,81,0.000000
-H0,feasible shortest-distance,2,0,81,0.000000
-H0,feasible shortest-distance,3,0,81,0.000000
+H0,feasible minimum-hop baseline,0,81,81,100.000000
+H0,feasible minimum-hop baseline,1,0,81,0.000000
+H0,feasible minimum-hop baseline,2,0,81,0.000000
+H0,feasible minimum-hop baseline,3,0,81,0.000000
 H1,fixed key-aware,0,81,81,100.000000
 H1,fixed key-aware,1,0,81,0.000000
 H1,fixed key-aware,2,0,81,0.000000

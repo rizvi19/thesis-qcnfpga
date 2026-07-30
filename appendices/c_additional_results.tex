@@ -14,7 +14,7 @@
 \textbf{Success} & \textbf{No path} & \textbf{Invalid} &
 \textbf{Mean quality} & \textbf{Median quality}\\
 \midrule
-H0 & feasible shortest distance & 64 & 58 & 4 & 2 & 61707.19 & 62087.50\\
+H0 & feasible minimum-hop baseline & 64 & 58 & 4 & 2 & 61707.19 & 62087.50\\
 H1 & fixed key-aware & 64 & 58 & 4 & 2 & 61640.03 & 61673.50\\
 H2 & fixed-profile \QFlow & 64 & 58 & 4 & 2 & 61640.03 & 61673.50\\
 H3 & threshold/rule adaptive & 64 & 58 & 4 & 2 & 61804.55 & 61673.50\\
@@ -88,7 +88,7 @@ B6 & 9.252 & 108.085 & Pass\\
 \begin{table}[H]
 \centering
 \caption{Status counts in the complete 84-row physical corpus. Counts are identical
-for H0--H4 because request validity and hard candidate feasibility are common.}
+for H0--H4 because the replay supplies common request and candidate-validity fields.}
 \label{tab:full-status-counts}
 \begin{tabular}{@{}lrrr@{}}
 \toprule
@@ -126,34 +126,34 @@ jitter. Equal objective ranges and single-feasible-candidate requests avoid one 
 more iterative normalizations; two nonconstant candidates exercise the full shared
 divider sequence.
 
-\begin{landscape}
 \section{Paired Route-Quality Detail}
 
 \begin{table}[H]
 \centering
-\scriptsize
+\small
 \caption{Detailed jointly successful physical comparisons. Difference is first
 configuration minus second in UNORM16 units.}
 \label{tab:pairwise-quality-detail}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}lrrrrrrrr@{}}
 \toprule
 \textbf{Comparison} & \textbf{Pairs} & \textbf{Mean} & \textbf{95\% CI} &
 \textbf{Higher} & \textbf{Lower} & \textbf{Ties} & \textbf{Sign $p$} &
 $\boldsymbol d_z$\\
 \midrule
-H4--H2 & 58 & 86.465517 & $[-23.517,228.224]$ & 5 & 1 & 52 & 0.21875 &
+H4--H2 & 58 & 86.465517 & $[-25.121,226.621]$ & 5 & 1 & 52 & 0.21875 &
 0.176084\\
-H4--H3 & 58 & $-78.051724$ & $[-242.534,79.931]$ & 2 & 5 & 51 & 0.453125 &
+H4--H3 & 58 & $-78.051724$ & $[-242.281,77.534]$ & 2 & 5 & 51 & 0.453125 &
 $-0.126716$\\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
-\end{landscape}
 
 Dividing the mean differences by 65,535 gives $+0.00131938$ and
-$-0.00119099$. The exact sign test excludes ties. The registered interval endpoints
-are retained, but their bootstrap repetition count and RNG seed were not preserved;
-no unregistered value is supplied for those fields.
+$-0.00119099$. The exact sign test excludes ties. The confidence limits use 10,000
+nonparametric paired-row bootstrap replicates, seed 20260731, and percentile limits
+with linear R-7 interpolation. The executable analysis and row-level differences are
+included with the source.
 
 \section{Reward Scale and Policy Storage Detail}
 
@@ -176,7 +176,7 @@ registered contract\\
 \end{table}
 
 The deployed policy requires 512 useful bits ($256\times2$). The profile ROM adds
-72 useful bits ($4\times18$). By comparison, the audit-only Q-table contains 16,384
+72 useful bits ($4\times18$). By comparison, the archival Q-table contains 16,384
 bits ($1024\times16$). Exporting the greedy actions therefore removes the runtime
 Q-value maximum and greatly reduces useful policy storage, while preserving one
 deterministic action for every quantized state.
