@@ -108,11 +108,15 @@ an integrated QFlow ASIC area.
 
 | Quantity | Result |
 |---|---:|
-| Baseline compiled PDF | 98 pages |
-| Revised compiled PDF | 68 pages |
+| Baseline compiled PDF | 68 pages at the start of the scientific-integrity pass |
+| Revised compiled PDF | 97 pages |
 | Abstract length | approximately 369 words |
-| Bibliography records | 26 |
-| Unique citation keys used | 26 |
+| Bibliography records | 41 |
+| Citation commands | 42 |
 | Undefined references/citations | 0 |
 | Overfull boxes | 0 |
-| Rendered pages visually inspected | 68 |
+| Rendered pages visually inspected | 97 |
+
+This first-pass audit is retained for package continuity. The authoritative second-pass
+mapping is `FINAL_NUMERICAL_TRACEABILITY.md`; the scientific interpretation audit is
+`SCIENTIFIC_SEMANTIC_CONSISTENCY_REPORT.md`.
