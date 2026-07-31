@@ -8,50 +8,40 @@
 - Department: Computer Science & Engineering, RUET
 - Submission branch: `thesis-final-submission-corrections`
 - Exact thesis-source commit:
-  `575a64b19a2a583a7e31e9092c05c9991c24cc76`
+  `6d3bee97349cbd4b14e4213fb3ea2ad7b0a2a744`
 
-## Revision outcome
+## Final micro-correction
 
-The final 92-page thesis now gives one consistent account of the software model,
-fixed-point implementation, physical replay, and supporting VLSI work. It explicitly
-separates the complete offline-training action—four alpha coefficients plus three
-Tchebycheff ratios—from the physical H2-H4 ratio-only projection over supplied,
-profile-independent path costs. Physical exactness is therefore claimed only for the
-implemented projection.
+The thesis now explicitly separates the reward that shaped the offline Q-values from
+the reward used to compare completed controllers. `r_t^{train}` uses the executed
+successful balance coefficient 4 and appears in the Q-learning update. `r_t^{eval}`
+uses balance coefficient 1 and appears in validation, held-out testing, Table 4.1,
+and the reported results. Both blocked rules retain the executed value
+`-4 - 0.25 sigma_t`. The reported 4.6771 is identified as an evaluation-scale mean.
 
-Equation 3.10 retains the implementation-supported reciprocal form and now defines
-units, infeasible denominators, fixed-point rounding, infinity, and finite saturation.
-Eligibility is computed upstream and represented at the FPGA by a supplied validity
-bit. H0 is consistently a feasible minimum-hop baseline. Path-cost and utilization
-encodings no longer share an incorrect sentinel interpretation.
+Table 4.1 now labels its fifth metric **Mean balance utility**, explains that larger
+values mean lower post-decision imbalance, and retains every original number. The
+same terminology is propagated through Section 3.12, Table 3.7, Section 4.3,
+Appendix C.7, Appendix E.3, and the List of Symbols.
 
-The physical row-level data were recovered from the primary evidence commit and a
-deterministic paired bootstrap was added. Both 95% intervals cross zero, preserving the
-neutral route-quality conclusion. The script, paired differences, summary CSV, seed,
-RNG, resampling unit, replicate count, and percentile convention are now archived.
-
-The Abstract fits one page and reports the system boundary, H0-H4, exactness, timing,
-adaptive behavior, neutral statistics, and principal limitations. Sparse continuation
-pages were removed without deleting technical substance. The supporting OpenROAD
-results remain explicitly limited to isolated kernels.
+The official certificate structure was preserved. The external examiner fields remain
+blank, and no speculative identity or placeholder was added.
 
 ## Final release
 
 - Root PDF: `document.pdf`
-- Packaged PDF: `output/pdf/QFlow_Thesis_VLSI_Integrated.pdf`
+- Packaged PDFs:
+  - `output/pdf/QFlow_Thesis_VLSI_Integrated.pdf`
+  - `output/pdf/QFlow_Thesis_Final_Submission.pdf`
 - Pages: 92 A4
 - PDF SHA-256:
-  `2AD29C8FA49776CE55B7D1A6A4C9F708127411624AE358B75E16C0DBD14899CC`
+  `DC19B2F404EF81C0C30A2207978A3B873984C73BBBEB815C595EDD174261327F`
 - Bibliography records: 41
 - Undefined references/citations: 0
 - Overfull boxes: 0
 - Non-embedded fonts: 0
-- Rendered and visually inspected pages: 92
+- Rendered and visually reviewed pages: 92
 
-Detailed handoff evidence is in
+Detailed evidence is in `FINAL_MICRO_CORRECTIONS_REPORT.md`,
 `FINAL_THESIS_SOURCE_AVAILABILITY_REPORT.md`,
-`PROFILE_TRAINING_DEPLOYMENT_SEMANTICS_REPORT.md`,
-`PHYSICAL_BOOTSTRAP_REPRODUCIBILITY_REPORT.md`,
-`FINAL_MATHEMATICAL_CORRECTION_REPORT.md`,
-`FINAL_THESIS_NUMERICAL_TRACEABILITY.md`, and
-`FINAL_THESIS_COMPILE_LOG.txt`.
+`FINAL_THESIS_COMPILE_LOG.txt`, and `FINAL_THESIS_QA_CHECKLIST.md`.

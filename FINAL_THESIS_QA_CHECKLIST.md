@@ -1,58 +1,49 @@
 # Final Thesis QA Checklist
 
-## Mathematical and semantic integrity
+## Focused reward correction
 
-- [x] Equation 3.10 matches the executable reciprocal formula and defines every
-  variable, unit, guard, floor, and saturation rule.
-- [x] The software-training action is distinguished from the ratio-only physical
-  deployment projection.
-- [x] The thesis does not claim that the physical FPGA computes Equation 3.10 or
-  deploys the profile alpha coefficients.
-- [x] Upstream KMS/SDN eligibility is distinguished from FPGA validity-bit gating.
-- [x] H0 is consistently defined as the feasible minimum-hop baseline.
-- [x] Path-cost infinity and finite saturation are distinguished from the full-range
-  utilization encoding.
-- [x] Route quality is treated as a bounded abstract experimental input, not stored-key
-  quantum coherence.
-- [x] Supporting VLSI results are identified as isolated kernels, not an integrated
-  QFlow ASIC.
+- [x] Successful evaluation reward uses balance coefficient 1.
+- [x] Successful training reward uses balance coefficient 4.
+- [x] Both blocked rules remain `-4 - 0.25 sigma_t`.
+- [x] The Q-learning update uses `r_t^{train}`.
+- [x] Validation, held-out testing, Table 4.1, and final comparisons use
+  `r_t^{eval}`.
+- [x] 4.6771 is identified as an evaluation-scale mean.
+- [x] Table 4.1 says **Mean balance utility**.
+- [x] Larger balance utility is explained as lower post-decision imbalance.
+- [x] The three Table 4.1 result rows are numerically unchanged.
 
-## Numerical reproducibility
+## Certificate
 
-- [x] Row-level H2, H3, and H4 physical results were read from evidence commit
-  `290b4ad75eef2af2b9da2f1f281a2b89416cfd24`.
-- [x] The paired-row bootstrap is executable from
-  `reproduce_physical_bootstrap.py`.
-- [x] Sampling unit, 58-pair filter, 10,000 replicates, MT19937 RNG, seed 20260731,
-  percentile method, and R-7 interpolation are declared.
-- [x] Recomputed H4-H2 interval: [-25.120690, 226.620690] UNORM16 units.
-- [x] Recomputed H4-H3 interval: [-242.281466, 77.534483] UNORM16 units.
-- [x] Both intervals cross zero; route-quality superiority is not claimed.
-- [x] Tables, figure, appendices, CSV data, and audit reports use the same values.
+- [x] Supervisor and External Examiner columns are visually balanced.
+- [x] External examiner Name, Designation, Institution, and Date remain blank.
+- [x] No examiner identity or assignment placeholder was invented.
+- [x] Supervisor name, title, department, institution, and address remain correct.
+- [x] No overlap or awkward certificate line break is present.
 
 ## Source and release
 
 - [x] Branch: `thesis-final-submission-corrections`.
 - [x] Exact source commit:
-  `575a64b19a2a583a7e31e9092c05c9991c24cc76`.
-- [x] The branch was pushed and independently resolved with `git ls-remote` and a
-  subsequent fetch.
-- [x] Root source, chapters, appendices, figures, bibliography, and build instructions
-  were enumerated at that exact commit.
-- [x] Appendix A contains the exact source commit.
-- [x] `document.pdf` and the packaged PDF are identical 92-page A4 files.
+  `6d3bee97349cbd4b14e4213fb3ea2ad7b0a2a744`.
+- [x] `git ls-remote` matched the local source SHA after push.
+- [x] A subsequent fetch and object-resolution check succeeded.
+- [x] Required source, bibliography, figure, script, data, and build files exist in
+  that commit.
+- [x] Appendix A contains the exact source SHA.
+- [x] Installed PDF copies are identical 92-page A4 files.
 - [x] Final PDF SHA-256:
-  `2AD29C8FA49776CE55B7D1A6A4C9F708127411624AE358B75E16C0DBD14899CC`.
+  `DC19B2F404EF81C0C30A2207978A3B873984C73BBBEB815C595EDD174261327F`.
 
 ## Build and visual QA
 
-- [x] XeLaTeX/BibTeX/XeLaTeX/XeLaTeX completed successfully.
+- [x] XeLaTeX/BibTeX/XeLaTeX stabilization and PDF conversion completed.
 - [x] All 41 bibliography records compiled.
-- [x] No fatal error, undefined reference/citation/control sequence, missing glyph,
-  multiply defined label, overfull box, or rerun request remains.
+- [x] No fatal error, undefined reference/citation/control sequence, duplicate label,
+  missing glyph, overfull box, or rerun request remains.
 - [x] All fonts are embedded.
-- [x] All 92 pages rendered; 88 are portrait and 4 are intentional landscape pages.
-- [x] Every rendered page was visually inspected.
-- [x] The abstract occupies exactly one page.
-- [x] Sparse continuation pages in Methodology, Chapter 4, and Appendix A were removed.
-- [x] No blank page, clipping, overlap, orphaned caption, or unreadable table remains.
+- [x] All 92 final pages rendered and were reviewed in contact sheets.
+- [x] Detailed review covered the certificate, Section 3.12, Table 3.7, Table 4.1,
+  Section 4.3, Appendix A, Appendix C.7, and Appendix E.3.
+- [x] No blank page, clipping, overlap, orphaned caption, unreadable equation, or
+  table overflow remains.

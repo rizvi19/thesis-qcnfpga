@@ -1,12 +1,12 @@
 FINAL THESIS COMPILE LOG
 ========================
 
-Build date: 2026-07-31
+Build date: 2026-08-01
 Project root: C:\Users\shahr\Desktop\__thesis__\New folder (2)
 Root source: document.tex
 Branch: thesis-final-submission-corrections
 Exact source commit injected into Appendix A:
-575a64b19a2a583a7e31e9092c05c9991c24cc76
+6d3bee97349cbd4b14e4213fb3ea2ad7b0a2a744
 
 Compiler environment
 --------------------
@@ -16,23 +16,29 @@ Compiler environment
 
 Release sequence
 ----------------
-1. xelatex -jobname=document -interaction=nonstopmode -halt-on-error
-   "\def\FinalThesisSourceCommit{575a64b19a2a583a7e31e9092c05c9991c24cc76}\input{document.tex}"
-2. bibtex document
-3. repeat the injected XeLaTeX command twice
+1. Build wrapper defines FinalThesisSourceCommit and inputs document.tex.
+2. xelatex -no-pdf -jobname=finalrelease ...
+3. bibtex finalrelease
+4. xelatex -no-pdf -jobname=finalrelease ...
+5. Carry the generated AUX/TOC/LOF/LOT/BBL state into finalrelease3.
+6. xelatex -no-pdf -jobname=finalrelease3 ...
+7. dvipdfmx -o finalrelease3.pdf finalrelease3.xdv
+
+MiKTeX produced a local internal-format error on an additional repeat invocation.
+`miktex formats build xelatex` rebuilt the local format, after which the stabilization
+pass completed. The final transcript contains no rerun request or unresolved item.
 
 Final result
 ------------
-- Output: document.pdf
-- Packaged copy: output/pdf/QFlow_Thesis_VLSI_Integrated.pdf
+- Root output: document.pdf
+- Packaged outputs:
+  - output/pdf/QFlow_Thesis_VLSI_Integrated.pdf
+  - output/pdf/QFlow_Thesis_Final_Submission.pdf
 - Pages: 92
 - Media: A4, 595.28 x 841.89 pt
-- File size: 5,368,619 bytes
-- PDF version: 1.5
-- Forms: none
-- Encryption: none
+- File size: 5,370,673 bytes
 - Bibliography records: 41
-- SHA-256: 2AD29C8FA49776CE55B7D1A6A4C9F708127411624AE358B75E16C0DBD14899CC
+- SHA-256: DC19B2F404EF81C0C30A2207978A3B873984C73BBBEB815C595EDD174261327F
 
 Final transcript scan
 ---------------------
@@ -44,20 +50,16 @@ Final transcript scan
 - Missing-character diagnostics: 0
 - Overfull boxes: 0
 - Cross-reference rerun requests: 0
-- Underfull-box diagnostics: 118
+- Underfull-box diagnostics: 115
 
-The underfull diagnostics occur in deliberately narrow table cells and do not imply
-content loss. Render inspection found no clipping, overlap, blank page, missing glyph,
-or unreadable table.
+The underfull diagnostics occur in pre-existing narrow table cells and do not imply
+content loss. The edited Table 4.1 produces no overfull diagnostic.
 
 PDF verification
 ----------------
-- pdfinfo opened the release and confirmed 92 A4 pages.
-- pdftotext extracted 217,078 characters and found the exact source SHA once in
-  Appendix A.
-- pdftoppm rendered all 92 pages: 88 portrait and 4 landscape; no render was empty.
-- Contact sheets and page-level checks covered every rendered page.
-- pdffonts reported zero non-embedded fonts.
-- The root and packaged PDF copies have identical SHA-256 hashes.
-- qpdf was unavailable; Poppler parsing, text extraction, font inspection, and
-  full-page rendering supplied the structural checks.
+- pdfinfo confirmed 92 A4 pages.
+- pdftotext extracted 218,221 characters and found the exact source SHA once.
+- pdffonts reported every font as embedded.
+- pdftoppm rendered all 92 pages; six contact sheets covered the complete release.
+- Detailed checks covered PDF pages 3, 42-43, 53-54, 71, 80, and 84-85.
+- All three installed PDF copies have the same SHA-256 hash.

@@ -4,37 +4,31 @@
 
 - Repository: `https://github.com/rizvi19/thesis-qcnfpga`
 - Branch: `thesis-final-submission-corrections`
-- Exact thesis-source commit: `575a64b19a2a583a7e31e9092c05c9991c24cc76`
-- Commit URL: `https://github.com/rizvi19/thesis-qcnfpga/commit/575a64b19a2a583a7e31e9092c05c9991c24cc76`
-- Source-tree URL: `https://github.com/rizvi19/thesis-qcnfpga/tree/575a64b19a2a583a7e31e9092c05c9991c24cc76`
+- Exact thesis-source commit: `6d3bee97349cbd4b14e4213fb3ea2ad7b0a2a744`
+- Commit URL: `https://github.com/rizvi19/thesis-qcnfpga/commit/6d3bee97349cbd4b14e4213fb3ea2ad7b0a2a744`
+- Source-tree URL: `https://github.com/rizvi19/thesis-qcnfpga/tree/6d3bee97349cbd4b14e4213fb3ea2ad7b0a2a744`
 
 The source commit was pushed before the release PDF was compiled. `git ls-remote`
-returned the same commit for the named branch, a subsequent fetch resolved the
-remote-tracking branch to the same identifier, and `git cat-file` verified that the
-object is available locally as a commit obtained from the remote.
+returned the same SHA for the named branch. A subsequent fetch and `git cat-file`
+resolved the fetched object as a commit. Remote verification therefore succeeded.
 
-## Required source components verified in the commit tree
+## Required source components verified
 
-The following submission components were enumerated with `git ls-tree -r` at the
-exact commit above:
+The exact commit contains:
 
-- root build source: `document.tex`, `metadata.tex`, and `qflowthesis.sty`;
-- all chapter sources under `chapters/`;
-- all appendix sources under `appendices/`;
-- the bibliography database `bibliography.bib`;
-- thesis figure assets under `figures/`, including the routed VLSI images; and
-- build and package instructions in `README_FIRST.md`.
-
-The reproducible physical-statistics additions are also present at that commit:
-
+- `document.tex`, `metadata.tex`, and `qflowthesis.sty`;
+- chapter sources under `chapters/`;
+- appendix sources under `appendices/`;
+- `bibliography.bib`;
+- thesis figure assets under `figures/`;
 - `reproduce_physical_bootstrap.py`;
-- `data/physical_bootstrap_recomputed.csv`; and
-- `data/physical_paired_differences.csv`.
+- `data/physical_bootstrap_recomputed.csv`;
+- `data/physical_paired_differences.csv`; and
+- build/package instructions in `README_FIRST.md`.
 
 ## Release procedure
 
 Appendix A receives the exact source identifier through the
-`FinalThesisSourceCommit` LaTeX macro during the release build. The later packaging
-commit contains compiled artifacts and final QA reports. This separation is
-intentional: the identifier printed in the thesis points to an immutable source
-tree that does not need to contain its own generated PDF.
+`FinalThesisSourceCommit` macro during the release build. The later packaging commit
+contains compiled artifacts and final reports. The SHA printed in the thesis therefore
+identifies the immutable source snapshot rather than the artifact-only commit.

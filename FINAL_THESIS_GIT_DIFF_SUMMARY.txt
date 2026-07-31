@@ -4,39 +4,42 @@ FINAL THESIS GIT DIFF SUMMARY
 Branch:
 thesis-final-submission-corrections
 
-Parent:
-ad16401908bd3227fa43527f18ae4c44907ff455
+Source parent:
+d3e05a9f05f6e677ec77ad9db7d117d14ba7d468
 
 Corrected thesis-source commit:
-575a64b19a2a583a7e31e9092c05c9991c24cc76
+6d3bee97349cbd4b14e4213fb3ea2ad7b0a2a744
 
 Source-commit statistics:
-- 26 files changed
-- 988 inserted lines
-- 283 deleted lines
-- no deleted files
+- 5 files changed
+- 57 inserted lines
+- 28 deleted lines
+- 0 deleted files
 
-Source scope:
-- revised Abstract and Chapters 1-5;
-- revised reproducibility, fixed-point-contract, and additional-results appendices;
-- corrected same-board, dwell, profile-usage, and paired-comparison CSV values/labels;
-- added a deterministic physical paired-row bootstrap script and its two outputs;
-- added mathematical, contradiction, deployment-semantics, bootstrap, and numerical
-  traceability reports; and
-- refreshed earlier semantic and methodology audit reports.
+Source files:
+- chapters/3_methodology.tex
+- chapters/4_performance_result.tex
+- chapters/vi_symbols.tex
+- appendices/c_additional_results.tex
+- appendices/e_worked_contract_cases.tex
 
-Principal corrections:
-- exact reciprocal Equation 3.10 semantics and fixed-point exceptional behavior;
-- complete offline training profile versus ratio-only physical projection;
-- upstream hard eligibility versus FPGA validity gating;
-- feasible minimum-hop H0 definition;
-- exact path-cost and utilization code ranges;
-- reproducible bootstrap confidence intervals and neutral inference; and
-- explicit separation of isolated VLSI kernels from an integrated ASIC claim.
+Focused corrections:
+- separated r_t^{train} from r_t^{eval};
+- retained exact successful and blocked reward rules;
+- changed the Q-learning update to r_t^{train};
+- identified 4.6771 as an evaluation-scale mean;
+- renamed Table 4.1 to Mean balance utility and clarified its direction; and
+- propagated the notation through the symbols list and requested appendices.
+
+No result value, scientific conclusion, bibliography item, figure, or certificate
+identity changed.
 
 Release packaging after the source commit:
 - document.pdf;
 - output/pdf/QFlow_Thesis_VLSI_Integrated.pdf;
+- output/pdf/QFlow_Thesis_Final_Submission.pdf;
+- final_xelatex_console.log;
+- FINAL_MICRO_CORRECTIONS_REPORT.md;
 - FINAL_THESIS_SOURCE_AVAILABILITY_REPORT.md;
 - FINAL_THESIS_COMPILE_LOG.txt;
 - FINAL_THESIS_QA_CHECKLIST.md;
@@ -44,6 +47,6 @@ Release packaging after the source commit:
 - FINAL_THESIS_REVISION_SUMMARY.md.
 
 Safety check:
-The supplied worktree omits many tracked evidence files. Every stage operation used
-explicit paths. No recursive add was used, cached name/status was inspected, and no
-worktree deletion was included in either the source tree or release package.
+Every stage operation used explicit paths. No recursive add was used. The supplied
+worktree's unrelated tracked deletions remain unstaged and are not part of either
+commit.
