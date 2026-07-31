@@ -31,6 +31,8 @@ $(x_K,x_Q,x_L,x_I)$ & Occupancy, route-quality, load, and imbalance controller i
 $z[n]$ & Encoded controller state in $\{0,\ldots,255\}$\\
 $a[n]$ & Selected profile action in $\{0,1,2,3\}$\\
 $\pi(z)$ & Offline-trained policy-ROM mapping from state to profile\\
+$r_t^{\mathrm{train}}$ & Reward used in the offline Q-learning target\\
+$r_t^{\mathrm{eval}}$ & Common evaluation reward reported for completed controllers\\
 $T_{\mathrm{clk}}$ & FPGA clock period\\
 $L$ & Kernel latency in cycles or time\\
 $f_{\max}$ & Post-route maximum operating frequency\\

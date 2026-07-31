@@ -481,16 +481,29 @@ U_B(I_t^{\rm post})&=1-\operatorname{clip}_{[0,1]}(I_t^{\rm post}),\\
 \end{align}
 For a successful decision,
 \begin{equation}
-r_t=4+2U_Q(b_t)+U_B(I_t^{\rm post})-0.25h_t-0.25\sigma_t.
+r_t^{\mathrm{eval}}=4+2U_Q(b_t)+U_B(I_t^{\rm post})-0.25h_t-0.25\sigma_t.
 \label{eq:success-reward}
 \end{equation}
 For a blocked decision,
 \begin{equation}
-r_t=-4-0.25\sigma_t,
+r_t^{\mathrm{eval}}=-4-0.25\sigma_t,
 \label{eq:block-reward}
 \end{equation}
-and the quality, balance, and hop components are zero. The declared nominal range
-is $[-4.25,6.75]$.
+and the quality, balance-utility, and hop components are zero. The declared nominal
+evaluation range is $[-4.25,6.75]$.
+
+The executed training target changes only the successful-decision balance
+coefficient:
+\begin{equation}
+r_t^{\mathrm{train}}=4+2U_Q(b_t)+4U_B(I_t^{\rm post})
+-0.25h_t-0.25\sigma_t.
+\label{eq:success-training-reward}
+\end{equation}
+For a blocked training decision, $U_B=0$, so the executed rule remains
+\begin{equation}
+r_t^{\mathrm{train}}=-4-0.25\sigma_t.
+\label{eq:block-training-reward}
+\end{equation}
 
 \begin{table}[H]
 \centering
@@ -507,9 +520,9 @@ Blocking & $-4$ & Negative, when no route is selected & Does not distinguish the
 physical causes of infeasibility\\
 Route quality & $+2$ & $0$--$2$ after clipping above 0.90 & Abstract experimental
 route-quality utility, not stored-key coherence\\
-Balance & $+1$ evaluation; $+4$ training target & Larger when post-decision
-imbalance is smaller & Training increases balance emphasis; reported evaluation
-uses the common $+1$ scale\\
+Balance utility & $+1$ in $r_t^{\mathrm{eval}}$; $+4$ in
+$r_t^{\mathrm{train}}$ & Larger when post-decision imbalance is smaller & Training
+increases balance emphasis; reported evaluation uses the common $+1$ scale\\
 Hop cost & $-0.25$ per edge & More hops reduce reward & A topological proxy, not
 measured end-to-end delay\\
 Profile switch & $-0.25$ & Applied after the first action when the action changes &
@@ -518,23 +531,26 @@ Discourages control chattering; previous action is controller history\\
 \end{tabularx}
 \end{table}
 
-Training uses balance coefficient 4 in the learning target and the three-decision
-dwell mechanism. Validation and final reported metrics use balance coefficient 1 in
+The reward $r_t^{\mathrm{train}}$ in
+Equations~\eqref{eq:success-training-reward}--\eqref{eq:block-training-reward}
+shapes the learned Q-values and accompanies the three-decision dwell mechanism.
+Validation, held-out testing, Table~\ref{tab:heldout-software}, and the final reported
+metrics use $r_t^{\mathrm{eval}}$ from
 Equations~\eqref{eq:success-reward}--\eqref{eq:block-reward}, preserving a common
-evaluation scale. This distinction matters because the training target shapes
-Q-values, whereas the evaluation reward compares completed controllers.
+scale for comparing completed controllers.
 
 Tabular Q-learning uses
 \begin{equation}
 Q(z_t,a_t)\leftarrow Q(z_t,a_t)+0.1
-\left[r_t+0.95\max_aQ(z_{t+1},a)-Q(z_t,a_t)\right],
+\left[r_t^{\mathrm{train}}+0.95\max_aQ(z_{t+1},a)-Q(z_t,a_t)\right],
 \label{eq:exact-q-update}
 \end{equation}
-with the terminal bootstrap omitted after the last record. A mean evaluation reward
-near 4.67 means that successful decisions dominate and usually earn positive
-normalized route-quality and balance utility, partly offset by hop and switch costs.
-It is a dimensionless score under this particular reward definition, not money,
-energy, secret-key rate, or a universal network utility.
+with the terminal bootstrap omitted after the last record. The reported value
+4.6771 is a mean of $r_t^{\mathrm{eval}}$, not a training-target mean. On that
+evaluation scale, a mean near 4.67 means that successful decisions dominate and
+usually earn positive normalized route-quality and balance utility, partly offset
+by hop and switch costs. It is a dimensionless score under this particular reward
+definition, not money, energy, secret-key rate, or a universal network utility.
 
 \section{Training Environment and Trace Generation}
 

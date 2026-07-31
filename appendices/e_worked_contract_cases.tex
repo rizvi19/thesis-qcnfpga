@@ -91,16 +91,16 @@ U_Q=\frac{0.96-0.90}{0.10}=0.6,
 \end{equation}
 With no profile change, the evaluation reward is
 \begin{equation}
-r=4+2(0.6)+0.75-0.25(3)=5.20.
+r_t^{\mathrm{eval}}=4+2(0.6)+0.75-0.25(3)=5.20.
 \end{equation}
-If the profile changes on the same decision, the switch penalty gives $r=4.95$.
-If no candidate is feasible, the route terms are not evaluated: the reward is
-$-4.00$ without a switch and $-4.25$ with one.
+With a profile change, $r_t^{\mathrm{eval}}=4.95$. When no candidate is feasible,
+$r_t^{\mathrm{eval}}=r_t^{\mathrm{train}}=-4.00$ without a switch and $-4.25$
+with one; the route terms are zero.
 
 For the controlled training target, only the balance coefficient changes from one
 to four. The same successful non-switching transition therefore has target reward
 \begin{equation}
-r_{\rm train}=4+2(0.6)+4(0.75)-0.25(3)=7.45.
+r_t^{\mathrm{train}}=4+2(0.6)+4(0.75)-0.25(3)=7.45.
 \end{equation}
 The final validation table does not report this 7.45-scale quantity; it recomputes
 5.20 on the original evaluation scale. This worked case illustrates why training

@@ -167,13 +167,17 @@ included with the source.
 \midrule
 Blocked, no switch & $-4$ & Blocking term only\\
 Blocked, switch & $-4.25$ & Blocking plus profile-change penalty\\
-Successful & $4+2U_Q+U_B-0.25h-0.25\sigma$ & Bounded quality/balance utility
+Successful & $r_t^{\mathrm{eval}}=4+2U_Q+U_B-0.25h-0.25\sigma$ & Bounded quality/balance utility
 offset by hop and switching costs\\
 Declared maximum & $6.75$ & Nominal best successful combination under the
 registered contract\\
 \bottomrule
 \end{tabularx}
 \end{table}
+
+Table~\ref{tab:reward-extrema} reports the common evaluation reward. The successful
+training reward replaces $U_B$ with $4U_B$; the blocked rule remains
+$r_t^{\mathrm{train}}=-4-0.25\sigma_t$ because its balance utility is zero.
 
 The deployed policy requires 512 useful bits ($256\times2$). The profile ROM adds
 72 useful bits ($4\times18$). By comparison, the archival Q-table contains 16,384

@@ -34,8 +34,10 @@ decisions with zero blocking in this controlled environment.
 \label{tab:heldout-software}
 \begin{tabularx}{\textwidth}{@{}p{0.28\textwidth}rrrrrr@{}}
 \toprule
-\textbf{Controller} & \textbf{Reward} & \textbf{Block} &
-\textbf{Quality} & \textbf{Balance} & \textbf{Hops} & \textbf{Switch rate}\\
+\textbf{Controller} & \makecell{\textbf{Mean}\\\textbf{evaluation}\\\textbf{reward}} &
+\textbf{Block} & \textbf{Quality} &
+\makecell{\textbf{Mean}\\\textbf{balance}\\\textbf{utility}} & \textbf{Hops} &
+\textbf{Switch rate}\\
 \midrule
 Fixed-profile & 4.6130 & 0 & 0.95815 & 0.16881 & 2.8750 & 0\\
 Rule-adaptive & 4.6292 & 0 & 0.95943 & 0.25513 & 2.9775 & 0.2813\\
@@ -44,13 +46,18 @@ Offline-learned adaptive & 4.6771 & 0 & 0.96044 & 0.26499 & 2.9541 & 0.2329\\
 \end{tabularx}
 \end{table}
 
-The learned policy had the highest descriptive mean reward and balance utility in
-this software partition. With only four paired traces, the exact two-sided
+All reward values in Table~\ref{tab:heldout-software} are means of
+$r_t^{\mathrm{eval}}$. The learned policy had the highest descriptive mean
+evaluation reward and the highest reported mean balance utility in this software
+partition. Because $U_B=1-\operatorname{clip}_{[0,1]}(I_t^{\rm post})$, larger
+balance utility means lower post-decision imbalance under the defined utility.
+With only four paired traces, the exact two-sided
 permutation $p$-value was 0.125 and the Holm-adjusted value was 0.25 for both learned
 comparisons. The software result therefore describes behavior under the selected
 environment; it is not evidence of statistical superiority.
 
-The learned mean of 4.677079 is interpreted on the reward scale of
+The learned mean of 4.677079 is an evaluation-scale mean of
+$r_t^{\mathrm{eval}}$, not a training-target mean. It is interpreted using
 Equations~\eqref{eq:success-reward}--\eqref{eq:block-reward}. Zero blocking means
 each step received the $+4$ success term. The remaining approximately 0.677 mean
 contribution is the net of bounded route-quality and balance utilities, hop costs,
