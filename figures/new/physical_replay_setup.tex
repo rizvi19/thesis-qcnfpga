@@ -58,7 +58,8 @@
     {request / data input} (request.west);
   \draw[qarrow] (uart.west) -- (8.65,-8.35) -- (8.65,-5.10) -- (capture.east);
   \node[qsmall,fill=white,rotate=90] at (8.65,-6.70) {UART output};
-  \draw[qarrow] (expected)--(compare);
+  \draw[qarrow,rounded corners=1mm]
+    (expected.west) -- (-0.12,-3.55) -- (-0.12,-6.75) -- (compare.west);
   \draw[qarrow] (capture)--(compare);
   \draw[qarrow] (compare)--(results);
 
