@@ -44,29 +44,169 @@ evaluates the supplied candidates, and returns a registered result. Candidate
 generation, graph traversal, authentication, KMS access, security authorization,
 and route installation remain outside the kernel.
 
+% \begin{figure}[H]
+% \centering
+% \resizebox{\textwidth}{!}{%
+% \begin{tikzpicture}[
+%   node distance=7mm and 9mm,
+%   ext/.style={draw=QFlowGray,rounded corners,fill=QFlowLightBlue,
+%     minimum height=10mm,text width=31mm,align=center,font=\small},
+%   core/.style={draw=QFlowBlue,rounded corners,fill=white,
+%     minimum height=10mm,text width=35mm,align=center,font=\small},
+%   arr/.style={-{Latex[length=2mm]},thick,QFlowNavy}]
+% \node[ext] (kms) {KMS/SDN monitoring and policy};
+% \node[ext,right=of kms] (gen) {candidate generation and hard checks};
+% \node[core,right=of gen] (fpga) {QFlow profile selection and fixed-point evaluation};
+% \node[ext,right=of fpga] (install) {authorization, installation, fallback};
+% \draw[arr] (kms)--node[above,font=\scriptsize]{state/metadata}(gen);
+% \draw[arr] (gen)--node[above,font=\scriptsize]{bounded descriptors}(fpga);
+% \draw[arr] (fpga)--node[above,font=\scriptsize]{result/status}(install);
+% \draw[arr,bend left=22] (install) to node[below,font=\scriptsize]{telemetry}(kms);
+% \end{tikzpicture}}
+% \caption{System boundary. Only profile selection and candidate evaluation are
+% included in the measured FPGA kernel.}
+% \label{fig:system-boundary}
+% \end{figure}
+
+
+
+% \begin{figure}[H]
+% \centering
+% \begin{tikzpicture}[
+%   node distance=19mm and 30mm,
+%   ext/.style={
+%     draw=QFlowGray,
+%     rounded corners,
+%     fill=QFlowLightBlue,
+%     minimum height=14mm,
+%     text width=38mm,
+%     align=center,
+%     font=\small
+%   },
+%   core/.style={
+%     draw=QFlowBlue,
+%     rounded corners,
+%     fill=white,
+%     minimum height=14mm,
+%     text width=43mm,
+%     align=center,
+%     font=\small
+%   },
+%   arr/.style={
+%     -{Latex[length=2mm]},
+%     thick,
+%     QFlowNavy
+%   },
+%   arrlabel/.style={
+%     font=\scriptsize,
+%     fill=white,
+%     inner sep=2pt,
+%     align=center
+%   }
+% ]
+
+% \node[ext] (kms)
+%   {KMS/SDN monitoring\\and policy};
+
+% \node[ext, right=of kms] (gen)
+%   {candidate generation\\and hard checks};
+
+% \node[core, below=of gen] (fpga)
+%   {QFlow profile selection\\and fixed-point evaluation};
+
+% \node[ext, left=of fpga] (install)
+%   {authorization, installation,\\and fallback};
+
+% \draw[arr]
+%   (kms) -- node[arrlabel, above] {state/metadata} (gen);
+
+% \draw[arr]
+%   (gen) -- node[arrlabel, right, text width=20mm]
+%   {bounded\\descriptors} (fpga);
+
+% \draw[arr]
+%   (fpga) -- node[arrlabel, below] {result/status} (install);
+
+% \draw[arr]
+%   (install) -- node[arrlabel, left] {telemetry} (kms);
+
+% \end{tikzpicture}
+% \caption{System boundary. Only profile selection and candidate evaluation are
+% included in the measured FPGA kernel.}
+% \label{fig:system-boundary}
+% \end{figure}
+
 \begin{figure}[H]
 \centering
 \resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
-  node distance=7mm and 9mm,
-  ext/.style={draw=QFlowGray,rounded corners,fill=QFlowLightBlue,
-    minimum height=10mm,text width=31mm,align=center,font=\small},
-  core/.style={draw=QFlowBlue,rounded corners,fill=white,
-    minimum height=10mm,text width=35mm,align=center,font=\small},
-  arr/.style={-{Latex[length=2mm]},thick,QFlowNavy}]
-\node[ext] (kms) {KMS/SDN monitoring and policy};
-\node[ext,right=of kms] (gen) {candidate generation and hard checks};
-\node[core,right=of gen] (fpga) {QFlow profile selection and fixed-point evaluation};
-\node[ext,right=of fpga] (install) {authorization, installation, fallback};
-\draw[arr] (kms)--node[above,font=\scriptsize]{state/metadata}(gen);
-\draw[arr] (gen)--node[above,font=\scriptsize]{bounded descriptors}(fpga);
-\draw[arr] (fpga)--node[above,font=\scriptsize]{result/status}(install);
-\draw[arr,bend left=22] (install) to node[below,font=\scriptsize]{telemetry}(kms);
-\end{tikzpicture}}
-\caption{System boundary. Only profile selection and candidate evaluation are
-included in the measured FPGA kernel.}
+  % Increased slightly to 16mm. \resizebox will still ensure it fits the page perfectly.
+  node distance=16mm,
+  ext/.style={
+    draw=QFlowGray,
+    rounded corners,
+    fill=QFlowLightBlue,
+    minimum height=14mm,
+    text width=28mm,
+    align=center,
+    font=\small
+  },
+  core/.style={
+    draw=QFlowBlue,
+    rounded corners,
+    fill=white,
+    minimum height=14mm,
+    text width=40mm,
+    align=center,
+    font=\small
+  },
+  arr/.style={
+    -{Latex[length=2mm]},
+    thick,
+    QFlowNavy
+  },
+  arrlabel/.style={
+    font=\scriptsize,
+    align=center
+    % Removed 'fill=white' so the text box doesn't have an opaque background
+  }
+]
+
+% Place nodes horizontally in a single row
+\node[ext] (kms)
+  {KMS/SDN\\monitoring\\and policy};
+
+\node[ext, right=of kms] (gen)
+  {candidate gen-\\eration and\\hard checks};
+
+\node[core, right=of gen] (fpga)
+  {QFlow profile\\selection and fixed-\\point evaluation};
+
+\node[ext, right=of fpga] (install)
+  {authorization, in-\\stallation, fallback};
+
+% Draw straight horizontal arrows, placing the labels ABOVE the line and split into two lines
+\draw[arr]
+  (kms) -- node[arrlabel, above] {state/\\metadata} (gen);
+
+\draw[arr]
+  (gen) -- node[arrlabel, above] {bounded\\descriptors} (fpga);
+
+\draw[arr]
+  (fpga) -- node[arrlabel, above] {result/\\status} (install);
+
+% Draw the long curved return arrow, placing the label BELOW the curve
+\draw[arr]
+  (install.south) to[bend left=20] node[arrlabel, below] {telemetry} (kms.south);
+
+\end{tikzpicture}%
+}
+\caption{System boundary. Only profile selection and candidate evaluation are included in the measured FPGA kernel.}
 \label{fig:system-boundary}
 \end{figure}
+
+
+
 
 The kernel-cycle boundary begins on a synchronous edge satisfying
 \texttt{start \&\& ready} and ends on the synchronous \texttt{done} edge. UART
@@ -470,6 +610,20 @@ learning on the FPGA. ``Reinforcement-learned'' refers to the offline origin of 
 ROM mapping; the corresponding deployment branch is summarized in
 Figure~\ref{fig:training_deployment_flow}.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/new/training_to_fpga_deployment.pdf}
+\caption{Offline training and FPGA deployment path. Software training uses the
+complete profile action: coefficients $\alpha_1$--$\alpha_4$ construct
+profile-dependent path cost and ratios $(\rho_c,\rho_q,\rho_u)$ weight the
+Tchebycheff objective. The physical implementation deploys the frozen
+state-to-profile policy, minimum-dwell control, and only the objective-ratio
+projection over externally supplied profile-independent path cost; it performs no
+runtime Q update, exploration, on-chip learning, or on-FPGA construction of
+$c_i^{(k)}$.}
+\label{fig:training_deployment_flow}
+\end{figure}
+
 \section{Immediate Reward and Q-Learning Update}
 
 The original evaluation reward is defined for each decision by success indicator
@@ -600,6 +754,19 @@ must not be interpreted as observations from deployed quantum links.
 Figure~\ref{fig:ring6_environment} relates the two occupied candidate slots to the
 directed topology and shows the registered phase and post-decision update sequence.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/new/ring6_environment.pdf}
+\caption{Controlled Ring-6 training and evaluation environment. Thin paired arrows
+show the 12 directed ring edges; solid slot 0 and dashed slot 1 carry the clockwise
+and counter-clockwise simple paths for the normal $0\!\rightarrow\!3$ request,
+while slots 2 and 3 remain invalid in the four-slot hardware contract. The
+512-decision traces use repeating 32-decision operating phases, with link
+consumption followed by integer arrivals, registered link updates, and the next
+state after each decision.}
+\label{fig:ring6_environment}
+\end{figure}
+
 \begin{table}[H]
 \centering
 \small
@@ -677,8 +844,61 @@ without online modification.
 
 \section{Detailed RTL Architecture}
 
+% \begin{landscape}
+% \begin{figure}[p]
+% \centering
+% \resizebox{0.97\linewidth}{!}{%
+% \begin{tikzpicture}[
+%   block/.style={draw=QFlowBlue,rounded corners,fill=white,minimum height=10mm,
+%     text width=27mm,align=center,font=\scriptsize},
+%   mem/.style={draw=QFlowTeal,rounded corners,fill=QFlowLightGreen,minimum height=10mm,
+%     text width=25mm,align=center,font=\scriptsize},
+%   ctrl/.style={draw=QFlowAmber,rounded corners,fill=QFlowLightAmber,minimum height=10mm,
+%     text width=27mm,align=center,font=\scriptsize},
+%   arr/.style={-{Latex[length=2mm]},thick,QFlowNavy},node distance=7mm and 8mm]
+% \node[block] (in) {input registers\\4 state $\times16$ b\\2 candidates + valid};
+% \node[block,right=of in] (quant) {four threshold quantizers\\$4\times2$ b};
+% \node[block,right=of quant] (radix) {radix-4 encoder\\state ID 8 b};
+% \node[mem,above right=3mm and 9mm of radix] (prom) {H4 policy ROM\\256$\times$2 b};
+% \node[ctrl,below right=3mm and 9mm of radix] (rule) {H3 first-match\\rule controller};
+% \node[ctrl,right=18mm of radix] (dwell) {H4 dwell control\\active profile 2 b};
+% \node[mem,right=of dwell] (prof) {profile ROM\\4$\times$18 b};
+% \node[block,below=14mm of quant] (store) {candidate storage/stream\\valid, cost, quality, util., hops, slot};
+% \node[block,right=of store] (feas) {validity gating and range reduction\\min/max per objective};
+% \node[block,right=of feas] (norm) {range normalizer\\shared 49$\times$33 divider};
+% \node[block,right=of norm] (score) {ratio products\\Tchebycheff max\\18-b score};
+% \node[block,right=of score] (win) {winner/tie registers\\score, cost, hops, slot};
+% \node[ctrl,below=13mm of norm] (fsm) {control FSM\\iteration, bypass, handshakes};
+% \node[ctrl,right=of fsm] (count) {16-b kernel cycle counter};
+% \node[block,right=of win] (result) {status/result registers\\policy, state, profile, path, score, quality};
+% \node[block,below=of result] (fmt) {QF6R formatter + UART\\outside kernel cycles};
+% \draw[arr] (in)--(quant); \draw[arr] (quant)--(radix);
+% \draw[arr] (radix)--(prom); \draw[arr] (radix)--(rule);
+% \draw[arr] (prom)--(dwell); \draw[arr] (rule)--(dwell);
+% \draw[arr] (dwell)--(prof); \draw[arr] (in)--(store);
+% \draw[arr] (store)--(feas); \draw[arr] (feas)--(norm);
+% \draw[arr] (norm)--(score); \draw[arr] (prof)|-(score);
+% \draw[arr] (score)--(win); \draw[arr] (win)--(result);
+% \draw[arr] (fsm)-|(store); \draw[arr] (fsm)--(norm);
+% \draw[arr] (fsm)--(count); \draw[arr] (count)-|(result);
+% \draw[arr] (result)--(fmt);
+% \end{tikzpicture}}
+% \caption{Detailed QFlow RTL architecture. H0 bypasses the profile and iterative
+% score path; H1 bypasses profile-ROM lookup; H2 fixes $\Pi_0$; H3 uses the rule
+% controller; H4 uses policy ROM and dwell control. Formatter and UART time are not
+% included in the kernel-cycle measurement.}
+% \label{fig:detailed-rtl}
+% \end{figure}
+% \end{landscape}
+
+
+
+
+
+
+
 \begin{landscape}
-\begin{figure}[p]
+\begin{figure}[htp]
 \centering
 \resizebox{0.97\linewidth}{!}{%
 \begin{tikzpicture}[
@@ -688,34 +908,78 @@ without online modification.
     text width=25mm,align=center,font=\scriptsize},
   ctrl/.style={draw=QFlowAmber,rounded corners,fill=QFlowLightAmber,minimum height=10mm,
     text width=27mm,align=center,font=\scriptsize},
-  arr/.style={-{Latex[length=2mm]},thick,QFlowNavy},node distance=7mm and 8mm]
+  arr/.style={-{Latex[length=2mm]},thick,QFlowNavy},
+  darr/.style={<->, >={Latex[length=2mm]},thick,QFlowNavy},
+  node distance=10mm and 10mm]
+
+% 1. TOP ROW
 \node[block] (in) {input registers\\4 state $\times16$ b\\2 candidates + valid};
-\node[block,right=of in] (quant) {four threshold quantizers\\$4\times2$ b};
-\node[block,right=of quant] (radix) {radix-4 encoder\\state ID 8 b};
-\node[mem,above right=3mm and 9mm of radix] (prom) {H4 policy ROM\\256$\times$2 b};
-\node[ctrl,below right=3mm and 9mm of radix] (rule) {H3 first-match\\rule controller};
-\node[ctrl,right=18mm of radix] (dwell) {H4 dwell control\\active profile 2 b};
-\node[mem,right=of dwell] (prof) {profile ROM\\4$\times$18 b};
-\node[block,below=14mm of quant] (store) {candidate storage/stream\\valid, cost, quality, util., hops, slot};
-\node[block,right=of store] (feas) {validity gating and range reduction\\min/max per objective};
-\node[block,right=of feas] (norm) {range normalizer\\shared 49$\times$33 divider};
-\node[block,right=of norm] (score) {ratio products\\Tchebycheff max\\18-b score};
-\node[block,right=of score] (win) {winner/tie registers\\score, cost, hops, slot};
-\node[ctrl,below=13mm of norm] (fsm) {control FSM\\iteration, bypass, handshakes};
-\node[ctrl,right=of fsm] (count) {16-b kernel cycle counter};
-\node[block,right=of win] (result) {status/result registers\\policy, state, profile, path, score, quality};
-\node[block,below=of result] (fmt) {QF6R formatter + UART\\outside kernel cycles};
-\draw[arr] (in)--(quant); \draw[arr] (quant)--(radix);
-\draw[arr] (radix)--(prom); \draw[arr] (radix)--(rule);
-\draw[arr] (prom)--(dwell); \draw[arr] (rule)--(dwell);
-\draw[arr] (dwell)--(prof); \draw[arr] (in)--(store);
-\draw[arr] (store)--(feas); \draw[arr] (feas)--(norm);
-\draw[arr] (norm)--(score); \draw[arr] (prof)|-(score);
-\draw[arr] (score)--(win); \draw[arr] (win)--(result);
-\draw[arr] (fsm)-|(store); \draw[arr] (fsm)--(norm);
-\draw[arr] (fsm)--(count); \draw[arr] (count)-|(result);
-\draw[arr] (result)--(fmt);
-\end{tikzpicture}}
+\node[block, right=of in] (quant) {four threshold quantizers\\$4\times2$ b};
+\node[block, right=of quant] (radix) {radix-4 encoder\\state ID 8 b};
+
+% Split nodes placed diagonally
+\node[mem, above right=2mm and 8mm of radix] (prom) {H4 policy ROM\\256$\times$2 b};
+\node[ctrl, below right=2mm and 8mm of radix] (rule) {H3 first-match\\rule controller};
+
+% Dwell placed symmetrically after the split
+\node[ctrl, below right=2mm and 8mm of prom] (dwell) {H4 dwell control\\active profile 2 b};
+\node[mem, right=of dwell] (prof) {profile ROM\\4$\times$18 b};
+
+% 2. BOTTOM ROW
+\node[block, below=20mm of prof] (score) {ratio products\\Tchebycheff max\\18-b score};
+
+% Build leftwards from score
+\node[block, left=of score] (norm) {range normalizer\\shared 49$\times$33 divider};
+\node[block, left=of norm] (feas) {validity gating and range reduction\\min/max per objective};
+\node[block, left=of feas] (store) {candidate storage/stream\\valid, cost, quality, util., hops, slot};
+
+% Build rightwards from score
+\node[block, right=of score] (win) {winner/tie registers\\score, cost, hops, slot};
+
+% OVERRIDE: Widened result block to catch the left-shifted vertical arrow
+\node[block, right=of win, text width=32mm] (result) {status/result registers\\policy, state, profile, path, score, quality};
+
+% 3. FSM & FORMATTER (Bottom Control Loops)
+\node[ctrl, below=12mm of norm] (fsm) {control FSM\\iteration, bypass, handshakes};
+\node[ctrl, right=of fsm] (count) {16-b kernel cycle counter};
+
+% OVERRIDE: Narrowed formatter block so the vertical arrow passes safely on its left
+\node[block, text width=24mm] (fmt) at (fsm -| result) {QF6R formatter + UART\\outside kernel cycles};
+
+% --- Standard Forward Paths ---
+\draw[arr] (in)--(quant);
+\draw[arr] (quant)--(radix);
+
+% Split routing
+\draw[arr] (radix.east) -- (prom.west);
+\draw[arr] (radix.east) -- (rule.west);
+\draw[arr] (prom.east) -- (dwell.west);
+\draw[arr] (rule.east) -- (dwell.west);
+
+\draw[arr] (dwell)--(prof);
+\draw[arr] (in)--(store);
+\draw[arr] (store)--(feas);
+\draw[arr] (feas)--(norm);
+\draw[arr] (norm)--(score);
+\draw[arr] (score)--(win);
+\draw[arr] (win)--(result);
+
+% --- Cross-Row and Feedback Routing ---
+\draw[arr] (prof)--(score);
+
+% FSM loops
+\draw[arr] (fsm.west) -| ([xshift=5mm]store.south);
+\draw[arr] (fsm)--(norm);
+\draw[arr] (fsm)--(count);
+
+% FIX: Feedback shifted far left (-14mm) to clear the formatter's left edge
+\draw[arr] (count.east) -| ([xshift=-16mm]result.south);
+
+% FIX: Bi-directional formatter arrow shifted right (+5mm) to prevent crowding
+\draw[darr] ([xshift=5mm]result.south) -- ([xshift=5mm]fmt.north);
+
+\end{tikzpicture}%
+}
 \caption{Detailed QFlow RTL architecture. H0 bypasses the profile and iterative
 score path; H1 bypasses profile-ROM lookup; H2 fixes $\Pi_0$; H3 uses the rule
 controller; H4 uses policy ROM and dwell control. Formatter and UART time are not
@@ -723,6 +987,10 @@ included in the kernel-cycle measurement.}
 \label{fig:detailed-rtl}
 \end{figure}
 \end{landscape}
+
+
+
+
 
 Input registers decouple request sampling from multi-cycle evaluation. State
 quantizers and the radix-4 encoder are shared by adaptive modes. The configuration
@@ -864,33 +1132,6 @@ ties, equal objective ranges, one feasible candidate, no path, invalid request,
 reset, back-to-back acceptance, and a start while busy. Integrated tracing retained
 2,125 cycle vectors and 530 valid decisions. Physical, post-route, RTL, and software
 evidence are reported separately.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figures/new/training_to_fpga_deployment.pdf}
-\caption{Offline training and FPGA deployment path. Software training uses the
-complete profile action: coefficients $\alpha_1$--$\alpha_4$ construct
-profile-dependent path cost and ratios $(\rho_c,\rho_q,\rho_u)$ weight the
-Tchebycheff objective. The physical implementation deploys the frozen
-state-to-profile policy, minimum-dwell control, and only the objective-ratio
-projection over externally supplied profile-independent path cost; it performs no
-runtime Q update, exploration, on-chip learning, or on-FPGA construction of
-$c_i^{(k)}$.}
-\label{fig:training_deployment_flow}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figures/new/ring6_environment.pdf}
-\caption{Controlled Ring-6 training and evaluation environment. Thin paired arrows
-show the 12 directed ring edges; solid slot 0 and dashed slot 1 carry the clockwise
-and counter-clockwise simple paths for the normal $0\!\rightarrow\!3$ request,
-while slots 2 and 3 remain invalid in the four-slot hardware contract. The
-512-decision traces use repeating 32-decision operating phases, with link
-consumption followed by integer arrivals, registered link updates, and the next
-state after each decision.}
-\label{fig:ring6_environment}
-\end{figure}
 
 \section{FPGA Implementation and Physical Replay}
 
