@@ -1,0 +1,60 @@
+\documentclass[tikz,border=3pt]{standalone}
+\input{figures/new/qflow_figure_style.tex}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \path[use as bounding box] (-0.25,-10.05) rectangle (17.45,1.2);
+  \tikzset{
+    host/.style={qoutside,minimum width=6.55cm,text width=6.0cm,minimum height=8mm},
+    fpga/.style={qbox,minimum width=5.4cm,text width=4.9cm,minimum height=8mm},
+    kernel/.style={draw=QFlowNavy,rounded corners=1.4mm,line width=1.0pt,fill=QFlowPaleBlue}
+  }
+
+  \node[qlabel,anchor=west,font=\fontsize{9}{10.5}\selectfont\bfseries] at (0,0.7)
+    {Host workstation};
+  \node[qlabel,anchor=west,text width=8.3cm,align=left,font=\fontsize{8.5}{10}\selectfont\bfseries] at (8.55,0.72)
+    {Nexys 3 FPGA: independently built H0--H4, one at a time};
+
+  \node[host] (build) at (3.45,-0.1) {Xilinx ISE bitstream build + JTAG programming};
+  \node[host,below=4mm of build] (replay) {Registered replay generator\\common request corpus};
+  \node[host,below=4mm of replay] (expected) {Fixed-point expected-output generator};
+  \node[host,below=4mm of expected] (capture) {UART capture + parser\\retain raw QF6R record before parsing};
+  \node[qsoft,minimum width=6.55cm,text width=6.0cm,below=4mm of capture] (compare)
+    {Nine-field exact comparator\\captured integers $=$ expected integers; no tolerance};
+  \node[host,below=4mm of compare] (results) {CSV / JSON result generation};
+
+  \node[fpga] (identity) at (11.55,-0.1) {Volatile H0, H1, H2, H3, or H4 bitstream\\100 MHz kernel clock};
+  \node[fpga,below=5mm of identity] (request) {Synchronous request interface\\accepted edge: \texttt{start \&\& ready}};
+  \node[fpga,below=5mm of request] (evaluator) {Candidate evaluator\\fixed-point selection};
+  \node[fpga,below=5mm of evaluator] (done) {Registered result + \texttt{done} edge\\16-bit cycle counter};
+  \node[fpga,below=5mm of done] (formatter) {QF6R result formatter};
+  \node[fpga,below=5mm of formatter] (uart) {115,200-baud UART};
+  \draw[qarrow] (identity)--(request);
+  \draw[qarrow] (request)--(evaluator);
+  \draw[qarrow] (evaluator)--(done);
+  \draw[qarrow] (done)--(formatter);
+  \draw[qarrow] (formatter)--(uart);
+
+  \node[draw=QFlowGray,line width=0.5pt,inner sep=0.6mm] (photo) at (16.05,-2.05)
+    {\includegraphics[width=2.0cm]{figures/new/nexys_img.jpg}};
+  \node[qsmall,text width=2.35cm,anchor=north] at (16.05,-3.18)
+    {Actual Nexys 3 Rev. B board used for replay (uncropped photograph).};
+
+  \begin{scope}[on background layer]
+    \node[kernel,fit=(request)(evaluator)(done),inner sep=4mm,label={[qlabel,anchor=south]north:\textbf{Measured kernel boundary}}] (kbound) {};
+    \node[draw=QFlowGray,dashed,rounded corners=1.5mm,fit=(build)(results),inner sep=4mm] {};
+    \node[draw=QFlowGray,dashed,rounded corners=1.5mm,fit=(identity)(uart),inner sep=4mm] {};
+  \end{scope}
+
+  \draw[qdasharrow] (build.east) -- node[qsmall,above]{JTAG programming path} (identity.west);
+  \draw[qarrow] (replay.east) -- node[qsmall,above]{request / data input path} (request.west);
+  \draw[qarrow] (uart.west) -- node[qsmall,below]{UART output path} (capture.east);
+  \draw[qarrow] (expected)--(compare);
+  \draw[qarrow] (capture)--(compare);
+  \draw[qarrow] (compare)--(results);
+
+  \node[qoutside,minimum width=16.3cm,text width=15.7cm,anchor=north] at (8.5,-8.15)
+    {\textbf{Excluded from reported kernel latency:} JTAG programming, UART serialization, host processing, parsing, candidate generation, KMS/SDN access, and route installation.};
+  \node[qsoft,minimum width=16.3cm,text width=15.7cm,anchor=north] at (8.5,-9.05)
+    {\textbf{Physical evidence scale:} 84 records per configuration; five independent configurations; 420 physical records; nine fields per record; 3,780 exact comparisons.};
+\end{tikzpicture}
+\end{document}

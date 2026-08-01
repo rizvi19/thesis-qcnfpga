@@ -116,6 +116,23 @@ $D\!\rightarrow E$ & 10 & 16 & 0.026 & 0.20 & Up; enough key units\\
 \end{tabularx}
 \end{table}
 
+Figure~\ref{fig:trusted_relay_example} makes the ordering explicit: eligibility is
+formed from link-local pools before any profile-conditioned comparison, and the
+single insufficient $C\!\rightarrow\!D$ pool excludes the entire second route.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/new/trusted_relay_candidate_example.pdf}
+\caption{Trusted-relay candidate example. Solid links form
+$\mathcal{R}_0=A\!\rightarrow\!B\!\rightarrow\!E$, which is feasible for a
+four-key-unit request; dashed links form
+$\mathcal{R}_1=A\!\rightarrow\!C\!\rightarrow\!D\!\rightarrow\!E$, which is
+excluded because the diamond-marked $C\!\rightarrow\!D$ bottleneck contains only
+three units. Pools are link-local, and soft profile-based comparison occurs only
+after upstream hard eligibility is satisfied.}
+\label{fig:trusted_relay_example}
+\end{figure}
+
 Initially $v_0=1$ and $v_1=0$, so the evaluator must return $\mathcal R_0$ even if
 $\mathcal R_1$ would have a more attractive soft score. If the
 $C\!\rightarrow D$ pool later reaches seven units while all hard checks remain

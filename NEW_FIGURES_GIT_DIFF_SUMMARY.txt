@@ -1,0 +1,29 @@
+QFlow new-figures change summary
+================================
+
+Modified thesis sources
+-----------------------
+- chapters/2_background.tex: inserted Figure 2.1 and one interpretation paragraph.
+- chapters/3_methodology.tex: inserted Figures 3.4--3.6 and minimal forward references.
+- chapters/4_performance_result.tex: inserted Figure 4.5 and one interpretation sentence.
+
+Added figure artifacts
+----------------------
+- Five editable standalone TikZ/PGFPlots sources.
+- Five generated vector PDF files.
+- Shared figure styling and deterministic PowerShell build script.
+- Verified H0--H4 resource CSV.
+- HEIC conversion script and full-frame JPEG derivative for the user-supplied Nexys 3 photograph.
+
+Added deliverables
+------------------
+- NEW_FIGURES_ADDITION_REPORT.md
+- NEW_FIGURES_FINAL_COMPILE_LOG.txt
+- NEW_FIGURES_GIT_DIFF_SUMMARY.txt
+
+Integrity summary
+-----------------
+- Existing figures retain automatic numbers 1.1, 3.1--3.3, and 4.1--4.4.
+- New figures are automatically numbered 2.1, 3.4--3.6, and 4.5.
+- No existing figure asset, equation, table, numerical result, or experimental claim was changed.
+- Final thesis: 99 pages (baseline 92; change +7), 13 figures total.

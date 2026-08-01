@@ -269,6 +269,8 @@ The 18-bit ROM word still contains the $\alpha$ fields, but the physical candida
 evaluator reads only the lower six ratio bits. Physical exactness therefore validates
 the ratio-only deployment projection, not numerical equivalence to the full
 training action or on-FPGA evaluation of Equation~\eqref{eq:alpha-path-cost}.
+The full training action, frozen artifacts, and ratio-only physical projection are
+distinguished explicitly in Figure~\ref{fig:training_deployment_flow}.
 
 \section{Registered Profile Codebook}
 
@@ -465,7 +467,8 @@ history and the dwell counter.
 
 There is no runtime argmax over Q-values, no exploration, no Q update, and no online
 learning on the FPGA. ``Reinforcement-learned'' refers to the offline origin of the
-ROM mapping.
+ROM mapping; the corresponding deployment branch is summarized in
+Figure~\ref{fig:training_deployment_flow}.
 
 \section{Immediate Reward and Q-Learning Update}
 
@@ -594,6 +597,8 @@ changes the source--destination pair from $(0,3)$ to $(0,2)$; other phases use
 $(0,3)$. Phase-specific link updates create deterministic differences between the
 upper and lower ring directions. These labels describe synthetic trace regimes and
 must not be interpreted as observations from deployed quantum links.
+Figure~\ref{fig:ring6_environment} relates the two occupied candidate slots to the
+directed topology and shows the registered phase and post-decision update sequence.
 
 \begin{table}[H]
 \centering
@@ -860,6 +865,33 @@ reset, back-to-back acceptance, and a start while busy. Integrated tracing retai
 2,125 cycle vectors and 530 valid decisions. Physical, post-route, RTL, and software
 evidence are reported separately.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/new/training_to_fpga_deployment.pdf}
+\caption{Offline training and FPGA deployment path. Software training uses the
+complete profile action: coefficients $\alpha_1$--$\alpha_4$ construct
+profile-dependent path cost and ratios $(\rho_c,\rho_q,\rho_u)$ weight the
+Tchebycheff objective. The physical implementation deploys the frozen
+state-to-profile policy, minimum-dwell control, and only the objective-ratio
+projection over externally supplied profile-independent path cost; it performs no
+runtime Q update, exploration, on-chip learning, or on-FPGA construction of
+$c_i^{(k)}$.}
+\label{fig:training_deployment_flow}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/new/ring6_environment.pdf}
+\caption{Controlled Ring-6 training and evaluation environment. Thin paired arrows
+show the 12 directed ring edges; solid slot 0 and dashed slot 1 carry the clockwise
+and counter-clockwise simple paths for the normal $0\!\rightarrow\!3$ request,
+while slots 2 and 3 remain invalid in the four-slot hardware contract. The
+512-decision traces use repeating 32-decision operating phases, with link
+consumption followed by integer arrivals, registered link updates, and the next
+state after each decision.}
+\label{fig:ring6_environment}
+\end{figure}
+
 \section{FPGA Implementation and Physical Replay}
 
 The target is a Digilent Nexys 3 Rev. B containing a Xilinx
@@ -874,6 +906,20 @@ parses the nine output fields, and compares them with the fixed-point reference.
 The experiment therefore contains 420 physical records and 3,780 field
 comparisons. The held-out partition was materialized with seed 26072026 before the
 cross-mode result tables were generated.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/new/physical_replay_setup.pdf}
+\caption{Physical replay and exact-comparison setup. Each independently implemented
+H0--H4 bitstream was programmed on the same Nexys 3 board, replayed with the common
+request corpus, captured through UART, and compared field-by-field with the
+fixed-point reference; the inset is the uncropped photograph of the board used.
+Only the accepted-request-to-done interval inside the solid FPGA kernel boundary
+contributes to reported kernel latency. Dashed host and transport functions,
+including programming, serialization, parsing, candidate generation, KMS/SDN
+access, and route installation, are excluded.}
+\label{fig:physical_replay_setup}
+\end{figure}
 
 \begin{pseudocode}{Pseudocode 3.3. Same-board replay and exact comparison}
 \textbf{Input:} independently built configuration $h$, common replay $\mathcal D$,

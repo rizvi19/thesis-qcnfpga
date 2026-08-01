@@ -1,0 +1,52 @@
+\documentclass[tikz,border=3pt]{standalone}
+\input{figures/new/qflow_figure_style.tex}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{compat=1.18}
+\begin{document}
+\begin{tikzpicture}
+\pgfplotstableread[col sep=comma]{figures/new/resource_utilization_h0_h4.csv}\resourcedata
+\pgfplotsset{
+  qaxis/.style={
+    width=5.45cm,height=6.1cm,
+    ybar,bar width=8pt,
+    symbolic x coords={H0,H1,H2,H3,H4},xtick={H0,H1,H2,H3,H4},
+    ymin=0,enlarge x limits=0.16,
+    axis line style={QFlowGray},tick style={QFlowGray},
+    tick label style={font=\fontsize{8}{9}\selectfont},
+    title style={font=\fontsize{9}{10.5}\selectfont\bfseries,yshift=1mm},
+    ylabel style={font=\fontsize{8}{9}\selectfont},
+    ymajorgrids=true,grid style={QFlowLine,dotted},
+    nodes near coords,
+    every node near coord/.append style={font=\fontsize{7.4}{8.4}\selectfont,anchor=south,text=black},
+    point meta=explicit symbolic,
+    scaled y ticks=false
+  },
+  hzero/.style={fill=white,draw=black,bar shift=0pt},
+  hone/.style={fill=black!18,draw=black,bar shift=0pt},
+  htwo/.style={fill=black!34,draw=black,bar shift=0pt},
+  hthree/.style={fill=black!52,draw=black,bar shift=0pt},
+  hfour/.style={fill=black!72,draw=black,bar shift=0pt}
+}
+\begin{groupplot}[group style={group size=3 by 1,horizontal sep=11mm}]
+  \nextgroupplot[qaxis,title={(a) Slice registers},ylabel={Count},ymax=1300,ytick={0,250,500,750,1000,1250}]
+    \addplot+[hzero,restrict expr to domain={\coordindex}{0:0}] table[x=configuration,y=registers,meta=registers] {\resourcedata};
+    \addplot+[hone,restrict expr to domain={\coordindex}{1:1}] table[x=configuration,y=registers,meta=registers] {\resourcedata};
+    \addplot+[htwo,restrict expr to domain={\coordindex}{2:2}] table[x=configuration,y=registers,meta=registers] {\resourcedata};
+    \addplot+[hthree,restrict expr to domain={\coordindex}{3:3}] table[x=configuration,y=registers,meta=registers] {\resourcedata};
+    \addplot+[hfour,restrict expr to domain={\coordindex}{4:4}] table[x=configuration,y=registers,meta=registers] {\resourcedata};
+  \nextgroupplot[qaxis,title={(b) Slice LUTs},ylabel={Count},ymax=2100,ytick={0,400,800,1200,1600,2000}]
+    \addplot+[hzero,restrict expr to domain={\coordindex}{0:0}] table[x=configuration,y=luts,meta=luts] {\resourcedata};
+    \addplot+[hone,restrict expr to domain={\coordindex}{1:1}] table[x=configuration,y=luts,meta=luts] {\resourcedata};
+    \addplot+[htwo,restrict expr to domain={\coordindex}{2:2}] table[x=configuration,y=luts,meta=luts] {\resourcedata};
+    \addplot+[hthree,restrict expr to domain={\coordindex}{3:3}] table[x=configuration,y=luts,meta=luts] {\resourcedata};
+    \addplot+[hfour,restrict expr to domain={\coordindex}{4:4}] table[x=configuration,y=luts,meta=luts] {\resourcedata};
+  \nextgroupplot[qaxis,title={(c) Occupied slices},ylabel={Count},ymax=800,ytick={0,150,300,450,600,750}]
+    \addplot+[hzero,restrict expr to domain={\coordindex}{0:0}] table[x=configuration,y=slices,meta=slices] {\resourcedata};
+    \addplot+[hone,restrict expr to domain={\coordindex}{1:1}] table[x=configuration,y=slices,meta=slices] {\resourcedata};
+    \addplot+[htwo,restrict expr to domain={\coordindex}{2:2}] table[x=configuration,y=slices,meta=slices] {\resourcedata};
+    \addplot+[hthree,restrict expr to domain={\coordindex}{3:3}] table[x=configuration,y=slices,meta=slices] {\resourcedata};
+    \addplot+[hfour,restrict expr to domain={\coordindex}{4:4}] table[x=configuration,y=slices,meta=slices] {\resourcedata};
+\end{groupplot}
+\end{tikzpicture}
+\end{document}

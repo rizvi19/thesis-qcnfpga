@@ -1,0 +1,26 @@
+\usepackage{fontspec}
+\IfFontExistsTF{Times New Roman}
+  {\setmainfont{Times New Roman}}
+  {\setmainfont{TeX Gyre Termes}}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,fit,backgrounds,shapes.geometric,decorations.pathreplacing,pgfplots.groupplots}
+\definecolor{QFlowNavy}{HTML}{17365D}
+\definecolor{QFlowBlue}{HTML}{2F5597}
+\definecolor{QFlowTeal}{HTML}{2A7F7F}
+\definecolor{QFlowAmber}{HTML}{8B5A00}
+\definecolor{QFlowGray}{HTML}{667085}
+\definecolor{QFlowLine}{HTML}{CBD5E1}
+\definecolor{QFlowPaleBlue}{HTML}{EAF1F8}
+\definecolor{QFlowPaleGray}{HTML}{F2F4F7}
+\tikzset{
+  qbox/.style={draw=QFlowNavy,rounded corners=1.2mm,fill=white,
+    line width=0.6pt,align=center,inner sep=2.2mm,font=\fontsize{8.5}{10}\selectfont},
+  qsoft/.style={qbox,fill=QFlowPaleBlue},
+  qoutside/.style={qbox,draw=QFlowGray,dashed,fill=QFlowPaleGray},
+  qarrow/.style={-{Latex[length=2mm,width=1.3mm]},line width=0.7pt,QFlowNavy},
+  qdasharrow/.style={qarrow,dashed,QFlowGray},
+  qlabel/.style={font=\fontsize{8}{9.2}\selectfont,align=center},
+  qsmall/.style={font=\fontsize{7.5}{8.7}\selectfont,align=center}
+}

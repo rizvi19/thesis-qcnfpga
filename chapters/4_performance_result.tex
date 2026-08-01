@@ -256,6 +256,9 @@ to configuration H3, it mapped to 7.081\% fewer LUTs, 5.378\% more registers, an
 directions because slice packing, register placement, and routing affect physical
 occupancy. The LUT reduction is an implementation-specific synthesis result, not a
 general property of reinforcement learning.
+Figure~\ref{fig:resource_utilization} plots the three resource categories on
+separate zero-based axes, making the H3--H4 mapping trade-off visible without
+combining unlike resources on one scale.
 
 \begin{table}[H]
 \centering
@@ -651,6 +654,18 @@ Pareto-C0 & Dominance and selection comparator & 3,368 & 13\%\\
 \caption{Routed OpenROAD layouts for three isolated kernels. These views do not
 represent an integrated \QFlow\ ASIC.}
 \label{fig:vlsi-layouts}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/new/resource_utilization_h0_h4.pdf}
+\caption{Post-route FPGA resource utilization for the five independent
+configurations. The aligned, zero-based panels report exact slice-register, slice-LUT,
+and occupied-slice counts from Table~\ref{tab:resources}; grayscale shade identifies
+H0 through H4 consistently in each panel. H4 mapped to fewer LUTs than H3 but used
+more registers and occupied slices, so individual resource categories and physical
+slice packing need not move in the same direction.}
+\label{fig:resource_utilization}
 \end{figure}
 
 The flows generated routed reports and final artifacts for the separate kernels,
