@@ -913,13 +913,14 @@ cross-mode result tables were generated.
 \caption{Physical replay and exact-comparison setup. Each independently implemented
 H0--H4 bitstream was programmed on the same Nexys 3 board, replayed with the common
 request corpus, captured through UART, and compared field-by-field with the
-fixed-point reference; the inset is the uncropped photograph of the board used.
+fixed-point reference; panel (b) shows the uncropped photograph of the board used.
 Only the accepted-request-to-done interval inside the solid FPGA kernel boundary
 contributes to reported kernel latency. Dashed host and transport functions,
 including programming, serialization, parsing, candidate generation, KMS/SDN
 access, and route installation, are excluded.}
 \label{fig:physical_replay_setup}
 \end{figure}
+\clearpage
 
 \begin{pseudocode}{Pseudocode 3.3. Same-board replay and exact comparison}
 \textbf{Input:} independently built configuration $h$, common replay $\mathcal D$,

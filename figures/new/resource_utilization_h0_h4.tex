@@ -35,13 +35,13 @@
     \addplot+[htwo,restrict expr to domain={\coordindex}{2:2}] table[x=configuration,y=registers,meta=registers] {\resourcedata};
     \addplot+[hthree,restrict expr to domain={\coordindex}{3:3}] table[x=configuration,y=registers,meta=registers] {\resourcedata};
     \addplot+[hfour,restrict expr to domain={\coordindex}{4:4}] table[x=configuration,y=registers,meta=registers] {\resourcedata};
-  \nextgroupplot[qaxis,title={(b) Slice LUTs},ylabel={Count},ymax=2100,ytick={0,400,800,1200,1600,2000}]
+  \nextgroupplot[qaxis,title={(b) Slice LUTs},ylabel={},ymax=2100,ytick={0,400,800,1200,1600,2000}]
     \addplot+[hzero,restrict expr to domain={\coordindex}{0:0}] table[x=configuration,y=luts,meta=luts] {\resourcedata};
     \addplot+[hone,restrict expr to domain={\coordindex}{1:1}] table[x=configuration,y=luts,meta=luts] {\resourcedata};
     \addplot+[htwo,restrict expr to domain={\coordindex}{2:2}] table[x=configuration,y=luts,meta=luts] {\resourcedata};
     \addplot+[hthree,restrict expr to domain={\coordindex}{3:3}] table[x=configuration,y=luts,meta=luts] {\resourcedata};
     \addplot+[hfour,restrict expr to domain={\coordindex}{4:4}] table[x=configuration,y=luts,meta=luts] {\resourcedata};
-  \nextgroupplot[qaxis,title={(c) Occupied slices},ylabel={Count},ymax=800,ytick={0,150,300,450,600,750}]
+  \nextgroupplot[qaxis,title={(c) Occupied slices},ylabel={},ymax=800,ytick={0,150,300,450,600,750}]
     \addplot+[hzero,restrict expr to domain={\coordindex}{0:0}] table[x=configuration,y=slices,meta=slices] {\resourcedata};
     \addplot+[hone,restrict expr to domain={\coordindex}{1:1}] table[x=configuration,y=slices,meta=slices] {\resourcedata};
     \addplot+[htwo,restrict expr to domain={\coordindex}{2:2}] table[x=configuration,y=slices,meta=slices] {\resourcedata};

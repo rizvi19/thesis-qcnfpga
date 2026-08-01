@@ -48,8 +48,8 @@ pages, compared with the 92-page baseline, for a net increase of seven pages.
   boundary, excluded latency components, and exact-comparison scale.
 - Source: the physical result protocol, Section 3.18, and the retained Nexys 3
   photograph supplied in `figures/nexys_img.HEIC`.
-- Implementation: standalone TikZ technical schematic with a small uncropped
-  documentary photograph inset. The HEIC-to-JPEG conversion preserves the full
+- Implementation: standalone two-panel TikZ technical schematic with a large
+  uncropped documentary photograph in panel (b). The HEIC-to-JPEG conversion preserves the full
   3751-by-3509 frame and performs no crop, recoloring, resampling, or enhancement.
 
 ### Figure 4.5 -- FPGA resource utilization across H0--H4
