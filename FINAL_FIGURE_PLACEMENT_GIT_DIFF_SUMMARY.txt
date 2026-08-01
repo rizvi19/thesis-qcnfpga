@@ -1,0 +1,30 @@
+QFlow final figure-placement and source-SHA release
+===================================================
+
+Source commit:
+  f5d665d083fc3ed7f3119a676acf5d236a3d5475
+
+Source files committed:
+  M appendices/a_reproducibility.tex
+    - presents repository, evidence branches/commits, submission branch, and the
+      externally injected source-commit macro in a clean visible format
+  M chapters/3_methodology.tex
+    - moves the offline-training/deployment figure to Section 3.11
+    - moves the Ring-6 training-environment figure to Section 3.13
+    - preserves Figure 3.6 and its author-provided board photograph
+  M chapters/4_performance_result.tex
+    - moves the FPGA resource-utilization chart to Section 4.9
+
+Release-only packaging files:
+  M document.pdf
+  A FINAL_FIGURE_PLACEMENT_AND_SHA_REPORT.md
+  A FINAL_FIGURE_PLACEMENT_COMPILE_LOG.txt
+  A FINAL_FIGURE_PLACEMENT_GIT_DIFF_SUMMARY.txt
+
+The release wrapper injects source SHA
+f5d665d083fc3ed7f3119a676acf5d236a3d5475 before document.tex is loaded. The
+wrapper is a temporary build input and is not part of the packaging commit.
+
+No figure asset/source, caption, numerical result, equation, table content,
+bibliography entry, hypothesis outcome, or scientific statement was changed by
+the placement correction.
